@@ -15,11 +15,11 @@
       </Fabricate>
       <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="166,430,43,43" origin="0.5,0.5" />
       <Sprite texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" sourcerect="3,118,24,9" depth="0.55" origin="0.5,0.5" />
-      <Body width="34" height="14" density="50" />
+      <Body width="34" height="14" density="30" />
       <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
       <Projectile characterusable="false" hitscan="true" removeonhit="true">
         <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,115,200" scalemultiplier="1,1" />
-        <Attack structuredamage="20" targetforce="30" itemdamage="40" severlimbsprobability="1.0" penetration="3.6">
+        <Attack structuredamage="20" targetforce="20" itemdamage="40" severlimbsprobability="1.0" penetration="3.6">
           <Affliction identifier="bleeding" strength="70" />
           <Affliction identifier="gunshotwound" strength="80" />
           <Affliction identifier="stun" strength="1.5" />
@@ -48,19 +48,18 @@
       </Price>
       <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true" quality="3">
         <RequiredSkill identifier="weapons" level="60" />
-        <RequiredItem identifier="titaniumaluminiumalloy" />
-        <RequiredItem identifier="dementonite" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+        <RequiredItem identifier="physicorium" />
       </Fabricate>
       <Deconstruct time="30">
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="dementonite" />
-        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+        <Item identifier="physicorium" />
       </Deconstruct>
       <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="303,364,42,67" origin="0.5,0.5" />
       <Sprite texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" sourcerect="0,256,111,56" depth="0.55" origin="0.5,0.5" />
       <Body width="106" height="49" density="70" />
-      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-30,-4" handle2="-50,-15" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon reload="0.75" barrelpos="20,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-45,-4" handle2="-45,-15" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.75" barrelpos="40,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon.ogg" type="OnUse" range="3000" selectionmode="Random" />
@@ -71,7 +70,7 @@
         <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_5.ogg" type="OnUse" range="3000" />
         <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="255,200,115,200" />
         <StatusEffect type="OnUse">
-          <Explosion range="300.0" force="50" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <RequiredItems items="handcannonammo" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="60" />
@@ -81,7 +80,7 @@
       </ItemContainer>
       <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
       <Quality>
-        <QualityStat stattype="AttackMultiplier" value="0.2" />
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
       </Quality>
     </Item>
   </Items>
