@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!--修改贴图-->
+    <Item name="" identifier="headset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="crewcab" secondary="divingcab" />
+      <Price baseprice="105">
+        <Price storeidentifier="merchantoutpost" minavailable="3" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="10" />
+        <Price storeidentifier="merchantresearch" minavailable="4" />
+        <Price storeidentifier="merchantmilitary" minavailable="6" />
+        <Price storeidentifier="merchantmine" minavailable="6" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="28,321,49,62" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="fpgacircuit" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <!--RequiredItems items="mobilebattery" type="Contained" /-->
+      </WifiComponent>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="26,313,51.5,70" origin="0.515,0.703" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

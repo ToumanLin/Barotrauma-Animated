@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!--修改贴图-->
+    <Item name="" identifier="clownmask" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask" description="" scale="0.5">
+      <Price baseprice="40" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" minavailable="1" />
+        <Price storeidentifier="merchantresearch" sold="false" />
+        <Price storeidentifier="merchantmilitary" sold="false" />
+        <Price storeidentifier="merchantmine" sold="false" />
+      </Price>
+      <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="crewcab" />
+      <Sprite name="Clown Mask" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="414,318,89,71" origin="0.5,0.5" scale="0.5" />
+      <Body width="40" radius="30" density="15" />
+      <Deconstruct time="10">
+        <Item identifier="bikehorn" />
+      </Deconstruct>
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Clown Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.75" sourcerect="414,318,89,71" origin="0.5,0.656" />
+        <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" identifier="clowncostume" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear" description="" impactsoundtag="impact_soft" scale="0.5">
+      <Price baseprice="40" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" minavailable="1" />
+        <Price storeidentifier="merchantresearch" sold="false" />
+        <Price storeidentifier="merchantmilitary" sold="false" />
+        <Price storeidentifier="merchantmine" sold="false" />
+      </Price>
+      <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon name="Clown Costume Icon" texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,448,64,64" origin="0.5,0.5" />
+      <Sprite name="Clown Costume" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="247,14,117,55" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Deconstruct time="40">
+        <Item identifier="bikehorn" />
+        <Item identifier="bikehorn" />
+        <Item identifier="bikehorn" />
+      </Deconstruct>
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Clown's Costume Torso" texture="clown.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Hand" texture="clown.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Hand" texture="clown.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Lower Arm" texture="clown.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Lower Arm" texture="clown.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Upper Arm" texture="clown.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Upper Arm" texture="clown.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Waist" texture="clown.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Thigh" texture="clown.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Thigh" texture="clown.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Leg" texture="clown.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Leg" texture="clown.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Left Shoe" texture="clown.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Clown's Costume Right Shoe" texture="clown.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <!-- HENK -->
+        <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+        <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" identifier="clownmaskunique" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask" description="" hideinmenus="false" scale="0.50">
+      <Price baseprice="1" sold="false" canbespecial="false" />
+      <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer primary="crewcab" />
+      <Sprite name="Clown Mask" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="510,200,80,100" origin="0.5,0.5" scale="0.5" />
+      <Body width="40" radius="30" density="15" />
+      <InventoryIcon texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="510,200,80,100" />
+      <Deconstruct time="10">
+        <Item identifier="bikehorn" />
+      </Deconstruct>
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Clown Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="400,384,112,128" origin="0.6,0.5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="weapons" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="10" />
+        <SkillModifier skillidentifier="electrical" skillvalue="10" />
+        <SkillModifier skillidentifier="medical" skillvalue="10" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,0" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+          <RequiredItem items="thermalgoggles" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+          <RequiredItem items="healthscanner" type="Contained" />
+        </StatusEffect>
+        <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+          <Containable items="healthscanner,thermalgoggles" excludebroken="false" />
+          <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+        </ItemContainer>
+        <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="clownsuitunique" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear" description="" impactsoundtag="impact_soft" hideinmenus="false" scale="0.5">
+      <Price baseprice="1" sold="false" canbespecial="false" />
+      <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon name="Clown Costume Icon" texture="Content/Items/InventoryIconAtlas2.png" sourcerect="320,384,64,64" origin="0.5,0.5" />
+      <Sprite name="Clown Costume" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="769,74,118,72" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Deconstruct time="40">
+        <Item identifier="bikehorn" />
+        <Item identifier="bikehorn" />
+        <Item identifier="bikehorn" />
+      </Deconstruct>
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Legendary Clown's Clothes 2 Torso" texture="clown_rare.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,148,220" origin="0.5203,0.4364" />
+        <sprite name="Legendary Clown's Clothes 2 Right Hand" texture="clown_rare.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,184,64,48" />
+        <sprite name="Legendary Clown's Clothes 2 Left Hand" texture="clown_rare.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,184,64,48" />
+        <sprite name="Legendary Clown's Clothes 2 Left Lower Arm" texture="clown_rare.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="372,96,64,88" origin="0.5,0.3636" />
+        <sprite name="Legendary Clown's Clothes 2 Right Lower Arm" texture="clown_rare.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="308,96,64,88" origin="0.5,0.3636" />
+        <sprite name="Legendary Clown's Clothes 2 Left Upper Arm" texture="clown_rare.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,0,64,96" />
+        <sprite name="Legendary Clown's Clothes 2 Right Upper Arm" texture="clown_rare.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,0,64,96" />
+        <sprite name="Legendary Clown's Clothes 2 Waist" texture="clown_rare.png" limb="Waist" hidelimb="true" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="160,220,112,60" origin="0.5,0.53333" />
+        <sprite name="Legendary Clown's Clothes 2 Right Thigh" texture="clown_rare.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Legendary Clown's Clothes 2 Left Thigh" texture="clown_rare.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Legendary Clown's Clothes 2 Right Leg" texture="clown_rare.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Legendary Clown's Clothes 2 Left Leg" texture="clown_rare.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Legendary Clown's Clothes 2 Right Shoe" texture="clown_rare.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
+        <sprite name="Legendary Clown's Clothes 2 Left Shoe" texture="clown_rare.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
+        <!-- HöNK -->
+        <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+        <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.65" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>
+<!--x减小：往前移动
+	y减小：往下移动
+-->

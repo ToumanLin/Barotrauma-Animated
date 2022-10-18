@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventSprites>
+    <!--以后再说吧-->
+  </EventSprites>
+  <EventPrefabs>
+    <ScriptedEvent identifier="missionevent_EAHI1" commonness="100">
+      <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="EAHInpc_1" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <ConversationAction text="EventText.missionevent_EAHI1.c1" speakertag="EAHInpc_1" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="EAHI_N" />
+      <MissionAction missiontag="EAHI_N" />
+      <NPCWaitAction npctag="EAHInpc_1" wait="true" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_EAHI2" commonness="100">
+      <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_2" targettag="EAHInpc_2" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <ConversationAction text="EventText.missionevent_EAHI2.c1" speakertag="EAHInpc_2" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="EAHI_H" />
+      <MissionAction missiontag="EAHI_H" />
+      <NPCWaitAction npctag="EAHInpc_2" wait="true" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventSet identifier="outposteventsEAHI" leveltype="outpost" locationtype="outpost,city,research,military,mine" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="false" ignorecooldown="true">
+    <EventSet identifier="outposteventsEAHI.ALL.generic.missionevents" minleveldifficulty="20" maxleveldifficulty="100" allowatstart="true" chooserandom="true" eventcount="1">
+      <ScriptedEvent identifier="missionevent_EAHI1" commonness="100" />
+      <ScriptedEvent identifier="missionevent_EAHI2" commonness="110" />
+      <!--<ScriptedEvent identifier="missionevent_PP" commonness="200" />
+	  <ScriptedEvent identifier="missionevent_MLK" commonness="100" />
+	  <ScriptedEvent identifier="missionevent_SY" commonness="100" />
+      <ScriptedEvent identifier="missionevent_XML" commonness="150" />-->
+    </EventSet>
+    <!-- low-difficulty random events -->
+    <EventSet identifier="outpostevents.easy.generic.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="30" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <ScriptedEvent identifier="givingdirections" commonness="100" />
+      <ScriptedEvent identifier="clownrelations1" commonness="100" />
+      <ScriptedEvent identifier="goodsamaritan" commonness="100" />
+      <ScriptedEvent identifier="propaganda" commonness="100" />
+      <ScriptedEvent identifier="miketheidiot1" commonness="25" />
+      <ScriptedEvent identifier="separatistrelations" commonness="100" />
+      <ScriptedEvent identifier="Engineers_are_special" commonness="100" />
+      <ScriptedEvent identifier="huskcultist" commonness="100" />
+      <ScriptedEvent identifier="fanclub" commonness="100" />
+      <ScriptedEvent identifier="shockjock" commonness="60" />
+      <ScriptedEvent identifier="manandhisraptor1" commonness="50" />
+      <ScriptedEvent identifier="bombscare" commonness="50" />
+      <ScriptedEvent identifier="terrorism101" commonness="50" />
+      <ScriptedEvent identifier="assassinationofjacovsubra2" commonness="100" />
+      <ScriptedEvent identifier="assassinationofjacovsubra3" commonness="100" />
+      <!-- events that only occur in low difficulty-->
+      <ScriptedEvent identifier="censorship" commonness="60" />
+      <ScriptedEvent identifier="atwitsend" commonness="60" />
+      <ScriptedEvent identifier="infiltration" commonness="70" />
+      <ScriptedEvent identifier="missionevent_clownoutbreak" commonness="70" />
+    </EventSet>
+    <!-- high-difficulty random events -->
+    <EventSet identifier="outpostevent.difficult.generic.randomevents.EAHI" minleveldifficulty="30" maxleveldifficulty="80" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <!-- events that can occur in both low and high difficulty, commoness reduced here to favor the more difficult ones-->
+      <ScriptedEvent identifier="givingdirections" commonness="50" />
+      <ScriptedEvent identifier="clownrelations1" commonness="50" />
+      <ScriptedEvent identifier="goodsamaritan" commonness="50" />
+      <ScriptedEvent identifier="propaganda" commonness="50" />
+      <ScriptedEvent identifier="miketheidiot1" commonness="12" />
+      <ScriptedEvent identifier="separatistrelations" commonness="50" />
+      <ScriptedEvent identifier="Engineers_are_special" commonness="50" />
+      <ScriptedEvent identifier="huskcultist" commonness="50" />
+      <ScriptedEvent identifier="fanclub" commonness="50" />
+      <ScriptedEvent identifier="shockjock" commonness="40" />
+      <ScriptedEvent identifier="manandhisraptor1" commonness="60" />
+      <ScriptedEvent identifier="bombscare" commonness="40" />
+      <ScriptedEvent identifier="terrorism101" commonness="40" />
+      <ScriptedEvent identifier="assassinationofjacovsubra2" commonness="100" />
+      <ScriptedEvent identifier="assassinationofjacovsubra3" commonness="100" />
+      <!-- events that only occur in high difficulty-->
+      <ScriptedEvent identifier="huskcultambush" commonness="50" />
+      <ScriptedEvent identifier="blackmarket" commonness="100" />
+      <ScriptedEvent identifier="mediator" commonness="100" />
+      <ScriptedEvent identifier="huskcultrelations" commonness="100" />
+      <ScriptedEvent identifier="clownbrutality" commonness="100" />
+      <ScriptedEvent identifier="firefighting" commonness="100" />
+      <ScriptedEvent identifier="sleightofhand" commonness="100" />
+      <ScriptedEvent identifier="miketheidiot2" commonness="25" />
+      <ScriptedEvent identifier="goblincooking1" commonness="50" />
+      <ScriptedEvent identifier="outbreak" commonness="100" />
+      <ScriptedEvent identifier="clownrelations2" commonness="100" />
+      <ScriptedEvent identifier="soundinthevent" commonness="100" />
+      <ScriptedEvent identifier="badvibrations1" commonness="80" />
+      <ScriptedEvent identifier="stuckinthemiddle" commonness="50" />
+    </EventSet>
+    <!-- Events specific to military outposts -->
+    <EventSet identifier="outpostevent.military.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="military" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <!-- 50% chance of getting a military-specific event (TODO: increase if/when we have more of these available?) -->
+      <ScriptedEvent identifier="bigbrother" commonness="150" probability="0.5" />
+      <ScriptedEvent identifier="explosivemishap" commonness="50" probability="0.5" />
+    </EventSet>
+    <!-- Events specific to research outposts -->
+    <EventSet identifier="outpostevent.research.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="research" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <!-- 50% chance of getting a research-specific event (TODO: increase if/when we have more of these available?) -->
+      <ScriptedEvent identifier="tastetest" commonness="150" probability="0.5" />
+      <ScriptedEvent identifier="crawleroutbreak" commonness="150" probability="0.5" />
+      <ScriptedEvent identifier="impromptuengineering" commonness="150" probability="0.5" />
+      <ScriptedEvent identifier="captivesouls" commonness="50" probability="0.5" />
+    </EventSet>
+    <!-- Events specific to mining outposts -->
+    <EventSet identifier="outpostevent.mine.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="mine" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <!-- 50% chance of getting a mine-specific event (TODO: increase if/when we have more of these available?) -->
+      <ScriptedEvent identifier="consultant" commonness="150" probability="0.5" />
+      <ScriptedEvent identifier="occupationalhazards" commonness="150" probability="0.5" />
+    </EventSet>
+    <!-- Events specific to cities -->
+    <EventSet identifier="outpostevent.city.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="city" allowatstart="true" chooserandom="true" onceperoutpost="true">
+      <!-- 50% chance of getting a city-specific event (TODO: increase if/when we have more of these available?) -->
+      <ScriptedEvent identifier="captivesouls" commonness="50" probability="0.5" />
+      <ScriptedEvent identifier="explosivemishap" commonness="50" probability="0.5" />
+      <ScriptedEvent identifier="hognose" commonness="50" probability="0.5" />
+    </EventSet>
+    <EventSet identifier="outpostevents.coldcaverns.start.missionevents.EAHI" minleveldifficulty="0" maxleveldifficulty="1" allowatstart="true" chooserandom="true" eventcount="3">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="100" />
+      <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="100" />
+      <ScriptedEvent identifier="missionevent_escort1" commonness="100" />
+    </EventSet>
+    <EventSet identifier="outpostevents.coldcaverns.basic.generic.missionevents.EAHI" minleveldifficulty="1" maxleveldifficulty="5" allowatstart="true" chooserandom="true" eventcount="3">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="100" />
+      <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="120" />
+      <ScriptedEvent identifier="missionevent_escort1" commonness="100" />
+    </EventSet>
+    <EventSet identifier="outpostevents.coldcaverns.advanced.generic.missionevents.EAHI" minleveldifficulty="5" maxleveldifficulty="15" allowatstart="true" chooserandom="true" eventcount="3">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="100" />
+      <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="50" />
+      <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="50" />
+      <ScriptedEvent identifier="missionevent_collectminerals_common" commonness="75" />
+      <ScriptedEvent identifier="missionevent_collectminerals_rare" commonness="25" />
+      <ScriptedEvent identifier="missionevent_escort1" commonness="100" />
+    </EventSet>
+    <EventSet identifier="outpostevents.europanridge.basic.generic.missionevents.EAHI" minleveldifficulty="15" maxleveldifficulty="25" allowatstart="true" chooserandom="true" eventcount="3">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="200" />
+      <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="10" />
+      <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="25" />
+      <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="10" />
+      <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="25" />
+      <ScriptedEvent identifier="missionevent_salvageartifact" commonness="50" />
+      <ScriptedEvent identifier="missionevent_salvagewreck" commonness="100" />
+      <ScriptedEvent identifier="missionevent_crawlernest" commonness="80" />
+      <ScriptedEvent identifier="missionevent_mudraptornest" commonness="70" />
+      <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="30" />
+      <ScriptedEvent identifier="missionevent_collectminerals" commonness="75" />
+      <ScriptedEvent identifier="missionevent_escort1,missionevent_escort2,missionevent_escort3" commonness="160" />
+      <ScriptedEvent identifier="missionevent_pirate1" commonness="80" />
+      <ScriptedEvent identifier="missionevent_scanruin" commonness="50" />
+      <ScriptedEvent identifier="missionevent_clearruin" commonness="30" />
+    </EventSet>
+    <EventSet identifier="outpostevents.europanridge.advanced.generic.missionevents.EAHI" minleveldifficulty="25" maxleveldifficulty="35" allowatstart="true" chooserandom="true" eventcount="4">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="120" />
+      <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="5" />
+      <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="50" />
+      <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="5" />
+      <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="50" />
+      <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_salvageartifact" commonness="70" />
+      <ScriptedEvent identifier="missionevent_salvagewreck" commonness="100" />
+      <ScriptedEvent identifier="missionevent_crawlernest" commonness="60" />
+      <ScriptedEvent identifier="missionevent_mudraptornest" commonness="70" />
+      <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="60" />
+      <ScriptedEvent identifier="missionevent_collectminerals" commonness="75" />
+      <ScriptedEvent identifier="missionevent_escort1,missionevent_escort2,missionevent_escort3" commonness="60" />
+      <ScriptedEvent identifier="missionevent_escort2,missionevent_escort3,missionevent_escort4" commonness="60" />
+      <ScriptedEvent identifier="missionevent_pirate1" commonness="80" />
+      <ScriptedEvent identifier="missionevent_scanruin" commonness="90" />
+      <ScriptedEvent identifier="missionevent_clearruin" commonness="60" />
+    </EventSet>
+    <EventSet identifier="outpostevents.theaphoticplateau.basic.generic.missionevents.EAHI" minleveldifficulty="35" maxleveldifficulty="50" allowatstart="true" chooserandom="true" eventcount="4">
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="120" />
+      <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="25" />
+      <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killswarm_set4" commonness="50" />
+      <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="25" />
+      <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set4" commonness="50" />
+      <ScriptedEvent identifier="missionevent_salvageartifact" commonness="140" />
+      <ScriptedEvent identifier="missionevent_salvagewreck" commonness="120" />
+      <ScriptedEvent identifier="missionevent_mudraptornest" commonness="70" />
+      <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="80" />
+      <ScriptedEvent identifier="missionevent_collectminerals_rare" commonness="75" />
+      <ScriptedEvent identifier="missionevent_escort1,missionevent_escort2,missionevent_escort3" commonness="20" />
+      <ScriptedEvent identifier="missionevent_escort2,missionevent_escort3,missionevent_escort4" commonness="80" />
+      <ScriptedEvent identifier="missionevent_pirate1" commonness="80" />
+      <ScriptedEvent identifier="missionevent_scanruin" commonness="120" />
+      <ScriptedEvent identifier="missionevent_clearruin" commonness="90" />
+    </EventSet>
+    <EventSet identifier="outpostevent.difficult.generic.missionevents.EAHI" minleveldifficulty="50" maxleveldifficulty="80" allowatstart="true" chooserandom="true" eventcount="4">
+      <!-- same missions as in the previous tier, but with adjusted probabilities to favor more difficult ones -->
+      <ScriptedEvent identifier="missionevent_cargoany" commonness="100" />
+      <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="5" />
+      <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killswarm_set4" commonness="60" />
+      <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="5" />
+      <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="75" />
+      <ScriptedEvent identifier="missionevent_killmonster_set4" commonness="60" />
+      <ScriptedEvent identifier="missionevent_salvageartifact" commonness="120" />
+      <ScriptedEvent identifier="missionevent_salvagewreck" commonness="100" />
+      <ScriptedEvent identifier="missionevent_mudraptornest" commonness="70" />
+      <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="80" />
+      <ScriptedEvent identifier="missionevent_collectminerals_rare" commonness="40" />
+      <ScriptedEvent identifier="missionevent_escort2,missionevent_escort3,missionevent_escort4" commonness="160" />
+      <ScriptedEvent identifier="missionevent_pirate1" commonness="80" />
+      <ScriptedEvent identifier="missionevent_scanruin" commonness="100" />
+      <ScriptedEvent identifier="missionevent_clearruin" commonness="120" />
+    </EventSet>
+  </EventSet>
+  <!--EVENT SETS-->
+</Randomevents>

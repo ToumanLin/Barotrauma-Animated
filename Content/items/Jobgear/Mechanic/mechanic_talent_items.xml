@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 安全背带:修改贴图 -->
+    <Item name="" identifier="safetyharness" category="Equipment" tags="smallitem,clothing" scale="0.35" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" secondary="engcab" />
+      <Price baseprice="120" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.2" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="1.2" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="rubber" />
+        <Item identifier="steel" />
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="rubber" amount="2" />
+        <RequiredItem identifier="steel" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="198,132,67,57" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="58,326,143,40" depth="0.6" origin="0.5,0.5" />
+      <Body width="120" height="35" density="40" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictiontypes="lacerations" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.25" />
+        <sprite name="safetyharness Torso" texture="safetyharness.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Hand" texture="safetyharness.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Hand" texture="safetyharness.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Lower Arm" texture="safetyharness.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Lower Arm" texture="safetyharness.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Upper Arm" texture="safetyharness.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Upper Arm" texture="safetyharness.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Waist" texture="safetyharness.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>
