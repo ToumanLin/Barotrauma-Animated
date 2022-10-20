@@ -310,8 +310,8 @@
         <SkillModifier skillidentifier="medical" skillvalue="15" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,lacerations" damagemultiplier="0.9" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn,bleeding" damagemultiplier="0.85" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="bitewounds" damagemultiplier="0.82" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="explosiondamage" damagemultiplier="0.85" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds" damagemultiplier="0.82" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="explosiondamage" damagemultiplier="0.85" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.3" damagesound="LimbArmor" />
       </Wearable>
     </Item>
@@ -347,11 +347,11 @@
         <sprite name="shengxuan's Clothes 1 Left Leg" texture="shengxuan.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="shengxuan's Clothes 1 Right Shoe" texture="shengxuan.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="shengxuan's Clothes 1 Left Shoe" texture="shengxuan.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,lacerations" damagemultiplier="0.8" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn,blunttrauma" damagemultiplier="0.9" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,lacerations,blunttrauma" damagemultiplier="0.8" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.9" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.95" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.9" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="explosiondamage" damagemultiplier="0.95" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="explosiondamage" damagemultiplier="0.95" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.9" probabilitymultiplier="0.3" damagesound="LimbArmor" />
       </Wearable>
     </Item>
@@ -799,6 +799,89 @@
         <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.75" />
       </Wearable>
     </Item>
+    <!--异星装甲潜水服-->
+    <Item name="" identifier="Exotic_Amor_suit" category="diving" tags="smallitem,deepdiving,diving,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <Price baseprice="1145">
+        <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
+        <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
+        <Price locationtype="merchantresearch" multiplier="1" minavailable="1" />
+        <Price locationtype="merchantmilitary" multiplier="1" minavailable="1" />
+        <Price locationtype="merchantmine" multiplier="1" minavailable="1" />
+      </Price>
+      <Deconstruct time="10" />
+      <InventoryIcon name="Exotic_Amor_suit's Uniform 2 Icon" texture="%ModDir%/Content/Uniform_new/OutfitIcons.png" sourcerect="384,146,128,110" origin="0.5,0.5" />
+      <Sprite name="Exotic_Amor_suit's Uniform 2" texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Exotic_Amor_suit Torso" texture="Exotic_Amor_suit.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,148,220" origin="0.5203,0.4364" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Hand" texture="Exotic_Amor_suit.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,184,64,48" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Hand" texture="Exotic_Amor_suit.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,184,64,48" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Lower Arm" texture="Exotic_Amor_suit.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="372,96,64,88" origin="0.5,0.3636" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Lower Arm" texture="Exotic_Amor_suit.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="308,96,64,88" origin="0.5,0.3636" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Upper Arm" texture="Exotic_Amor_suit.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,0,64,96" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Upper Arm" texture="Exotic_Amor_suit.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,0,64,96" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Waist" texture="Exotic_Amor_suit.png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="160,220,112,60" origin="0.5,0.53333" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Thigh" texture="Exotic_Amor_suit.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Thigh" texture="Exotic_Amor_suit.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Leg" texture="Exotic_Amor_suit.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Leg" texture="Exotic_Amor_suit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Right Shoe" texture="Exotic_Amor_suit.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" hideotherwearables="true" />
+        <sprite name="Exotic_Amor_suit Left Shoe" texture="Exotic_Amor_suit.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" hideotherwearables="true" />
+        <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" PressureProtection="10000.0" SpeedMultiplier="1.2" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="1.2" setvalue="true" disabledeltatime="true">
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0">
+          <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1000.0" Condition="-0.3" comparison="Or">
+          <Conditional IsDead="false" />
+          <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-20.0" Condition="-0.5">
+          <Conditional IsDead="false" />
+          <RequiredItem items="weldingfueltank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-20.0" Condition="-0.5">
+          <Conditional IsDead="false" />
+          <RequiredItem items="incendiumfueltank" type="Contained" />
+          <Affliction identifier="burn" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1500.0" Condition="-0.1" comparison="Or">
+          <Conditional IsDead="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.3" setvalue="true" comparison="Or">
+          <Conditional IsDead="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.55" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.75" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.75" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.5" damagesound="LimbArmor" />
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use">
+        <Upgrade gameversion="0.1401.0.0" msg="ItemMsgPickUpUse" />
+      </Holdable>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
+        <Containable items="oxygensource,weldingtoolfuel" />
+        <StatusEffect type="OnWearing" target="Contained">
+          <RequiredItem items="oxygensource" type="Contained" />
+          <Conditional condition="lt 5.0" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
+          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+          <Conditional condition="lte 0.0" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" />
+        </StatusEffect>
+      </ItemContainer>
+      <aitarget maxsightrange="1500" />
+    </Item>
     <!--hats-->
     <!--亡蝶葬仪的赠礼-->
     <Item name="" identifier="shengxuanhats" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask" description="" hideinmenus="false" scale="0.50">
@@ -821,11 +904,12 @@
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
         <sprite name="shengxuan Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="512,384,88,128" origin="0.85,0.6" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,blunttrauma" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="lacerations,gunshotwound" damagemultiplier="0.15" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.15" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.8" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="radiationsickness" damagemultiplier="0.7" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis,concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.7" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       </Wearable>
     </Item>
     <!--魅魔-->
@@ -848,6 +932,34 @@
         <sprite name="Succubus Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="612,391,89,80" origin="0.6236,0.806" />
         <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
         <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.5" />
+      </Wearable>
+    </Item>
+    <!--异星装甲头盔-->
+    <Item name="" identifier="Exotic_Amor_suit_head" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask" description="" hideinmenus="false" scale="0.50">
+      <Price baseprice="1" sold="false" canbespecial="false" />
+      <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer primary="crewcab" />
+      <Price baseprice="1680">
+        <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
+        <Price locationtype="merchantcity" multiplier="1" sold="false" />
+        <Price locationtype="merchantresearch" multiplier="1.0" />
+        <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
+        <Price locationtype="merchantmine" multiplier="1.1" sold="false" />
+      </Price>
+      <Sprite name="Exotic_Amor_suit_head hats" texture="%ModDir%/Content/Items/Jobgear/headgears_new.png" depth="0.6" sourcerect="0,0,100,100" origin="0.5,0.5" scale="0.5" />
+      <Body width="40" radius="30" density="15" />
+      <Deconstruct time="10">
+        <Item identifier="bikehorn" />
+      </Deconstruct>
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Exotic_Amor_suit_head Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears_new.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="0,0,100,100" origin="0.6,0.68" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,blunttrauma" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.15" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.8" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.7" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       </Wearable>
     </Item>
   </Items>

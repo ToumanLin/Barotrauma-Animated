@@ -79,66 +79,6 @@
         <QualityStat stattype="ExplosionDamage" value="0.1" />
       </Quality>
     </Item>
-    <!--核弹换贴图-->
-    <Item name="" identifier="nuclearshell" tags="railgunequipment,railgunammo" showcontentsintooltip="true" category="weapon" sonarsize="5" scale="0.5" impactsoundtag="impact_metal_heavy">
-      <PreferredContainer primary="railgunammocontainer" spawnprobability="0.05" />
-      <Price baseprice="430" soldeverywhere="false">
-        <Price locationtype="outpost" multiplier="1.35" sold="false" />
-        <Price locationtype="city" multiplier="1.25" sold="false" />
-        <Price locationtype="research" multiplier="1.25" sold="false" />
-        <Price locationtype="military" multiplier="0.9" minavailable="1" />
-        <Price locationtype="mine" multiplier="1.25" sold="false" />
-      </Price>
-      <Deconstruct time="10">
-        <Item identifier="steel" />
-        <Item identifier="uranium" />
-        <Item identifier="ic4block" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="30">
-        <RequiredSkill identifier="weapons" level="40" />
-        <RequiredItem identifier="steel" />
-        <RequiredItem identifier="uranium" />
-        <RequiredItem identifier="ic4block" />
-      </Fabricate>
-      <!-- <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,128,64,64" origin="0.5,0.5" /> -->
-      <InventoryIcon texture="%ModDir%/Content/EA-HI/nuclear_shell.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
-      <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="1,131,217,33" depth="0.55" origin="0.5,0.5" />
-      <Body width="215" height="30" density="35" />
-      <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" msg="ItemMsgPickUpSelect" />
-      <Projectile characterusable="false" launchimpulse="80.0" maxtargetstohit="1">
-        <Attack structuredamage="75" itemdamage="75" severlimbsprobability="2" penetration="0.6">
-          <Affliction identifier="lacerations" strength="250" />
-          <Affliction identifier="bleeding" strength="50" />
-          <Affliction identifier="stun" strength="15" />
-        </Attack>
-        <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" type="OnUse" selectionmode="Random" range="50000" />
-        <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" type="OnUse" selectionmode="Random" range="50000" />
-        <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true">
-          <Explosion range="1000.0" structuredamage="1000" itemdamage="1000" ballastfloradamage="1000" force="50.0" severlimbsprobability="2" decal="explosion" decalsize="1.0" camerashake="500" camerashakerange="50000" flashrange="10000" flashduration="5.0" screencolor="255,255,255,255" screencolorrange="5000" screencolorduration="5.0">
-            <Affliction identifier="burn" strength="300" />
-            <Affliction identifier="radiationsickness" strength="100" />
-            <Affliction identifier="explosiondamage" strength="600" />
-            <Affliction identifier="stun" strength="20" />
-          </Explosion>
-          <Explosion range="3000" force="0.0" smoke="false" sparks="false" empstrength="2.5" applyfireeffects="false"></Explosion>
-          <SpawnItem identifier="nuclearaftereffectemitter" spawnposition="This" />
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="This">
-          <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="5" velocitymin="0" velocitymax="50" scalemin="1" scalemax="3" />
-        </StatusEffect>
-        <StatusEffect type="OnImpact" target="Contained" allowwhenbroken="true">
-          <Use />
-        </StatusEffect>
-        <!-- Remove the item after exploding -->
-        <StatusEffect type="OnBroken" target="This">
-          <Remove />
-        </StatusEffect>
-      </Projectile>
-      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" canbeselected="false">
-        <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
-        <Containable items="smallitem" />
-      </ItemContainer>
-    </Item>
     <!--拆血浆得基因-->
     <Item name="" identifier="op_researchterminal" tags="geneticresearchstation" width="494" height="297" texturescale="1.0,1.0" scale="0.5" category="Machine" subcategory="Outpost">
       <sprite texture="Content/Map/Outposts/Art/MedicalItemResearch.png" sourcerect="417,6,494,297" depth="0.79" premultiplyalpha="false" origin="0.5,0.5" />

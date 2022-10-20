@@ -54,7 +54,7 @@
       <sprite name="pucs Left Shoe" texture="pucs.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="pucs Right Shoe" texture="pucs.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
       <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
-      <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="8000.0" SpeedMultiplier="1.2" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="0.7" setvalue="true" disabledeltatime="true">
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" PressureProtection="8000.0" SpeedMultiplier="1.2" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="0.7" setvalue="true" disabledeltatime="true">
         <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
         <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
       </StatusEffect>
@@ -278,7 +278,7 @@
       <StatusEffect type="OnUse" target="This" disabledeltatime="true">
         <SpawnItem identifiers="EA-HI_pulselaserbolt" spawnposition="ThisInventory" />
       </StatusEffect>
-      <StatusEffect type="OnUse" target="This" condition="-1.5" disabledeltatime="true">
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
         <RequiredItem items="EA-HI_pulselaserbolt" type="Contained" />
       </StatusEffect>
       <Containable items="EA-HI_pulselaserbolt" />
@@ -414,5 +414,43 @@
       <Containable items="oxygensource" />
     </ItemContainer>
     <AiTarget sightrange="3000" />
+  </Item>
+  <Item name="" identifier="teleportine" category="Medical" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <InventoryIcon texture="%ModDir%/Content/EA-HI/teleportine.png" sourcerect="8,6,51,59" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="187,138,38,71" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="70" density="20" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnFailure" target="This" Condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+      <RequiredSkill identifier="medical" level="0" />
+      <StatusEffect type="OnUse" target="Character" range="10">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Explosion range="200.0" force="25" shockwave="true" smoke="false" flames="false" sparks="true" underwaterbubble="true" camerashake="60.0">
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+        <ParticleEmitter particle="part_teleport1" anglemax="0" particleamount="1" scalemin="0.75" scalemax="0.8" />
+        <ParticleEmitter particle="artifactholderfx" anglemax="360" particleamount="15" distancemin="5" distancemax="60" velocitymin="5" velocitymax="20" colormultiplier="137,173,229,255" />
+        <ParticleEmitter particle="mist" anglemax="360" particleamount="10" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="2,2" colormultiplier="20,60,240,125" />
+        <ParticleEmitter particle="anomaly" anglemax="0" particleamount="1" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="0.2,0.1" colormultiplier="155,155,155,155" />
+        <RemoveCharacter />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="Character" range="10">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Explosion range="200.0" force="25" shockwave="true" smoke="false" flames="false" sparks="true" underwaterbubble="true" camerashake="60.0">
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+        <ParticleEmitter particle="part_teleport1" anglemax="0" particleamount="1" scalemin="0.75" scalemax="0.8" />
+        <ParticleEmitter particle="artifactholderfx" anglemax="360" particleamount="15" distancemin="5" distancemax="60" velocitymin="5" velocitymax="20" colormultiplier="137,173,229,255" />
+        <ParticleEmitter particle="mist" anglemax="360" particleamount="10" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="2,2" colormultiplier="20,60,240,125" />
+        <ParticleEmitter particle="anomaly" anglemax="0" particleamount="1" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="0.2,0.1" colormultiplier="155,155,155,155" />
+        <RemoveCharacter />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
   </Item>
 </Items>
