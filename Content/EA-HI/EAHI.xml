@@ -415,6 +415,7 @@
     </ItemContainer>
     <AiTarget sightrange="3000" />
   </Item>
+  <!--传送药水-->
   <Item name="" identifier="teleportine" category="Medical" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
     <InventoryIcon texture="%ModDir%/Content/EA-HI/teleportine.png" sourcerect="8,6,51,59" origin="0.5,0.5" />
@@ -452,5 +453,43 @@
       </StatusEffect>
     </MeleeWeapon>
     <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+  </Item>
+  <!--3d打印机-->
+  <Item name="" identifier="3Dprinter_EAHI" tags="3Dprinter_EAHI,geneticresearchstation" width="494" height="297" texturescale="1.0,1.0" scale="0.5" category="Machine" subcategory="Outpost">
+    <sprite texture="Content/Map/Outposts/Art/MedicalItemResearch.png" sourcerect="417,6,494,297" depth="0.79" premultiplyalpha="false" origin="0.5,0.5" />
+    <LightComponent range="0.0" powerconsumption="5" lightcolor="255,255,255,111" IsOn="true" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Map/Outposts/Art/MedicalItemResearchLights.png" sourcerect="417,6,494,297" depth="0.1" origin="0.5,0.5" alpha="1.0" />
+    </LightComponent>
+    <Deconstructor canbeselected="true" powerconsumption="500.0" deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
+      <GuiFrame relativesize="0.25,0.27" style="ItemUI" anchor="Center" />
+      <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" loop="true" />
+      <poweronsound file="Content/Items/PowerOnLight3.ogg" range="600" loop="false" />
+      <StatusEffect type="InWater" target="This" condition="-0.5" />
+    </Deconstructor>
+    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial,alienblood,smallitem" />
+    </ItemContainer>
+    <ItemContainer capacity="2" maxstacksize="8" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial,alienblood,smallitem" />
+    </ItemContainer>
+    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="true" RepairThreshold="80" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <ParticleEmitter particle="spark" particleburstamount="5" particlespersecond="5" anglemin="0" anglemax="359" velocitymin="100" velocitymax="500" particleburstinterval="2" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
+    </Repairable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" hudpriority="10" msg="ItemMsgRewireScrewdriver">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredSkill identifier="electrical" level="55" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+        <Explosion range="100.0" stun="0" force="5.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+        <Affliction identifier="stun" strength="4" />
+        <Affliction identifier="burn" strength="5" />
+      </StatusEffect>
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="power_in" displayname="connection.powerin" />
+      <output name="condition_out" displayname="connection.conditionout" />
+    </ConnectionPanel>
   </Item>
 </Items>
