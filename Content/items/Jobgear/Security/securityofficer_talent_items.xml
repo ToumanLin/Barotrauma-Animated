@@ -1,55 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!-- 自动霰弹枪：更改贴图 -->
-    <Item name="" identifier="autoshotgun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.62" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
-      <Price baseprice="600" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" />
-        <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Fabricate suitablefabricators="fabricator" requiredtime="65" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="55" />
-        <RequiredItem identifier="ballisticfiber" />
-        <RequiredItem identifier="physicorium" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-      </Fabricate>
-      <Deconstruct time="30">
-        <Item identifier="ballisticfiber" />
-        <Item identifier="physicorium" amount="2" />
-        <Item identifier="titaniumaluminiumalloy" />
-      </Deconstruct>
-      <Sprite texture="转轮式霰弹枪.png" sourcerect="0,0,216,64" depth="0.55" origin="0.5,0.5" />
-      <Body width="150" height="40" density="100" />
-      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="32,-30" aimpos="58,-5" handle1="-12,-20" handle2="36,-14" holdangle="-10" msg="ItemMsgPickUpSelect" />
-      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Autoshogun Worn" texture="转轮式霰弹枪.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="0,0,216,64" limb="Torso" ignorelimbscale="true" scale="0.62" origin="0.5,0.9" />
-      </Wearable>
-      <RangedWeapon barrelpos="68,10" spread="0.5" unskilledspread="5" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
-        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
-        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
-        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun.ogg" type="OnUse" range="3000" volume="2" selectionmode="Random" />
-        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_1.ogg" type="OnUse" range="3000" volume="2" />
-        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_2.ogg" type="OnUse" range="3000" volume="2" />
-        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_3.ogg" type="OnUse" range="3000" volume="2" />
-        <StatusEffect type="OnUse">
-          <Explosion range="150.0" force="2" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
-        </StatusEffect>
-        <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="70" />
-      </RangedWeapon>
-      <ItemContainer capacity="4" maxstacksize="8" itempos="27,10" iteminterval="0,-4" hideitems="true" containedstateindicatorstyle="bullet" ShowTotalStackCapacityInContainedStateIndicator="true">
-        <Containable items="shotgunammo" />
-      </ItemContainer>
-      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
-      <Quality>
-        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
-      </Quality>
-    </Item>
     <!--战术腰带：更改贴图；更改容量；更改穿戴位置：外甲→背包 -->
     <Item name="" identifier="bandolier" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
       <PreferredContainer primary="armcab" secondary="secarmcab" />
@@ -83,46 +34,6 @@
       <ItemContainer capacity="8">
         <Containable items="smallitem,mediumitem,ammobox,coilgunammo" excludeditems="toolbelt,toolbox,bandolier,cargoscooter" />
       </ItemContainer>
-    </Item>
-    <!--登船斧：修改贴图-->
-    <Item name="" identifier="boardingaxe" category="Weapon" Tags="mediumitem,weapon,gunsmith,mountableweapon" scale="0.5" requireaimtouse="true" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="secarmcab" secondary="armcab" />
-      <Price baseprice="350" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.25" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" />
-        <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Deconstruct time="20">
-        <Item identifier="titaniumaluminiumalloy" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="40" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-      </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="165,366,64,64" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="1,425,164,53" depth="0.55" origin="0.5,0.2" />
-      <Body width="161" height="20" density="60" />
-      <MeleeWeapon slots="Any,RightHand+LeftHand" aimpos="50,0" handle1="-22,2" handle2="-32,5" holdangle="30" reload="0.8" range="175" combatPriority="40" msg="ItemMsgPickUpSelect">
-        <Attack targetimpulse="5" severlimbsprobability="7.5" itemdamage="50" structuredamage="10">
-          <Affliction identifier="lacerations" strength="50" />
-          <Affliction identifier="bleeding" strength="10" />
-          <Affliction identifier="stun" strength="0.8" />
-          <StatusEffect type="OnUse" target="Character">
-            <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
-          </StatusEffect>
-        </Attack>
-      </MeleeWeapon>
-      <Quality>
-        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
-      </Quality>
-      <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
     </Item>
     <!--带鳍潜水服：修改贴图-->
     <Item name="" identifier="slipsuit" variantof="combatdivingsuit" category="Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">

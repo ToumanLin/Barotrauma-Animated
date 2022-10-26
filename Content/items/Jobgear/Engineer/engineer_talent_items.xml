@@ -1,64 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--修改:贴图;攻击速度;制造水平→大师-->
-    <Item name="" identifier="nucleargun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
-      <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
-      <Price baseprice="900" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" />
-        <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Deconstruct time="10">
-        <Item identifier="copper" />
-        <Item identifier="plastic" />
-        <Item identifier="lead" />
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="fulgurium" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true">
-        <RequiredSkill identifier="electrical" level="65" />
-        <RequiredItem identifier="fpgacircuit" />
-        <RequiredItem identifier="lead" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-        <RequiredItem identifier="fulgurium" amount="2" />
-      </Fabricate>
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="271,127,240,66" depth="0.55" origin="0.5,0.5" />
-      <Body width="238" height="63" density="70" />
-      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="60,-15" aimpos="70,4" handle1="-50,-10" handle2="10,-3" holdangle="-25" />
-      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Nuclear Gun Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="270,127,240,66" limb="Torso" scale="0.5" origin="0.5,0.8" />
-      </Wearable>
-      <RangedWeapon reload="0.15" holdtrigger="true" barrelpos="118,14" spread="0" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.35">
-        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
-        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-        <ParticleEmitter particle="FlareBubbles" scalemin="1.4" scalemax="1.8" particleamount="14" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
-        <ParticleEmitter particle="GlowDot" scalemin="4.0" scalemax="4.0" particleamount="20" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" colormultiplier="10,235,195,255" />
-        <ParticleEmitterCharge particle="chargenucleargun" particlespersecond="60" scalemultiplier="0.75,0.75" scalemin="1.0" scalemax="1.0" anglemin="0" anglemax="359" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator.ogg" type="OnUse" range="3000" selectionmode="Random" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator2.ogg" type="OnUse" range="3000" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator3.ogg" type="OnUse" range="3000" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator4.ogg" type="OnUse" range="3000" />
-        <ChargeSound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAcceleratorStartLoop.ogg" range="3000" />
-        <StatusEffect type="OnUse">
-          <Explosion range="250.0" force="5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="12.0" />
-        </StatusEffect>
-        <StatusEffect type="OnUse" target="Contained">
-          <Use />
-        </StatusEffect>
-        <RequiredItems items="reactorfuel" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="25" />
-      </RangedWeapon>
-      <ItemContainer itemrotation="90" capacity="1" maxstacksize="1" hideitems="false" itempos="10,-5" containedspritedepth="0.56" containedstateindicatorstyle="tank">
-        <Containable items="reactorfuel" />
-      </ItemContainer>
-      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
-      <Quality>
-        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
-      </Quality>
-    </Item>
     <!--修改：贴图；可背背上；可放置所有东西-->
     <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
       <PreferredContainer primary="divingcab" />
