@@ -2,7 +2,7 @@
 <Override>
   <Items>
     <!--修改:贴图;攻击速度;制造水平→大师-->
-    <Item name="" identifier="nucleargun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Item name="" identifier="nucleargun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
       <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
       <Price baseprice="900" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="1.5" />
@@ -26,7 +26,7 @@
         <RequiredItem identifier="fulgurium" amount="2" />
       </Fabricate>
       <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="271,127,240,66" depth="0.55" origin="0.5,0.5" />
-      <Body width="238" height="63" density="70" />
+      <Body width="238" height="63" density="25" />
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="60,-15" aimpos="70,4" handle1="-50,-10" handle2="10,-3" holdangle="-25" />
       <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Nuclear Gun Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="270,127,240,66" limb="Torso" scale="0.5" origin="0.5,0.8" />
@@ -43,7 +43,7 @@
         <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator4.ogg" type="OnUse" range="3000" />
         <ChargeSound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAcceleratorStartLoop.ogg" range="3000" />
         <StatusEffect type="OnUse">
-          <Explosion range="250.0" force="5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="12.0" />
+          <Explosion range="150.0" force="3" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <StatusEffect type="OnUse" target="Contained">
           <Use />
@@ -60,7 +60,7 @@
       </Quality>
     </Item>
     <!--修改：贴图；可背背上；可放置所有东西-->
-    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
       <PreferredContainer primary="divingcab" />
       <Price baseprice="400" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="0.9" />
@@ -72,11 +72,13 @@
       <Deconstruct time="20">
         <Item identifier="aluminium" />
         <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="tin" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
         <RequiredSkill identifier="mechanical" level="30" />
         <RequiredItem identifier="aluminium" amount="2" />
         <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="tin" amount="2" />
       </Fabricate>
       <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="131,123,53,58" origin="0.5,0.5" />
       <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.55" sourcerect="295,195,149,105" origin="0.5,0.5" />
@@ -85,18 +87,12 @@
         <sprite name="cargoscooter Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="295,195,149,105" origin="0.5,0.8" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.5" />
       </Wearable>
       <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="-35,36" handle2="-37,38" msg="ItemMsgPickUpSelect" />
-      <Propulsion force="160" usablein="water" particles="bubbles">
+      <Propulsion force="150" usablein="water" particles="bubbles">
         <RequiredItems items="mobilebattery" targetslot="0" type="Contained" msg="ItemMsgBatteryCellRequired" />
         <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.25">
-          <RequiredItem items="batterycell" type="Contained" />
+          <RequiredItem items="mobilebattery" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.125">
-          <RequiredItem items="fulguriumbatterycell" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.25">
-          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
-        </StatusEffect>
-        <sound file="%ModDir%/Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
+        <sound file="Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
         <LightComponent LightColor="1.0,1.0,1.0,0.8" range="1000">
           <LightTexture texture="%ModDir%/Content/Lights/lightcone.png" origin="-0.01, 0.5" size="1.0,1.0" />
         </LightComponent>
@@ -111,8 +107,8 @@
       <AiTarget soundrange="3000" maxsightrange="3000" />
     </Item>
     <!--修改：贴图-->
-    <Item name="" identifier="thermalgoggles" scale="0.5" category="Equipment" tags="smallitem,clothing,Wf_helmet_module" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="engcab" secondary="locker" />
+    <Item name="" identifier="thermalgoggles" scale="0.5" category="Equipment" tags="smallitem,clothing" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="engcab" />
       <Price baseprice="350" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="1.3" />
         <Price storeidentifier="merchantcity" multiplier="1.2" />
@@ -121,8 +117,8 @@
         <Price storeidentifier="merchantmine" />
       </Price>
       <Deconstruct time="20">
-        <Item identifier="fpgacircuit" />
-        <Item identifier="plastic" />
+        <Item identifier="copper" />
+        <Item identifier="plastic" amount="2" />
         <Item identifier="fulgurium" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="40" requiresrecipe="true">
@@ -133,7 +129,7 @@
       </Fabricate>
       <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="0,224,63,31" origin="0.5,0.5" />
       <Sprite name="Thermal Goggles" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="0,224,64,31" depth="0.6" origin="0.5,0.5" />
-      <Body width="70" height="24" density="30" />
+      <Body width="70" height="24" density="15" />
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
         <sprite name="Thermal Goggles Wearable" texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="1,192,64,31" origin="0.4,0.5" />
       </Wearable>
@@ -193,13 +189,13 @@
         <sprite name="pucs Right Shoe" texture="pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
         <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="8000.0" SpeedMultiplier="1" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <!-- 在潜水柜 恢复氧气、液氧罐耐久 -->
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
@@ -241,14 +237,14 @@
           <RequiredItem items="oxygenitetank" type="Contained" />
         </StatusEffect>
         <!-- 吸油 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.7" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
@@ -357,12 +353,12 @@
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
         <StatusEffect type="OnWearing" target="Character" HideFace="false" ObstructVision="false" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -374,14 +370,14 @@
           <Conditional InWater="true" />
           <RequiredItem items="oxygentank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -540,12 +536,12 @@
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_R.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
         <StatusEffect type="OnWearing" target="Character" HideFace="false" ObstructVision="false" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -557,14 +553,14 @@
           <Conditional InWater="true" />
           <RequiredItem items="oxygentank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -728,12 +724,12 @@
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_B.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
         <StatusEffect type="OnWearing" target="Character" HideFace="false" ObstructVision="false" PressureProtection="10000.0" SpeedMultiplier="0.9" PropulsionSpeedMultiplier="1.3" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -745,14 +741,14 @@
           <Conditional InWater="true" />
           <RequiredItem items="oxygentank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -923,19 +919,19 @@
           <Conditional IsOn="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Character" HideFace="false" ObstructVision="false" PressureProtection="6000.0" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="This" disabledeltatime="true" checkconditionalalways="true" comparison="And">
           <Conditional targetitemcomponent="MotionSensor" MotionDetected="eq true" />
           <Conditional IsOn="true" />
           <Conditional InWater="true" />
           <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.2" scalemax="0.5" />
-          <sound file="%ModDir%/Content/Items/Diving/ScooterLoop.ogg" range="500.0" loop="true" />
+          <sound file="Content/Items/Diving/ScooterLoop.ogg" range="500.0" loop="true" />
         </StatusEffect>
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -947,14 +943,14 @@
           <Conditional InWater="true" />
           <RequiredItem items="oxygentank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
           <Conditional IsDead="false" />

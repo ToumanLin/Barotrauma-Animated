@@ -2,11 +2,11 @@
 <Override>
   <Items>
     <!--增加伤害：85→100-->
-    <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" Scale="0.5" tags="smallitem,handcannonammo,pistolammoitem" impactsoundtag="impact_metal_light">
+    <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,handcannonammo,pistolammoitem" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" secondary="armcab" />
       <PreferredContainer primary="handcannon" amount="6" spawnprobability="1.0" />
       <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="6" spawnprobability="0.02" />
-      <Price baseprice="115" sold="false" />
+      <Price baseprice="70" sold="false" />
       <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
         <RequiredSkill identifier="weapons" level="45" />
         <RequiredItem identifier="magnesium" />
@@ -36,7 +36,7 @@
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
     <!--修改贴图-->
-    <Item name="" identifier="handcannon" category="weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
+    <Item name="" identifier="handcannon" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,weapon,gun,pistolitem,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" />
       <PreferredContainer secondary="armcab,weaponholder" />
       <Price baseprice="600" sold="false">
@@ -70,7 +70,7 @@
         <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_5.ogg" type="OnUse" range="3000" />
         <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="255,200,115,200" />
         <StatusEffect type="OnUse">
-          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <RequiredItems items="handcannonammo" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="60" />
