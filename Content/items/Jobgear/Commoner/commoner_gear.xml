@@ -368,7 +368,7 @@
         <SkillModifier skillidentifier="weapons" skillvalue="5" />
       </Wearable>
     </Item>
-    <!--研究服装修改：穿着减少污染概率-->
+    <!-- 研究服装修改：穿着减少污染概率 -->
     <Item name="" identifier="researcherclothes" nameidentifier="researcheroutfit" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.2" />
       <PreferredContainer primary="crewcab" />
@@ -402,11 +402,11 @@
         <sprite name="researcher's Clothes 2 Left Leg" texture="researcher.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="researcher's Clothes 2 Right Shoe" texture="researcher.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
         <sprite name="researcher's Clothes 2 Left Shoe" texture="researcher.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
-        <SkillModifier skillidentifier="electrical" skillvalue="10" />
-        <SkillModifier skillidentifier="helm" skillvalue="10" />
-        <SkillModifier skillidentifier="mechanical" skillvalue="10" />
-        <SkillModifier skillidentifier="medical" skillvalue="10" />
-        <SkillModifier skillidentifier="weapons" skillvalue="10" />
+        <SkillModifier skillidentifier="electrical" skillvalue="15" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="15" />
+        <SkillModifier skillidentifier="medical" skillvalue="15" />
+        <SkillModifier skillidentifier="weapons" skillvalue="-20" />
+        <SkillModifier skillidentifier="helm" skillvalue="-20" />
         <StatusEffect type="OnWearing" target="Character">
           <Affliction identifier="wf_researcherbonus" strength="8" />
           <GiveTalentInfo talentidentifiers="wf_researcher" />
@@ -703,41 +703,6 @@
       </Wearable>
     </Item>
     <!--新加-->
-    <!--女仆A:有点问题
-    <Item name="" identifier="maidAuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
-      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
-      <Price baseprice="200">
-        <Price locationtype="outpost" multiplier="1" minavailable="1" />
-        <Price locationtype="city" multiplier="0.9" minavailable="1" />
-        <Price locationtype="research" multiplier="1" minavailable="1" />
-        <Price locationtype="military" multiplier="1" minavailable="1" />
-        <Price locationtype="mine" multiplier="1" minavailable="1" />
-      </Price>
-      <Deconstruct time="5">
-        <Item identifier="plastic" />
-      </Deconstruct>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="3,9" sheetelementsize="64,64" />
-      <Sprite name="maidA's Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="243,71,130,74" depth="0.6" origin="0.5,0.5" />
-      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
-      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
-        <sprite name="maidA's Uniform Torso" texture="maidA.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Hand" texture="maidA.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Hand" texture="maidA.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Lower Arm" texture="maidA.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Lower Arm" texture="maidA.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Upper Arm" texture="maidA.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Upper Arm" texture="maidA.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Waist" texture="maidA.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Thigh" texture="maidA.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Thigh" texture="maidA.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Leg" texture="maidA.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Leg" texture="maidA.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Right Shoe" texture="maidA.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="maidA's Uniform Left Shoe" texture="maidA.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.7" />
-      </Wearable>
-    </Item>-->
     <!--一般的衣服：有些问题，而且也不好看
     <Item name="" identifier="test" nameidentifier="test" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" />
