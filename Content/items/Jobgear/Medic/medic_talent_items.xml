@@ -31,5 +31,37 @@
         <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" origin="0.5,0.5" />
       </Wearable>
     </Item>
+    <!--修改:增加深度属性-->
+    <Item identifier="advancedgenesplicer" variantof="genesplicer" descriptionidentifier="advancedgenesplicer">
+      <PreferredContainer primary="medcab" secondary="medcab" />
+      <PreferredContainer secondary="abandonedmedcab,wreckmedcab,outpostmedcab" spawnprobability="0" />
+      <Price baseprice="550" sold="false" minleveldifficulty="65">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" multiplier="1.1" sold="true" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.1" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="10">
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="copper" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem identifier="silicon" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="rubber" amount="2" />
+        <RequiredItem identifier="silicon" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Genetic/Genetic.png" sourcerect="327,62,73,65" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="148,85,73,35" origin="0.5,0.5" />
+      <Body radius="8" width="48" density="30" />
+      <ItemContainer capacity="3" />
+      <Wearable>
+        <sprite name="Gene Splicer Wearable" texture="Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="326,131,67,55" origin="0.6,0.0" />
+      </Wearable>
+    </Item>
   </Items>
 </Override>
