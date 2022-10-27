@@ -1,53 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--修改：贴图；可背背上；可放置所有东西-->
-    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
-      <PreferredContainer primary="divingcab" />
-      <Price baseprice="400" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="0.9" />
-        <Price storeidentifier="merchantcity" multiplier="0.85" />
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantmilitary" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Deconstruct time="20">
-        <Item identifier="aluminium" />
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="tin" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
-        <RequiredSkill identifier="mechanical" level="30" />
-        <RequiredItem identifier="aluminium" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-        <RequiredItem identifier="tin" amount="2" />
-      </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="131,123,53,58" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.55" sourcerect="295,195,149,105" origin="0.5,0.5" />
-      <Body width="140" height="100" density="10" />
-      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="cargoscooter Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="295,195,149,105" origin="0.5,0.8" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.5" />
-      </Wearable>
-      <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="-35,36" handle2="-37,38" msg="ItemMsgPickUpSelect" />
-      <Propulsion force="150" usablein="water" particles="bubbles">
-        <RequiredItems items="mobilebattery" targetslot="0" type="Contained" msg="ItemMsgBatteryCellRequired" />
-        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.25">
-          <RequiredItem items="mobilebattery" type="Contained" />
-        </StatusEffect>
-        <sound file="Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
-        <LightComponent LightColor="1.0,1.0,1.0,0.8" range="1000">
-          <LightTexture texture="%ModDir%/Content/Lights/lightcone.png" origin="-0.01, 0.5" size="1.0,1.0" />
-        </LightComponent>
-      </Propulsion>
-      <ItemContainer capacity="1" maxstacksize="1" slotsperrow="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="battery">
-        <Containable items="mobilebattery" />
-        <SlotIcon slotindex="0" texture="Content/UI/WeaponUI.png" sourcerect="64,961,32,22" origin="0.5,0.45" />
-        <SubContainer capacity="14" maxstacksize="64">
-          <Containable items="smallitem,mediumitem" />
-        </SubContainer>
-      </ItemContainer>
-      <AiTarget soundrange="3000" maxsightrange="3000" />
-    </Item>
     <!--修改：贴图-->
     <Item name="" identifier="thermalgoggles" scale="0.5" category="Equipment" tags="smallitem,clothing" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="engcab" />
