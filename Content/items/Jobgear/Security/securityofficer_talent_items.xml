@@ -1,39 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--战术腰带：更改贴图；更改容量；更改穿戴位置：外甲→背包 -->
-    <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
-      <PreferredContainer primary="armcab" secondary="secarmcab" />
-      <Price baseprice="250" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
-        <Price storeidentifier="merchantcity" multiplier="1.2" />
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" />
-      </Price>
-    <Deconstruct time="30">
-      <Item identifier="ballisticfiber" />
-      <Item identifier="plastic" />
-    </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="35" />
-        <RequiredItem identifier="ballisticfiber" amount="2" />
-        <RequiredItem identifier="plastic" />
-      </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="202,304,48,61" origin="0.45,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="216,210,78,95" depth="0.6" origin="0.5,0.5" />
-      <Body radius="30" height="30" density="25" />
-      <Wearable slots="Bag" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Security Vest" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" limb="Torso" hidelimb="false" sourcerect="215,209,79,97" inherittexturescale="true" origin="0.45,0.6" />
-        <SkillModifier skillidentifier="weapons" skillvalue="15" />
-        <StatValue stattype="RangedAttackSpeed" value="0.25" />
-        <StatValue stattype="TurretAttackSpeed" value="0.25" />
-      </Wearable>
-      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="0,0-30" handle2="0,-30" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
-      <ItemContainer capacity="8">
-        <Containable items="smallitem,mediumitem,ammobox,coilgunammo" excludeditems="toolbelt,toolbox,bandolier,cargoscooter" />
-      </ItemContainer>
-    </Item>
     <!--带鳍潜水服：修改贴图-->
     <Item name="" identifier="slipsuit" variantof="combatdivingsuit">
       <Price baseprice="630" sold="false" />
