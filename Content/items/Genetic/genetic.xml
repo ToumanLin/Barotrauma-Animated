@@ -1,38 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--修改:增加深度属性-->
-    <Item name="" identifier="genesplicer" scale="0.4" category="Equipment" tags="smallitem" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="medcab" secondary="medcab" />
-      <PreferredContainer secondary="abandonedmedcab,wreckmedcab,outpostmedcab" spawnprobability="0.02" />
-      <Price baseprice="500" minleveldifficulty="15">
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantcity" sold="false" />
-        <Price storeidentifier="merchantmedical" />
-      </Price>
-      <Deconstruct time="10">
-        <Item identifier="plastic" amount="2" />
-        <Item identifier="copper" amount="2" />
-        <Item identifier="rubber" />
-        <Item identifier="silicon" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="10">
-        <RequiredSkill identifier="medical" level="50" />
-        <RequiredItem identifier="plastic" />
-        <RequiredItem identifier="fpgacircuit" amount="2" />
-        <RequiredItem identifier="rubber" amount="2" />
-        <RequiredItem identifier="silicon" amount="2" />
-      </Fabricate>
-      <InventoryIcon texture="Content/Items/Genetic/Genetic.png" sourcerect="244,62,76,65" origin="0.5,0.5" />
-      <Sprite name="Headset" texture="Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="67,85,73,35" origin="0.5,0.5" />
-      <Body radius="15" width="45" density="30" />
-      <ItemContainer capacity="1" maxstacksize="1" autoinject="true" autoinjectthreshold="Infinity" allowswappingcontaineditems="false">
-        <Containable items="geneticmaterial" />
-      </ItemContainer>
-      <Wearable limbtype="Head" slots="Any,HealthInterface" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
-        <sprite name="Gene Splicer Wearable" texture="Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="false" depth="0.9" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="258,131,64,54" origin="0.6,0.0" />
-      </Wearable>
-      <StatusHUD drawhudwhenequipped="true" />
+    <!-- new function for op_researchterminal -->
+    <Item identifier="op_researchterminal">
+      <inherit identifier="op_researchterminal">
+        <doinherit />
+        <add sel="./ItemContainer/Containable/@items">
+          alienblood
+        </add>
+      </inherit>
+    </Item>
+    <!-- texture -->
+    <Item identifier="genesplicer">
+      <inherit identifier="genesplicer">
+        <doinherit />
+        <del sel="./InventoryIcon"/>
+        <replace sel="./Sprite/@texture">
+          %ModDir%/Content/Items/Genetic/Genetic.png
+        </replace>
+        <replace sel="./Wearable[@limbtype='Head']/sprite[@limb='Head']/@texture">
+          %ModDir%/Content/Items/Genetic/Genetic.png
+        </replace>
+      </inherit>
     </Item>
   </Items>
 </Override>
