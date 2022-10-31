@@ -117,51 +117,5 @@
         <output name="condition_out" displayname="connection.conditionout" />
       </ConnectionPanel>
     </Item>
-    <Item name="" identifier="alienblood" descriptionidentifier="alienbloodmod" category="Material" maxstacksize="8" cargocontaineridentifier="chemicalcrate" description="" Tags="smallitem,chem,medical" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
-      <PreferredContainer primary="medfabcab" secondary="medcontainer" />
-      <PreferredContainer secondary="storageorgan" minamount="1" maxamount="2" spawnprobability="1" />
-      <Price baseprice="120" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="0.85" />
-        <Price storeidentifier="merchantcity" multiplier="0.85" />
-        <Price storeidentifier="merchantresearch" sold="true" multiplier="1.2" minavailable="2" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" multiplier="0.85" />
-      </Price>
-      <Deconstruct time="10" chooserandom="true" requireddeconstructor="geneticresearchstation" amount="1">
-        <Item identifier="geneticmaterialmudraptor_unresearched" commonness="0.07" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialmoloch_unresearched" commonness="0.05" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialmantis_unresearched" commonness="0.04" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialthresher_unresearched" commonness="0.02" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialhammerhead_unresearched" commonness="0.03" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialhammerheadmatriarch_unresearched" commonness="0.01" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialspineling_unresearched" commonness="0.08" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialhusk_unresearched" commonness="0.05" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialmollusc_unresearched" commonness="0.09" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialskitter_unresearched" commonness="0.07" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-        <Item identifier="geneticmaterialhunter_unresearched" commonness="0.06" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
-      </Deconstruct>
-      <SuitableTreatment type="bloodloss" suitability="20" />
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="448,771,64,64" origin="0.5,0.5" />
-      <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" sourcerect="1,128,30,58" depth="0.6" origin="0.5,0.5" />
-      <Body width="30" height="55" density="20" />
-      <MeleeWeapon canbecombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-5,0" holdangle="10" reload="1.0" msg="ItemMsgPickUpSelect">
-        <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
-        <StatusEffect type="OnFailure" target="This" Condition="-100.0" disabledeltatime="true" />
-        <RequiredSkill identifier="medical" level="40" />
-        <StatusEffect tags="medical" type="OnUse" target="Character" duration="15.0">
-          <Affliction identifier="psychosis" amount="3" />
-          <ReduceAffliction identifier="bloodloss" amount="8" />
-        </StatusEffect>
-        <StatusEffect tags="medical" type="OnFailure" target="Character" duration="15.0">
-          <Affliction identifier="psychosis" amount="5" />
-          <ReduceAffliction identifier="bloodloss" amount="4" />
-        </StatusEffect>
-        <!-- Remove the item when fully used -->
-        <StatusEffect type="OnBroken" target="This">
-          <Remove />
-        </StatusEffect>
-      </MeleeWeapon>
-    </Item>
   </Items>
 </Override>
