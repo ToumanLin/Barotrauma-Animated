@@ -1,297 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--修改:贴图;攻击速度;制造水平→大师-->
-    <Item name="" identifier="nucleargun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
-      <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
-      <Price baseprice="900" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" />
-        <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Deconstruct time="10">
-        <Item identifier="copper" />
-        <Item identifier="plastic" />
-        <Item identifier="lead" />
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="fulgurium" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true">
-        <RequiredSkill identifier="electrical" level="65" />
-        <RequiredItem identifier="fpgacircuit" />
-        <RequiredItem identifier="lead" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-        <RequiredItem identifier="fulgurium" amount="2" />
-      </Fabricate>
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="271,127,240,66" depth="0.55" origin="0.5,0.5" />
-      <Body width="238" height="63" density="25" />
-      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="60,-15" aimpos="70,4" handle1="-50,-10" handle2="10,-3" holdangle="-25" />
-      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Nuclear Gun Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="270,127,240,66" limb="Torso" scale="0.5" origin="0.5,0.8" />
-      </Wearable>
-      <RangedWeapon reload="0.15" holdtrigger="true" barrelpos="118,14" spread="0" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.35">
-        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
-        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-        <ParticleEmitter particle="FlareBubbles" scalemin="1.4" scalemax="1.8" particleamount="14" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
-        <ParticleEmitter particle="GlowDot" scalemin="4.0" scalemax="4.0" particleamount="20" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" colormultiplier="10,235,195,255" />
-        <ParticleEmitterCharge particle="chargenucleargun" particlespersecond="60" scalemultiplier="0.75,0.75" scalemin="1.0" scalemax="1.0" anglemin="0" anglemax="359" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator.ogg" type="OnUse" range="3000" selectionmode="Random" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator2.ogg" type="OnUse" range="3000" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator3.ogg" type="OnUse" range="3000" />
-        <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator4.ogg" type="OnUse" range="3000" />
-        <ChargeSound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAcceleratorStartLoop.ogg" range="3000" />
-        <StatusEffect type="OnUse">
-          <Explosion range="150.0" force="3" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
-        </StatusEffect>
-        <StatusEffect type="OnUse" target="Contained">
-          <Use />
-        </StatusEffect>
-        <RequiredItems items="reactorfuel" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="25" />
-      </RangedWeapon>
-      <ItemContainer itemrotation="90" capacity="1" maxstacksize="1" hideitems="false" itempos="10,-5" containedspritedepth="0.56" containedstateindicatorstyle="tank">
-        <Containable items="reactorfuel" />
-      </ItemContainer>
-      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
-      <Quality>
-        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
-      </Quality>
+    <Item identifier="thermalgoggles">
+      <inherit identifier="thermalgoggles">
+        <doinherit />
+        <replace sel="./@tags">
+          smallitem,clothing,Wf_helmet_module
+        </replace>
+        <replace sel="./InventoryIcon/@texture">
+          %ModDir%/Content/Items/JobGear/TalentGear.png
+        </replace>
+        <replace sel="./Sprite/@texture">
+          %ModDir%/Content/Items/JobGear/TalentGear.png
+        </replace>
+        <replace sel="./Wearable[@limbtype='Head']/sprite[@limb='Head']/@texture">
+          %ModDir%/Content/Items/JobGear/TalentGear.png
+        </replace>
+      </inherit>
     </Item>
-    <!--修改：贴图；可背背上；可放置所有东西-->
-    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
-      <PreferredContainer primary="divingcab" />
-      <Price baseprice="400" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="0.9" />
-        <Price storeidentifier="merchantcity" multiplier="0.85" />
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantmilitary" />
-        <Price storeidentifier="merchantmine" multiplier="1.25" />
-      </Price>
-      <Deconstruct time="20">
-        <Item identifier="aluminium" />
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="tin" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
-        <RequiredSkill identifier="mechanical" level="30" />
-        <RequiredItem identifier="aluminium" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
-        <RequiredItem identifier="tin" amount="2" />
-      </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="131,123,53,58" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.55" sourcerect="295,195,149,105" origin="0.5,0.5" />
-      <Body width="140" height="100" density="10" />
-      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="cargoscooter Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="295,195,149,105" origin="0.5,0.8" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.5" />
-      </Wearable>
-      <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="-35,36" handle2="-37,38" msg="ItemMsgPickUpSelect" />
-      <Propulsion force="150" usablein="water" particles="bubbles">
-        <RequiredItems items="mobilebattery" targetslot="0" type="Contained" msg="ItemMsgBatteryCellRequired" />
-        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.25">
-          <RequiredItem items="mobilebattery" type="Contained" />
-        </StatusEffect>
-        <sound file="Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
-        <LightComponent LightColor="1.0,1.0,1.0,0.8" range="1000">
-          <LightTexture texture="%ModDir%/Content/Lights/lightcone.png" origin="-0.01, 0.5" size="1.0,1.0" />
-        </LightComponent>
-      </Propulsion>
-      <ItemContainer capacity="1" maxstacksize="1" slotsperrow="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="battery">
-        <Containable items="mobilebattery" />
-        <SlotIcon slotindex="0" texture="Content/UI/WeaponUI.png" sourcerect="64,961,32,22" origin="0.5,0.45" />
-        <SubContainer capacity="14" maxstacksize="64">
-          <Containable items="smallitem,mediumitem" />
-        </SubContainer>
-      </ItemContainer>
-      <AiTarget soundrange="3000" maxsightrange="3000" />
+    <item identifier="nucleargun">
+      <inherit identifier="nucleargun">
+        <doinherit/>
+        <!-- make master level possible -->
+        <add sel="./Fabricate/@quality">2</add>
+        <replace sel="./Sprite/@texture">%ModDir%/Content/Items/JobGear/TalentGear.png</replace>
+        <replace sel="./Wearable/sprite/@texture">%ModDir%/Content/Items/JobGear/TalentGear.png</replace>
+      </inherit>
+    </item>
+    <item identifier="cargoscooter">
+      <inherit sel="cargoscooter">
+        <doinherit/>
+        <add sel=".">
+          <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+            <sprite name="cargoscooter Worn" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="295,195,149,105" origin="0.5,0.8" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.5" />
+          </Wearable>
+        </add>
+        <replace sel="./ItemContainer/SubContainer/@capacity">14</replace>
+        <replace sel="./ItemContainer/SubContainer/Containable/@excludeditems">cargoscooter</replace>
+      </inherit>
+    </item>
     </Item>
-    <!--修改：贴图-->
-    <Item name="" identifier="thermalgoggles" scale="0.5" category="Equipment" tags="smallitem,clothing" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="engcab" />
-      <Price baseprice="350" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
-        <Price storeidentifier="merchantcity" multiplier="1.2" />
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantmilitary" multiplier="1.25" />
-        <Price storeidentifier="merchantmine" />
-      </Price>
-      <Deconstruct time="20">
-        <Item identifier="copper" />
-        <Item identifier="plastic" amount="2" />
-        <Item identifier="fulgurium" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="40" requiresrecipe="true">
-        <RequiredSkill identifier="electrical" level="50" />
-        <RequiredItem identifier="fpgacircuit" />
-        <RequiredItem identifier="plastic" />
-        <RequiredItem identifier="fulgurium" />
-      </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="0,224,63,31" origin="0.5,0.5" />
-      <Sprite name="Thermal Goggles" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="0,224,64,31" depth="0.6" origin="0.5,0.5" />
-      <Body width="70" height="24" density="15" />
-      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
-        <sprite name="Thermal Goggles Wearable" texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="1,192,64,31" origin="0.4,0.5" />
-      </Wearable>
-      <StatusHUD drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false" />
-    </Item>
-    <!--修改；贴图；报警修正-->
-    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
-      <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
-      <Price baseprice="670" sold="false">
-        <Price storeidentifier="merchantoutpost" />
-        <Price storeidentifier="merchantcity" />
-        <Price storeidentifier="merchantresearch" multiplier="1.2" />
-        <Price storeidentifier="merchantmilitary" />
-        <Price storeidentifier="merchantmine" multiplier="1.1" />
-      </Price>
-      <Deconstruct time="45">
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="rubber" />
-        <Item identifier="lead" />
-        <Item identifier="physicorium" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="80" requiresrecipe="true">
-        <RequiredSkill identifier="electrical" level="60" />
-        <RequiredItem identifier="combatdivingsuit" />
-        <RequiredItem identifier="lead" />
-        <RequiredItem identifier="physicorium" />
-      </Fabricate>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="768,0,128,128" origin="0.5,0.5" />
-      <Sprite name="PUCS Item" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
-      <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="164,0,87,190" depth="0.55" origin="0.5,0.5" />
-      <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="pucs.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
-      <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
-      <Body radius="45" width="34" density="15" />
-      <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="PUCS Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="127,520,105,124" origin="0.53,0.55">
-          <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
-            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
-              <Conditional IsDead="false" />
-            </StatusEffect>
-            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
-          </LightComponent>
-        </sprite>
-        <sprite name="pucs Torso" texture="pucs.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Hand" texture="pucs.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Hand" texture="pucs.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Lower Arm" texture="pucs.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Lower Arm" texture="pucs.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Upper Arm" texture="pucs.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Upper Arm" texture="pucs.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Waist" texture="pucs.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Thigh" texture="pucs.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Thigh" texture="pucs.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Leg" texture="pucs.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Leg" texture="pucs.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Left Shoe" texture="pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="pucs Right Shoe" texture="pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
-        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="8000.0" SpeedMultiplier="1" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
-        </StatusEffect>
-        <!-- 在潜水柜 恢复氧气、液氧罐耐久 -->
-        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
-          <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
-        </StatusEffect>
-        <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygentank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <!-- 在水中时  启用内置氧气罐/液氧罐 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygentank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.2" setvalue="true" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <!-- 使用液氧罐且hull氧气大于50 移动速度增加 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <!-- 吸油 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
-          <Conditional IsDead="false" />
-          <RequiredItem items="weldingfueltank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0" interval="1" disabledeltatime="true">
-          <Conditional IsDead="false" />
-          <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.05" />
-        </StatusEffect>
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.7" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.1" damagesound="LimbArmor" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.1" damagesound="LimbArmor" />
-        <!-- 低氧气报警 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-          <Conditional HullOxygenPercentage="gte 50" />
-          <Conditional InWater="true" />
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-          <Conditional HullOxygenPercentage="lt 50" />
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional HullOxygenPercentage="gte 50" />
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lte 0.0" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="500" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-          <Conditional oxygenlow="gt 0.0" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="500" />
-        </StatusEffect>
-      </Wearable>
-      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
-      <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
-        <Containable items="none" />
-        <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
-        <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
-        <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="oxygensource,weldingtoolfuel" />
-        </SubContainer>
-        <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="chem,medical" />
-        </SubContainer>
-      </ItemContainer>
+    <Item identifier="pucs">
+      <inherit identifier="pucs">
+        <doinherit />
+        <!-- item sprite on ground -->
+        <replace sel="./Sprite/@texture">
+          %ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png
+        </replace>
+        <!-- contained sprite, Vertical Locker -->
+        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainervertical']/@texture">
+          %ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png
+        </replace>
+        <!-- contained sprite, Horizontal Locker -->
+        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">
+          %ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png
+        </replace>
+        <!-- worn clothing sprites -->
+        <!-- replace all first, then replace the head that stands out -->
+        <replace sel="./Wearable/sprite/@texture">
+          pucs.png
+        </replace>
+        <!-- head -->
+        <replace sel="./Wearable/sprite[@limb='Head']/@texture">
+          %ModDir%/Content/Items/Jobgear/headgears.png
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@origin">
+          0.53,0.55
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/LightComponent/LightTexture/@texture">%ModDir%/Content/Lights/divinghelmetlight.png</replace>
+      </inherit>
     </Item>
     <!--新加：修改：6km→8km；-->
     <!--TD:修改报警逻辑-->
