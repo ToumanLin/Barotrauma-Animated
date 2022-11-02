@@ -16,79 +16,52 @@
         </replace>
       </inherit>
     </item>
-    <!--修改贴图-->
     <item identifier="divingsuit" >
       <inherit identifier="divingsuit" >
         <doinherit />
-        <replace sel="./Sprite[@name='Diving Suit Item']/@texture" >
-          %ModDir%/Content/Items/Diving/DivingSuit_Item.png
-        </replace>
-        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">
-          %ModDir%/Content/Items/Diving/DivingSuit_Item.png
-        </replace>
+        <replace sel="./Sprite[@name='Diving Suit Item']/@texture" >%ModDir%/Content/Items/Diving/DivingSuit_Item.png</replace>
+        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">%ModDir%/Content/Items/Diving/DivingSuit_Item.png</replace>
         <!-- all wearable sprite -->
-        <replace sel="./Wearable/sprite/@texture">
-          reg_DivingSuit.png
-        </replace>
+        <replace sel="./Wearable/sprite/@texture">reg_DivingSuit.png</replace>
         <!-- head sprite -->
-        <replace sel="./Wearable/sprite[@limb='Head']/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='Head']/@origin">
-          0.5,0.56796
-        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@origin">0.5,0.56796</replace>
         <replace sel="./Wearable/sprite[@limb='Head']/LightComponent/LightTexture/@texture">%ModDir%/Content/Lights/divinghelmetlight.png</replace>
+        <!-- add tags for oxygenitetank -->
+        <add sel="./Wearable/StatusEffect[@type='OnContained' and @target='Contained']/RequiredItem/@items">refillableoxygensource</add>
       </inherit>
     </item>
-    <!--修改贴图-->
     <item identifier="abyssdivingsuit">
       <inherit identifier="abyssdivingsuit">
         <doinherit />
-        <replace sel="./Sprite[@name='Abyss Diving Suit Item']/@texture" >
-          %ModDir%/Content/Items/Diving/Abyss_DivingSuit_Items.png
-        </replace>
-        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">
-          %ModDir%/Content/Items/Diving/Abyss_DivingSuit_Items.png
-        </replace>
+        <replace sel="./Sprite[@name='Abyss Diving Suit Item']/@texture" >%ModDir%/Content/Items/Diving/Abyss_DivingSuit_Items.png</replace>
+        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">%ModDir%/Content/Items/Diving/Abyss_DivingSuit_Items.png</replace>
         <!-- all wearable sprite -->
-        <replace sel="./Wearable/sprite/@texture">
-          Abyss_DivingSuit.png
-        </replace>
+        <replace sel="./Wearable/sprite/@texture">Abyss_DivingSuit.png</replace>
         <!-- head -->
-        <replace sel="./Wearable/sprite[@limb='Head']/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='Head']/@origin">
-          0.5,0.56796
-        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@origin">0.5,0.56796</replace>
         <replace sel="./Wearable/sprite[@limb='Head']/LightComponent/LightTexture/@texture">%ModDir%/Content/Lights/divinghelmetlight.png</replace>
+        <!-- add tags for oxygenitetank -->
+        <add sel="./Wearable/StatusEffect[@type='OnContained' and @target='Contained']/RequiredItem/@items">refillableoxygensource</add>
       </inherit>
     </item>
-    <!--修改贴图-->
     <Item identifier="combatdivingsuit">
       <inherit identifier="combatdivingsuit">
         <doinherit />
         <!-- item sprite on ground -->
-        <replace sel="./Sprite/@texture">
-          %ModDir%/Content/Items/Diving/Combat_DivingSuit_Items.png
-        </replace>
+        <replace sel="./Sprite/@texture">%ModDir%/Content/Items/Diving/Combat_DivingSuit_Items.png</replace>
         <!-- contained sprite, Horizontal Locker -->
-        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">
-          %ModDir%/Content/Items/Diving/Combat_DivingSuit_Items.png
-        </replace>
+        <replace sel="./ContainedSprite[@allowedcontainertags='divingsuitcontainerhorizontal']/@texture">%ModDir%/Content/Items/Diving/Combat_DivingSuit_Items.png</replace>
         <!-- worn clothing sprites -->
         <!-- replace all first, then replace the head that stands out -->
-        <replace sel="./Wearable/sprite/@texture">
-          combat_DivingSuit.png
-        </replace>
+        <replace sel="./Wearable/sprite/@texture">combat_DivingSuit.png</replace>
         <!-- head -->
-        <replace sel="./Wearable/sprite[@limb='Head']/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='Head']/@origin">
-          0.5,0.56796
-        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@origin">0.5,0.56796</replace>
         <replace sel="./Wearable/sprite[@limb='Head']/LightComponent/LightTexture/@texture">%ModDir%/Content/Lights/divinghelmetlight.png</replace>
+        <!-- add tags for oxygenitetank -->
+        <add sel="./Wearable/StatusEffect[@type='OnContained' and @target='Contained']/RequiredItem/@items">refillableoxygensource</add>
       </inherit>
     </Item>
   </Items>
