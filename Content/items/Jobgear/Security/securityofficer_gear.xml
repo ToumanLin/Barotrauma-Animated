@@ -33,12 +33,7 @@
         <replace sel="./Wearable/sprite/@texture">
           SecurityOfficer2.png
         </replace>
-        <replace sel="./Wearable/sprite/@hidelimb">
-          false
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='RightForearm' or @limb='LeftForearm' or @limb='Waist' or @limb='RightHand' or @limb='LeftHand']/@hidelimb">
-          true
-        </replace>
+        <replace sel="./Wearable/sprite/@hidelimb">false</replace>
       </inherit>
     </Item>
     <Item identifier="securityuniform3">
@@ -47,12 +42,7 @@
         <replace sel="./Wearable/sprite/@texture">
           SecurityOfficer3.png
         </replace>
-        <replace sel="./Wearable/sprite/@hidelimb">
-          false
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='RightForearm' or @limb='LeftForearm' or @limb='Waist' or @limb='RightHand' or @limb='LeftHand']/@hidelimb">
-          true
-        </replace>
+        <replace sel="./Wearable/sprite/@hidelimb">false</replace>
       </inherit>
     </Item>
     <!-- UNIFORMS END -->
@@ -139,6 +129,50 @@
         </replace>
         <replace sel="./Wearable/sprite[@limb='Head']/@origin">
           0.5105,0.523
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@scale">
+          0.7
+        </replace>
+        <!-- Show hair -->
+        <del sel="./Wearable/sprite[@limb='Head']/@hidewearablesoftype" />
+        <add sel="./Wearable">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+            <RequiredItem items="thermalgoggles" type="Contained" />
+          </StatusEffect>
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,120" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+            <RequiredItem items="healthscanner" type="Contained" />
+          </StatusEffect>
+        </add>
+        <add sel=".">
+          <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+            <Containable items="Wf_helmet_module" />
+            <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+          </ItemContainer>
+          <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+        </add>
+      </inherit>
+    </Item>
+    <Item identifier="ballistichelmet3">
+      <inherit identifier="ballistichelmet3">
+        <doinherit />
+        <replace sel="./Sprite/@texture">
+          %ModDir%/Content/Items/Jobgear/headgears.png
+        </replace>
+        <replace sel="./Sprite/@sourcerect">
+          214,202,96,101
+        </replace>
+        <replace sel="./Sprite/@origin">
+          0.5165,0.5
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@texture">
+          %ModDir%/Content/Items/Jobgear/headgears.png
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@sourcerect">
+          214,202,96,101
+        </replace>
+        <replace sel="./Wearable/sprite[@limb='Head']/@origin">
+          0.5401,0.6
         </replace>
         <replace sel="./Wearable/sprite[@limb='Head']/@scale">
           0.7
