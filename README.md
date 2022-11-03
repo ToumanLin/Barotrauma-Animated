@@ -1,2 +1,2 @@
-# Barotrauma-Animated
-木卫二萌化计划
+# Barotrauma-Animated-Xlite
+木卫二萌化计划Xlite
