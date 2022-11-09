@@ -4,38 +4,24 @@
     <Item identifier="clownmask">
       <inherit identifier="clownmask">
         <doinherit />
-        <replace sel="./Sprite/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
-        <replace sel="./Wearable[@limbtype='Head']/sprite[@limb='Head']/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
+        <replace sel="./Sprite/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
+        <replace sel="./Wearable[@limbtype='Head']/sprite[@limb='Head']/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
       </inherit>
     </Item>
     <item identifier="clowncostume">
       <inherit identifier="clowncostume">
         <doinherit />
-        <replace sel="./Wearable/sprite/@texture">
-          clown.png
-        </replace>
-        <replace sel="./Wearable/sprite/@hidelimb">
-          false
-        </replace>
-        <replace sel="./Wearable/sprite[@limb='LeftFoot' or @limb='RightFoot']/@hidelimb">
-          true
-        </replace>
+        <replace sel="./Wearable/sprite/@texture">clown.png</replace>
+        <replace sel="./Wearable/sprite/@hidelimb">false</replace>
+        <!-- delete clown sound -->
         <del sel="./Wearable/sprite[@limb='LeftFoot' or @limb='RightFoot']/@sound" />
       </inherit>
     </item>
     <item identifier="clownmaskunique">
       <inherit identifier="clownmaskunique">
         <doinherit />
-        <replace sel="./Sprite/@texture">
-          %ModDir%/Content/Items/Jobgear/headgears.png
-        </replace>
-        <replace sel="./Sprite/@sourcerect">
-          510,200,80,100
-        </replace>
+        <replace sel="./Sprite/@texture">%ModDir%/Content/Items/Jobgear/headgears.png</replace>
+        <replace sel="./Sprite/@sourcerect">510,200,80,100</replace>
         <del sel="./InventoryIcon"/>
         <del sel="./Wearable"/>
         <add sel=".">
