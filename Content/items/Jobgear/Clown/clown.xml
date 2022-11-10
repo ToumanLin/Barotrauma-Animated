@@ -18,12 +18,10 @@
         <replace sel="./Wearable/sprite/@texture">
           clown.png
         </replace>
-        <replace sel="./Wearable/sprite/@hidelimb">
+        <replace sel="./Wearable/sprite[@limb='RightHand' or @limb='LeftHand' or @limb='RightArm' or @limb='LeftArm' or @limb='RightForearm' or @limb='LeftForearm' or @limb='RightThigh' or @limb='LeftThigh']/@hidelimb">
           false
         </replace>
-        <replace sel="./Wearable/sprite[@limb='LeftFoot' or @limb='RightFoot']/@hidelimb">
-          true
-        </replace>
+        <!-- delete clown sound -->
         <del sel="./Wearable/sprite[@limb='LeftFoot' or @limb='RightFoot']/@sound" />
       </inherit>
     </item>
@@ -41,15 +39,6 @@
         <add sel=".">
           <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
             <sprite name="Clown Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="400,384,112,128" origin="0.6,0.5" />
-            <SkillModifier skillidentifier="helm" skillvalue="10" />
-            <SkillModifier skillidentifier="weapons" skillvalue="10" />
-            <SkillModifier skillidentifier="mechanical" skillvalue="10" />
-            <SkillModifier skillidentifier="electrical" skillvalue="10" />
-            <SkillModifier skillidentifier="medical" skillvalue="10" />
-            <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
-            <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
-            <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
-            <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
             <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
             <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
             <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,0" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
@@ -90,7 +79,11 @@
             <!-- HöNK -->
             <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
             <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
-            <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.65" />
+            <SkillModifier skillidentifier="helm" skillvalue="5" />
+            <SkillModifier skillidentifier="weapons" skillvalue="5" />
+            <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+            <SkillModifier skillidentifier="electrical" skillvalue="5" />
+            <SkillModifier skillidentifier="medical" skillvalue="5" />
           </Wearable>
         </add>
       </inherit>
