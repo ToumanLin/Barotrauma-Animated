@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--需要优化贴图-->
+    <!--突击队-->
     <Item name="" identifier="securityuniform1" aliases="securityuniform" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" />
       <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
@@ -33,7 +33,8 @@
         <sprite name="Security Officer's Uniform 1 Left Leg" texture="SecurityOfficer1.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Security Officer's Uniform 1 Right Shoe" texture="SecurityOfficer1.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
         <sprite name="Security Officer's Uniform 1 Left Shoe" texture="SecurityOfficer1.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
       </Wearable>
     </Item>
     <!--修改贴图-->
@@ -68,7 +69,8 @@
         <sprite name="Security Officer's Uniform 2 Left Leg" texture="SecurityOfficer2.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Security Officer's Uniform 2 Right Shoe" texture="SecurityOfficer2.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Security Officer's Uniform 2 Left Shoe" texture="SecurityOfficer2.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
       </Wearable>
     </Item>
     <!--修改贴图-->
@@ -103,7 +105,8 @@
         <sprite name="Security Officer's Uniform 3 Left Leg" texture="SecurityOfficer3.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Security Officer's Uniform 3 Right Shoe" texture="SecurityOfficer3.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Security Officer's Uniform 3 Left Shoe" texture="SecurityOfficer3.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
       </Wearable>
     </Item>
     <!--修改贴图-->
@@ -112,7 +115,7 @@
       <PreferredContainer primary="secarmcab" amount="3" notcampaign="true" />
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
       <PreferredContainer secondary="armcab" />
-      <Price baseprice="300">
+      <Price baseprice="480">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.3" />
         <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" />
@@ -132,9 +135,9 @@
       <Body width="85" height="90" density="25" />
       <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
         <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
         <sprite name="Security Vest Wearable" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="Torso" hidelimb="false" inheritscale="true" scale="0.65" inheritorigin="false" origin="0.5,0.661" inheritsourcerect="false" sourcerect="13,16,103,180" />
       </Wearable>
     </Item>
@@ -162,8 +165,8 @@
       <Sprite name="Ballistic Helmet 1" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="4,213,85,90" depth="0.6" origin="0.5165,0.5" />
       <Body radius="30" density="25" />
       <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
         <sprite name="Ballistic Helmet 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="4,213,92,88" origin="0.5165,0.6001" />
@@ -185,7 +188,7 @@
       <PreferredContainer primary="secarmcab" amount="1" notcampaign="true" />
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
       <PreferredContainer secondary="armcab" />
-      <Price baseprice="175">
+      <Price baseprice="320">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.3" />
         <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" />
@@ -227,7 +230,7 @@
       <PreferredContainer primary="secarmcab" amount="1" notcampaign="true" />
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
       <PreferredContainer secondary="armcab" />
-      <Price baseprice="175">
+      <Price baseprice="320">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.3" />
         <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" />
@@ -245,8 +248,8 @@
       <Sprite name="Ballistic Helmet 3" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="214,202,96,101" depth="0.6" origin="0.5165,0.5" />
       <Body radius="30" density="25" />
       <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
-        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
         <sprite name="Ballistic Helmet 3 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="214,202,96,101" origin="0.5401,0.6" />
