@@ -383,7 +383,7 @@
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
   </Item>
   <!--多功能工具：一个就够了-->
-  <Item name="" identifier="EAHI_duogongnengtool" category="Equipment" Tags="smallitem,tool,cuttingequipment ,electricalrepairtool,mechanicalrepairtool,provocative,screwdriver,wrench,weldingequipment,crowbaritem,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.4" impactsoundtag="impact_metal_light">
+  <Item name="" identifier="EAHI_duogongnengtool" category="Equipment" Tags="smallitem,tool,cuttingequipment,electricalrepairtool,mechanicalrepairtool,provocative,screwdriver,wrench,weldingequipment,crowbaritem,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.4" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="storagecab" spawnprobability="0.05" />
     <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.02" />
     <Deconstruct time="10">
@@ -395,29 +395,73 @@
     <Sprite texture="维修工具.png" sourcerect="0,0,136,69" depth="0.55" origin="0.5,0.5" />
     <Body width="48" height="35" density="15" />
     <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="95,3" handle1="-5,-5" msg="ItemMsgPickUpSelect" />
-    <RepairTool firedamage="100.0" structurefixamount="5" range="200" barrelpos="25,4" particles="weld" repairmultiple="true" repairthroughwalls="false" combatpriority="0" levelwallfixamount="-0.35" targetforce="10">
-      <RequiredItems items="oxygensource" type="Contained" msg="ItemMsgOxygenTankRequired" />
-      <ParticleEmitter particle="weld" particlespersecond="50" copyentityangle="true" ColorMultiplier="20,50,255,155" />
+    <!-- cut -->
+    <RepairTool firedamage="10.0" structurefixamount="-2.5" range="150" barrelpos="55,10" combatpriority="10" repairmultiple="true" repairthroughwalls="false" maxoverlappingwalldist="0.0" repairthroughholes="true" levelwallfixamount="-5.0" targetforce="10">
+      <RequiredItems items="oxygensource" type="Contained" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" Condition="-1.0" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" Condition="-0.5" />
+      <StatusEffect type="OnUse" targettype="UseTarget" targets="door,ductblock,aliendoor" Stuck="-20.0" Condition="-3.0" />
+      <StatusEffect type="OnUse" targettype="UseTarget" Condition="-3.0" />
+      <StatusEffect type="OnUse" targettype="Limb" severlimbsprobability="0.005">        
+        <Affliction identifier="burn" amount="1.0" />
+      </StatusEffect>
+      <ParticleEmitter particle="plasma" particlespersecond="50" copyentityangle="true"/>
+      <ParticleEmitterHitStructure particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitStructure particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="20" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+      <ParticleEmitterHitItem identifiers="ore" particle="iceshards" particlespersecond="5" anglemin="-40" anglemax="40" velocitymin="10" velocitymax="300" scalemin="0.5" scalemax="1.0" />
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+      <sound file="Content/Items/Tools/PlasmaCutterLoop.ogg" type="OnUse" range="500.0" loop="true" />
+      <Fixable identifier="structure" />
+      <RequiredSkill identifier="mechanical" level="30" />
+      <StatusEffect type="OnFailure" targettype="Contained" targets="oxygentank" Condition="-3.0" />
+      <StatusEffect type="OnFailure" targettype="Contained" targets="oxygenitetank" Condition="-1.5" />
+      <LightComponent LightColor="0.8,0.7,1.0,1.0" Flicker="0.5">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>      
+    </RepairTool>
+    <!-- repair -->
+    <RepairTool firedamage="10.0" structurefixamount="5.0" range="150" barrelpos="35,10" particles="weld" repairmultiple="true" repairthroughwalls="false" combatpriority="10" levelwallfixamount="-0.425" targetforce="10">
+      <!-- the item must contain a welding fuel tank for it to work -->
+      <RequiredItems items="weldingtoolfuel" type="Contained" />
+      <ParticleEmitter particle="weld" particlespersecond="50" copyentityangle="true"/>
       <ParticleEmitterHitStructure particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
       <ParticleEmitterHitStructure particle="GlowDot" particlespersecond="60" emitinterval="0.7" particleamount="10" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocitymin="10" velocitymax="50" />
       <ParticleEmitterHitStructure particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="0" velocitymax="50" />
       <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
       <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="10" velocitymax="100" />
       <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
-      <sound file="%ModDir%/Content/EA-HI/WeldingLoopMultitool.ogg" type="OnUse" range="500.0" loop="true" />
-      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" Condition="-1.0" />
-      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" Condition="-0.5" />
-      <StatusEffect type="OnUse" targettype="UseTarget" targets="door,ductblock" Stuck="4.0" Condition="2.0" />
+      <sound file="Content/Items/Tools/WeldingLoop.ogg" type="OnUse" range="500.0" loop="true" />
+      <!-- when using, the contained welding fuel tank will detoriate (= lose fuel) -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="weldingfueltank" Condition="-1.0" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="incendiumfueltank" Condition="-0.6" />
+      <!-- welding a door, it will get stuck after a while -->
+      <StatusEffect type="OnUse" targettype="UseTarget" targets="door,ductblock" Stuck="5.0" Condition="3.0" />
+      <!-- do burn damage to characters -->
+      <StatusEffect type="OnUse" targettype="Limb">
+        <Affliction identifier="burn" amount="1.0" />
+      </StatusEffect>
       <StatusEffect type="OnUse" targettype="UseTarget" Condition="-3.0" />
+      <!-- the tool can fix structures, i.e. walls and windows -->
       <Fixable identifier="structure" />
+      <NonFixable identifier="thalamus,ice" />
+      <!-- mechanic skill 20 required to use the item -->
+      <RequiredSkill identifier="mechanical" level="20" />
+      <!-- if the skill requirement isn't met the welding fuel will be used 3 times as fast -->
+      <StatusEffect type="OnFailure" targettype="Contained" targets="weldingfueltank" Condition="-3.0" />
+      <StatusEffect type="OnFailure" targettype="Contained" targets="incendiumfueltank" Condition="-1.5" />
+      <LightComponent LightColor="1.0,0.9,0.7,1.0" Flicker="0.5">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>
     </RepairTool>
     <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
-      <Containable items="oxygensource" />
+      <Containable items="oxygensource,weldingtoolfuel" />
     </ItemContainer>
     <AiTarget sightrange="3000" />
   </Item>
   <!--传送药水-->
-  <Item name="" identifier="teleportine" category="Medical" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+  <Item name="" identifier="teleportine" category="Medical" maxstacksize="8" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
     <InventoryIcon texture="%ModDir%/Content/EA-HI/teleportine.png" sourcerect="8,6,51,59" origin="0.5,0.5" />
     <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="187,138,38,71" depth="0.6" origin="0.5,0.5" />

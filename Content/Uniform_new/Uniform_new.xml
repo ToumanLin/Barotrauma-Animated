@@ -244,6 +244,8 @@
     <Item name="" identifier="Kaltsituniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
       <Price baseprice="420">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
@@ -282,8 +284,8 @@
     </Item>
     <!--圣宣-->
     <Item name="" identifier="shengxuanuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
-      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
       <Price baseprice="618">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
@@ -324,7 +326,7 @@
     <Item name="" identifier="GTCQuniform1" aliases="GTCQuniform" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
-      <Price baseprice="200">
+      <Price baseprice="200" sold="false">
         <Price locationtype="outpost" multiplier="1" minavailable="1" />
         <Price locationtype="city" multiplier="0.9" minavailable="1" />
         <Price locationtype="research" multiplier="1" minavailable="1" />
@@ -360,7 +362,7 @@
     <Item name="" identifier="QPuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
-      <Price baseprice="200">
+      <Price baseprice="200" sold="false">
         <Price locationtype="outpost" multiplier="1" minavailable="1" />
         <Price locationtype="city" multiplier="0.9" minavailable="1" />
         <Price locationtype="research" multiplier="1" minavailable="1" />
@@ -435,7 +437,8 @@
         <Price locationtype="military" multiplier="1" sold="false" />
         <Price locationtype="mine" multiplier="1" sold="false" />
       </Price>
-      <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
       <InventoryIcon name="Clown Costume Icon" texture="Content/Items/InventoryIconAtlas2.png" sourcerect="320,384,64,64" origin="0.5,0.5" />
       <Sprite name="Clown Costume" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="769,74,118,72" depth="0.6" origin="0.5,0.5" />
       <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
@@ -467,8 +470,10 @@
     </Item>
     <!--紧身战斗服mk1-->
     <Item name="" identifier="tight_combatsuit_1" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -476,6 +481,9 @@
         <Price locationtype="merchantmilitary" multiplier="1" minavailable="1" />
         <Price locationtype="merchantmine" multiplier="1" minavailable="1" />
       </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" >
+        <RequiredItem identifier="tight_combatsuit_2"/>
+      </Fabricate>
       <Deconstruct time="10" />
       <InventoryIcon name="tight_combatsuit_1's Uniform 2 Icon" texture="%ModDir%/Content/Uniform_new/OutfitIcons_1.png" sourcerect="128,155,128,110" origin="0.5,0.5" />
       <Sprite name="tight_combatsuit_1's Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
@@ -500,8 +508,10 @@
     </Item>
     <!--紧身战斗服mk2-->
     <Item name="" identifier="tight_combatsuit_2" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -509,6 +519,9 @@
         <Price locationtype="merchantmilitary" multiplier="1" minavailable="1" />
         <Price locationtype="merchantmine" multiplier="1" minavailable="1" />
       </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" >
+        <RequiredItem identifier="tight_combatsuit_1"/>
+      </Fabricate>
       <Deconstruct time="10" />
       <InventoryIcon name="tight_combatsuit_2's Uniform 2 Icon" texture="%ModDir%/Content/Uniform_new/OutfitIcons_1.png" sourcerect="256,155,128,110" origin="0.5,0.5" />
       <Sprite name="tight_combatsuit_2's Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
@@ -533,8 +546,10 @@
     </Item>
     <!--白色泳衣-->
     <Item name="" identifier="whiteswimmingsuit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -566,8 +581,10 @@
     </Item>
     <!--蓝色战斗服-->
     <Item name="" identifier="blue_combatsuit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -601,8 +618,10 @@
     </Item>
     <!--卫士战斗服-->
     <Item name="" identifier="guardiansuit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -634,8 +653,10 @@
     </Item>
     <!--水手服-->
     <Item name="" identifier="Sailor_suit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -667,8 +688,10 @@
     </Item>
     <!--纯白流星-->
     <Item name="" identifier="White_meteor" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -700,8 +723,10 @@
     </Item>
     <!--运动短裤-->
     <Item name="" identifier="Sports_shorts" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -733,8 +758,10 @@
     </Item>
     <!--露背竞技泳衣-->
     <Item name="" identifier="Competitive_swimsuit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.05" />
       <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
@@ -886,7 +913,8 @@
         <Price locationtype="military" multiplier="1" sold="false" />
         <Price locationtype="mine" multiplier="1" sold="false" />
       </Price>
-      <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.09" />
       <Sprite name="Succubus Mask" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="612,391,89,80" origin="0.5,0.5" scale="0.5" />
       <Body width="40" radius="30" density="15" />
       <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="384,384,64,64" />
