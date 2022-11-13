@@ -2,13 +2,16 @@
 <Override>
   <Items>
     <!--修改:增加深度属性-->
-    <Item name="" identifier="genesplicer" scale="0.4" category="Equipment" tags="smallitem" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <Item name="" identifier="genesplicer" scale="0.4" category="Equipment" tags="smallitem,geneticdevice" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="medcab" secondary="medcab" />
       <PreferredContainer secondary="abandonedmedcab,wreckmedcab,outpostmedcab" spawnprobability="0.02" />
       <Price baseprice="500" minleveldifficulty="15">
         <Price storeidentifier="merchantresearch" />
         <Price storeidentifier="merchantcity" sold="false" />
         <Price storeidentifier="merchantmedical" />
+        <Price storeidentifier="merchanthusk" minavailable="0" maxavailable="50">
+          <Reputation faction="huskcult" min="70" />
+        </Price>
       </Price>
       <Deconstruct time="10">
         <Item identifier="plastic" amount="2" />
