@@ -427,7 +427,8 @@
         <sprite name="Administrator Suit Left Leg" texture="administrator.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Administrator Suit Left Shoe" texture="administrator.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Administrator Suit Right Shoe" texture="administrator.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations, bitewounds" damagemultiplier="0.95" deflectprojectiles="false" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
       </Wearable>
     </Item>
     <!--土匪-->
@@ -501,8 +502,8 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
       </Wearable>
     </Item>
-    <!--VIP修改：能在废弃站点获得；增加减伤-->
-    <!--普通VIP：35减伤-->
+    <!--VIP修改：能在废弃站点获得-->
+    <!--船长VIP：15驾驶-->
     <Item name="" identifier="vipclothes1" nameidentifier="vipoutfit" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" />
       <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" />
@@ -523,10 +524,10 @@
         <sprite name="VIP's Clothes 1 Torso" texture="VIP1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Right Hand" texture="VIP1.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Left Hand" texture="VIP1.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 1 Left Lower Arm" texture="VIP1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 1 Right Lower Arm" texture="VIP1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 1 Left Upper Arm" texture="VIP1.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 1 Right Upper Arm" texture="VIP1.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 1 Left Lower Arm" texture="VIP1.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 1 Right Lower Arm" texture="VIP1.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 1 Left Upper Arm" texture="VIP1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 1 Right Upper Arm" texture="VIP1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Waist" texture="VIP1.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Right Thigh" texture="VIP1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Left Thigh" texture="VIP1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
@@ -534,6 +535,7 @@
         <sprite name="VIP's Clothes 1 Left Leg" texture="VIP1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Right Shoe" texture="VIP1.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="VIP's Clothes 1 Left Shoe" texture="VIP1.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <SkillModifier skillidentifier="helm" skillvalue="15" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
       </Wearable>
@@ -593,20 +595,20 @@
       <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="906,78,117,69" depth="0.6" origin="0.5,0.5" />
       <Body width="180" height="50" density="15" friction="0.8" restitution="0.01" />
       <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
-        <sprite name="VIP's Clothes 2 Torso" texture="VIP3.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,148,220" origin="0.5203,0.4364" />
-        <sprite name="VIP's Clothes 2 Right Hand" texture="VIP3.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,184,64,48" />
-        <sprite name="VIP's Clothes 2 Left Hand" texture="VIP3.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,184,64,48" />
-        <sprite name="VIP's Clothes 2 Left Lower Arm" texture="VIP3.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="372,96,64,88" origin="0.5,0.3636" />
-        <sprite name="VIP's Clothes 2 Right Lower Arm" texture="VIP3.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="308,96,64,88" origin="0.5,0.3636" />
-        <sprite name="VIP's Clothes 2 Left Upper Arm" texture="VIP3.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,0,64,96" />
-        <sprite name="VIP's Clothes 2 Right Upper Arm" texture="VIP3.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,0,64,96" />
-        <sprite name="VIP's Clothes 2 Waist" texture="VIP3.png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="160,220,112,60" origin="0.5,0.53333" />
-        <sprite name="VIP's Clothes 2 Right Thigh" texture="VIP3.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 2 Left Thigh" texture="VIP3.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 2 Right Leg" texture="VIP3.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 2 Left Leg" texture="VIP3.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="VIP's Clothes 2 Right Shoe" texture="VIP3.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
-        <sprite name="VIP's Clothes 2 Left Shoe" texture="VIP3.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
+        <sprite name="VIP's Clothes 3 Torso" texture="VIP3.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,148,220" origin="0.5203,0.4364" />
+        <sprite name="VIP's Clothes 3 Right Hand" texture="VIP3.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,184,64,48" />
+        <sprite name="VIP's Clothes 3 Left Hand" texture="VIP3.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,184,64,48" />
+        <sprite name="VIP's Clothes 3 Left Lower Arm" texture="VIP3.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="372,96,64,88" origin="0.5,0.3636" />
+        <sprite name="VIP's Clothes 3 Right Lower Arm" texture="VIP3.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="308,96,64,88" origin="0.5,0.3636" />
+        <sprite name="VIP's Clothes 3 Left Upper Arm" texture="VIP3.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,0,64,96" />
+        <sprite name="VIP's Clothes 3 Right Upper Arm" texture="VIP3.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,0,64,96" />
+        <sprite name="VIP's Clothes 3 Waist" texture="VIP3.png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="160,220,112,60" origin="0.5,0.53333" />
+        <sprite name="VIP's Clothes 3 Right Thigh" texture="VIP3.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 3 Left Thigh" texture="VIP3.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 3 Right Leg" texture="VIP3.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 3 Left Leg" texture="VIP3.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="VIP's Clothes 3 Right Shoe" texture="VIP3.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
+        <sprite name="VIP's Clothes 3 Left Shoe" texture="VIP3.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
         <SkillModifier skillidentifier="medical" skillvalue="15" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
