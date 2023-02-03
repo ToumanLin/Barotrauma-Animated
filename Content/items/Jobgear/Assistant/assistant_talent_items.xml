@@ -18,25 +18,21 @@
         <sprite name="Clown Diving Mask Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="378,301,80,70" origin="0.45,0.4" />
         <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1000.0" Condition="-0.5" comparison="Or">
-        <Conditional IsDead="false" />
-        <RequiredItem items="oxygentank" type="Contained" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-5.0" Condition="-5.0">
-        <Conditional IsDead="false" />
-        <RequiredItem items="weldingfueltank" type="Contained" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
-        <RequiredItem items="incendiumfueltank" type="Contained" />
-        <Affliction identifier="burn" amount="3.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1500.0" Condition="-0.1" comparison="Or">
-        <Conditional IsDead="false" />
-        <RequiredItem items="oxygenitetank" type="Contained" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.2" setvalue="true" comparison="Or">
-        <Conditional IsDead="false" />
-        <RequiredItem items="oxygenitetank" type="Contained" />
-      </StatusEffect>
+          <Conditional IsDead="false" />
+          <RequiredItem items="oxygensource" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-5.0" Condition="-5.0">
+          <Conditional IsDead="false" />
+          <RequiredItem items="weldingfueltank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
+          <RequiredItem items="incendiumfueltank" type="Contained" />
+          <Affliction identifier="burn" amount="3.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.2" setvalue="true" comparison="Or">
+          <Conditional IsDead="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
       </Wearable>
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
         <Containable items="oxygensource,weldingtoolfuel" />

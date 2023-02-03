@@ -5,8 +5,12 @@
     <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
       <PreferredContainer primary="armcab" secondary="secarmcab" />
       <Price baseprice="250" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
-        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" minavailable="0" maxavailable="1" sold="true">
+          <Reputation faction="separatists" min="50"/>
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" maxavailable="3" sold="true">
+          <Reputation faction="separatists" min="50"/>
+        </Price>
         <Price storeidentifier="merchantresearch" />
         <Price storeidentifier="merchantmilitary" multiplier="0.9" />
         <Price storeidentifier="merchantmine" />
@@ -21,7 +25,7 @@
         <RequiredItem identifier="plastic" />
       </Fabricate>
       <Sprite texture="bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
-      <Body radius="30" height="30" density="25" />
+      <Body radius="30" height="30" density="15" />
       <Wearable slots="OuterClothes" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Security Vest" texture="bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
         <SkillModifier skillidentifier="weapons" skillvalue="15" />
@@ -30,7 +34,7 @@
       </Wearable>
       <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="0,0-30" handle2="0,-30" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
       <ItemContainer capacity="4">
-      <Containable items="smallitem" />
+        <Containable items="smallitem" />
       </ItemContainer>
     </Item>
     <!--带鳍潜水服：修改贴图；提前修复制造消耗钛铝合金的问题-->
@@ -56,7 +60,7 @@
       <ContainedSprite name="Slipsuit In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="171,0,77,192" depth="0.55" origin="0.5,0.5" />
       <ContainedSprite name="Slipsuit Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="Slipsuit In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="0,193,230,63" depth="0.55" origin="0.6,0.5" />
-      <Body radius="45" width="34" density="15" />
+      <Body radius="45" width="34" density="20" />
       <Wearable>
         <sprite name="Slipsuit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="0,520,105,124" origin="0.51,0.51">
           <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
