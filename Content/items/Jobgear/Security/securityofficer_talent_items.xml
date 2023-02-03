@@ -108,7 +108,8 @@
           <Affliction identifier="lacerations" strength="50" />
           <Affliction identifier="bleeding" strength="10" />
           <Affliction identifier="stun" strength="0.8" />
-          <StatusEffect type="OnUse" target="Character">
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
             <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
@@ -123,8 +124,8 @@
       </Quality>
       <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
     </Item>
-    <!--带鳍潜水服：修改贴图-->
-    <Item name="" identifier="slipsuit" variantof="combatdivingsuit">
+    <!--带鳍潜水服：修改贴图；修复制造消耗钛铝合金的问题-->
+    <Item name="" identifier="slipsuit" variantof="combatdivingsuit" category="Equipment" tags="diving,deepdiving,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
       <Price baseprice="630" sold="false" />
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
       <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.0" />
@@ -132,12 +133,13 @@
         <Item identifier="ballisticfiber" />
         <Item identifier="titaniumaluminiumalloy" />
         <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="rubber" />
+        <Item identifier="rubber" amount="3" />
         <Item identifier="rubber" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
         <RequiredSkill identifier="mechanical" level="20" />
         <RequiredItem identifier="combatdivingsuit" />
+        <RequiredItem identifier="rubber" amount="0" />
         <RequiredItem identifier="rubber" />
       </Fabricate>
       <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="640,0,128,128" origin="0.5,0.5" />
