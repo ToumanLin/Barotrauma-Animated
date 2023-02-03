@@ -17,7 +17,7 @@
       <RequiredItem identifier="pucs" />
       <Item identifier="fpgacircuit" />
     </Fabricate>
-    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="768,0,128,128" origin="0.5,0.5" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="384,704,128,128" origin="0.5,0.5" />
     <Sprite name="PUCS Item" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
     <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="164,0,87,190" depth="0.55" origin="0.5,0.5" />
     <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/Jobgear/Engineer/pucs.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
@@ -32,11 +32,12 @@
           <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
         </LightComponent>
       </sprite>
-      <sprite name="PUCS Vest Wearable" texture="safetyharness.png" limb="Torso" hidelimb="false" inheritscale="true" scale="0.65" inheritorigin="false" origin="0.5,0.661" inheritsourcerect="false" sourcerect="13,16,103,180">
-        <LightComponent range="300.0" lightcolor="250,224,165,120" powerconsumption="10" IsOn="false" allowingameediting="false">
+      <sprite name="PUCS Vest Wearable" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inheritscale="true" scale="0.65" inheritorigin="false" origin="0.5,0.661" inheritsourcerect="false" sourcerect="13,16,103,180">
+        <LightComponent range="300.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
           <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
             <Conditional IsDead="false" />
           </StatusEffect>
+          <sprite texture="%ModDir%/Content/EA-HI/EAHI_pucs_light.png" depth="0.025" sourcerect="13,16,103,180" origin="0.5,0.661" alpha="1.0" />
         </LightComponent>
       </sprite>
       <!--懒得搞了，直接一张空白png算了-->
