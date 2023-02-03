@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <override>
   <Items>
-    <!--最后更新的游戏版本：0.19.14-->
     <!--修改贴图-->
     <Item name="" identifier="divingknifeunique" category="Weapon" Tags="smallitem,weapon,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true" RequireAimToUse="True">
       <PreferredContainer primary="secarmcab" secondary="armcab" />
@@ -15,12 +14,13 @@
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="186,183,63,16" depth="0.55" origin="0.5,0.5" />
       <Body width="65" height="15" density="25" />
       <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="30" reload="0.75" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
-        <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="10">
+        <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="2" structuredamage="2" structuresoundtype="StructureSlash">
           <Affliction identifier="lacerations" strength="10" />
           <Affliction identifier="bleeding" strength="10" />
           <Affliction identifier="stun" strength="0.2" />
           <Affliction identifier="morbusinepoisoning" strength="1" />
-          <StatusEffect type="OnUse" target="Character">
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
             <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
@@ -37,12 +37,12 @@
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
     <!--修改贴图-->
-    <Item name="" identifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
+    <Item name="" identifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
       <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
       <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
       <PreferredContainer secondary="armcab,weaponholder" />
-      <Price baseprice="300">
+      <Price baseprice="390" minleveldifficulty="30">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
         <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
@@ -50,14 +50,19 @@
         <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
         <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
       </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      </Fabricate>
       <Deconstruct time="10">
-        <Item identifier="steel" />
         <Item identifier="plastic" />
+        <Item identifier="titaniumaluminiumalloy" />
       </Deconstruct>
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,121,144,60" depth="0.55" origin="0.5,0.5" />
       <Body width="140" height="60" density="25" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="45,-10" handle1="-30,-15" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon reload="0.175" holdtrigger="true" barrelpos="64,9" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon reload="0.19" weapondamagemodifier="1.3" penetration="0.15" holdtrigger="true" barrelpos="64,9" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
@@ -77,8 +82,12 @@
         <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="50" />
       </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
-        <Containable items="smgammo" />
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="smgammo" hide="false" itempos="4,-10" rotation="-30" />
+        <SlotIcon slotindex="1" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="22,-1" setactive="true" />
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
       <Quality>
@@ -88,9 +97,57 @@
     </Item>
     <!--修改贴图-->
     <Item name="" identifier="revolver" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
+      <!--
+      An example on using the PreferredContainer:
+      
+      <PreferredContainer primary="somespecialcontainer" secondary="locker" minamount="1" maxamount="1" spawnprobability="1" />
+      
+          PreferredContainers are used for automatic item placement and to tell the bots where items belong to.
+          
+          Automatic item placement can be disabled by setting autofit="False" attribute in the ItemContainer definition or changing the property in the sub editor.
+          
+          Tags and identifiers are used indistinguishably: neither is given a priority over the other.
+      
+          The automatic item placement first looks for containers with an identifier or tag "somespecialcontainer".
+          If none found, will use the containers with the "locker" tag/identifier.      
+          In practice, this should fill all lockers (that have enough room) with one revolver, because there shouldn't be any containers with the primary tag/identifier.
+          
+          Note that each "PreferredContainer" element is evaluated separately and the probability is per container.
+          
+          The bots treat both the "primary" and the "secondary" as accepted containers. However, they prefer the "primary" containers. 
+          The evaluation is weight based: it's possible that the bots use a container marked as "secondary" or even a container that is not defined here, if it's close enough.
+          If you want to tell the bots that "only put certain items in this container", use the "Containable Restrictions" that can be defined in the sub editor.
+    -->
       <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
       <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
       <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <!--
+      An example on using the Price elements:
+      
+      <Price baseprice="0" sold="true" soldelsewhere="false" buyingpricemultiplier="1.0" minamount="0" maxamount="0" canbespecial="true" minleveldifficulty="0" displaynonempty="false">
+        <Price storeidentifier="" multiplier="1.0" />
+      </Price>
+      
+          The above example includes all the attributes that can be used in the price definitions. The listed attribute values are the values the attributes will default to if they are
+          omitted in the definition.
+            
+            Parent price element attributes:
+                     baseprice = The default price of the item. Defaults to 0.
+                 soldelsewhere = Is the item sold at non-specified stores, i.e. stores that don't have their identifier specified in any of the child elements? Defaults to false.
+                  canbespecial = Can the item be a daily special or a requested good? Defaults to true.
+               displaynonempty = Should the number of owned non-empty items be specified in the store interface? Defaults to false.
+                 
+            Parent price element attributes that can be overridden in child elements:
+                          sold = Is the item sold at the specified stores or not? Defaults to true.
+              buyingmultiplier = Multiplier that can increase or decrease the cost of buying the item. Defaults to 1.0.
+                     minamount = The minimum number of this item stores will always have in stock. Defaults to 0.
+                     maxamount = The maximum number of this item stores can ever have in stock. Defaults to 0.
+            minleveldifficulty = The minimum difficulty level required for this item to appear in stores. Defaults to 0.
+            
+            Child price element attributes:
+              storeidentifiers = Human prefab identifiers of the store characters that will sell this item.
+                    multiplier = (multiplier * baseprice) will determine the price of the item at the store. Defaults to 1.0.
+    -->
       <Price baseprice="150">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
         <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" minavailable="1" />
@@ -103,6 +160,11 @@
         <Item identifier="steel" />
         <Item identifier="plastic" />
       </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="35" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,418,76,41" depth="0.55" origin="0.5,0.5" />
       <Body width="72" height="40" density="25" />
       <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="70,5" handle1="-25,-7" msg="ItemMsgPickUpSelect" />
@@ -153,9 +215,9 @@
         <RequiredItem identifier="tin" amount="2" />
       </Fabricate>
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,203,181,39" depth="0.55" origin="0.5,0.5" />
-      <Body width="180" height="30" density="50" />
+      <Body width="180" height="30" density="25" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="35,-10" aimpos="45,-10" handle1="-20,-6" handle2="30,10" holdangle="-40" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon barrelpos="85,14" spread="1" unskilledspread="10" combatPriority="60" drawhudwhenequipped="true" crosshairscale="0.2" reload="2">
+      <RangedWeapon reload="1.75" launchimpulse="20.0" barrelpos="85,14" spread="1" unskilledspread="10" combatPriority="60" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="Content/Items/Weapons/HarpoonGun1.ogg" type="OnUse" />
@@ -167,8 +229,13 @@
         <RequiredItems items="harpoonammo" type="Contained" msg="ItemMsgSpearRequired" />
         <RequiredSkill identifier="weapons" level="30" />
       </RangedWeapon>
-      <ItemContainer itempos="27,10" iteminterval="0,-4" hideitems="true" capacity="1" maxstacksize="6" containedstateindicatorstyle="spear" containedspritedepths="0.551,0.552,0.553,0.554,0.555,0.556">
-        <Containable items="harpoonammo" />
+      <ItemContainer itempos="27,10" iteminterval="0,-4" hideitems="false" capacity="1" maxstacksize="6" containedstateindicatorslot="0" containedstateindicatorstyle="spear" containedspritedepths="0.551,0.552,0.553,0.554,0.555,0.556">
+        <Containable items="harpoonammo" hide="true" />
+        <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,123,120,29" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="18,12" setactive="true" />
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="0" soundrange="500" fadeouttime="2" />
       <Quality>
@@ -177,7 +244,7 @@
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
     <!--亡眼：减少散射、增加射速-->
-    <Item name="" identifier="smgunique" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true">
+    <Item name="" identifier="smgunique" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true">
       <PreferredContainer primary="secarmcab" secondary="armcab" />
       <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.05" />
       <Price baseprice="1064" sold="false" canbespecial="false" />
@@ -188,7 +255,7 @@
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="263,135,145,56" depth="0.55" origin="0.5,0.5" />
       <Body width="140" height="60" density="25" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-15" aimpos="45,-10" handle1="-30,-8" handle2="18,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon reload="0.1" holdtrigger="true" barrelpos="58,19" spread="2" unskilledspread="8" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon reload="0.1" weapondamagemodifier="1.1" holdtrigger="true" barrelpos="58,19" spread="2" unskilledspread="8" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
@@ -210,8 +277,12 @@
         <StatusEffect type="OnUse" target="This" reload="0.1" setvalue="true" delay="0.7" />
         <RequiredSkill identifier="weapons" level="50" />
       </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
-        <Containable items="smgammo" />
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="smgammo" hide="false" itempos="4,-5" rotation="-25" />
+        <SlotIcon slotindex="1" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="17,5" setactive="true" />
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
       <Quality>
@@ -224,7 +295,7 @@
       <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.2" />
       <PreferredContainer secondary="wreckweaponholder" amount="1" spawnprobability="0.03" />
       <PreferredContainer secondary="armcab" />
-      <Price baseprice="500">
+      <Price baseprice="500" minleveldifficulty="30">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
         <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
@@ -235,11 +306,18 @@
       <Deconstruct time="10">
         <Item identifier="steel" />
         <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="plastic" />
       </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
       <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,65,185,54" depth="0.55" origin="0.5,0.25" />
       <Body width="180" height="30" density="25" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="55,5" handle1="-25,-16" handle2="26,0" holdangle="-40" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon barrelpos="80,5" spread="1" unskilledspread="10" combatPriority="80" reload="1" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon barrelpos="80,5" spread="0.1" unskilledspread="3" combatPriority="80" reload="1" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
@@ -257,10 +335,14 @@
           <Sound file="Content/Items/Weapons/ShotgunLoad3.ogg" type="OnUse" range="3000" />
         </StatusEffect>
         <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="60" />
+        <RequiredSkill identifier="weapons" level="50" />
       </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="6" itempos="27,10" iteminterval="0,-4" hideitems="true" containedstateindicatorstyle="bullet">
-        <Containable items="shotgunammo" />
+      <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="shotgunammo" hide="true" />
+        <SlotIcon slotindex="1" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="26,-3" setactive="true" />
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
       <Quality>

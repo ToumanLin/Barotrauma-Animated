@@ -50,7 +50,7 @@
         <QualityStat stattype="FirepowerMultiplier" value="0.1" />
       </Quality>
     </Item>
-    <!--战术腰带：更改贴图；更改容量；更改穿戴位置：外甲→背包 -->
+    <!--战术腰带：更改贴图；更改容量-->
     <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
       <PreferredContainer primary="armcab" secondary="secarmcab" />
       <Price baseprice="250" sold="false">
@@ -60,20 +60,19 @@
         <Price storeidentifier="merchantmilitary" multiplier="0.9" />
         <Price storeidentifier="merchantmine" />
       </Price>
-    <Deconstruct time="30">
-      <Item identifier="ballisticfiber" />
-      <Item identifier="plastic" />
-    </Deconstruct>
+      <Deconstruct time="30">
+        <Item identifier="ballisticfiber" />
+        <Item identifier="plastic" />
+      </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
         <RequiredSkill identifier="weapons" level="35" />
         <RequiredItem identifier="ballisticfiber" amount="2" />
         <RequiredItem identifier="plastic" />
       </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="202,304,48,61" origin="0.45,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="216,210,78,95" depth="0.6" origin="0.5,0.5" />
+      <Sprite texture="bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
       <Body radius="30" height="30" density="25" />
-      <Wearable slots="Bag" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Security Vest" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" limb="Torso" hidelimb="false" sourcerect="215,209,79,97" inherittexturescale="true" origin="0.45,0.6" />
+      <Wearable slots="OuterClothes" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Security Vest" texture="bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
         <SkillModifier skillidentifier="weapons" skillvalue="15" />
         <StatValue stattype="RangedAttackSpeed" value="0.25" />
         <StatValue stattype="TurretAttackSpeed" value="0.25" />
@@ -142,7 +141,7 @@
         <RequiredItem identifier="rubber" amount="0" />
         <RequiredItem identifier="rubber" />
       </Fabricate>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="640,0,128,128" origin="0.5,0.5" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="256,704,128,128" origin="0.5,0.5" />
       <Sprite name="Slipsuit Item" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="7,8,157,121" depth="0.55" origin="0.5,0.5" />
       <ContainedSprite name="Slipsuit In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="171,0,77,192" depth="0.55" origin="0.5,0.5" />
       <ContainedSprite name="Slipsuit Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
