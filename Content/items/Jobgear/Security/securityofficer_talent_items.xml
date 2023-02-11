@@ -6,10 +6,10 @@
       <PreferredContainer primary="armcab" secondary="secarmcab" />
       <Price baseprice="250" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="1.3" minavailable="0" maxavailable="1" sold="true">
-          <Reputation faction="separatists" min="50"/>
+          <Reputation faction="separatists" min="50" />
         </Price>
         <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" maxavailable="3" sold="true">
-          <Reputation faction="separatists" min="50"/>
+          <Reputation faction="separatists" min="50" />
         </Price>
         <Price storeidentifier="merchantresearch" />
         <Price storeidentifier="merchantmilitary" multiplier="0.9" />
@@ -37,7 +37,7 @@
         <Containable items="smallitem" />
       </ItemContainer>
     </Item>
-    <!--带鳍潜水服：修改贴图；提前修复制造消耗钛铝合金的问题-->
+    <!--带鳍潜水服：修改贴图-->
     <Item name="" identifier="slipsuit" variantof="combatdivingsuit" category="Equipment" tags="diving,deepdiving,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
       <Price baseprice="630" sold="false" />
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
@@ -46,14 +46,15 @@
         <Item identifier="ballisticfiber" />
         <Item identifier="titaniumaluminiumalloy" />
         <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="rubber" amount="3" />
+        <Item identifier="rubber" />
         <Item identifier="rubber" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
         <RequiredSkill identifier="mechanical" level="20" />
         <RequiredItem identifier="combatdivingsuit" />
-        <RequiredItem identifier="rubber" amount="0" />
         <RequiredItem identifier="rubber" />
+        <RequiredItem />
+        <RequiredItem />
       </Fabricate>
       <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="256,704,128,128" origin="0.5,0.5" />
       <Sprite name="Slipsuit Item" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="7,8,157,121" depth="0.55" origin="0.5,0.5" />
