@@ -33,12 +33,6 @@
         <sprite name="Diving Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" hideotherwearables="false" sourcerect="226,326,69,68" origin="0.4,0.3" hidewearablesoftype="moustache,beard" />
         <!-- 使用hull氧气 -->
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
-        <!-- Hull氧含量大于50％且不在水中，缓慢回复氧气、液氧罐耐久 -->
-        <StatusEffect type="Always" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
-          <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
-          <Conditional HullOxygenPercentage="gt 50" />
-          <Conditional InWater="false" />
-        </StatusEffect>
         <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />

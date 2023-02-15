@@ -25,7 +25,7 @@
     <Body radius="45" width="34" density="15" />
     <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
       <sprite name="PUCS Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" hideotherwearables="false" sourcerect="300,520,105,124" origin="0.53,0.55">
-        <LightComponent range="300.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="false" allowingameediting="false">
+        <LightComponent range="300.0" lightcolor="250,224,165,70" powerconsumption="10" IsOn="false" allowingameediting="false">
           <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
             <Conditional IsDead="false" />
           </StatusEffect>
@@ -33,7 +33,7 @@
         </LightComponent>
       </sprite>
       <sprite name="PUCS Vest Wearable" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inheritscale="true" scale="0.65" inheritorigin="false" origin="0.5,0.661" inheritsourcerect="false" sourcerect="13,16,103,180">
-        <LightComponent range="300.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+        <LightComponent range="100.0" lightcolor="255,255,255,50" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
           <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
             <Conditional IsDead="false" />
           </StatusEffect>
@@ -134,23 +134,6 @@
         <RequiredItem items="incendiumfueltank" type="Contained" />
         <Affliction identifier="burn" amount="0.1" />
       </StatusEffect>
-      <!-- 治疗 -->
-      <StatusEffect type="OnWearing" target="Character,this">
-        <Conditional HasTag="eq health_on" />
-        <ReduceAffliction identifier="damage" strength="0.7" />
-        <ReduceAffliction identifier="burn" strength="0.7" />
-        <ReduceAffliction identifier="oxygenlow" strength="0.7" />
-        <ReduceAffliction identifier="bloodloss" strength="0.7" />
-        <ReduceAffliction identifier="bleeding" strength="0.7" />
-        <ReduceAffliction identifier="paralysis" strength="0.7" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,this">
-        <Conditional HasTag="eq health_on" />
-        <ParticleEmitter particle="faradayfx" anglemax="360" distancemax="30" particlespersecond="6" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained" Condition="-0.3" targetslot="0">
-        <Conditional HasTag="eq health_on" />
-      </StatusEffect>
       <!-- 低氧气报警 -->
       <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
         <Conditional HullOxygenPercentage="gte 50" />
@@ -190,14 +173,10 @@
       <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.2" />
       <!--自定义界面-->
       <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-        <GuiFrame relativesize="0.07,0.07" anchor="TopLeft" absoluteoffset="390,50" />
+        <GuiFrame relativesize="0.07,0.07" anchor="BottomLeft" absoluteoffset="390,50" />
         <TickBox text="开灯">
           <StatusEffect type="OnUse" targettype="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
-        </TickBox>
-        <TickBox text="治疗">
-          <StatusEffect type="OnUse" target="This" Tags="health_on" setvalue="true" />
-          <StatusEffect type="OnSecondaryUse" target="This" Tags="health_off" setvalue="true" />
         </TickBox>
       </CustomInterface>
     </Wearable>
