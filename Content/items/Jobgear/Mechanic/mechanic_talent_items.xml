@@ -82,8 +82,8 @@
       <sprite name="Exosuit hideboobs" texture="Content/Items/Jobgear/Mechanic/Exosuit.png" limb="tail" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
       <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
       <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="10000.0" SpeedMultiplier="0.4" PropulsionSpeedMultiplier="0.25" setvalue="true" disabledeltatime="true">
-        <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true"/>
-        <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true"/>
+        <Sound file="Content\Items\Diving\DivingSuitLoop1.ogg" range="500" loop="true"/>
+        <Sound file="Content\Items\Diving\DivingSuitLoop2.ogg" range="500" loop="true"/>
       </StatusEffect>
       <!-- no HMG stun -->
       <StatusEffect type="OnWearing" target="Character" interval="0.9" disabledeltatime="true">
@@ -149,6 +149,85 @@
       </SubContainer>
     </ItemContainer>
     <aitarget maxsightrange="1500" />
+  </Item>
+    
+    <Item name="" identifier="makeshiftarmor" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" amount="0" notcampaign="true"/>
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+    <Price baseprice="140" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+      <Price storeidentifier="merchantcity" multiplier="1.2" />
+      <Price storeidentifier="merchantresearch"  />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine"  />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="40">
+      <Item identifier="organicfiber" amount="1" />
+      <Item identifier="iron" amount="4" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredItem identifier="organicfiber" amount="2" />
+      <RequiredItem identifier="iron" amount="6" />
+    </Fabricate>
+    <InventoryIcon texture="MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+    <Sprite name="Makeshift Armor Item" texture="MakeshiftArmor.png" sourcerect="167,25,86,126" depth="0.55" origin="0.5,0.5" />
+    <Body width="62" height="120" density="25" />
+    <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
+      <damagemodifier afflictionidentifiers="gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.75" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+      <sprite name="Makeshift Armor Torso" texture="MakeshiftArmor.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Hand" texture="MakeshiftArmor.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Hand" texture="MakeshiftArmor.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Upper Arm" texture="MakeshiftArmor.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Upper Arm" texture="MakeshiftArmor.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Forearm" texture="MakeshiftArmor.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Forearm" texture="MakeshiftArmor.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Waist" texture="MakeshiftArmor.png" limb="Waist" hidelimb="false" inherittexturescale="false" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Thigh" texture="MakeshiftArmor.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Thigh" texture="MakeshiftArmor.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Leg" texture="MakeshiftArmor.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Leg" texture="MakeshiftArmor.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Left Shoe" texture="MakeshiftArmor.png" limb="LeftFoot" depthlimb="LeftLeg" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Right Shoe" texture="MakeshiftArmor.png" limb="RightFoot" depthlimb="RightLeg" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Makeshift Armor Boobs" texture="MakeshiftArmor.png" limb="Tail" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+    </Wearable>
+    </Item>
+
+<Item name="" identifier="ironhelmet" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.325">
+    <PreferredContainer primary="secarmcab" amount="0" notcampaign="true"/>
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+    <PreferredContainer secondary="armcab"/>
+    <Price baseprice="50" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+      <Price storeidentifier="merchantcity" multiplier="1.2" />
+      <Price storeidentifier="merchantresearch"  />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine"  />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="iron" amount="2" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredItem identifier="iron" amount="4" />
+    </Fabricate> 
+    <Body width="70" height="80" />
+    <Sprite name="Makeshift Helmet Item" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="249,529,120,120" depth="0.6" origin="0.5,0.5" />
+    <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+      <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.75" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidewearablesoftype="Hair" sourcerect="249,529,120,120" origin="0.5,0.7" />
+    </Wearable>
   </Item>
 
   </Items>
