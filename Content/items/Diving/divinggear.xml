@@ -33,6 +33,12 @@
         <sprite name="Diving Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" hideotherwearables="false" sourcerect="226,326,69,68" origin="0.4,0.3" hidewearablesoftype="moustache,beard" />
         <!-- 使用hull氧气 -->
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
+        <!-- Hull氧含量大于50％且不在水中，缓慢回复氧气、液氧罐耐久 -->
+        <StatusEffect type="Always" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
+          <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
+          <Conditional HullOxygenPercentage="gt 50" />
+          <Conditional InWater="false" />
+        </StatusEffect>
         <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -40,6 +46,13 @@
           <Conditional InWater="false" />
           <Conditional decreasedoxygenconsumption="lt 100" />
           <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <Conditional decreasedoxygenconsumption="lt 100" />
+          <RequiredItem items="oxygeniteshard" type="Contained" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -69,9 +82,9 @@
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
+        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="3.0" />
+          <Affliction identifier="burn" amount="0.1" />
         </StatusEffect>
       </Wearable>
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
@@ -107,10 +120,10 @@
       <ContainedSprite name="Diving Suit In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Diving/DivingSuit_Item.png" sourcerect="0,193,230,63" depth="0.55" origin="0.6,0.5" />
       <Body radius="45" width="34" density="15" />
       <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Diving Suit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="5,4,92,94" origin="0.5,0.56796">
+        <sprite name="Diving Suit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" hideotherwearables="true" sourcerect="5,4,92,94" origin="0.5,0.56796">
           <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
             <Upgrade gameversion="0.1300.0.3" allowingameediting="false" />
-            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
               <Conditional IsDead="false" />
             </StatusEffect>
             <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
@@ -130,10 +143,11 @@
         <sprite name="Regular Diving Suit Left Leg" texture="reg_DivingSuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Regular Diving Suit Left Shoe" texture="reg_DivingSuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Regular Diving Suit Right Shoe" texture="reg_DivingSuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Regular Diving Suit Boobs" texture="reg_DivingSuit.png" limb="Tail" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
         <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="4000.0" SpeedMultiplier="0.8" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <!-- Refill oxygen when the suit is contained. -->
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" interval="1" disabledeltatime="true">
@@ -148,10 +162,10 @@
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="3.0" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1500.0" Condition="-0.1" comparison="Or">
           <Conditional IsDead="false" />
@@ -162,10 +176,9 @@
           <RequiredItem items="oxygenitetank" type="Contained" />
         </StatusEffect>
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.65" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.65" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.75" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.75" damagesound="LimbArmor" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.5" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.5" damagesound="LimbArmor" />
       </Wearable>
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use">
         <Upgrade gameversion="0.1401.0.0" msg="ItemMsgPickUpUse" />
@@ -175,12 +188,12 @@
         <StatusEffect type="OnWearing" target="Contained">
           <RequiredItem items="oxygensource" type="Contained" />
           <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
         </StatusEffect>
       </ItemContainer>
       <aitarget maxsightrange="1500" />
@@ -219,7 +232,7 @@
       <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Abyss Diving Suit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="0,409,103,103" origin="0.5,0.56796">
           <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true">
-            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
               <Conditional IsDead="false" />
             </StatusEffect>
             <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
@@ -239,15 +252,16 @@
         <sprite name="Abyss Diving Suit Left Leg" texture="Abyss_DivingSuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Abyss Diving Suit Left Shoe" texture="Abyss_DivingSuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Abyss Diving Suit Right Shoe" texture="Abyss_DivingSuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Abyss Diving Suit Boobs" texture="Abyss_DivingSuit.png" limb="Tail" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
-        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="10000.0" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.8" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="10000.0" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <!-- Refill oxygen when the suit is contained. -->
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+          <RequiredItem items="oxygentank" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1000.0" Condition="-0.15" comparison="Or">
           <Conditional IsDead="false" />
@@ -257,10 +271,10 @@
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="3.0" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1500.0" Condition="-0.05" comparison="Or">
           <Conditional IsDead="false" />
@@ -270,11 +284,10 @@
           <Conditional IsDead="false" />
           <RequiredItem items="oxygenitetank" type="Contained" />
         </StatusEffect>
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.45" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.45" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.55" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.75" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.75" damagesound="LimbArmor" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.02" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.5" damagesound="LimbArmor" />
       </Wearable>
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
@@ -282,12 +295,12 @@
         <StatusEffect type="OnWearing" target="Contained">
           <RequiredItem items="oxygensource" type="Contained" />
           <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
         </StatusEffect>
       </ItemContainer>
       <aitarget maxsightrange="1500" />
@@ -330,7 +343,7 @@
       <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Combat Diving Suit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="326,0,103,103" origin="0.5,0.56796">
           <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
-            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
               <Conditional IsDead="false" />
             </StatusEffect>
             <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
@@ -350,15 +363,16 @@
         <sprite name="Combat Diving Suit Left Leg" texture="combat_DivingSuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Combat Diving Suit Left Shoe" texture="combat_DivingSuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Combat Diving Suit Right Shoe" texture="combat_DivingSuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Combat Diving Suit Boobs" texture="combat_DivingSuit.png" limb="Tail" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
         <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
         <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="0.95" PropulsionSpeedMultiplier="1.4" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <!-- Refill oxygen when the suit is contained. -->
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+          <RequiredItem items="oxygentank" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1000.0" Condition="-0.3" comparison="Or">
           <Conditional IsDead="false" />
@@ -368,10 +382,10 @@
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-10.0" Condition="-0.5" interval="0.5" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="0.5" disabledeltatime="true">
           <Conditional IsDead="false" />
           <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="3.0" />
+          <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1500.0" Condition="-0.1" comparison="Or">
           <Conditional IsDead="false" />
@@ -381,11 +395,10 @@
           <Conditional IsDead="false" />
           <RequiredItem items="oxygenitetank" type="Contained" />
         </StatusEffect>
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.6" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.6" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.7" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.75" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.75" damagesound="LimbArmor" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.5" damagesound="LimbArmor" />
       </Wearable>
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
@@ -393,12 +406,12 @@
         <StatusEffect type="OnWearing" target="Contained">
           <RequiredItem items="oxygensource" type="Contained" />
           <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
         </StatusEffect>
       </ItemContainer>
       <aitarget maxsightrange="1500" />

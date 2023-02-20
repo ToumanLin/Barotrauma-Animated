@@ -28,7 +28,7 @@
       <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Autoshogun Worn" texture="转轮式霰弹枪.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="0,0,216,64" limb="Torso" ignorelimbscale="true" scale="0.62" origin="0.5,0.9" />
       </Wearable>
-      <RangedWeapon barrelpos="68,10" spread="0.2" unskilledspread="3" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon barrelpos="68,10" spread="0.5" unskilledspread="5" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
@@ -40,14 +40,10 @@
           <Explosion range="150.0" force="2" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="60" />
+        <RequiredSkill identifier="weapons" level="70" />
       </RangedWeapon>
-      <ItemContainer capacity="2" maxstacksize="12" hideitems="false" containedstateindicatorstyle="bullet" ShowTotalStackCapacityInContainedStateIndicator="true" containedstateindicatorslot="0" containedspritedepth="0.56">
-        <Containable items="shotgunammo" hide="true"/>
-        <SlotIcon slotindex="2" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
-        <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="flashlight" hide="false" itempos="26,-2" setactive="true"/>
-        </SubContainer>
+      <ItemContainer capacity="4" maxstacksize="8" itempos="27,10" iteminterval="0,-4" hideitems="true" containedstateindicatorstyle="bullet" ShowTotalStackCapacityInContainedStateIndicator="true">
+        <Containable items="shotgunammo" />
       </ItemContainer>
       <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
       <Quality>
@@ -76,7 +72,7 @@
       <Sprite texture="bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
       <Body radius="30" height="30" density="25" />
       <Wearable slots="OuterClothes" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Security Vest" texture="bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
+        <sprite name="Security Vest" texture="bandolier.png" limb="Torso" depthlimb="legs" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.731" />
         <SkillModifier skillidentifier="weapons" skillvalue="15" />
         <StatValue stattype="RangedAttackSpeed" value="0.25" />
         <StatValue stattype="TurretAttackSpeed" value="0.25" />
@@ -111,8 +107,7 @@
           <Affliction identifier="lacerations" strength="50" />
           <Affliction identifier="bleeding" strength="10" />
           <Affliction identifier="stun" strength="0.8" />
-          <StatusEffect type="OnUse" target="UseTarget">
-            <Conditional entitytype="eq Character" />
+          <StatusEffect type="OnUse" target="Character">
             <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
             <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
@@ -127,8 +122,8 @@
       </Quality>
       <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
     </Item>
-    <!--带鳍潜水服：修改贴图；提前修复制造消耗钛铝合金的问题-->
-    <Item name="" identifier="slipsuit" variantof="combatdivingsuit" category="Equipment" tags="diving,deepdiving,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <!--带鳍潜水服：修改贴图-->
+    <Item name="" identifier="slipsuit" variantof="combatdivingsuit">
       <Price baseprice="630" sold="false" />
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
       <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.0" />
@@ -136,13 +131,12 @@
         <Item identifier="ballisticfiber" />
         <Item identifier="titaniumaluminiumalloy" />
         <Item identifier="titaniumaluminiumalloy" />
-        <Item identifier="rubber" amount="3" />
+        <Item identifier="rubber" />
         <Item identifier="rubber" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
         <RequiredSkill identifier="mechanical" level="20" />
         <RequiredItem identifier="combatdivingsuit" />
-        <RequiredItem identifier="rubber" amount="0" />
         <RequiredItem identifier="rubber" />
       </Fabricate>
       <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="256,704,128,128" origin="0.5,0.5" />

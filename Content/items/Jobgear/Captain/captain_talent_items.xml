@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!-- 手炮子弹：产量加倍 -->
+    <!--增加伤害：85→100-->
     <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,handcannonammo,pistolammoitem" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" secondary="armcab" />
       <PreferredContainer primary="handcannon" amount="6" spawnprobability="1.0" />
       <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="6" spawnprobability="0.02" />
       <Price baseprice="70" sold="false" />
-      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="12">
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
         <RequiredSkill identifier="weapons" level="45" />
         <RequiredItem identifier="magnesium" />
         <RequiredItem identifier="lead" amount="2" />
@@ -19,9 +19,9 @@
       <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
       <Projectile characterusable="false" hitscan="true" removeonhit="true">
         <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,115,200" scalemultiplier="1,1" />
-        <Attack structuredamage="20" targetforce="20" itemdamage="40" severlimbsprobability="1.0" penetration="0.5">
-          <Affliction identifier="gunshotwound" strength="70" />
-          <Affliction identifier="bleeding" strength="50" />
+        <Attack structuredamage="20" targetforce="20" itemdamage="40" severlimbsprobability="1.0" penetration="3.6">
+          <Affliction identifier="bleeding" strength="70" />
+          <Affliction identifier="gunshotwound" strength="80" />
           <Affliction identifier="stun" strength="1.5" />
         </Attack>
         <StatusEffect type="OnImpact" target="UseTarget">
