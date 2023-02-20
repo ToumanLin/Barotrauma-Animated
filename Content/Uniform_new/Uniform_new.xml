@@ -791,7 +791,7 @@
     <Item name="" identifier="Exotic_Amor_suit" category="diving" tags="smallitem,deepdiving,diving,clothing" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <!--<PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
-      <Price baseprice="1145" >
+      <Price baseprice="1145">
         <Price locationtype="merchantoutpost" multiplier="1" minavailable="1" />
         <Price locationtype="merchantcity" multiplier="0.9" minavailable="1" />
         <Price locationtype="merchantresearch" multiplier="1" minavailable="1" />
@@ -1005,8 +1005,8 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       </Wearable>
     </Item>
-    <!--前天冠 -->
-    <Item name="" identifier="PrayerMio_hat" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" description="" hideinmenus="false" scale="0.50">
+    <!-- 棱镜 -->
+    <Item name="" identifier="PrayerMio_hat" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" description="" scale="0.5" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="crewcab" />
       <PreferredContainer secondary="locker" />
       <!-- <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" /> -->
@@ -1020,9 +1020,9 @@
       <Sprite name="PrayerMio_hat hats" texture="%ModDir%/Content/Uniform_new/00_headgears_new.png" depth="0.6" sourcerect="200,0,100,100" origin="0.5,0.5" scale="0.5" />
       <InventoryIcon name="PrayerMio_hat inventory" texture= "%ModDir%/Content/Uniform_new/00_headgears_new.png" sourcerect="300,0,100,100" origin="0.5,0.5" scale="0.5" />
       <Body width="40" radius="30" density="15" />
-      <Deconstruct time="10"/>
+      <Deconstruct time="10" />
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
-        <sprite name="PrayerMio_hat Mask Wearable" texture="%ModDir%/Content/Uniform_new/00_headgears_new.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" sourcerect="200,0,100,100" origin="0.6,0.8" >
+        <sprite name="PrayerMio_hat Mask Wearable" texture="%ModDir%/Content/Uniform_new/00_headgears_new.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" sourcerect="200,0,100,100" origin="0.6,0.8">
           <!-- <LightComponent range="0.0" lightcolor="250,224,165,100" powerconsumption="5" IsOn="true" allowingameediting="false">
             <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
               <Conditional IsDead="false" />
@@ -1030,18 +1030,13 @@
             <sprite texture="%ModDir%/Content/Uniform_new/00_headgears_new.png" depth="0.025" sourcerect="400,0,100,100" origin="0.6,0.9" alpha="1.0" />
           </LightComponent> -->
         </sprite>
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,0" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" thermalgoggles="false" showtexts="false" />
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" thermalgoggles="true" showtexts="false">
           <RequiredItem items="thermalgoggles" type="Contained" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" thermalgoggles="false" showtexts="true">
           <RequiredItem items="healthscanner" type="Contained" />
         </StatusEffect>
-        <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
-          <Containable items="healthscanner,thermalgoggles" excludebroken="false" />
-          <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
-        </ItemContainer>
-        <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,blunttrauma" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.15" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
@@ -1050,6 +1045,11 @@
         <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       </Wearable>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+        <Containable items="healthscanner,thermalgoggles" excludebroken="false" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
     </Item>
   </Items>
 </Override>
