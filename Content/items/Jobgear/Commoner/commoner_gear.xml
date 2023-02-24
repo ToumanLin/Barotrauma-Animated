@@ -370,12 +370,11 @@
         <SkillModifier skillidentifier="weapons" skillvalue="5" />
       </Wearable>
     </Item>
-    <!-- 研究服装修改：穿着减少污染概率 -->
+    <!-- 研究者服装 -->
     <Item name="" identifier="researcherclothes" nameidentifier="researcheroutfit" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.2" />
       <PreferredContainer primary="crewcab" />
-      <PreferredContainer secondary="locker" />
-      <Price baseprice="150" sold="false">
+      <Price baseprice="75">
         <Price storeidentifier="merchantoutpost" minavailable="1" />
         <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
         <Price storeidentifier="merchantresearch" minavailable="1" />
@@ -401,18 +400,13 @@
         <sprite name="researcher's Clothes 2 Left Thigh" texture="researcher.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="researcher's Clothes 2 Right Leg" texture="researcher.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="researcher's Clothes 2 Left Leg" texture="researcher.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="researcher's Clothes 2 Right Shoe" texture="researcher.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
-        <sprite name="researcher's Clothes 2 Left Shoe" texture="researcher.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
-        <sprite name="researcher's Clothes 2 Boob" texture="researcher.png" limb="tail" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" />
-        <SkillModifier skillidentifier="electrical" skillvalue="15" />
-        <SkillModifier skillidentifier="mechanical" skillvalue="15" />
-        <SkillModifier skillidentifier="medical" skillvalue="15" />
-        <SkillModifier skillidentifier="weapons" skillvalue="-20" />
-        <SkillModifier skillidentifier="helm" skillvalue="-20" />
-        <StatusEffect type="OnWearing" target="Character">
-          <Affliction identifier="wf_researcherbonus" strength="8" />
-          <GiveTalentInfo talentidentifiers="wf_researcher" />
-        </StatusEffect>
+        <sprite name="researcher's Clothes 2 Right Shoe" texture="researcher.png" limb="RightFoot" hidelimb="True" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,232,64,48" />
+        <sprite name="researcher's Clothes 2 Left Shoe" texture="researcher.png" limb="LeftFoot" hidelimb="True" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,232,64,48" />
+        <sprite name="researcher's Clothes 2 Boob" texture="researcher.png" limb="tail" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations, bitewounds" damagemultiplier="0.95" />
       </Wearable>
     </Item>
     <!--哨站安全修改：增加减伤；只能从哨站安全获得-->
