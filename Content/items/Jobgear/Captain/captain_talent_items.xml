@@ -19,7 +19,7 @@
       <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
       <Projectile characterusable="false" hitscan="true" removeonhit="true">
         <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,115,200" scalemultiplier="1,1" />
-        <Attack structuredamage="20" targetforce="20" itemdamage="40" severlimbsprobability="1.0" penetration="0.5">
+        <Attack structuredamage="20" targetforce="20" itemdamage="20" severlimbsprobability="1.0" penetration="0.5">
           <Affliction identifier="gunshotwound" strength="70" />
           <Affliction identifier="bleeding" strength="50" />
           <Affliction identifier="stun" strength="1.5" />
@@ -33,9 +33,8 @@
           <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.75" scalemax="1" />
         </StatusEffect>
       </Projectile>
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
-    <!--修改贴图-->
+    <!-- 手炮：提升制造品质，提高射速 -->
     <Item name="" identifier="handcannon" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,weapon,gun,pistolitem,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" />
       <PreferredContainer secondary="armcab,weaponholder" />
@@ -57,9 +56,9 @@
       </Deconstruct>
       <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="303,364,42,67" origin="0.5,0.5" />
       <Sprite texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" sourcerect="0,256,111,56" depth="0.55" origin="0.5,0.5" />
-      <Body width="106" height="49" density="70" />
+      <Body width="106" height="49" density="30" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-45,-4" handle2="-45,-15" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon reload="0.75" barrelpos="40,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon reload="0.5" reloadnoskill="1" reloadskillrequirement="60" barrelpos="40,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon.ogg" type="OnUse" range="3000" selectionmode="Random" />
@@ -75,13 +74,19 @@
         <RequiredItems items="handcannonammo" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="60" />
       </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="6" hideitems="true" containedstateindicatorstyle="bullet">
-        <Containable items="handcannonammo" />
+      <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+        <Containable items="handcannonammo" hide="true" />
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="17,4" setactive="true" />
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
       <Quality>
         <QualityStat stattype="FirepowerMultiplier" value="0.1" />
       </Quality>
+      <SkillRequirementHint identifier="weapons" level="60" />
     </Item>
   </Items>
 </Override>

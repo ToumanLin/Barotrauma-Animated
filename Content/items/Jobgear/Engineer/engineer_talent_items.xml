@@ -8,7 +8,9 @@
         <Price storeidentifier="merchantoutpost" multiplier="1.5" />
         <Price storeidentifier="merchantcity" multiplier="1.25" />
         <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="coalition" min="70"/>
+        </Price>
         <Price storeidentifier="merchantmine" multiplier="1.25" />
       </Price>
       <Deconstruct time="10">
@@ -50,14 +52,22 @@
         </StatusEffect>
         <RequiredItems items="reactorfuel" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="25" />
+        <RequiredSkill identifier="electrical" level="45" />
       </RangedWeapon>
-      <ItemContainer itemrotation="90" capacity="1" maxstacksize="1" hideitems="false" itempos="10,-5" containedspritedepth="0.56" containedstateindicatorstyle="tank">
-        <Containable items="reactorfuel" />
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="10,-5" containedspritedepths="0.562,0.561" containedstateindicatorstyle="default" containedstateindicatorslot="0">
+        <Containable items="reactorfuel" rotation="90"/>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="25,0" setactive="true"/>
+        </SubContainer>
       </ItemContainer>
       <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
       <Quality>
         <QualityStat stattype="FirepowerMultiplier" value="0.1" />
       </Quality>
+      <SkillRequirementHint identifier="weapons" level="25" />
+      <SkillRequirementHint identifier="electrical" level="45" />
     </Item>
     <!-- 贫化燃料冲锋枪弹匣:修改贴图,容量加到45发,回收配方匹配其他弹匣 -->
     <Item name="" identifier="smgmagazinedepletedfuel" variantof="smgmagazine" allowasextracargo="true">
@@ -132,7 +142,7 @@
       </Propulsion>
       <ItemContainer capacity="1" maxstacksize="1" slotsperrow="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="battery">
         <Containable items="mobilebattery" />
-        <SlotIcon slotindex="0" texture="Content/UI/WeaponUI.png" sourcerect="64,961,32,22" origin="0.5,0.45" />
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
         <SubContainer capacity="14" maxstacksize="64">
           <Containable items="smallitem,mediumitem" />
         </SubContainer>
@@ -173,7 +183,9 @@
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
       <Price baseprice="670" sold="false">
         <Price storeidentifier="merchantoutpost" />
-        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantcity" minavailable="0" maxavailable="3" sold="true">
+          <Reputation faction="coalition" min="70" />
+        </Price>
         <Price storeidentifier="merchantresearch" multiplier="1.2" />
         <Price storeidentifier="merchantmilitary" />
         <Price storeidentifier="merchantmine" multiplier="1.1" />
@@ -196,7 +208,7 @@
       <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="164,0,87,190" depth="0.55" origin="0.5,0.5" />
       <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="pucs.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
-      <Body radius="45" width="34" density="15" />
+      <Body radius="45" width="34" density="20" />
       <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="PUCS Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="127,520,105,124" origin="0.53,0.55">
           <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
@@ -241,34 +253,15 @@
           <Conditional HullOxygenPercentage="lt 50" />
           <Conditional InWater="false" />
           <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygentank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
+          <RequiredItem items="oxygensource" type="Contained" />
         </StatusEffect>
         <!-- 在水中时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygentank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <!-- 使用液氧罐且hull氧气大于50 移动速度增加 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
+          <Conditional InWater="true" />
+          <Conditional decreasedoxygenconsumption="lt 100" />
+          <RequiredItem items="oxygensource" type="Contained" />
         </StatusEffect>
-        <!-- 吸油 -->
         <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
           <Conditional IsDead="false" />
           <RequiredItem items="weldingfueltank" type="Contained" />
@@ -303,10 +296,18 @@
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
       <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
         <Containable items="none" />
-        <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
-        <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="384,448,64,64" origin="0.5,0.5" />
         <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="oxygensource,weldingtoolfuel" />
+          <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+          <Containable items="oxygenitetank">
+            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+              <Conditional IsDead="false" />
+              <Conditional HullOxygenPercentage="lt 50" />
+              <Conditional InWater="false" />
+              <Conditional decreasedoxygenconsumption="lt 100" />
+            </StatusEffect>
+          </Containable>
         </SubContainer>
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="chem,medical" />
