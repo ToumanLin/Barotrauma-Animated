@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <Item name="" identifier="EAHI_pucs" category="diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
-    <Price baseprice="770" sold="false">
+    <Price baseprice="3000" sold="false">
       <Price locationtype="outpost" multiplier="1" sold="false" />
       <Price locationtype="city" multiplier="1" sold="false" />
       <Price locationtype="research" multiplier="1.2" sold="false" />
@@ -13,8 +13,9 @@
       <Item identifier="pucs" />
     </Deconstruct>
     <Fabricate suitablefabricators="fabricator" requiredtime="40">
-      <RequiredSkill identifier="electrical" level="20" />
-      <RequiredItem identifier="pucs" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredItem identifier="Wf_pucs_D" />
+      <RequiredItem identifier="exotic_matter" />
       <Item identifier="fpgacircuit" />
     </Fabricate>
     <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="384,704,128,128" origin="0.5,0.5" />
@@ -54,96 +55,43 @@
       <sprite name="pucs Left Leg" texture="pucs.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="pucs Left Shoe" texture="pucs.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="pucs Right Shoe" texture="pucs.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
-      <StatusEffect type="OnWearing" target="Character" HideFace="true" PressureProtection="8000.0" SpeedMultiplier="1.2" PropulsionSpeedMultiplier="1.5" LowPassMultiplier="0.7" setvalue="true" disabledeltatime="true">
-        <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
-        <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="8000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+        <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
+        <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
       </StatusEffect>
-      <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="1.7" PropulsionSpeedMultiplier="1.2" comparison="And" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-        <Conditional InWater="true" />
-      </StatusEffect>
-      <!-- 在潜水柜 恢复氧气、液氧罐耐久 -->
-      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+      <!-- refill when in container -->
+      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
         <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-        <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
+        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
       </StatusEffect>
-      <!-- Hull氧含量大于50％且不在水中，缓慢回复氧气、液氧罐耐久 -->
-      <StatusEffect type="Always" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
+      <!-- refill when both hull oxygen gt 50 and not in water -->
+      <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
         <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
         <Conditional HullOxygenPercentage="gt 50" />
         <Conditional InWater="false" />
-      </StatusEffect>
-      <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
+      <!-- comsume when neither Hull oxygen it 50 nor InWater -->
       <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
         <Conditional IsDead="false" />
         <Conditional HullOxygenPercentage="lt 50" />
         <Conditional InWater="false" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <RequiredItem items="oxygentank" type="Contained" />
+        <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-        <Conditional IsDead="false" />
-        <Conditional HullOxygenPercentage="lt 50" />
-        <Conditional InWater="false" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <RequiredItem items="oxygenitetank" type="Contained" />
-      </StatusEffect>
-      <!-- 在水中时  启用内置氧气罐/液氧罐 -->
+      <!-- comsume when in water -->
       <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
         <Conditional InWater="true" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <RequiredItem items="oxygentank" type="Contained" />
+        <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
-        <Conditional InWater="true" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <RequiredItem items="oxygenitetank" type="Contained" />
+      <!-- hypoxia when using weldingfueltank -->
       </StatusEffect>
-      <!-- 使用液氧罐且hull氧气大于50 移动速度增加 -->
-      <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
-        <Conditional IsDead="false" />
-        <Conditional HullOxygenPercentage="lt 50" />
-        <Conditional InWater="false" />
-        <RequiredItem items="oxygenitetank" type="Contained" />
-      </StatusEffect>
-      <!-- 吸油 -->
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
         <Conditional IsDead="false" />
         <RequiredItem items="weldingfueltank" type="Contained" />
       </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" Oxygen="-20.0" Condition="-0.5" targetslot="0">
+      <!-- get burn when using incendiumfueltank -->
+      <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
         <Conditional IsDead="false" />
         <RequiredItem items="incendiumfueltank" type="Contained" />
-        <Affliction identifier="burn" amount="0.1" />
-      </StatusEffect>
-      <!-- 低氧气报警 -->
-      <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-        <Conditional HullOxygenPercentage="gte 50" />
-        <Conditional InWater="true" />
-        <RequiredItem items="oxygensource" type="Contained" />
-        <Conditional condition="lt 5.0" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-        <Conditional HullOxygenPercentage="lt 50" />
-        <RequiredItem items="oxygensource" type="Contained" />
-        <Conditional condition="lt 5.0" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-        <Conditional InWater="true" />
-        <Conditional HullOxygenPercentage="gte 50" />
-        <RequiredItem items="oxygensource" type="Contained" />
-        <Conditional condition="lte 0.0" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <Sound file="Content/Items/WarningBeep.ogg" range="500" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" comparison="And" targetslot="0">
-        <Conditional oxygenlow="gt 0.0" />
-        <Conditional decreasedoxygenconsumption="lt 100" />
-        <Sound file="Content/Items/WarningBeep.ogg" range="500" />
+        <Affliction identifier="burn" amount="3.0" />
       </StatusEffect>
       <!-- 药物治疗效果 -->
       <!--使用生理盐水-->
@@ -221,12 +169,27 @@
       </StatusEffect>
       <!--伤害修正-->
       <StatValue stattype="FlowResistance" value="2.5" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.7" damagesound="LimbArmor" deflectprojectiles="true" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.0" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bleeding,bitewounds,blunttrauma" damagemultiplier="0.75" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound,lacerations" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.05" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.1" damagesound="LimbArmor" />
       <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.2" />
+      <!-- alarm condition -->
+        <ItemComponent IsActiveConditionalComparison="Or">
+          <IsActive HullOxygenPercentage="lt 50" />
+          <IsActive InWater="eq true" />
+          <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
+            <RequiredItem items="oxygensource" type="Contained" />
+            <Conditional condition="lt 5.0" />
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+          </StatusEffect>
+          <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
+            <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+            <Conditional condition="lte 0.0" />
+            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+          </StatusEffect>
+        </ItemComponent>
       <!--自定义界面-->
       <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
         <GuiFrame relativesize="0.07,0.07" anchor="BottomLeft" absoluteoffset="390,50" />
@@ -242,9 +205,17 @@
       <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
       <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
       <SlotIcon slotindex="2" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="oxygensource,weldingtoolfuel" />
-      </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+          <Containable items="oxygenitetank">
+            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+              <Conditional IsDead="false" />
+              <Conditional HullOxygenPercentage="lt 50" />
+              <Conditional InWater="false" />
+              <Conditional decreasedoxygenconsumption="lt 100" />
+            </StatusEffect>
+          </Containable>
+        </SubContainer>
       <SubContainer capacity="1" maxstacksize="1">
         <Containable items="antibloodloss1,antibloodloss2,alienblood" />
       </SubContainer>
@@ -268,9 +239,10 @@
       <Item identifier="autoinjectorheadset" />
       <Item identifier="fpgacircuit" />
     </Deconstruct>
-    <Fabricate suitablefabricators="fabricator" requiredtime="10">
-      <RequiredSkill identifier="mechanical" level="30" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="45" />
       <RequiredItem identifier="autoinjectorheadset" />
+      <RequiredItem identifier="healthscanner" />
       <RequiredItem identifier="fpgacircuit" />
     </Fabricate>
     <WifiComponent range="40000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
@@ -359,80 +331,6 @@
       </StatusEffect>
     </Wearable>
     <StatusHUD drawhudwhenequipped="true" overlaycolor="0,0,0,0" />
-  </Item>
-  <!--激光平衡-->
-  <Item name="" description="" identifier="EAHI_pulselaserammobox" scale="0.5" tags="pulselaserequipment,pulselaserammo,ammobox" category="Weapon" linkable="true" impactsoundtag="impact_metal_heavy">
-    <PreferredContainer primary="ammocontainer" spawnprobability="0.0" />
-    <Price baseprice="250" sold="false" displaynonempty="true">
-      <Price storeidentifier="merchantoutpost" multiplier="1.6" />
-      <Price storeidentifier="merchantcity" multiplier="1.4" sold="false" />
-      <Price storeidentifier="merchantresearch" multiplier="1.3" />
-      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-      <Price storeidentifier="merchantmine" sold="false" multiplier="1.2" />
-      <Price storeidentifier="merchantarmory" multiplier="0.9" />
-    </Price>
-    <Deconstruct time="10">
-      <Item identifier="pulselaserammobox" copycondition="true" />
-      <Item identifier="pulselaserammobox" copycondition="true" />
-      <Item identifier="aluminium" />
-    </Deconstruct>
-    <Fabricate suitablefabricators="fabricator" requiredtime="20">
-      <RequiredSkill identifier="weapons" level="50" />
-      <RequiredItem identifier="pulselaserammobox" />
-      <RequiredItem identifier="pulselaserammobox" />
-      <RequiredItem identifier="aluminium" />
-    </Fabricate>
-    <Fabricate suitablefabricators="fabricator" displayname="recycleitem" requiredtime="15">
-      <RequiredSkill identifier="weapons" level="45" />
-      <RequiredItem identifier="lithium" />
-      <RequiredItem identifier="alienblood" />
-      <RequiredItem identifier="EAHI_pulselaserammobox" mincondition="0.0" maxcondition="0.0" usecondition="false" />
-    </Fabricate>
-    <!--<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,128,64,64" />-->
-    <Sprite texture="Content/Items/Containers/containers.png" depth="0.54" sourcerect="550,678,117,89" origin="0.5,0.5" />
-    <Body width="115" height="88" density="50" />
-    <Holdable slots="RightHand+LeftHand" holdpos="0,-80" handle1="-40,30" handle2="40,30" aimable="false" msg="ItemMsgPickUpSelect" />
-    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" canbecombined="true" ShowConditionInContainedStateIndicator="true" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
-      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
-        <SpawnItem identifiers="EA-HI_pulselaserbolt" spawnposition="ThisInventory" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
-        <RequiredItem items="EA-HI_pulselaserbolt" type="Contained" />
-      </StatusEffect>
-      <Containable items="EA-HI_pulselaserbolt" />
-    </ItemContainer>
-  </Item>
-  <Item name="" identifier="EA-HI_pulselaserbolt" category="Weapon" scale="0.5" sonarsize="2" hideinmenus="true">
-    <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
-    <Body width="170" height="10" density="20" />
-    <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
-    <Projectile characterusable="false" hitscan="true" removeonhit="true">
-      <ParticleEmitter particle="tracerpulselaser" particleamount="1" velocitymin="0" velocitymax="0" />
-      <ParticleEmitter particle="FlareBubbles" emitacrossrayinterval="50" />
-      <Attack structuredamage="40" targetforce="3" itemdamage="15" severlimbsprobability="1.0" penetration="0.6">
-        <Affliction identifier="burn" strength="50" />
-        <Affliction identifier="stun" strength="0.25" />
-      </Attack>
-      <StatusEffect type="OnImpact" target="UseTarget">
-        <ParticleEmitter particle="muzzleflashpulselaser" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemin="0.5" scalemax="0.8" />
-        <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="300" velocitymax="350" scalemin="1.5" scalemax="1.9" drawontop="true" colormultiplier="255,200,225,180" />
-        <ParticleEmitter particle="FlareBubbles" particleamount="3" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
-      </StatusEffect>
-      <StatusEffect type="OnImpact" target="UseTarget">
-        <Conditional entitytype="eq Structure" />
-        <Conditional hastag="eq door" />
-        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
-      </StatusEffect>
-      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
-        <Explosion range="150.0" structuredamage="50" itemdamage="25" force="10.0" flames="false" smoke="false" sparks="false" underwaterbubble="false" flashcolor="255,0,0,255">
-          <Affliction identifier="explosiondamage" strength="40" />
-          <Affliction identifier="burn" strength="20" />
-        </Explosion>
-      </StatusEffect>
-      <StatusEffect type="OnNotContained" target="This">
-        <Remove />
-      </StatusEffect>
-    </Projectile>
   </Item>
   <!--小袋子-->
   <Item name="" description="" identifier="EAHI_kuorongbag" category="Equipment" Tags="smallitem,mobilecontainer,revolverammo,pistolammoitem,handcannonammo,shotgunammo,harpoonammo,stungunammo,grenade,Blame_harpoonammo" showcontentsintooltip="true" fireproof="true" waterproof="true" scale="0.5">
