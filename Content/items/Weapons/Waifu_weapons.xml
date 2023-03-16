@@ -1,6 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <!--TD:研究一下如何直接生成大师级-->
+  <item name="" identifier="Wf_SaltedFish" scale="0.32" category="Weapon" tags="smallitem,weapon,tool,dooropeningtool,crowbaritem,mountableweapon" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wreckarmcab" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="abandonedarmcab,abandonedstoragecab" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="400" soldeverywhere="false">
+      <Price locationtype="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price locationtype="merchantcity" multiplier="1.25" sold="false" />
+      <Price locationtype="merchantresearch" multiplier="1.25" sold="false" />
+      <Price locationtype="merchantmilitary" multiplier="0.9" sold="false" />
+      <Price locationtype="merchantmine" multiplier="1.25" sold="false" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/items/Weapons/Katana.png" sourcerect="310,234,74,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/Weapons/Katana.png" sourcerect="0,234,310,54" depth="0.55" origin="0.5,0.5" />
+    <Body width="305" height="32" density="45" />
+    <MeleeWeapon slots="RightHand+LeftHand,Any" aimpos="45,20" handle1="-35,-2" holdangle="30" reload="0.95" range="100" combatPriority="49" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="3" severlimbsprobability="8.5" itemdamage="20" penetration="1.25">
+        <Affliction identifier="lacerations" strength="25" />
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="stun" strength="0.4" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+      </Attack>
+    </MeleeWeapon>
+  </item>
   <!--太刀-->
   <item name="" identifier="Wf_Admiral_Katana" scale="0.32" category="Weapon" tags="smallitem,weapon,tool,dooropeningtool,crowbaritem,mountableweapon" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
     <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="0.1" />
