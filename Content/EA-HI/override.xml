@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--可充气液氧罐-->
-    <Item name="" identifier="oxygenitetank" category="Diving,Equipment" maxstacksize="8" Tags="smallitem,oxygensource,refillableoxygensource" description="" health="150" scale="0.5" impactsoundtag="impact_metal_light">
+    <!-- 液氧罐:改为可充气,提升耐久 -->
+    <Item name="" identifier="oxygenitetank" category="Diving,Equipment" maxstacksize="8" health="300" Tags="smallitem,oxygensource,refillableoxygensource" description="" scale="0.5" impactsoundtag="impact_metal_light">
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
       <Price baseprice="175" displaynonempty="true">
         <Price storeidentifier="merchantoutpost" sold="false" />
@@ -12,15 +12,17 @@
         <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="1" />
       </Price>
       <PreferredContainer primary="oxygentankcontainer" />
-      <PreferredContainer secondary="locker" />
+      <PreferredContainer secondary="wrecksupplycab" amount="1" spawnprobability="0.02" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.01" />
       <Deconstruct time="10">
         <Item identifier="aluminium" />
-        <Item identifier="liquidoxygenite" copycondition="true" />
+        <Item identifier="liquidoxygenite" mincondition="0.1" />
+        <Item identifier="liquidoxygenite" mincondition="0.9" />
       </Deconstruct>
       <Fabricate suitablefabricators="fabricator" outcondition="1.0" requiredtime="5">
         <RequiredSkill identifier="mechanical" level="40" />
-        <RequiredItem identifier="aluminium" />
-        <RequiredItem identifier="liquidoxygenite" />
+        <RequiredItem identifier="aluminium" amount="2" />
+        <RequiredItem identifier="liquidoxygenite" amount="2" />
       </Fabricate>
       <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="200" fabricationlimitmin="1" fabricationlimitmax="5" />
       <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="319,901,61,61" origin="0.5,0.5" />
@@ -30,22 +32,24 @@
         <StatusEffect type="OnFire" target="This" Condition="-10.0" tags="onfire" duration="1" stackable="false" />
         <StatusEffect type="OnBroken" target="This" delay="1" stackable="false">
           <Conditional HasStatusTag="onfire" />
-          <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="5000" />
-          <sound file="Content/Items/Weapons/ExplosionDebris2.ogg" range="5000" />
-          <Explosion range="280.0" structuredamage="40" stun="8" force="3.0" ignorefireeffectsfortags="oxygensource,weldingtoolfuel">
-            <Affliction identifier="burn" strength="10" />
+          <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+          <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+          <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+          <Explosion range="150.0" force="6" >
+            <Affliction identifier="burn" strength="50" />
+            <Affliction identifier="stun" strength="10" />
           </Explosion>
         </StatusEffect>
       </Holdable>
       <Quality>
-        <QualityStat stattype="Condition" value="0.2" />
+        <QualityStat stattype="Condition" value="0.1" />
       </Quality>
     </Item>
-    <!--叠氮化合物-->
+    <!-- 叠氮化合物:修改自爆时间 -->
     <Item name="" identifier="volatilecompoundn" category="Weapon,Material" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="8" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
       <Upgrade gameversion="0.9.3.0" scale="0.5" />
-      <PreferredContainer primary="secarmcab,armcab" />
-      <PreferredContainer secondary="locker" />
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.01" />
       <Price baseprice="250" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="1.4" />
         <Price storeidentifier="merchantcity" multiplier="1.25" />
@@ -59,19 +63,26 @@
         <RequiredItem identifier="flashpowder" />
       </Fabricate>
       <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,64,64,64" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" depth="0.8" sourcerect="152,477,50,34" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" depth="0.55" sourcerect="152,477,50,34" origin="0.5,0.5" />
       <Body width="45" height="30" density="20" />
       <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="4.0" aimpos="35,-10" msg="ItemMsgPickUpSelect">
-        <sound file="Content/Items/Weapons/ExplosionMedium3.ogg" type="OnBroken" range="10000" selectionmode="All" />
-        <sound file="Content/Items/Weapons/ExplosionDebris3.ogg" type="OnBroken" range="10000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnBroken" range="5000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium2.ogg" type="OnBroken" range="5000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium3.ogg" type="OnBroken" range="5000" />
         <StatusEffect type="Always" target="This" Condition="-0.17" />
         <StatusEffect type="OnFire" target="This" Condition="-50.0" />
         <StatusEffect type="OnUse" target="This" Condition="-100" disabledeltatime="true" />
         <StatusEffect type="OnBroken" target="This">
-          <Explosion range="1000.0" ballastfloradamage="60" structuredamage="300" levelwalldamage="600" itemdamage="1000" stun="5" force="20.0" severlimbsprobability="0.6" decal="explosion" decalsize="0.5">
-            <Affliction identifier="burn" strength="200" />
-            <Affliction identifier="explosiondamage" strength="50" />
+          <Explosion range="500.0" ballastfloradamage="100" structuredamage="150" itemdamage="500" force="15" severlimbsprobability="0.5" decal="explosion" decalsize="0.5" penetration="0.5">
+            <Affliction identifier="explosiondamage" strength="125" />
+            <Affliction identifier="burn" strength="15" probability="0.2" dividebylimbcount="false" />
+            <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+            <Affliction identifier="stun" strength="7" />
           </Explosion>
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <sound file="Content/Items/Weapons/ExplosionDebris5.ogg" range="3500" />
         </StatusEffect>
       </Throwable>
       <Quality>
