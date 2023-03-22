@@ -69,6 +69,7 @@
         <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
         <Conditional HullOxygenPercentage="gt 50" />
         <Conditional InWater="false" />
+      </StatusEffect>
       <!-- comsume when neither Hull oxygen it 50 nor InWater -->
       <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
         <Conditional IsDead="false" />
@@ -82,7 +83,6 @@
         <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
       <!-- hypoxia when using weldingfueltank -->
-      </StatusEffect>
       <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
         <Conditional IsDead="false" />
         <RequiredItem items="weldingfueltank" type="Contained" />
