@@ -9,7 +9,7 @@
         <Price storeidentifier="merchantcity" multiplier="1.25" />
         <Price storeidentifier="merchantresearch" multiplier="1.25" />
         <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="2" sold="true">
-          <Reputation faction="coalition" min="70"/>
+          <Reputation faction="coalition" min="70" />
         </Price>
         <Price storeidentifier="merchantmine" multiplier="1.25" />
       </Price>
@@ -55,11 +55,11 @@
         <RequiredSkill identifier="electrical" level="45" />
       </RangedWeapon>
       <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="10,-5" containedspritedepths="0.562,0.561" containedstateindicatorstyle="default" containedstateindicatorslot="0">
-        <Containable items="reactorfuel" rotation="90"/>
+        <Containable items="reactorfuel" rotation="90" />
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
         <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
         <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="flashlight" hide="false" itempos="25,0" setactive="true"/>
+          <Containable items="flashlight" hide="false" itempos="25,0" setactive="true" />
         </SubContainer>
       </ItemContainer>
       <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
@@ -71,10 +71,10 @@
     </Item>
     <!-- 贫化燃料冲锋枪弹匣:修改贴图,容量加到45发,回收配方匹配其他弹匣 -->
     <Item name="" identifier="smgmagazinedepletedfuel" variantof="smgmagazine" allowasextracargo="true">
-      <PreferredContainer primary="smg,smgunique" spawnprobability="0"/>
-      <PreferredContainer primary="secarmcab" spawnprobability="0"/>
-      <PreferredContainer primary="outpostsecarmcab" spawnprobability="0"/>
-      <PreferredContainer primary="wrecksecarmcab" spawnprobability="0"/>
+      <PreferredContainer primary="smg,smgunique" spawnprobability="0" />
+      <PreferredContainer primary="secarmcab" spawnprobability="0" />
+      <PreferredContainer primary="outpostsecarmcab" spawnprobability="0" />
+      <PreferredContainer primary="wrecksecarmcab" spawnprobability="0" />
       <Price baseprice="160" sold="false" />
       <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
         <RequiredSkill identifier="weapons" level="40" />
@@ -313,7 +313,7 @@
       <Price baseprice="670">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
-        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true" >
+        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true">
           <Reputation faction="coalition" min="70" />
         </Price>
         <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
@@ -368,8 +368,8 @@
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
@@ -404,12 +404,12 @@
           <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
             <RequiredItem items="oxygensource" type="Contained" />
             <Conditional condition="lt 5.0" />
-            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
           </StatusEffect>
           <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
             <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
             <Conditional condition="lte 0.0" />
-            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
           </StatusEffect>
         </ItemComponent>
       </Wearable>
@@ -438,7 +438,7 @@
       <Price baseprice="670">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
-        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true" >
+        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true">
           <Reputation faction="coalition" min="70" />
         </Price>
         <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
@@ -493,8 +493,8 @@
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_R.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_R.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
@@ -530,12 +530,12 @@
           <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
             <RequiredItem items="oxygensource" type="Contained" />
             <Conditional condition="lt 5.0" />
-            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
           </StatusEffect>
           <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
             <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
             <Conditional condition="lte 0.0" />
-            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
           </StatusEffect>
         </ItemComponent>
       </Wearable>
@@ -564,7 +564,7 @@
       <Price baseprice="750">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
-        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true" >
+        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true">
           <Reputation faction="coalition" min="70" />
         </Price>
         <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
@@ -623,8 +623,8 @@
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_B.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_B.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
@@ -660,12 +660,12 @@
           <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
             <RequiredItem items="oxygensource" type="Contained" />
             <Conditional condition="lt 5.0" />
-            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
           </StatusEffect>
           <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
             <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
             <Conditional condition="lte 0.0" />
-            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
           </StatusEffect>
         </ItemComponent>
       </Wearable>
@@ -694,7 +694,7 @@
       <Price baseprice="1000">
         <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
         <Price locationtype="merchantcity" multiplier="1" sold="false" />
-        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true" >
+        <Price locationtype="merchantresearch" multiplier="2.0" minavailable="0" maxavailable="1" sold="true">
           <Reputation faction="coalition" min="70" />
         </Price>
         <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
@@ -753,8 +753,8 @@
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_D.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_D.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="1.7" PropulsionSpeedMultiplier="1.2" comparison="And" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
           <Conditional InWater="true" />
@@ -794,7 +794,7 @@
           <RequiredItem items="incendiumfueltank" type="Contained" />
           <Affliction identifier="burn" amount="0.05" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="Character" >
+        <StatusEffect type="OnWearing" target="Character">
           <Affliction identifier="combatstimulant" amount="0.05" />
         </StatusEffect>
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bleeding,bitewounds,blunttrauma" damagemultiplier="0.75" damagesound="LimbArmor" deflectprojectiles="true" />
@@ -809,12 +809,12 @@
           <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
             <RequiredItem items="oxygensource" type="Contained" />
             <Conditional condition="lt 5.0" />
-            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
           </StatusEffect>
           <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
             <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
             <Conditional condition="lte 0.0" />
-            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+            <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
           </StatusEffect>
         </ItemComponent>
       </Wearable>
