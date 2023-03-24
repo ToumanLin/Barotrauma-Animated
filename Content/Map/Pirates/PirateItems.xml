@@ -127,7 +127,7 @@
       <Deconstruct time="10">
         <Item identifier="ballisticfiber" />
       </Deconstruct>
-      <Sprite name="Pirate Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="424,202,92,91" depth="0.6" origin="0.5,0.5" />
+      <Sprite name="Pirate Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="328,202,96,101" depth="0.6" origin="0.5165,0.5" />
       <Body radius="30" density="30" />
       <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
         <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
@@ -135,20 +135,21 @@
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
         <SkillModifier skillidentifier="weapons" skillvalue="5" />
-        <sprite name="Pirate Helmet 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" sourcerect="323,202,93.5,98" origin="0.558,0.592" />
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
-          <RequiredItem items="thermalgoggles" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
-          <RequiredItem items="healthscanner" type="Contained" />
-        </StatusEffect>
+        <sprite name="Pirate Helmet 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="328,202,96,101" origin="0.5401,0.6" />
       </Wearable>
-      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552" showdeadcharacters="false" showtexts="false">
-        <Containable items="healthscanner,thermalgoggles" excludebroken="false" />
-        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir:2850994195%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
       </ItemContainer>
-      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
     </Item>
     <!--修改贴图-->
     <Item name="" nameidentifier="pirateclothes" identifier="pirateclothesnovice" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
