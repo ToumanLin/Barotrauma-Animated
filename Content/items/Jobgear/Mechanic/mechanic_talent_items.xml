@@ -40,6 +40,7 @@
         <StatValue stattype="FlowResistance" value="0.9" />
       </Wearable>
     </Item>
+    <!-- 临时装甲:新增钝器伤、水流抗性 -->
     <Item name="" identifier="makeshiftarmor" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
       <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
@@ -66,7 +67,7 @@
       <Body width="62" height="120" density="30" />
       <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
         <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
-        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, lacerations, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
         <sprite name="Makeshift Armor Torso" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
@@ -84,9 +85,10 @@
         <sprite name="Makeshift Armor Left Leg" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Makeshift Armor Left Shoe" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Makeshift Armor Right Shoe" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="FlowResistance" value="0.9" />
       </Wearable>
     </Item>
-    <!-- 铁头盔:改为不遮挡视野，不减速 -->
+    <!-- 铁头盔:新增钝器伤、脑震荡抗性，移除遮挡视野和减速 -->
     <Item name="" identifier="ironhelmet" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.125">
       <PreferredContainer primary="secarmcab" amount="0" notcampaign="true"/>
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
@@ -110,8 +112,10 @@
       <Body width="70" height="80" density="30" />
       <Sprite name="Makeshift Helmet Item" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="272,528,352,256" depth="0.6" origin="0.5,0.5" />
       <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
-        <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="lacerations, bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
         <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.22" hidewearablesoftype="Hair" sourcerect="272,528,352,256" origin="0.6,0.9375" />
       </Wearable>
     </Item>

@@ -292,18 +292,16 @@
       </ItemContainer>
     </Item>
     <!--圣宣-->
-    <Item name="" identifier="shengxuanuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear,clowns" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
-      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
-      <Price baseprice="618">
-        <Price locationtype="merchantoutpost" multiplier="1" sold="false" />
-        <Price locationtype="merchantcity" multiplier="1" sold="false" />
-        <Price locationtype="merchantresearch" multiplier="1.0" />
-        <Price locationtype="merchantmilitary" multiplier="1" sold="false" />
-        <Price locationtype="merchantmine" multiplier="1.1" sold="false" />
+    <Item name="" identifier="shengxuanuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,huskcult" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer primary="crewcab" />
+      <Price baseprice="150" canbespecial="false" sold="false">
+        <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
+          <Reputation faction="huskcult" min="70"/>
+        </Price>
       </Price>
-      <Deconstruct time="5">
-        <Item identifier="plastic" />
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
       </Deconstruct>
       <InventoryIcon texture="%ModDir:2809175631%/Content/Uniform_new/OutfitIcons_1.png" sourcerect="128,27,128,101" origin="0.5,0.5" />
       <Sprite name="shengxuan 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="1,8,120,59" depth="0.6" origin="0.5,0.5" />
@@ -323,13 +321,19 @@
         <sprite name="shengxuan's Clothes 1 Left Leg" texture="shengxuan.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="shengxuan's Clothes 1 Right Shoe" texture="shengxuan.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="shengxuan's Clothes 1 Left Shoe" texture="shengxuan.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <SkillModifier skillidentifier="electrical" skillvalue="5" />
-        <SkillModifier skillidentifier="helm" skillvalue="5" />
-        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
-        <SkillModifier skillidentifier="medical" skillvalue="5" />
-        <SkillModifier skillidentifier="weapons" skillvalue="5" />
-        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,bitewounds" damagemultiplier="0.95" />
+        <StatusEffect target="Character" type="OnWearing" setvalue="true">
+          <Affliction identifier="husktransformimmunitytemporary" amount="100" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="OnWearing">
+          <Conditional huskinfection="gt 0" />
+          <Conditional husksymbiosis="gt 0" />
+          <ReduceAffliction type="damage" amount="0.25" />
+          <ReduceAffliction type="bleeding" amount="0.1" />
+        </StatusEffect>
       </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical" />
+      </ItemContainer>
     </Item>
     <!--哥特长裙-->
     <Item name="" identifier="GTCQuniform1" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
@@ -442,7 +446,11 @@
     </Item>
     <!--魅魔-->
     <Item name="" identifier="succubussuit" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear,clowns" description="" impactsoundtag="impact_soft" hideinmenus="false" scale="0.5">
-      <Price baseprice="500" sold="false" canbespecial="false" />
+      <Price baseprice="500" canbespecial="false" sold="false">
+        <Price storeidentifier="merchantclown" minavailable="0" maxavailable="1" sold="true">
+          <Reputation faction="clowns" min="90" />
+        </Price>
+      </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
       <PreferredContainer primary="crewcab" />
       <InventoryIcon name="Clown Costume Icon" texture="Content/Items/InventoryIconAtlas2.png" sourcerect="320,384,64,64" origin="0.5,0.5" />
@@ -927,7 +935,7 @@
         <Item identifier="organicfiber" amount="1" />
         <Item identifier="iron" amount="4" />
       </Deconstruct>
-      <!-- <Fabricate suitablefabricators="fabricator" requiredtime="30" >
+      <!-- <Fabricate suitablefabricators="fabricator" requiredtime="30">
         <RequiredSkill identifier="weapons" level="20" />
         <RequiredSkill identifier="mechanical" level="20" />
         <RequiredItem identifier="organicfiber" amount="2" />
@@ -961,8 +969,12 @@
     </Item>
     <!--hats-->
     <!--亡蝶葬仪的赠礼-->
-    <Item name="" identifier="shengxuanhats" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask,clowns" description="" hideinmenus="false" scale="0.50">
-      <Price baseprice="100" sold="false" canbespecial="false" />
+    <Item name="" identifier="shengxuanhats" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,huskcult" description="" hideinmenus="false" scale="0.50">
+      <Price baseprice="100" sold="false" canbespecial="false">
+        <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
+          <Reputation faction="huskcult" min="70"/>
+        </Price>
+      </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
       <PreferredContainer primary="crewcab" />
       <Sprite name="shengxuan hats" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="512,384,88,128" origin="0.5,0.5" scale="0.5" />
@@ -973,7 +985,9 @@
       </Deconstruct>
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
         <sprite name="shengxuan Mask Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="512,384,88,128" origin="0.85,0.6" />
-        <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
+        <StatusEffect type="OnWearing" target="Character" interval="0.5" disabledeltatime="true">
+          <Affliction identifier="disguisedashusk" amount="1.0" />
+        </StatusEffect>
       </Wearable>
       <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
         <Containable items="healthscanner,thermalgoggles">
@@ -992,7 +1006,11 @@
     </Item>
     <!--魅魔-->
     <Item name="" identifier="succubusmask" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask,clowns" description="" hideinmenus="false" scale="0.5">
-      <Price baseprice="100" sold="false" canbespecial="false" />
+      <Price baseprice="100" canbespecial="false" sold="false">
+      <Price storeidentifier="merchantclown" minavailable="0" maxavailable="1" sold="true">
+        <Reputation faction="clowns" min="90"/>
+      </Price>
+    </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
       <PreferredContainer primary="crewcab" />
       <Sprite name="Succubus Mask" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="612,391,89,80" origin="0.5,0.5" scale="0.5" />
