@@ -297,7 +297,7 @@
       <PreferredContainer primary="crewcab" />
       <Price baseprice="150" canbespecial="false" sold="false">
         <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
-          <Reputation faction="huskcult" min="70"/>
+          <Reputation faction="huskcult" min="35"/>
         </Price>
       </Price>
       <Deconstruct time="10">
@@ -448,7 +448,7 @@
     <Item name="" identifier="succubussuit" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear,clowns" description="" impactsoundtag="impact_soft" hideinmenus="false" scale="0.5">
       <Price baseprice="500" canbespecial="false" sold="false">
         <Price storeidentifier="merchantclown" minavailable="0" maxavailable="1" sold="true">
-          <Reputation faction="clowns" min="90" />
+          <Reputation faction="clowns" min="45" />
         </Price>
       </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
@@ -795,6 +795,42 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
       </Wearable>
     </Item>
+    <!-- 黑色胶衣 -->
+    <Item name="" identifier="blackgelcoat" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" />
+      <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+      <Price baseprice="150" minavailable="1">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+        <Price storeidentifier="merchantresearch" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" minavailable="1" />
+        <Price storeidentifier="merchantmine" minavailable="1" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Black Gel Coat Icon" texture="Content/Items/Jobgear/OutfitIcons.png" sourcerect="0,402,128,110" origin="0.5,0.5" />
+      <Sprite name="Black Gel Coat" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="767,149,124,69" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Black Gel Coat Torso" texture="BlackGelCoat.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Hand" texture="BlackGelCoat.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Hand" texture="BlackGelCoat.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Lower Arm" texture="BlackGelCoat.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Lower Arm" texture="BlackGelCoat.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Upper Arm" texture="BlackGelCoat.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Upper Arm" texture="BlackGelCoat.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Waist" texture="BlackGelCoat.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Thigh" texture="BlackGelCoat.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Thigh" texture="BlackGelCoat.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Leg" texture="BlackGelCoat.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Leg" texture="BlackGelCoat.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Right Shoe" texture="BlackGelCoat.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Black Gel Coat Left Shoe" texture="BlackGelCoat.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
+      </Wearable>
+    </Item>
     <!--异星装甲潜水服-->
     <Item name="" identifier="Exotic_Amor_suit" category="diving" tags="smallitem,deepdiving,diving,clothing" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <!--<PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
@@ -972,7 +1008,7 @@
     <Item name="" identifier="shengxuanhats" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,huskcult" description="" hideinmenus="false" scale="0.50">
       <Price baseprice="100" sold="false" canbespecial="false">
         <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
-          <Reputation faction="huskcult" min="70"/>
+          <Reputation faction="huskcult" min="35"/>
         </Price>
       </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
@@ -981,7 +1017,7 @@
       <Body width="40" radius="30" density="15" />
       <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" sourcerect="512,384,88,128" />
       <Deconstruct time="10">
-        <Item identifier="bikehorn" />
+        <Item identifier="organicfiber" />
       </Deconstruct>
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
         <sprite name="shengxuan Mask Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="512,384,88,128" origin="0.85,0.6" />
@@ -1007,10 +1043,10 @@
     <!--魅魔-->
     <Item name="" identifier="succubusmask" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask,clowns" description="" hideinmenus="false" scale="0.5">
       <Price baseprice="100" canbespecial="false" sold="false">
-      <Price storeidentifier="merchantclown" minavailable="0" maxavailable="1" sold="true">
-        <Reputation faction="clowns" min="90"/>
+        <Price storeidentifier="merchantclown" minavailable="0" maxavailable="1" sold="true">
+          <Reputation faction="clowns" min="45"/>
+        </Price>
       </Price>
-    </Price>
       <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
       <PreferredContainer primary="crewcab" />
       <Sprite name="Succubus Mask" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="612,391,89,80" origin="0.5,0.5" scale="0.5" />
