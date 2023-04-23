@@ -27,7 +27,7 @@
     <Body radius="45" width="34" density="15" />
     <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
       <sprite name="PUCS Helmet Wearable" texture="EAHI_pucs.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" hideotherwearables="false" sourcerect="0,0,1,1" origin="0.53,0.55">
-        <LightComponent range="300.0" lightcolor="250,224,165,70" powerconsumption="10" IsOn="false" allowingameediting="false">
+        <LightComponent range="300.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="false" allowingameediting="false">
           <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
             <Conditional IsDead="false" />
           </StatusEffect>
@@ -193,7 +193,7 @@
       </ItemComponent>
       <!--自定义界面-->
       <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-        <GuiFrame relativesize="0.07,0.07" anchor="BottomLeft" relativeoffset="0.3,0.06" />
+        <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
         <TickBox text="开灯">
           <StatusEffect type="OnUse" targettype="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />

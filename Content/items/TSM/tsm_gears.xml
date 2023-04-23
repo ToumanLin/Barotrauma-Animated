@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+    <!--三神丘-->
+    <!-- 取自"九州武装"，改个id防冲突 -->
+    <!-- 三神丘斗篷 -->
+    <Item identifier="kep_cloak" aliases="tsm_kepcape_0" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
+        <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
+        <PreferredContainer secondary="armcab" />
+        <Price baseprice="480" sold="false">
+            <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+            <Price storeidentifier="merchantcity" multiplier="1.2" />
+            <Price storeidentifier="merchantresearch" minavailable="2" sold="true" />
+            <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" sold="true" />
+            <Price storeidentifier="merchantmine" multiplier="1.2" />
+            <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" sold="true" />
+        </Price>
+        <Deconstruct time="20">
+            <Item identifier="ballisticfiber" amount="2" />
+            <Item identifier="organicfiber" />
+            <Item identifier="rubber" />
+            <Item identifier="copper" />
+            <Item identifier="plastic" />
+        </Deconstruct>
+        <Fabricate suitablefabricators="fabricator" requiredtime="35">
+            <RequiredSkill identifier="weapons" level="45" />
+            <RequiredItem identifier="ballisticfiber" amount="2" />
+            <RequiredItem identifier="organicfiber" amount="2" />
+            <RequiredItem identifier="rubber" amount="2" />
+            <RequiredItem identifier="fpgacircuit" />
+        </Fabricate>
+        <InventoryIcon texture="%ModDir%/Content/items/TSM/kepsuit.png" sourcerect="455,31,132,177" origin="0.5,0.5" />
+        <Sprite texture="%ModDir%/Content/items/TSM/kepsuit.png" sourcerect="455,31,132,177" depth="0.51" origin="0.5,0.5" />
+        <Body width="120" height="35" density="25" />
+        <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+            <damagemodifier afflictionidentifiers="burn" armorsector="0.0,360.0" damagemultiplier="0.5" />
+            <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.6" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+            <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+            <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.4" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+            <sprite name="kep Torso" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Torso" depthlimb="RightForearm" hidelimb="false" inherittexturescale="false" inheritorigin="false" inheritsourcerect="false" sourcerect="455,31,132,177" scale="0.5" origin="0.75,0.4" />
+            <StatValue stattype="FlowResistance" value="0.9" />
+            <StatusEffect type="OnWearing" target="Character,Contained" condition="-3.125" targetslot="0">
+                <Conditional burn="gt 0" />
+                <Conditional acidburn="gt 0" />
+                <Conditional bleeding="gt 0" />
+                <Conditional bleedingnonstop="gt 0" />
+                <RequiredItem items="antibleeding3" type="Contained" />
+                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="-90" anglemax="-90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+                <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+                <ReduceAffliction type="bleeding" amount="25" />
+                <ReduceAffliction type="burn" amount="25" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This">
+                <Conditional HasStatusTag="active" />
+                <RequiredItem items="antibleeding3" type="Contained" />
+                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="10" distancemax="10" colormultiplier="255,192,203,255" />
+                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-30" anglemax="-30" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-150" anglemax="-150" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+                <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This" interval="0.1" disabledeltatime="false">
+                <Conditional HasStatusTag="active" />
+                <RequiredItem items="antibleeding3" type="Contained" />
+                <SpawnItem identifiers="antibleedburnemitter" spawnposition="This" />
+            </StatusEffect>
+        </Wearable>
+        <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="tank">
+            <SlotIcon slotindex="0" texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,448,64,64" origin="0.5,0.45" />
+            <Containable items="antibleeding3" />
+        </ItemContainer>
+        <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+            <GuiFrame relativesize="0.12,0.1" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.16" />
+            <Button text="外置止血喷雾">
+                <StatusEffect type="OnUse" target="This" tags="active" duration="4" stackable="false">
+                    <RequiredItem items="antibleeding3" type="Contained" />
+                </StatusEffect>
+                <StatusEffect type="OnUse" target="Contained" Condition="-6.25" targetslot="0" duration="4" stackable="false" />
+            </Button>
+        </CustomInterface>
+    </Item>
+    <!-- 三神丘作战头盔 -->
+    <Item identifier="kep_helmet" aliases="tsm_kepcap_0" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.5">
+        <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
+        <PreferredContainer secondary="armcab" />
+        <Price baseprice="320" sold="false">
+            <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+            <Price storeidentifier="merchantcity" multiplier="1.2" />
+            <Price storeidentifier="merchantresearch" minavailable="2" sold="true" />
+            <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" sold="true" />
+            <Price storeidentifier="merchantmine" multiplier="1.2" />
+            <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" sold="true" />
+        </Price>
+        <Deconstruct time="10">
+            <Item identifier="ballisticfiber" />
+        </Deconstruct>
+        <Fabricate suitablefabricators="fabricator" requiredtime="20">
+            <RequiredSkill identifier="weapons" level="30" />
+            <RequiredItem identifier="ballisticfiber" amount="2" />
+        </Fabricate>
+        <Sprite name="kep cap" texture="%ModDir%/Content/items/TSM/kepsuit.png" depth="0.6" sourcerect="666,6,113,72" origin="0.5,0.5" />
+        <Body width="75" height="50" density="30" />
+        <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+            <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+            <damagemodifier afflictionidentifiers="bitewounds,blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+            <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+            <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+            <SkillModifier skillidentifier="weapons" skillvalue="5" />
+            <sprite name="kep cap Wearable" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="false" scale="1.5" hidelimb="false" sourcerect="666,6,113,72" origin="0.47,1.0" />
+        </Wearable>
+        <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+            <Containable items="healthscanner,thermalgoggles">
+                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
+            </Containable>
+            <Containable Items="healthscanner">
+                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+            </Containable>
+            <Containable Items="thermalgoggles">
+                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+            </Containable>
+            <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+        </ItemContainer>
+        <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <!-- 三神丘作战服 -->
+    <Item identifier="kep_uniform" aliases="tsm_kepsuit_0" category="Equipment" tags="smallitem,clothing" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+        <PreferredContainer primary="crewcab" />
+        <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.05" />
+        <Price baseprice="300">
+            <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+            <Price storeidentifier="merchantcity" multiplier="1.2" />
+            <Price storeidentifier="merchantresearch" minavailable="2" sold="true" />
+            <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" sold="true" />
+            <Price storeidentifier="merchantmine" multiplier="1.2" />
+            <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" sold="true" />
+        </Price>
+        <Deconstruct time="10">
+            <Item identifier="organicfiber" />
+            <Item identifier="rubber" />
+        </Deconstruct>
+        <Fabricate suitablefabricators="fabricator" requiredtime="10">
+            <RequiredItem identifier="organicfiber" amount="2" />
+            <RequiredItem identifier="rubber" />
+        </Fabricate>
+        <InventoryIcon name="kep uniform Icon" texture="%ModDir%/Content/items/TSM/kepsuit.png" sourcerect="670,145,106,100" origin="0.5,0.5" />
+        <Sprite name="kep uniform" texture="%ModDir%/Content/items/TSM/kepsuit_item.png" sourcerect="6,5,117,53" depth="0.55" origin="0.5,0.5" />
+        <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+        <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+            <sprite name="kep Uniform Torso" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Torso" hidelimb="true" inherittexturescale="false" inheritorigin="true" inheritsourcerect="true" scale="0.525" />
+            <sprite name="kep Uniform Right Hand" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <sprite name="kep Uniform Left Hand" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <sprite name="kep Uniform Right Lower Arm" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="294,6,25,72" origin="0.51,0.5" />
+            <sprite name="kep Uniform Left Lower Arm" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="358,6,25,72" origin="0.51,0.5" />
+            <sprite name="kep Uniform Right Upper Arm" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="295,89,19,65" origin="0.5,0.5" />
+            <sprite name="kep Uniform Left Upper Arm" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="360,91,19,64" origin="0.5,0.5" />
+            <sprite name="kep Uniform Waist" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Waist" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="true" origin="0.07,0.1" />
+            <sprite name="kep Uniform Right Thigh" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="18,14,48,97" origin="0.5,0.5" />
+            <sprite name="kep Uniform Left Thigh" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="95,14,48,97" origin="0.5,0.5" />
+            <sprite name="kep Uniform Right Leg" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <sprite name="kep Uniform Left Leg" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <sprite name="kep Uniform Left Shoe" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <sprite name="kep Uniform Right Shoe" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+            <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound" damagemultiplier="0.95" />
+            <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds" damagemultiplier="0.85" />
+            <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.85" />
+        </Wearable>
+    </Item>
+    <!-- 治疗效果生成器 -->
+    <Item name="Anti-Bleed-Burn Emitter" identifier="antibleedburnemitter" Scale="1" tags="gas" sonarsize="0" hideinmenus="true" depth="0.1" isdangerous="true" noninteractable="true">
+        <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+        <Body width="38" height="15" bodytype="kinematic"/>
+        <ItemComponent>
+            <StatusEffect type="Always" target="This" condition="0" setvalue="true" />
+            <StatusEffect type="Always" target="NearbyCharacters" range="250" duration="0.1" stackable="false">
+                <!-- 排除机械角色:不知道为什么不起效 -->
+                <!-- <Conditional ismachine="false" /> -->
+                <ReduceAffliction type="bleeding" amount="25" />
+                <ReduceAffliction type="burn" amount="25" />
+            </StatusEffect>
+            <StatusEffect type="OnBroken" target="This">
+                <Remove />
+            </StatusEffect>
+        </ItemComponent>
+    </Item>
+</Items>
