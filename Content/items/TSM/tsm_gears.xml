@@ -69,7 +69,7 @@
             <Containable items="antibleeding3" />
         </ItemContainer>
         <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-            <GuiFrame relativesize="0.12,0.1" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.16" />
+            <GuiFrame relativesize="0.1,0.09" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.175" />
             <Button text="外置止血喷雾">
                 <StatusEffect type="OnUse" target="This" tags="active" duration="4" stackable="false">
                     <RequiredItem items="antibleeding3" type="Contained" />
@@ -104,10 +104,31 @@
             <damagemodifier afflictionidentifiers="bitewounds,blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
             <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
             <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+            <SkillModifier skillidentifier="helm" skillvalue="5" />
             <SkillModifier skillidentifier="weapons" skillvalue="5" />
             <sprite name="kep cap Wearable" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="false" scale="1.5" hidelimb="false" sourcerect="666,6,113,72" origin="0.47,1.0" />
+            <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
+                <Conditional oxygenlow="gt 25" />
+                <Conditional pressurestabilized="lt 1" />
+                <RequiredItem items="pressurestabilizer" type="Contained" />
+                <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="Character,Contained" condition="-1" targetslot="1" comparison="and" disabledeltatime="true">
+                <Conditional InPressure="true" />
+                <Conditional IsProtectedFromPressure="false" />
+                <RequiredItem items="pressurestabilizer" type="Contained" />
+                <Affliction identifier="pressurestabilized" amount="10" multiplybymaxvitality="true" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
+                <Conditional InPressure="true" />
+                <Conditional pressureProtection="lte 0" />
+                <Conditional pressurestabilized="lt 10" />
+                <Conditional pressurestabilized="gt 0" />
+                <RequiredItem items="pressurestabilizer" type="Contained" />
+                <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
+            </StatusEffect>
         </Wearable>
-        <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="syringe" containedstateindicatorslot="1" containedspritedepths="0.551,0.552">
             <Containable items="healthscanner,thermalgoggles">
                 <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
             </Containable>
@@ -117,7 +138,11 @@
             <Containable Items="thermalgoggles">
                 <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
             </Containable>
+            <SubContainer capacity="1" maxstacksize="1">
+                <Containable items="pressurestabilizer" />
+            </SubContainer>
             <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+            <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,640,64,64" origin="0.5,0.5" />
         </ItemContainer>
         <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
     </Item>
