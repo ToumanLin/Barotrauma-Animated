@@ -31,7 +31,7 @@
       <StatusHUD drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false" />
     </Item>
     <!--PUCS-->
-    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="2">
+    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5">
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
       <Price baseprice="670" sold="false">
         <Price storeidentifier="merchantoutpost" />
@@ -144,7 +144,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -156,6 +156,7 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
   </Items>
 </Override>
