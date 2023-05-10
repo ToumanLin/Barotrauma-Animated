@@ -242,10 +242,10 @@
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <!-- 在空气中 恢复氧气罐耐久 -->
-        <StatusEffect type="Always" target="Contained" Condition="1.0" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
           <Conditional HullOxygenPercentage="gte 50" />
           <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
@@ -382,6 +382,11 @@
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
           <Conditional HullOxygenPercentage="lt 50" />
@@ -507,6 +512,11 @@
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -637,6 +647,11 @@
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -779,6 +794,11 @@
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
