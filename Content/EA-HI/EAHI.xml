@@ -66,9 +66,9 @@
         <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
       </StatusEffect>
       <!-- refill when both hull oxygen gt 50 and not in water -->
-      <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
-        <RequiredItem items="oxygentank,oxygenitetank" type="Contained" excludebroken="false" />
-        <Conditional HullOxygenPercentage="gt 50" />
+      <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        <Conditional HullOxygenPercentage="gte 50" />
         <Conditional InWater="false" />
       </StatusEffect>
       <!-- comsume when neither Hull oxygen it 50 nor InWater -->
@@ -194,7 +194,7 @@
       <!--自定义界面-->
       <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
         <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
-        <TickBox text="开灯">
+        <TickBox text="epsp.light">
           <StatusEffect type="OnUse" targettype="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
         </TickBox>

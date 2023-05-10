@@ -179,7 +179,7 @@
       <StatusHUD drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false" />
     </Item>
     <!-- PUCS -->
-    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="2">
+    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5">
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
       <Price baseprice="670" sold="false">
         <Price storeidentifier="merchantoutpost" />
@@ -242,10 +242,10 @@
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
         </StatusEffect>
         <!-- 在空气中 恢复氧气罐耐久 -->
-        <StatusEffect type="Always" target="Contained" Condition="1.0" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
           <Conditional HullOxygenPercentage="gte 50" />
           <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
@@ -301,7 +301,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -313,9 +313,10 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
     <!-- Wf_pucs series -->
-    <Item name="" identifier="Wf_pucs" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false">
+    <Item name="" identifier="Wf_pucs" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
       <Price baseprice="670">
         <Price storeidentifier="merchantoutpost" multiplier="1" sold="false" />
         <Price storeidentifier="merchantcity" multiplier="1" sold="false" />
@@ -343,9 +344,9 @@
       <ContainedSprite name="Wf_PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="Wf_PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
       <Body radius="45" width="34" density="15" />
-      <CustomInterface canbeselected="false" drawhudwhenequipped="true">
-        <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
-        <TickBox text="Helmet Lights" IsOn="true">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+        <TickBox text="epsp.light">
           <StatusEffect type="OnUse" target="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
         </TickBox>
@@ -373,12 +374,17 @@
         <sprite name="Wf pucs Left Leg" texture="Wf_pucs.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
           <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
           <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
@@ -427,7 +433,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -439,8 +445,9 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
-    <Item name="" identifier="Wf_pucs_R" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false">
+    <Item name="" identifier="Wf_pucs_R" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
       <Price baseprice="670">
         <Price storeidentifier="merchantoutpost" multiplier="1" sold="false" />
         <Price storeidentifier="merchantcity" multiplier="1" sold="false" />
@@ -468,9 +475,9 @@
       <ContainedSprite name="Wf_PUCS_R Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_R.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="Wf_PUCS_R In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_R_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
       <Body radius="45" width="34" density="15" />
-      <CustomInterface canbeselected="false" drawhudwhenequipped="true">
-        <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
-        <TickBox text="Helmet Lights" IsOn="true">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+        <TickBox text="epsp.light">
           <StatusEffect type="OnUse" target="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
         </TickBox>
@@ -498,13 +505,18 @@
         <sprite name="Wf pucs Left Leg" texture="Wf_pucs_R.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_R.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_R.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
           <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
           <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -552,7 +564,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -564,8 +576,9 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
-    <Item name="" identifier="Wf_pucs_B" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false">
+    <Item name="" identifier="Wf_pucs_B" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
       <Price baseprice="750">
         <Price storeidentifier="merchantoutpost" multiplier="1" sold="false" />
         <Price storeidentifier="merchantcity" multiplier="1" sold="false" />
@@ -597,9 +610,9 @@
       <ContainedSprite name="Wf_PUCS_B Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_B.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="Wf_PUCS_B In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_B_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
       <Body radius="45" width="34" density="15" />
-      <CustomInterface canbeselected="false" drawhudwhenequipped="true">
-        <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
-        <TickBox text="Helmet Lights" IsOn="true">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+        <TickBox text="epsp.light">
           <StatusEffect type="OnUse" target="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
         </TickBox>
@@ -627,13 +640,18 @@
         <sprite name="Wf pucs Left Leg" texture="Wf_pucs_B.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_B.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_B.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="10000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="10000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
           <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
           <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -682,7 +700,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -694,8 +712,9 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
-    <Item name="" identifier="Wf_pucs_D" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false">
+    <Item name="" identifier="Wf_pucs_D" category="Diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,Wf_diving" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
       <Price baseprice="1000">
         <Price storeidentifier="merchantoutpost" multiplier="1" sold="false" />
         <Price storeidentifier="merchantcity" multiplier="1" sold="false" />
@@ -727,9 +746,9 @@
       <ContainedSprite name="Wf_pucs_D Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_D.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
       <ContainedSprite name="Wf_pucs_D In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/Wf_PUCS_D_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
       <Body radius="45" width="34" density="15" />
-      <CustomInterface canbeselected="false" drawhudwhenequipped="true">
-        <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
-        <TickBox text="Suit Power" IsOn="true">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.12,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+        <TickBox text="epsp.lightandscooter">
           <StatusEffect type="OnUse" target="This" IsOn="true" />
           <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
         </TickBox>
@@ -757,17 +776,13 @@
         <sprite name="Wf pucs Left Leg" texture="Wf_pucs_D.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_D.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_D.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
           <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
           <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
         </StatusEffect>
-        <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="1.7" PropulsionSpeedMultiplier="1.2" comparison="And" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
+        <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="1.7" comparison="And" setvalue="true" disabledeltatime="true">
           <Conditional InWater="true" />
           <Conditional IsOn="true" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Character" HideFace="false" ObstructVision="false" PressureProtection="6000.0" LowPassMultiplier="0.9" setvalue="true" disabledeltatime="true">
-          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
-          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="This" disabledeltatime="true" checkconditionalalways="true" comparison="And">
           <Conditional targetitemcomponent="MotionSensor" MotionDetected="eq true" />
@@ -779,6 +794,11 @@
         <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
           <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
           <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+          <Conditional HullOxygenPercentage="gte 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
         </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
           <Conditional IsDead="false" />
@@ -831,7 +851,7 @@
         <SubContainer capacity="1" maxstacksize="1">
           <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
           <Containable items="oxygenitetank">
-            <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
+            <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
               <Conditional IsDead="false" />
               <Conditional HullOxygenPercentage="lt 50" />
               <Conditional InWater="false" />
@@ -843,6 +863,7 @@
           <Containable items="chem,medical" />
         </SubContainer>
       </ItemContainer>
+      <aitarget maxsightrange="1500" />
     </Item>
   </Items>
 </Override>

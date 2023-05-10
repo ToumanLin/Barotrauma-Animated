@@ -38,38 +38,36 @@
             <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.4" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
             <sprite name="kep Torso" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Torso" depthlimb="RightForearm" hidelimb="false" inherittexturescale="false" inheritorigin="false" inheritsourcerect="false" sourcerect="455,31,132,177" scale="0.5" origin="0.75,0.4" />
             <StatValue stattype="FlowResistance" value="0.9" />
-            <StatusEffect type="OnWearing" target="Character,Contained" condition="-3.125" targetslot="0">
-                <Conditional burn="gt 0" />
-                <Conditional acidburn="gt 0" />
-                <Conditional bleeding="gt 0" />
-                <Conditional bleedingnonstop="gt 0" />
-                <RequiredItem items="antibleeding3" type="Contained" />
-                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
-                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="-90" anglemax="-90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
-                <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
-                <ReduceAffliction type="bleeding" amount="25" />
-                <ReduceAffliction type="burn" amount="25" />
-            </StatusEffect>
-            <StatusEffect type="OnWearing" target="This">
-                <Conditional HasStatusTag="active" />
-                <RequiredItem items="antibleeding3" type="Contained" />
-                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="10" distancemax="10" colormultiplier="255,192,203,255" />
-                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-30" anglemax="-30" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
-                <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-150" anglemax="-150" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
-                <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
-            </StatusEffect>
-            <StatusEffect type="OnWearing" target="This" interval="0.1" disabledeltatime="false">
-                <Conditional HasStatusTag="active" />
-                <RequiredItem items="antibleeding3" type="Contained" />
-                <SpawnItem identifiers="antibleedburnemitter" spawnposition="This" />
-            </StatusEffect>
         </Wearable>
         <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="tank">
             <SlotIcon slotindex="0" texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,448,64,64" origin="0.5,0.45" />
-            <Containable items="antibleeding3" />
+            <Containable items="antibleeding3">
+                <StatusEffect type="OnWearing" target="Character,Contained" condition="-3.125" targetslot="0">
+                    <Conditional burn="gt 0" />
+                    <Conditional acidburn="gt 0" />
+                    <Conditional bleeding="gt 0" />
+                    <Conditional bleedingnonstop="gt 0" />
+                    <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+                    <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="8" velocitymin="50" velocitymax="65" anglemin="-90" anglemax="-90" distancemin="0" distancemax="0" colormultiplier="255,192,203,255" />
+                    <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+                    <ReduceAffliction type="bleeding" amount="25" />
+                    <ReduceAffliction type="burn" amount="25" />
+                </StatusEffect>
+                <StatusEffect type="OnWearing" target="This">
+                    <Conditional HasStatusTag="active" />
+                    <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="90" anglemax="90" distancemin="10" distancemax="10" colormultiplier="255,192,203,255" />
+                    <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-30" anglemax="-30" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+                    <ParticleEmitter particle="steamspray" copytargetangle="true" particlespersecond="15" velocitymin="50" velocitymax="65" anglemin="-150" anglemax="-150" distancemin="20" distancemax="20" colormultiplier="255,192,203,255" />
+                    <sound file="Content/Items/Tools/Sprayer.ogg" type="OnUse" range="250.0" loop="true" />
+                </StatusEffect>
+                <StatusEffect type="OnWearing" target="This" interval="0.1" disabledeltatime="false">
+                    <Conditional HasStatusTag="active" />
+                    <SpawnItem identifiers="antibleedburnemitter" spawnposition="This" />
+                </StatusEffect>
+            </Containable>
         </ItemContainer>
         <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-            <GuiFrame relativesize="0.1,0.09" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.175" />
+            <GuiFrame relativesize="0.1,0.09" anchor="BottomRight" pivot="BottomRight" relativeoffset="0,0.18" />
             <Button text="外置止血喷雾">
                 <StatusEffect type="OnUse" target="This" tags="active" duration="4" stackable="false">
                     <RequiredItem items="antibleeding3" type="Contained" />
@@ -107,26 +105,6 @@
             <SkillModifier skillidentifier="helm" skillvalue="5" />
             <SkillModifier skillidentifier="weapons" skillvalue="5" />
             <sprite name="kep cap Wearable" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="false" scale="1.5" hidelimb="false" sourcerect="666,6,113,72" origin="0.47,1.0" />
-            <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
-                <Conditional oxygenlow="gt 25" />
-                <Conditional pressurestabilized="lt 1" />
-                <RequiredItem items="pressurestabilizer" type="Contained" />
-                <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
-            </StatusEffect>
-            <StatusEffect type="OnWearing" target="Character,Contained" condition="-1" targetslot="1" comparison="and" disabledeltatime="true">
-                <Conditional InPressure="true" />
-                <Conditional IsProtectedFromPressure="false" />
-                <RequiredItem items="pressurestabilizer" type="Contained" />
-                <Affliction identifier="pressurestabilized" amount="10" multiplybymaxvitality="true" />
-            </StatusEffect>
-            <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
-                <Conditional InPressure="true" />
-                <Conditional pressureProtection="lte 0" />
-                <Conditional pressurestabilized="lt 10" />
-                <Conditional pressurestabilized="gt 0" />
-                <RequiredItem items="pressurestabilizer" type="Contained" />
-                <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
-            </StatusEffect>
         </Wearable>
         <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="syringe" containedstateindicatorslot="1" containedspritedepths="0.551,0.552">
             <Containable items="healthscanner,thermalgoggles">
@@ -139,7 +117,26 @@
                 <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
             </Containable>
             <SubContainer capacity="1" maxstacksize="1">
-                <Containable items="pressurestabilizer" />
+                <Containable items="pressurestabilizer">
+                    <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
+                        <Conditional oxygenlow="gt 25" />
+                        <Conditional pressurestabilized="lt 1" />
+                        <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
+                    </StatusEffect>
+                    <!-- 用两个状态效果控制高压下的压力稳定，不这样的话在多人模式里会出现画面抖动的bug -->
+                    <StatusEffect type="OnWearing" target="Character,Contained" condition="-1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
+                        <Conditional InPressure="true" />
+                        <Conditional IsProtectedFromPressure="false" />
+                        <Affliction identifier="pressurestabilized" amount="10" multiplybymaxvitality="true" />
+                    </StatusEffect>
+                    <StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
+                        <Conditional InPressure="true" />
+                        <Conditional pressureProtection="lte 0" />
+                        <Conditional pressurestabilized="lt 10" />
+                        <Conditional pressurestabilized="gt 0" />
+                        <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
+                    </StatusEffect>
+                </Containable>
             </SubContainer>
             <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
             <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,640,64,64" origin="0.5,0.5" />

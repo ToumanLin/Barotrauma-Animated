@@ -61,14 +61,14 @@
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
         <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
         <Containable items="oxygenitetank">
-          <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.2" setvalue="true" targetslot="0">
+          <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.2" setvalue="true" targetslot="0">
             <Conditional IsDead="false" />
           </StatusEffect>
         </Containable>
       </ItemContainer>
     </Item>
     <!-- 普通潜水服 -->
-    <Item name="" identifier="divingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <Item name="" identifier="divingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="1">
       <Price baseprice="250">
         <Price storeidentifier="merchantoutpost" multiplier="0.9" minavailable="2" />
         <Price storeidentifier="merchantcity" multiplier="0.85" minavailable="4" />
@@ -76,7 +76,9 @@
         <Price storeidentifier="merchantmilitary" minavailable="3" />
         <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="5" />
       </Price>
-      <PreferredContainer primary="divingsuitcontainer" spawnprobability="1" maxleveldifficulty="35" />
+      <PreferredContainer primary="divingsuitcontainer" spawnprobability="1" campaignonly="true" maxleveldifficulty="35" />
+      <PreferredContainer primary="divingsuitcontainer" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer primary="piratedivingsuitcontainer" spawnprobability="1" maxleveldifficulty="35" />
       <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.1" maxleveldifficulty="35" />
       <Deconstruct time="30">
         <Item identifier="titaniumaluminiumalloy" />
@@ -153,17 +155,19 @@
       </Holdable>
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+        <Containable items="weldingtoolfuel" />
+        <Containable items="oxygensource">
+          <StatusEffect type="OnWearing" target="Contained">
+            <!-- <RequiredItem items="oxygensource" type="Contained" /> -->
+            <Conditional condition="lt 5.0" />
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          </StatusEffect>
+        </Containable>
         <Containable items="oxygenitetank">
-          <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
+          <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
             <Conditional IsDead="false" />
           </StatusEffect>
         </Containable>
-        <StatusEffect type="OnWearing" target="Contained">
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
-        </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
@@ -173,7 +177,7 @@
       <aitarget maxsightrange="1500" />
     </Item>
     <!-- 深渊潜水服 -->
-    <Item name="" identifier="abyssdivingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <Item name="" identifier="abyssdivingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="4">
       <Price baseprice="550" minleveldifficulty="35">
         <Price storeidentifier="merchantoutpost" multiplier="0.9" minavailable="1" />
         <Price storeidentifier="merchantcity" multiplier="0.85" minavailable="2" />
@@ -181,8 +185,9 @@
         <Price storeidentifier="merchantmilitary" minavailable="2" />
         <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="2" />
       </Price>
-      <PreferredContainer primary="divingsuitcontainer" spawnprobability="1" minleveldifficulty="35" />
-      <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.1" minleveldifficulty="35" />
+      <PreferredContainer primary="divingsuitcontainer" />
+      <PreferredContainer primary="piratedivingsuitcontainer" spawnprobability="1" minleveldifficulty="50" />
+      <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.05" minleveldifficulty="50" />
       <Deconstruct time="30">
         <Item identifier="titaniumaluminiumalloy" />
         <Item identifier="titaniumaluminiumalloy" />
@@ -258,17 +263,19 @@
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+        <Containable items="weldingtoolfuel" />
+        <Containable items="oxygensource">
+          <StatusEffect type="OnWearing" target="Contained">
+            <!-- <RequiredItem items="oxygensource" type="Contained" /> -->
+            <Conditional condition="lt 5.0" />
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          </StatusEffect>
+        </Containable>
         <Containable items="oxygenitetank">
-          <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
+          <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
             <Conditional IsDead="false" />
           </StatusEffect>
         </Containable>
-        <StatusEffect type="OnWearing" target="Contained">
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
-        </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
@@ -278,7 +285,7 @@
       <aitarget maxsightrange="1500" />
     </Item>
     <!-- 战斗潜水服 -->
-    <Item name="" identifier="combatdivingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <Item name="" identifier="combatdivingsuit" category="Diving,Equipment" tags="diving,deepdiving,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="2">
       <Price baseprice="560" minleveldifficulty="35">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
         <Price storeidentifier="merchantcity" multiplier="0.85" minavailable="2" sold="false" />
@@ -287,8 +294,9 @@
         <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
         <Price storeidentifier="merchantarmory" multiplier="0.85" minavailable="3" />
       </Price>
-      <PreferredContainer primary="divingsuitcontainer" spawnprobability="1" minleveldifficulty="35" />
-      <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.1" minleveldifficulty="35" />
+      <PreferredContainer primary="divingsuitcontainer" />
+      <PreferredContainer primary="piratedivingsuitcontainer" spawnprobability="1" minleveldifficulty="35" />
+      <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.05" minleveldifficulty="35" />
       <Deconstruct time="30">
         <Item identifier="ballisticfiber" />
         <Item identifier="titaniumaluminiumalloy" />
@@ -367,17 +375,19 @@
       <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
       <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+        <Containable items="weldingtoolfuel" />
+        <Containable items="oxygensource">
+          <StatusEffect type="OnWearing" target="Contained">
+            <!-- <RequiredItem items="oxygensource" type="Contained" /> -->
+            <Conditional condition="lt 5.0" />
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+          </StatusEffect>
+        </Containable>
         <Containable items="oxygenitetank">
-          <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
+          <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" targetslot="0">
             <Conditional IsDead="false" />
           </StatusEffect>
         </Containable>
-        <StatusEffect type="OnWearing" target="Contained">
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
-        </StatusEffect>
         <StatusEffect type="OnWearing" target="Contained" playsoundonrequireditemfailure="true">
           <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
           <Conditional condition="lte 0.0" />
