@@ -136,6 +136,13 @@
                         <Conditional pressurestabilized="gt 0" />
                         <Affliction identifier="pressurestabilized" amount="1" multiplybymaxvitality="true" />
                     </StatusEffect>
+                    <!-- 警报 -->
+                    <StatusEffect type="OnWearing" target="Contained" comparison="and">
+                        <Conditional InPressure="true" TargetContainer="true" targetgrandparent="true" />
+                        <Conditional pressureProtection="lte 0" TargetContainer="true" targetgrandparent="true" />
+                        <Conditional condition="lt 3.0" />
+                        <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+                    </StatusEffect>
                 </Containable>
             </SubContainer>
             <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
