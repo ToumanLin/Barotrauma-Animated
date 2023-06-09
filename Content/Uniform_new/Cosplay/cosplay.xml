@@ -254,8 +254,8 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
       </Wearable>
     </Item>
-    <!--凯尔希-->
-    <Item name="" identifier="Kaltsituniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
+    <!--舟：凯尔希-->
+    <Item name="" identifier="Kaltsituniform" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
       <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
       <Price baseprice="150" minavailable="1">
@@ -291,6 +291,80 @@
       <ItemContainer capacity="3">
         <Containable items="chem,medical" />
       </ItemContainer>
+    </Item>
+    <!-- 舟：天火 -->
+    <Item name="" identifier="skyfireuniform" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft" fireproof="true">
+      <PreferredContainer primary="crewcab" />
+      <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+      <Price baseprice="150" minavailable="1">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+        <Price storeidentifier="merchantresearch" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" minavailable="1" />
+        <Price storeidentifier="merchantmine" minavailable="1" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Skyfire Uniform Icon" texture="%ModDir:2809175631%/Content/Uniform_new/Cosplay/icons.png" sourcerect="0,0,128,128" origin="0.5,0.5" />
+      <Sprite name="Skyfire Uniform" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="768,297,126,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Skyfire's Uniform Torso" texture="skyfire.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Right Hand" texture="skyfire.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" sourcerect="0,0,1,1" />
+        <sprite name="Skyfire's Uniform Left Hand" texture="skyfire.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" sourcerect="0,0,1,1" />
+        <sprite name="Skyfire's Uniform Right Lower Arm" texture="skyfire.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Left Lower Arm" texture="skyfire.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Right Upper Arm" texture="skyfire.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" origin="0.7968,0.5" sourcerect="272,96,64,96" />
+        <sprite name="Skyfire's Uniform Left Upper Arm" texture="skyfire.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" origin="0.7968,0.5" sourcerect="336,96,64,96" />
+        <sprite name="Skyfire's Uniform Waist" texture="skyfire.png" limb="Waist" hidelimb="true" inherittexturescale="true" origin="0.7222,0.3333" sourcerect="0,256,144,96" />
+        <sprite name="Skyfire's Uniform Right Thigh" texture="skyfire.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Left Thigh" texture="skyfire.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Right Leg" texture="skyfire.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Left Leg" texture="skyfire.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Left Shoe" texture="skyfire.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Uniform Right Shoe" texture="skyfire.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.85" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.8" />
+      </Wearable>
+    </Item>
+    <!-- 舟：温差 RT.RX01-天火 -->
+    <Item name="" identifier="skyfireswimsuit" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft" fireproof="true">
+      <PreferredContainer primary="crewcab" />
+      <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+      <Price baseprice="150" minavailable="1">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+        <Price storeidentifier="merchantresearch" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" minavailable="1" />
+        <Price storeidentifier="merchantmine" minavailable="1" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Skyfire Swimsuit Icon" texture="%ModDir:2809175631%/Content/Uniform_new/Cosplay/icons.png" sourcerect="0,0,128,128" origin="0.5,0.5" />
+      <Sprite name="Skyfire Swimsuit" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="768,297,126,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Skyfire's Swimsuit Torso" texture="Skyfire_swimsuit.png" limb="Torso" hidelimb="false" inherittexturescale="true" origin="0.5,0.4285" sourcerect="160,0,112,224" />
+        <sprite name="Skyfire's Swimsuit Right Hand" texture="Skyfire_swimsuit.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Left Hand" texture="Skyfire_swimsuit.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Right Lower Arm" texture="Skyfire_swimsuit.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Left Lower Arm" texture="Skyfire_swimsuit.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Right Upper Arm" texture="Skyfire_swimsuit.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Left Upper Arm" texture="Skyfire_swimsuit.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Waist" texture="Skyfire_swimsuit.png" limb="Waist" hidelimb="false" inherittexturescale="true" origin="0.7222,0.3333" sourcerect="0,128,144,96" />
+        <sprite name="Skyfire's Swimsuit Right Thigh" texture="Skyfire_swimsuit.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Left Thigh" texture="Skyfire_swimsuit.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Right Leg" texture="Skyfire_swimsuit.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" sourcerect="0,0,1,1" />
+        <sprite name="Skyfire's Swimsuit Left Leg" texture="Skyfire_swimsuit.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" sourcerect="0,0,1,1" />
+        <sprite name="Skyfire's Swimsuit Left Shoe" texture="Skyfire_swimsuit.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Skyfire's Swimsuit Right Shoe" texture="Skyfire_swimsuit.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.85" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.8" />
+      </Wearable>
     </Item>
     <!--圣宣-->
     <Item name="" identifier="shengxuanuniform" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,huskcult" scale="0.5" impactsoundtag="impact_soft">
@@ -363,16 +437,19 @@
           <ReduceAffliction type="bleeding" amount="0.05" />
         </StatusEffect>
       </Wearable>
-      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
-        <Containable items="healthscanner,thermalgoggles">
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
           <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
         </Containable>
         <Containable Items="healthscanner">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
         </Containable>
         <Containable Items="thermalgoggles">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
         </Containable>
         <SlotIcon slotindex="0" texture="%ModDir:2809175631%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
       </ItemContainer>
