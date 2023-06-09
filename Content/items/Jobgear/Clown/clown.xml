@@ -65,6 +65,7 @@
         <!-- HENK -->
         <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
         <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+        <StatusEffect tags="clown" type="OnWearing" target="Character" duration="0.1" stackable="false" />
       </Wearable>
     </Item>
     <!--修改贴图-->
@@ -87,14 +88,18 @@
         <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
       </Wearable>
       <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
-        <Containable items="healthscanner,thermalgoggles">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
         </Containable>
         <Containable Items="healthscanner">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
         </Containable>
         <Containable Items="thermalgoggles">
-          <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
         </Containable>
         <SlotIcon slotindex="0" texture="%ModDir:2850994195%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
       </ItemContainer>
@@ -134,6 +139,7 @@
         <!-- HöNK -->
         <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
         <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
+        <StatusEffect tags="clown" type="OnWearing" target="Character" duration="0.1" stackable="false" />
         <SkillModifier skillidentifier="helm" skillvalue="5" />
         <SkillModifier skillidentifier="weapons" skillvalue="5" />
         <SkillModifier skillidentifier="mechanical" skillvalue="5" />
