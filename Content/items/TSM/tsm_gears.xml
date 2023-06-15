@@ -107,14 +107,18 @@
             <sprite name="kep cap Wearable" texture="%ModDir%/Content/items/TSM/kepsuit.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="false" scale="1.5" hidelimb="false" sourcerect="666,6,113,72" origin="0.47,1.0" />
         </Wearable>
         <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="syringe" containedstateindicatorslot="1" containedspritedepths="0.551,0.552">
-            <Containable items="healthscanner,thermalgoggles">
-                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" delay="1" stackable="false" />
+            <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+                <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
+                <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
             </Containable>
             <Containable Items="healthscanner">
-                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+                <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
             </Containable>
             <Containable Items="thermalgoggles">
-                <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+                <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+            </Containable>
+            <Containable Items="electriciansgoggles">
+                <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
             </Containable>
             <SubContainer capacity="1" maxstacksize="1">
                 <Containable items="pressurestabilizer">
