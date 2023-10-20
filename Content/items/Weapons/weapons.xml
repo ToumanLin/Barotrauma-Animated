@@ -1,41 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <override>
-  <Items>
+<Items>
     <!-- 欧罗巴之交:修改贴图,取消隐藏 -->
-    <Item name="" identifier="divingknifeunique" category="Weapon" Tags="smallitem,weapon,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="false" allowasextracargo="true" RequireAimToUse="True">
-      <PreferredContainer primary="secarmcab" secondary="armcab" />
-      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.05" />
-      <Price baseprice="770" sold="false" canbespecial="false" />
-      <Deconstruct time="10">
-        <Item identifier="iron" />
-        <Item identifier="morbusine" />
-      </Deconstruct>
-      <!-- <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="448,320,64,64" origin="0.5,0.5" /> -->
-      <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="304,0,76,17" depth="0.55" origin="0.5,0.5" />
-      <Body width="67" height="15" density="25" />
-      <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="30" reload="0.75" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
-        <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="3" structuredamage="2" structuresoundtype="StructureSlash">
-          <Affliction identifier="lacerations" strength="10" />
-          <Affliction identifier="bleeding" strength="10" />
-          <Affliction identifier="stun" strength="0.2" />
-          <Affliction identifier="morbusinepoisoning" strength="4" />
-          <StatusEffect type="OnUse" target="UseTarget">
-            <Conditional entitytype="eq Character" />
-            <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
-            <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
-          </StatusEffect>
-        </Attack>
-      </MeleeWeapon>
-      <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
-      <Quality>
-        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
-      </Quality>
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
-    </Item>
+  <Item name="" identifier="divingknifeunique" category="Weapon" Tags="smallitem,weapon,mountableweapon,sharptool" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true" RequireAimToUse="True">
+    <PreferredContainer primary="secarmcab" secondary="armcab" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.05" />
+    <Price baseprice="770" sold="false" canbespecial="false" />
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+      <Item identifier="morbusine" />
+    </Deconstruct>
+    <!-- <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="448,320,64,64" origin="0.5,0.5" /> -->
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="304,0,76,17" depth="0.55" origin="0.5,0.5" />
+    <Body width="67" height="15" density="25" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="30" reload="0.75" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="3" structuredamage="2" structuresoundtype="StructureSlash">
+        <Affliction identifier="lacerations" strength="10" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="stun" strength="0.2" />
+        <Affliction identifier="morbusinepoisoning" strength="4" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
+    <Quality>
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
     <!-- 冲锋枪弹匣:修改贴图,容量加到45发,回收配方匹配其他弹匣 -->
     <Item name="" identifier="smgmagazine" maxstacksize="2" scale="0.5" category="Weapon" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,smgammo" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="smg,smgunique,machinepistol" amount="1" spawnprobability="1" />
@@ -85,22 +85,30 @@
       <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
       <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
       <PreferredContainer secondary="armcab,weaponholder" />
-      <Price baseprice="390" minleveldifficulty="30">
+      <Price baseprice="100" displaynonempty="true" minleveldifficulty="15">
         <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
         <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
         <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="4" />
       </Price>
-      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="55" />
-        <RequiredItem identifier="plastic" />
-        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="true" displayname="recycleitem">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="smgmagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
       </Fabricate>
       <Deconstruct time="10">
-        <Item identifier="plastic" />
-        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="steel" />
       </Deconstruct>
       <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="0,128,200,60" depth="0.55" origin="0.5,0.5" />
       <Body width="200" height="60" density="25" />
@@ -137,7 +145,7 @@
         <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
         <RequiredSkill identifier="weapons" level="50" />
       </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="smground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
         <Containable items="smgammo" hide="false" itempos="-2,-5" />
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
         <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
@@ -154,54 +162,54 @@
       <SkillRequirementHint identifier="weapons" level="50" />
     </Item>
     <!-- 左轮手枪:修改贴图 -->
-    <Item name="" identifier="revolver" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
-      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
-      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
-      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
-      <Price baseprice="150">
-        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" minavailable="1" />
-        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
-        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
-      </Price>
-      <Deconstruct time="10">
-        <Item identifier="steel" />
-        <Item identifier="plastic" />
-      </Deconstruct>
-      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="35" />
-        <RequiredItem identifier="steel" amount="2" />
-        <RequiredItem identifier="plastic" />
-      </Fabricate>
-      <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="208,0,80,42" depth="0.55" origin="0.5,0.5" />
-      <Body width="76" height="40" density="25" />
-      <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="70,5" handle1="-25,-7" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon barrelpos="32,12" spread="0" unskilledspread="2" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" reload="0.5">
-        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
-        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-        <Sound file="Content/Items/Weapons/Revolver1.ogg" type="OnUse" range="3000" selectionmode="Random" />
-        <Sound file="Content/Items/Weapons/Revolver2.ogg" type="OnUse" range="3000" />
-        <Sound file="Content/Items/Weapons/Revolver3.ogg" type="OnUse" range="3000" />
-        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
-        <StatusEffect type="OnUse">
-          <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
-        </StatusEffect>
-        <RequiredItems items="revolverammo" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="40" />
-      </RangedWeapon>
-      <ItemContainer capacity="1" maxstacksize="6" hideitems="true" containedstateindicatorstyle="bullet">
-        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
-        <Containable items="revolverammo" />
-      </ItemContainer>
-      <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
-      <Quality>
-        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
-      </Quality>
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
-      <SkillRequirementHint identifier="weapons" level="40" />
-    </Item>
+  <Item name="" identifier="revolver" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
+    <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" minavailable="1" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+      <RequiredSkill identifier="weapons" level="35" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="208,0,80,42" depth="0.55" origin="0.5,0.5" />
+    <Body width="76" height="40" density="25" />
+    <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="70,5" handle1="-25,-7" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="32,12" spread="0" unskilledspread="2" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" reload="0.5">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <Sound file="Content/Items/Weapons/Revolver1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/Revolver2.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Weapons/Revolver3.ogg" type="OnUse" range="3000" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+      </StatusEffect>
+      <RequiredItems items="revolverammo" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="40" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="6" hideitems="true" containedstateindicatorstyle="bullet">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <Containable items="revolverammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <SkillRequirementHint identifier="weapons" level="40" />
+  </Item>
     <!-- 鱼叉枪:修改贴图,隐藏鱼叉,射速受技能影响 -->
     <Item name="" identifier="harpoongun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
       <PreferredContainer secondary="wreckweaponholder" spawnprobability="0.05" />
@@ -364,7 +372,7 @@
       <SkillRequirementHint identifier="weapons" level="50" />
     </Item>
     <!-- 潜水刀:修改贴图 -->
-    <Item name="" identifier="divingknife" category="Weapon" Tags="smallitem,weapon,gunsmith,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Item name="" identifier="divingknife" category="Weapon" Tags="smallitem,weapon,gunsmith,mountableweapon, sharptool" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
       <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.25" />
       <PreferredContainer secondary="abandonedstoragecab" amount="1" spawnprobability="0.05" />
       <PreferredContainer secondary="beaconsupplycab" amount="1" spawnprobability="0.05" />
@@ -410,5 +418,5 @@
       </Quality>
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
-  </Items>
+</Items>
 </override>
