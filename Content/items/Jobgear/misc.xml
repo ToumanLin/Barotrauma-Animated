@@ -24,7 +24,10 @@
         <RequiredItem identifier="fpgacircuit" />
       </Fabricate>
       <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
-        <!--RequiredItems items="mobilebattery" type="Contained" /-->
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
       </WifiComponent>
       <Upgrade gameversion="0.18.0.0">
         <WifiComponent>
