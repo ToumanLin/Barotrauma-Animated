@@ -89,34 +89,5 @@
     </Quality>
     <SkillRequirementHint identifier="weapons" level="60" />
   </Item>
-  <Item name="" identifier="coalitioncommendation" category="Misc" Tags="smallitem" cargocontaineridentifier="metalcrate" allowasextracargo="true" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.5" impactsoundtag="impact_soft">
-    <PreferredContainer primary="crewcab"/>
-    <Price baseprice="300" buyingpricemodifier="5" minleveldifficulty="40">
-      <Price storeidentifier="merchantoutpost" maxavailable="0" />
-      <Price storeidentifier="merchantcity" multiplier="0.9" maxavailable="1" />
-      <Price storeidentifier="merchantresearch" sold="false" multiplier="0.9" />
-      <Price storeidentifier="merchantmilitary" maxavailable="1" />
-      <Price storeidentifier="merchantmine" sold="false" multiplier="0.75" />
-    </Price>
-    <Deconstruct time="20">
-      <Item identifier="copper" />
-    </Deconstruct>
-    <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="265,365,36,65" origin="0.5,0.5" />
-    <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="3,4,24,43" depth="0.6" origin="0.5,0.5" />
-    <Body width="19" height="40" density="25" />
-    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,5" holdangle="90" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
-      <Attack targetimpulse="5">
-        <!-- empty attack so that a talent can trigger-->
-      </Attack>
-      <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
-      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true">
-        <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
-        <GiveExperience amount="275" />
-      </StatusEffect>
-      <StatusEffect type="OnBroken" target="This">
-        <Remove />
-      </StatusEffect>
-    </MeleeWeapon>
-  </Item>
 </Items>
 </Override>

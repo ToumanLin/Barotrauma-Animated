@@ -80,54 +80,46 @@
       <Upgrade gameversion="0.10.0.0" scale="0.5" />
     </Item>
     <!-- 冲锋枪:修改贴图,替换音效,降低伤害倍率,品质等级加成射速 -->
-    <Item name="" identifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
-      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
-      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
-      <PreferredContainer secondary="armcab,weaponholder" />
-      <Price baseprice="100" displaynonempty="true" minleveldifficulty="15">
-        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
-        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
-        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
-        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="4" />
-      </Price>
-      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
-        <RequiredSkill identifier="weapons" level="40" />
-        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
-        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
-        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
-        <RequiredItem identifier="steel" />
-      </Fabricate>
-      <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="true" displayname="recycleitem">
-        <RequiredSkill identifier="weapons" level="40" />
-        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
-        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
-        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
-        <RequiredItem identifier="smgmagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
-      </Fabricate>
-      <Deconstruct time="10">
-        <Item identifier="steel" />
-      </Deconstruct>
-      <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="0,128,200,60" depth="0.55" origin="0.5,0.5" />
-      <Body width="200" height="60" density="25" />
-      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="45,-10" handle1="-54,-6" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon reload="0.19" weapondamagemodifier="1.1" penetration="0.15" holdtrigger="true" barrelpos="88,20" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
-        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
-        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
-        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
-        <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
-        <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
-        <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
-        <StatusEffect type="OnUse">
-          <Explosion range="150.0" force="0.8" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="4.0" />
-        </StatusEffect>
-        <!--"Use" contained magazine to spawn projectiles.-->
-        <StatusEffect type="OnUse" target="Contained">
-          <Use />
-        </StatusEffect>
-        <!--持续射击加大扩散-->
+  <Item name="" identifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
+    <PreferredContainer secondary="armcab,weaponholder" />
+    <Price baseprice="390" minleveldifficulty="30">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+      <RequiredSkill identifier="weapons" level="55" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Weapons/weapons_new.png" sourcerect="0,128,200,60" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="60" density="25" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="45,-10" handle1="-54,-6" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.19" weapondamagemodifier="1.1" penetration="0.15" holdtrigger="true" barrelpos="88,20" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir:2809175631%/Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+      </StatusEffect>
+      <!--"Use" contained magazine to spawn projectiles.-->
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+<!--持续射击加大扩散-->
         <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="4" disabledeltatime="true">
           <Conditional spread="lte 4" />
         </StatusEffect>
@@ -142,25 +134,25 @@
         <StatusEffect type="Always" target="This" spread="0" unskilledspread="10" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
           <Conditional ReloadTimer="0" />
         </StatusEffect>
-        <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
-        <RequiredSkill identifier="weapons" level="50" />
-      </RangedWeapon>
-      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="smground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
-        <Containable items="smgammo" hide="false" itempos="-2,-5" />
-        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
-        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
-        <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="flashlight" hide="false" itempos="22,-1" setactive="true" />
-        </SubContainer>
-      </ItemContainer>
-      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
-      <Quality>
-        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
-        <QualityStat stattype="FiringRateMultiplier" value="0.1" />
-      </Quality>
-      <Upgrade gameversion="0.10.0.0" scale="0.5" />
-      <SkillRequirementHint identifier="weapons" level="50" />
-    </Item>
+      <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="50" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+      <Containable items="smgammo" hide="false" itempos="-2,-5" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+      <Containable items="flashlight" hide="false" itempos="22,-1" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    <QualityStat stattype="FiringRateMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
     <!-- 左轮手枪:修改贴图 -->
   <Item name="" identifier="revolver" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_light">
     <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
