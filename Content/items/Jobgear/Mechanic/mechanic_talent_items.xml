@@ -66,7 +66,7 @@
     <Sprite name="Makeshift Armor Item" texture="%ModDir:2809175631%/Content/Items/Diving/MakeshiftArmor_Items.png" sourcerect="7,6,137,115" depth="0.55" origin="0.5,0.5" />
     <Body width="62" height="120" density="30" />
     <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
       <!-- MOD FEATURE -->
       <damagemodifier afflictionidentifiers="bitewounds, lacerations, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
@@ -87,6 +87,7 @@
       <sprite name="Makeshift Armor Left Shoe" texture="%ModDir:2809175631%/Content/Items/Diving/MakeshiftArmor.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Makeshift Armor Right Shoe" texture="%ModDir:2809175631%/Content/Items/Diving/MakeshiftArmor.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <StatValue stattype="FlowResistance" value="0.9" />
+      <StatValue stattype="PropulsionSpeed" value="-0.1" />
     </Wearable>
   </Item>
   <!-- 铁头盔:新增钝器伤、脑震荡抗性，移除遮挡视野和减速 -->
@@ -162,7 +163,7 @@
       <sprite name="Exosuit Left Shoe" texture="%ModDir:2809175631%/Content/Items/Jobgear/Mechanic/Exosuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" origin="0.2,0.5" inheritsourcerect="false" sourcerect="371,211,133,37" />
       <sprite name="Exosuit Right Shoe" texture="%ModDir:2809175631%/Content/Items/Jobgear/Mechanic/Exosuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" origin="0.2,0.5" inheritsourcerect="false" sourcerect="371,211,133,37" />
       <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
-      <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.2" HideFace="true" ObstructVision="true" PressureProtection="7000.0"  PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true">
+      <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.2" HideFace="true" ObstructVisionAmount="0.5" PressureProtection="7000.0"  PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
         <TriggerAnimation Type="Walk" FileName="HumanWalkExosuit" priority="1" ExpectedSpecies="Human" />
@@ -222,7 +223,7 @@
             <Conditional NeedsAir="true" />
           </StatusEffect>
         </Containable>
-        <Containable items="weldingfueltank">
+        <Containable items="weldingfueltank" blameequipperfordeath="true">
           <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
             <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
             <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
@@ -234,7 +235,7 @@
             <Conditional NeedsAir="true" />
           </StatusEffect>
         </Containable>
-        <Containable items="incendiumfueltank">
+        <Containable items="incendiumfueltank" blameequipperfordeath="true">
           <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
             <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
             <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />

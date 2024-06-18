@@ -87,7 +87,7 @@
       <sprite name="Clown Mask Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="400,384,112,128" origin="0.6,0.5" />
       <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
     </Wearable>
-    <!-- MOD FEATURE -->
+    <!-- MOD FEATURE ADD slots for goggles-->
     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
@@ -143,7 +143,7 @@
       <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
       <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagesound="LimbClown" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="explosiondamage" damagemultiplier="0.8" damagesound="" deflectprojectiles="true" />
-      <!-- MOD FEATURE -->
+      <!-- MOD FEATURE Add Skill in line with assistant uniform-->
       <SkillModifier skillidentifier="helm" skillvalue="5" />
       <SkillModifier skillidentifier="weapons" skillvalue="5" />
       <SkillModifier skillidentifier="mechanical" skillvalue="5" />
@@ -151,7 +151,7 @@
       <SkillModifier skillidentifier="medical" skillvalue="5" />
     </Wearable>
   </Item>
-  
+  <!-- TODO -->
   <Item name="" identifier="clownexosuit" category="Diving,Equipment" tags="clowngear,diving,deepdiving,deepdivinglarge,clowns,human" scale="0.5" fireproof="true" description="" isshootable="true" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="0.01" cargocontaineridentifier="">
     <Price baseprice="1500" canbespecial="false" sold="false" />
     <Deconstruct time="30">
@@ -192,7 +192,7 @@
       <sprite name="Clown Exosuit Right Shoe" texture="Content/Items/JobGear/Clown/ClownExosuit.png" limb="RightFoot" sound="footstep_clown" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" origin="0.2,0.5" inheritsourcerect="false" sourcerect="371,211,133,37" />
       <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" UseHullOxygen="false" />
       <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
-      <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" PressureProtection="7000.0" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true">
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVisionAmount="0.5" PressureProtection="7000.0"  setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true"/>
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true"/>
         <TriggerAnimation Type="Walk" FileName="HumanWalkExosuit" priority="1" ExpectedSpecies="Human" />
@@ -264,7 +264,7 @@
             <Conditional NeedsAir="true" />
           </StatusEffect>
         </Containable>
-        <Containable items="weldingfueltank">
+        <Containable items="weldingfueltank" blameequipperfordeath="true">
           <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
             <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
             <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
@@ -276,7 +276,7 @@
             <Conditional NeedsAir="true" />
           </StatusEffect>
         </Containable>
-        <Containable items="incendiumfueltank">
+        <Containable items="incendiumfueltank" blameequipperfordeath="true">
           <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
             <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
             <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />

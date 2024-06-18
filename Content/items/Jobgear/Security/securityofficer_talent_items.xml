@@ -2,7 +2,7 @@
 <Override>
 <Items>
   <!-- 自动霰弹枪：更改贴图 -->
-  <Item name="" identifier="autoshotgun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.62" impactsoundtag="impact_metal_light">
+  <Item name="" identifier="autoshotgun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,provocativetohumanai" Scale="0.62" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder"/>
     <Price baseprice="710" sold="false">
       <Price storeidentifier="merchantoutpost" multiplier="1.4" />
@@ -32,7 +32,8 @@
     <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
       <sprite name="Autoshogun Worn" texture="autoshotgun.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="0,0,216,64" limb="Torso" ignorelimbscale="true" scale="0.62" origin="0.5,0.9" />
     </Wearable>
-    <RangedWeapon barrelpos="68,10" weapondamagemodifier="0.9" spread="0.2" unskilledspread="3" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
+    <!-- MOD FEATURE Increased weapondamage -->
+    <RangedWeapon barrelpos="68,10" weapondamagemodifier="2.0" spread="5" unskilledspread="18" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
       <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
       <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
       <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
@@ -89,16 +90,17 @@
     <InventoryIcon texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="202,304,48,61" origin="0.45,0.5" />
     <Sprite texture="%ModDir:2809175631%/Content/Items/JobGear/Security/bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
     <Body radius="30" height="30" density="15" />
-    <Wearable slots="OuterClothes" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
       <sprite name="Security Vest" texture="%ModDir:2809175631%/Content/Items/JobGear/Security/bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
       <SkillModifier skillidentifier="weapons" skillvalue="15" />
-      <StatValue stattype="RangedAttackSpeed" value="0.25" />
-      <StatValue stattype="TurretAttackSpeed" value="0.25" />
-      <StatValue stattype="TurretChargeSpeed" value="0.25" />
+      <StatValue stattype="RangedAttackSpeed" value="0.1" />
+      <StatValue stattype="TurretAttackSpeed" value="0.1" />
+      <StatValue stattype="TurretChargeSpeed" value="0.1" />
     </Wearable>
     <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="0,0-30" handle2="0,-30" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
     <!-- MOD FEATURE MORE CONTAINABLE -->
     <ItemContainer capacity="8" maxstacksize="32">
+      <SlotIcon texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
       <Containable items="smallitem,mediumitem,ammobox,coilgunammo" excludeditems="toolbelt,toolbox,bandolier,cargoscooter" />
     </ItemContainer>
   </Item>
@@ -192,9 +194,9 @@
       <sprite name="SlipSuit Left Leg" texture="slipsuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="SlipSuit Left Shoe" texture="slipsuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="SlipSuit Right Shoe" texture="slipsuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <StatusEffect type="OnWearing" />
-      <StatusEffect type="OnWearing" PropulsionSpeedMultiplier="1.4" />
-      <StatValue stattype="SwimmingSpeed" value="0.4" />
+      <!-- <StatusEffect type="OnWearing" /> the default swim suit's Status Effect did inherent -->
+      <StatValue stattype="SwimmingSpeed" value="0.45" />
+      <StatValue stattype="PropulsionSpeed" value="0.4" />
       <StatValue stattype="WalkingSpeed" value="-0.3" />
     </Wearable>
   </Item>

@@ -13,7 +13,7 @@
         <Price locationtype="merchantmilitary" multiplier="0.9" sold="false" />
         <Price locationtype="merchantmine" multiplier="1.25" sold="false" />
       </Price>
-      <InventoryIcon texture="%ModDir:2809175631%/Content/items/Weapons/Katana.png" sourcerect="310,234,74,54" origin="0.5,0.5" />
+      <InventoryIcon texture="%ModDir:2809175631%/Content/items/Weapons/Katana.png" sourcerect="310,234,64,64" origin="0.5,0.5" />
       <Sprite texture="%ModDir:2809175631%/Content/items/Weapons/Katana.png" sourcerect="0,234,310,54" depth="0.55" origin="0.5,0.5" />
       <Body width="305" height="32" density="45" />
       <MeleeWeapon slots="RightHand+LeftHand,Any" aimpos="45,20" handle1="-35,-2" holdangle="30" reload="0.95" range="100" combatPriority="49" msg="ItemMsgPickUpSelect">
@@ -204,13 +204,13 @@
       <Sprite texture="%ModDir:2809175631%/Content/items/Weapons/Blame_harpoongun.png" sourcerect="0,0,240,44" depth="0.55" origin="0.5,0.5" />
       <Body width="195" height="35" density="50" />
       <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="65,-10" aimpos="65,-2" handle1="-52,-8" handle2="10,4" holdangle="-40" msg="ItemMsgPickUpSelect" />
-      <RangedWeapon barrelpos="150,14" spread="1" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <RangedWeapon weapondamagemodifier="2.3" barrelpos="150,14" spread="1" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="Content/Items/Weapons/HarpoonGun1.ogg" type="OnUse" />
         <Sound file="Content/Items/Weapons/HarpoonGun2.ogg" type="OnUse" />
         <Sound file="Content/Items/Weapons/HarpoonGun3.ogg" type="OnUse" />
-        <StatusEffect type="OnUse">
+        <StatusEffect type="OnUse" target="This">
           <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <RequiredItems items="mobilebattery,Blame_mobilebattery" targetslot="0" type="Contained" msg="ItemMsgBatteryCellRequired" />
@@ -344,7 +344,7 @@
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="%ModDir:2809175631%/Content/Items/Weapons/G.B.E shooting.ogg" type="OnUse" />
-        <StatusEffect type="OnUse">
+        <StatusEffect type="OnUse" target="This">
           <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <StatusEffect type="OnUse" target="Contained">
@@ -546,7 +546,7 @@
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <Sound file="%ModDir:2809175631%/Content/Items/Weapons/G.B.E shooting.ogg" type="OnUse" />
-        <StatusEffect type="OnUse">
+        <StatusEffect type="OnUse" target="This">
           <Explosion range="150.0" force="2" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
         <StatusEffect type="OnUse" target="this" condition="-10" disabledeltatime="true">
