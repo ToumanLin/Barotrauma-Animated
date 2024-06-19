@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!-- 手炮子弹：产量加倍 -->
-    <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,handcannonammo,pistolammoitem" impactsoundtag="impact_metal_light">
+    <!-- 手炮子弹 -->
+    <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,handcannonammo,pistolammoitem" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="secarmcab" secondary="armcab" />
       <PreferredContainer primary="handcannon" amount="6" spawnprobability="1.0" />
       <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="6" spawnprobability="0.02" />
-      <Price baseprice="70" sold="false" />
-      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="12">
+      <Price baseprice="50" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
         <RequiredSkill identifier="weapons" level="45" />
-        <RequiredItem identifier="magnesium" />
-        <RequiredItem identifier="lead" amount="2" />
-        <RequiredItem identifier="titaniumaluminiumalloy" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
       </Fabricate>
       <InventoryIcon texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="166,430,43,43" origin="0.5,0.5" />
       <Sprite texture="%ModDir:2809175631%/Content/Items/Jobgear/TalentGear.png" sourcerect="3,118,24,9" depth="0.55" origin="0.5,0.5" />
@@ -45,7 +46,7 @@
         <Price storeidentifier="merchantmilitary" multiplier="0.9" />
         <Price storeidentifier="merchantmine" multiplier="1.25" />
       </Price>
-      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true" quality="3">
+      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true">
         <RequiredSkill identifier="weapons" level="60" />
         <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
         <RequiredItem identifier="physicorium" />

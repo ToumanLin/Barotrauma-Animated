@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!-- 快速裂变加速器:贴图;攻击速度 -->
+    <!-- 快速裂变加速器:贴图 -->
     <Item name="" identifier="nucleargun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
       <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
       <Price baseprice="900" sold="false">
@@ -33,17 +33,17 @@
       <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
         <sprite name="Nuclear Gun Worn" texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="270,127,240,66" limb="Torso" scale="0.5" origin="0.5,0.8" />
       </Wearable>
-      <RangedWeapon reload="0.15" holdtrigger="true" barrelpos="118,14" spread="0" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.35">
+      <RangedWeapon reload="0.5" holdtrigger="true" barrelpos="118,14" spread="0" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.75">
         <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
         <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
         <ParticleEmitter particle="FlareBubbles" scalemin="1.4" scalemax="1.8" particleamount="14" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
         <ParticleEmitter particle="GlowDot" scalemin="4.0" scalemax="4.0" particleamount="20" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" colormultiplier="10,235,195,255" />
-        <ParticleEmitterCharge particle="chargenucleargun" particlespersecond="60" scalemultiplier="0.75,0.75" scalemin="1.0" scalemax="1.0" anglemin="0" anglemax="359" />
+        <ParticleEmitterCharge particle="chargenucleargun" particlespersecond="60" scalemultiplier="0.75,0.75" scalemin="1.0" scalemax="1.0" anglemax="360" />
         <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator.ogg" type="OnUse" range="3000" selectionmode="Random" />
         <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator2.ogg" type="OnUse" range="3000" />
         <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator3.ogg" type="OnUse" range="3000" />
         <Sound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAccelerator4.ogg" type="OnUse" range="3000" />
-        <ChargeSound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAcceleratorStartLoop.ogg" range="3000" />
+        <ChargeSound file="Content/Items/JobGear/Engineer/WEAPONS_rapidFissileAcceleratorStartLoop.ogg" range="1000" />
         <StatusEffect type="OnUse">
           <Explosion range="150.0" force="3" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
         </StatusEffect>
@@ -69,8 +69,8 @@
       <SkillRequirementHint identifier="weapons" level="25" />
       <SkillRequirementHint identifier="electrical" level="45" />
     </Item>
-    <!-- 贫化燃料冲锋枪弹匣:修改贴图,容量加到45发,回收配方匹配其他弹匣 -->
-    <Item name="" identifier="smgmagazinedepletedfuel" variantof="smgmagazine" allowasextracargo="true">
+    <!-- 贫化燃料冲锋枪弹匣:修改贴图,容量加到45发 -->
+    <Item name="" identifier="smgmagazinedepletedfuel" variantof="smgmagazine" allowasextracargo="true" inventoryiconcolor="110,120,110,255" spritecolor="110,120,110">
       <PreferredContainer primary="smg,smgunique" spawnprobability="0" />
       <PreferredContainer primary="secarmcab" spawnprobability="0" />
       <PreferredContainer primary="outpostsecarmcab" spawnprobability="0" />
@@ -79,16 +79,18 @@
       <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
         <RequiredSkill identifier="weapons" level="40" />
         <RequiredSkill identifier="electrical" level="30" />
-        <RequiredItem identifier="magnesium" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
         <RequiredItem identifier="depletedfuel" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
         <RequiredItem identifier="steel" />
       </Fabricate>
       <Fabricate suitablefabricators="fabricator" requiredtime="18" requiresrecipe="true" displayname="recycleitem">
         <RequiredSkill identifier="weapons" level="40" />
         <RequiredSkill identifier="electrical" level="30" />
-        <RequiredItem identifier="magnesium" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
         <RequiredItem identifier="depletedfuel" />
-        <RequiredItem tag="smgammo" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="smgmagazinedepletedfuel" mincondition="0.0" maxcondition="0.1" usecondition="false" />
       </Fabricate>
       <Deconstruct time="15">
         <Item identifier="depletedfuel" mincondition="0.95" />
@@ -103,7 +105,7 @@
       </ItemContainer>
     </Item>
     <!-- 载货助推器：贴图；可背背上；可放置所有东西 -->
-    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <Item name="" identifier="cargoscooter" category="Equipment,Diving" Tags="mediumitem,provocative,scooter,mobilecontainer" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
       <PreferredContainer primary="divingcab" />
       <Price baseprice="400" sold="false">
         <Price storeidentifier="merchantoutpost" multiplier="0.9" />
@@ -132,19 +134,16 @@
       <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="-35,36" handle2="-37,38" msg="ItemMsgPickUpSelect" />
       <Propulsion force="150" usablein="water" particles="bubbles">
         <RequiredItems items="mobilebattery" targetslot="0" type="Contained" msg="ItemMsgBatteryCellRequired" />
-        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.25">
+        <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.2">
           <RequiredItem items="mobilebattery" type="Contained" />
         </StatusEffect>
         <sound file="Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
-        <LightComponent LightColor="1.0,1.0,1.0,0.8" range="1000">
-          <LightTexture texture="%ModDir:2809175631%/Content/Lights/lightcone.png" origin="-0.01, 0.5" size="1.0,1.0" />
-        </LightComponent>
       </Propulsion>
       <ItemContainer capacity="1" maxstacksize="1" slotsperrow="3" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="battery">
         <Containable items="mobilebattery" />
         <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
-        <SubContainer capacity="14" maxstacksize="64">
-          <Containable items="smallitem,mediumitem" />
+        <SubContainer capacity="11" maxstacksize="8">
+          <Containable items="smallitem,mediumitem" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
         </SubContainer>
       </ItemContainer>
       <AiTarget soundrange="3000" maxsightrange="3000" />
@@ -310,7 +309,7 @@
           </Containable>
         </SubContainer>
         <SubContainer capacity="1" maxstacksize="1">
-          <Containable items="chem,medical" />
+          <Containable items="chem,syringe" />
         </SubContainer>
       </ItemContainer>
       <aitarget maxsightrange="1500" />

@@ -24,7 +24,10 @@
         <RequiredItem identifier="fpgacircuit" />
       </Fabricate>
       <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
-        <!--RequiredItems items="mobilebattery" type="Contained" /-->
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
       </WifiComponent>
       <Upgrade gameversion="0.18.0.0">
         <WifiComponent>
@@ -34,6 +37,22 @@
       <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
         <sprite name="Headset Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="26,313,51.5,70" origin="0.515,0.703" />
       </Wearable>
+    </Item>
+    <Item name="" identifier="duffelbag" category="Equipment" tags="mobilecontainer,despawncontainer" fireproof="true" description="" impactsoundtag="impact_soft" scale="0.4">
+      <Deconstruct time="5" />
+      <Sprite texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="612,398,206,114" origin="0.5,0.56" depth="0.56" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="818,398,206,114" origin="0.5,0.56" depth="0.56" maxcondition="80" fadein="true" />
+      <Body width="120" radius="45" density="20" friction="1.0" restitution="0.01" />
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-80" handle1="0,50" handle2="0,50" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" targettype="This" Condition="-0.5" />
+        <StatusEffect type="OnBroken" target="This">
+          <DropContainedItems />
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <ItemContainer capacity="20" keepopenwhenequipped="false" movableframe="true">
+        <Containable items="smallitem,toolbelt,toolbox,bandolier" excludeditems="largemobilecontainer" />
+      </ItemContainer>
     </Item>
   </Items>
 </Override>
