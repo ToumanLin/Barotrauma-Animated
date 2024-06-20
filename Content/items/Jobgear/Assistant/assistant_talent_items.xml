@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--修改：在hull内不消耗氧气；hull含氧量大于50缓慢回复氧气-->
-    <Item name="" identifier="clowndivingmask" category="Equipment,Diving" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,clothing,clownmask,diving,lightdiving" description="" scale="0.5">
-      <PreferredContainer primary="divingcab,supplycab" />
+    <Item name="" identifier="clowndivingmask" variantof="divingmask" tags="smallitem,clownmask,diving,lightdiving">
       <Price baseprice="150" sold="false" canbespecial="false" />
-      <Sprite name="Clown Mask" texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="328,304,51,51" origin="0.5,0.5" scale="0.5" />
-      <Body width="5" radius="25" density="15" />
+      <PreferredContainer primary="divingcab,supplycab" amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <Sprite name="Clown Mask" texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="328,304,51,51" origin="0.5,0.5" scale="0.5" />
+      <!-- clear inventory icon, we want to reuse the normal sprite -->
+      <InventoryIcon />
+      <Body width="5" radius="25" />
+      <!-- clear old fabrication and deconstruction elements, replace with new ones -->
+      <Fabricate />
+      <Deconstruct />
       <Deconstruct time="10">
         <Item identifier="divingmask" />
       </Deconstruct>
@@ -14,50 +22,10 @@
         <RequiredItem identifier="clownmask" />
         <RequiredItem identifier="divingmask" />
       </Fabricate>
-      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <Wearable>
         <sprite name="Clown Diving Mask Wearable" texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="378,301,80,70" origin="0.45,0.4" />
         <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
-        <StatusEffect type="OnWearing" target="Character" OxygenAvailable="0.0" UseHullOxygen="true" />
-        <!-- 使用hull氧气 -->
-        <!-- Hull氧含量大于50％且不在水中，缓慢回复氧气、液氧罐耐久 -->
-        <StatusEffect type="Always" target="Contained" Condition="0.3333" targetslot="0" comparison="And">
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-          <Conditional HullOxygenPercentage="gt 50" />
-          <Conditional InWater="false" />
-        </StatusEffect>
-        <!-- Hull氧含量小于50％时  启用内置氧气罐/液氧罐 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-          <Conditional IsDead="false" />
-          <Conditional HullOxygenPercentage="lt 50" />
-          <Conditional InWater="false" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygensource" type="Contained" />
-        </StatusEffect>
-        <!-- 在水中时  启用内置氧气罐/液氧罐 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-          <Conditional InWater="true" />
-          <Conditional decreasedoxygenconsumption="lt 100" />
-          <RequiredItem items="oxygensource" type="Contained" />
-        </StatusEffect>
-        <!-- 移动速度加成 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.2" setvalue="true" comparison="Or">
-          <Conditional IsDead="false" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
-        <!-- 吸油 -->
-        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-5.0" Condition="-5.0">
-          <Conditional IsDead="false" />
-          <RequiredItem items="weldingfueltank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
-          <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="0.1" />
-        </StatusEffect>
       </Wearable>
-      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
-        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-        <Containable items="oxygensource,weldingtoolfuel" />
-      </ItemContainer>
     </Item>
   </Items>
 </Override>
