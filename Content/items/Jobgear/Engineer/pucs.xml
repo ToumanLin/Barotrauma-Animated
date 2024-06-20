@@ -33,7 +33,7 @@
     <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
     <Body radius="45" width="34" density="20" />
     <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
-      <sprite name="PUCS Helmet Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" alphaclipotherwearables="true" sourcerect="127,520,105,124" origin="0.57,0.38">
+      <sprite name="PUCS Helmet Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" alphaclipotherwearables="true" sourcerect="127,520,105,124" origin="0.53,0.55">
         <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
           <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
             <Conditional IsDead="false" />
@@ -771,6 +771,19 @@
         <Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
         <Conditional InWater="true" />
         <RequiredItem items="oxygensource" type="Contained" />
+      </StatusEffect>
+      <!-- MOD FEATURE Speed up in water when open -->
+      <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="1.7" comparison="And" setvalue="true" disabledeltatime="true">
+        <Conditional InWater="true" />
+        <Conditional IsOn="true" />
+      </StatusEffect>
+      <!-- MOD FEATURE Emmit Particles to stimulate scooter -->
+      <StatusEffect type="OnWearing" target="This" disabledeltatime="true" checkconditionalalways="true" comparison="And">
+        <Conditional targetitemcomponent="MotionSensor" MotionDetected="eq true" />
+        <Conditional IsOn="true" />
+        <Conditional InWater="true" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.2" scalemax="0.5" />
+        <sound file="Content/Items/Diving/ScooterLoop.ogg" range="500.0" loop="true" />
       </StatusEffect>
       <!-- MOD FEATURE -->
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
