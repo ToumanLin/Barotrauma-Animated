@@ -1,5 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
+  <Item name="" identifier="testbed" allowattachitems="true" width="384" height="96" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="Content/Map/Outposts/Art/Storage.png" sourcerect="864,1888,384,96" depth="0.98" premultiplyalpha="false" origin="0.5,0.5" />
+    <Controller UserPos="0,0" direction="Right" hidehud="false" issecondaryitem="true" canbeselected="true" noninteractablewhenflippedy="true" drawuserbehind="true">
+      <!-- don't allow laying in bed when wearing an exosuit -->
+      <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+      <!-- <limbposition limb="Head" position="-6,-10" />
+      <limbposition limb="Torso" position="104,20" />
+      <limbposition limb="Waist" position="244,-60" />
+      <limbposition limb="RightFoot" position="380,0" />
+      <limbposition limb="LeftFoot" position="380,0" />
+      <limbposition limb="RightHand" position="234,10" allowusinglimb="false" />
+      <limbposition limb="LeftHand" position="234,10" allowusinglimb="false" /> -->
+      <limbposition limb="Head" position="100,200" />
+      <limbposition limb="Torso" position="100,174" />
+      <limbposition limb="Waist" position="100,-50" />
+      <limbposition limb="RightFoot" position="100,-186" />
+      <limbposition limb="LeftFoot" position="100,-186" />
+      <limbposition limb="RightHand" position="100,440" allowusinglimb="false" />
+      <limbposition limb="LeftHand" position="100,440" allowusinglimb="false" />
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0" >
+        <reduceaffliction type="damage" strength="0.05" />
+        <reduceaffliction identifier="concussion" strength="0.02" />
+        <reduceaffliction identifier="infection" strength="0.02" />
+        <reduceaffliction identifier="bloodloss" strength="0.05" />
+        <reduceaffliction identifier="bleeding" strength="0.05" />
+        <reduceaffliction identifier="nausea" strength="0.08" />
+        <reduceaffliction identifier="opiatewithdrawal" strength="0.06" />
+        <reduceaffliction identifier="opiateaddiction" strength="0.06" />
+        <reduceaffliction identifier="drunk" strength="0.08" />
+      </StatusEffect>
+      <StatValue stattype="WalkingSpeed" value="-1.0" />
+      <StatusEffect type="OnActive" target="Character" lockhands="true" setvalue="true" />
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0" setvalue="true" />
+    </Controller>
+    <Upgrade gameversion="0.20.8.0">
+      <Controller>
+        <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+      </Controller>
+    </Upgrade>
+  </Item>
+  <Item name="" identifier="testpermit" descriptionidentifier=" " allowstealingalways="true" spritecolor="20,39,162,255" category="Misc" Tags="smallitem,geneticmaterial" cargocontaineridentifier="metalcrate" scale="0.5" maxstacksize="32" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" secondary="locker"/>
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.05"/>
+    <InventoryIcon texture="Content/Items/Misc/scribble1.png" sourcerect="0,0,768,1024" origin="0.5,0.5" />
+    <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="367,194,12,44"  origin="0.5,0.5" depth="0.8" />
+    <Body width="35" height="40" density="8" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+    <!-- MOD FEATURE Message -->
+    <Terminal WelcomeMessage="" textcolor="50,50,50,255" msg0="" color0="#1d9df3" canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" AutoHideScrollbar="false" readonly="true" autoscrolltobottom="false" linestartsymbol="" marginmultiplier="1.5" drawhudwhenequipped="true">
+      <!-- <GuiFrame relativesize="0.5,0.75" anchor="Center" style="Scribble1" hidedragicons="true" /> -->
+      <GuiFrame relativesize="0.75,0.75" anchor="Center" style="EAHI_HandBook" />
+    </Terminal>
+    <!-- <Deconstruct time="2" chooserandom="true" amount="1" requireddeconstructor="geneticresearchstation"> -->
+    <Deconstruct time="2" requireddeconstructor="geneticresearchstation">
+      <Item identifier="EAHI_pucs" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
+      <!-- <Item identifier="teleportine" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <Item identifier="testpermit" requiredotheritem="testpermit" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
+      <item identifier="testpermit"/>
+      <!-- <Item identifier="geneticmaterialcrawler" commonness="3" requiredotheritem="stabilozine" outconditionmin="0.1" outconditionmax="0.2" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+    </Deconstruct>
+  </Item>
   <!--
   <Item name="000test" identifier="fabricator_EAHI" tags="fabricator,donttakeitems,dontsellitems,smallitem" category="Machine" linkable="true" allowedlinks="deconstructor,locker" description="" scale="0.5" damagedbyexplosions="true"  explosiondamagemultiplier="0.2">
 
