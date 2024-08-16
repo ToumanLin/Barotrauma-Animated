@@ -223,12 +223,12 @@
       <sprite name="Wf pucs Left Leg" texture="Wf_pucs.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Left Shoe" texture="Wf_pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Right Shoe" texture="Wf_pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <!-- MOD FEATURE Speed&hearing Change -->
+      <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6200.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -280,8 +280,8 @@
           <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
         </StatusEffect>
       </ItemComponent>
-      <!-- MOD FEATURE Return to nomarl walking speed -->
-      <StatValue stattype="WalkingSpeed" value="0.6448974" />
+      <!-- MOD FEATURE speed bonus 0.5 (10%) -->
+      <StatValue stattype="WalkingSpeed" value="0.5" />
     </Wearable>
     <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
     <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
@@ -390,12 +390,12 @@
       <sprite name="Wf pucs Left Leg" texture="Wf_pucs_R.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_R.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_R.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <!-- MOD FEATURE Speed&hearing Change -->
+      <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6200.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -448,8 +448,8 @@
           <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
         </StatusEffect>
       </ItemComponent>
-      <!-- MOD FEATURE Return to nomarl walking speed -->
-      <StatValue stattype="WalkingSpeed" value="0.6448974" />
+      <!-- MOD FEATURE speed bonus 0.5 (10%) -->
+      <StatValue stattype="WalkingSpeed" value="0.5" />
     </Wearable>
     <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
     <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
@@ -562,12 +562,12 @@
       <sprite name="Wf pucs Left Leg" texture="Wf_pucs_B.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_B.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_B.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <!-- MOD FEATURE Speed&hearing Change -->
+      <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="10000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -620,8 +620,8 @@
           <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
         </StatusEffect>
       </ItemComponent>
-      <!-- MOD FEATURE Return to nomarl walking speed -->
-      <StatValue stattype="WalkingSpeed" value="0.6448974" />
+      <!-- MOD FEATURE speed bonus 0.5 (10%) -->
+      <StatValue stattype="WalkingSpeed" value="0.5" />
     </Wearable>
     <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
     <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
@@ -734,12 +734,12 @@
       <sprite name="Wf pucs Left Leg" texture="Wf_pucs_D.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Left Shoe" texture="Wf_pucs_D.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Wf pucs Right Shoe" texture="Wf_pucs_D.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <!-- MOD FEATURE Speed&hearing Change -->
+      <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="10000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -805,8 +805,8 @@
           <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
         </StatusEffect>
       </ItemComponent>
-      <!-- MOD FEATURE Return to nomarl walking speed -->
-      <StatValue stattype="WalkingSpeed" value="0.6448974" />
+      <!-- MOD FEATURE speed bonus 0.5 (10%) -->
+      <StatValue stattype="WalkingSpeed" value="0.5" />
     </Wearable>
     <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
     <MotionSensor rangex="30" rangey="40" canbeselected="false" IgnoreDead="true" minimumvelocity="3" updateinterval="0.025" target="Human" DetectOwnMotion="true" />
