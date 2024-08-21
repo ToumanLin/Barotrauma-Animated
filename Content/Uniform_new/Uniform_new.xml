@@ -277,55 +277,6 @@
         <damagemodifier afflictionidentifiers="burn" armorsector="0.0,360.0" damagemultiplier="0.4" />
       </Wearable>
     </Item>
-    <!-- Iron Armour Plus -->
-    <Item name="" identifier="IronArmourPlus" category="Equipment" tags="smallitem,clothing" fireproof="ture" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
-      <PreferredContainer primary="crewcab" />
-      <PreferredContainer secondary="locker" />
-      <!-- <PreferredContainer secondary="abandonedstoragecab" minamount="1" maxamount="1" spawnprobability="0.1" /> -->
-      <Price baseprice="140" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
-        <Price storeidentifier="merchantcity" multiplier="1.2" />
-        <Price storeidentifier="merchantresearch" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" />
-        <Price storeidentifier="merchantarmory" multiplier="0.9" />
-      </Price>
-      <Deconstruct time="40">
-        <Item identifier="organicfiber" amount="1" />
-        <Item identifier="iron" amount="4" />
-      </Deconstruct>
-      <!-- <Fabricate suitablefabricators="fabricator" requiredtime="30">
-        <RequiredSkill identifier="weapons" level="20" />
-        <RequiredSkill identifier="mechanical" level="20" />
-        <RequiredItem identifier="organicfiber" amount="2" />
-        <RequiredItem identifier="iron" amount="6" />
-      </Fabricate> -->
-      <!-- TODO INVENTORY ICON -->
-      <InventoryIcon name="IronArmourPlus Icon" texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
-      <Sprite name="Exotic_Amor_suit's Uniform 2" texture="%ModDir:2809175631%/Content/Items/Jobgear/MiscJobGear_1.png" sourcerect="360,0,120,70" depth="0.6" origin="0.5,0.5" />
-      <!-- WIP -->
-      <Body width="180" height="50" density="15" friction="0.8" restitution="0.01" />
-      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
-        <sprite name="IronArmourPlus Torso" texture="IronArmourPlus.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,188,316" origin="0.6224,0.3038" />
-        <sprite name="IronArmourPlus Right Hand" texture="IronArmourPlus.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="348,184,64,48" />
-        <sprite name="IronArmourPlus Left Hand" texture="IronArmourPlus.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="412,184,64,48" />
-        <sprite name="IronArmourPlus Left Lower Arm" texture="IronArmourPlus.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="412,96,64,88" origin="0.5,0.3636" />
-        <sprite name="IronArmourPlus Right Lower Arm" texture="IronArmourPlus.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="348,96,64,88" origin="0.5,0.3636" />
-        <sprite name="IronArmourPlus Left Upper Arm" texture="IronArmourPlus.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="412,0,64,96" />
-        <sprite name="IronArmourPlus Right Upper Arm" texture="IronArmourPlus.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="348,0,64,96" />
-        <sprite name="IronArmourPlus Waist" texture="IronArmourPlus.png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="0,256,112,60" origin="0.5,0.53333" />
-        <sprite name="IronArmourPlus Right Thigh" texture="IronArmourPlus.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="IronArmourPlus Left Thigh" texture="IronArmourPlus.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="IronArmourPlus Right Leg" texture="IronArmourPlus.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="IronArmourPlus Left Leg" texture="IronArmourPlus.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="IronArmourPlus Right Shoe" texture="IronArmourPlus.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="348,232,64,48" />
-        <sprite name="IronArmourPlus Left Shoe" texture="IronArmourPlus.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="412,232,64,48" />
-        <!-- consider a better defence than nomarl one? -->
-        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
-        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
-      </Wearable>
-    </Item>
     <!--hats-->
     <!--魅魔-->
     <Item name="" identifier="succubusmask" subcategory="waifu_maid" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clownmask,clowns" description="" hideinmenus="false" scale="0.5">
@@ -425,13 +376,21 @@
       <Deconstruct time="10" />
       <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
         <sprite name="PrayerMio_hat Mask Wearable" texture="%ModDir:2809175631%/Content/Uniform_new/00_headgears_new.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" sourcerect="200,0,100,100" origin="0.6,0.8">
-          <!-- <LightComponent range="0.0" lightcolor="250,224,165,100" powerconsumption="5" IsOn="true" allowingameediting="false">
+          <LightComponent range="0.0" lightcolor="250,224,165,100" powerconsumption="5" IsOn="true" allowingameediting="false">
             <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
               <Conditional IsDead="false" />
             </StatusEffect>
-            <sprite texture="%ModDir:2809175631%/Content/Uniform_new/00_headgears_new.png" depth="0.025" sourcerect="400,0,100,100" origin="0.6,0.9" alpha="1.0" />
-          </LightComponent> -->
+            <sprite texture="%ModDir:2809175631%/Content/Uniform_new/00_headgears_new.png" depth="0.025" sourcerect="400,0,100,100" origin="0.6,0.7" alpha="1.0" />
+          </LightComponent>
         </sprite>
+        <!-- <sprite name="XDS-01_Helmet" texture="Wf_New_XDS-01_Engine.png" sourcerect="608,110,140,130" limb="Head" inheritlimbdepth="true" depth="0.5" scale="0.5" origin="0.555,0.67" CanbehiddenbyOtherWearables="false">
+          <LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <sprite texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="304,120,140,120" origin="0.4,0.8" alpha="1.0" />
+          </LightComponent>
+        </sprite> -->
         <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
           <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
             <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->

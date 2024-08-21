@@ -3,425 +3,236 @@
   <EventSprites>
     <!--以后再说吧-->
   </EventSprites>
+  <!-- Legacy -->
   <EventPrefabs>
     <ScriptedEvent identifier="missionevent_EAHI1" commonness="100">
       <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="EAHInpc_1" spawnlocation="Outpost" targetmoduletags="adminmodule" />
-      <ConversationAction text="EventText.missionevent_EAHI1.c1" speakertag="EAHInpc_1" endeventifinterrupted="false" dialogtype="Small" />
+      <ConversationAction text="EventText.missionevent_EAHI1.c1" speakertag="EAHInpc_1" endeventifinterrupted="false" dialogtype="Regular" />
       <MissionAction missiontag="EAHI_N" />
       <MissionAction missiontag="EAHI_N" />
       <NPCWaitAction npctag="EAHInpc_1" wait="true" />
     </ScriptedEvent>
     <ScriptedEvent identifier="missionevent_EAHI2" commonness="100">
       <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_2" targettag="EAHInpc_2" spawnlocation="Outpost" targetmoduletags="adminmodule" />
-      <ConversationAction text="EventText.missionevent_EAHI2.c1" speakertag="EAHInpc_2" endeventifinterrupted="false" dialogtype="Small" />
+      <ConversationAction text="EventText.missionevent_EAHI2.c1" speakertag="EAHInpc_2" endeventifinterrupted="false" dialogtype="Regular" />
       <MissionAction missiontag="EAHI_H" />
       <MissionAction missiontag="EAHI_H" />
       <NPCWaitAction npctag="EAHInpc_2" wait="true" />
     </ScriptedEvent>
   </EventPrefabs>
-  <EventSet identifier="outposteventsEAHI" leveltype="outpost" locationtype="outpost,city,research,military,mine" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="false" ignorecooldown="true">
-    <EventSet identifier="outposteventsEAHI.ALL.generic.missionevents" minleveldifficulty="20" maxleveldifficulty="100" allowatstart="true" chooserandom="true" eventcount="1">
-      <ScriptedEvent identifier="missionevent_EAHI1" commonness="100" />
-      <ScriptedEvent identifier="missionevent_EAHI2" commonness="110" />
-      <!--<ScriptedEvent identifier="missionevent_PP" commonness="200" />
-	  <ScriptedEvent identifier="missionevent_MLK" commonness="100" />
-	  <ScriptedEvent identifier="missionevent_SY" commonness="100" />
-      <ScriptedEvent identifier="missionevent_XML" commonness="150" />-->
-    </EventSet>
-    <!-- low-difficulty random events -->
-    <EventSet identifier="outpostevents.easy.generic.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="30" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <OverrideEventCount locationtype="City" eventcount="3" />
-      <ScriptedEvent identifier="givingdirections" commonness="100" />
-      <ScriptedEvent identifier="goodsamaritan" commonness="100" />
-      <ScriptedEvent identifier="miketheidiot1" commonness="25" />
-      <ScriptedEvent identifier="Engineers_are_special" commonness="100" />
-      <ScriptedEvent identifier="fanclub" commonness="100" />
-      <ScriptedEvent identifier="shockjock" commonness="60" />
-      <ScriptedEvent identifier="manandhisraptor1" commonness="50" />
-      <ScriptedEvent identifier="assassinationofjacovsubra2" commonness="100" />
-      <ScriptedEvent identifier="assassinationofjacovsubra3" commonness="100" />
-      <ScriptedEvent identifier="propaganda" commonness="100" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <ScriptedEvent identifier="bombscare" commonness="50" faction="coalition" />
-      <ScriptedEvent identifier="terrorism101" commonness="50" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <ScriptedEvent identifier="separatistrelations" commonness="100" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <!-- events that only occur in low difficulty-->
-      <ScriptedEvent identifier="atwitsend" commonness="60" />
-    </EventSet>
-    <!-- low-difficulty clown events -->
-    <EventSet identifier="outpostevents.easy.generic.randomevents.clowns.EAHI" minleveldifficulty="0" maxleveldifficulty="30" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <ScriptedEvent identifier="clownrelations1" commonness="100" faction="clowns" probability="0.5" />
-      <ScriptedEvent identifier="infiltration" commonness="70" faction="clowns" probability="0.5" />
-      <ScriptedEvent identifier="censorship" commonness="60" faction="clowns" probability="0.5" />
-    </EventSet>
-    <!-- low-difficulty husk cult events -->
-    <EventSet identifier="outpostevents.easy.generic.randomevents.huskcult.EAHI" minleveldifficulty="0" maxleveldifficulty="30" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <ScriptedEvent identifier="huskcultist" commonness="100" faction="huskcult" probability="0.5" />
-    </EventSet>
-    <!-- high-difficulty random events -->
-    <EventSet identifier="outpostevent.difficult.generic.randomevents.EAHI" minleveldifficulty="30" maxleveldifficulty="80" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <OverrideEventCount locationtype="City" eventcount="3" />
-      <!-- events that can occur in both low and high difficulty, commoness reduced here to favor the more difficult ones-->
-      <ScriptedEvent identifier="givingdirections" commonness="50" />
-      <ScriptedEvent identifier="goodsamaritan" commonness="50" />
-      <ScriptedEvent identifier="miketheidiot1" commonness="12" />
-      <ScriptedEvent identifier="Engineers_are_special" commonness="50" />
-      <ScriptedEvent identifier="fanclub" commonness="50" />
-      <ScriptedEvent identifier="shockjock" commonness="40" />
-      <ScriptedEvent identifier="manandhisraptor1" commonness="60" />
-      <ScriptedEvent identifier="assassinationofjacovsubra2" commonness="100" />
-      <ScriptedEvent identifier="assassinationofjacovsubra3" commonness="100" />
-      <ScriptedEvent identifier="nothingtoseehere" commonness="50" faction="coalition" />
-      <ScriptedEvent identifier="propaganda" commonness="50" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <ScriptedEvent identifier="bombscare" commonness="40" faction="coalition" />
-      <ScriptedEvent identifier="terrorism101" commonness="40" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <ScriptedEvent identifier="separatistrelations" commonness="50" faction="coalition" />
-      <!-- technically a separatist event, but takes place in coalition outposts -->
-      <!-- events that only occur in high difficulty-->
-      <ScriptedEvent identifier="blackmarket" commonness="100" />
-      <ScriptedEvent identifier="mediator" commonness="100" />
-      <ScriptedEvent identifier="firefighting" commonness="100" />
-      <ScriptedEvent identifier="sleightofhand" commonness="100" />
-      <ScriptedEvent identifier="miketheidiot2" commonness="25" />
-      <ScriptedEvent identifier="goblincooking1" commonness="50" />
-      <ScriptedEvent identifier="soundinthevent" commonness="100" />
-      <ScriptedEvent identifier="badvibrations3" commonness="50" />
-      <ScriptedEvent identifier="stuckinthemiddle" commonness="50" faction="coalition" />
-      <!-- technically a separatist event, but happens in a coalition outpost -->
-      <ScriptedEvent identifier="returner" commonness="50" />
-    </EventSet>
-    <!-- high-difficulty clown events -->
-    <EventSet identifier="outpostevent.difficult.generic.randomevents.clowns.EAHI" minleveldifficulty="30" maxleveldifficulty="80" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <ScriptedEvent identifier="clownrelations1" commonness="50" faction="clowns" probability="0.5" />
-      <ScriptedEvent identifier="clownbrutality" commonness="100" faction="clowns" probability="0.5" />
-      <ScriptedEvent identifier="clownrelations2" commonness="100" faction="clowns" probability="0.5" />
-    </EventSet>
-    <!-- high-difficulty husk cult events -->
-    <EventSet identifier="outpostevent.difficult.generic.randomevents.huskcult.EAHI" minleveldifficulty="30" maxleveldifficulty="80" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <ScriptedEvent identifier="outbreak" commonness="100" faction="huskcult" probability="0.5" />
-      <ScriptedEvent identifier="huskcultist" commonness="50" faction="huskcult" probability="0.5" />
-      <ScriptedEvent identifier="huskcultambush" commonness="50" faction="huskcult" probability="0.5" />
-      <ScriptedEvent identifier="huskcultrelations" commonness="100" faction="huskcult" probability="0.5" />
-    </EventSet>
-    <!-- Events specific to military outposts -->
-    <EventSet identifier="outpostevent.military.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="military" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <!-- 50% chance of getting a military-specific event (TODO: increase if/when we have more of these available?) -->
-      <ScriptedEvent identifier="bigbrother" commonness="150" probability="0.5" faction="coalition" />
-      <ScriptedEvent identifier="explosivemishap" commonness="50" probability="0.5" />
-    </EventSet>
-    <!-- Events specific to research outposts -->
-    <EventSet identifier="outpostevent.research.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="research" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <!-- 50% chance of getting a research-specific event (TODO: increase if/when we have more of these available?) -->
-      <ScriptedEvent identifier="tastetest" commonness="150" probability="0.5" />
-      <ScriptedEvent identifier="crawleroutbreak" commonness="150" probability="0.5" />
-      <ScriptedEvent identifier="impromptuengineering" commonness="150" probability="0.5" />
-      <ScriptedEvent identifier="captivesouls" commonness="50" probability="0.5" />
-      <ScriptedEvent identifier="researcherescort" commonness="50" />
-    </EventSet>
-    <!-- Events specific to mining outposts -->
-    <EventSet identifier="outpostevent.mine.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="mine" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <!-- 50% chance of getting a mine-specific event (TODO: increase if/when we have more of these available?) -->
-      <ScriptedEvent identifier="consultant" commonness="150" probability="0.5" />
-      <ScriptedEvent identifier="occupationalhazards" commonness="150" probability="0.5" />
-    </EventSet>
-    <!-- Events specific to cities -->
-    <EventSet identifier="outpostevent.city.randomevents.EAHI" minleveldifficulty="0" maxleveldifficulty="80" locationtype="city" allowatstart="true" chooserandom="true" onceperoutpost="true">
-      <!-- 50% chance of getting a city-specific event (TODO: increase if/when we have more of these available?) -->
-      <ScriptedEvent identifier="captivesouls" commonness="50" probability="0.5" />
-      <ScriptedEvent identifier="explosivemishap" commonness="50" probability="0.5" />
-      <ScriptedEvent identifier="hognose" commonness="50" probability="0.5" />
-      <ScriptedEvent identifier="radiationescapee" commonness="50" />
-    </EventSet>
-    <!--Always trigger when past difficulty 25, unless completed. Introduces alien ruins.-->
-    <EventSet identifier="ruinintroduction" allowatstart="true" minleveldifficulty="25">
-      <ScriptedEvent identifier="badvibrations1" />
-    </EventSet>
-    <!-- Biome specific sets. Difficulty progression. -->
-    <EventSet identifier="missionevents.coldcaverns.start.EAHI" minleveldifficulty="0" maxleveldifficulty="1" allowatstart="true" eventcount="3" chooserandom="false" exhaustible="true">
-      <ScriptedEvent identifier="missionevent_cargoany" />
-      <ScriptedEvent identifier="missionevent_killmonster_set1" />
-      <ScriptedEvent identifier="missionevent_collectminerals_mainpath" />
-    </EventSet>
-    <EventSet identifier="missionevents.coldcaverns.basic.EAHI" minleveldifficulty="1" maxleveldifficulty="5" allowatstart="true" setcount="3" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.coldcaverns.basic.cargo" chooserandom="true" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_cargoany" commonness="50" />
-        <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="25" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="25" faction="separatists" />
-      </EventSet>
-      <EventSet identifier="missionevents.coldcaverns.basic.monster" chooserandom="true" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="25" />
-        <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="75" />
-      </EventSet>
-      <EventSet identifier="missionevents.coldcaverns.basic.mining" chooserandom="true" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_collectminerals_mainpath" commonness="50" />
-        <ScriptedEvent identifier="missionevent_collectminerals_set1" commonness="50" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.coldcaverns.advanced.EAHI" minleveldifficulty="5" maxleveldifficulty="15" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.coldcaverns.advanced.general" chooserandom="true" setcount="2" allowatstart="true">
-        <EventSet identifier="missionevents.coldcaverns.advanced.general.cargo" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="50" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="50" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="50" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.coldcaverns.advanced.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="20" />
-          <ScriptedEvent identifier="missionevent_killmonster_set1" commonness="40" />
-          <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="40" />
-        </EventSet>
-        <EventSet identifier="missionevents.coldcaverns.advanced.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set1" commonness="75" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set2" commonness="25" />
-        </EventSet>
-      </EventSet>
-      <EventSet identifier="missionevents.coldcaverns.advanced.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort1coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort1separatists" commonness="100" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.europanridge.basic.EAHI" minleveldifficulty="15" maxleveldifficulty="25" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.europanridge.basic.general" chooserandom="true" setcount="3" allowatstart="true">
-        <EventSet identifier="missionevents.europanridge.basic.general.cargo" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="30" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="35" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="35" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.basic.general.swarm" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="25" />
-          <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.basic.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="75" />
-          <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.basic.general.salvage" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_salvagewreck" commonness="100" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.basic.general.nest" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_crawlernest" commonness="75" />
-          <ScriptedEvent identifier="missionevent_mudraptornest" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.basic.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set1" commonness="25" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set2" commonness="75" />
-        </EventSet>
-      </EventSet>
-      <EventSet identifier="missionevents.europanridge.basic.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort1coalition,missionevent_escort2coalition,missionevent_escort3coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort1separatists,missionevent_escort2separatists,missionevent_escort3separatists" commonness="100" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.europanridge.advanced.EAHI" minleveldifficulty="25" maxleveldifficulty="35" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.europanridge.advanced.general" chooserandom="true" setcount="3" allowatstart="true">
-        <EventSet identifier="missionevents.europanridge.advanced.general.cargo" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="20" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="40" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="40" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.advanced.general.swarm" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set1" commonness="25" />
-          <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="50" />
-          <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.advanced.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killmonster_set2" commonness="25" />
-          <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="75" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.advanced.general.salvage" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_salvagewreck" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.advanced.general.nest" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_crawlernest" commonness="50" />
-          <ScriptedEvent identifier="missionevent_mudraptornest" commonness="25" />
-          <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.europanridge.advanced.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set1" commonness="25" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set2" commonness="50" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set3" commonness="25" />
-        </EventSet>
-      </EventSet>
-      <EventSet identifier="missionevents.europanridge.advanced.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort2coalition,missionevent_escort3coalition,missionevent_escort4coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort2separatists,missionevent_escort3separatists,missionevent_escort4separatists" commonness="100" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_separatists" commonness="25" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_coalition" commonness="25" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1" commonness="50" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1separatists" commonness="50" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.theaphoticplateau.EAHI" minleveldifficulty="35" maxleveldifficulty="50" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.theaphoticplateau.general" chooserandom="true" setcount="3" allowatstart="true">
-        <EventSet identifier="missionevents.theaphoticplateau.general.cargo" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="10" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="45" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="45" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.swarm" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set2" commonness="50" />
-          <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="50" />
-          <ScriptedEvent identifier="missionevent_killmonster_set4" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.salvage" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_salvageartifact" commonness="50" />
-          <ScriptedEvent identifier="missionevent_salvagewreck" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.nest" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_crawlernest_hard" commonness="33" />
-          <ScriptedEvent identifier="missionevent_mudraptornest" commmonness="33" />
-          <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="33" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set3" commonness="50" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set4" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.theaphoticplateau.general.ruin" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_scanruin" />
-        </EventSet>
-      </EventSet>
-      <EventSet identifier="missionevents.theaphoticplateau.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort2coalition,missionevent_escort3coalition,missionevent_escort4coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort2separatists,missionevent_escort3separatists,missionevent_escort4separatists" commonness="100" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_separatists" commonness="25" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_coalition" commonness="25" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1separatists" commonness="100" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.greatsea.EAHI" minleveldifficulty="50" maxleveldifficulty="65" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.greatsea.general" chooserandom="true" setcount="3" allowatstart="true">
-        <EventSet identifier="missionevents.greatsea.general.cargo" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="10" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="45" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="45" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.swarm" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="50" />
-          <ScriptedEvent identifier="missionevent_killswarm_set4" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="75" />
-          <ScriptedEvent identifier="missionevent_killmonster_set4" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.salvage" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_salvageartifact" commonness="50" />
-          <ScriptedEvent identifier="missionevent_salvagewreck" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.nest" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_crawlernest_hard" commonness="33" />
-          <ScriptedEvent identifier="missionevent_mudraptornest_hard" commmonness="33" />
-          <ScriptedEvent identifier="missionevent_tigerthreshernest_hard" commonness="33" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set2" commonness="25" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set3" commonness="50" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set4" commonness="25" />
-        </EventSet>
-        <EventSet identifier="missionevents.greatsea.general.ruin" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_scanruin" commonness="100" />
-          <ScriptedEvent identifier="missionevent_clearruin" commonness="100" />
-        </EventSet>
-      </EventSet>
-      <EventSet identifier="missionevents.greatsea.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort2coalition,missionevent_escort3coalition,missionevent_escort4coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort2separatists,missionevent_escort3separatists,missionevent_escort4separatists" commonness="100" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_separatists" commonness="25" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_coalition" commonness="25" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1separatists" commonness="100" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <EventSet identifier="missionevents.wastes.EAHI" minleveldifficulty="65" maxleveldifficulty="100" allowatstart="true" chooserandom="false" exhaustible="true">
-      <EventSet identifier="missionevents.wastes.general" chooserandom="true" setcount="3" allowatstart="true">
-        <EventSet identifier="missionevents.wastes.general.cargo" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_cargoany" commonness="10" />
-          <ScriptedEvent identifier="missionevent_cargoweaponscoalition" commonness="45" faction="coalition" />
-          <ScriptedEvent identifier="missionevent_cargoexplosiveseparatists" commonness="45" faction="separatists" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.swarm" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killswarm_set3" commonness="25" />
-          <ScriptedEvent identifier="missionevent_killswarm_set4" commonness="75" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.monster" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_killmonster_set3" commonness="25" />
-          <ScriptedEvent identifier="missionevent_killmonster_set4" commonness="75" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.salvage" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_salvageartifact" commonness="50" />
-          <ScriptedEvent identifier="missionevent_salvagewreck" commonness="50" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.nest" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_crawlernest_hard" commonness="20" />
-          <ScriptedEvent identifier="missionevent_mudraptornest" commmonness="40" />
-          <ScriptedEvent identifier="missionevent_tigerthreshernest" commonness="40" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.mining" chooserandom="true" commonness="100" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_collectminerals_set3" commonness="25" />
-          <ScriptedEvent identifier="missionevent_collectminerals_set4" commonness="75" />
-        </EventSet>
-        <EventSet identifier="missionevents.wastes.general.ruin" chooserandom="true" commonness="200" allowatstart="true">
-          <ScriptedEvent identifier="missionevent_scanruin" commonness="50" />
-          <ScriptedEvent identifier="missionevent_clearruin" commonness="150" />
-        </EventSet>
-      </EventSet>
-      <EventSet idenfitier="missionevents.wastes.faction" chooserandom="true" eventcount="1" allowatstart="true">
-        <ScriptedEvent identifier="missionevent_escort2coalition,missionevent_escort3coalition,missionevent_escort4coalition" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_escort2separatists,missionevent_escort3separatists,missionevent_escort4separatists" commonness="100" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_separatists" commonness="25" faction="separatists" />
-        <ScriptedEvent identifier="missionevent_jailbreak_coalition" commonness="25" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1" commonness="100" faction="coalition" />
-        <ScriptedEvent identifier="missionevent_pirate1separatists" commonness="100" faction="separatists" />
-      </EventSet>
-    </EventSet>
-    <!-- generic clown missions -->
-    <EventSet identifier="outpostevents.clowns.missionevents.EAHI" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" chooserandom="true" exhaustible="true">
-      <ScriptedEvent identifier="missionevent_escort1clowns" commonness="50" faction="clowns" probability="0.8" />
-      <ScriptedEvent identifier="missionevent_clownoutbreak" commonness="50" faction="clowns" probability="0.8" />
-    </EventSet>
-    <!-- generic husk cult missions -->
-    <EventSet identifier="outpostevents.huskcult.missionevents.EAHI" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" chooserandom="true" exhaustible="true">
-      <ScriptedEvent identifier="missionevent_escort1huskcult" commonness="50" faction="huskcult" probability="0.8" />
-      <ScriptedEvent identifier="missionevent_cargohuskcult" commonness="50" faction="huskcult" probability="0.8" />
-    </EventSet>
-    <!--  Faction-specific events that can only occur once. 
-        In a separate set to make these very common (when they are valid for the situation) -->
-    <EventSet identifier="outpostevents.clowns.EAHI" allowatstart="true" chooserandom="true" eventcount="3" faction="clowns">
-      <ScriptedEvent identifier="clownspecialhire1" commonness="100" />
-      <ScriptedEvent identifier="pathofthebikehorn1" commonness="100" />
-      <ScriptedEvent identifier="pathofthebikehorn2" commonness="100" />
-      <ScriptedEvent identifier="pathofthebikehorn3" commonness="100" />
-      <ScriptedEvent identifier="pathofthebikehorn4" commonness="100" />
-      <ScriptedEvent identifier="pathofthebikehorn5" commonness="100" />
-    </EventSet>
-    <EventSet identifier="outpostevents.separatists.EAHI" allowatstart="true" chooserandom="true" eventcount="2" faction="separatists">
-      <ScriptedEvent identifier="separatistspecialhire1" commonness="100" />
-      <ScriptedEvent identifier="separatistspecialhire2" commonness="100" />
-      <ScriptedEvent identifier="missionevent_tormsdalereport" commonness="100" />
-      <ScriptedEvent identifier="missionevent_jailbreak_sootman" commonness="10" faction="separatists" />
-    </EventSet>
-    <EventSet identifier="outpostevents.separatists.triggeralways.EAHI" allowatstart="true" eventcount="1" faction="separatists">
-      <ScriptedEvent identifier="tormsdalereport_complete" commonness="100" />
-    </EventSet>
-    <EventSet identifier="outpostevents.coalition.EAHI" allowatstart="true" chooserandom="true" eventcount="1" faction="coalition">
-      <ScriptedEvent identifier="coalitionspecialhire1" commonness="50" />
-      <ScriptedEvent identifier="coalitionspecialhire2" commonness="50" />
-    </EventSet>
-    <EventSet identifier="outpostevents.huskcult.EAHI" allowatstart="true" chooserandom="true" eventcount="4" faction="huskcult">
-      <ScriptedEvent identifier="huskcultspecialhire1" commonness="100" />
-      <ScriptedEvent identifier="youngcultists" commonness="100" />
-      <ScriptedEvent identifier="waytoascension1" commonness="100" />
-      <ScriptedEvent identifier="waytoascension2" commonness="100" />
-      <ScriptedEvent identifier="waytoascension3" commonness="100" />
-      <ScriptedEvent identifier="waytoascension4" commonness="100" />
-      <ScriptedEvent identifier="waytoascension5" commonness="100" />
-    </EventSet>
-  </EventSet>
-  <!--EVENT SETS-->
+  
+  <EventPrefabs>
+      <!-- spawnpointtag="saferoom" spawnlocation="beaconstation" -->
+    <!-- MOD FEATURE TEST EVENT -->
+    <ScriptedEvent identifier="EAHI_test" commonness="0">
+      <!-- Tag Player -->
+      <TagAction criteria="player" tag="player" />
+      <!-- Check social credit -->
+      <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte 0">
+        <Success>
+          <ConversationAction text="test text" dialogtype="Regular" EventSprites="" targettag="player">
+            <Option text="Ackd">
+              <ConversationAction text="test text" dialogtype="Regular" EventSprites="" targettag="player"></ConversationAction>
+              <!-- <MissionAction missiontag="EAHI_N"/> -->
+              <MissionAction missiontag="DifficultHunting"/>
+            </Option>
+          </ConversationAction>
+        </Success>
+        <Failure>
+          <!-- Do nothing -->
+        </Failure>
+      </CheckReputationAction>
+    </ScriptedEvent>
+    
+    <!-- Liaison Communicator -->
+    <ScriptedEvent identifier="EAHI_Liaison" commonness="0">
+      <!-- Tag Player -->
+      <TagAction criteria="player" tag="player" />
+      <!-- Zero SC -->
+      <SetDataAction identifier="EAHI_SocialCredit" value="2" />
+      <!-- Check and Label Social Credit Status -->
+      <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte -30">
+        <Success>
+          <SetDataAction identifier="EAHI_SocialCredit" operation="Add" value="1" />
+          <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte 0">
+            <Success>
+              <SetDataAction identifier="EAHI_SocialCredit" operation="Add" value="1" />
+              <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte 30">
+                <Success>
+                  <SetDataAction identifier="EAHI_SocialCredit" operation="Add" value="1" />
+                  <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte 60">
+                    <Success>
+                      <SetDataAction identifier="EAHI_SocialCredit" operation="Add" value="1" />
+                      <Goto name="FinishCheckingSocialCredit" />
+                    </Success>
+                    <Failure>
+                      <ConversationAction text="Check SocialCredit lt 60" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <Goto name="FinishCheckingSocialCredit" />
+                    </Failure>
+                  </CheckReputationAction>
+                </Success>
+                <Failure>
+                  <ConversationAction text="Check SocialCredit lt 30" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <Goto name="FinishCheckingSocialCredit" />
+                </Failure>
+              </CheckReputationAction>
+            </Success>
+            <Failure>
+              <ConversationAction text="Check SocialCredit lt 0" dialogtype="Regular" EventSprites="" targettag="player" />
+              <Goto name="FinishCheckingSocialCredit" />
+            </Failure>
+          </CheckReputationAction>
+        </Success>
+        <Failure>
+          <ConversationAction text="Check SocialCredit lt -30" dialogtype="Regular" EventSprites="" targettag="player" />
+          <Goto name="FinishCheckingSocialCredit" />
+        </Failure>
+      </CheckReputationAction>
+      <Label name="FinishCheckingSocialCredit" />
+      <CheckDataAction identifier="EAHI_SocialCredit" condition="gte 1">
+        <Success>
+          <Label name="EAHI_ChooseServiceMenu" />
+          <!-- <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="DHnpc_1" spawnlocation="Outpost" targetmoduletags="airlock" /> -->
+          <!-- TODO Welcome Dialog Variations based on reputation -->
+          <!-- TODO Welcom Menu Sprite -->
+          <ConversationAction text="EventText.EAHI.Liaison.Menu" dialogtype="Regular" EventSprites="" targettag="player">
+            <Option text="EventText.EAHI.Liaison.Merchant">
+              <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player"></ConversationAction> -->
+              <CheckDataAction identifier="EAHI_Merchant" condition="eq 1">
+                <Failure>
+                  <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <RNGAction chance="0.8">
+                    <Success>
+                      <Label name="MerchantRNGPassed" />
+                      <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHI_Merchant" targettag="EAHI_Merchant" spawnlocation="Outpost" targetmoduletags="airlock" />
+                      <NPCWaitAction npctag="EAHI_Merchant" wait="true" />
+                      <SetDataAction identifier="EAHI_Merchant" value="0" />
+                      <!-- Remove Character After 5 min -->
+                      <WaitAction time="300" />
+                      <StatusEffectAction targettag="DHnpc_1">
+                        <RemoveCharacter />
+                      </StatusEffectAction>
+                    </Success>
+                    <Failure>
+                      <!-- RNG Not Passed, no merchant aviable -->
+                      <!-- TODO Remove WIP label -->
+                      <ConversationAction test="EventText.EAHI.WIP" dialogtype="Regular" EventSprites="" targettag="player" >
+                        <Option text="EventText.EAHI.Liaison.GoBackToMenu">
+                          <Goto name="EAHI_ChooseServiceMenu" />
+                        </Option>
+                      </ConversationAction>
+                      <!-- TODO Reserve a mission -->
+                    </Failure>
+                  </RNGAction>
+                </Failure>
+                <Success>
+                  <!-- Pass RNG -->
+                  <ConversationAction text="Check EAHI_Merchant Passed" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <Goto name="MerchantRNGPassed" />
+                </Success>
+              </CheckDataAction>
+            </Option>
+
+            <Option text="EventText.EAHI.Liaison.Mission">
+              <!-- Check RNG Flag -->
+              <CheckDataAction identifier="EAHI_LiaisonOfficer" condition="eq 1">
+                <Failure>
+                  <ConversationAction text="Check EAHI_LiaisonOfficer Failed" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <RNGAction chance="0.8">
+                    <Success>
+                      <Label name="MissionRNGPassed" />
+                      <!-- Clear RNG Flag -->
+                      <SetDataAction identifier="EAHI_LiaisonOfficer" value="0" />
+                      <!-- TODO Mission Type Select Menu Sprite -->
+                      <!-- TODO Mission Veriaty -->
+                      <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect" dialogtype="Regular" EventSprites="" targettag="player">
+                        <option text="EventText.EAHI.Liaison.MissionTypeSelect.Delivery" >
+                          <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player" /> -->
+                          <CheckDataAction identifier="EAHI_SocialCredit" condition="gte 6">
+                            <Success>
+                              <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply6" dialogtype="Regular" targettag="player" >
+                              <!-- <MissionAction missiontag="EAHI_Delivery_Point" />
+                              <MissionAction missiontag="EAHI_Delivery_nonPoint" /> -->
+                              </ConversationAction>
+                            </Success>
+                            <Failure>
+                              <!-- <ConversationAction text="Debug 2" dialogtype="Regular" EventSprites="" targettag="player" /> -->
+                              <CheckDataAction identifier="EAHI_SocialCredit" condition="gte 5">
+                                <Success>
+                                  <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply5" dialogtype="Regular" targettag="player" >
+                                  <!-- <MissionAction missiontag="EAHI_Delivery_Point" />
+                                  <MissionAction missiontag="EAHI_Delivery_nonPoint" /> -->
+                                  </ConversationAction>
+                                </Success>
+                                <Failure>
+                                  <!-- <ConversationAction text="Debug 3" dialogtype="Regular" EventSprites="" targettag="player" /> -->
+                                  <CheckDataAction identifier="EAHI_SocialCredit" condition="gte 4">
+                                    <Success>
+                                      <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply4" dialogtype="Regular" targettag="player" >
+                                      <!-- <MissionAction missiontag="EAHI_Delivery_Point" />
+                                      <MissionAction missiontag="EAHI_Delivery_nonPoint" /> -->
+                                      </ConversationAction>
+                                    </Success>
+                                    <Failure>
+                                      <!-- <ConversationAction text="Debug 4" dialogtype="Regular" EventSprites="" targettag="player" /> -->
+                                      <CheckDataAction identifier="EAHI_SocialCredit" condition="gte 3">
+                                        <Success>
+                                          <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply3" dialogtype="Regular" targettag="player" >
+                                          <!-- <MissionAction missiontag="EAHI_Delivery_Point" />
+                                          <MissionAction missiontag="EAHI_Delivery_nonPoint" /> -->
+                                          </ConversationAction>
+                                        </Success>
+                                        <Failure>
+                                          <!-- <ConversationAction text="Debug 4" dialogtype="Regular" EventSprites="" targettag="player" /> -->
+                                          <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.ReplyERROR" dialogtype="Regular" targettag="player" />
+                                        </Failure>
+                                      </CheckDataAction>
+                                    </Failure>
+                                  </CheckDataAction>
+                                </Failure>
+                              </CheckDataAction>
+                            </Failure>
+                          </CheckDataAction>
+                        </option>
+                      </ConversationAction>
+                    </Success>
+                    <Failure>
+                      <!-- RNG Not Passed -->
+                      <!-- TODO Remove WIP label -->
+                      <ConversationAction test="EventText.EAHI.WIP" dialogtype="Regular" EventSprites="" targettag="player" >
+                        <Option text="EventText.EAHI.Liaison.GoBackToMenu">
+                          <Goto name="EAHI_ChooseServiceMenu" />
+                        </Option>
+                      </ConversationAction>
+                      <!-- TODO Reserve a mission -->
+                    </Failure>
+                  </RNGAction>
+                </Failure>
+                <Success>
+                  <!-- Pass RNG -->
+                  <ConversationAction text="Check EAHI_LiaisonOfficer Passed" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <Goto name="MissionRNGPassed" />
+                </Success>
+              </CheckDataAction>
+            </Option>
+
+            <Option text="EventText.EAHI.Liaison.ClaimPoints">
+              <!-- TODO Check Mission Accomplishment -->
+              <!-- TODO Remove WIP label -->
+              <ConversationAction text="EventText.EAHI.WIP" dialogtype="Regular" EventSprites="" targettag="player" />
+              <Goto name="EAHI_ChooseServiceMenu" />
+            </Option>
+            <Option text="EventText.EAHI.Liaison.Quit">
+              <ConversationAction text="EventText.EAHI.Liaison.Bye" dialogtype="Regular" EventSprites="" targettag="player" />
+            </Option>
+          </ConversationAction>
+        </Success>
+        <Failure>
+          <!-- TODO Coporate Police -->
+          <ConversationAction test="EventText.EAHI.Liaison.CoporatePolice" dialogtype="Regular" EventSprites="" targettag="player" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
 </Randomevents>

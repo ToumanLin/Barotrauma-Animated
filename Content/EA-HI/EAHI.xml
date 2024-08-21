@@ -1,5 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
+  <!-- Liaison Communicator -->
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategories="waifu_wip" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" >
+    <Price baseprice="500" sold="True">
+      <Price storeidentifier="merchantoutpost" sold="True" />
+      <Price storeidentifier="merchantcity" sold="True" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <!-- <Fabricate suitablefabricators="vendingmachine,fabricator" requiredtime="1" requiredmoney="0" fabricationlimitmin="1" /> -->
+    <Deconstruct time="3" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-50" >
+        <Conditional HasTag="LiaisonCommunicator:Charged" />
+        <requireditem items="idcard" type="Contained" />
+      </StatusEffect>
+      <!-- Give Charged label on spawn -->
+      <StatusEffect type="OnSpawn" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" />
+      <!-- Give Charged label when condition >= 99 -->
+      <StatusEffect type="OnActive" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" >
+        <Conditional Condition="gte 99" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" tags="LiaisonCommunicator:Broke" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This" >
+        <!-- <triggerevent identifier="EAHI_test" /> -->
+        <triggerevent identifier="EAHI_Liaison" />
+        <!-- <Remove /> -->
+      </StatusEffect>
+    </Holdable>
+    <!-- <InventoryIcon texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="384,0,64,128" depth="0.55" origin="0.5,0.5" /> -->
+    <Sprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="448,0,64,128" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="384,0,64,128" depth="0.55" origin="0.5,0.5" scale="0.5" maxcondition="90" />
+    <Body width="40" height="80" density="30" />
+    <ItemContainer capacity="1" maxstacksize="0" hideitems="false">
+      <SlotIcon slotindex="0" texture="Content/UI/MainIconsAtlas.png" sourcerect="640,128,128,128" origin="0.5,0.5" />
+      <Containable items="idcard" />
+    </ItemContainer>
+  </Item>
   <!-- 隐形EPSP -->
   <Item name="" identifier="EAHI_pucs" category="diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
     <Price baseprice="3000" sold="false">
@@ -347,6 +385,7 @@
   <Item name="" description="" identifier="EAHI_kuorongbag" category="Equipment" Tags="smallitem,mobilecontainer,revolverammo,pistolammoitem,handcannonammo,shotgunammo,harpoonammo,stungunammo,grenade,Blame_harpoonammo" showcontentsintooltip="true" fireproof="true" waterproof="true" scale="0.5">
     <PreferredContainer primary="storagecab" spawnprobability="0.05" />
     <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.09" />
+    <!-- TODO The Sprite is too UGLY!! -->
     <Sprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="128,0,128,128" depth="0.55" origin="0.5,0.5" />
     <Body width="45" height="60" density="25" />
     <Deconstruct time="15">
