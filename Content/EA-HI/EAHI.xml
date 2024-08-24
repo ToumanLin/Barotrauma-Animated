@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <!-- Liaison Communicator -->
-  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategories="waifu_wip" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" >
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategories="EAHI" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" HideConditionInTooltip="true" >
     <Price baseprice="500" sold="True">
       <Price storeidentifier="merchantoutpost" sold="True" />
       <Price storeidentifier="merchantcity" sold="True" />
@@ -14,7 +14,7 @@
     <Holdable slots="Any,RightHand,LeftHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
       <StatusEffect type="OnSecondaryUse" target="This" Condition="-50" >
         <Conditional HasTag="LiaisonCommunicator:Charged" />
-        <requireditem items="idcard" type="Contained" />
+        <requireditem items="idcard" type="Contained" msg="idcardrequired" />
       </StatusEffect>
       <!-- Give Charged label on spawn -->
       <StatusEffect type="OnSpawn" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" />
@@ -38,231 +38,6 @@
       <Containable items="idcard" />
     </ItemContainer>
   </Item>
-  <!-- 隐形EPSP 会换种形式删除 -->
-  <Item name="" identifier="EAHI_pucs" category="diving" tags="diving,divingsuit,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
-    <Price baseprice="3000" sold="false">
-      <Price locationtype="outpost" multiplier="1" sold="false" />
-      <Price locationtype="city" multiplier="1" sold="false" />
-      <Price locationtype="research" multiplier="1.2" sold="false" />
-      <Price locationtype="military" multiplier="1" sold="false" />
-      <Price locationtype="mine" multiplier="1.1" sold="false" />
-    </Price>
-    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
-    <Deconstruct time="25">
-      <Item identifier="pucs" />
-    </Deconstruct>
-    <Fabricate suitablefabricators="fabricator" requiredtime="40">
-      <RequiredSkill identifier="electrical" level="80" />
-      <RequiredItem identifier="Wf_pucs_D" />
-      <RequiredItem identifier="exotic_matter" />
-      <Item identifier="fpgacircuit" />
-    </Fabricate>
-    <InventoryIcon texture="%ModDir:2809175631%/Content/EA-HI/EPSPSeries/Wf_Pucs_D_icon.png" sourcerect="0,0,88,120" origin="0.5,0.5" />
-    <Sprite name="EAHI_PUCS Item" texture="%ModDir:2809175631%/Content/EA-HI/EPSPSeries/Wf_PUCS_D_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
-    <ContainedSprite name="EAHI_pucs In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir:2809175631%/Content/EA-HI/EPSPSeries/Wf_PUCS_D_Items.png" sourcerect="164,0,87,190" depth="0.55" origin="0.5,0.5" />
-    <ContainedSprite name="EAHI_pucs Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir:2809175631%/Content/EA-HI/EPSPSeries/Wf_PUCS_D.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
-    <ContainedSprite name="EAHI_pucs In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir:2809175631%/Content/EA-HI/EPSPSeries/Wf_PUCS_D_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
-    <Body radius="45" width="34" density="15" />
-    <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
-      <sprite name="PUCS Helmet Wearable" texture="EAHI_pucs.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" hideotherwearables="false" sourcerect="0,0,1,1" origin="0.53,0.55">
-        <LightComponent range="300.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="false" allowingameediting="false">
-          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
-            <Conditional IsDead="false" />
-          </StatusEffect>
-          <LightTexture texture="%ModDir:2809175631%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
-        </LightComponent>
-      </sprite>
-      <sprite name="PUCS Vest Wearable" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inheritscale="true" scale="0.65" inheritorigin="false" origin="0.5,0.661" inheritsourcerect="false" sourcerect="13,16,103,180">
-        <LightComponent range="100.0" lightcolor="255,255,255,50" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
-          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
-            <Conditional IsDead="false" />
-          </StatusEffect>
-          <sprite texture="%ModDir:2809175631%/Content/EA-HI/EAHI_pucs_light.png" depth="0.025" sourcerect="13,16,103,180" origin="0.5,0.661" alpha="1.0" />
-        </LightComponent>
-      </sprite>
-      <!--懒得搞了，直接一张空白png算了-->
-      <sprite name="pucs Right Hand" texture="EAHI_pucs.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Hand" texture="EAHI_pucs.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Right Lower Arm" texture="EAHI_pucs.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Lower Arm" texture="EAHI_pucs.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Right Upper Arm" texture="EAHI_pucs.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Upper Arm" texture="EAHI_pucs.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Waist" texture="EAHI_pucs.png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Right Thigh" texture="EAHI_pucs.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Thigh" texture="EAHI_pucs.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Right Leg" texture="EAHI_pucs.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Leg" texture="EAHI_pucs.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Left Shoe" texture="EAHI_pucs.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="pucs Right Shoe" texture="EAHI_pucs.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
-      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="8000.0" SpeedMultiplier="1.1" PropulsionSpeedMultiplier="1.6" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-        <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
-        <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-      </StatusEffect>
-      <!-- refill when in container -->
-      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
-        <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-      </StatusEffect>
-      <!-- refill when both hull oxygen gt 50 and not in water -->
-      <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
-        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-        <Conditional HullOxygenPercentage="gte 50" />
-        <Conditional InWater="false" />
-      </StatusEffect>
-      <!-- comsume when neither Hull oxygen it 50 nor InWater -->
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-        <Conditional IsDead="false" />
-        <Conditional HullOxygenPercentage="lt 50" />
-        <Conditional InWater="false" />
-        <RequiredItem items="oxygensource" type="Contained" />
-      </StatusEffect>
-      <!-- comsume when in water -->
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
-        <Conditional InWater="true" />
-        <RequiredItem items="oxygensource" type="Contained" />
-      </StatusEffect>
-      <!-- hypoxia when using weldingfueltank -->
-      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
-        <Conditional IsDead="false" />
-        <RequiredItem items="weldingfueltank" type="Contained" />
-      </StatusEffect>
-      <!-- get burn when using incendiumfueltank -->
-      <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
-        <Conditional IsDead="false" />
-        <RequiredItem items="incendiumfueltank" type="Contained" />
-        <Affliction identifier="burn" amount="3.0" />
-      </StatusEffect>
-      <!-- 药物治疗效果 -->
-      <!--使用生理盐水-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="1">
-        <ReduceAffliction type="bloodloss" amount="2.5" />
-        <RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--使用血袋-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1">
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--使用异星血浆-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1">
-        <Affliction identifier="psychosis" amount="2.25" />
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="alienblood" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--使用吗啡-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2">
-        <ReduceAffliction type="damage" amount="5" />
-        <ReduceAffliction type="burn" amount="0.1" />
-        <Affliction identifier="oxygenlow" amount="2" />
-        <Affliction identifier="opiateaddiction" amount="0.5" />
-        <Affliction identifier="opiateoverdose" amount="1.0" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
-        <RequiredItem items="antidama1" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <!--使用芬太尼-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="2">
-        <ReduceAffliction type="damage" amount="15" />
-        <ReduceAffliction type="burn" amount="1" />
-        <Affliction identifier="oxygenlow" amount="6" />
-        <Affliction identifier="opiateaddiction" amount="1.5" />
-        <Affliction identifier="opiateoverdose" amount="4.5" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="20" />
-        <RequiredItem items="antidama2" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <!--使用神效剂-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="2">
-        <Affliction identifier="burn" amount="0.02" />
-        <ReduceAffliction type="damage" amount="3" />
-        <ReduceAffliction identifier="oxygenlow" amount="3" />
-        <ReduceAffliction identifier="bloodloss" amount="2" />
-        <RequiredItem items="deusizine" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-        <Conditional bloodloss="gt 5.0" />
-        <Conditional oxygenlow="gt 50.0" />
-      </StatusEffect>
-      <!--伤害修正-->
-      <StatValue stattype="FlowResistance" value="2.5" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bleeding,bitewounds,blunttrauma" damagemultiplier="0.75" damagesound="LimbArmor" deflectprojectiles="true" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound,lacerations" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
-      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.1" damagesound="LimbArmor" />
-      <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.2" />
-      <!-- alarm condition -->
-      <ItemComponent IsActiveConditionalComparison="Or">
-        <IsActive HullOxygenPercentage="lt 50" />
-        <IsActive InWater="eq true" />
-        <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
-          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
-          <Conditional condition="lte 0.0" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
-        </StatusEffect>
-      </ItemComponent>
-      <!--自定义界面-->
-      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-        <GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
-        <TickBox text="epsp.light">
-          <StatusEffect type="OnUse" targettype="This" IsOn="true" />
-          <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
-        </TickBox>
-      </CustomInterface>
-    </Wearable>
-    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
-    <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0">
-      <Containable items="none" />
-      <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
-      <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
-      <SlotIcon slotindex="2" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
-        <Containable items="oxygenitetank">
-          <StatusEffect type="OnContaining" target="Character" SpeedMultiplier="1.4" setvalue="true" comparison="And" targetslot="0">
-            <Conditional IsDead="false" />
-            <Conditional HullOxygenPercentage="lt 50" />
-            <Conditional InWater="false" />
-            <Conditional decreasedoxygenconsumption="lt 100" />
-          </StatusEffect>
-        </Containable>
-      </SubContainer>
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="antibloodloss1,antibloodloss2,alienblood" />
-      </SubContainer>
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="antidama1,antidama2,deusizine" />
-      </SubContainer>
-    </ItemContainer>
-  </Item>
   <!-- 工具袋（透明） -->
   <Item identifier="EAHI_toolbelt" descriptionidentifier="toolbelt" variantof="toolbelt">
     <PreferredContainer primary="engcab" />
@@ -273,7 +48,7 @@
     </Wearable>
   </Item>
   <!-- 高级自注射耳机 -->
-  <Item name="" identifier="EAHI_autoinjectorheadset" scale="0.5" category="Equipment" tags="mobileradio,smallitem,idcard,id_captain,id_security,id_engineer,id_medic,id_assistant,id_mechanic,id_pirate,wreck_secureid,wreck_id,wreck_engineer,wreck_mechanic,wreck_medic,wreck_security,wreck_captain,wreck_admin,id_reactor,id_outpostsecurity" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+  <Item name="" identifier="EAHI_autoinjectorheadset" scale="0.5" subcategory="EAHI" category="Misc" tags="mobileradio,smallitem,idcard,id_captain,id_security,id_engineer,id_medic,id_assistant,id_mechanic,id_pirate,wreck_secureid,wreck_id,wreck_engineer,wreck_mechanic,wreck_medic,wreck_security,wreck_captain,wreck_admin,id_reactor,id_outpostsecurity" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
     <Price baseprice="200" sold="false">
       <Price locationtype="outpost" multiplier="1" sold="false" />
       <Price locationtype="city" multiplier="0.9" sold="false" />
@@ -382,7 +157,7 @@
     <StatusHUD drawhudwhenequipped="true" overlaycolor="0,0,0,0" />
   </Item>
   <!--扩容包-->
-  <Item name="" description="" identifier="EAHI_kuorongbag" category="Equipment" Tags="smallitem,mobilecontainer,revolverammo,pistolammoitem,handcannonammo,shotgunammo,harpoonammo,stungunammo,grenade,Blame_harpoonammo" showcontentsintooltip="true" fireproof="true" waterproof="true" scale="0.5">
+  <Item name="" description="" identifier="EAHI_kuorongbag" subcategory="EAHI" category="Misc" Tags="smallitem,mobilecontainer,revolverammo,pistolammoitem,handcannonammo,shotgunammo,harpoonammo,stungunammo,grenade,Blame_harpoonammo" showcontentsintooltip="true" fireproof="true" waterproof="true" scale="0.5">
     <PreferredContainer primary="storagecab" spawnprobability="0.05" />
     <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.09" />
     <!-- TODO The Sprite is too UGLY!! -->
@@ -398,7 +173,7 @@
     </ItemContainer>
   </Item>
   <!--高级声纳-->
-  <Item name="" description="" identifier="EAHI_handheldsonar" category="weapon" Tags="smallitem,sonar,provocative" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+  <Item name="" description="" identifier="EAHI_handheldsonar" subcategory="EAHI" category="Misc" Tags="smallitem,sonar,provocative" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
     <Fabricate suitablefabricators="fabricator" requiredtime="2">
       <RequiredSkill identifier="mechanical" level="3" />
       <RequiredItem identifier="fpgacircuit" />
@@ -448,7 +223,7 @@
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
   </Item>
   <!--多功能工具：一个就够了-->
-  <Item name="" description="" identifier="EAHI_duogongnengtool" category="Equipment" Tags="smallitem,tool,cuttingequipment,electricalrepairtool,mechanicalrepairtool,provocative,screwdriver,wrench,weldingequipment,crowbaritem" cargocontaineridentifier="metalcrate" Scale="0.4" impactsoundtag="impact_metal_light">
+  <Item name="" description="" identifier="EAHI_duogongnengtool" subcategory="EAHI" category="Misc" Tags="smallitem,tool,mountableweapon" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" Scale="0.4" impactsoundtag="impact_metal_light" addedrepairspeedmultiplier="0.3">
     <PreferredContainer primary="storagecab" spawnprobability="0.05" />
     <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.02" />
     <Deconstruct time="10">
@@ -456,34 +231,76 @@
       <Item identifier="plastic" amount="2" />
       <Item identifier="titaniumaluminiumalloy" amount="1" />
     </Deconstruct>
-    <InventoryIcon texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="256,0,128,128" origin="0.5,0.5" />
+    <!-- <InventoryIcon texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="256,0,128,128" origin="0.5,0.5" /> -->
     <Sprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="256,0,128,128" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="192,128,128,128" depth="0.55" origin="0.5,0.5" maxcondition="99.1" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="320,128,128,128" depth="0.55" origin="0.5,0.5" maxcondition="98.1" />
     <Body width="128" height="128" density="15" />
     <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="60,-15" handle1="-40,-0" handle2="-21,-27" msg="ItemMsgPickUpSelect" />
-    <RepairTool firedamage="100.0" structurefixamount="5" range="200" barrelpos="50,15" particles="weld" repairmultiple="true" repairthroughwalls="false" combatpriority="0" levelwallfixamount="-0.35" targetforce="10">
-      <RequiredItems items="oxygensource" type="Contained" msg="ItemMsgOxygenTankRequired" />
-      <ParticleEmitter particle="weld" particlespersecond="50" copyentityangle="true" scalemin="1.5" scalemax="1.5" ColorMultiplier="20,50,255,155" />
-      <ParticleEmitterHitStructure particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
-      <ParticleEmitterHitStructure particle="GlowDot" particlespersecond="60" emitinterval="0.7" particleamount="10" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocitymin="10" velocitymax="50" />
-      <ParticleEmitterHitStructure particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="0" velocitymax="50" />
-      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
-      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="10" velocitymax="100" />
-      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
-      <sound file="%ModDir:2809175631%/Content/EA-HI/WeldingLoopMultitool.ogg" type="OnUse" range="500.0" loop="true" />
-      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" Condition="-1.0" />
-      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" Condition="-0.5" />
-      <StatusEffect type="OnUse" targettype="UseTarget" targets="door,ductblock" Stuck="4.0" Condition="2.0" />
-      <StatusEffect type="OnUse" targettype="UseTarget" Condition="-3.0" />
-      <Fixable identifier="structure" />
+    <RepairTool firedamage="100.0" structurefixamount="0" range="200" barrelpos="25,4" particles="weld" repairmultiple="true" repairthroughwalls="false" combatpriority="10" levelwallfixamount="0" targetforce="10">
+      <ParticleEmitterHitStructure particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800"/>
+      <ParticleEmitterHitStructure particle="GlowDot" particlespersecond="60" emitinterval="0.7" particleamount="10" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocitymin="10" velocitymax="50"/>
+      <ParticleEmitterHitStructure particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="0" velocitymax="50"/>
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800"/>
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="10" velocitymax="100"/>
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100"/>
+      <sound file="%ModDir%/Content/EA-HI/WeldingLoopMultitool.ogg" type="OnUse" range="500.0" loop="true"/>
+      <!-- flame -->
+      <StatusEffect type="OnUse" target="This" >
+        <ParticleEmitter particle="wf_weld" particlespersecond="50" copyentityangle="true" position="30,0" Flip="True" />
+        <RequiredItems items="weldingtoolfuel" type="Contained" targetslot="0" msg="itemmsgweldingfueloroxygensourcerequired"/>
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" >
+        <ParticleEmitter particle="wf_plasma" particlespersecond="50" copyentityangle="true" Offset="-30,0" position="30,0" Flip="True" />
+        <RequiredItems items="oxygensource" type="Contained" targetslot="0" msg="itemmsgweldingfueloroxygensourcerequired"/>
+      </StatusEffect>
+      <!-- Use contained -->
+      <StatusEffect type="OnUse" targettype="Contained" targetslot="0" Condition="-1.0" >
+        <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" targetslot="0" msg="itemmsgweldingfueloroxygensourcerequired"/>
+      </StatusEffect>
+      <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" targetslot="0" msg="itemmsgweldingfueloroxygensourcerequired"/>
+      <!-- Stuck Doors -->
+      <StatusEffect type="OnUse" targettype="UseTarget" targets="weldable" Stuck="20" Condition="5.0">
+        <RequiredItems items="weldingtoolfuel" type="Contained" targetslot="0"/>
+        <!-- <Conditional items="weldingtoolfuel" TargetContainedItem="true" targetslot="0" condtion="gt 0" /> -->
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="UseTarget" targets="weldable" Stuck="-20">
+        <RequiredItems items="oxygensource" type="Contained" targetslot="0"/>
+      </StatusEffect>
+      <!-- Item Damage -->
+      <StatusEffect type="OnUse" targettype="UseTarget" Condition="-25">
+        <RequiredItems items="oxygensource" type="Contained" targetslot="0"/>
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="UseTarget" targets="item" Condition="-3.0">
+        <RequiredItems items="weldingtoolfuel" type="Contained" targetslot="0"/>
+        <Conditional HasTag="neq weldable"/>
+      </StatusEffect>
+      <!-- Cause Burn Damage -->
+      <StatusEffect type="OnUse" targettype="Limb" severlimbsprobability="0.005">
+        <Affliction identifier="burn" amount="4.5"/>
+        <RequiredItems items="oxygensource" type="Contained" targetslot="0"/>
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" condition="100" setvalue="true" >
+        <conditional condition="lt 99.1" />
+        <conditional RequireEmpty="true" />
+      </StatusEffect>
+      <Fixable identifier="structure"/>
+      <!-- <NonFixable identifier="thalamus,ice" /> -->
     </RepairTool>
-    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
-      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-      <Containable items="oxygensource" />
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorstyle="tank" containedspritedepth="0.56">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5"/>
+        <Containable items="weldingtoolfuel,oxygensource" itempos="15,-14" rotation="-15" />
+        <Containable items="weldingtoolfuel">
+          <StatusEffect type="OnContaining" targettype="This" targetitemcomponent="RepairTool" structurefixamount="4" levelwallfixamount="-1" condition="98.0" setvalue="true" Tags="weldingequipment" />
+        </Containable>
+        <Containable items="oxygensource">
+          <StatusEffect type="OnContaining" targettype="This" targetitemcomponent="RepairTool" structurefixamount="-1" levelwallfixamount="-7.5" condition="99.0" setvalue="true" Tags="cuttingequipment"/>
+        </Containable>
     </ItemContainer>
     <AiTarget sightrange="3000" />
   </Item>
   <!--传送药水-->
-  <Item name="" identifier="teleportine" category="Medical" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+  <Item name="" identifier="teleportine" subcategory="EAHI" category="Misc" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True" hideinmenus="true">
     <Upgrade gameversion="0.10.0.0" scale="0.5" />
     <InventoryIcon texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
     <Sprite texture="%ModDir:2809175631%/Content/EA-HI/gfx.png" sourcerect="0,0,64,64" depth="0.6" origin="0.5,0.5" />
@@ -510,42 +327,4 @@
     </MeleeWeapon>
     <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
   </Item>
-  <!--3d打印机-->
-  <!-- <Item name="" identifier="3Dprinter_EAHI" tags="3Dprinter_EAHI,geneticresearchstation" width="494" height="297" texturescale="1.0,1.0" scale="0.5" category="Machine" subcategory="Outpost">
-    <sprite texture="Content/Map/Outposts/Art/MedicalItemResearch.png" sourcerect="417,6,494,297" depth="0.79" premultiplyalpha="false" origin="0.5,0.5" />
-    <LightComponent range="0.0" powerconsumption="5" lightcolor="255,255,255,111" IsOn="true" castshadows="false" allowingameediting="false">
-      <sprite texture="Content/Map/Outposts/Art/MedicalItemResearchLights.png" sourcerect="417,6,494,297" depth="0.1" origin="0.5,0.5" alpha="1.0" />
-    </LightComponent>
-    <Deconstructor canbeselected="true" powerconsumption="500.0" deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
-      <GuiFrame relativesize="0.25,0.27" style="ItemUI" anchor="Center" />
-      <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" loop="true" />
-      <poweronsound file="Content/Items/PowerOnLight3.ogg" range="600" loop="false" />
-      <StatusEffect type="InWater" target="This" condition="-0.5" />
-    </Deconstructor>
-    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
-      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial,alienblood,smallitem" />
-    </ItemContainer>
-    <ItemContainer capacity="2" maxstacksize="8" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
-      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial,alienblood,smallitem" />
-    </ItemContainer>
-    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="true" RepairThreshold="80" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="10">
-      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
-      <RequiredSkill identifier="electrical" level="80" />
-      <RequiredItem items="screwdriver" type="Equipped" />
-      <ParticleEmitter particle="spark" particleburstamount="5" particlespersecond="5" anglemin="0" anglemax="359" velocitymin="100" velocitymax="500" particleburstinterval="2" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
-    </Repairable>
-    <ConnectionPanel selectkey="Action" canbeselected="true" hudpriority="10" msg="ItemMsgRewireScrewdriver">
-      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
-      <RequiredSkill identifier="electrical" level="55" />
-      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
-        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
-        <Explosion range="100.0" stun="0" force="5.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
-        <Affliction identifier="stun" strength="4" />
-        <Affliction identifier="burn" strength="5" />
-      </StatusEffect>
-      <RequiredItem items="screwdriver" type="Equipped" />
-      <input name="power_in" displayname="connection.powerin" />
-      <output name="condition_out" displayname="connection.conditionout" />
-    </ConnectionPanel>
-  </Item> -->
 </Items>

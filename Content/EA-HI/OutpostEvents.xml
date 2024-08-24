@@ -41,7 +41,6 @@
     <ScriptedEvent identifier="EAHI_Liaison" commonness="0">
       <!-- Tag Player -->
       <TagAction criteria="player" tag="player" />
-      <Label name="FinishCheckingSocialCredit" />
       <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte -30">
         <!-- Reputation >= -30 -->
         <Success>
@@ -62,6 +61,7 @@
                         <Success>
                           <Label name="MerchantRNGPassed" />
                           <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
+                          <WaitAction time="2" />
                           <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHI_Merchant" targettag="EAHI_Merchant" spawnlocation="Outpost" targetmoduletags="airlock" />
                           <NPCWaitAction npctag="EAHI_Merchant" wait="true" />
                           <!-- Zero out flag -->
@@ -114,7 +114,7 @@
                     </Failure>
                     <Success>
                       <!-- Pass RNG -->
-                      <ConversationAction text="Check EAHI_Merchant Passed" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
                       <Goto name="MerchantRNGPassed" />
                     </Success>
                   </CheckDataAction>
@@ -125,11 +125,11 @@
                   <CheckDataAction identifier="EAHI_Mission" condition="eq true">
                     <Success>
                       <!-- Pass RNG -->
-                      <ConversationAction text="Check EAHI_Mission Passed" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
                       <Goto name="MissionRNGPassed" />
                     </Success>
                     <Failure>
-                      <ConversationAction text="Check EAHI_Mission Failed" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
                       <RNGAction chance="0.8">
                         <Success>
                           <Label name="MissionRNGPassed" />
@@ -143,6 +143,8 @@
                               <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 0">
                                 <Success>
                                   <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply-30-0" dialogtype="Regular" targettag="player" />
+                                  <MissionAction missiontag="EAHI_H" />
+                                  <MissionAction missiontag="EAHI_N" />
                                   <!-- EVENT END -->
                                   <!-- Set Wait Flag -->
                                   <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
@@ -153,6 +155,8 @@
                                   <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 30">
                                     <Success>
                                       <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply0-30" dialogtype="Regular" targettag="player" />
+                                      <MissionAction missiontag="EAHI_H" />
+                                      <MissionAction missiontag="EAHI_N" />
                                       <!-- EVENT END -->
                                       <!-- Set Wait Flag -->
                                       <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
@@ -163,6 +167,8 @@
                                       <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 60">
                                         <Success>
                                           <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply30-60" dialogtype="Regular" targettag="player" />
+                                          <MissionAction missiontag="EAHI_H" />
+                                          <MissionAction missiontag="EAHI_N" />
                                           <!-- EVENT END -->
                                            <!-- Set Wait Flag -->
                                           <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
@@ -173,6 +179,8 @@
                                           <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 90">
                                             <Success>
                                               <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply60-90" dialogtype="Regular" targettag="player" />
+                                              <MissionAction missiontag="EAHI_H" />
+                                              <MissionAction missiontag="EAHI_N" />
                                               <!-- EVENT END -->
                                               <!-- Set Wait Flag -->
                                               <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
@@ -181,6 +189,8 @@
                                             </Success>
                                             <Failure>
                                               <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply90-100" dialogtype="Regular" targettag="player" />
+                                              <MissionAction missiontag="EAHI_H" />
+                                              <MissionAction missiontag="EAHI_N" />
                                               <!-- EVENT END -->
                                               <!-- Set Wait Flag -->
                                               <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
@@ -242,7 +252,19 @@
                 </Option>
     
                 <Option text="EventText.EAHI.Liaison.Quit">
-                  <ConversationAction text="EventText.EAHI.Liaison.Bye" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <!-- EVENT END -->
+                </Option>
+
+                <Option text="EventText.EAHI.Liaison.Comlaint">
+                  <!-- TODO Check Mission Accomplishment -->
+                  <!-- TODO Remove WIP label -->
+                  <ConversationAction text="EventText.EAHI.WIP" dialogtype="Regular" EventSprites="" targettag="player" />
+                  <Goto name="EAHI_ChooseServiceMenu" />
+                </Option>
+    
+                <Option text="EventText.EAHI.Liaison.Quit">
+                  <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
                   <!-- EVENT END -->
                 </Option>
               </ConversationAction>

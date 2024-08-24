@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Override><Items>
+<!-- 参考放置物品 -->
+  <Item
+  name="物资储存箱-铁"
+  description="一个专业的物资储存箱，防震抗摔，坚固耐用，具有优异的抗震、隔热、防潮、抗化学腐蚀性能。&#xD;&#xA;（看起来大概能装99单位物资。）"
+  identifier="if_resource_box_fe"
+  tags="mediumitem,if_resource_box"
+  health="10000"
+  scale="0.5"
+  impactsoundtag="impact_metal_heavy"
+  showcontentsintooltip="true"
+  canflipx="false"
+  waterproof="true"
+  fireproof="true"
+>
+<!--贴图:路径,图层,定位-->
+  <Sprite texture="Mods/if_resource_box/gfx/if_resource_box.png" depth="0.55" sourcerect="149,7,147,77" />
+<!--物品尺寸:宽度,高度,密度-->
+  <Body width="145" height="75" density="50" />
+<!--握持-->
+  <Holdable slots="RightHand+LeftHand" aimable="false" holdpos="50,-50" aimpos="50,-40" handle1="-0,18" handle2="0,0" swingamount="20,100" swingspeed="1" swingwhenusing="true" msg="itemmsgpickupselect" attachable="true" >
+    <!--手持减速-->
+    <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" />
+    <!--给予货箱标签-->
+    <StatusEffect type="OnSpawn" target="This" Tags="crate" setvalue="true" />
+  </Holdable>
+<!--容器-->
+  <ItemContainer capacity="0" maxstacksize="0" hideitems="true" keepopenwhenequipped="true" movableframe="false" showcontainedstateindicator="false">
+    <Containable items="none" />
+    <!--存放图标-->
+    <SlotIcon slotindex="1" texture="Mods/if_resource_box/gfx/if_resource_box.png" sourcerect="48,5,15,25" />
+    <!--取出图标-->
+    <SlotIcon slotindex="0" texture="Mods/if_resource_box/gfx/if_resource_box.png" sourcerect="65,5,15,25" />
+  <!--子容器-取出-->
+    <SubContainer capacity="1" maxstacksize="8">
+      <Containable items="smallitem" /><!--可以放其他小物品来挡住输出槽,使用123.快捷键快速把资源放入存放槽里-->
+    </SubContainer>
+  <!--子容器-存放-->
+    <SubContainer capacity="1" maxstacksize="1">
+      <Containable identifier="iron" ><!--物资-->
+        <!--如果此子容器有物资,且未满,增加箱子耐久-->
+        <StatusEffect type="OnContaining" target="This" condition="5999" />
+        <!--如果此子容器有物资,且未满,消耗物品耐久-->
+        <StatusEffect type="OnContaining" target="Contained" condition="-6000">
+          <Conditional targetcontainer="true" condition="lt 10000" />
+        </StatusEffect>
+      </Containable>
+    </SubContainer>
+  </ItemContainer>
+<!--自定义界面-->
+  <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+    <GuiFrame relativesize="0.07,0.1" anchor="BottomCenter" absoluteoffset="-300,100"  />
+    <Button text="+ 1">
+      <StatusEffect type="OnUse" target="This" condition="-100" >
+        <Conditional Condition="gte 200" />
+        <SpawnItem identifiers="iron" spawnposition="ThisInventory" spawnifinventoryfull="true"/>
+      </StatusEffect>
+    </Button>
+    <Button text="+ 8">
+      <StatusEffect type="OnUse" target="This" condition="-800" >
+        <Conditional Condition="gte 900" />
+        <SpawnItem identifiers="iron" count="8" spawnposition="ThisInventory" spawnifinventoryfull="true"/>
+      </StatusEffect>
+    </Button>
+  </CustomInterface>
+<!--自定义界面-->
+  <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+    <GuiFrame relativesize="0.07,0.05" anchor="BottomCenter" absoluteoffset="0,-100"  />
+    <TickBox text="Deploy" >
+      <StatusEffect type="OnUse" target="This" setvalue="true" attachable="true"/>
+      <StatusEffect type="OnSecondaryUse" target="This"  setvalue="true" attachable="false"/>
+    </TickBox>
+  </CustomInterface>
+<!--制作-->	
+  <Fabricate suitablefabricators="fabricator" requiredtime="5" outcondition="0.011">
+    <RequiredItem identifier="titanium" amount="2" />
+    <RequiredItem identifier="plastic" />
+  </Fabricate>
+</Item>
+  <!-- 参考动画 -->
+  <Item name="不是光剑" description="不是光剑，未制作招式动作" identifier="lectricity_sword" category="Equipment" Tags="mediumitem,weapon,gunsmith,if_weapon,if_melee,if_sword" scale="0.5" requireaimtouse="true" impactsoundtag="impact_metal_light" health="100" damagedbyprojectiles="false" damagedbymeleeweapons="false" damagedbyexplosions="false" damagedbyrepairtools="false">
+    <InventoryIcon texture="%ModDir%/gfx/if_swords_electricity.png" sourcerect="180,7,85,13" />
+    <Sprite texture="%ModDir%/gfx/if_swords_electricity.png" sourcerect="180,7,85,13" depth="0.55" origin="0.5,0.5" />
+    <!--投掷贴图:路径,图层,定位,耐久-->
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,7,428,13" maxcondition="50" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,7,428,13" maxcondition="64" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,7,428,13" maxcondition="65" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,22,428,13" maxcondition="66" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,37,428,13" maxcondition="67" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,52,428,13" maxcondition="68" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,67,428,13" maxcondition="69" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,82,428,13" maxcondition="70" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,97,428,13" maxcondition="71" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,112,428,13" maxcondition="72" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,127,428,13" maxcondition="73" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,142,428,13" maxcondition="74" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,157,428,13" maxcondition="75" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,172,428,13" maxcondition="76" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,187,428,13" maxcondition="77" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,202,428,13" maxcondition="78" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,217,428,13" maxcondition="79" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,232,428,13" maxcondition="80" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,247,428,13" maxcondition="81" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,262,428,13" maxcondition="82" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,277,429,13" maxcondition="83" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,292,428,13" maxcondition="84" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,307,428,13" maxcondition="85" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,322,428,13" maxcondition="86" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,337,428,13" maxcondition="87" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,352,428,13" maxcondition="88" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,367,428,13" maxcondition="89" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,382,428,13" maxcondition="90" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,397,428,13" maxcondition="91" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,412,428,13" maxcondition="92" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="11,427,428,13" maxcondition="93" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,504,428,47" maxcondition="94" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,553,428,47" maxcondition="95" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,602,428,47" maxcondition="96" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,651,428,47" maxcondition="97" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,700,428,47" maxcondition="98" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,749,428,47" maxcondition="99" origin="0.509,0.479" />
+    <BrokenSprite texture="%ModDir%/gfx/if_swords_electricity.png" depth="0.55" sourcerect="7,798,428,47" maxcondition="100" origin="0.509,0.479" />
+    <Body width="423" height="13" density="50" />
+    <!--近战数据-->
+    <MeleeWeapon slots="Any,RightHand+LeftHand" aimpos="20,0" holdangle="60" handle1="-10,0" handle2="-20,0" reload="0.5" range="200" swingforce="3,-1" combatPriority="40" blocksplayers="false" msg="ItemMsgPickUpSelect">
+      <!--攻击-->
+      <Attack targetimpulse="5" targetforce="8" stun="1" severlimbsprobability="10" itemdamage="25" structuredamage="1">
+        <Affliction identifier="lacerations" strength="50" />
+        <!--撕裂-->
+        <Affliction identifier="bleeding" strength="10" />
+        <!--流血-->
+        <Affliction identifier="stun" strength="1" />
+        <!--硬直-->
+        <Affliction identifier="lacerations" strength="10" probability="0.5" />
+        <Affliction identifier="lacerations" strength="10" probability="0.5" />
+        <Affliction identifier="lacerations" strength="15" probability="0.5" />
+        <Affliction identifier="lacerations" strength="100" probability="0.2" />
+        <Affliction identifier="bleeding" strength="5" probability="0.5" />
+        <Affliction identifier="bleeding" strength="5" probability="0.5" />
+        <Affliction identifier="bleeding" strength="5" probability="0.5" />
+        <Affliction identifier="bleeding" strength="20" probability="0.01" />
+        <Affliction identifier="stun" strength="1" probability="0.5" />
+        <Affliction identifier="stun" strength="2" probability="0.5" />
+        <Affliction identifier="stun" strength="5" probability="0.1" />
+        <!--命中音效-->
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Sound file="%ModDir%/sound/misc/swords_electricity_hit.ogg" selectionmode="random" range="500" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.6" scalemax="1" />
+        </StatusEffect>
+      </Attack>
+      <!--攻击-->
+      <!--降低移动速度-->
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.9" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="1.25" setvalue="true">
+        <Affliction identifier="if_melee_defense_buff" amount="3" />
+        <!--招架3-->
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <Affliction identifier="if_melee_defense_buff" amount="10" />
+        <!--招架10-->
+      </StatusEffect>
+      <!--降低移动速度-->
+      <!--剑技-->
+      <!--给予剑技标签-->
+      <StatusEffect type="OnSpawn" target="This" Tags="if_sword_1" Condition="65" setvalue="true" />
+      <!--攻击动作4:基础-->
+      <StatusEffect type="OnUse" target="This" Tags="if_sword_1" setvalue="true" reload="0.5" swingforce="3,-1" aimpos="10,15" holdangle="60">
+        <Conditional HasTag="eq if_sword_4" />
+      </StatusEffect>
+      <!--攻击动作3:高位攻击-->
+      <StatusEffect type="OnUse" target="This" Tags="if_sword_4" setvalue="true" reload="0.5" swingforce="9,-10" aimpos="30,45" holdangle="80">
+        <Conditional HasTag="eq if_sword_3" />
+      </StatusEffect>
+      <!--攻击动作2:连击-->
+      <StatusEffect type="OnUse" target="This" Tags="if_sword_3" setvalue="true" reload="0.5" swingforce="15,-1" aimpos="10,15" holdangle="70">
+        <Conditional HasTag="eq if_sword_2" />
+      </StatusEffect>
+      <!--攻击动作1:连击-->
+      <StatusEffect type="OnUse" target="This" Tags="if_sword_2" setvalue="true" reload="0.2" swingforce="6,3" aimpos="20,5" holdangle="45">
+        <Conditional HasTag="eq if_sword_1" />
+      </StatusEffect>
+      <!--下蹲后站立高位劈砍攻击-->
+      <StatusEffect type="OnSecondaryUse" target="This" setvalue="true" comparison="And" aimpos="20,15" holdangle="60" swingforce="15,-15">
+        <Conditional targetcontainer="true" CanRun="eq true" />
+        <Conditional HasTag="eq if_canrun" />
+      </StatusEffect>
+      <!--格挡-->
+      <!--后退,下蹲进行格挡-->
+      <StatusEffect type="OnSecondaryUse" target="This" Tags="if_sword_1,if_canrun" comparison="And" setvalue="true" reload="0.1" aimpos="35,-5" holdangle="-10" swingforce="6,-3">
+        <!--条件:如果不能奔跑,武器耐久大于15,生成格挡-->
+        <Conditional targetcontainer="true" CanRun="ne true" />
+        <!--不能奔跑-->
+        <Conditional Condition="gt 80" />
+        <!--武器耐久大于15-->
+        <Affliction identifier="if_melee_defense_buff" amount="5" />
+        <!--招架5-->
+        <SpawnItem identifier="collider_half_sword" spawnposition="This" />
+        <!--生成碰撞箱-->
+      </StatusEffect>
+      <!--攻击前摇、后摇时格挡-->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Conditional Hitting="eq true" />
+        <!--挥剑-->
+        <Conditional Condition="gt 80" />
+        <!--武器耐久大于15-->
+        <Affliction identifier="if_melee_defense_buff" amount="10" />
+        <!--招架10-->
+        <SpawnItem identifier="collider_half_sword" spawnposition="This" />
+        <!--生成碰撞箱-->
+        <Sound file="%ModDir%/sound/misc/swords_electricity_use.ogg" selectionmode="random" range="500" />
+        <Sound file="%ModDir%/sound/misc/swords_electricity_use_1.ogg" range="500" />
+        <Sound file="%ModDir%/sound/misc/swords_electricity_use_2.ogg" range="500" />
+        <Sound file="%ModDir%/sound/misc/swords_electricity_use_3.ogg" range="500" />
+      </StatusEffect>
+      <!--攻击前摇、后摇时格挡-->
+      <!--格挡消耗耐久,最低到10-->
+      <StatusEffect type="OnSecondaryUse" target="This" comparison="And">
+        <Conditional targetcontainer="true" CanRun="ne true" />
+        <!--不能奔跑-->
+        <Conditional Condition="gt 80" />
+      </StatusEffect>
+      <!--展开-->
+      <StatusEffect type="OnActive" target="This">
+        <Conditional Condition="eq 100" />
+        <Sound file="%ModDir%/sound/misc/swords_electricity_open_3.ogg" range="500" loop="true" />
+      </StatusEffect>
+      <!--展开-->
+      <StatusEffect type="OnActive" target="This" Condition="150">
+        <Conditional Condition="ne 100" />
+      </StatusEffect>
+      <!--展开声音-->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Conditional Condition="gt 66" />
+        <Conditional Condition="lt 100" />
+        <Sound file="%ModDir%/sound/misc/swords_electricity_open_2.ogg" range="500" loop="false" />
+      </StatusEffect>
+      <!--收起-->
+      <StatusEffect type="Always" target="This" Condition="-100">
+        <Conditional Condition="gt 65" />
+      </StatusEffect>
+      <!--格挡-->
+      <!--剑技-->
+    </MeleeWeapon>
+    <!--近战数据-->
+    <!--质量-->
+    <Quality>
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+    </Quality>
+    <!--作战范围,声音-->
+    <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
+    <!--商店-->
+    <!--价值,购买乘数,特价商品,难度出售,随处可见-->
+    <Price baseprice="120" buyingpricemultiplier="10" canbespecial="true" minleveldifficulty="0" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <!--前哨-->
+      <Price locationtype="city" multiplier="1.35" sold="false" />
+      <!--城市-->
+      <Price locationtype="research" multiplier="1.25" minavailable="0" maxavailable="1" />
+      <!--研究-->
+      <Price locationtype="military" multiplier="1.10" sold="false" />
+      <!--军事-->
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+      <!--矿山-->
+    </Price>
+    <!--商店-->
+    <!--拆解-->
+    <Deconstruct time="20">
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <!--拆解-->
+  </Item>
+  <Item name="NEX科技 警戒炮塔" description="一个便携炮塔，配套火控终端使用，内置运动传感器。&#xD;&#xA;最有效的方式是安置于流量大的道路隐蔽处，或者安置于无人防守的入口处来打造警戒圈。‖color:51,51,51,255‖(turret sprite modified from Valerios Tsoumpas)‖color:end‖" identifier="if_turret_gun" Tags="turret,if_turret" category="Machine" interactthroughwalls="true" Scale="0.5" interactdistance="10" spritecolor="1.0,1.0,1.0,1.0" focusonselected="true" offsetonselected="350" impactsoundtag="impact_metal_heavy">
+    <Sprite texture="%ModDir%/gfx/if_turret.png" depth="0.55" sourcerect="448,311,255,134" canflipy="false" />
+    <MinimapIcon name="警戒炮塔" texture="%ModDir%/gfx/if_turret.png" sourcerect="448,311,255,134" />
+    <!--物品尺寸:宽度,高度,密度-->
+    <Body width="255" height="130" density="70" />
+    <!--握持数据-->
+    <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="itemmsgdetachwrench" PickingTime="3.0" aimpos="65,-10" handle1="0,33" holdangle="90" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+    </Holdable>
+    <!--运动传感器-->
+    <MotionSensor canbeselected="true" target="Monster" ignoredead="True" rangex="500" rangey="30" detectoffset="500,20" updateinterval="0.1" maxoutputlength="200" output="" falseoutput="" minimumvelocity="2" pickingtime="0" canbepicked="False" allowingameediting="True" msg="" />
+    <!--炮塔-->
+    <Turret canbeselected="false" characterusable="false" linkable="false" barrelpos="163,20" rotationlimits="-80,30" powerconsumption="0" showchargeindicator="false" firingoffset="-10,-113" usefiringoffsetformuzzleflash="true" showprojectileindicator="true" recoildistance="2" reload="0.2" springstiffnesslowskill="2" springstiffnesshighskill="50" springdampinglowskill="0.5" springdampinghighskill="10" rotationspeedlowskill="1" rotationspeedhighskill="8" crosshairscale="0.5">
+      <Sound file="%ModDir%/sound/556/5,56 G36 SINGLE SHOT.ogg" type="OnUse" range="1500" />
+      <WeaponIndicator texture="Content/UI/WeaponUI.png" sourcerect="425,913,66,36" origin="0.24, 0.472" />
+      <BarrelSprite texture="%ModDir%/gfx/if_turret.png" depth="0.551" sourcerect="357,9,70,226" origin="0.5,0.5" />
+      <!--准星指针-->
+      <Crosshair texture="%ModDir%/gfx/if_crosshairs.png" sourcerect="0,0,256,256" origin="0.5,0.5" />
+      <!--准星外框-->
+      <CrosshairPointer texture="%ModDir%/gfx/if_crosshairs.png" sourcerect="256,256,256,256" origin="0.5,0.5" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" />
+      <StartMoveSound file="Content/Items/Weapons/RailgunStart.ogg" />
+      <EndMoveSound file="Content/Items/Weapons/RailgunStop.ogg" />
+      <!--枪焰-->
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="250.0" structuredamage="0" force="0.01" camerashake="2.0" flash="false" flashrange="100" flashduration="0.25" flames="false" shockwave="false" smoke="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+      <!--感应射击-->
+      <StatusEffect type="Always" target="This" disabledeltatime="true" comparison="And">
+        <Conditional MotionDetected="true" targetitemcomponent="MotionSensor" />
+        <Conditional HasTag="eq if_fire_on" />
+        <Use />
+      </StatusEffect>
+    </Turret>
+    <!--弹药-->
+    <ItemContainer capacity="1" slotsperrow="1" canbeselected="true" hideitems="false" itempos="160,-35" msg="ItemMsgInteractSelect" autointeractwithcontained="false">
+      <GuiFrame relativesize="0.12,0.15" anchor="BottomCenter" style="ItemUI" />
+      <Containable items="if_556_mags_1000" />
+    </ItemContainer>
+    <!--弹药-->
+    <!--自定义界面-->
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.05" anchor="BottomCenter" absoluteoffset="0,0" style="ItemUI" />
+      <TickBox text="关闭运动传感器">
+        <StatusEffect type="OnUse" target="This" Tags="if_fire_off" setvalue="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" Tags="if_fire_on" setvalue="true" />
+      </TickBox>
+    </CustomInterface>
+    <!--接线面板-->
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+    </ConnectionPanel>
+    <aitarget maxsightrange="3000" maxsoundrange="8000" fadeouttime="5" />
+    <!--商店-->
+    <!--价值,购买乘数,特价商品,难度出售,随处可见-->
+    <Price baseprice="1500" buyingpricemultiplier="4" canbespecial="true" minleveldifficulty="0" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <!--前哨-->
+      <Price locationtype="city" multiplier="1.35" minavailable="0" maxavailable="2" />
+      <!--城市-->
+      <Price locationtype="research" multiplier="1.25" minavailable="0" maxavailable="1" />
+      <!--研究-->
+      <Price locationtype="military" multiplier="1.10" minavailable="1" maxavailable="2" />
+      <!--军事-->
+      <Price locationtype="mine" multiplier="1.25" minavailable="0" maxavailable="3" />
+      <!--矿山-->
+    </Price>
+    <!--商店-->
+  </Item>
+  <Item name="复合弹道战斗盾牌 LEVEL IV+ XL 军用级" description="便携式LEVEL IV+ XL军用级复合弹道盾牌，旨在以枪口初速抵御小型武器发射的军用级穿甲弹(AP,API)。" tags="smallitem,if_shield" identifier="if_shield_1" health="1500" scale="0.5" category="Equipment" cargocontaineridentifier="metalcrate" impactsoundtag="impact_soft" allowasextracargo="true" damagedbyprojectiles="true" spritecolor="153,153,153,255">
+    <!--贴图:路径,图层,定位,偏移-->
+    <Sprite texture="%ModDir%/gfx/if_swords.png" depth="0.55" sourcerect="492,339,133,298" />
+    <decorativesprite texture="%ModDir%/gfx/if_swords.png" sourcerect="634,338,133,298" depth="0.552" />
+    <InventoryIcon texture="%ModDir%/gfx/if_swords.png" sourcerect="634,338,133,299" />
+    <!--物品尺寸:宽度,高度,密度-->
+    <Body width="133" height="298" density="80" />
+    <!--握持数据:双手,固定姿态,提示信息,玩家碰撞箱,握持坐标,瞄准坐标,主手位置,副手位置-->
+    <Holdable slots="Any,LeftHand" controlpose="true" msg="ItemMsgPickUpSelect" blocksplayers="true" holdpos="25,-35" aimpos="40,-35" handle1="8,8" handle2="8,8">
+      <!--降低移动速度-->
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.5" setvalue="true" />
+      <!--损坏消失-->
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="brownchunks" drawontop="true" particleamount="50" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" distancemin="0" distancemax="30" scalemin="0.1" scalemax="0.35" />
+        <Sound file="Content/Sounds/Damage/HitArmor1.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <!--被击中效果-->
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="weldspark" particlespersecond="100" scalemin="0.45" scalemax="0.7" anglemin="-180" anglemax="180" velocitymin="200" velocitymax="1000" distancemin="1" distancemax="10" />
+        <Sound file="%ModDir%/sound/misc/sword_impact.ogg" selectionmode="random" range="600" />
+        <Sound file="%ModDir%/sound/misc/sword_impact_1.ogg" range="600" />
+        <Sound file="%ModDir%/sound/misc/sword_impact_2.ogg" range="600" />
+        <Sound file="%ModDir%/sound/misc/sword_impact_3.ogg" range="600" />
+        <Sound file="%ModDir%/sound/misc/sword_impact_4.ogg" range="600" />
+        <Sound file="%ModDir%/sound/misc/sword_impact_5.ogg" range="600" />
+        <Explosion range="150.0" force="1.5" showeffects="false" camerashake="4.0" />
+      </StatusEffect>
+    </Holdable>
+    <!--首选容器-->
+    <PreferredContainer primary="locker" />
+    <!--商店-->
+    <!--价值,购买乘数,特价商品,难度出售,随处可见-->
+    <Price baseprice="150" buyingpricemultiplier="10" canbespecial="true" minleveldifficulty="0" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" minavailable="0" maxavailable="1" />
+      <!--前哨-->
+      <Price locationtype="city" multiplier="1.35" minavailable="1" maxavailable="1" />
+      <!--城市-->
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <!--研究-->
+      <Price locationtype="military" multiplier="1.10" minavailable="1" maxavailable="2" />
+      <!--军事-->
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+      <!--矿山-->
+    </Price>
+    <!--商店-->
+  </Item>
+  <!-- 激光指示器：给人加AFF -->
+  <Item identifier="otfx_laserpointer" category="Equipment" Tags="smallitem,tool,provocative,flashlight" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Price baseprice="200" minavailable="2">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="aluminium" />
+      <Item identifier="lightcomponent" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="lightcomponent" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" />
+    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="0,128,51,11" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="10" density="15" />
+    <Holdable slots="Any,RightHand,LeftHand,Head" holdpos="30,-50" aimpos="60,0" handle1="-20,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" interval="0.05" target="This,Character" disabledeltatime="true">
+        <Affliction identifier="otfx_laserpointer" amount="100" />
+        <Conditional hasstatustag="inc_accuracy" />
+      </StatusEffect>
+      <LightComponent allowingameediting="false" lightcolor="0.8,0.0,0.0,0.35" range="500" flicker="0.03" powerconsumption="infinity" minvoltage="0.3" ison="true">
+        <LightTexture texture="%ModDir%/OTFX/Lights/lightlaser.png" origin="0.01,0.500" size="1.0,0.25" />
+        <StatusEffect type="OnActive" target="This" interval="0.1" tags="inc_accuracy" duration="0.133" stackable="false" />
+        <StatusEffect type="OnActive" target="Contained" interval="0.1" condition="-0.015" disabledeltatime="true" />
+      </LightComponent>
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" target="This" interval="0.05" voltage="+0.3" disabledeltatime="true" comparison="And">
+          <Conditional physicsbodyactive="true" voltage="lt 1.0" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <AiTarget sightrange="2500" />
+  </Item>
+  <!-- 扳手螺丝刀二合一 -->
+  <Item name="" identifier="otfx_wrenchscrewdrivertwoinone" category="Equipment" tags="smallitem,tool,simpletool,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="true">
+    <Preferredcontainer secondary="respawncontainer" amount="1" spawnprobability="0.1" notcampaign="true" />
+    <PreferredContainer primary="engcab" secondary="reactorcab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" amount="1" spawnprobability="0.02" />
+    <PreferredContainer primary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="wreckreactorcab,abandonedreactorcab,piratereactorcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.03" />
+    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
+    <Price baseprice="57" minavailable="10">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" minavailable="5" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantengineering" minavailable="10" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="5">
+      <Item identifier="wrench" />
+      <Item identifier="screwdriver" />
+      <Item identifier="copper" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="5">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="wrench" />
+      <RequiredItem identifier="screwdriver" />
+      <RequiredItem identifier="copper" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="384,0,64,64" />
+    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="64,64,93,19" depth="0.55" origin="0.5,0.5" />
+    <Body width="80" height="15" density="25" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" reload="1.0" range="50" combatpriority="9" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="0" itemdamage="4" targetimpulse="4">
+        <Affliction identifier="lacerations" strength="5" probability="0.5" />
+        <Affliction identifier="bleeding" strength="2" probability="0.5" />
+        <Affliction identifier="stun" strength="0.05" probability="0.5" />
+        <Affliction identifier="blunttrauma" strength="4" probability="0.5" />
+        <Affliction identifier="stun" strength="0.2" probability="0.5" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="500" selectionmode="random" />
+          <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" />
+      <!-- Double Click tag -->
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+        <Conditional hasstatustag="dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! dblclick_longpressed" />
+      </StatusEffect>
+      <!-- Switch to screwdriver -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="electricalrepairtool,screwdriveritem,screwdriver" holdangle="60" setvalue="true" delay=".016" comparison="And">
+        <Conditional hastag="wrench" />
+        <Conditional hasstatustag="dblclick_trigger" />
+      </StatusEffect>
+      <!-- Switch to wrench -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" delay=".016" comparison="And">
+        <Conditional hastag="screwdriver" />
+        <Conditional hasstatustag="dblclick_trigger" />
+      </StatusEffect>
+      <!-- Fliter Longpress -->
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! dblclick_notlongpress" />
+      </StatusEffect>
+      <!-- Double Click interval min & max -->
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <!-- Disallow switch when stuning -->
+      <StatusEffect type="OnActive" target="This,Character" tags="dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+      </StatusEffect>
+    </MeleeWeapon>
+    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
+    <Quality>
+      <QualityStat stattype="RepairSpeed" value="0.1" />
+    </Quality>
+  </Item>
+  <!-- 燃素冲锋枪 -->
+  <Item name="" identifier="otfx_incendiumsmg" health="100.016" category="Weapon" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.005" />
+    <PreferredContainer secondary="armcab,weaponholder" />
+    <Price baseprice="510" sold="false" minleveldifficulty="40">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" outcondition="0.2">
+      <RequiredSkill identifier="weapons" level="70" />
+      <RequiredItem identifier="smg" />
+      <RequiredItem identifier="incendium" amount="1" />
+      <RequiredItem identifier="fpgacircuit" amount="1" />
+      <RequiredItem identifier="steel" amount="1" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="incendium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <Sprite name="normalcy" texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="320,0,144,67" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="320,0,144,67" origin="0.5,0.5" />
+    <Body width="140" height="60" density="25" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="45,-10" handle1="-30,-15" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+        <Conditional hasstatustag="dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! dblclick_longpressed" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="barrage_try" duration=".016" comparison="And">
+        <Conditional hasstatustag="dblclick_trigger" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! dblclick_notlongpress" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <StatusEffect type="OnActive" target="This,Character" tags="dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="barrage_start" duration=".016" comparison="And">
+        <Conditional hasstatustag="barrage_try" />
+        <Conditional hasstatustag="overheat" />
+        <RequiredItems identifier="otfx_incendiumsmgrw2" type="Contained" excludebroken="false" excludefullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" reloadtimer="+0.211" isactive="true" disabledeltatime="true">
+        <Conditional hasstatustag="barrage_start" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_incendiumsmgrw2" condition="100.0" setvalue="true">
+        <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_barragestart.ogg" range="900" />
+        <Conditional targetcontainer="true" hasstatustag="barrage_start" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_incendiumsmgunjammed" condition="100.0" setvalue="true">
+        <Conditional targetcontainer="true" hasstatustag="barrage_start" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character" tags="otfx_incendiumsmgignite" duration=".016">
+        <RequiredItems identifier="otfx_incendiumsmgrw2" type="Contained" />
+      </StatusEffect>
+    </Holdable>
+    <ItemComponent characterusable="false">
+      <IsActive condition="gt .016" />
+      <StatusEffect type="OnBroken" target="This" condition=".016" setvalue="true" />
+      <StatusEffect type="OnSpawn" target="This" condition=".016" delay=".016" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" condition="-6.0">
+        <RequiredItems identifier="otfx_incendiumsmgunjammed" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="overheat" duration=".033" stackable="false">
+        <Conditional condition="gte 70.016" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="steamspray" particlespersecond="3" scalemin="0.2" scalemax="0.3" anglemin="100" anglemax="120" velocitymin="50" velocitymax="100" />
+        <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_overheat.ogg" range="800" volume="0.9" loop="true" />
+        <Conditional hasstatustag="overheat" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="LightComponent" voltage="+6.0" comparison="And">
+        <Conditional targetitemcomponent="LightComponent" voltage="lt 1.0" hasstatustag="overheat" />
+      </StatusEffect>
+    </ItemComponent>
+    <LightComponent characterusable="false" powerconsumption="infinity" minvoltage=".083" ison="true" castshadows="false" range="0" flicker="0.5" lightcolor="0.90,1.00,0.30,1.0">
+      <Sprite name="overheat" texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="320,80,144,67" origin="0.5,0.5" alpha="0.3" />
+    </LightComponent>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true" elementstates="true">
+      <GuiFrame relativesize="0.16,0.1" anchor="BottomRight" relativeoffset="0.02,0.15" style="ItemUI" />
+      <TickBox text="label.automaticbarrage">
+        <StatusEffect type="OnUse" targettype="This" tags="barrage_try" duration=".033" stackable="false" comparison="And">
+          <Conditional condition="gte 90.016" />
+        </StatusEffect>
+      </TickBox>
+    </CustomInterface>
+    <RangedWeapon reload="0.211" weapondamagemodifier="1.3" penetration="0.15" holdtrigger="true" barrelpos="64,3" spread="4" unskilledspread="10" combatpriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot4.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot5.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/Weapons/SMGsingleShot6.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" condition="+12.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="Contained" targetidentifiers="otfx_incendiumsmgunjammed" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems identifier="otfx_incendiumsmgunjammed" type="Contained" />
+      <RequiredItems identifier="otfx_incendiumsmgrw2" type="Contained" excludebroken="false" excludefullcondition="true" />
+      <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="50" />
+    </RangedWeapon>
+    <RangedWeapon reload="0.162" weapondamagemodifier="1.56" penetration="0.18" holdtrigger="true" barrelpos="64,3" spread="10" unskilledspread="16" combatpriority="80" drawhudwhenequipped="true" crosshairscale="0.2" inheritrequiredskillsfrom="RangedWeapon">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="6" scalemin="0.0" scalemax="1.4" velocitymin="0" velocitymax="0" colormultiplier="0.90,1.00,0.30,0.34" />
+      <ParticleEmitter particle="otfx_burning_smoke" particleamount="2" scalemin="0.0" scalemax="1.4" velocitymin="50" velocitymax="100" colormultiplier="1.0,1.0,1.0,0.34" />
+      <ParticleEmitter particle="steamspray" particleamount="3" scalemin="0.2" scalemax="0.3" anglemin="-80" anglemax="80" velocitymin="0" velocitymax="100" />
+      <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_shot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_shot2.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_shot3.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="Character">
+        <GiveTalentInfo talentidentifiers="otfx_incendiumsmgignitesmground,otfx_incendiumsmgignitesmgrounddepletedfuel,otfx_incendiumsmgignitesmgroundop" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        <Explosion range="180.0" force="1.8" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="14.4" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" condition="-5.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems identifier="otfx_incendiumsmgunjammed" type="Contained" />
+      <RequiredItems identifier="otfx_incendiumsmgrw2" type="Contained" />
+      <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+      <Containable items="smgammo" hide="false" itempos="4,-10" rotation="-30" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="22,-1" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" spawnwithid="otfx_incendiumsmgrw2,otfx_incendiumsmgunjammed" removecontaineditemsondeconstruct="true">
+      <Containable identifier="otfx_incendiumsmgrw2">
+        <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
+          <Conditional targetcontainer="true" condition="lt 20.016" />
+        </StatusEffect>
+      </Containable>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="otfx_incendiumsmgunjammed" />
+      </SubContainer>
+    </ItemContainer>
+    <AiTarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <Item name="" identifier="otfx_incendiumsmgunjammed" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_jam.ogg" range="900" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="" identifier="otfx_incendiumsmgrw2" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <Sound file="%ModDir%/OTFX/Items/Weapons/incendiumsmg_barrageend.ogg" range="900" type="OnBroken" />
+      <StatusEffect type="OnBroken" target="Parent" targetitemcomponent="RangedWeapon" reloadtimer="+1.2" isactive="true" disabledeltatime="true" />
+    </ItemComponent>
+  </Item>
+  <!-- 步枪2 -->
+  <Item name="" identifier="otfx_assaultrifle2" category="Weapon" tags="mediumitem,weapon,rifle,gun,gunsmith,mountableweapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="1720" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="80" />
+      <RequiredItem identifier="assaultrifle" />
+      <RequiredItem identifier="grenadelauncher" />
+      <RequiredItem identifier="titaniumaluminiumalloy" />
+    </Fabricate>
+    <Deconstruct time="45">
+      <Item identifier="physicorium" amount="2" />
+      <Item identifier="titaniumaluminiumalloy" amount="2" />
+      <Item identifier="rubber" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="276,63,233,62" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="276,63,233,62" depth="0.55" origin="0.5,0.5" />
+    <Body width="220" height="50" density="25" />
+    <MeleeWeapon slots="RightHand+LeftHand" aimpos="40,30" handle1="25,7" handle2="37,6" holdangle="210" aimangle="30" reload="1.2" range="155" combatpriority="40" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="5" severlimbsprobability="0.0" itemdamage="25" structuredamage="15">
+        <Affliction identifier="blunttrauma" strength="23" />
+        <Affliction identifier="stun" strength="0.65" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt2.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt3.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt4.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="mw_dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! mw_dblclick_timingdelaymin" />
+        <Conditional hasstatustag="mw_dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! mw_dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! mw_dblclick_longpressed" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_assaultrifle2mw" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hasstatustag="mw_dblclick_trigger" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_assaultrifle2rw" condition="100.0" setvalue="true">
+        <Conditional targetcontainer="true" hasstatustag="mw_dblclick_trigger" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="mw_dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! mw_dblclick_notlongpress" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="mw_dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" tags="mw_dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <StatusEffect type="OnActive" target="This,Character" tags="mw_dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="mw_dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! mw_dblclick_timingdelaymin" />
+      </StatusEffect>
+    </MeleeWeapon>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="45,-20" aimpos="57,-5" handle1="-35,-10" handle2="26,10" holdangle="-30">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.9" setvalue="true" />
+      <StatusEffect type="OnActive" target="This,Character" tags="rw_dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="rw_dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! rw_dblclick_timingdelaymin" />
+      </StatusEffect>
+    </Holdable>
+    <!-- FlipX 3 times to get correct dir -->
+    <Holdable slots="None" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="Assault Rifle Worn" texture="Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="276,63,233,62" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.8" />
+    </Wearable>
+    <!-- Here're only used to prompt message -->
+    <ItemComponent characterusable="true">
+      <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      <RequiredItems identifier="otfx_assaultrifle2ugl" type="Contained" excludebroken="false" excludefullcondition="true" />
+      <RequiredItems items="assaultrifleammo" type="Contained" msg="ItemMsgAmmoRequired" />
+    </ItemComponent>
+    <ItemComponent characterusable="true">
+      <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      <RequiredItems identifier="otfx_assaultrifle2ugl" type="Contained" />
+      <RequiredItems items="assaultrifleammo,grenade" type="Contained" msg="ItemMsgAmmoRequired" />
+    </ItemComponent>
+    <RangedWeapon suitableprojectiles="grenade" reload="1" barrelpos="100,20" spread="4" unskilledspread="16" combatpriority="75" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflashchaingun" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+      <ParticleEmitter particle="explosionsmoke" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+      <Sound file="Content/Items/Weapons/GrenadeLauncherShot1.ogg" type="OnUse" range="1000" />
+      <Sound file="Content/Items/Weapons/GrenadeLauncherShot2.ogg" type="OnUse" range="1000" />
+      <Sound file="Content/Items/Weapons/GrenadeLauncherShot3.ogg" type="OnUse" range="1000" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="RangedWeapon" reloadtimer="+0.5" isactive="true" disabledeltatime="true">
+        <Explosion range="150.0" force="2" shockwave="false" smoke="false" flames="false" flash="true" sparks="false" underwaterbubble="false" applyfireeffects="false" camerashake="6.0" />
+        <!-- Workaround to fix async on client side by this way here and other places, the issue has been reporeted in https://github.com/FakeFishGames/Barotrauma/issues/13405 -->
+        <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      </StatusEffect>
+      <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      <RequiredItems identifier="otfx_assaultrifle2ugl" type="Contained" />
+      <RequiredItems items="grenade" type="Contained" />
+      <RequiredSkill identifier="weapons" level="60" />
+    </RangedWeapon>
+    <RangedWeapon suitableprojectiles="assaultrifleround" reload="0.24" holdtrigger="true" barrelpos="100,20" spread="4" unskilledspread="16" combatpriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+      <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_2.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_3.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_4.ogg" type="OnUse" range="3000" />
+      <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_5.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This">
+        <ParticleEmitter particle="casingfirearm" particleamount="1" copyentityangle="true" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" />
+        <Explosion range="150.0" force="1" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+        <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained" targetidentifiers="assaultrifleammo">
+        <Use />
+      </StatusEffect>
+      <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+      <RequiredItems items="assaultrifleammo" type="Contained" />
+      <RequiredSkill identifier="weapons" level="50" />
+    </RangedWeapon>
+    <RangedWeapon projectilecount="0">
+      <Crosshair texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" />
+      <CrosshairPointer texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" />
+      <!-- The following SE(OnSecondaryUse) only apply when ranged mode is active -->
+      <StatusEffect type="OnSecondaryUse" target="This" tags="rw_dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! rw_dblclick_timingdelaymin" />
+        <Conditional hasstatustag="rw_dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! rw_dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! rw_dblclick_longpressed" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_assaultrifle2mw" condition="100.0" setvalue="true">
+        <Conditional targetcontainer="true" hasstatustag="rw_dblclick_trigger" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_assaultrifle2rw" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hasstatustag="rw_dblclick_trigger" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="rw_dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! rw_dblclick_notlongpress" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="rw_dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" tags="rw_dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <RequiredItems identifier="otfx_assaultrifle2rw" type="Contained" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+      <Containable items="assaultrifleammo" itempos="4,-12" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="grenade" hide="false" itempos="36,0" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="flashlight" hide="false" itempos="24,4" setactive="true" />
+      </SubContainer>
+    </ItemContainer>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" spawnwithid="otfx_assaultrifle2mw,otfx_assaultrifle2rw,otfx_assaultrifle2ugl" removecontaineditemsondeconstruct="true">
+      <Containable identifier="otfx_assaultrifle2mw">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="MeleeWeapon" isactive="true" characterusable="true" disablewhenrangedweaponequipped="false" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" isactive="false" characterusable="false" disablewhenrangedweaponequipped="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" characterusable="false" drawhudwhenequipped="false" />
+      </Containable>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="otfx_assaultrifle2rw">
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="MeleeWeapon" isactive="false" characterusable="false" disablewhenrangedweaponequipped="true" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="Holdable" isactive="true" characterusable="true" disablewhenrangedweaponequipped="false" />
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="RangedWeapon" characterusable="true" drawhudwhenequipped="true" />
+        </Containable>
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="otfx_assaultrifle2ugl" />
+      </SubContainer>
+    </ItemContainer>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.12,0.1" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.006,-0.05" style="ItemUI" />
+      <TickBox text="entityname.grenadelauncher">
+        <StatusEffect type="OnUse" target="Contained" targetidentifiers="otfx_assaultrifle2ugl" condition="100.0" setvalue="true" />
+        <StatusEffect type="OnSecondaryUse" target="Contained" targetidentifiers="otfx_assaultrifle2ugl" condition="0.0" setvalue="true" />
+      </TickBox>
+    </CustomInterface>
+    <AiTarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+    </Quality>
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <Item name="" identifier="otfx_assaultrifle2mw" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+  </Item>
+  <Item name="" identifier="otfx_assaultrifle2rw" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+  </Item>
+  <Item name="" identifier="otfx_assaultrifle2ugl" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+  </Item>
+  <!-- 手摇发电机 -->
+  <Item name="'" identifier="otfx_crankcharger" category="Equipment" Tags="smallitem,tool,provocative" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true">
+    <PreferredContainer primary="divingcab" minamount="1" maxamount="2" spawnprobability="0.2" notcampaign="true" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Price baseprice="200" sold="false" />
+    <Deconstruct time="15">
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="64,128,62,59" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="64,128,62,59" depth="0.55" origin="0.5,0.5" />
+    <Body width="64" height="64" density="10.5" />
+    <Holdable slots="Any,RightHand+LeftHand" holdpos="30,-42" aimpos="55,-26" handle1="-25,-7" handle2="-28,10" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon projectilecount="0" reload="0.16" reloadnoskill="0.2" reloadskillrequirement="50">
+      <StatusEffect type="OnUse" target="Contained" condition="+0.8" disabledeltatime="true">
+        <Sound file="Content/Items/Button/Switch1.ogg" type="OnUse" range="250.0" frequency="1.75" selectionmode="Random" />
+        <Sound file="Content/Items/Button/Switch2.ogg" type="OnUse" range="250.0" frequency="1.75" />
+        <Explosion range="20" force="1" showeffects="false" ignorecover="true" />
+      </StatusEffect>
+      <RequiredItems items="mobilebattery" type="Contained" excludebroken="false" excludefullcondition="true" />
+    </RangedWeapon>
+    <LightComponent allowingameediting="false" lightcolor="0.8,0.75,0.57,0.7" range="500" flicker="0.115" powerconsumption="infinity" minvoltage="0.3" ison="true">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0,0.517" size="0.8,0.7" />
+      <StatusEffect type="OnActive" target="Contained" interval="0.1" condition="-0.01" disabledeltatime="true" />
+    </LightComponent>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorstyle="battery" containedspritedepth="0.56">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery" itempos="-17,-2">
+        <StatusEffect type="OnContaining" target="This" interval="0.05" voltage="+0.3" disabledeltatime="true" comparison="And">
+          <Conditional ison="true" physicsbodyactive="true" voltage="lt 1.0" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.12,0.1" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.006,-0.05" style="ItemUI" />
+      <TickBox text="label.setlight">
+        <StatusEffect type="OnUse" targettype="This" ison="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" ison="false" />
+      </TickBox>
+    </CustomInterface>
+    <AiTarget sightrange="3000" />
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <!-- 军用背包，内含充电器电池 -->
+  <Item name="" identifier="otfx_militarysurvivalbackpack" category="Equipment" tags="mediumitem,mobilecontainer,largemobilecontainer,tool" showcontentsintooltip="true" scale="0.5" waterproof="true" grabwhenselected="true" impactsoundtag="impact_soft" isshootable="true">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab" />
+    <PreferredContainer primary="outpostcrewcabinet" />
+    <Deconstruct time="25">
+      <Item identifier="rubber" />
+      <Item identifier="copper" amount="4" />
+      <Item identifier="phosphorus" />
+      <Item identifier="titaniumaluminiumalloy" amount="2" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="50">
+      <RequiredSkill identifier="electrical" level="50" />
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="rubber" amount="2" />
+      <RequiredItem identifier="fpgacircuit" amount="4" />
+      <RequiredItem identifier="copper" />
+      <RequiredItem identifier="phosphorus" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+    </Fabricate>
+    <Price baseprice="1200" minleveldifficulty="50">
+      <Price storeidentifier="merchantoutpost" minavailable="2" />
+      <Price storeidentifier="merchantcity" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="4" />
+      <Price storeidentifier="merchantengineering" multiplier="0.9" minavailable="2" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="704,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="768,0,118,48" depth="0.6" origin="0.5,0.5" />
+    <ContainedSprite usewhenattached="true" texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="384,0,106,219" depth="0.8" origin="0.5,0.5" />
+    <Body width="102" height="42" density="15" />
+    <LightComponent powerconsumption="1.6" allowingameediting="false" lightcolor="1.0,1.0,1.0,0.5" range="800.0" alphablend="true">
+      <IsActive targetitemcomponent="Holdable" attached="true" />
+      <sprite texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="512,0,106,219" origin="0.5,0.5" alpha="0.5" />
+    </LightComponent>
+    <LightComponent powerconsumption="1.6" allowingameediting="false" lightcolor="1.0,1.0,1.0,0.5" range="800.0" alphablend="true">
+      <IsActive targetitemcomponent="Holdable" attached="false" />
+      <IsActive hasstatustag="! onwearing" />
+      <sprite texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="896,0,118,48" origin="0.5,0.5" alpha="0.5" />
+    </LightComponent>
+    <Wearable slots="Bag" pickkey="Use" msg="ItemMsgEquipOrPickUpUse">
+      <StatusEffect type="OnWearing" target="This" tags="onwearing" duration=".033" stackable="false" />
+      <sprite name="Military Survival Backpack" texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="640,0,54,219" limb="Torso" depthlimb="Waist" inherittexturescale="true" origin="1.2,0.6" canbehiddenbyotherwearables="false" canbehiddenbyitem="deepdivinglarge">
+        <LightComponent powerconsumption="1.6" allowingameediting="false" lightcolor="1.0,1.0,1.0,0.5" range="800.0" alphablend="true">
+          <sprite texture="%ModDir%/OTFX/Items/Misc/Misc.png" sourcerect="704,0,54,219" origin="1.2,0.6" alpha="0.5" />
+        </LightComponent>
+      </sprite>
+      <StatValue stattype="MovementSpeed" value="-0.15" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" pickkey="Use" holdpos="30,-30" handle1="-10,-15" handle2="0,-15" attachable="true" aimable="true">
+      <StatusEffect type="OnActive" target="Character" speedmultiplier="0.85" propulsionspeedmultiplier="0.85" setvalue="true" />
+    </Holdable>
+    <!-- <WifiComponent canbeselected="true" range="50000.0" linktochat="true" minchatmessageinterval="0.0">
+      <StatusEffect type="OnActive" target="This">
+        <Sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        <Conditional targetitemcomponent="WifiComponent" jamtimer="gt 0.0" />
+      </StatusEffect>
+    </WifiComponent> -->
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="Holdable" attached="false" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Wearable" pickingtime="0.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" pickkey="Use" pickingtime="0.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" drawable="false" />
+    </ItemComponent>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="Holdable" attached="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Wearable" pickingtime="0.5" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" pickingtime="0.5" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" drawable="true" />
+    </ItemComponent>
+    <PowerContainer canbeselected="true" capacity="500.0" maxrechargespeed="500.0" maxoutput="1000.0" indicatorposition="13,81" indicatorsize="75,12" ishorizontal="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.25,0.25" minsize="350,200" relativeoffset="0.0,-0.1375" anchor="Center" style="ItemUI" />
+    </PowerContainer>
+    <ItemContainer canbeselected="true" capacity="8" maxstacksize="32" slotsperrow="4">
+      <GuiFrame relativesize="0.25,0.25" anchor="Center" relativeoffset="0.0,0.1375" style="ItemUI" />
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier" />
+      <SlotIcon slotindex="8" texture="%ModDir%/OTFX/UI/StatusMonitorUI.png" sourcerect="0,64,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="smallitem,mediumitem" excludeditems="toolbelt,toolbox,bandolier,cargoscooter,largemobilecontainer" />
+      </SubContainer>
+      <SlotIcon slotindex="9" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="10" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="2" maxstacksize="1">
+        <Containable items="mobilebattery" excludebroken="false" excludefullcondition="true">
+          <StatusEffect type="OnContaining" target="Contained" interval="0.6" condition="+1.2" disabledeltatime="true">
+            <Conditional targetcontainer="true" targetitemcomponent="PowerContainer" charge="gte 1.0" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="This" interval="0.6" charge="-1.0" disabledeltatime="true">
+            <Conditional targetitemcomponent="PowerContainer" charge="gte 1.0" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+      <SlotIcon slotindex="11" texture="%ModDir%/OTFX/UI/StatusMonitorUI.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" target="Contained" interval="0.15" condition="-1.2" disabledeltatime="true">
+            <Conditional targetcontainer="true" targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="This" interval="0.15" charge="+1.0" disabledeltatime="true">
+            <Conditional targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <CustomInterface canbeselected="true" elementstates="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.12,0.1" anchor="Center" relativeoffset="0.0,0.3375" style="ItemUI" />
+      <TickBox text="label.setlight">
+        <StatusEffect type="OnUse" targettype="This" tags="light_selfpowered" duration=".033" stackable="false" comparison="And">
+          <Conditional targetitemcomponent="PowerContainer" charge="gte 0.005" />
+          <Conditional targetitemcomponent="LightComponent" voltage="lt 1.0" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" charge="-0.005">
+          <Conditional hasstatustag="light_selfpowered" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="This" targetitemcomponent="LightComponent" voltage="1.0" setvalue="true">
+          <Conditional hasstatustag="light_selfpowered" />
+        </StatusEffect>
+      </TickBox>
+    </CustomInterface>
+    <ConnectionPanel canbeselected="true" selectkey="Use" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredSkill identifier="electrical" level="55" />
+      <RequiredItem items="Screwdriver" type="Equipped" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+        <Explosion range="100.0" stun="0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+        <Affliction identifier="stun" strength="4" />
+        <Affliction identifier="burn" strength="5" />
+      </StatusEffect>
+      <input name="power_in" displayname="connection.powerin" />
+      <output name="power_out" displayname="connection.powerout" />
+      <!-- <input name="signal_in" displayname="connection.signalin" />
+      <output name="signal_out" displayname="connection.signalout" /> -->
+    </ConnectionPanel>
+  </Item>
+  <!-- 捕兽夹，可以用于参考东亚重工一次性信标发射器 -->
+  <Item identifier="otfx_beartrapinstaller" nameidentifier="otfx_beartrap" maxstacksize="2" category="Weapon" tags="smallitem" scale="0.5" impactsoundtag="impact_metal_light" isshootable="true">
+    <Deconstruct time="20">
+      <Item identifier="iron" />
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="1">
+      <RequiredSkill identifier="weapons" level="45" />
+      <RequiredItem identifier="iron" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="256,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="0,395,180,53" depth="0.55" origin="0.5,0.65" />
+    <Body width="90" height="18" density="25" />
+    <Holdable slots="Any,LeftHand+RightHand" controlpose="true" aimpos="40,-40" handle1="-10,0" handle2="10,0" holdangle="270" attachable="true">
+      <StatusEffect type="OnNotContained" target="This" interval="0.1">
+        <SpawnItem identifiers="otfx_beartrap" spawnposition="This" />
+        <Remove />
+        <Conditional targetitemcomponent="Holdable" attached="true" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item identifier="otfx_beartrap" category="Weapon" tags="smallitem" scale="0.5" health="200" ondamagedthreshold="5" damagedbymeleeweapons="true" damagedbyprojectiles="true" interactthroughwalls="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="256,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="384,395,180,53" depth="0.55" origin="0.5,0.65" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="192,395,180,53" depth="0.55" origin="0.5,0.65" maxcondition="50.0" />
+    <Body width="90" height="18" density="25" />
+    <Holdable characterusable="false" slots="LeftHand+RightHand" msg="ItemMsgPickUpSelect" pickingtime="3.0">
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="weldspark" drawontop="true" particleamount="3" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" distancemin="0" distancemax="30" scalemin="0.5" scalemax="0.75" />
+        <Sound file="Content/Sounds/Impact/MetalImpactLight1.ogg" range="800" />
+        <Sound file="Content/Sounds/Impact/MetalImpactLight2.ogg" range="850" />
+        <Sound file="Content/Sounds/Impact/MetalImpactLight3.ogg" range="900" />
+        <Sound file="Content/Sounds/Impact/MetalImpactLight4.ogg" range="950" />
+        <Sound file="Content/Sounds/Impact/MetalImpactLight5.ogg" range="1000" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" motiondetected="false" condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnActive" target="This" condition="-200.0" disabledeltatime="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="%ModDir%/OTFX/Items/Weapons/beartrap_remove.ogg" range="500" />
+        <SpawnItem identifiers="otfx_beartrapinstaller" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <MotionSensor rangex="20" rangey="10" detectoffset="0,5" target="Human,Monster,Pet" minimumvelocity="1.0" detectownmotion="false">
+      <StatusEffect type="OnSpawn" target="This">
+        <Sound file="%ModDir%/OTFX/Items/Weapons/beartrap_install.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="MotionSensor" tags="installing" duration="0.5" stackable="false" />
+      <StatusEffect type="OnUse" target="This" comparison="And">
+        <Use />
+        <Conditional condition="gt 100.0" />
+        <Conditional targetitemcomponent="MotionSensor" motiondetected="true" hasstatustag="! installing" />
+        <RequiredItems identifier="otfx_beartrapprojectile" type="Contained" />
+      </StatusEffect>
+    </MotionSensor>
+    <Turret launchimpulse="0" barrelpos="90,0" rotationlimits="270,270">
+      <Sound file="%ModDir%/OTFX/Items/Weapons/beartrap_trigger.ogg" type="OnUse" range="1500" />
+    </Turret>
+    <ItemContainer allowaccess="false" drawinventory="false" capacity="1" maxstacksize="1" hideitems="true" spawnwithid="otfx_beartrapprojectile">
+      <Containable identifier="otfx_beartrapprojectile" />
+    </ItemContainer>
+  </Item>
+  <Item identifier="otfx_beartrapprojectile" scale="0.5" category="Weapon" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="8" height="119" angulardamping="1.0" lineardamping="1.0" friction="1.0" restitution="0.0" />
+    <Rope lerpforces="true" targetpullforce="750" projectilepullforce="150" maxlength="100" snaponcollision="false" spritecolor="0,0,0,0">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <StatusEffect type="OnNotContained" target="This" delay="0.5" stackable="false" checkconditionalalways="true">
+        <Remove />
+        <Conditional targetitemcomponent="Rope" snapped="true" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" snapped="true" delay="0.05" stackable="false" checkconditionalalways="true">
+        <Conditional targetitemcomponent="Rope" isactive="false" />
+        <Conditional targetitemcomponent="Projectile" isstucktotarget="false" />
+      </StatusEffect>
+    </Rope>
+    <Projectile launchimpulse="5" sticktocharacters="true" sticktoitems="false" sticktostructures="false" sticktodeflective="true" sticktodoors="false" maxjointtranslation="100">
+      <Attack targetforce="-10" severlimbsprobability="0.25" penetration="0.2">
+        <Affliction identifier="otfx_prey" strength="50" />
+        <Affliction identifier="bitewounds" strength="35" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="otfx_hindered" strength="100" />
+        <Affliction identifier="stun" strength="0.5" />
+        <StatusEffect type="OnUse" target="Limb">
+          <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="500" selectionmode="Random" />
+          <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+          <ParticleEmitter Particle="gib" particleamount="10" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" velocitymin="50" velocitymax="100" drawontop="true" lifetimemultiplier="0.3" />
+          <ParticleEmitter Particle="blood" particleamount="10" anglemin="0" anglemax="0" />
+          <ParticleEmitter Particle="waterblood" particleamount="1" anglemin="0" anglemax="0" />
+          <ParticleEmitter Particle="gib" particleamount="10" anglemin="0" anglemax="360" velocitymin="50" velocitymax="100" lifetimemultiplier="0.3" />
+          <ParticleEmitter Particle="heavygib" particleamount="5" anglemin="0" anglemax="360" velocitymin="50" velocitymax="100" lifetimemultiplier="0.3" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnImpact" target="Character" evententitytag="projectile" eventtargettag="prey">
+        <TriggerEvent>
+          <ScriptedEvent identifier="otfx_beartrap">
+            <Label name="retry" />
+            <CheckConditionalAction targettag="projectile" targetitemcomponent="Rope" snapped="! false">
+              <Success>
+                <StatusEffectAction targettag="prey">
+                  <StatusEffect target="This" disabledeltatime="true">
+                    <Affliction identifier="bloodloss" strength="+6" />
+                  </StatusEffect>
+                </StatusEffectAction>
+              </Success>
+              <Failure>
+                <StatusEffectAction targettag="prey">
+                  <StatusEffect target="This" setvalue="true">
+                    <Affliction identifier="otfx_beartrap" strength="50" />
+                    <Conditional mass="lt 25" />
+                  </StatusEffect>
+                </StatusEffectAction>
+                <GoTo name="retry" />
+              </Failure>
+            </CheckConditionalAction>
+          </ScriptedEvent>
+        </TriggerEvent>
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!-- 可写入idcard -->
+  <Item nameidentifier="idcard" descriptionidentifier="idcard_tagger" identifier="idcard_tagger" variantof="idcard" category="Equipment" Tags="smallitem,identitycard" cargocontaineridentifier="metalcrate">
+    <Price baseprice="10" sold="true" />
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.2,0.12" anchor="BottomRight" absoluteoffset="40,80" style="ItemUI" />
+      <TextBox text="connection.set_text" propertyname="Tags" />
+    </CustomInterface>
+  </Item>
+</Items></Override>
