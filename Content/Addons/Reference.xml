@@ -1224,4 +1224,25 @@
       <TextBox text="connection.set_text" propertyname="Tags" />
     </CustomInterface>
   </Item>
+  <Item name="便携式加工台背包" identifier="moveablefabricatorbackpack2" tags="smallitem,fabricator,donttakeitems,dontsellitems" category="Equipment" allowasextracargo="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" canflipx="false" pickdistance="150" scale="0.5" isshootable="true" description="（墨工坊制做）便携式加工台背包，放置时可以作为加工台使用，而背负时可当做背包使用。——注：如果塞入背包发现物品消失，则大概率物品在加工台的输出槽位，放置后方可取出物品。">
+    <InventoryIcon texture="%ModDir%/MASB.png" sourcerect="0,0,232,259" />
+    <Sprite texture="%ModDir%/MAS.png" sourcerect="0,0,259,168" depth="0.6" origin="0.5,0.5" />
+    <Body width="185" height="187" density="25" />
+    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="5550" fabricationlimitmin="5" fabricationlimitmax="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredItem identifier="physicorium" amount="3" />
+      <RequiredItem identifier="ballisticfiber" amount="4" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="6" />
+      <RequiredItem identifier="cultistkit" amount="1" />
+      <RequiredItem identifier="doorkey" amount="1" />
+    </Fabricate>
+    <Wearable slots="Bag" selectkey="Select" pickkey="Use" msg="ItemMsgDetach" PickingTime="1.5">
+      <sprite name="Backpack on character" texture="MASB.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.86,0.50" sourcerect="0,0,232,259" />
+    </Wearable>
+    <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.4,0.45" style="ItemUI" anchor="Center" />
+    </Fabricator>
+    <ItemContainer capacity="12" canbeselected="true" hideitems="true" slotsperrow="6" uilabel="" allowuioverlap="true" />
+    <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" />
+  </Item>
 </Items></Override>

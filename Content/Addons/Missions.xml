@@ -1,6 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Missions>
-  <!-- 我当初为啥这么脑瘫用拼音缩写? 无语了 -->
+  <!-- EAHI Random Cargo Ship -->
+  <PirateMission
+  type="Pirate"
+  identifier="EAHI_CargoVessel1"
+  tags="EAHI_CargoVessel"
+  showinmenus="false"
+  showstartmessage="false"
+  issideobjective="true"
+  achievementidentifier="cargomission"
+  difficulty="4"
+  commonness="0"
+  reward="0"
+  addedmissiondifficultyperplayer="8">
+  <Reputation identifier="separatists" amount="5" amountforopposingfaction="-5" />
+  <!-- TODO Submarine Type, reputation change -->
+  <SubmarineTypes>
+    <Submarine path="Content/Map/EnemySubmarines/DugongPirate.sub" faction="coalition" preferreddifficulty="10" />
+    <Submarine path="Content/Map/EnemySubmarines/HumpbackPirate.sub" faction="coalition" preferreddifficulty="40" />
+    <Submarine path="Content/Map/EnemySubmarines/Typhon2Pirate.sub" faction="coalition" preferreddifficulty="70" />
+  </SubmarineTypes>
+  <!-- TODO EAHI NPCs -->
+  <Characters>
+    <Character typeidentifier="coalitioncaptain" minamount="1" maxamount="1"/>
+    <Character typeidentifier="coalitionsecurity" minamount="2" maxamount="5" />
+    <Character typeidentifier="coalitionmechanic" minamount="1" maxamount="1" />
+    <Character typeidentifier="coalitionengineer" minamount="1" maxamount="1" />
+  </Characters>
+  <CharacterTypes>
+    <CharacterType typeidentifier="coalitioncaptain">
+      <Character identifier="coalitioncaptain" from="combatmissioncoalitionnpcs" preferreddifficulty="50" iscommander="true" />
+      <Character identifier="coalitioncaptainlord" from="combatmissioncoalitionnpcs" preferreddifficulty="90" iscommander="true" />
+    </CharacterType>
+    <CharacterType typeidentifier="coalitionsecurity">
+      <Character identifier="coalitionsecurityrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+      <Character identifier="coalitionsecuritygunner" from="combatmissioncoalitionnpcs" preferreddifficulty="60"/>
+      <Character identifier="coalitionsecuritybrute" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+      <Character identifier="coalitionsecurityelite" from="combatmissioncoalitionnpcs" preferreddifficulty="100"/>
+    </CharacterType>
+    <CharacterType typeidentifier="coalitionmechanic">
+      <Character identifier="coalitionmechanicrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+      <Character identifier="coalitionmechanicveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+    </CharacterType>
+    <CharacterType typeidentifier="coalitionengineer">
+      <Character identifier="coalitionengineerrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+      <Character identifier="coalitionengineerveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+    </CharacterType>
+  </CharacterTypes>
+  <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55"/>
+  <!-- TODO EAHI Cargo ship message -->
+  <message header="missionheader0.coalitionattack1" text="missionmessage0.coalitionattack1"/>
+  <LocationType from="AnyOutpost" to="AnyOutpost" />
+</PirateMission> 
   <!-- <CargoMission name="烟草狂热"  -->
   <CargoMission
     identifier="EAHI_Misssion_YMLKR" 

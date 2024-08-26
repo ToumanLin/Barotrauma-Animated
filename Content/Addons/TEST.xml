@@ -15,16 +15,23 @@
       <GuiFrame relativesize="0.75,0.75" anchor="Center" style="EAHI_HandBook" />
     </Terminal>
     <!-- <Deconstruct time="2" chooserandom="true" amount="1" requireddeconstructor="geneticresearchstation"> -->
-    <Deconstruct time="2" requireddeconstructor="geneticresearchstation">
+    <Deconstruct time="2" requireddeconstructor="test_ExoticMaterExtractor">
       <Item identifier="EAHI_pucs" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
       <!-- <Item identifier="teleportine" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
-      <Item identifier="GTCQuniform1" requiredotheritem="teleportine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
+      <!-- <Item identifier="GTCQuniform1" requiredotheritem="teleportine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <item identifier="testpermit"/>
+      <!-- <Item identifier="geneticmaterialcrawler" commonness="3" requiredotheritem="stabilozine" outconditionmin="0.1" outconditionmax="0.2" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+    </Deconstruct>
+    <Deconstruct time="2" requireddeconstructor="test_op_researchterminal">
+      <!-- <Item identifier="EAHI_pucs" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <!-- <Item identifier="teleportine" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <!-- <Item identifier="GTCQuniform1" requiredotheritem="teleportine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
       <item identifier="testpermit"/>
       <!-- <Item identifier="geneticmaterialcrawler" commonness="3" requiredotheritem="stabilozine" outconditionmin="0.1" outconditionmax="0.2" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
     </Deconstruct>
   </Item>
   <!-- Liaison Communicator Test -->
-  <Item name="" description="" identifier="EAHI_LiaisonCommunicator_test" subcategories="waifu_wip" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" >
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator_test" subcategory="waifu_wip" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" >
     <Price baseprice="500" sold="True">
       <Price storeidentifier="merchantoutpost" sold="True" />
       <Price storeidentifier="merchantcity" sold="True" />
@@ -74,13 +81,10 @@
       <sprite texture="Content/Map/Outposts/Art/MedBayAssets.png" sourcerect="241,497,238,396" depth="0.1" origin="0.5,0.5" alpha="1.0" />
     </LightComponent>
   </Item>
-  <Item name="" identifier="test_op_researchterminal" tags="geneticresearchstation,op_researchterminal" width="494" height="297" texturescale="1.0,1.0" scale="0.5" category="Machine">
+  <Item name="" identifier="test_op_researchterminal" tags="geneticresearchstation" width="494" height="297" texturescale="1.0,1.0" scale="0.5" category="Machine">
     <sprite texture="Content/Map/Outposts/Art/MedicalItemResearch.png" sourcerect="417,6,494,297" depth="0.79" premultiplyalpha="false" origin="0.5,0.5" />
     <UpgradePreviewSprite texture="Content/UI/WeaponUI.png" sourcerect="134,969,54,45" origin="0.5,0.45" />
-    <LightComponent range="0.0" powerconsumption="5" lightcolor="255,255,255,111" IsOn="true" castshadows="false" allowingameediting="false">
-      <sprite texture="Content/Map/Outposts/Art/MedicalItemResearchLights.png" sourcerect="417,6,494,297" depth="0.1" origin="0.5,0.5" alpha="1.0" />
-    </LightComponent>
-    <Deconstructor canbeselected="true" showoutput="false" powerconsumption="500.0" deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
+    <Deconstructor canbeselected="true" showoutput="false" powerconsumption="0.0" deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
       <GuiFrame relativesize="0.25,0.3" style="ItemUI" anchor="Center" />
       <sound file="Content/Items/Fabricators/Deconstructor.ogg" type="OnActive" range="1000.0" loop="true" />
       <poweronsound file="Content/Items/PowerOnLight3.ogg" range="600" loop="false" />
@@ -97,18 +101,64 @@
       <RequiredItem items="screwdriver" type="Equipped" />
       <ParticleEmitter particle="spark" particleamount="5" emitinterval="2" particlespersecond="5" anglemax="360" distancemax="30" velocitymin="100" velocitymax="500" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
     </Repairable>
-    <ConnectionPanel selectkey="Action" canbeselected="true" hudpriority="10" msg="ItemMsgRewireScrewdriver">
-      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
-      <RequiredSkill identifier="electrical" level="55" />
-      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
-        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
-        <Explosion range="100.0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
-        <Affliction identifier="stun" strength="4" />
-        <Affliction identifier="burn" strength="5" />
-      </StatusEffect>
-      <RequiredItem items="screwdriver" type="Equipped" />
-      <input name="power_in" displayname="connection.powerin" />
-      <output name="condition_out" displayname="connection.conditionout" />
-    </ConnectionPanel>
   </Item>
+
+  <Item name="placeholder" description="" identifier="test_ExoticMaterExtractor" tags="smallitem,donttakeitems,dontsellitems" category="Equipment" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" canflipx="false" pickdistance="150" scale="0.5" HideConditionBar="true" HideConditionInTooltip="true" >
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="64,256,128,128" />
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="64,256,128,128" depth="0.6" origin="0.5,0.5" />
+    <Body width="185" height="187" density="25" />
+    <Wearable slots="Bag" selectkey="Select" pickkey="Use" PickingTime="0.0" msg="ItemMsgEquipOrPickUpUse">
+      <sprite name="Backpack on character" texture="%ModDir:2809175631%/Content/Addons/gfx.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.86,0.50" sourcerect="0,256,64,128" />
+    </Wearable> 
+
+    <Deconstructor canbeselected="true" showoutput="true" powerconsumption="0.0"  deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
+      <!-- <IsActive targetitemcomponent="Holdable" attached="true" /> -->
+      <GuiFrame relativesize="0.4,0.45" style="ItemUI" relativeoffset="-0.2,0.0" anchor="Center" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" charge="-1.0" interval="0.2" disabledeltatime="true" />
+    </Deconstructor>
+    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+    </ItemContainer>
+    <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial" />
+    </ItemContainer>
+
+    <PowerContainer drawable="false" canbeselected="true" capacity="500.0" maxrechargespeed="500.0" maxoutput="1000.0" indicatorposition="13,81" indicatorsize="75,12" ishorizontal="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.25,0.25" minsize="350,200" relativeoffset="0.25,-0.085" anchor="Center" style="ItemUI" />
+    </PowerContainer>
+
+    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" slotsperrow="1">
+      <GuiFrame  relativesize="0.15,0.15" anchor="Center" relativeoffset="0.25,0.165" style="ItemUI" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" target="Contained" interval="0.15" condition="-1.2" disabledeltatime="true">
+          <Conditional targetcontainer="true" targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+        </StatusEffect>
+        <StatusEffect type="OnContaining" target="This" interval="0.15" charge="+1.0" disabledeltatime="true">
+          <Conditional targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+        </StatusEffect>
+      </Containable>
+      <StatusEffect type="OnSpawn" target="This" setvalue="true" condition="0.0" />
+      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="0.0" >
+        <Conditional targetitemcomponent="PowerContainer" charge="lte 0.0" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="100.0" >
+        <Conditional targetitemcomponent="PowerContainer" charge="gt 0.0" />
+      </StatusEffect>
+    </ItemContainer>
+    <!-- You must have a Repairable or the game will crash -->
+    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="false" RepairThreshold="-10.0" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="0" >
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+    </Repairable>
+  </Item>
+
+    <!-- 可写入idcard -->
+    <Item nameidentifier="idcard" descriptionidentifier="idcard_tagger" identifier="idcard_tagger" variantof="idcard" category="Equipment" Tags="smallitem,identitycard" cargocontaineridentifier="metalcrate">
+      <Price baseprice="10" sold="true" />
+      <CustomInterface canbeselected="true" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.2,0.12" anchor="BottomRight" absoluteoffset="40,80" style="ItemUI" />
+        <TextBox text="connection.set_text" propertyname="Tags" />
+      </CustomInterface>
+    </Item>
 </Items></Override>
