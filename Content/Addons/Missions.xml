@@ -1,57 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Missions>
+  <!-- TODO Reputation system -->
   <!-- EAHI Random Cargo Ship -->
   <PirateMission
-  type="Pirate"
-  identifier="EAHI_CargoVessel1"
-  tags="EAHI_CargoVessel"
-  showinmenus="false"
-  showstartmessage="false"
-  issideobjective="true"
-  achievementidentifier="cargomission"
-  difficulty="4"
-  commonness="0"
-  reward="0"
-  addedmissiondifficultyperplayer="8">
-  <Reputation identifier="separatists" amount="5" amountforopposingfaction="-5" />
-  <!-- TODO Submarine Type, reputation change -->
-  <SubmarineTypes>
-    <Submarine path="Content/Map/EnemySubmarines/DugongPirate.sub" faction="coalition" preferreddifficulty="10" />
-    <Submarine path="Content/Map/EnemySubmarines/HumpbackPirate.sub" faction="coalition" preferreddifficulty="40" />
-    <Submarine path="Content/Map/EnemySubmarines/Typhon2Pirate.sub" faction="coalition" preferreddifficulty="70" />
-  </SubmarineTypes>
-  <!-- TODO EAHI NPCs -->
-  <Characters>
-    <Character typeidentifier="coalitioncaptain" minamount="1" maxamount="1"/>
-    <Character typeidentifier="coalitionsecurity" minamount="2" maxamount="5" />
-    <Character typeidentifier="coalitionmechanic" minamount="1" maxamount="1" />
-    <Character typeidentifier="coalitionengineer" minamount="1" maxamount="1" />
-  </Characters>
-  <CharacterTypes>
-    <CharacterType typeidentifier="coalitioncaptain">
-      <Character identifier="coalitioncaptain" from="combatmissioncoalitionnpcs" preferreddifficulty="50" iscommander="true" />
-      <Character identifier="coalitioncaptainlord" from="combatmissioncoalitionnpcs" preferreddifficulty="90" iscommander="true" />
-    </CharacterType>
-    <CharacterType typeidentifier="coalitionsecurity">
-      <Character identifier="coalitionsecurityrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
-      <Character identifier="coalitionsecuritygunner" from="combatmissioncoalitionnpcs" preferreddifficulty="60"/>
-      <Character identifier="coalitionsecuritybrute" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
-      <Character identifier="coalitionsecurityelite" from="combatmissioncoalitionnpcs" preferreddifficulty="100"/>
-    </CharacterType>
-    <CharacterType typeidentifier="coalitionmechanic">
-      <Character identifier="coalitionmechanicrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
-      <Character identifier="coalitionmechanicveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
-    </CharacterType>
-    <CharacterType typeidentifier="coalitionengineer">
-      <Character identifier="coalitionengineerrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
-      <Character identifier="coalitionengineerveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
-    </CharacterType>
-  </CharacterTypes>
-  <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55"/>
-  <!-- TODO EAHI Cargo ship message -->
-  <message header="missionheader0.coalitionattack1" text="missionmessage0.coalitionattack1"/>
-  <LocationType from="AnyOutpost" to="AnyOutpost" />
-</PirateMission> 
+    type="Pirate"
+    identifier="EAHI_CargoVessel1"
+    tags="EAHI_CargoVessel"
+    showinmenus="false"
+    showstartmessage="false"
+    issideobjective="true"
+    achievementidentifier="cargomission"
+    difficulty="4"
+    commonness="0"
+    reward="0"
+    addedmissiondifficultyperplayer="8">
+    <Reputation identifier="EAHI" amount="-5" />
+    <!-- TODO Submarine Type, reputation change -->
+    <SubmarineTypes>
+      <Submarine path="Content/Map/EnemySubmarines/DugongPirate.sub" faction="coalition" preferreddifficulty="10" />
+      <Submarine path="Content/Map/EnemySubmarines/HumpbackPirate.sub" faction="coalition" preferreddifficulty="40" />
+      <Submarine path="Content/Map/EnemySubmarines/Typhon2Pirate.sub" faction="coalition" preferreddifficulty="70" />
+    </SubmarineTypes>
+    <!-- TODO EAHI NPCs -->
+    <Characters>
+      <Character typeidentifier="coalitioncaptain" minamount="1" maxamount="1"/>
+      <Character typeidentifier="coalitionsecurity" minamount="2" maxamount="5" />
+      <Character typeidentifier="coalitionmechanic" minamount="1" maxamount="1" />
+      <Character typeidentifier="coalitionengineer" minamount="1" maxamount="1" />
+    </Characters>
+    <CharacterTypes>
+      <CharacterType typeidentifier="coalitioncaptain">
+        <Character identifier="coalitioncaptain" from="combatmissioncoalitionnpcs" preferreddifficulty="50" iscommander="true" />
+        <Character identifier="coalitioncaptainlord" from="combatmissioncoalitionnpcs" preferreddifficulty="90" iscommander="true" />
+      </CharacterType>
+      <CharacterType typeidentifier="coalitionsecurity">
+        <Character identifier="coalitionsecurityrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+        <Character identifier="coalitionsecuritygunner" from="combatmissioncoalitionnpcs" preferreddifficulty="60"/>
+        <Character identifier="coalitionsecuritybrute" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+        <Character identifier="coalitionsecurityelite" from="combatmissioncoalitionnpcs" preferreddifficulty="100"/>
+      </CharacterType>
+      <CharacterType typeidentifier="coalitionmechanic">
+        <Character identifier="coalitionmechanicrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+        <Character identifier="coalitionmechanicveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+      </CharacterType>
+      <CharacterType typeidentifier="coalitionengineer">
+        <Character identifier="coalitionengineerrecruit" from="combatmissioncoalitionnpcs" preferreddifficulty="40"/>
+        <Character identifier="coalitionengineerveteran" from="combatmissioncoalitionnpcs" preferreddifficulty="70"/>
+      </CharacterType>
+    </CharacterTypes>
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55"/>
+    <!-- TODO EAHI Cargo ship message -->
+    <message header="missionheader0.coalitionattack1" text="missionmessage0.coalitionattack1"/>
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+  </PirateMission> 
   <!-- <CargoMission name="烟草狂热"  -->
   <CargoMission
     identifier="EAHI_Misssion_YMLKR" 
@@ -64,6 +65,8 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" amountforopposingfaction="-3" />
+    <Reputation identifier="coalition" amount="-3"/>
     <Items>
       <Item identifier="metalcrate" reward="200" maxcount="12">
         <Item identifier="badcreepingorange" amount="8" />
@@ -83,6 +86,7 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" amountforopposingfaction="-3" />
     <Items>
       <Item identifier="metalcrate" reward="400" maxcount="8">
         <Item identifier="fulguriumfuelrodvolatile" amount="1" />
@@ -103,6 +107,7 @@
     successmessage=""
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" amountforopposingfaction="-5" />
     <Items>
       <Item identifier="metalcrate" reward="400" maxcount="8">
         <Item identifier="volatilecompoundn" amount="1" />
@@ -123,6 +128,7 @@
     successmessage="“" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="800" maxcount="8">
         <Item identifier="coalitionmedal" amount="1" />
@@ -143,6 +149,7 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="1000" maxcount="4">
         <Item identifier="skillbooksailorsguide" amount="2" />
@@ -166,6 +173,7 @@
      successmessage="" 
      failuremessage="" 
      requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="1600" maxcount="8">
         <Item identifier="endocrinebooster" amount="1" />
@@ -186,6 +194,7 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="250" maxcount="40">
         <Item identifier="scrap" amount="8" />
@@ -206,6 +215,7 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="300" maxcount="12">
         <Item identifier="RO635uniform1" amount="1" />
@@ -238,6 +248,7 @@
     successmessage="" 
     failuremessage="" 
     requireddeliveryamount="0.98">
+    <Reputation identifier="EAHI" amount="3" />
     <Items>
       <Item identifier="metalcrate" reward="200" maxcount="10">
         <Item identifier="handheldterminal" amount="4" />
@@ -291,6 +302,9 @@
     commonness="100" 
     reward="8000" sonarlabel="character.mudraptor" 
     maxsonarmarkerdistance="10000" >
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="mudraptor_veteran" min="13" max="20" />
     <monster character="watcher" min="1" max="1" />
     <!-- <Reputation identifier="location" amount="10" />
@@ -308,6 +322,9 @@
     reward="8500" 
     sonarlabel="character.crawler" 
     maxsonarmarkerdistance="10000">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="crawler" min="10" max="15" />
     <monster character="crawlerbroodmother" min="4" max="6" />
     <monster character="watcher" min="1" max="1" />
@@ -326,6 +343,9 @@
     sonarlabel="character.hammerhead" 
     maxsonarmarkerdistance="10000" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="Hammerheadgold_m" min="8" max="16" />
     <monster character="watcher" min="1" max="1" />
     <!-- <Reputation identifier="location" amount="10" />
@@ -343,6 +363,9 @@
     sonarlabel="character.moloch" 
     maxsonarmarkerdistance="30000" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="Molochblack_m" min="3" max="6" />
     <monster character="Molochbaby" min="5" max="10" />
     <!-- <Reputation identifier="coalition" amount="10" />
@@ -361,6 +384,9 @@
     sonarlabel="character.blackmoloch" 
     maxsonarmarkerdistance="30000" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="Molochblack" min="3" max="6" />
     <monster character="watcher" min="1" max="1" />
     <!-- <Reputation identifier="coalition" amount="10" />
@@ -379,6 +405,9 @@
     maxsonarmarkerdistance="30000" 
     spawntype="Abyss" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="-5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="doomworm" min="2" max="2" />
     <!-- <Reputation identifier="location" amount="10" />
     <Reputation identifier="coalition" amount="10" /> -->
@@ -396,6 +425,9 @@
     maxsonarmarkerdistance="30000" 
     spawntype="Abyss" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="-5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="Charybdis" min="2" max="3" />
     <!-- <Reputation identifier="location" amount="10" />
     <Reputation identifier="coalition" amount="10" /> -->
@@ -414,6 +446,9 @@
     maxsonarmarkerdistance="30000" 
     spawntype="Abyss" 
     difficulty="4">
+    <Reputation identifier="EAHI" amount="5" />
+    <Reputation identifier="coalition" amount="-5" />
+    <Reputation identifier="separatists" amount="-5" />
     <monster character="Endworm" min="1" max="2" />
     <!-- <Reputation identifier="location" amount="10" />
     <Reputation identifier="coalition" amount="10" /> -->
