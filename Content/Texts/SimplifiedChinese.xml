@@ -11,7 +11,7 @@
 
   <itemmsgweldingfueloroxygensourcerequired>需要焊接油料或氧气罐</itemmsgweldingfueloroxygensourcerequired>
   <idcardrequired>需要ID卡</idcardrequired>
-  <itemmsgequiporpickupuse>装备或拾取[[use]]</itemmsgequiporpickupuse>
+  <itemmsgequiporpickupuse>装备[[use]]</itemmsgequiporpickupuse>
   <!-- Event -->
   <EventText.EAHI.WIP>抱歉, 系统正在开发中, 暂时不提供该服务 </EventText.EAHI.WIP>
   <EventText.EAHI.Liaison.Menu>您好，欢迎致电东亚重工联络中心自助语音服务，请问有什么可以帮助你的吗？</EventText.EAHI.Liaison.Menu>
@@ -40,6 +40,15 @@
   <EventText.EAHI.Liaison.Quit>挂断</EventText.EAHI.Liaison.Quit>
   <EventText.EAHI.Liaison.Wait5min>很抱歉, 由于服务繁忙, 自助服务暂时不可用, 请等待5分钟后再次拨打. </EventText.EAHI.Liaison.Wait5min>
   <EventText.EAHI.Liaison.CoporatePolice>记录显示您多次做出损害公司利益的行为, 我们认为您是公司繁荣的严重障碍, 现派出公司警察进行压制工作. </EventText.EAHI.Liaison.CoporatePolice>
+
+  <!-- Portable Process Brench -->
+  <entityname.EAHI_ProcessBrench>东亚重工便携式加工台</entityname.EAHI_ProcessBrench>
+  <entitydescription.EAHI_ProcessBrench>放置在平面上使用，可背起。使用燃料罐供能。</entitydescription.EAHI_ProcessBrench>
+  <EAHI_ProcessBrench.Process>加工</EAHI_ProcessBrench.Process>
+  <EAHI_ProcessBrench.empty.infotext>放入物品进行加工作业。本加工台使用燃料油罐充能。</EAHI_ProcessBrench.empty.infotext>
+  <EAHI_ProcessBrench.extract.infotext>提取</EAHI_ProcessBrench.extract.infotext>
+  <EAHI_ProcessBrench.missingitem>已放入提取液。需要异星生物甲壳。</EAHI_ProcessBrench.missingitem>
+  <EAHI_ProcessBrench.Process.infotext>准备提取异星物质</EAHI_ProcessBrench.Process.infotext>
   
   <!-- Labels -->
   <subcategory.EAHI>EAHI</subcategory.EAHI>
@@ -49,7 +58,6 @@
   <subcategory.waifu_tightswim>Swimsui\nTights</subcategory.waifu_tightswim>
   <subcategory.waifu_wip>Working In Progress</subcategory.waifu_wip>
   <subcategory.waifu_innercloth>Innercloth</subcategory.waifu_innercloth>
-  <subcategory.OTFX>OTFX</subcategory.OTFX>
   <!--overrride-->
   <entityname.alienblood>异星血浆</entityname.alienblood>
   <entitydescription.alienbloodmod>从某种木卫二原生种身体中提取的血浆，可以进一步加工成血浆制品，用以治疗失血。也可以在研究台使用疗素将其进一步纯化为基因。</entitydescription.alienbloodmod>
@@ -60,7 +68,7 @@
   <entitydescription.exotic_matter>从异星生物甲壳中提取出的液体。</entitydescription.exotic_matter>
   <entitydescription.mudraptorshell_head>一小片迅猛龙甲壳碎片，也不知道是迅猛龙的哪个部位。</entitydescription.mudraptorshell_head>
   <entityname.EAHI_serum>异星物质提取液</entityname.EAHI_serum>
-  <entitydescription.EAHI_serum>用于从异星生物的甲壳中提取异星物质。\n和甲壳一起放入异星物质提取器中使用。</entitydescription.EAHI_serum>
+  <entitydescription.EAHI_serum>用于从异星生物的甲壳中提取异星物质。\n和异星生物甲壳一起放入东亚重工便携式加工台中提取。</entitydescription.EAHI_serum>
   <!--entity-->
   <entityname.Wf_SaltedFish>咸鱼大剑</entityname.Wf_SaltedFish>
   <entitydescription.Wf_SaltedFish>罕见的地球武器，极易造成撕裂伤</entitydescription.Wf_SaltedFish>
@@ -132,9 +140,9 @@
   <entityname.Kaltsituniform>罗德岛医疗主管服装</entityname.Kaltsituniform>
   <entitydescription.Kaltsituniform>"doctor?"</entitydescription.Kaltsituniform>
   <entityname.skyfireuniform>罗德岛首席术师服装</entityname.skyfireuniform>
-  <entitydescription.skyfireuniform>"战场的温度太低了。"（WIP）</entitydescription.skyfireuniform>
+  <entitydescription.skyfireuniform>"战场的温度太低了。"</entitydescription.skyfireuniform>
   <entityname.skyfireswimsuit>温差 RT.RX01☆天火</entityname.skyfireswimsuit>
-  <entitydescription.skyfireswimsuit>"请不要将泳衣靠近明火。"（WIP）</entitydescription.skyfireswimsuit>
+  <entitydescription.skyfireswimsuit>"请不要将泳衣靠近明火。"</entitydescription.skyfireswimsuit>
   <entityname.shengxuanuniform>圣宣</entityname.shengxuanuniform>
   <entitydescription.shengxuanuniform>“用蝴蝶为那些长眠的人们献上哀悼”\n这件衣服可以激发画皮寄生虫的自愈能力，同时又让它们处于休眠状态。</entitydescription.shengxuanuniform>
   <entityname.shengxuanhats>亡蝶葬仪的赠礼</entityname.shengxuanhats>
@@ -193,12 +201,16 @@
   <entitydescription.EAHI_handheldsonar>高功率声纳，可以穿透潜艇外壳，炮手必备</entitydescription.EAHI_handheldsonar>
   <entityname.EAHI_duogongnengtool>原型多功能喷枪</entityname.EAHI_duogongnengtool>
   <entitydescription.EAHI_duogongnengtool>东亚重工研发的多功能喷枪。使用了巧妙的机械设计,当放入氧气罐时启动切割火焰, 而放入焊接油罐时可进行焊接作业.</entitydescription.EAHI_duogongnengtool>
-  <entityname.teleportine>[EA-HI]传送药水</entityname.teleportine>
+  <entityname.teleportine>传送药水</entityname.teleportine>
   <entitydescription.teleportine>东亚重工给各站点联络员配发的传送药水，当联络员受伤时，将迅速将他传送到安全的地方。</entitydescription.teleportine>
   <entityname.exotic_matter>异星物质</entityname.exotic_matter>
   <entitydescription.exotic_matter>从木卫二生物甲壳中提炼而出的异星物质，拥有相当巧妙的特性。</entitydescription.exotic_matter>
   <entityname.EAHI_licence_oneoff>大师级蓝图-[type]</entityname.EAHI_licence_oneoff>
   <entitydescription.EAHI_licence_oneoff>将蓝图和对应物品放入东亚重工3D打印机，你可以提升对应物品的制作水平</entitydescription.EAHI_licence_oneoff>
+  <entityname.EAHI_laserpointer>激光指示器</entityname.EAHI_laserpointer>
+  <entitydescription.EAHI_laserpointer>启用时可略微降低武器散射。</entitydescription.EAHI_laserpointer>
+  <entityname.otfx_wrenchscrewdrivertwoinone>扳手螺丝刀二合一工具</entityname.otfx_wrenchscrewdrivertwoinone>
+  <entitydescription.otfx_wrenchscrewdrivertwoinone>装备时,双击右键切换扳手和螺丝刀状态</entitydescription.otfx_wrenchscrewdrivertwoinone>
   <!--天赋-->
   <talentname.wf_researcher></talentname.wf_researcher>
   <!--AFF-->

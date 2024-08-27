@@ -103,56 +103,6 @@
     </Repairable>
   </Item>
 
-  <Item name="placeholder" description="" identifier="test_ExoticMaterExtractor" tags="smallitem,donttakeitems,dontsellitems" category="Equipment" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" canflipx="false" pickdistance="150" scale="0.5" HideConditionBar="true" HideConditionInTooltip="true" >
-    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="64,256,128,128" />
-    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="64,256,128,128" depth="0.6" origin="0.5,0.5" />
-    <Body width="185" height="187" density="25" />
-    <Wearable slots="Bag" selectkey="Select" pickkey="Use" PickingTime="0.0" msg="ItemMsgEquipOrPickUpUse">
-      <sprite name="Backpack on character" texture="%ModDir:2809175631%/Content/Addons/gfx.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.86,0.50" sourcerect="0,256,64,128" />
-    </Wearable> 
-
-    <Deconstructor canbeselected="true" showoutput="true" powerconsumption="0.0"  deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="researchstation.invalidinput" infotext="researchstation.empty.infotext" infoareawidth="0.7">
-      <!-- <IsActive targetitemcomponent="Holdable" attached="true" /> -->
-      <GuiFrame relativesize="0.4,0.45" style="ItemUI" relativeoffset="-0.2,0.0" anchor="Center" />
-      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" charge="-1.0" interval="0.2" disabledeltatime="true" />
-    </Deconstructor>
-    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
-    </ItemContainer>
-    <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
-      <Containable items="geneticmaterial,stabilozine,unidentifiedgeneticmaterial" />
-    </ItemContainer>
-
-    <PowerContainer drawable="false" canbeselected="true" capacity="500.0" maxrechargespeed="500.0" maxoutput="1000.0" indicatorposition="13,81" indicatorsize="75,12" ishorizontal="true" msg="ItemMsgInteractSelect">
-      <GuiFrame relativesize="0.25,0.25" minsize="350,200" relativeoffset="0.25,-0.085" anchor="Center" style="ItemUI" />
-    </PowerContainer>
-
-    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" slotsperrow="1">
-      <GuiFrame  relativesize="0.15,0.15" anchor="Center" relativeoffset="0.25,0.165" style="ItemUI" />
-      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
-      <Containable items="mobilebattery">
-        <StatusEffect type="OnContaining" target="Contained" interval="0.15" condition="-1.2" disabledeltatime="true">
-          <Conditional targetcontainer="true" targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
-        </StatusEffect>
-        <StatusEffect type="OnContaining" target="This" interval="0.15" charge="+1.0" disabledeltatime="true">
-          <Conditional targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
-        </StatusEffect>
-      </Containable>
-      <StatusEffect type="OnSpawn" target="This" setvalue="true" condition="0.0" />
-      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="0.0" >
-        <Conditional targetitemcomponent="PowerContainer" charge="lte 0.0" />
-      </StatusEffect>
-      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="100.0" >
-        <Conditional targetitemcomponent="PowerContainer" charge="gt 0.0" />
-      </StatusEffect>
-    </ItemContainer>
-    <!-- You must have a Repairable or the game will crash -->
-    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="false" RepairThreshold="-10.0" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="0" >
-      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
-      <RequiredSkill identifier="electrical" level="80" />
-      <RequiredItem items="screwdriver" type="Equipped" />
-    </Repairable>
-  </Item>
-
     <!-- 可写入idcard -->
     <Item nameidentifier="idcard" descriptionidentifier="idcard_tagger" identifier="idcard_tagger" variantof="idcard" category="Equipment" Tags="smallitem,identitycard" cargocontaineridentifier="metalcrate">
       <Price baseprice="10" sold="true" />

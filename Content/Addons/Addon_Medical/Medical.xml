@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item name="" identifier="EAHI_serum" subcategory="EAHI" category="Material" maxstacksize="8" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,chem" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
+  <Item name="" identifier="EAHI_serum" subcategory="EAHI" category="Material" maxstacksize="8" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,chem,waifu_items" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
     <PreferredContainer primary="locker" />
     <Price baseprice="60" sold="false">
       <Price storeidentifier="merchantoutpost" multiplier="0.85" />
@@ -9,7 +9,9 @@
       <Price storeidentifier="merchantmilitary" multiplier="0.9" />
       <Price storeidentifier="merchantmine" multiplier="0.85" />
     </Price>
-    <Deconstruct />
+    <Deconstruct time="10" requireddeconstructor="EAHI_ProcessBrench">
+      <Item identifier="exotic_matter" requiredotheritem="mudraptorshell,shellshield,molochbone,hammerheadribs,endwormshell,watchershell" amount="2" activatebuttontext="EAHI_ProcessBrench.extract" infotext="EAHI_ProcessBrench.Process.infotext" infotextonotheritemmissing="EAHI_ProcessBrench.missingitem" />
+    </Deconstruct>
     <Sprite texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="128,0,32,128" depth="0.6" origin="0.5,0.5" />
     <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="0,0,64,64" depth="0.6" origin="0.5,0.5" />
     <Body width="25" height="50" density="20" />
@@ -34,7 +36,7 @@
     </MeleeWeapon>
   </Item>
   <!--异星物质-->
-  <Item name="" identifier="exotic_matter" subcategory="EAHI" category="Material" maxstacksize="8" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,chem" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
+  <Item name="" identifier="exotic_matter" subcategory="EAHI" category="Material" maxstacksize="8" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,chem" useinhealthinterface="true" scale="0.5" RequireAimToUse="True" >
     <PreferredContainer primary="locker" />
     <Price baseprice="120" sold="false">
       <Price storeidentifier="merchantoutpost" multiplier="0.85" />
@@ -63,5 +65,33 @@
         <Remove />
       </StatusEffect>
     </MeleeWeapon>
+  </Item>
+  <!--传送药水 以后删除-->
+  <Item name="" identifier="teleportine" subcategory="EAHI" category="Material" maxstacksize="1" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" impacttolerance="8" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True" hideinmenus="true">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="192,0,32,128" depth="0.6" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="0,64,64,64" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="70" density="20" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <RemoveCharacter />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Explosion range="200.0" force="25" shockwave="true" smoke="false" flames="false" sparks="true" underwaterbubble="true" camerashake="60.0">
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+        <ParticleEmitter particle="part_teleport1" anglemax="0" particleamount="1" scalemin="0.75" scalemax="0.8" />
+        <ParticleEmitter particle="artifactholderfx" anglemax="360" particleamount="15" distancemin="5" distancemax="60" velocitymin="5" velocitymax="20" colormultiplier="137,173,229,255" />
+        <ParticleEmitter particle="mist" anglemax="360" particleamount="10" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="2,2" colormultiplier="20,60,240,125" />
+        <ParticleEmitter particle="anomaly" anglemax="0" particleamount="1" distancemax="40" scalemin="0.5" scalemax="1.0" velocitymin="4" velocitymax="10" scalemultiplier="0.2,0.1" colormultiplier="155,155,155,155" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
   </Item>
 </Items>
