@@ -21,6 +21,14 @@
     <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
     <Sprite name="Headset" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="28,321,49,62" origin="0.5,0.5" />
     <Body radius="20" height="20" density="30" />
+    <Price baseprice="280" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
+    </Price>
     <Deconstruct time="10">
       <Item identifier="autoinjectorheadset" />
       <Item identifier="fpgacircuit" />
@@ -136,6 +144,14 @@
   </Item>
   <!--高级声纳-->
   <Item name="" description="" identifier="EAHI_handheldsonar" subcategory="EAHI" category="Misc" Tags="smallitem,sonar,provocative" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+    <Price baseprice="200" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
+    </Price>
     <Fabricate suitablefabricators="fabricator" requiredtime="2">
       <RequiredSkill identifier="mechanical" level="3" />
       <RequiredItem identifier="fpgacircuit" />
@@ -188,6 +204,14 @@
   <Item name="" description="" identifier="EAHI_duogongnengtool" subcategory="EAHI" category="Misc" Tags="smallitem,tool,mountableweapon" cargocontaineridentifier="metalcrate" HideConditionBar="true" HideConditionInTooltip="true" Scale="0.4" impactsoundtag="impact_metal_light" addedrepairspeedmultiplier="0.3">
     <PreferredContainer primary="storagecab" spawnprobability="0.05" />
     <PreferredContainer secondary="wreckstoragecab" spawnprobability="0.02" />
+    <Price baseprice="350" minavailable="2" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
+    </Price>
     <Deconstruct time="10">
       <Item identifier="physicorium" amount="1" />
       <Item identifier="plastic" amount="2" />
@@ -263,12 +287,13 @@
   </Item>
   <!-- Laser Pointer -->
   <Item identifier="EAHI_laserpointer" subcategory="EAHI" category="Misc" Tags="smallitem,tool,provocative,flashlight" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
-    <Price baseprice="200" minavailable="2">
+    <Price baseprice="200" minavailable="2" sold="false">
       <Price storeidentifier="merchantoutpost" />
       <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
       <Price storeidentifier="merchantresearch" multiplier="1.25" />
       <Price storeidentifier="merchantmilitary" multiplier="1.25" />
       <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
     </Price>
     <Deconstruct time="15">
       <Item identifier="aluminium" />
@@ -314,13 +339,14 @@
     <PreferredContainer primary="wreckreactorcab,abandonedreactorcab,piratereactorcab" amount="1" spawnprobability="0.05" />
     <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.03" />
     <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
-    <Price baseprice="57" minavailable="10">
+    <Price baseprice="57" sold="false">
       <Price storeidentifier="merchantoutpost" />
       <Price storeidentifier="merchantcity" minavailable="5" />
       <Price storeidentifier="merchantresearch" multiplier="1.25" />
       <Price storeidentifier="merchantmilitary" multiplier="1.25" />
       <Price storeidentifier="merchantmine" />
-      <Price storeidentifier="merchantengineering" minavailable="10" multiplier="0.9" />
+      <Price storeidentifier="merchantengineering" minavailable="1" multiplier="0.9" />
+      <Price storeidentifier="MerchantEAHI" minavailable="2" multiplier="1.0" />
     </Price>
     <Deconstruct time="5">
       <Item identifier="wrench" />

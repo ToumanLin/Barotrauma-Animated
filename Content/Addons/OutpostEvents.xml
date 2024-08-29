@@ -54,7 +54,7 @@
                 <!-- TODO Merchant -->
                 <Option text="EventText.EAHI.Liaison.Merchant">
                   <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player"></ConversationAction> -->
-                  <CheckDataAction identifier="EAHI_Merchant" condition="eq 1">
+                  <CheckDataAction identifier="MerchantEAHI" condition="eq 1">
                     <Failure>
                       <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
                       <RNGAction chance="0.8">
@@ -62,16 +62,16 @@
                           <Label name="MerchantRNGPassed" />
                           <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
                           <WaitAction time="2" />
-                          <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHI_Merchant" targettag="EAHI_Merchant" spawnlocation="Outpost" targetmoduletags="airlock" />
-                          <NPCWaitAction npctag="EAHI_Merchant" wait="true" />
+                          <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="MerchantEAHI" targettag="MerchantEAHI" spawnlocation="Outpost" targetmoduletags="airlock" />
+                          <NPCWaitAction npctag="MerchantEAHI" wait="true" />
                           <!-- Zero out flag -->
-                          <SetDataAction identifier="EAHI_Merchant" value="0" />
+                          <SetDataAction identifier="MerchantEAHI" value="0" />
                           <!-- EVENT END -->
                           <!-- Set Wait Flag -->
                           <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                           <!-- Remove Character After 5 min -->
                           <WaitAction time="300" />
-                          <StatusEffectAction targettag="EAHI_Merchant">
+                          <StatusEffectAction targettag="MerchantEAHI">
                             <RemoveCharacter />
                           </StatusEffectAction>
                           <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
@@ -83,7 +83,7 @@
                               <CheckMoneyAction amount="200">
                                 <Success>
                                   <MoneyAction amount="-200" />
-                                  <SetDataAction identifier="EAHI_Merchant" value="1" />
+                                  <SetDataAction identifier="MerchantEAHI" value="1" />
                                   <ConversationAction text="EventText.EAHI.Liaison.MerchantReserved" dialogtype="Regular" EventSprites="" targettag="player" />
                                   <!-- EVENT END -->
                                   <!-- Set Wait Flag -->
