@@ -51,7 +51,75 @@
               <!-- TODO Welcome Dialog Variations based on reputation -->
               <!-- TODO Welcom Menu Sprite -->
               <ConversationAction text="EventText.EAHI.Liaison.Menu" dialogtype="Regular" EventSprites="" targettag="player">
-
+                <!-- TODO Merchant -->
+                <Option text="EventText.EAHI.Liaison.Merchant">
+                  <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player"></ConversationAction> -->
+                  <CheckDataAction identifier="MerchantEAHI" condition="eq 1">
+                    <Failure>
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <RNGAction chance="0.8">
+                        <Success>
+                          <Label name="MerchantRNGPassed" />
+                          <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
+                          <WaitAction time="2" />
+                          <SpawnAction npcsetidentifier="outpostnpcs1" npcidentifier="merchantmedical" targettag="MerchantEAHI" spawnlocation="Outpost" targetmoduletags="airlock" />
+                          <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="MerchantEAHI" targettag="MerchantEAHI" spawnlocation="Outpost" targetmoduletags="airlock" />
+                          <NPCWaitAction npctag="MerchantEAHI" wait="true" />
+                          <!-- Zero out flag -->
+                          <SetDataAction identifier="MerchantEAHI" value="0" />
+                          <!-- EVENT END -->
+                          <!-- Set Wait Flag -->
+                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                          <!-- Remove Character After 5 min -->
+                          <WaitAction time="300" />
+                          <StatusEffectAction targettag="MerchantEAHI">
+                            <RemoveCharacter />
+                          </StatusEffectAction>
+                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                        </Success>
+                        <Failure>
+                          <!-- RNG Not Passed, no merchant Available -->
+                          <ConversationAction text="EventText.EAHI.Liaison.MerchantNotAvailable" dialogtype="Regular" EventSprites="" targettag="player" >
+                            <option text="EventText.EAHI.Liaison.ReserveMerchant" >
+                              <CheckMoneyAction amount="200">
+                                <Success>
+                                  <MoneyAction amount="-200" />
+                                  <SetDataAction identifier="MerchantEAHI" value="1" />
+                                  <ConversationAction text="EventText.EAHI.Liaison.MerchantReserved" dialogtype="Regular" EventSprites="" targettag="player" />
+                                  <!-- EVENT END -->
+                                  <!-- Set Wait Flag -->
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <WaitAction time="300" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                </Success>
+                                <Failure>
+                                  <ConversationAction text="EventText.EAHI.Liaison.DontHaveEnoughMoney" dialogtype="Regular" EventSprites="" targettag="player" />
+                                  <!-- EVENT END -->
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <WaitAction time="300" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                </Failure>
+                              </CheckMoneyAction>
+                            </option>
+                            <option text="EventText.EAHI.Liaison.DontReserve" >
+                              <ConversationAction text="EventText.EAHI.Liaison.MerchantnotReserved" dialogtype="Regular" EventSprites="" targettag="player" />
+                              <!-- EVENT END -->
+                              <!-- Set Wait Flag -->
+                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                              <WaitAction time="300" />
+                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                            </option>
+                          </ConversationAction>
+                        </Failure>
+                      </RNGAction>
+                    </Failure>
+                    <Success>
+                      <!-- Pass RNG -->
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <Goto name="MerchantRNGPassed" />
+                    </Success>
+                  </CheckDataAction>
+                </Option>
                 <!-- TODO Mission, more mission variety -->
                 <Option text="EventText.EAHI.Liaison.Mission">
                   <!-- Check RNG Flag -->
