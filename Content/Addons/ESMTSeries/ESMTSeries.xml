@@ -18,8 +18,8 @@
       <Price locationtype="military" multiplier="1" sold="false" />
       <Price locationtype="mine" multiplier="1" sold="false" />
     </Price>
-    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
-    <Sprite name="Headset" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="28,321,49,62" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" sourcerect="561,323,64,64" origin="0.5,0.5" />
+    <Sprite name="Headset" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="512,321,49,66" origin="0.5,0.470" />
     <Body radius="20" height="20" density="30" />
     <Price baseprice="280" minavailable="2" sold="false">
       <Price storeidentifier="merchantoutpost" />
@@ -46,31 +46,38 @@
       <Containable items="antibloodloss1,antibloodloss2,alienblood" />
       <SubContainer capacity="1" maxstacksize="1">
         <Containable items="antidama1,antidama2,deusizine,teleportine" />
+        <Containable items="teleportine">
+          <!-- Inject Teleportine -->
+          <StatusEffect type="OnWearing" target="Character,Contained,This" targetitemcomponent="ItemContainer" autoinject="true" comparison="Or">
+            <RequiredItem items="teleportine" type="Contained" targetslot="1" />
+            <Conditional oxygenlow="gt 25.0" />
+            <Conditional Isdead="True" />
+          </StatusEffect>
+        </Containable>
       </SubContainer>
     </ItemContainer>
     <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
       <sprite name="Headset Wearable" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="26,313,51.5,70" origin="0.515,0.703" />
-      <!--使用生理盐水-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="0">
+      <!-- MOD FEATURE Auto-inject System -->
+      <!-- Inject Saline & Blood Pack & Alien Blood, slot 0 -->
+      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="0" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="bloodloss" amount="2.5" />
         <RequiredItem items="antibloodloss1" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
-      <!--使用血袋-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0">
+      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="bloodloss" amount="6" />
         <RequiredItem items="antibloodloss2" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
-      <!--使用异星血浆-->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0">
+      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0" interval="0.2" disabledeltatime="true">
         <Affliction identifier="psychosis" amount="2.25" />
         <ReduceAffliction type="bloodloss" amount="6" />
         <RequiredItem items="alienblood" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
-      <!--使用吗啡-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="1">
+      <!--Inject Morphine & Fentanyl & Deusizine, slot 1 -->
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="1" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="damage" amount="5" />
         <ReduceAffliction type="burn" amount="0.1" />
         <Affliction identifier="oxygenlow" amount="2" />
@@ -87,8 +94,7 @@
         <Conditional explosiondamage="gt 0.0" />
         <Conditional concussion="gt 0.0" />
       </StatusEffect>
-      <!--使用芬太尼-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="1">
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="1" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="damage" amount="15" />
         <ReduceAffliction type="burn" amount="1" />
         <Affliction identifier="oxygenlow" amount="6" />
@@ -105,8 +111,7 @@
         <Conditional explosiondamage="gt 0.0" />
         <Conditional concussion="gt 0.0" />
       </StatusEffect>
-      <!--使用神效剂-->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="1">
+      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
         <Affliction identifier="burn" amount="0.02" />
         <ReduceAffliction type="damage" amount="3" />
         <ReduceAffliction identifier="oxygenlow" amount="3" />
