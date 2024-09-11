@@ -5,7 +5,7 @@ def find_xml_files(directory):
     xml_files = []
     for root, _, files in os.walk(directory):
         for file in files:
-            if file.endswith('.xml'):
+            if file.endswith('.xml') and file != 'Reference.xml':
                 xml_files.append(os.path.join(root, file))
     return xml_files
 
@@ -62,26 +62,60 @@ def extract_identifiers_from_xml(xml_content):
     identifiers = re.findall(r'<Item[^>]*?identifier="([^"]+)', xml_content)
     return identifiers
 
-def write_identifiers_to_file(identifiers, output_file):
-    with open(output_file, 'w', encoding='utf-8') as file:
-        file.write('The ID of all items that added or overrided by this Mod: \n\n')
-        for identifier in identifiers:
-            file.write(identifier + '\n')
-
-def main():
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    xml_files = find_xml_files(current_directory)
+def process_directory(directory):
+    xml_files = find_xml_files(directory)
     
-    all_identifiers = []
+    all_identifiers = set()
     for xml_file in xml_files:
         with open(xml_file, 'r', encoding="utf-8") as file:
             content = file.read()
             cleaned_content = remove_unwanted_sections(content)
             identifiers = extract_identifiers_from_xml(cleaned_content)
-            all_identifiers.extend(identifiers)
+            all_identifiers.update(identifiers)
     
+    return all_identifiers
+
+def compare_itemlists(mod_identifiers, vanilla_identifiers):
+    # 找出相同的项目，放入 override
+    override = mod_identifiers.intersection(vanilla_identifiers)
+    
+    # 找出 mod 独有的项目，放入 addon
+    addon = mod_identifiers.difference(vanilla_identifiers)
+    
+    return override, addon
+
+def write_comparison_to_file(override, addon, output_file):
+    """
+    将 override 和 addon 项目写入输出文件。
+    """
+    with open(output_file, 'w', encoding='utf-8') as file:
+        # 写入 Override Items
+        file.write("Items Overrided by This mod:\n")
+        for item in override:
+            file.write(f"{item}\n")
+        
+        file.write("\n")  # 添加空行分隔
+        
+        # 写入 Addon Items
+        file.write("Items Added by This mod:\n")
+        for item in addon:
+            file.write(f"{item}\n")
+
+def main():
+    # 获取当前目录下的 Mod itemlist
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    mod_identifiers = process_directory(current_directory)
+
+    # 获取 Barotrauma Content 目录下的 Vanilla itemlist
+    barotrauma_directory = r'C:\Program Files (x86)\Steam\steamapps\common\Barotrauma\Content'
+    vanilla_identifiers = process_directory(barotrauma_directory)
+
+    # 对比 Mod 和 Vanilla 的 itemlist，生成 override 和 addon 集合
+    override, addon = compare_itemlists(mod_identifiers, vanilla_identifiers)
+
+    # 输出结果到文件
     output_file = os.path.join(current_directory, 'itemlist.txt')
-    write_identifiers_to_file(all_identifiers, output_file)
+    write_comparison_to_file(override, addon, output_file)
 
 if __name__ == "__main__":
     main()

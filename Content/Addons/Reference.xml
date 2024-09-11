@@ -77,7 +77,7 @@
     <RequiredItem identifier="titanium" amount="2" />
     <RequiredItem identifier="plastic" />
   </Fabricate>
-</Item>
+  </Item>
   <!-- 参考动画 -->
   <Item name="不是光剑" description="不是光剑，未制作招式动作" identifier="lectricity_sword" category="Equipment" Tags="mediumitem,weapon,gunsmith,if_weapon,if_melee,if_sword" scale="0.5" requireaimtouse="true" impactsoundtag="impact_metal_light" health="100" damagedbyprojectiles="false" damagedbymeleeweapons="false" damagedbyexplosions="false" damagedbyrepairtools="false">
     <InventoryIcon texture="%ModDir%/gfx/if_swords_electricity.png" sourcerect="180,7,85,13" />
@@ -391,136 +391,6 @@
       <!--矿山-->
     </Price>
     <!--商店-->
-  </Item>
-  <!-- 激光指示器：给人加AFF -->
-  <Item identifier="otfx_laserpointer" category="Equipment" Tags="smallitem,tool,provocative,flashlight" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
-    <Price baseprice="200" minavailable="2">
-      <Price storeidentifier="merchantoutpost" />
-      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
-      <Price storeidentifier="merchantresearch" multiplier="1.25" />
-      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
-      <Price storeidentifier="merchantmine" />
-    </Price>
-    <Deconstruct time="15">
-      <Item identifier="aluminium" />
-      <Item identifier="lightcomponent" />
-    </Deconstruct>
-    <Fabricate suitablefabricators="fabricator" requiredtime="10">
-      <RequiredSkill identifier="mechanical" level="25" />
-      <RequiredItem identifier="aluminium" amount="2" />
-      <RequiredItem identifier="lightcomponent" />
-    </Fabricate>
-    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" />
-    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="0,128,51,11" depth="0.55" origin="0.5,0.5" />
-    <Body width="50" height="10" density="15" />
-    <Holdable slots="Any,RightHand,LeftHand,Head" holdpos="30,-50" aimpos="60,0" handle1="-20,0" msg="ItemMsgPickUpSelect">
-      <StatusEffect type="OnActive" interval="0.05" target="This,Character" disabledeltatime="true">
-        <Affliction identifier="otfx_laserpointer" amount="100" />
-        <Conditional hasstatustag="inc_accuracy" />
-      </StatusEffect>
-      <LightComponent allowingameediting="false" lightcolor="0.8,0.0,0.0,0.35" range="500" flicker="0.03" powerconsumption="infinity" minvoltage="0.3" ison="true">
-        <LightTexture texture="%ModDir%/OTFX/Lights/lightlaser.png" origin="0.01,0.500" size="1.0,0.25" />
-        <StatusEffect type="OnActive" target="This" interval="0.1" tags="inc_accuracy" duration="0.133" stackable="false" />
-        <StatusEffect type="OnActive" target="Contained" interval="0.1" condition="-0.015" disabledeltatime="true" />
-      </LightComponent>
-    </Holdable>
-    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
-      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
-      <Containable items="mobilebattery">
-        <StatusEffect type="OnContaining" target="This" interval="0.05" voltage="+0.3" disabledeltatime="true" comparison="And">
-          <Conditional physicsbodyactive="true" voltage="lt 1.0" />
-        </StatusEffect>
-      </Containable>
-    </ItemContainer>
-    <AiTarget sightrange="2500" />
-  </Item>
-  <!-- 扳手螺丝刀二合一 -->
-  <Item name="" identifier="otfx_wrenchscrewdrivertwoinone" category="Equipment" tags="smallitem,tool,simpletool,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="true">
-    <Preferredcontainer secondary="respawncontainer" amount="1" spawnprobability="0.1" notcampaign="true" />
-    <PreferredContainer primary="engcab" secondary="reactorcab" />
-    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" amount="1" spawnprobability="0.02" />
-    <PreferredContainer primary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.05" />
-    <PreferredContainer primary="wreckreactorcab,abandonedreactorcab,piratereactorcab" amount="1" spawnprobability="0.05" />
-    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.03" />
-    <PreferredContainer secondary="outposttrashcan" amount="1" spawnprobability="0.01" />
-    <Price baseprice="57" minavailable="10">
-      <Price storeidentifier="merchantoutpost" />
-      <Price storeidentifier="merchantcity" minavailable="5" />
-      <Price storeidentifier="merchantresearch" multiplier="1.25" />
-      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
-      <Price storeidentifier="merchantmine" />
-      <Price storeidentifier="merchantengineering" minavailable="10" multiplier="0.9" />
-    </Price>
-    <Deconstruct time="5">
-      <Item identifier="wrench" />
-      <Item identifier="screwdriver" />
-      <Item identifier="copper" />
-    </Deconstruct>
-    <Fabricate suitablefabricators="fabricator" requiredtime="5">
-      <RequiredSkill identifier="mechanical" level="30" />
-      <RequiredItem identifier="wrench" />
-      <RequiredItem identifier="screwdriver" />
-      <RequiredItem identifier="copper" />
-    </Fabricate>
-    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="384,0,64,64" />
-    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="64,64,93,19" depth="0.55" origin="0.5,0.5" />
-    <Body width="80" height="15" density="25" />
-    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" reload="1.0" range="50" combatpriority="9" msg="ItemMsgPickUpSelect">
-      <Attack structuredamage="0" itemdamage="4" targetimpulse="4">
-        <Affliction identifier="lacerations" strength="5" probability="0.5" />
-        <Affliction identifier="bleeding" strength="2" probability="0.5" />
-        <Affliction identifier="stun" strength="0.05" probability="0.5" />
-        <Affliction identifier="blunttrauma" strength="4" probability="0.5" />
-        <Affliction identifier="stun" strength="0.2" probability="0.5" />
-        <StatusEffect type="OnUse" target="UseTarget">
-          <Conditional entitytype="Character" />
-          <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="500" selectionmode="random" />
-          <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
-          <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
-          <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
-          <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
-          <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
-          <Sound file="Content/Items/Weapons/Smack1.ogg" range="500" />
-          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
-        </StatusEffect>
-      </Attack>
-      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" />
-      <!-- Double Click tag -->
-      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_trigger" duration=".016" comparison="And">
-        <Conditional hasstatustag="! dblclick_timingdelaymin" />
-        <Conditional hasstatustag="dblclick_timingdelaymax" />
-        <Conditional hasstatustag="! dblclick_disallowtrigger" />
-        <Conditional hasstatustag="! dblclick_longpressed" />
-      </StatusEffect>
-      <!-- Switch to screwdriver -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="electricalrepairtool,screwdriveritem,screwdriver" holdangle="60" setvalue="true" delay=".016" comparison="And">
-        <Conditional hastag="wrench" />
-        <Conditional hasstatustag="dblclick_trigger" />
-      </StatusEffect>
-      <!-- Switch to wrench -->
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" delay=".016" comparison="And">
-        <Conditional hastag="screwdriver" />
-        <Conditional hasstatustag="dblclick_trigger" />
-      </StatusEffect>
-      <!-- Fliter Longpress -->
-      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_longpressed" duration="0.133" stackable="false">
-        <Conditional hasstatustag="! dblclick_notlongpress" />
-      </StatusEffect>
-      <!-- Double Click interval min & max -->
-      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymin" duration=".033" stackable="false" />
-      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymax" duration="0.133" stackable="false" />
-      <!-- Disallow switch when stuning -->
-      <StatusEffect type="OnActive" target="This,Character" tags="dblclick_disallowtrigger" duration="0.333" stackable="false">
-        <Conditional stun="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnActive" target="This" tags="dblclick_notlongpress" duration="0.233" stackable="false">
-        <Conditional hasstatustag="! dblclick_timingdelaymin" />
-      </StatusEffect>
-    </MeleeWeapon>
-    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
-    <Quality>
-      <QualityStat stattype="RepairSpeed" value="0.1" />
-    </Quality>
   </Item>
   <!-- 燃素冲锋枪 -->
   <Item name="" identifier="otfx_incendiumsmg" health="100.016" category="Weapon" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
@@ -1224,25 +1094,101 @@
       <TextBox text="connection.set_text" propertyname="Tags" />
     </CustomInterface>
   </Item>
-  <Item name="便携式加工台背包" identifier="moveablefabricatorbackpack2" tags="smallitem,fabricator,donttakeitems,dontsellitems" category="Equipment" allowasextracargo="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" canflipx="false" pickdistance="150" scale="0.5" isshootable="true" description="（墨工坊制做）便携式加工台背包，放置时可以作为加工台使用，而背负时可当做背包使用。——注：如果塞入背包发现物品消失，则大概率物品在加工台的输出槽位，放置后方可取出物品。">
-    <InventoryIcon texture="%ModDir%/MASB.png" sourcerect="0,0,232,259" />
-    <Sprite texture="%ModDir%/MAS.png" sourcerect="0,0,259,168" depth="0.6" origin="0.5,0.5" />
-    <Body width="185" height="187" density="25" />
-    <Fabricate suitablefabricators="vendingmachine" requiredtime="1" requiredmoney="5550" fabricationlimitmin="5" fabricationlimitmax="10" />
-    <Fabricate suitablefabricators="fabricator" requiredtime="10">
-      <RequiredItem identifier="physicorium" amount="3" />
-      <RequiredItem identifier="ballisticfiber" amount="4" />
-      <RequiredItem identifier="titaniumaluminiumalloy" amount="6" />
-      <RequiredItem identifier="cultistkit" amount="1" />
-      <RequiredItem identifier="doorkey" amount="1" />
+  <Item name="" identifier="otfx_torch" category="Equipment,Weapon" Tags="mediumitem,tool,light,weapon,gunsmith,mountableweapon" scale="0.5" allowasextracargo="true" requireaimtouse="true" impactsoundtag="impact_metal_light">
+    <Price baseprice="85" sold="false" />
+    <Deconstruct time="10">
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15">
+      <RequiredItem identifier="organicfiber" amount="1" />
+      <RequiredItem identifier="carbon" amount="3" />
     </Fabricate>
-    <Wearable slots="Bag" selectkey="Select" pickkey="Use" msg="ItemMsgDetach" PickingTime="1.5">
-      <sprite name="Backpack on character" texture="MASB.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.86,0.50" sourcerect="0,0,232,259" />
-    </Wearable>
-    <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect">
-      <GuiFrame relativesize="0.4,0.45" style="ItemUI" anchor="Center" />
-    </Fabricator>
-    <ItemContainer capacity="12" canbeselected="true" hideitems="true" slotsperrow="6" uilabel="" allowuioverlap="true" />
-    <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" displayname="recycleitem">
+      <RequiredItem identifier="organicfiber" amount="1" />
+      <RequiredItem identifier="carbon" amount="1" />
+      <RequiredItem identifier="otfx_torch" mincondition="0.0" maxcondition="0.5" usecondition="false" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="128,0,64,64" />
+    <Sprite texture="%ModDir%/OTFX/Items/Tools/tools.png" sourcerect="0,0,180,18" depth="0.55" origin="0.5,0.5" />
+    <Body width="180" height="18" density="10" />
+    <LightComponent lightcolor="1.0,0.45,0.3,0.8" flicker="0.3" flickerspeed="0.7" range="1000" powerconsumption="0" ison="false">
+      <!-- When OnActive, Tag itme react, duration .016 -->
+      <StatusEffect type="OnActive" target="This" tags="react" duration=".016" comparison="And">
+        <Conditional inwater="false" physicsbodyactive="true" hulloxygenpercentage="gt 5.0" />
+        <Conditional targetcontaineditem="true" condition="gt 1000" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" ison="false" delay="0.5" stackable="false" checkconditionalalways="true">
+        <Conditional hasstatustag="! react" />
+      </StatusEffect>
+      <!-- When has tag = react, give tage ignitable -->
+      <StatusEffect type="OnActive" target="This" tags="ignitable" duration=".033" stackable="false">
+        <Conditional hasstatustag="react" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Contained">
+        <ParticleEmitter particle="flame" particlespersecond="15" velocitymin="0" scalemin="0.2" scalemax="0.3" lifetimemultiplier="0.5" />
+        <Sound file="Content/Sounds/FireSmall.ogg" range="800" loop="true" volume="0.1" frequency="1.3" />
+        <Conditional targetcontainer="true" hasstatustag="react" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Contained" condition="-1000.0" />
+    </LightComponent>
+    <MeleeWeapon characterusable="true" slots="Any,RightHand+LeftHand" controlpose="true" aimpos="40,40" holdangle="30" aimangle="30" handle1="-33,0" handle2="-28,0" reload="1.2" range="155" combatpriority="40" msg="ItemMsgPickUpSelect">
+      <!-- DblClick Event: ignite/quench torch -->
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+        <Conditional hasstatustag="dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! dblclick_longpressed" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" ison="true" setvalue="true" delay=".016" comparison="And">
+        <!-- Handle dblclick event here -->
+        <Sound file="Content/Items/Tools/FlareIgnite.ogg" range="800" loop="false" />
+        <Conditional hasstatustag="dblclick_trigger" />
+        <Conditional targetitemcomponent="LightComponent" ison="false" />
+        <Conditional inwater="false" physicsbodyactive="true" hulloxygenpercentage="gt 5.0" />
+        <Conditional targetcontaineditem="true" condition="gt 1000" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" ison="false" setvalue="true" delay=".016" comparison="And">
+        <!-- Handle dblclick event here -->
+        <Conditional hasstatustag="dblclick_trigger" />
+        <Conditional targetitemcomponent="LightComponent" ison="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! dblclick_notlongpress" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <StatusEffect type="OnActive" target="This,Character" tags="dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+      </StatusEffect>
+      <!-- Attack data -->
+      <Attack targetimpulse="12" severlimbsprobability="1" itemdamage="11" structuredamage="5">
+        <Affliction identifier="blunttrauma" strength="19" />
+        <Affliction identifier="stun" strength="0.5" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Sound file="Content/Items/Weapons/Smack1.ogg" frequency="0.75" range="500" selectionmode="random" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" frequency="0.75" range="500" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnUse" target="This,Limb">
+        <Affliction identifier="burn" strength="4" />
+        <Affliction identifier="otfx_burning" strength="17" />
+        <Affliction identifier="otfx_burning" strength="3" probability="0.55" />
+        <Conditional hasstatustag="ignitable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Limb">
+        <Affliction identifier="concussion" strength="4" probability="0.25" />
+        <Conditional islowerbody="false" />
+      </StatusEffect>
+    </MeleeWeapon>
+    <ItemContainer canbeselected="false" capacity="1" maxstacksize="1" hideitems="true" drawinventory="false" allowaccess="false" allowdraganddrop="false" allowswappingcontaineditems="false" showcontainedstateindicator="true" removecontaineditemsondeconstruct="true" spawnwithid="otfx_torchfuel">
+      <Containable identifier="otfx_torchfuel" itempos="44,0" />
+    </ItemContainer>
+    <Quality>
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+    </Quality>
+    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
   </Item>
 </Items></Override>
