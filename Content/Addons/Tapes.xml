@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Override><Items>
+  <Item name="" identifier="EAHI_tape_1" subcategory="EAHI" category="Misc" maxstacksize="8" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,chem,waifu_items" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
+    <PreferredContainer primary="locker" />
+    <Price baseprice="60" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="0.85" />
+      <Price storeidentifier="merchantcity" multiplier="0.85" />
+      <Price storeidentifier="merchantresearch" multiplier="1.2" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="0.85" />
+      <Price storeidentifier="MerchantEAHI" multiplier="1.0" minavailable="3" />
+    </Price>
+    <Deconstruct time="10" requireddeconstructor="EAHI_ProcessBrench">
+      <!-- MOD FEATURE Serum + Shell = Exotic Matter -->
+      <Item identifier="Wf_SaltedFish" requiredotheritem="mudraptorshell,shellshield,molochbone,hammerheadribs,endwormshell,watchershell" amount="1" activatebuttontext="EAHI_ProcessBrench.extract" infotext="EAHI_ProcessBrench.Process.infotext" infotextonotheritemmissing="EAHI_ProcessBrench.missingitem" quality="3" />
+    </Deconstruct>
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="128,0,32,128" depth="0.6" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/Addon_Medical/Medical.png" sourcerect="0,0,64,64" depth="0.6" origin="0.5,0.5" />
+    <Body width="25" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-5,0" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect"/>
+  </Item>
+</Items></Override>

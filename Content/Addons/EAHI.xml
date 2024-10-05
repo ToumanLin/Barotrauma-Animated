@@ -12,7 +12,7 @@
     </Price>
     <!-- <Fabricate suitablefabricators="vendingmachine,fabricator" requiredtime="1" requiredmoney="0" fabricationlimitmin="1" /> -->
     <Deconstruct time="3" />
-    <Holdable slots="Any,RightHand,LeftHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+    <Holdable slots="Any,RightHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
       <StatusEffect type="OnSecondaryUse" target="This" Condition="-50" >
         <Conditional HasTag="LiaisonCommunicator:Charged" />
         <requireditem items="idcard" type="Contained" msg="idcardrequired" />
@@ -41,8 +41,8 @@
   </Item>
   <!-- EAI Portable Process Brench -->
   <Item name="" description="" identifier="EAHI_ProcessBrench" tags="mediumitem,mobilecontainer,donttakeitems,dontsellitems,EAHI_ProcessBrench" subcategory="EAHI" category="Misc" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" canflipx="false" pickdistance="150" scale="0.5" HideConditionBar="true" HideConditionInTooltip="true" >
-    <!-- <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="64,256,128,128" /> -->
-    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="176,256,256,176" depth="0.6" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="640,180,84,172" />
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="512,0,252,180" depth="0.6" origin="0.5,0.5" />
     <Body width="256" height="176" density="25" />
     <Price baseprice="800" minavailable="1" sold="false">
       <Price storeidentifier="merchantoutpost" />
@@ -54,7 +54,7 @@
     </Price>
     <Wearable slots="Bag" selectkey="Select" pickkey="Use" PickingTime="0.0" msg="ItemMsgEquipOrPickUpUse">
       <StatusEffect type="OnWearing" target="This" targetitemcomponent="PowerContainer" interval="0.2" duration="0.3" drawable="false" />
-      <sprite name="Backpack on character" texture="%ModDir:2809175631%/Content/Addons/gfx.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="1.0,0.50" sourcerect="0,256,176,256" />
+      <sprite name="Backpack on character" texture="%ModDir:2809175631%/Content/Addons/gfx.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.867,0.558" sourcerect="512,180,128,172" />
     </Wearable> 
     <!-- MOD FEATURE The Deconstructor -->
     <Deconstructor canbeselected="true" showoutput="false" powerconsumption="0.0"  deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="EAHI_ProcessBrench.Process" infotext="EAHI_ProcessBrench.empty.infotext" infoareawidth="0.7">
