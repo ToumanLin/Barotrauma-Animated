@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="backpack" category="Equipment" tags="mediumitem,mobilecontainer,largemobilecontainer,tool" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="engcab"/>
+      <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab" />
+      <PreferredContainer primary="outpostcrewcabinet" />
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" amount="3" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <Item identifier="organicfiber" amount="5" />
+      </Fabricate>
+      <Price baseprice="200" minleveldifficulty="50">
+        <Price storeidentifier="merchantoutpost" minavailable="4" />
+        <Price storeidentifier="merchantcity" minavailable="6" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+        <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9"/>
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="0,0,92,160" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="0,0,92,160" depth="0.6" />
+      <Body width="60" height="100" density="15" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+        <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge" texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="0,0,92,160" limb="Torso" depthlimb="Waist" inherittexturescale="true" origin="0.85,0.6" />
+        <StatValue stattype="MovementSpeed" value="-0.3" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,50" handle2="10,50" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false">
+        <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+      </Holdable>
+      <ItemContainer capacity="12" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier" />
+      </ItemContainer>
+    </Item>
+  </Items>
+</Override>

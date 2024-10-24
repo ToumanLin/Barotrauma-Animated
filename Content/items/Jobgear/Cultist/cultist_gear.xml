@@ -6,7 +6,7 @@
       <PreferredContainer primary="crewcab" />
       <Price baseprice="150" canbespecial="false" sold="false">
         <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
-          <Reputation faction="huskcult" min="70" />
+          <Reputation faction="huskcult" min="50" />
         </Price>
       </Price>
       <Deconstruct time="10">
@@ -40,9 +40,9 @@
     <!-- 狂热者长袍 -->
     <Item name="" identifier="zealotrobes" category="Equipment" tags="smallitem,clothing,huskcult" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
       <PreferredContainer primary="crewcab" />
-      <Price baseprice="150" canbespecial="false" sold="false">
+      <Price baseprice="550" canbespecial="false" sold="false">
         <Price storeidentifier="merchanthusk" minavailable="1" maxavailable="4" sold="true">
-          <Reputation faction="huskcult" min="70" />
+          <Reputation faction="huskcult" min="90" />
         </Price>
       </Price>
       <Deconstruct time="10">
@@ -71,10 +71,9 @@
           <Affliction identifier="disguisedashusk" amount="1.0" />
         </StatusEffect>
         <StatusEffect target="Character" type="OnWearing" HideFace="true" setvalue="true">
-          <Affliction identifier="husktransformimmunitytemporary" amount="100" />
         </StatusEffect>
         <StatusEffect target="Character" type="OnWearing">
-          <Conditional huskinfection="gt 0" />
+          <Conditional huskinfection="gt 50" />
           <ReduceAffliction type="damage" amount="0.25" />
           <ReduceAffliction type="bleeding" amount="0.1" />
         </StatusEffect>

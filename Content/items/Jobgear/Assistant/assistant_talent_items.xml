@@ -2,11 +2,20 @@
 <Override>
   <Items>
     <!-- 小丑潜水面具 -->
-    <Item name="" identifier="clowndivingmask" category="Equipment,Diving" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,clothing,clownmask,diving,lightdiving" description="" scale="0.5">
-      <PreferredContainer primary="divingcab,supplycab" />
+    <Item name="" identifier="clowndivingmask" variantof="divingmask" tags="smallitem,clownmask,diving,lightdiving">
       <Price baseprice="150" sold="false" canbespecial="false" />
-      <Sprite name="Clown Mask" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="328,304,51,51" origin="0.5,0.5" scale="0.5" />
-      <Body width="5" radius="25" density="15" />
+      <PreferredContainer primary="divingcab,supplycab" amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <PreferredContainer amount="0"/>
+      <Sprite name="Clown Mask" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="328,304,51,51" origin="0.5,0.5" scale="0.5" />
+      <!-- clear inventory icon, we want to reuse the normal sprite -->
+      <InventoryIcon />
+      <Body width="5" radius="25" />
+      <!-- clear old fabrication and deconstruction elements, replace with new ones -->
+      <Fabricate />
+      <Deconstruct />
       <Deconstruct time="10">
         <Item identifier="divingmask" />
       </Deconstruct>
@@ -14,30 +23,10 @@
         <RequiredItem identifier="clownmask" />
         <RequiredItem identifier="divingmask" />
       </Fabricate>
-      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <Wearable>
         <sprite name="Clown Diving Mask Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="378,301,80,70" origin="0.45,0.4" />
         <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
-        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="1000.0" Condition="-0.5" comparison="Or">
-          <Conditional IsDead="false" />
-          <RequiredItem items="oxygensource" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" OxygenAvailable="-100.0" Oxygen="-5.0" Condition="-5.0">
-          <Conditional IsDead="false" />
-          <RequiredItem items="weldingfueltank" type="Contained" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" OxygenAvailable="-100.0" Oxygen="-7.0" Condition="-5.0">
-          <RequiredItem items="incendiumfueltank" type="Contained" />
-          <Affliction identifier="burn" amount="3.0" />
-        </StatusEffect>
-        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.2" setvalue="true" comparison="Or">
-          <Conditional IsDead="false" />
-          <RequiredItem items="oxygenitetank" type="Contained" />
-        </StatusEffect>
       </Wearable>
-      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
-        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
-        <Containable items="oxygensource,weldingtoolfuel" />
-      </ItemContainer>
     </Item>
   </Items>
 </Override>

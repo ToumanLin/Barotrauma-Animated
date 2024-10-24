@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <!--战术腰带-->
+    <!-- 战术腰带:修改容纳限制为4小物品4弹药 -->
     <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
       <PreferredContainer primary="armcab" secondary="secarmcab" />
       <Price baseprice="250" sold="false">
@@ -24,20 +24,25 @@
         <RequiredItem identifier="ballisticfiber" amount="2" />
         <RequiredItem identifier="plastic" />
       </Fabricate>
-      <Sprite texture="bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="202,304,48,61" origin="0.45,0.5" />
+      <Sprite texture="%ModDir:2850994195%/Content/Items/Jobgear/Security/bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
       <Body radius="30" height="30" density="15" />
-      <Wearable slots="OuterClothes" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-        <sprite name="Security Vest" texture="bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
-        <SkillModifier skillidentifier="weapons" skillvalue="15" />
-        <StatValue stattype="RangedAttackSpeed" value="0.25" />
-        <StatValue stattype="TurretAttackSpeed" value="0.25" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Security Vest" texture="%ModDir:2850994195%/Content/Items/Jobgear/Security/bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
+        <StatValue stattype="RangedAttackSpeed" value="0.1" />
+        <StatValue stattype="TurretAttackSpeed" value="0.1" />
+        <StatValue stattype="TurretChargeSpeed" value="0.1" />
       </Wearable>
       <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="0,0-30" handle2="0,-30" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
-      <ItemContainer capacity="4" maxstacksize="8">
+      <ItemContainer capacity="4" maxstacksize="32">
         <Containable items="smallitem" />
+        <SubContainer capacity="4" maxstacksize="32">
+          <SlotIcon texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+          <Containable items="handheldammo,grenade,handgrenade" />
+        </SubContainer>
       </ItemContainer>
     </Item>
-    <!--带鳍潜水服：修改贴图-->
+    <!-- 带鳍潜水服 -->
   <Item name="" identifier="slipsuit" variantof="combatdivingsuit" allowasextracargo="true" botpriority="1.5">
       <Price baseprice="630" sold="false" />
       <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
@@ -53,6 +58,7 @@
         <RequiredSkill identifier="mechanical" level="20" />
         <RequiredItem identifier="combatdivingsuit" />
         <RequiredItem identifier="rubber" />
+        <!-- clear the rest of the requirements -->
         <RequiredItem />
         <RequiredItem />
       </Fabricate>
@@ -74,9 +80,9 @@
         <sprite name="SlipSuit Torso" texture="slipsuit.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Right Hand" texture="slipsuit.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Left Hand" texture="slipsuit.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="SlipSuit Right Upper Arm" texture="slipsuit.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Upper Arm" texture="slipsuit.png" limb="RightArm" depthlimb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Left Upper Arm" texture="slipsuit.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-        <sprite name="SlipSuit Right Lower Arm" texture="slipsuit.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Lower Arm" texture="slipsuit.png" limb="RightForearm" depthlimb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Left Lower Arm" texture="slipsuit.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Waist" texture="slipsuit.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Right Thigh" texture="slipsuit.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
@@ -86,7 +92,8 @@
         <sprite name="SlipSuit Left Shoe" texture="slipsuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <sprite name="SlipSuit Right Shoe" texture="slipsuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
         <StatValue stattype="SwimmingSpeed" value="0.45" />
-        <StatValue stattype="WalkingSpeed" value="-0.6" />
+        <StatValue stattype="PropulsionSpeed" value="0.4" />
+        <StatValue stattype="WalkingSpeed" value="-0.3" />
       </Wearable>
     </Item>
   </Items>

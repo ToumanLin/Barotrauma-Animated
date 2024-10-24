@@ -1,49 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
-  <Character speciesname="Humanhusk" displayname="" husk="True" humanoid="True" caninteract="True" hasinfo="True" usehuskappendage="True" needsair="False" specifiertags="true" canspeak="False" blooddecal="blood" group="husk" speciestranslationoverride="" needswater="False" noise="100" visibility="100" bleedparticleair="blooddrop" bleedparticlewater="waterblood" bleedparticlemultiplier="1" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" hideinthermalgoggles="True" sonardisruption="0" disabledistance="25000" despawncontainer="despawncontainer">
+  <Character speciesname="Humanhusk" displayname="" husk="True" humanoid="True" nonhuskedspecies="human" caninteract="True" hasinfo="True" usehuskappendage="True" needsair="False" specifiertags="true" canspeak="False" canclimb="True" ForceSlowClimbing="True" blooddecal="blood" group="husk" speciestranslationoverride="" needswater="False" noise="100" visibility="100" bleedparticleair="blooddrop" bleedparticlewater="waterblood" bleedparticlemultiplier="1" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" hideinthermalgoggles="True" sonardisruption="0" disabledistance="25000" despawncontainer="despawncontainer">
+
     <ragdolls folder="default" />
-    <animations folder="default" />
+    <animations folder="Content/Characters/Humanhusk/Animations" />
+
     <huskappendage affliction="huskinfection" path="Content/Characters/Humanhusk/Huskappendage.xml" />
-    <huskappendage affliction="husksymbiosis" path="%ModDir:2850994195%/Content/Characters/Humanhusk/Huskappendagesymbiosis.xml" />
+    <huskappendage affliction="husksymbiosis" path="Content/Characters/Humanhusk/Huskappendagesymbiosis.xml" />
     <huskappendage affliction="naturalmeleeweapon" path="Content/Characters/Humanhusk/Mudraptorbeak.xml" onlyfromafflictions="true" />
     <huskappendage affliction="naturalrangedweapon" path="Content/Characters/Humanhusk/Spinelingspine.xml" onlyfromafflictions="true" />
+
     <bloodemitter particle="blood" particleamount="5" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
     <bloodemitter particle="waterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
-    <health usehealthwindow="True" vitality="50" crushdepth="6000" doesbleed="True" bleedingreduction="10" burnreduction="0" constanthealthregeneration="1" healthregenerationwheneating="0" applyafflictioncolors="true" poisonvulnerability="0.5">
+
+    <health usehealthwindow="True" vitality="100" crushdepth="6000" doesbleed="True" bleedingreduction="10" burnreduction="0" constanthealthregeneration="1" healthregenerationwheneating="0" applyafflictioncolors="true" poisonvulnerability="0.5">
       <MedUISilhouette texture="Content/UI/Health/MedUI_Silhouette.png" columns="8" rows="2" sourcerect="0,0,1008,748" />
       <MedUIExtra texture="Content/UI/Health/MedUIExtra.png" columns="4" rows="4" sourcerect="0,0,1024,1024" />
       <Limb name="Head">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,0,126,374" highlightarea="41,0,45,54" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,515,126,374" />
         <VitalityMultiplier type="damage" multiplier="2.0" />
+        <VitalityMultiplier type="burn" multiplier="2.0" />
       </Limb>
       <Limb name="Torso">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,0,126,374" highlightarea="29,56,70,134" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="1.0" />
+        <VitalityMultiplier type="burn" multiplier="2.0" />
       </Limb>
       <Limb name="LeftArm">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,0,126,374" highlightarea="1,69,27,140" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,515,126,374" />
         <VitalityMultiplier type="damage" multiplier="0.5" />
+        <VitalityMultiplier type="burn" multiplier="1.0" />
       </Limb>
       <Limb name="RightArm">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,0,126,374" highlightarea="100,69,27,140" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,515,126,374" />
         <VitalityMultiplier type="damage" multiplier="0.5" />
+        <VitalityMultiplier type="burn" multiplier="1.0" />
       </Limb>
       <Limb name="LeftLeg">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,0,126,374" highlightarea="3,180,57,194" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,515,126,374" />
         <VitalityMultiplier type="damage" multiplier="0.5" />
+        <VitalityMultiplier type="burn" multiplier="1.0" />
       </Limb>
       <Limb name="RightLeg">
         <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,0,126,374" highlightarea="68,180,57,194" />
         <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,515,126,374" />
         <VitalityMultiplier type="damage" multiplier="0.5" />
+        <VitalityMultiplier type="burn" multiplier="1.0" />
       </Limb>
     </health>
-    <names path="Content/Characters/Human/names.xml" />
-    <ai combatstrength="90" sight="0.5" hearing="1" aggressiveboarding="True" attackwhenprovoked="True" aggressiongreed="5" aggressionhurt="150" canopendoors="True" targetouterwalls="False" fleehealththreshold="0" avoidgunfire="False" avoidtime="3" minfleetime="20" enforceaggressivebehaviorformissions="True" randomattack="False" avoidabyss="True" stayinabyss="True" startaggression="0" maxaggression="100" aggressioncumulation="0">
+
+    <sound file="Content/Characters/Husk/HUSK_attack1.ogg" state="Attack" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_attack2.ogg" state="Attack" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_attack3.ogg" state="Attack" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_attack4.ogg" state="Attack" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_idle1.ogg" state="Idle" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_idle2.ogg" state="Idle" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_idle3.ogg" state="Idle" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_idle4.ogg" state="Idle" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_damage1.ogg" state="Damage" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_damage2.ogg" state="Damage" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_damage3.ogg" state="Damage" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_death1.ogg" state="Die" range="1000" volume="1" />
+    <sound file="Content/Characters/Husk/HUSK_death2.ogg" state="Die" range="1000" volume="1" />
+
+    <ai combatstrength="50" sight="0.5" hearing="1" aggressiveboarding="True" attackwhenprovoked="True" aggressiongreed="5" aggressionhurt="150" canopendoors="True" targetouterwalls="False" fleehealththreshold="0" avoidgunfire="False" avoidtime="3" minfleetime="20" enforceaggressivebehaviorformissions="True" randomattack="False" avoidabyss="True" stayinabyss="True" startaggression="0" maxaggression="100" aggressioncumulation="0" playdead="true">
       <target tag="decoy" state="Attack" priority="100" ignoreifnotinsamesub="True" />
       <target tag="provocative" state="Attack" priority="100" ignoreifnotinsamesub="True" />
       <target tag="weapon" state="Attack" priority="100" ignoreifnotinsamesub="True" />
@@ -53,12 +78,18 @@
       <target tag="sonar" state="Attack" priority="30" reactdistance="0" ignoreinside="True" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
       <target tag="room" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
       <target tag="turret" state="Attack" priority="1" ignoreinside="True" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+      <target tag="searchlight" state="Attack" priority="1" ignoreinside="true"/>
       <target tag="swarmfeeder" state="Idle" priority="0" ignoreinside="True" ignoreoutside="True" ignoreifnotinsamesub="True" ignoreincapacitated="True" />
       <target tag="huskinfected" state="Idle" priority="0" ignoreinside="True" ignoreoutside="True" ignoreifnotinsamesub="True" ignoreincapacitated="True" threshold="1" />
     </ai>
+
     <inventory arrowslot="9" slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, HealthInterface" accessiblewhenalive="True" commonness="1" />
+
+  <names path="Content/Characters/Human/names.xml" />
+
     <Vars>
       <Var var="GENDER" tags="female,male" />
     </Vars>
+
   </Character>
 </Override>

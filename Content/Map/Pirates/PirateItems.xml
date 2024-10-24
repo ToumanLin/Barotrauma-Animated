@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Items>
-    <Item name="" identifier="pirateclothes" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+    <!-- 分裂派装束2 -->
+    <Item name="" identifier="separatistcommoner1" nameidentifier="pirateclothes" aliases="pirateclothes" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
       <Price baseprice="225" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
           <Reputation faction="separatists" min="30" />
@@ -37,7 +38,7 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.9" />
       </Wearable>
     </Item>
-    <!--修改贴图-->
+    <!-- 分裂派船长帽 -->
     <Item name="" identifier="piratecaptainhat" category="Equipment" tags="smallitem,clothing,separatists" impactsoundtag="impact_metal_heavy" scale="0.4" cargocontaineridentifier="metalcrate">
       <Price baseprice="175" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
@@ -59,8 +60,8 @@
         <SkillModifier skillidentifier="helm" skillvalue="12" />
       </Wearable>
     </Item>
-    <!--修改贴图-->
-    <Item name="" identifier="piratebandana" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" description="" scale="0.5" impactsoundtag="impact_soft">
+    <!-- 分裂派头巾 -->
+    <Item name="" identifier="piratebandana" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,separatists" description="" scale="0.5" impactsoundtag="impact_soft">
       <Price baseprice="15" sold="false" canbespecial="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
           <Reputation faction="separatists" min="30" />
@@ -79,7 +80,7 @@
         <SkillModifier skillidentifier="electrical" skillvalue="5" />
       </Wearable>
     </Item>
-    <!--换贴图-->
+    <!-- 分裂派防弹衣 -->
     <Item name="" fallbacknameidentifier="bodyarmor" identifier="piratebodyarmor" category="Equipment" tags="smallitem,clothing,separatists" scale="0.35" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
       <Price baseprice="480" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="0" maxavailable="2" sold="true">
@@ -104,13 +105,14 @@
       <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
         <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
         <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
         <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
         <SkillModifier skillidentifier="weapons" skillvalue="5" />
         <sprite name="Pirate Armor Wearable" texture="%ModDir%/Content/Map/Pirates/PirateEquip.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" ignorelimbscale="true" scale="0.65" inheritsourcerect="false" sourcerect="5,2,128,241" origin="0.56421875,0.5" />
       </Wearable>
     </Item>
-    <!--需要优化贴图-->
-    <Item name="" fallbacknameidentifier="ballistichelmet1" identifier="piratehelmet" aliases="ballistichelmet" category="Equipment" tags="smallitem,clothing,separatists" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+    <!-- 分裂派防弹头盔:需要优化贴图 -->
+    <Item name="" fallbacknameidentifier="ballistichelmet1" identifier="piratehelmet" aliases="ballistichelmet" category="Equipment" tags="smallitem,separatists" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
       <Price baseprice="225" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
           <Reputation faction="separatists" min="30" />
@@ -139,24 +141,23 @@
       </Wearable>
       <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
         <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
-          <!-- 每隔1秒执行一次，停用配件效果，延迟生效 -->
-          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+          <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
         </Containable>
         <Containable Items="healthscanner">
-          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" />
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
         </Containable>
         <Containable Items="thermalgoggles">
-          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
         </Containable>
         <Containable Items="electriciansgoggles">
-          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
         </Containable>
         <SlotIcon slotindex="0" texture="%ModDir:2850994195%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
       </ItemContainer>
-      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
     </Item>
-    <!--修改贴图-->
-    <Item name="" nameidentifier="pirateclothes" identifier="pirateclothesnovice" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+    <!-- 分裂派装束1 -->
+    <Item name="" nameidentifier="pirateclothes" identifier="separatistcommoner2" aliases="pirateclothesnovice" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
       <Price baseprice="150" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
           <Reputation faction="separatists" min="30" />
@@ -192,8 +193,8 @@
         <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.95" />
       </Wearable>
     </Item>
-    <!--修改贴图-->
-    <Item name="" nameidentifier="pirateclothes" identifier="pirateclotheshard" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+    <!-- 分离派强化服装 -->
+    <Item name="" identifier="separatistcommoner3" aliases="pirateclotheshard" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
       <Price baseprice="300" sold="false">
         <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
           <Reputation faction="separatists" min="30" />
