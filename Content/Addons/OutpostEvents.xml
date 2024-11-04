@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Randomevents>
+<Override><Randomevents>
   <EventSprites>
     <!--以后再说吧-->
   </EventSprites>
@@ -23,7 +23,7 @@
   
   <EventPrefabs>
       <!-- spawnpointtag="saferoom" spawnlocation="beaconstation" -->
-    <!-- MOD FEATURE test EVENT -->
+    <!-- Test EVENT -->
     <ScriptedEvent identifier="EAHI_test" commonness="0">
       <!-- Tag Player -->
       <TagAction criteria="player" tag="player" />
@@ -71,6 +71,7 @@
                           <!-- TODO Mission Type Select Menu Sprite -->
                           <!-- TODO Mission Veriaty -->
                           <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect" dialogtype="Regular" EventSprites="" targettag="player">
+                            <!-- Mission Typ Delivery Current I haven't make more missions -->
                             <option text="EventText.EAHI.Liaison.MissionTypeSelect.Delivery" >
                               <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player" /> -->
                               <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 0">
@@ -80,9 +81,9 @@
                                   <MissionAction missiontag="EAHI_N" />
                                   <!-- EVENT END -->
                                   <!-- Set Wait Flag -->
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                   <WaitAction time="300" />
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                 </Success>
                                 <Failure>
                                   <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 30">
@@ -92,9 +93,9 @@
                                       <MissionAction missiontag="EAHI_N" />
                                       <!-- EVENT END -->
                                       <!-- Set Wait Flag -->
-                                      <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                      <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                       <WaitAction time="300" />
-                                      <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                      <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                     </Success>
                                     <Failure>
                                       <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 60">
@@ -104,9 +105,9 @@
                                           <MissionAction missiontag="EAHI_N" />
                                           <!-- EVENT END -->
                                            <!-- Set Wait Flag -->
-                                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                          <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                           <WaitAction time="300" />
-                                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                         </Success>
                                         <Failure>
                                           <CheckReputationAction targettype="faction" identifier="EAHI" condition="lte 90">
@@ -116,9 +117,9 @@
                                               <MissionAction missiontag="EAHI_N" />
                                               <!-- EVENT END -->
                                               <!-- Set Wait Flag -->
-                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                              <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                               <WaitAction time="300" />
-                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                             </Success>
                                             <Failure>
                                               <ConversationAction text="EventText.EAHI.Liaison.MissionTypeSelect.Reply90-100" dialogtype="Regular" targettag="player" />
@@ -126,9 +127,9 @@
                                               <MissionAction missiontag="EAHI_N" />
                                               <!-- EVENT END -->
                                               <!-- Set Wait Flag -->
-                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                              <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                               <WaitAction time="300" />
-                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                             </Failure>
                                           </CheckReputationAction>
                                         </Failure>
@@ -150,25 +151,25 @@
                                   <SetDataAction identifier="EAHI_Mission" value="true" />
                                   <ConversationAction text="EventText.EAHI.Liaison.MissionReserved" dialogtype="Regular" EventSprites="" targettag="player" />
                                   <!-- EVENT END -->
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                   <WaitAction time="300" />
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                 </Success>
                                 <Failure>
                                   <ConversationAction text="EventText.EAHI.Liaison.DontHaveEnoughMoney" dialogtype="Regular" EventSprites="" targettag="player" />
                                   <!-- EVENT END -->
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                                   <WaitAction time="300" />
-                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                                 </Failure>
                               </CheckMoneyAction>
                             </option>
                             <option text="EventText.EAHI.Liaison.DontReserve" >
                               <ConversationAction text="EventText.EAHI.Liaison.MissionnotReserved" dialogtype="Regular" EventSprites="" targettag="player" />
                               <!-- EVENT END -->
-                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                              <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
                               <WaitAction time="300" />
-                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" />
+                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                             </option>
                           </ConversationAction>
                         </Failure>
@@ -177,11 +178,136 @@
                   </CheckDataAction>
                 </Option>
     
-                <Option text="EventText.EAHI.Liaison.ClaimPoints">
-                  <!-- TODO Check Mission Accomplishment -->
-                  <!-- TODO Remove WIP label -->
-                  <ConversationAction text="EventText.EAHI.WIP" dialogtype="Regular" EventSprites="" targettag="player" />
-                  <Goto name="EAHI_ChooseServiceMenu" />
+                <Option text="EventText.EAHI.Liaison.Merchant">
+                  <!-- <ConversationAction text="Debug 1" dialogtype="Regular" EventSprites="" targettag="player"></ConversationAction> -->
+                  <CheckDataAction identifier="MerchantEAHI_Reserved" condition="eq 1">
+                    <Failure>
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <RNGAction chance="0.8">
+                        <Success>
+                          <Label name="MerchantRNGPassed" />
+                          <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
+                          <!-- <WaitAction time="2" /> -->
+                          <!-- TODO NPC variety Random Names -->
+                          <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="MerchantEAHI" spawnlocation="Outpost" targetmoduletags="airlock" />
+                          <!-- MerchantWait Here -->
+                          <Label name="MerchantWait" />
+                          <!-- fix Merchant will move when talking, need to fix here -->
+                          <NPCWaitAction npctag="MerchantEAHI" wait="true" />
+                          <TriggerAction target1tag="MerchantEAHI" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+                          <!-- Buy And Sell Menu -->
+                          <Label name="BuyAndSellMenu" />
+                          <!-- <ConversationAction targettag="triggerer_player" speakertag="MerchantEAHI" text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" > -->
+                          <ConversationAction speakertag="MerchantEAHI" text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" >
+                            <!-- Buy -->
+                            <Option text="EventText.EAHI.Liaison.Merchant.Buy">
+                              <Label name="BuyMenu" />
+                              <!-- Select to view description -->
+                              <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.desc" dialogtype="Regular" EventSprites="" targettag="triggerer_player" >
+                                <!-- Sell Point Card for free -->
+                                <Option text="EventText.EAHI.Liaison.Merchant.Buy.FreePointCard" >
+                                  <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.FreePointCard.desc" dialogtype="Regular" EventSprites="" targettag="triggerer_player" />
+                                  <!-- <SpawnAction itemidentifier="EAHI_PointCard" targetinventory="triggerer_player"/> -->
+                                  <StatusEffectAction targettag="triggerer_player">
+                                    <StatusEffect target="This" >
+                                      <SpawnItem identifier="EAHI_PointCard" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                                    </StatusEffect>
+                                  </StatusEffectAction>
+                                  <!-- Return to BuyMenu -->
+                                  <Goto name="BuyMenu" />
+                                </Option>
+                                <!-- Tape Writer: 800mk = 12 EAIP -->
+                                <Option text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter" >
+                                  <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter.desc" >
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter.confirm" >
+                                      <CheckItemAction targettag="triggerer_player" itemidentifiers="EAHI_Point" amount="13">
+                                        <Success>
+                                          <RemoveItemAction targettag="triggerer_player" itemidentifier="EAHI_Point" amount="13" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.PointReceived" />
+                                          <SpawnAction itemidentifier="EAHI_TapeWriter" targetinventory="triggerer_player" />
+                                          <GoTo name="BuyMenu" />
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.PointNotReceived" />
+                                          <GoTo name="BuyMenu" />
+                                        </Failure>
+                                      </CheckItemAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                                <!-- TODO Process Brench -->
+                                <!-- TODO Blanck Tape -->
+                                <!-- TODO PUCS core -->
+
+                                <!-- Return to BuyAndSell menu -->
+                                <Option text="EventText.EAHI.Liaison.Merchant.GoBackToSellBuy" >
+                                  <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.Quit" dialogtype="Regular" EventSprites="" targettag="triggerer_player" />
+                                  <Goto name="BuyAndSellMenu" />
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                            <!-- TODO -->
+                            <!-- Sell: Claim Points -->
+                            <Option text="EventText.EAHI.Liaison.Merchant.Sell"></Option>
+                            <!-- WE Recycle ID cards -->
+                            <!-- TODO QUIT -->
+                            <Option text="EventText.EAHI.Liaison.Merchant.Quit"></Option>
+                          </ConversationAction>
+                          <!-- Zero out flag -->
+                          <SetDataAction identifier="MerchantEAHI_Reserved" value="0" />
+                          <!-- Remove Character After 2 min -->
+                          <WaitAction time="120" />
+                          <StatusEffectAction targettag="MerchantEAHI">
+                            <RemoveCharacter />
+                          </StatusEffectAction>
+                          <!-- EVENT END -->
+                          <!-- Set Wait Flag -->
+                          <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                          <WaitAction time="300" />
+                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
+                        </Success>
+                        <Failure>
+                          <!-- RNG Not Passed, no merchant Available -->
+                          <ConversationAction text="EventText.EAHI.Liaison.MerchantNotAvailable" dialogtype="Regular" EventSprites="" targettag="player" >
+                            <option text="EventText.EAHI.Liaison.ReserveMerchant" >
+                              <CheckMoneyAction amount="200">
+                                <Success>
+                                  <MoneyAction amount="-200" />
+                                  <SetDataAction identifier="MerchantEAHI_Reserved" value="1" />
+                                  <ConversationAction text="EventText.EAHI.Liaison.MerchantReserved" dialogtype="Regular" EventSprites="" targettag="player" />
+                                  <!-- EVENT END -->
+                                  <!-- Set Wait Flag -->
+                                  <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <WaitAction time="300" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
+                                </Success>
+                                <Failure>
+                                  <ConversationAction text="EventText.EAHI.Liaison.DontHaveEnoughMoney" dialogtype="Regular" EventSprites="" targettag="player" />
+                                  <!-- EVENT END -->
+                                  <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                                  <WaitAction time="300" />
+                                  <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
+                                </Failure>
+                              </CheckMoneyAction>
+                            </option>
+                            <option text="EventText.EAHI.Liaison.DontReserve" >
+                              <ConversationAction text="EventText.EAHI.Liaison.MerchantnotReserved" dialogtype="Regular" EventSprites="" targettag="player" />
+                              <!-- EVENT END -->
+                              <!-- Set Wait Flag -->
+                              <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                              <WaitAction time="300" />
+                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
+                            </option>
+                          </ConversationAction>
+                        </Failure>
+                      </RNGAction>
+                    </Failure>
+                    <Success>
+                      <!-- Pass RNG -->
+                      <ConversationAction text="" dialogtype="Regular" EventSprites="" targettag="player" />
+                      <Goto name="MerchantRNGPassed" />
+                    </Success>
+                  </CheckDataAction>
                 </Option>
                 
                 <Option text="EventText.EAHI.Liaison.Complaint">
@@ -209,5 +335,63 @@
         </Failure>
       </CheckReputationAction>
     </ScriptedEvent>
+
+    <!-- MOD FEATURE Override The Start Event to give a liaison Communicator -->
+    <ScriptedEvent identifier="campaign_tutorial_start">
+
+      <EventObjectiveAction type="add" identifier="tutorial.campaign.objective_missions" />
+      <EventObjectiveAction type="add" identifier="tutorial.campaign.objective_supplies" />
+      <EventObjectiveAction type="add" identifier="tutorial.campaign.objective_leave" canbecompleted="false" />
+      
+      <WaitAction time="0.5" />
+      
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="jobidentifier:engineer" tag="engineer" />
+      <NPCFollowAction npctag="engineer" targettag="player" follow="true" />
+      
+      <CheckDataAction identifier="campaign_tutorial_start_conversation" condition="eq true">
+        
+        <Success>
+          <TriggerEventAction identifier="campaign_tutorial_start_objectives" />
+        </Success>
+        
+        <Failure>
+          <!-- <TriggerAction target1tag="engineer" target2tag="player" applytotarget2="triggerer_player" radius="100" /> -->
+          <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_start" eventsprite="engineer" ContinueConversation="true" >
+            <Option text="tutorial.campaign.introduction.conversation_start_reply">
+              <!-- MOD FEATURE Give player a Liaison Communicator -->
+              <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_start_wf" eventsprite="engineer" ContinueConversation="true" />
+              <SpawnAction itemidentifier="EAHI_Point" amount="24" targetinventory="player" />
+              <StatusEffectAction targettag="player">
+                <StatusEffect target="This" >
+                  <SpawnItem identifier="EAHI_LiaisonCommunicator" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                  <SpawnItem identifier="EAHI_PointCard" condition="0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                  <!-- <SpawnItem identifier="EAHI_Point" miniAmount="24" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" /> -->
+                </StatusEffect>
+              </StatusEffectAction>
+              <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_2" eventsprite="engineer">
+                <Option text="tutorial.campaign.introduction.conversation_2_reply">
+                  <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_3" eventsprite="engineer">
+                    <Option text="tutorial.campaign.introduction.conversation_3_reply">
+                      <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_4" eventsprite="engineer">
+                        <Option text="tutorial.campaign.introduction.conversation_4_reply" endconversation="true">
+                          <MoneyAction amount="300" />
+                          <TriggerEventAction identifier="campaign_tutorial_start_objectives" />
+                          <SetDataAction identifier="campaign_tutorial_start_conversation" value="true" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+            </Option>
+          </ConversationAction>
+        </Failure>
+
+      </CheckDataAction>
+
+      <NPCFollowAction npctag="engineer" targettag="player" follow="false" />
+
+    </ScriptedEvent>
   </EventPrefabs>
-</Randomevents>
+</Randomevents></Override>
