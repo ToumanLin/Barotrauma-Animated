@@ -330,7 +330,7 @@
     <AiTarget sightrange="2500" />
   </Item>
   <!-- Wrench Scredriver 2 in 1 -->
-  <Item name="" identifier="otfx_wrenchscrewdrivertwoinone" subcategory="EAHI" category="Misc" tags="smallitem,tool,simpletool,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="true">
+  <Item name="" identifier="EAHI_multifunctionTool" subcategory="EAHI" category="Misc" tags="smallitem,tool,simpletool,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="true" HideConditionBar="true" HideConditionInTooltip="true" >
     <Preferredcontainer secondary="respawncontainer" amount="1" spawnprobability="0.1" notcampaign="true" />
     <PreferredContainer primary="engcab" secondary="reactorcab" />
     <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" amount="1" spawnprobability="0.02" />
@@ -360,6 +360,7 @@
     </Fabricate>
     <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="512,0,64,64" />
     <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="28,480,100,32" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="128,484,124,28" depth="0.55" origin="0.5,0.5" maxcondition="99.1" />
     <Body width="80" height="15" density="25" />
     <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" reload="1.0" range="50" combatpriority="9" msg="ItemMsgPickUpSelect">
       <Attack structuredamage="0" itemdamage="4" targetimpulse="4">
@@ -380,19 +381,19 @@
           <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
         </StatusEffect>
       </Attack>
-      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" />
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench,electricalrepairtool,screwdriveritem,screwdriver" holdangle="240" setvalue="true" />
       <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_trigger" duration=".016" comparison="And">
         <Conditional hasstatustag="! dblclick_timingdelaymin" />
         <Conditional hasstatustag="dblclick_timingdelaymax" />
         <Conditional hasstatustag="! dblclick_disallowtrigger" />
         <Conditional hasstatustag="! dblclick_longpressed" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="electricalrepairtool,screwdriveritem,screwdriver" holdangle="60" setvalue="true" delay=".016" comparison="And">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="dooropeningtool,crowbaritem,crowbar" condition="99" holdangle="60" setvalue="true" delay=".016" comparison="And">
         <Conditional hastag="wrench" />
         <Conditional hasstatustag="dblclick_trigger" />
       </StatusEffect>
-      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench" holdangle="240" setvalue="true" delay=".016" comparison="And">
-        <Conditional hastag="screwdriver" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MeleeWeapon" tags="mechanicalrepairtool,wrenchitem,wrench,electricalrepairtool,screwdriveritem,screwdriver" condition="100" holdangle="240" setvalue="true" delay=".016" comparison="And">
+        <Conditional hastag="crowbar" />
         <Conditional hasstatustag="dblclick_trigger" />
       </StatusEffect>
       <StatusEffect type="OnSecondaryUse" target="This" tags="dblclick_longpressed" duration="0.133" stackable="false">

@@ -1,99 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Override>
-  <Items>
-    <!-- 叠氮化合物:修改自爆时间 -->
-    <Item name="" identifier="volatilecompoundn" category="Weapon,Material" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
-      <Upgrade gameversion="0.9.3.0" scale="0.5" />
-      <PreferredContainer primary="secarmcab" secondary="armcab" />
-      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.01" />
-      <Price baseprice="250" sold="false">
-        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
-        <Price storeidentifier="merchantcity" multiplier="1.25" />
-        <Price storeidentifier="merchantresearch" multiplier="1.25" />
-        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
-        <Price storeidentifier="merchantmine" sold="false" />
-      </Price>
-      <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
-        <RequiredSkill identifier="medical" level="40" />
-        <RequiredItem identifier="compoundn" />
-        <RequiredItem identifier="flashpowder" />
-      </Fabricate>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,64,64,64" origin="0.5,0.5" />
-      <Sprite texture="weapons_new.png" depth="0.55" sourcerect="152,477,50,34" origin="0.5,0.5" />
-      <Body width="45" height="30" density="20" />
-      <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="3.5" aimpos="35,-10" msg="ItemMsgPickUpSelect">
-        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnBroken" range="5000" />
-        <sound file="Content/Items/Weapons/ExplosionMedium2.ogg" type="OnBroken" range="5000" />
-        <sound file="Content/Items/Weapons/ExplosionMedium3.ogg" type="OnBroken" range="5000" />
-        <StatusEffect type="Always" target="This" Condition="-0.17" />
-        <StatusEffect type="OnFire" target="This" Condition="-50.0" />
-        <StatusEffect type="OnUse" target="This" Condition="-100" disabledeltatime="true" />
-        <StatusEffect type="OnBroken" target="This">
-          <Explosion range="500.0" ballastfloradamage="100" structuredamage="150" itemdamage="500" force="15" severlimbsprobability="0.5" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
-            <Affliction identifier="explosiondamage" strength="125" />
-            <Affliction identifier="burn" strength="15" probability="0.2" dividebylimbcount="false" />
-            <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
-            <Affliction identifier="stun" strength="7" />
-          </Explosion>
-          <Remove />
-        </StatusEffect>
-        <StatusEffect type="OnBroken" target="This">
-          <sound file="Content/Items/Weapons/ExplosionDebris5.ogg" range="3500" />
-        </StatusEffect>
-      </Throwable>
-      <Quality>
-        <QualityStat stattype="ExplosionRadius" value="0.1" />
-        <QualityStat stattype="ExplosionDamage" value="0.1" />
-      </Quality>
-    </Item>
-    <!-- 压力稳定剂:提高出售数量,降低价格和制造消耗 -->
-    <Item name="" identifier="pressurestabilizer" category="Medical" maxstacksize="32" maxstacksizecharacterinventory="8" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
-      <PreferredContainer primary="medcab" />
-      <Price baseprice="100" sold="false">
-        <Price storeidentifier="merchantoutpost" />
-        <Price storeidentifier="merchantcity" multiplier="0.9" />
-        <Price storeidentifier="merchantresearch" multiplier="0.9" />
-        <Price storeidentifier="merchantmilitary" multiplier="1.1" />
-        <Price storeidentifier="merchantmine" multiplier="1.1" />
-      </Price>
-      <Fabricate suitablefabricators="medicalfabricator" requiredtime="35" amount="2" requiresrecipe="true">
-        <RequiredSkill identifier="medical" level="40" />
-        <RequiredItem identifier="oxygeniteshard" amount="2" />
-        <RequiredItem identifier="stabilozine" />
-      </Fabricate>
-      <Deconstruct time="20">
-        <Item identifier="oxygeniteshard" />
-      </Deconstruct>
-      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,640,64,64" origin="0.5,0.5" />
-      <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="3,308,37,69" depth="0.6" origin="0.5,0.5" />
-      <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
-      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
-        <RequiredSkill identifier="medical" level="35" />
-        <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
-        <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
-        <StatusEffect tags="medical" type="OnSuccess" target="UseTarget" duration="10.0">
-          <Affliction identifier="pressurestabilized" amount="100.0" />
-        </StatusEffect>
-        <StatusEffect tags="medical" type="OnFailure" target="UseTarget" duration="10.0">
-          <Affliction identifier="pressurestabilized" amount="50.0" />
-        </StatusEffect>
-        <StatusEffect type="OnSuccess" target="UseTarget">
-          <Conditional entitytype="eq Character" />
-          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
-        </StatusEffect>
-        <StatusEffect type="OnFailure" target="UseTarget">
-          <Conditional entitytype="eq Character" />
-          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
-        </StatusEffect>
-        <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
-          <Affliction identifier="stun" amount="0.1" />
-        </StatusEffect>
-        <StatusEffect type="OnBroken" target="This">
-          <Remove />
-        </StatusEffect>
-      </MeleeWeapon>
-      <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
-      <SkillRequirementHint identifier="medical" level="35" />
-    </Item>
-  </Items>
-</Override>
+<Override><Items>
+  <!-- 叠氮化合物:修改自爆时间 -->
+  <Item name="" identifier="volatilecompoundn" category="Weapon,Material" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" Scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <PreferredContainer primary="secarmcab" secondary="armcab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.01" />
+    <Price baseprice="250" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" sold="false" />
+    </Price>
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+      <RequiredSkill identifier="medical" level="40" />
+      <RequiredItem identifier="compoundn" />
+      <RequiredItem identifier="flashpowder" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="weapons_new.png" depth="0.55" sourcerect="152,477,50,34" origin="0.5,0.5" />
+    <Body width="45" height="30" density="20" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" throwforce="3.5" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+      <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnBroken" range="5000" />
+      <sound file="Content/Items/Weapons/ExplosionMedium2.ogg" type="OnBroken" range="5000" />
+      <sound file="Content/Items/Weapons/ExplosionMedium3.ogg" type="OnBroken" range="5000" />
+      <!-- MOD FEATURE Increase Decay Time -->
+      <StatusEffect type="Always" target="This" Condition="-0.17" />
+      <StatusEffect type="OnFire" target="This" Condition="-50.0" />
+      <StatusEffect type="OnUse" target="This" Condition="-100" disabledeltatime="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Explosion range="500.0" ballastfloradamage="100" structuredamage="150" itemdamage="500" force="15" severlimbsprobability="0.5" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="125" />
+          <Affliction identifier="burn" strength="15" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="7" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionDebris5.ogg" range="3500" />
+      </StatusEffect>
+    </Throwable>
+    <Quality>
+      <QualityStat stattype="ExplosionRadius" value="0.1" />
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <!-- 压力稳定剂:提高出售数量,降低价格和制造消耗 -->
+  <Item name="" identifier="pressurestabilizer" category="Medical" maxstacksize="32" maxstacksizecharacterinventory="8" Tags="smallitem,chem,medical,syringe" allowasextracargo="true" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="medcab" />
+    <!-- MOD FEATURE Lower Price -->
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" />
+      <Price storeidentifier="merchantresearch" multiplier="0.9" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" multiplier="1.1" />
+    </Price>
+    <!-- MOD FEATURE Lower the cost -->
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="35" amount="2" requiresrecipe="true">
+      <RequiredSkill identifier="medical" level="40" />
+      <RequiredItem identifier="oxygeniteshard" amount="2" />
+      <RequiredItem identifier="stabilozine" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="oxygeniteshard" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,640,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="3,308,37,69" depth="0.6" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+      <RequiredSkill identifier="medical" level="35" />
+      <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect tags="medical" type="OnSuccess" target="UseTarget" duration="10.0">
+        <Affliction identifier="pressurestabilized" amount="100.0" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="UseTarget" duration="10.0">
+        <Affliction identifier="pressurestabilized" amount="50.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+        <Affliction identifier="stun" amount="0.1" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    <SkillRequirementHint identifier="medical" level="35" />
+  </Item>
+  <!-- TODO Underwaer serves as material for other clothes -->
+  <Item name="" identifier="underwear" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.2" />
+    <PreferredContainer primary="crewcab" />
+    <PreferredContainer primary="wreckcrewcab" spawnprobability="0.02" />
+    <Price baseprice="75">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <!-- TODO -->
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="6,9" sheetelementsize="64,64" />
+    <!-- TODO -->
+    <Sprite name="commoner 1" texture="%ModDir:2809175631%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="1,8,120,59" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Commoner's Clothes 1 Torso" texture="Commoner1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Hand" texture="Commoner1.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Hand" texture="Commoner1.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Lower Arm" texture="Commoner1.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Lower Arm" texture="Commoner1.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Upper Arm" texture="Commoner1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Upper Arm" texture="Commoner1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Waist" texture="Commoner1.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Thigh" texture="Commoner1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Thigh" texture="Commoner1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Leg" texture="Commoner1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Leg" texture="Commoner1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Right Shoe" texture="Commoner1.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Commoner's Clothes 1 Left Shoe" texture="Commoner1.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations, bitewounds" damagemultiplier="0.95" deflectprojectiles="false" />
+    </Wearable>
+  </Item>
+  <!-- TODO PUCS Framework serves as material for other equipments. As players can hardly access PUCS in the eerly gameplay  -->
+  <Item name="" identifier="pucs_framework" subcategory="EAHI" category="MISC" tags="mediumitem,pucs" scale="0.5" fireproof="true" description=""  impactsoundtag="impact_metal_heavy" cargocontaineridentifier="">
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />    
+    <Price baseprice="1" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="lead" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" color="1,1,1,100" sourcerect="384,704,128,128" origin="0.5,0.5" />
+    <Sprite name="PUCS Item" texture="%ModDir:2809175631%/Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" color="1,1,1,100" />
+    <Body radius="45" width="34" density="20" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+  </Item>
+</Items></Override>

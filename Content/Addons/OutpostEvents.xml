@@ -41,6 +41,7 @@
     <ScriptedEvent identifier="EAHI_Liaison" commonness="0">
       <!-- Tag Player -->
       <TagAction criteria="player" tag="player" />
+      <!-- DEBUG Will this tag action tag all players in multiplayers game? -->
       <CheckReputationAction targettype="faction" identifier="EAHI" condition="gte -30">
         <!-- Reputation >= -30 -->
         <Success>
@@ -187,21 +188,22 @@
                         <Success>
                           <Label name="MerchantRNGPassed" />
                           <ConversationAction text="EventText.EAHI.Liaison.MerchantComing" dialogtype="Regular" EventSprites="" targettag="player" />
+                          <!-- TODO Write a metadata to record if the player meet Merchant -->
                           <!-- <WaitAction time="2" /> -->
                           <!-- TODO NPC variety Random Names -->
                           <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="MerchantEAHI" spawnlocation="Outpost" targetmoduletags="airlock" />
-                          <!-- MerchantWait Here -->
-                          <Label name="MerchantWait" />
-                          <!-- fix Merchant will move when talking, need to fix here -->
-                          <NPCWaitAction npctag="MerchantEAHI" wait="true" />
-                          <TriggerAction target1tag="MerchantEAHI" target2tag="player" applytotarget2="triggerer_player" radius="200" waitforinteraction="true" />
+                          <TriggerAction target1tag="MerchantEAHI" target2tag="player" applytotarget2="triggerer_player" radius="20000" />
+                          <!-- Zero out Flag -->
+                          <SetDataAction identifier="MerchantEAHI_Reserved" value="0" />
+                          <ConversationAction speakertag="MerchantEAHI" text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" />
                           <!-- Buy And Sell Menu -->
                           <Label name="BuyAndSellMenu" />
-                          <!-- <ConversationAction targettag="triggerer_player" speakertag="MerchantEAHI" text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" > -->
-                          <ConversationAction speakertag="MerchantEAHI" text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" >
-                            <!-- Buy -->
+                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                          <ConversationAction text="EventText.EAHI.Liaison.MerchantGreeting" EventSprites="" continueconversation="true" >
+                            <!-- MOD FEATURE Buy -->
                             <Option text="EventText.EAHI.Liaison.Merchant.Buy">
                               <Label name="BuyMenu" />
+                              <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
                               <!-- Select to view description -->
                               <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.desc" dialogtype="Regular" EventSprites="" targettag="triggerer_player" >
                                 <!-- Sell Point Card for free -->
@@ -210,61 +212,162 @@
                                   <!-- <SpawnAction itemidentifier="EAHI_PointCard" targetinventory="triggerer_player"/> -->
                                   <StatusEffectAction targettag="triggerer_player">
                                     <StatusEffect target="This" >
-                                      <SpawnItem identifier="EAHI_PointCard" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                                      <SpawnItem identifier="EAHI_PointCard" condition="0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
                                     </StatusEffect>
                                   </StatusEffectAction>
                                   <!-- Return to BuyMenu -->
+                                  <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
                                   <Goto name="BuyMenu" />
                                 </Option>
-                                <!-- Tape Writer: 800mk = 12 EAIP -->
+                                <!-- Tape Writer: 800mk = 16 EAIP -->
                                 <Option text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter" >
                                   <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter.desc" >
                                     <Option text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter.confirm" >
-                                      <CheckItemAction targettag="triggerer_player" itemidentifiers="EAHI_Point" amount="13">
+                                      <CheckItemAction targettag="triggerer_player" itemidentifiers="EAHI_Point" amount="10">
                                         <Success>
-                                          <RemoveItemAction targettag="triggerer_player" itemidentifier="EAHI_Point" amount="13" />
+                                          <RemoveItemAction targettag="triggerer_player" itemidentifier="EAHI_Point" amount="10" />
                                           <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.PointReceived" />
                                           <SpawnAction itemidentifier="EAHI_TapeWriter" targetinventory="triggerer_player" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
                                           <GoTo name="BuyMenu" />
                                         </Success>
                                         <Failure>
                                           <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.PointNotReceived" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
                                           <GoTo name="BuyMenu" />
                                         </Failure>
                                       </CheckItemAction>
+                                    </Option>
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Buy.TapeWriter.cancel" >
+                                      <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.cancelled" />
                                     </Option>
                                   </ConversationAction>
                                 </Option>
                                 <!-- TODO Process Brench -->
                                 <!-- TODO Blanck Tape -->
-                                <!-- TODO PUCS core -->
+                                <!-- TODO Serum -->
 
                                 <!-- Return to BuyAndSell menu -->
                                 <Option text="EventText.EAHI.Liaison.Merchant.GoBackToSellBuy" >
                                   <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.Quit" dialogtype="Regular" EventSprites="" targettag="triggerer_player" />
+                                  <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
                                   <Goto name="BuyAndSellMenu" />
                                 </Option>
                               </ConversationAction>
                             </Option>
-                            <!-- TODO -->
-                            <!-- Sell: Claim Points -->
-                            <Option text="EventText.EAHI.Liaison.Merchant.Sell"></Option>
-                            <!-- WE Recycle ID cards -->
+                            <!-- MOD FEATURE Sell: Claim Points -->
+                            <Option text="EventText.EAHI.Liaison.Merchant.Sell">
+                              <Label name="SellMenu" />
+                              <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                              <ConversationAction text="EventText.EAHI.Liaison.Merchant.Sell.desc" dialogtype="Regular" EventSprites="" targettag="triggerer_player" >
+                                <!-- EAIP to MK: 680, 1280, 3280, 6480 -->
+                                <option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP" >
+                                  <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Sell.EAIP.desc" >
+                                    <!-- 1 EAIP = 689 -->
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP1" >
+                                      <CheckMoneyAction targettag="triggerer_player" amount="689">
+                                        <Success>
+                                          <MoneyAction targettag="triggerer_player" amount="-689" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyReceived" />
+                                          <SpawnAction itemidentifier="EAHI_Point" amount="1" targetinventory="triggerer_player" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyNotReceived" />\
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <!-- 2 EAIP = 1289 -->
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP1" >
+                                      <CheckMoneyAction targettag="triggerer_player" amount="1289">
+                                        <Success>
+                                          <MoneyAction targettag="triggerer_player" amount="-1289" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyReceived" />
+                                          <SpawnAction itemidentifier="EAHI_Point" amount="2" targetinventory="triggerer_player" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyNotReceived" />\
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <!-- 5 EAIP = 3289 -->
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP1" >
+                                      <CheckMoneyAction targettag="triggerer_player" amount="3289">
+                                        <Success>
+                                          <MoneyAction targettag="triggerer_player" amount="-3289" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyReceived" />
+                                          <SpawnAction itemidentifier="EAHI_Point" amount="5" targetinventory="triggerer_player" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyNotReceived" />\
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <!-- 10 EAIP = 6489 -->
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP1" >
+                                      <CheckMoneyAction targettag="triggerer_player" amount="6489">
+                                        <Success>
+                                          <MoneyAction targettag="triggerer_player" amount="-6489" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyReceived" />
+                                          <SpawnAction itemidentifier="EAHI_Point" amount="10" targetinventory="triggerer_player" />
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Buy.MoneyNotReceived" />\
+                                          <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                          <GoTo name="SellMenu" />
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <!-- Return TO Sell Menu -->
+                                    <Option text="EventText.EAHI.Liaison.Merchant.Sell.EAIP.cancel" >
+                                      <ConversationAction targettag="triggerer_player" text="EventText.EAHI.Liaison.Merchant.Sell.EAIP.cancelled" />
+                                      <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                      <GoTo name="SellMenu" />
+                                    </Option>
+                                  </ConversationAction>
+                                </option>
+                                <!-- Use reputation to buy EAIP -->
+                                <!-- WE Recycle ID cards -->
+                                <option></option>
+                                <!-- Return to BuyAndSell menu -->
+                                <Option text="EventText.EAHI.Liaison.Merchant.GoBackToSellBuy" >
+                                  <ConversationAction text="EventText.EAHI.Liaison.Merchant.Buy.Quit" dialogtype="Regular" EventSprites="" targettag="triggerer_player" />
+                                  <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="True" />
+                                  <Goto name="BuyAndSellMenu" />
+                                </Option>
+                              </ConversationAction>
+                            </Option>
                             <!-- TODO QUIT -->
-                            <Option text="EventText.EAHI.Liaison.Merchant.Quit"></Option>
+                            <Option text="EventText.EAHI.Liaison.Merchant.Quit">
+                              <ConversationAction text="" dialogtype="Regular" targettag="triggerer_player" />
+                              <NPCFollowAction npctag="MerchantEAHI" targettag="triggerer_player" follow="False" />
+                              <!-- Remove Character After 1 min -->
+                              <WaitAction time="20" />
+                              <StatusEffectAction targettag="MerchantEAHI">
+                                <StatusEffect target="This">
+                                  <RemoveCharacter />
+                                </StatusEffect>
+                              </StatusEffectAction>
+                              <!-- EVENT END -->
+                              <!-- Set Wait Flag -->
+                              <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
+                              <WaitAction time="300" />
+                              <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
+                            </Option>
                           </ConversationAction>
-                          <!-- Zero out flag -->
-                          <SetDataAction identifier="MerchantEAHI_Reserved" value="0" />
-                          <!-- Remove Character After 2 min -->
-                          <WaitAction time="120" />
-                          <StatusEffectAction targettag="MerchantEAHI">
-                            <RemoveCharacter />
-                          </StatusEffectAction>
-                          <!-- EVENT END -->
-                          <!-- Set Wait Flag -->
-                          <!-- <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="1" />
-                          <WaitAction time="300" />
-                          <SetDataAction identifier="EAHI_LiaisonWaitFlag" value="0" /> -->
                         </Success>
                         <Failure>
                           <!-- RNG Not Passed, no merchant Available -->
@@ -359,16 +462,6 @@
           <!-- <TriggerAction target1tag="engineer" target2tag="player" applytotarget2="triggerer_player" radius="100" /> -->
           <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_start" eventsprite="engineer" ContinueConversation="true" >
             <Option text="tutorial.campaign.introduction.conversation_start_reply">
-              <!-- MOD FEATURE Give player a Liaison Communicator -->
-              <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_start_wf" eventsprite="engineer" ContinueConversation="true" />
-              <SpawnAction itemidentifier="EAHI_Point" amount="24" targetinventory="player" />
-              <StatusEffectAction targettag="player">
-                <StatusEffect target="This" >
-                  <SpawnItem identifier="EAHI_LiaisonCommunicator" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
-                  <SpawnItem identifier="EAHI_PointCard" condition="0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
-                  <!-- <SpawnItem identifier="EAHI_Point" miniAmount="24" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" /> -->
-                </StatusEffect>
-              </StatusEffectAction>
               <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_2" eventsprite="engineer">
                 <Option text="tutorial.campaign.introduction.conversation_2_reply">
                   <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_3" eventsprite="engineer">
@@ -376,6 +469,15 @@
                       <ConversationAction targettag="player" speakertag="engineer" WaitForInteraction="false" IgnoreInterruptDistance="true" text="tutorial.campaign.introduction.conversation_4" eventsprite="engineer">
                         <Option text="tutorial.campaign.introduction.conversation_4_reply" endconversation="true">
                           <MoneyAction amount="300" />
+                          <!-- MOD FEATURE Give player a Liaison Communicator -->
+                          <SpawnAction itemidentifier="EAHI_Point" amount="24" targetinventory="player" />
+                          <StatusEffectAction targettag="player">
+                            <StatusEffect target="This" >
+                              <SpawnItem identifier="EAHI_LiaisonCommunicator" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                              <SpawnItem identifier="EAHI_PointCard" condition="0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+                              <!-- <SpawnItem identifier="EAHI_Point" miniAmount="24" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" /> -->
+                            </StatusEffect>
+                          </StatusEffectAction>
                           <TriggerEventAction identifier="campaign_tutorial_start_objectives" />
                           <SetDataAction identifier="campaign_tutorial_start_conversation" value="true" />
                         </Option>

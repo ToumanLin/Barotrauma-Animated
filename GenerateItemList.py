@@ -91,14 +91,14 @@ def write_comparison_to_file(override, addon, output_file):
     with open(output_file, 'w', encoding='utf-8') as file:
         # 写入 Override Items
         file.write("Items Overrided by This mod:\n")
-        for item in override:
+        for item in sorted(override):
             file.write(f"{item}\n")
         
         file.write("\n")  # 添加空行分隔
         
         # 写入 Addon Items
         file.write("Items Added by This mod:\n")
-        for item in addon:
+        for item in sorted(addon):
             file.write(f"{item}\n")
 
 def main():
