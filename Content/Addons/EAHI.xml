@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override><Items>
   <!-- Liaison Communicator -->
-  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategory="EAHI" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" HideConditionInTooltip="true" >
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategory="EAHI" category="Misc" scale="0.3" Tags="smallitem,loadable,wf_items" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" HideConditionInTooltip="true" >
     <Price baseprice="19890604" sold="False">
       <Price storeidentifier="merchantoutpost" />
       <Price storeidentifier="merchantcity" />
@@ -65,11 +65,12 @@
       <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" charge="-1.0" interval="0.2" disabledeltatime="true" />
     </Deconstructor>
     <!-- MOD FEATURE Process Slot -->
-    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
-      <!-- TODO Only contain waifu items -->
-      <!-- <Containable items="Waifu_items" /> -->
+    <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+      <!-- Only contain waifu items -->
+      <Containable items="wf_items,chitin,shellshield,mudraptorshell,molochbone,hammerheadribs,endwormshell,watchershell,spinelingspikeloot" />
     </ItemContainer>
-    <ItemContainer capacity="2" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+    <ItemContainer capacity="4" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="wf_items,chitin,shellshield,mudraptorshell,molochbone,hammerheadribs,endwormshell,watchershell,spinelingspikeloot" />
     </ItemContainer>
     <!-- Power Container as Fuel deposit -->
     <PowerContainer drawable="false" canbeselected="true" capacity="500.0" maxrechargespeed="500.0" maxoutput="1000.0" indicatorposition="13,81" indicatorsize="75,12" ishorizontal="true" msg="ItemMsgInteractSelect">
@@ -135,16 +136,14 @@
     <!-- MOD FEATURE The Fabricator -->
     <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect" createbuttontext="EAHI_TapeWriter.write">
       <GuiFrame relativesize="0.4,0.45" style="ItemUI" anchor="Center" />
-      <!-- <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" volumeproperty="RelativeVoltage" loop="true"/> -->
-      <!-- <poweronsound file="Content/Items/PowerOnLight1.ogg" range="600" loop="false" /> -->
-      <!-- <StatusEffect type="InWater" target="This" condition="-0.5" /> -->
     </Fabricator>
     <!-- MOD FEATURE Process Slot -->
-    <ItemContainer capacity="4" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+    <ItemContainer capacity="4" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
       <!-- TODO Only contain waifu items -->
-      <!-- <Containable items="Waifu_items" /> -->
+      <Containable items="wf_items" />
     </ItemContainer>
     <ItemContainer capacity="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="wf_items" />
     </ItemContainer>
     <!-- You must have a Repairable or the game will crash -->
     <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="false" RepairThreshold="-10.0" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="0" >
@@ -174,7 +173,7 @@
     </Holdable>
   </Item>
   <!-- EAI Point Card -->
-  <Item name="" identifier="EAHI_PointCard" health="100.0" subcategory="EAHI" category="Misc" tags="smallitem,tool,toolbox,storagecab,medcab,medfabcab,highpriority" cargocontaineridentifier="" showcontentsintooltip="true" scale="0.4" inventoryiconcolor="136,142,166,255" impactsoundtag="impact_metal_heavy">
+  <Item name="" identifier="EAHI_PointCard" health="100.0" subcategory="EAHI" category="Misc" tags="smallitem,wf_items" cargocontaineridentifier="" showcontentsintooltip="true" scale="0.4" inventoryiconcolor="136,142,166,255" impactsoundtag="impact_metal_heavy">
     <Price baseprice="100" sold="false">
       <Price storeidentifier="merchantoutpost" multiplier="0.85" />
       <Price storeidentifier="merchantcity" multiplier="1.00" sold="true" />
