@@ -465,15 +465,11 @@
       <sprite name="shengxuan's Clothes 1 Left Leg" texture="shengxuan.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="shengxuan's Clothes 1 Right Shoe" texture="shengxuan.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="shengxuan's Clothes 1 Left Shoe" texture="shengxuan.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-      <StatusEffect target="Character" type="OnWearing" setvalue="true">
-        <Affliction identifier="husktransformimmunitytemporary" amount="100" />
+      <StatusEffect type="OnWearing" target="Character" interval="0.5" disabledeltatime="true">
+        <Affliction identifier="disguisedashusk" amount="1.0" />
+        <Affliction identifier="huskstabilizer_temporary" amount="100" />
       </StatusEffect>
-      <StatusEffect target="Character" type="OnWearing">
-        <Conditional huskinfection="gt 0" />
-        <Conditional husksymbiosis="gt 0" />
-        <ReduceAffliction type="damage" amount="0.25" />
-        <ReduceAffliction type="bleeding" amount="0.1" />
-      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" />
     </Wearable>
     <ItemContainer capacity="3">
       <Containable items="chem,medical" />
@@ -500,10 +496,9 @@
         <Affliction identifier="disguisedashusk" amount="1.0" />
       </StatusEffect>
       <StatusEffect target="Character" type="OnWearing">
-        <Conditional huskinfection="gt 0" />
-        <Conditional husksymbiosis="gt 0" />
-        <ReduceAffliction type="damage" amount="0.125" />
-        <ReduceAffliction type="bleeding" amount="0.05" />
+        <Conditional huskinfection="gt 50" />
+        <ReduceAffliction type="damage" amount="0.25" />
+        <ReduceAffliction type="bleeding" amount="0.1" />
       </StatusEffect>
     </Wearable>
     <ItemContainer capacity="1" maxstacksize="1" hideitems="true">

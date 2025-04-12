@@ -55,11 +55,12 @@
       <sprite name="pucs Left Leg" texture="pucs.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="pucs Left Shoe" texture="pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="pucs Right Shoe" texture="pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true"  ObstructVisionAmount="0.5" PressureProtection="6200.0" SpeedMultiplier="1.1" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
+      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVisionAmount="0.5" PressureProtection="6200.0" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true"/>
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true"/>
         <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" />
+        <!-- high prio for run animation so e.g. affliction-based run animations won't make the character run faster -->
+        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="10" ExpectedSpecies="Human" />
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -94,8 +95,11 @@
       </StatusEffect>
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.8" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
-      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.1" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.25" damagesound="LimbArmor" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.5" damagesound="LimbArmor" />
+      <StatValue stattype="WalkingSpeed" value="0.3" />
+      <StatValue stattype="SwimmingSpeed" value="0.05" />
+      <StatValue stattype="PropulsionSpeed" value="-0.2" />
       <ItemComponent IsActiveConditionalComparison="Or">
         <IsActive HullOxygenPercentage="lt 50" />
         <IsActive InWater="eq true" />

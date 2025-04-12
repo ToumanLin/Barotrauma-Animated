@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Override>
   <Afflictions>
-    <Affliction
+  <Affliction
     name="Concussion"
     identifier="concussion"
     type="damage"
@@ -39,7 +39,7 @@
       minscreenblur="0.1"
       maxscreenblur="2.0"
       screeneffectfluctuationfrequency="0.05"
-      strengthchange="-0.01">
+      strengthchange="-0.02">
       <StatusEffect target="Character">
         <TriggerAnimation Type="Walk" filename="DrunkenWalk" priority="6" ExpectedSpecies="Human" />
         <TriggerAnimation Type="Run" filename="DrunkenRun" priority="6" ExpectedSpecies="Human" />
@@ -67,15 +67,15 @@
         <ParticleEmitter particle="vomitsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
         <Conditional HideFace="eq False" />
       </StatusEffect>
-      <StatusEffect target="Character" targetlimbs="Head" delay="0.5">
+      <StatusEffect target="Character" targetlimbs="Head" delay="0.5" offset="0,-20" randomoffset="32">
         <Explosion range="0.0" structuredamage="0" itemdamage="0" force="0.0" severlimbsprobability="0.0" decal="vomitsplatter" decalsize="1.25" shockwave="false" underwaterbubble="false" />
         <Conditional HideFace="eq False" />
       </StatusEffect>
     </PeriodicEffect>
     <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0"/>
-    </Affliction>
+  </Affliction>
     
-    <Affliction
+  <Affliction
     name="Nausea"
     identifier="nausea"
     description="The skin is clammy and the patient is vomiting periodically."
@@ -86,6 +86,7 @@
     maxstrength="100"
     affectmachines="false"
     treatmentthreshold="1000"
+    treatmentsuggestionthreshold="0"
     karmachangeonapplied="-0.1"
     damageoverlayalpha="0"
     healcostmultiplier="2.25">
@@ -138,7 +139,7 @@
         <ParticleEmitter particle="vomitsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
         <Conditional HideFace="eq False" />
       </StatusEffect>
-      <StatusEffect target="Character" targetlimbs="Head" delay="0.5">
+      <StatusEffect target="Character" targetlimbs="Head" delay="0.5" offset="0,-20" randomoffset="32">
         <Explosion range="0.0" structuredamage="0" itemdamage="0" force="0.0" severlimbsprobability="0.0" decal="vomitsplatter" decalsize="1.25" shockwave="false" underwaterbubble="false" />
         <Conditional HideFace="eq False" />
       </StatusEffect>

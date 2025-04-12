@@ -25,4 +25,20 @@
       </StatusEffect>
     </Effect>
   </Affliction>
+  <Affliction
+  identifier="huskstabilizer_temporary" translationoverride="husktransformimmunity" type="geneticmaterialbuff" limbspecific="false" indicatorlimb="Torso" maxstrength="100" strengthchange="-5" showiconthreshold="0" showinhealthscannerthreshold="1000" treatmentthreshold="1000" iconcolors="60,100,180;80,140,220;180,210,255" >
+
+  <Effect minstrength="0" maxstrength="100" blocktransformation="huskinfection" strengthchange="-10">
+      <StatusEffect target="Character" type="OnActive" interval="1" disabledeltatime="true">
+        <Conditional huskinfection="gt 50" />
+        <ReduceAffliction identifier="huskinfection" amount="0.08" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnActive" interval="1" disabledeltatime="true">
+        <Conditional huskinfection="gt 80" />
+        <ReduceAffliction identifier="huskinfection" amount="1" />
+      </StatusEffect>
+  </Effect>
+  <icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="100,150,255,255" origin="0,0"/>
+
+</Affliction>
 </Afflictions>
