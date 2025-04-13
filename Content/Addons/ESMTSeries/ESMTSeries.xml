@@ -11,10 +11,8 @@
     </Wearable>
   </Item>
   <!-- 高级自注射耳机 -->
-  <Item name="" identifier="EAHI_autoinjectorheadset" scale="0.5" subcategory="EAHI" category="Misc" tags="wf_items,mobileradio,smallitem,idcard,id_captain,id_security,id_engineer,id_medic,id_assistant,id_mechanic,id_pirate,wreck_secureid,wreck_id,wreck_engineer,wreck_mechanic,wreck_medic,wreck_security,wreck_captain,wreck_admin,id_reactor,id_outpostsecurity" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
-    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" sourcerect="561,323,64,64" origin="0.5,0.5" />
-    <Sprite name="Headset" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="512,321,49,66" origin="0.5,0.470" />
-    <Body radius="20" height="20" density="30" />
+  <Item name="" identifier="EAHI_autoinjectorheadset" scale="0.5" subcategory="EAHI" category="Misc" tags="wf_items,mobileradio,smallitem,id_outpostmanage,id_outpostsecurity,wreck_id,jobid:outpostmanager,jobid:outpostsecurityofficer" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="crewcab" secondary="divingcab"/>
     <Price baseprice="280" minavailable="2" sold="false">
       <Price storeidentifier="merchantoutpost" />
       <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
@@ -23,7 +21,10 @@
       <Price storeidentifier="merchantmine" />
       <Price storeidentifier="MerchantEAHI" sold="true" />
     </Price>
-    <Deconstruct time="10">
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" sourcerect="561,323,64,64" origin="0.5,0.5" />
+    <Sprite name="Headset" texture="%ModDir:2809175631%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="512,321,49,66" origin="0.5,0.470" />
+    <Body radius="20" height="20" density="30" />
+    <Deconstruct time="5">
       <Item identifier="autoinjectorheadset" />
       <Item identifier="fpgacircuit" />
     </Deconstruct>
@@ -33,7 +34,12 @@
       <RequiredItem identifier="healthscanner" />
       <RequiredItem identifier="fpgacircuit" />
     </Fabricate>
-    <WifiComponent range="40000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
+    <WifiComponent range="40000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+      <StatusEffect type="OnActive" targettype="This">
+        <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+        <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+      </StatusEffect>
+    </WifiComponent>
     <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="syringe">
       <SlotIcon slotindex="0" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
       <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
