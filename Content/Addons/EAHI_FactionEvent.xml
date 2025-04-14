@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override><Randomevents>
+  <EventSprites>
+    <!--以后再说吧-->
+  </EventSprites>
+  <!-- Legacy -->
+  <EventPrefabs>
+    <ScriptedEvent identifier="missionevent_EAHI1" commonness="100">
+      <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_1" targettag="EAHInpc_1" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <ConversationAction text="EventText.missionevent_EAHI1.c1" speakertag="EAHInpc_1" endeventifinterrupted="false" dialogtype="Regular" />
+      <MissionAction missiontag="EAHI_N" />
+      <MissionAction missiontag="EAHI_N" />
+      <NPCWaitAction npctag="EAHInpc_1" wait="true" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_EAHI2" commonness="100">
+      <SpawnAction npcsetidentifier="EAHInpc" npcidentifier="EAHInpc_2" targettag="EAHInpc_2" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <ConversationAction text="EventText.missionevent_EAHI2.c1" speakertag="EAHInpc_2" endeventifinterrupted="false" dialogtype="Regular" />
+      <MissionAction missiontag="EAHI_H" />
+      <MissionAction missiontag="EAHI_H" />
+      <NPCWaitAction npctag="EAHInpc_2" wait="true" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  
+  <EventPrefabs>
+      <!-- spawnpointtag="saferoom" spawnlocation="beaconstation" -->
+    <!-- Test EVENT -->
+    <ScriptedEvent identifier="EAHI_test" commonness="0">
+      <!-- Tag Player -->
+      <TagAction criteria="player" tag="player" />
+      <CheckDataAction identifier="nothing" condition="eq 1" >
+        <Success>
+          <ConversationAction text="Success" dialogtype="Regular" EventSprites="" targettag="player" />
+        </Success>
+        <Failure>
+          <ConversationAction text="Failure" dialogtype="Regular" EventSprites="" targettag="player" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    
+  </EventPrefabs>
+</Randomevents></Override>

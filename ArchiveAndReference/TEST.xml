@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override><Items>
+  <!-- 抽奖券和使用凭证测试 -->
+  <Item name="" identifier="testpermit" descriptionidentifier=" " allowstealingalways="true" spritecolor="20,39,162,255" category="Misc" Tags="smallitem,geneticmaterial" cargocontaineridentifier="metalcrate" scale="0.5" maxstacksize="32" impactsoundtag="impact_soft" hideinmenus="true">
+    <PreferredContainer primary="crewcab" secondary="locker"/>
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.05"/>
+    <InventoryIcon texture="Content/Items/Misc/scribble1.png" sourcerect="0,0,768,1024" origin="0.5,0.5" />
+    <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="367,194,12,44"  origin="0.5,0.5" depth="0.8" />
+    <Body width="35" height="40" density="8" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+    <Fabricate suitablefabricators="vendingmachine,fabricator" requiredtime="1" requiredmoney="0" fabricationlimitmin="1" fabricationlimitmax="10" />
+    <!-- MOD FEATURE Message -->
+    <Terminal WelcomeMessage="" textcolor="50,50,50,255" msg0="" color0="#1d9df3" canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" AutoHideScrollbar="false" readonly="true" autoscrolltobottom="false" linestartsymbol="" marginmultiplier="1.5" drawhudwhenequipped="true">
+      <!-- <GuiFrame relativesize="0.5,0.75" anchor="Center" style="Scribble1" hidedragicons="true" /> -->
+      <GuiFrame relativesize="0.75,0.75" anchor="Center" style="EAHI_HandBook" />
+    </Terminal>
+    <!-- <Deconstruct time="2" chooserandom="true" amount="1" requireddeconstructor="geneticresearchstation"> -->
+    <Deconstruct time="2" requireddeconstructor="test_ExoticMaterExtractor">
+      <Item identifier="EAHI_pucs" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" />
+      <!-- <Item identifier="teleportine" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <!-- <Item identifier="GTCQuniform1" requiredotheritem="teleportine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <item identifier="testpermit"/>
+      <!-- <Item identifier="geneticmaterialcrawler" commonness="3" requiredotheritem="stabilozine" outconditionmin="0.1" outconditionmax="0.2" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+    </Deconstruct>
+    <Deconstruct time="2" requireddeconstructor="test_op_researchterminal">
+      <!-- <Item identifier="EAHI_pucs" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <!-- <Item identifier="teleportine" requiredotheritem="stabilozine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <!-- <Item identifier="GTCQuniform1" requiredotheritem="teleportine" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+      <item identifier="testpermit"/>
+      <!-- <Item identifier="geneticmaterialcrawler" commonness="3" requiredotheritem="stabilozine" outconditionmin="0.1" outconditionmax="0.2" activatebuttontext="researchstation.research" infotext="researchstation.research.infotext" infotextonotheritemmissing="researchstation.combine.missingitem" /> -->
+    </Deconstruct>
+  </Item>
+  <!-- Liaison Communicator Test -->
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator_test" subcategory="waifu_wip" category="Misc" scale="0.3" Tags="smallitem,loadable" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" >
+    <Price baseprice="500" sold="True">
+      <Price storeidentifier="merchantoutpost" sold="True" />
+      <Price storeidentifier="merchantcity" sold="True" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Fabricate suitablefabricators="vendingmachine,fabricator" requiredtime="1" requiredmoney="0" fabricationlimitmin="1" />
+    <Deconstruct time="3" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-50" >
+        <Conditional HasTag="LiaisonCommunicator:Charged" />
+        <requireditem items="idcard" type="Contained" />
+      </StatusEffect>
+      <!-- Give Charged label on spawn -->
+      <StatusEffect type="OnSpawn" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" />
+      <!-- Give Charged label when condition >= 99 -->
+      <StatusEffect type="OnActive" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" >
+        <Conditional Condition="gte 99" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" tags="LiaisonCommunicator:Broke" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This" >
+        <!-- <triggerevent identifier="EAHI_test" /> -->
+        <triggerevent identifier="EAHI_Liaison" />
+        <!-- <Remove /> -->
+      </StatusEffect>
+    </Holdable>
+    <!-- <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="384,0,64,128" depth="0.55" origin="0.5,0.5" /> -->
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="448,0,64,128" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="384,0,64,128" depth="0.55" origin="0.5,0.5" scale="0.5" maxcondition="90" />
+    <Body width="40" height="80" density="30" />
+    <ItemContainer capacity="1" maxstacksize="0" hideitems="false">
+      <SlotIcon slotindex="0" texture="Content/UI/MainIconsAtlas.png" sourcerect="640,128,128,128" origin="0.5,0.5" />
+      <Containable items="idcard" />
+    </ItemContainer>
+  </Item>
+  <!-- 可写入idcard -->
+  <Item nameidentifier="idcard" descriptionidentifier="idcard_tagger" identifier="idcard_tagger" variantof="idcard" category="Equipment" Tags="smallitem,identitycard" cargocontaineridentifier="metalcrate">
+    <Price baseprice="10" sold="true" />
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.2,0.12" anchor="BottomRight" absoluteoffset="40,80" style="ItemUI" />
+      <TextBox text="connection.set_text" propertyname="Tags" />
+    </CustomInterface>
+  </Item>
+  <!-- Only for testing -->
+  <Item name="" identifier="test_steelcabinet" tags="locker,container" linkable="true" pickdistance="150" waterproof="true" scale="0.5">
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Containers/containers.png" depth="0.84" sourcerect="348,2,364,373" origin="0.5,0.5" />
+    <ItemContainer capacity="80" slotsperrow="10" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.4,0.6" anchor="Center" style="ItemUI" />
+    </ItemContainer>
+  </Item>
+</Items></Override>

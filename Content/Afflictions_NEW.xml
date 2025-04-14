@@ -1,38 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--电基鱼叉枪：给玩家一个提升攻击力的buff-->
 <Afflictions>
-  <!--
-  <Affliction 
-   name="坚定的意志" 
-   identifier="wf_blameipromotion"
-   description="" 
-   type="Promotion" 
-   isbuff="true" 
-   limbspecific="false" 
-   treatmentthreshold="1000"
-
-   maxstrength="2">
-    <Effect minstrength="0" maxstrength="2" strengthchange="-1" >
-		<StatValue stattype="rangedattackmultiplier" minvalue="0.1" maxvalue="0.3" />	
-    </Effect>
-    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="7,7" sheetelementsize="128,128" color="10,193,114,255" origin="0,0"/>
-  </Affliction>
-  -->
-  <Affliction name="电基鱼师的意志" description="" identifier="wf_blameipromotion" type="talentbuff" isbuff="true" limbspecific="false" maxstrength="2.5" activationthreshold="0" showinhealthscannerthreshold="110" showiconthreshold="110" showicontoothersthreshold="110" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
-    <Effect minstrength="0" maxstrength="2.5" strengthchange="-1">
-      <StatValue stattype="weaponsskillbonus" minvalue="0" maxvalue="-20" />
+  <Affliction name="" description="" identifier="wf_blameipromotion" type="buff" isbuff="true" limbspecific="false" maxstrength="100" duration="0.1" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="RangedSpreadReduction" value="0.5" />
       <StatValue stattype="attackmultiplier" minvalue="0" maxvalue="0.3" />
     </Effect>
-    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="7,7" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
   </Affliction>
-  <Affliction name="专注" description="穿上研究制服的你，专注力大大的提升了" identifier="wf_researcherbonus" type="talentbuff" isbuff="true" limbspecific="false" showiconthreshold="8" maxstrength="8" treatmentthreshold="1000" iconcolors="33,75,78;126,211,224;126,211,224;227,247,249">
-    <Effect minstrength="0" maxstrength="8" strengthchange="-2" />
-    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,7" sheetelementsize="128,128" color="10,193,114,255" origin="0,0" />
+  <Affliction identifier="Wf_SaltedFishAttack" type="" isbuff="true" limbspecific="false" indicatorlimb="Torso" maxstrength="500.016" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="+200" minspeedmultiplier="1.3" maxspeedmultiplier="2.0">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="0.0" maxvalue="1.5" />
+    </Effect>
+    <Effect minstrength="100" maxstrength="200" strengthchange="+280" minspeedmultiplier="2.0" maxspeedmultiplier="2.5">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="1.5" maxvalue="1.5" />
+    </Effect>
+    <Effect minstrength="200" maxstrength="300" strengthchange="+500" minspeedmultiplier="2.5" maxspeedmultiplier="1.0">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="1.5" maxvalue="0.0" />
+    </Effect>
+    <Effect minstrength="300" maxstrength="400" strengthchange="+100" minspeedmultiplier="1.0" maxspeedmultiplier="0.0" />
+    <Effect minstrength="400" maxstrength="500" strengthchange="+500" minspeedmultiplier="0.0" maxspeedmultiplier="1.0" />
+    <Effect minstrength="500" maxstrength="500.016" strengthchange="0">
+      <StatusEffect target="Character" disabledeltatime="true">
+        <ReduceAffliction identifier="Wf_SaltedFishAttack" strength="infinity" />
+      </StatusEffect>
+    </Effect>
   </Affliction>
+  <Affliction
+  identifier="huskstabilizer_temporary" translationoverride="husktransformimmunity" type="geneticmaterialbuff" limbspecific="false" indicatorlimb="Torso" maxstrength="100" strengthchange="-5" showiconthreshold="0" showinhealthscannerthreshold="1000" treatmentthreshold="1000" iconcolors="60,100,180;80,140,220;180,210,255" >
+
+  <Effect minstrength="0" maxstrength="100" blocktransformation="huskinfection" strengthchange="-10">
+      <StatusEffect target="Character" type="OnActive" interval="1" disabledeltatime="true">
+        <Conditional huskinfection="gt 50" />
+        <ReduceAffliction identifier="huskinfection" amount="0.08" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnActive" interval="1" disabledeltatime="true">
+        <Conditional huskinfection="gt 80" />
+        <ReduceAffliction identifier="huskinfection" amount="1" />
+      </StatusEffect>
+  </Effect>
+  <icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="100,150,255,255" origin="0,0"/>
+
+</Affliction>
 </Afflictions>
-<!--
-   activationthreshold="0" 
-   showinhealthscannerthreshold="110" 
-   showiconthreshold="110" 
-   showicontoothersthreshold="110" 
-   -->

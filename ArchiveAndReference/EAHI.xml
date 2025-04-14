@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This File is not used in the current version -->
+<Override><Items>
+  <!-- Liaison Communicator -->
+  <Item name="" description="" identifier="EAHI_LiaisonCommunicator" subcategory="EAHI" category="Misc" scale="0.3" Tags="smallitem,loadable,wf_items" maxstacksize="1" impactsoundtag="impact_metal_light" Condition="100" HideConditionInTooltip="true" >
+    <Price baseprice="19890604" sold="False">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" />
+    </Price>
+    <!-- <Fabricate suitablefabricators="vendingmachine,fabricator" requiredtime="1" requiredmoney="0" fabricationlimitmin="1" /> -->
+    <Deconstruct time="3" />
+    <Holdable slots="Any,RightHand" aimpos="10,28" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-50" >
+        <Conditional HasTag="LiaisonCommunicator:Charged" />
+        <requireditem items="idcard" type="Contained" msg="idcardrequired" />
+      </StatusEffect>
+      <!-- Give Charged label on spawn -->
+      <StatusEffect type="OnSpawn" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" />
+      <!-- Give Charged label when condition >= 99 -->
+      <StatusEffect type="OnActive" target="This" tags="LiaisonCommunicator:Charged" setvalue="true" >
+        <Conditional Condition="gte 99" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" tags="LiaisonCommunicator:Broke" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This" >
+        <!-- <triggerevent identifier="EAHI_test" /> -->
+        <triggerevent identifier="EAHI_Liaison" />
+        <!-- <Remove /> -->
+      </StatusEffect>
+    </Holdable>
+    <!-- <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="384,0,64,128" depth="0.55" origin="0.5,0.5" /> -->
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="448,20,64,108" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="384,20,64,108" depth="0.55" origin="0.5,0.5" scale="0.5" maxcondition="90" />
+    <DecorativeSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="388,0,12,24" origin="2.933,3.983" depth="0.5499" color="136,142,166,255" scale="0.75" />
+    <DecorativeSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="388,0,12,24" origin="2.933,4.983" depth="0.5499" color="136,142,166,255" scale="0.75" />
+    <Body width="40" height="80" density="30" />
+    <ItemContainer capacity="1" maxstacksize="0" hideitems="false">
+      <SlotIcon slotindex="0" texture="Content/UI/MainIconsAtlas.png" sourcerect="640,128,128,128" origin="0.5,0.5" />
+      <Containable items="idcard" />
+    </ItemContainer>
+  </Item>
+  <!-- EAI Portable Process Brench -->
+  <Item name="" description="" identifier="EAHI_ProcessBrench" tags="mediumitem,mobilecontainer,donttakeitems,EAHI_ProcessBrench" subcategory="EAHI" category="Misc" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" canflipx="false" pickdistance="150" scale="0.5" HideConditionBar="true" HideConditionInTooltip="true" >
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="232,128,116,172" />
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="164,128,252,180" depth="0.6" origin="0.5,0.5" />
+    <Body width="256" height="176" density="25" />
+    <Price baseprice="800" minavailable="1" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
+    </Price>
+    <Wearable slots="Bag" selectkey="Select" pickkey="Use" PickingTime="0.0" msg="ItemMsgEquipOrPickUpUse">
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="PowerContainer" interval="0.2" duration="0.3" drawable="false" />
+      <sprite name="Backpack on character" texture="%ModDir:2809175631%/Content/Addons/gfx.png" limb="Torso" depth="0.8" hidelimb="false" canbehiddenbyotherwearables="false" inherittexturescale="true" origin="0.867,0.558" sourcerect="0,308,128,172" />
+    </Wearable> 
+    <!-- MOD FEATURE The Deconstructor -->
+    <Deconstructor canbeselected="true" showoutput="false" powerconsumption="0.0"  deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="EAHI_ProcessBrench.Process" infotext="EAHI_ProcessBrench.empty.infotext" infoareawidth="0.7">
+      <!-- <IsActive targetitemcomponent="Holdable" attached="true" /> -->
+      <GuiFrame relativesize="0.4,0.45" style="ItemUI" relativeoffset="-0.2,0.0" anchor="Center" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" charge="-1.0" interval="0.2" disabledeltatime="true" />
+    </Deconstructor>
+    <!-- MOD FEATURE Process Slot -->
+    <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+      <!-- Only contain waifu items -->
+      <Containable items="wf_items,chitin,shellshield,mudraptorshell,molochbone,hammerheadribs,endwormshell,watchershell,spinelingspikeloot" />
+    </ItemContainer>
+    <ItemContainer capacity="4" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="wf_items,chitin,shellshield,mudraptorshell,molochbone,hammerheadribs,endwormshell,watchershell,spinelingspikeloot" />
+    </ItemContainer>
+    <!-- Power Container as Fuel deposit -->
+    <PowerContainer drawable="false" canbeselected="true" capacity="500.0" maxrechargespeed="500.0" maxoutput="1000.0" indicatorposition="13,81" indicatorsize="75,12" ishorizontal="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.25,0.25" minsize="350,200" relativeoffset="0.25,-0.085" anchor="Center" style="ItemUI" />
+    </PowerContainer>
+    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" slotsperrow="1">
+      <GuiFrame  relativesize="0.15,0.15" anchor="Center" relativeoffset="0.25,0.165" style="ItemUI" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <!-- Use Fuel to recharge -->
+      <Containable items="weldingtoolfuel">
+        <StatusEffect type="OnContaining" target="Contained" interval="0.15" condition="-1.2" disabledeltatime="true">
+          <Conditional targetcontainer="true" targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+        </StatusEffect>
+        <StatusEffect type="OnContaining" target="This" interval="0.15" charge="+1.0" disabledeltatime="true">
+          <Conditional targetitemcomponent="PowerContainer" rechargeratio="lt 1.0" />
+        </StatusEffect>
+      </Containable>
+      <StatusEffect type="OnSpawn" target="This" setvalue="true" condition="0.0" />
+      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="0.0" >
+        <Conditional targetitemcomponent="PowerContainer" charge="lte 0.0" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" interval="0.2" setvalue="true" condition="100.0" >
+        <Conditional targetitemcomponent="PowerContainer" charge="gt 0.0" />
+      </StatusEffect>
+    </ItemContainer>
+    <!-- You must have a Repairable or the game will crash -->
+    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="false" RepairThreshold="-10.0" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="0" >
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+    </Repairable>
+  </Item>
+  <!-- EAI Tape Writer -->
+  <Item name="" description="" identifier="EAHI_TapeWriter" tags="mediumitem,mobilecontainer,donttakeitems" subcategory="EAHI" category="Misc" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy" canflipx="false" pickdistance="150" scale="0.4" HideConditionBar="true" HideConditionInTooltip="true" >
+    <!-- TODO -->
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="0,172,164,116" />
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="0,128,164,180" depth="0.6" origin="0.5,0.5" />
+    <Body width="256" height="176" density="25" />
+    <!-- TODO -->
+    <Price baseprice="800" minavailable="1" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="MerchantEAHI" sold="true" />
+    </Price>
+    <Holdable slots="RightHand+LeftHand,Any" pickkey="Use" holdpos="0,-30" handle1="-10,-15" handle2="0,-15" attachable="true" aimable="true">
+      <StatusEffect type="OnActive" target="Character" speedmultiplier="0.85" propulsionspeedmultiplier="0.85" setvalue="true" />
+    </Holdable>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="Holdable" attached="false" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Wearable" pickingtime="0.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" pickkey="Use" pickingtime="0.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" drawable="false" />
+    </ItemComponent>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="Holdable" attached="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Wearable" pickingtime="0.5" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" pickingtime="0.5" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="PowerContainer" drawable="true" />
+    </ItemComponent>
+    <!-- MOD FEATURE The Fabricator -->
+    <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect" createbuttontext="EAHI_TapeWriter.write">
+      <GuiFrame relativesize="0.4,0.45" style="ItemUI" anchor="Center" />
+    </Fabricator>
+    <!-- MOD FEATURE Process Slot -->
+    <ItemContainer capacity="4" canbeselected="true" hideitems="true" hudpos="0.5, 0.4" slotsperrow="4" uilabel="" allowuioverlap="true">
+      <!-- TODO Only contain waifu items -->
+      <Containable items="wf_items" />
+    </ItemContainer>
+    <ItemContainer capacity="1" canbeselected="true" hideitems="true" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+      <Containable items="wf_items" />
+    </ItemContainer>
+    <!-- You must have a Repairable or the game will crash -->
+    <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0.0" canbeselected="false" RepairThreshold="-10.0" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairScrewdriver" hudpriority="0" >
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+    </Repairable>
+  </Item>
+  <!-- EAI Point: 1 EAIP = 640 mk -->
+  <Item name="" identifier="EAHI_Point" subcategory="EAHI" category="Misc" maxstacksize="32" Tags="smallitem" scale="0.4" impactsoundtag="impact_metal_heavy" >
+    <!-- <PreferredContainer primary="ruinstorage,ruinstoragesmall" amount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="ruinstoragelarge" minamount="2" maxamount="4" spawnprobability="0.8" />
+    <PreferredContainer secondary="researchcontainer" spawnprobability="0.1" /> -->
+    <Price baseprice="64" sold="false" minavailable="10" maxavailable="20">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" sold="true" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" depth="0.7" sourcerect="0,480,28,32" origin="0.5,0.5" />
+    <Body width="28" height="32" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="this">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <!-- EAI Point Card -->
+  <Item name="" identifier="EAHI_PointCard" health="100.0" subcategory="EAHI" category="Misc" tags="smallitem,wf_items" cargocontaineridentifier="" showcontentsintooltip="true" scale="0.4" inventoryiconcolor="136,142,166,255" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="0.85" />
+      <Price storeidentifier="merchantcity" multiplier="1.00" sold="true" />
+      <Price storeidentifier="merchantresearch" multiplier="2" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25 " />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <!-- <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,192,64,64" origin="0.5,0.5" /> -->
+    <Sprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="512,192,64,64" origin="0.5,0.5" depth="0.60000" />
+    <BrokenSprite texture="%ModDir:2809175631%/Content/Addons/gfx.png" sourcerect="512,128,64,64" origin="0.5,0.5" depth="0.60000" maxcondition="0" />
+    <!-- <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="5,92,46,38" origin="0.5,0.4" depth="0.59999" color="136,142,166,255" scale="0.75" /> -->
+    <Body width="64" height="64" density="20" />
+    <Deconstruct time="10" />
+    <MeleeWeapon slots="RightHand,LeftHand,Any" canbecombined="true" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1.0" range="50" combatpriority="6" disablewhenrangedweaponequipped="true" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" range="500" selectionmode="random" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="1" maxstacksize="32" keepopenwhenequipped="true" showcontainedstateindicator="false">
+      <SlotIcon slotindex="0" texture="Content/Map/LabelLetters.png" sourcerect="768,128,128,128" origin="0.5,0.5" />
+      <Containable identifier="EAHI_Point" />
+      <SlotIcon slotindex="1" texture="Content/Map/LabelLetters.png" sourcerect="0,128,128,128" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="32">
+        <Containable identifier="EAHI_Point">
+          <StatusEffect type="OnContaining" target="This">
+            <SpawnItem identifier="EAHI_Point" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+            <Conditional isfullcondition="true" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="CustomInterface" condition="+1.0" drawhudwhenequipped="false" disabledeltatime="true">
+            <Conditional isfullcondition="false" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="Contained">
+            <Remove />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="ItemContainer" containeditemcount="lt 32" />
+      <StatusEffect type="OnActive" target="This" condition="-1.0" disabledeltatime="true">
+        <SpawnItem identifier="EAHI_Point" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <!-- TODO Poem Collection -->
+
+  <!-- TODO Large 3D Printer Facility -->
+
+</Items></Override>

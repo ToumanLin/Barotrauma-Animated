@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Override>
-<Items>
+<Override><Items>
   <!-- 自动霰弹枪：更改贴图 -->
   <Item name="" identifier="autoshotgun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,provocativetohumanai" Scale="0.62" impactsoundtag="impact_metal_light">
     <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder"/>
@@ -33,14 +32,14 @@
       <sprite name="Autoshogun Worn" texture="autoshotgun.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="0,0,216,64" limb="Torso" ignorelimbscale="true" scale="0.62" origin="0.5,0.9" />
     </Wearable>
     <!-- MOD FEATURE Increased weapondamage -->
-    <RangedWeapon barrelpos="68,10" weapondamagemodifier="2.0" spread="5" unskilledspread="18" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
+    <RangedWeapon barrelpos="68,10" weapondamagemodifier="1.5" spread="5" unskilledspread="18" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
       <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
       <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
       <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
-      <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun.ogg" type="OnUse" range="3000" volume="2" selectionmode="Random" />
-      <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_1.ogg" type="OnUse" range="3000" volume="2" />
-      <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_2.ogg" type="OnUse" range="3000" volume="2" />
-      <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_3.ogg" type="OnUse" range="3000" volume="2" />
+      <Sound file="Content/Items/Jobgear/Security/WEAPONS_autoShotgun.ogg" type="OnUse" range="3000" volume="2" selectionmode="Random" />
+      <Sound file="Content/Items/Jobgear/Security/WEAPONS_autoShotgun_1.ogg" type="OnUse" range="3000" volume="2" />
+      <Sound file="Content/Items/Jobgear/Security/WEAPONS_autoShotgun_2.ogg" type="OnUse" range="3000" volume="2" />
+      <Sound file="Content/Items/Jobgear/Security/WEAPONS_autoShotgun_3.ogg" type="OnUse" range="3000" volume="2" />
       <StatusEffect type="OnUse" target="This">
         <ParticleEmitter particle="casingfirearm" particleamount="1" colormultiplier="0.5,0.5,0.5,1" ScaleMultiplier="1.5,1.5" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
         <Explosion range="150.0" force="2" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
@@ -61,7 +60,7 @@
     <Quality>
       <QualityStat stattype="FirepowerMultiplier" value="0.1" />
     </Quality>
-    <SkillRequirementHint identifier="weapons" level="60" />
+    <SkillRequirementHint identifier="weapons" level="75" />
   </Item>
   <!--战术腰带：更改贴图；更改容量-->
   <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
@@ -87,11 +86,11 @@
       <RequiredItem identifier="plastic" />
     </Fabricate>
     <!-- TODO INVENTORY ICON FIX -->
-    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="202,304,48,61" origin="0.45,0.5" />
-    <Sprite texture="%ModDir:2809175631%/Content/Items/JobGear/Security/bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/bandolier.png" sourcerect="112,35,78,112" origin="0.5,0.5" />
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
     <Body radius="30" height="30" density="15" />
     <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
-      <sprite name="Security Vest" texture="%ModDir:2809175631%/Content/Items/JobGear/Security/bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.661" />
+      <sprite name="Security Vest" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/bandolier.png" limb="Torso" hidelimb="false" inherittexturescale="true" sourcerect="0,0,112,220" origin="0.5203,0.4364" />    
       <SkillModifier skillidentifier="weapons" skillvalue="15" />
       <StatValue stattype="RangedAttackSpeed" value="0.1" />
       <StatValue stattype="TurretAttackSpeed" value="0.1" />
@@ -121,11 +120,11 @@
       <RequiredSkill identifier="weapons" level="40" />
       <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
     </Fabricate>
-    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="165,366,64,64" origin="0.5,0.5" />
-    <Sprite texture="%ModDir:2809175631%/Content/Items/JobGear/TalentGear.png" sourcerect="1,425,164,53" depth="0.55" origin="0.5,0.2" />
+    <InventoryIcon texture="%ModDir:2809175631%/Content/Items/Jobgear/TalentGear.png" sourcerect="165,366,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir:2809175631%/Content/Items/Jobgear/TalentGear.png" sourcerect="1,425,164,53" depth="0.55" origin="0.5,0.2" />
     <Body width="161" height="20" density="25" />
     <MeleeWeapon slots="Any,RightHand+LeftHand" aimpos="50,0" handle1="-22,2" handle2="-32,5" holdangle="30" aimangle="10" reload="1.2" range="155" combatPriority="40" msg="ItemMsgPickUpSelect">
-      <Attack targetimpulse="5" severlimbsprobability="7.5" itemdamage="30" structuredamage="25">
+      <Attack targetimpulse="5" severlimbsprobability="7.5" itemdamage="30" structuredamage="15">
         <Affliction identifier="lacerations" strength="36" />
         <Affliction identifier="bleeding" strength="10" />
         <Affliction identifier="stun" strength="0.5" />
@@ -180,25 +179,24 @@
           <LightTexture texture="%ModDir:2809175631%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
         </LightComponent>
       </sprite>
-      <sprite name="SlipSuit Torso" texture="slipsuit.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Hand" texture="slipsuit.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Hand" texture="slipsuit.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Upper Arm" texture="slipsuit.png" limb="RightArm" depthlimb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Upper Arm" texture="slipsuit.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Lower Arm" texture="slipsuit.png" limb="RightForearm" depthlimb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Lower Arm" texture="slipsuit.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Waist" texture="slipsuit.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Thigh" texture="slipsuit.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Thigh" texture="slipsuit.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Leg" texture="slipsuit.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Leg" texture="slipsuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Left Shoe" texture="slipsuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="SlipSuit Right Shoe" texture="slipsuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Torso" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Hand" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Hand" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Upper Arm" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightArm" depthlimb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Upper Arm" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Lower Arm" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightForearm" depthlimb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Lower Arm" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Waist" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Thigh" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Thigh" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Leg" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Leg" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Left Shoe" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="SlipSuit Right Shoe" texture="%ModDir:2809175631%/Content/Items/Jobgear/Security/slipsuit.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
       <!-- <StatusEffect type="OnWearing" /> the default swim suit's Status Effect did inherent -->
       <StatValue stattype="SwimmingSpeed" value="0.45" />
       <StatValue stattype="PropulsionSpeed" value="0.4" />
-      <StatValue stattype="WalkingSpeed" value="-0.3" />
+      <StatValue stattype="WalkingSpeed" value="-0.2" />
     </Wearable>
   </Item>
-</Items>
-</Override>
+</Items></Override>
