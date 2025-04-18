@@ -60,20 +60,21 @@
       <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="26,313,51.5,70" origin="0.515,0.703" />
       <!-- MOD FEATURE Auto-inject System -->
       <!-- Inject Saline & Blood Pack & Alien Blood, slot 0 -->
+      <!-- Just a reminder, don't mistake targetslot -->
       <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="0" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="bloodloss" amount="2.5" />
-        <RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
+        <RequiredItem items="antibloodloss1" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
       <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
+        <RequiredItem items="antibloodloss2" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
       <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0" interval="0.2" disabledeltatime="true">
         <Affliction identifier="psychosis" amount="2.25" />
         <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="alienblood" type="Contained" targetslot="1" />
+        <RequiredItem items="alienblood" type="Contained" targetslot="0" />
         <Conditional bloodloss="gt 5.0" />
       </StatusEffect>
       <!--Inject Morphine & Fentanyl & Deusizine, slot 1 -->
@@ -84,7 +85,7 @@
         <Affliction identifier="opiateaddiction" amount="0.5" />
         <Affliction identifier="opiateoverdose" amount="1.0" />
         <ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
-        <RequiredItem items="antidama1" type="Contained" targetslot="2" />
+        <RequiredItem items="antidama1" type="Contained" targetslot="1" />
         <Conditional internaldamage="gt 0.0" />
         <Conditional blunttrauma="gt 0.0" />
         <Conditional lacerations="gt 0.0" />
@@ -101,7 +102,7 @@
         <Affliction identifier="opiateaddiction" amount="1.5" />
         <Affliction identifier="opiateoverdose" amount="4.5" />
         <ReduceAffliction identifier="opiatewithdrawal" amount="20" />
-        <RequiredItem items="antidama2" type="Contained" targetslot="2" />
+        <RequiredItem items="antidama2" type="Contained" targetslot="1" />
         <Conditional internaldamage="gt 0.0" />
         <Conditional blunttrauma="gt 0.0" />
         <Conditional lacerations="gt 0.0" />
@@ -116,7 +117,7 @@
         <ReduceAffliction type="damage" amount="3" />
         <ReduceAffliction identifier="oxygenlow" amount="3" />
         <ReduceAffliction identifier="bloodloss" amount="2" />
-        <RequiredItem items="deusizine" type="Contained" targetslot="2" />
+        <RequiredItem items="deusizine" type="Contained" targetslot="1" />
         <Conditional internaldamage="gt 0.0" />
         <Conditional blunttrauma="gt 0.0" />
         <Conditional lacerations="gt 0.0" />
@@ -132,7 +133,7 @@
       <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-50" targetslot="1" interval="0.2" disabledeltatime="true">
         <ReduceAffliction type="damage" amount="0.32" />
         <ReduceAffliction type="burn" amount="0.32" />
-        <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
+        <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="1" />
         <Conditional internaldamage="gt 0.0" />
         <Conditional blunttrauma="gt 0.0" />
         <Conditional lacerations="gt 0.0" />
