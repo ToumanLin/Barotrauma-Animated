@@ -98,10 +98,10 @@
     <SkillRequirementHint identifier="medical" level="35" />
   </Item>
   <!-- TODO Underwaer serves as material for other clothes -->
-  <Item name="" identifier="underwear" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
-    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.2" />
+  <Item name="" identifier="underwear" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft" hideinmenus="false">
+    <PreferredContainer primary="outpostcrewcabinet" />
     <PreferredContainer primary="crewcab" />
-    <PreferredContainer primary="wreckcrewcab" spawnprobability="0.02" />
+    <PreferredContainer primary="wreckcrewcab"/>
     <Price baseprice="75">
       <Price storeidentifier="merchantoutpost" minavailable="1" />
       <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
@@ -135,8 +135,32 @@
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations, bitewounds" damagemultiplier="0.95" deflectprojectiles="false" />
     </Wearable>
   </Item>
+  <!-- TODO Underwaer serves as material for other clothes -->
+  <Item name="" identifier="underwear" variantof="underwear" >
+    <!-- TODO -->
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="6,9" sheetelementsize="64,64" />
+    <!-- TODO -->
+    <Sprite name="underwear 1" texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="1,8,120,59" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="underwear's Torso" texture="underwear2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Hand" texture="underwear2.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Hand" texture="underwear2.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Lower Arm" texture="underwear2.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Lower Arm" texture="underwear2.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Upper Arm" texture="underwear2.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Upper Arm" texture="underwear2.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Waist" texture="underwear2.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Thigh" texture="underwear2.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Thigh" texture="underwear2.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Leg" texture="underwear2.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Leg" texture="underwear2.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Right Shoe" texture="underwear2.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="underwear's Left Shoe" texture="underwear2.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+    </Wearable>
+  </Item>
   <!-- TODO PUCS Framework serves as material for other equipments. As players can hardly access PUCS in the eerly gameplay  -->
-  <Item name="" identifier="pucs_framework" subcategory="EAHI" category="MISC" tags="mediumitem,pucs" scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="" hideinmenus="true">
+  <Item name="" identifier="pucs_framework" subcategory="EAHI" category="MISC" tags="mediumitem,pucs" scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="" hideinmenus="false">
     <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />    
     <Price baseprice="1" sold="false">
       <Price storeidentifier="merchantoutpost" />
