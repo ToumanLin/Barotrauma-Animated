@@ -4,125 +4,114 @@
     <!-- <names path="%ModDir%/Content/Characters/Human/names.xml" /> -->
     <names path="Content/Characters/Human/names.xml" />
     <ragdolls folder="%ModDir%/Content/Characters/Human/Ragdolls" />
-    <animations folder="Content/Characters/Human/Animations" />
+    <animations folder="%ModDir%/Content/Characters/Human/Animations" />
     <damageemitter drawontop="True" Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="0.25" ScaleMax="0.5" VelocityMin="50" VelocityMax="300" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
     <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
     <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="1" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
     <gibemitter Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
     <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
     <!-- 受伤声音，因为暂时只有女性，所以注释掉性别判断和男性音效 -->
-    <StatusEffect type="OnDamaged" target="Character" comparison="and" checkconditionalalways="true">
-      <RequiredAffliction identifier="damage" minstrength="1" />
-      <Conditional isunconscious="false" />
-      <Conditional isdead="false" />
-      <!-- <Conditional hasspecifiertag="male" /> -->
-      <sound file="%ModDir%/Content/Sounds/female_damage1.ogg" range="500" volume="1" selectionmode="Random" />
-      <sound file="%ModDir%/Content/Sounds/female_damage2.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage3.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage4.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage5.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage6.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage7.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage8.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage9.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage10.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage11.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage12.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage13.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage14.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage15.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage16.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage17.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage18.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage19.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage20.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage21.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage22.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage23.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage24.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage25.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage26.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage27.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage28.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage29.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage30.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage31.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage32.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage33.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage34.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage35.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage36.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage37.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage38.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage39.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage40.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage41.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage42.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage43.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage44.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage45.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage46.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage47.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage48.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage49.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage50.ogg" range="500" volume="1" />
-    </StatusEffect>
-    <!-- <StatusEffect type="OnDamaged" target="Character" comparison="and" checkconditionalalways="true">
-      <RequiredAffliction identifier="damage" minstrength="1" />
-      <Conditional isunconscious="false" />
-      <Conditional isdead="false" />
-      <Conditional hasspecifiertag="female" />
-      <sound file="%ModDir%/Content/Sounds/female_damage1.ogg" range="500" volume="1" selectionmode="Random" />
-      <sound file="%ModDir%/Content/Sounds/female_damage2.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage3.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage4.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage5.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage6.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage7.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage8.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage9.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage10.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage11.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage12.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage13.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage14.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage15.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage16.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage17.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage18.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage19.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage20.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage21.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage22.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage23.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage24.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage25.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage26.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage27.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage28.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage29.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage30.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage31.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage32.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage33.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage34.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage35.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage36.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage37.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage38.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage39.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage40.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage41.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage42.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage43.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage44.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage45.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage46.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage47.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage48.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage49.ogg" range="500" volume="1" />
-      <sound file="%ModDir%/Content/Sounds/female_damage50.ogg" range="500" volume="1" />
-    </StatusEffect> -->
+    <sound File="%ModDir%/Content/Sounds/female_damage1.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage2.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage3.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage4.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage5.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage6.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage7.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage8.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage9.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage10.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage11.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage12.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage13.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage14.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage15.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage16.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage17.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage18.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage19.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage20.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage21.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage22.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage23.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage24.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage25.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage26.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage27.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage28.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage29.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage30.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage31.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage32.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage33.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage34.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage35.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage36.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage37.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage38.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage39.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage40.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage41.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage42.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage43.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage44.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage45.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage46.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage47.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage48.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage49.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage50.ogg" State="Damage" Range="500" Volume="1" Tags="Female" />
+    <sound File="%ModDir%/Content/Sounds/female_damage1.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage2.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage3.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage4.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage5.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage6.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage7.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage8.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage9.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage10.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage11.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage12.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage13.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage14.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage15.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage16.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage17.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage18.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage19.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage20.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage21.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage22.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage23.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage24.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage25.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage26.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage27.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage28.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage29.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage30.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage31.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage32.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage33.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage34.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage35.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage36.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage37.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage38.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage39.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage40.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage41.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage42.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage43.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage44.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage45.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage46.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage47.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage48.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage49.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+    <sound File="%ModDir%/Content/Sounds/female_damage50.ogg" State="Damage" Range="500" Volume="1" Tags="male" />
+   
     <!-- 失去意识声音 -->
     <StatusEffect type="always" target="Character" lifetime="15" comparison="and" checkconditionalalways="true">
       <conditional isdead="false" />
@@ -140,22 +129,6 @@
       <sound file="%ModDir%/Content/Sounds/female_unconscious9.ogg" tags="Female" range="300" volume="0.6" />
       <sound file="%ModDir%/Content/Sounds/female_unconscious10.ogg" tags="Female" range="300" volume="0.6" />
     </StatusEffect>
-    <!-- <StatusEffect type="always" target="Character" lifetime="15" comparison="and" checkconditionalalways="true">
-      <conditional isdead="false" />
-      <conditional isunconscious="true" />
-      <conditional hasspecifiertag="male" />
-      <conditional huskinfection="lte 99" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious1.ogg" tags="Female" range="300" volume="0.6" selectionmode="Random" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious2.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious3.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious4.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious5.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious6.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious7.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious8.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious9.ogg" tags="Female" range="300" volume="0.6" />
-      <sound file="%ModDir%/Content/Sounds/female_unconscious10.ogg" tags="Female" range="300" volume="0.6" />
-    </StatusEffect> -->
     <!-- 溺水声音 -->
     <StatusEffect type="always" target="Character" comparison="and" checkconditionalalways="true">
       <!-- <Conditional hasspecifiertag="female" /> -->
@@ -164,13 +137,6 @@
       <Conditional oxygenlow="gt 15" />
       <sound file="%ModDir%/Content/Sounds/DrownFemale.ogg" range="300" volume="3" />
     </StatusEffect>
-    <!-- <StatusEffect type="always" target="Character" comparison="and" checkconditionalalways="true">
-      <Conditional hasspecifiertag="male" />
-      <conditional isdead="false" />
-      <conditional isunconscious="false" />
-      <Conditional oxygenlow="gt 15" />
-      <sound file="%ModDir%/Content/Sounds/DrownFemale.ogg" range="300" volume="3" />
-    </StatusEffect> -->
     <!-- 画皮转化声音 -->
     <StatusEffect type="always" target="Character" comparison="and" checkconditionalalways="true">
       <!-- <Conditional hasspecifiertag="female" /> -->
@@ -179,13 +145,6 @@
       <sound file="%ModDir%/Content/Sounds/female_husktransformation1.ogg" range="300" volume="1" selectionmode="Random" />
       <sound file="%ModDir%/Content/Sounds/female_husktransformation2.ogg" range="300" volume="1" />
     </StatusEffect>
-    <!-- <StatusEffect type="always" target="Character" comparison="and" checkconditionalalways="true">
-      <Conditional hasspecifiertag="male" />
-      <conditional isdead="false" />
-      <Conditional huskinfection="gte 100" />
-      <sound file="%ModDir%/Content/Sounds/female_husktransformation1.ogg" range="300" volume="1" selectionmode="Random" />
-      <sound file="%ModDir%/Content/Sounds/female_husktransformation2.ogg" range="300" volume="1" />
-    </StatusEffect> -->
     <!-- 烧伤声音 -->
     <StatusEffect type="OnFire" target="Character" comparison="and" checkconditionalalways="true">
       <!--<Conditional hasspecifiertag="female" />-->
@@ -214,11 +173,6 @@
       <sound file="%ModDir%/Content/Sounds/female_fire19.ogg" range="1250" volume="1.2" />
       <sound file="%ModDir%/Content/Sounds/female_fire20.ogg" range="1250" volume="1.2" />
     </StatusEffect>
-    <!-- <StatusEffect type="OnFire" target="Character" delay="4" lifetime="7" comparison="and" checkconditionalalways="true">
-      <Conditional hasspecifiertag="female" />
-      <conditional isdead="false" />
-      <conditional isunconscious="true" />
-    </StatusEffect> -->
     <health Vitality="100" DoesBleed="True" CrushDepth="6000" UseHealthWindow="True" BleedingReduction="0" BurnReduction="0.075" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="False" PoisonImmunity="False" ApplyAfflictionColors="True">
       <MedUISilhouette texture="Content/UI/Health/MedUI_Silhouette.png" columns="8" rows="2" sourcerect="0,0,1008,748" />
       <MedUIExtra texture="Content/UI/Health/MedUIExtra.png" columns="4" rows="4" sourcerect="0,0,1024,1024" />
