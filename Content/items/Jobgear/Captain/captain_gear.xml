@@ -142,8 +142,8 @@
       <sprite name="Captain's Uniform 1 Left Thigh" texture="captain_1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Captain's Uniform 1 Right Leg" texture="captain_1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Captain's Uniform 1 Left Leg" texture="captain_1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_1.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_1.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_1.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_1.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
     </Wearable>
@@ -351,8 +351,48 @@
       <sprite name="Captain's Uniform 1 Right Leg" texture="captain_1h.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="Captain's Uniform 1 Left Leg" texture="captain_1h.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <!-- Heels -->
-      <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_1h.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="336,208,64,64" origin="0.48, 0.4125" />
-      <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_1h.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="272,208,64,64" origin="0.48, 0.4125" />
+      <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_1h.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="336,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
+      <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_1h.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="272,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <TriggerAnimation Type="Walk" FileName="HumanWalkHeels" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunHeels" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Crouch" FileName="HumanCrouchHeels" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <Item name="" identifier="h_captainsuniform2" subcategory="wf_withheels" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" />
+    <Price baseprice="150" requiredfaction="coalition">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Captain's Uniform 2 Icon" texture="Content/Items/Jobgear/OutfitIcons.png" sourcerect="128,27,128,101" origin="0.5,0.5" />
+    <Sprite name="Captain's Uniform 2" texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="375,225,124,61" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Captain's Uniform 2 Torso" texture="captain_2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Right Hand" texture="captain_2h.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Left Hand" texture="captain_2h.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Right Lower Arm" texture="captain_2h.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Left Lower Arm" texture="captain_2h.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Right Upper Arm" texture="captain_2h.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Left Upper Arm" texture="captain_2h.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Waist" texture="captain_2h.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Right Thigh" texture="captain_2h.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Left Thigh" texture="captain_2h.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Right Leg" texture="captain_2h.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Captain's Uniform 2 Left Leg" texture="captain_2h.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!-- Heels -->
+      <sprite name="Captain's Uniform 2 Left Shoe" texture="captain_2h.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="336,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
+      <sprite name="Captain's Uniform 2 Right Shoe" texture="captain_2h.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="272,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
       <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
         <TriggerAnimation Type="Walk" FileName="HumanWalkHeels" priority="1" ExpectedSpecies="Human" />
         <TriggerAnimation Type="Run" FileName="HumanRunHeels" priority="1" ExpectedSpecies="Human" />
