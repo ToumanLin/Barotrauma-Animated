@@ -2,7 +2,6 @@
 <Items>
 	<Item name="" identifier="Wf_New_XDS-01" subcategory="EPSP" category="Diving" tags="diving,deepdiving,divinggear_wearableindoors,human" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5" cargocontaineridentifier="">
 		<Price baseprice="15000" sold="false" />
-		
 		<PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
 		<Deconstruct time="45">
 			<Item identifier="rubber" />
@@ -20,15 +19,16 @@
 			<Item identifier="Wf_debris" mincondition="0.6" usecondition="true" />
 			<Item identifier="Wf_Research_chip" mincondition="0.6" usecondition="true" />
 		</Fabricate>
-
-		<Sprite name="PUCS Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
+		<Sprite name="XDS Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
 		<InventoryIcon texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="286,0,82,126" origin="0.5,0.5" />
-		<ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
-		<ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
-		<ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
+		<ContainedSprite name="XDS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
+		<ContainedSprite name="XDS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+		<ContainedSprite name="XDS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
 		<Body radius="45" width="34" density="15" />
+		<!-- MOD FEATURE 这里设定了头灯 -->
 		<CustomInterface canbeselected="false" drawhudwhenequipped="true">
-			<GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
+			<!-- TODO 详细研究一下GUI, 我想要让这个东西干净, 整洁, 舒服 -->
+			<GuiFrame relativesize="0.12,0.08" anchor="BottomCenter" absoluteoffset="20,150" style="ItemUI" />
 			<TickBox text="Helmet Lights" IsOn="true">
 				<StatusEffect type="OnUse" target="This" IsOn="true" />
 				<StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
@@ -57,201 +57,201 @@
 			<sprite name="XDS-01 Left Leg" texture="Wf_New_XDS-01.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
 			<sprite name="XDS-01 Left Shoe" texture="Wf_New_XDS-01.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
 			<sprite name="XDS-01 Right Shoe" texture="Wf_New_XDS-01.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-      <!-- MOD FEATURE Water Flow Ressitance -->
-      <StatValue stattype="FlowResistance" value="0.25" />
-      <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
-      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6200.0" SpeedMultiplier="1.0" PropulsionSpeedMultiplier="1.4" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
-        <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
-        <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
-      </StatusEffect>
-      <!-- Refill oxygen when the suit is contained. -->
-      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
-        <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
-        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" comparison="And" targetslot="0">
-        <RequiredItem items="oxygensource" type="Contained" />
-      </StatusEffect>
-      <!-- MOD FEATURE Refill oxygen in beathable hull -->
-      <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
-          <Conditional HullOxygenPercentage="gte 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-      </StatusEffect>
-      <!-- consume oxygen if not in water and there's not enough oxygen in the hull -->
-      <StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
-        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
-        <Conditional targetcontainer="true" targetgrandparent="true" DecreasedOxygenConsumption="lt 99" />
-        <Conditional targetcontainer="true" targetgrandparent="true" HullOxygenPercentage="lt 50" />
-        <Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
-        <Conditional InWater="false" />
-        <RequiredItem items="oxygensource" type="Contained" />
-      </StatusEffect>
-      <!-- consume oxygen if in water -->
-      <StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
-        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
-        <Conditional targetcontainer="true" targetgrandparent="true" DecreasedOxygenConsumption="lt 99" />
-        <Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
-        <Conditional InWater="true" />
-        <RequiredItem items="oxygensource" type="Contained" />
-      </StatusEffect>
-      <!-- MOD FEATURE Auto-inject System -->
-      <!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="2.5" />
-        <RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="psychosis" amount="2.25" />
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="alienblood" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--Inject Morphine & Fentanyl & Deusizine, slot 2 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="5" />
-        <ReduceAffliction type="burn" amount="0.1" />
-        <Affliction identifier="oxygenlow" amount="2" />
-        <Affliction identifier="opiateaddiction" amount="0.5" />
-        <Affliction identifier="opiateoverdose" amount="1.0" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
-        <RequiredItem items="antidama1" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="15" />
-        <ReduceAffliction type="burn" amount="1" />
-        <Affliction identifier="oxygenlow" amount="6" />
-        <Affliction identifier="opiateaddiction" amount="1.5" />
-        <Affliction identifier="opiateoverdose" amount="4.5" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="20" />
-        <RequiredItem items="antidama2" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="2" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="burn" amount="0.02" />
-        <ReduceAffliction type="damage" amount="3" />
-        <ReduceAffliction identifier="oxygenlow" amount="3" />
-        <ReduceAffliction identifier="bloodloss" amount="2" />
-        <RequiredItem items="deusizine" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-        <Conditional bloodloss="gt 5.0" />
-        <Conditional oxygenlow="gt 50.0" />
-      </StatusEffect>
-      <!-- Inject Pomegrenade Extract -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-50" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="0.32" />
-        <ReduceAffliction type="burn" amount="0.32" />
-        <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
+			<!-- MOD FEATURE Water Flow Ressitance -->
+			<StatValue stattype="FlowResistance" value="0.25" />
+			<!-- MOD FEATURE Speed&hearing Change -->
+			<!-- TODO 这里需要替换动画 -->
+			<StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6200.0" SpeedMultiplier="1.0" PropulsionSpeedMultiplier="1.4" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
+				<Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
+				<Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
+				<!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" /><TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
+			</StatusEffect>
+			<!-- Refill oxygen when the suit is contained. -->
+			<StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
+				<Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+				<RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" comparison="And" targetslot="0">
+				<RequiredItem items="oxygensource" type="Contained" />
+			</StatusEffect>
+			<!-- MOD FEATURE Refill oxygen in beathable hull -->
+			<StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
+				<Conditional HullOxygenPercentage="gte 50" />
+				<Conditional InWater="false" />
+				<RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+			</StatusEffect>
+			<!-- consume oxygen if not in water and there's not enough oxygen in the hull -->
+			<StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
+				<Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
+				<Conditional targetcontainer="true" targetgrandparent="true" DecreasedOxygenConsumption="lt 99" />
+				<Conditional targetcontainer="true" targetgrandparent="true" HullOxygenPercentage="lt 50" />
+				<Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
+				<Conditional InWater="false" />
+				<RequiredItem items="oxygensource" type="Contained" />
+			</StatusEffect>
+			<!-- consume oxygen if in water -->
+			<StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
+				<Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
+				<Conditional targetcontainer="true" targetgrandparent="true" DecreasedOxygenConsumption="lt 99" />
+				<Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
+				<Conditional InWater="true" />
+				<RequiredItem items="oxygensource" type="Contained" />
+			</StatusEffect>
+			<!-- MOD FEATURE Auto-inject System -->
+			<!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
+			<StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="1" interval="0.2" disabledeltatime="true">
+				<ReduceAffliction type="bloodloss" amount="2.5" />
+				<RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
+				<Conditional bloodloss="gt 5.0" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
+				<ReduceAffliction type="bloodloss" amount="6" />
+				<RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
+				<Conditional bloodloss="gt 5.0" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
+				<Affliction identifier="psychosis" amount="2.25" />
+				<ReduceAffliction type="bloodloss" amount="6" />
+				<RequiredItem items="alienblood" type="Contained" targetslot="1" />
+				<Conditional bloodloss="gt 5.0" />
+			</StatusEffect>
+			<!--Inject Morphine & Fentanyl & Deusizine, slot 2 -->
+			<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.2" disabledeltatime="true">
+				<ReduceAffliction type="damage" amount="5" />
+				<ReduceAffliction type="burn" amount="0.1" />
+				<Affliction identifier="oxygenlow" amount="2" />
+				<Affliction identifier="opiateaddiction" amount="0.5" />
+				<Affliction identifier="opiateoverdose" amount="1.0" />
+				<ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
+				<RequiredItem items="antidama1" type="Contained" targetslot="2" />
+				<Conditional internaldamage="gt 0.0" />
+				<Conditional blunttrauma="gt 0.0" />
+				<Conditional lacerations="gt 0.0" />
+				<Conditional bitewounds="gt 0.0" />
+				<Conditional gunshotwound="gt 0.0" />
+				<Conditional organdamage="gt 0.0" />
+				<Conditional explosiondamage="gt 0.0" />
+				<Conditional concussion="gt 0.0" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="2" interval="0.2" disabledeltatime="true">
+				<ReduceAffliction type="damage" amount="15" />
+				<ReduceAffliction type="burn" amount="1" />
+				<Affliction identifier="oxygenlow" amount="6" />
+				<Affliction identifier="opiateaddiction" amount="1.5" />
+				<Affliction identifier="opiateoverdose" amount="4.5" />
+				<ReduceAffliction identifier="opiatewithdrawal" amount="20" />
+				<RequiredItem items="antidama2" type="Contained" targetslot="2" />
+				<Conditional internaldamage="gt 0.0" />
+				<Conditional blunttrauma="gt 0.0" />
+				<Conditional lacerations="gt 0.0" />
+				<Conditional bitewounds="gt 0.0" />
+				<Conditional gunshotwound="gt 0.0" />
+				<Conditional organdamage="gt 0.0" />
+				<Conditional explosiondamage="gt 0.0" />
+				<Conditional concussion="gt 0.0" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="2" interval="0.2" disabledeltatime="true">
+				<Affliction identifier="burn" amount="0.02" />
+				<ReduceAffliction type="damage" amount="3" />
+				<ReduceAffliction identifier="oxygenlow" amount="3" />
+				<ReduceAffliction identifier="bloodloss" amount="2" />
+				<RequiredItem items="deusizine" type="Contained" targetslot="2" />
+				<Conditional internaldamage="gt 0.0" />
+				<Conditional blunttrauma="gt 0.0" />
+				<Conditional lacerations="gt 0.0" />
+				<Conditional bitewounds="gt 0.0" />
+				<Conditional gunshotwound="gt 0.0" />
+				<Conditional organdamage="gt 0.0" />
+				<Conditional explosiondamage="gt 0.0" />
+				<Conditional concussion="gt 0.0" />
+				<Conditional bloodloss="gt 5.0" />
+				<Conditional oxygenlow="gt 50.0" />
+			</StatusEffect>
+			<!-- Inject Pomegrenade Extract -->
+			<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-50" targetslot="2" interval="0.2" disabledeltatime="true">
+				<ReduceAffliction type="damage" amount="0.32" />
+				<ReduceAffliction type="burn" amount="0.32" />
+				<RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
+				<Conditional internaldamage="gt 0.0" />
+				<Conditional blunttrauma="gt 0.0" />
+				<Conditional lacerations="gt 0.0" />
+				<Conditional bitewounds="gt 0.0" />
+				<Conditional gunshotwound="gt 0.0" />
+				<Conditional organdamage="gt 0.0" />
+				<Conditional explosiondamage="gt 0.0" />
+				<Conditional concussion="gt 0.0" />
+			</StatusEffect>
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
 			<damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.3" probabilitymultiplier="0.1" damagesound="LimbArmor" />
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="hallucinating" damagemultiplier="0.1" />
 			<!-- COPY VANILLA PUCS START -->
-      <ItemComponent IsActiveConditionalComparison="Or">
-        <IsActive HullOxygenPercentage="lt 50" />
-        <IsActive InWater="eq true" />
-        <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
-          <RequiredItem items="oxygensource" type="Contained" />
-          <Conditional condition="lt 5.0" />
-          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
-        </StatusEffect>
-        <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
-          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
-          <Conditional condition="lte 0.0" />
-          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
-        </StatusEffect>
-      </ItemComponent>
+			<ItemComponent IsActiveConditionalComparison="Or">
+				<IsActive HullOxygenPercentage="lt 50" />
+				<IsActive InWater="eq true" />
+				<StatusEffect type="OnActive" target="Contained,Character" comparison="And">
+					<RequiredItem items="oxygensource" type="Contained" />
+					<Conditional condition="lt 5.0" />
+					<Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true"/>
+				</StatusEffect>
+				<StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
+					<RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+					<Conditional condition="lte 0.0" />
+					<Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true"/>
+				</StatusEffect>
+			</ItemComponent>
 			<!-- COPY VANILLA PUCS END -->
 		</Wearable>
 		<Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
-    <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
-      <Containable items="none" />
-      <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
-      <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
-      <SlotIcon slotindex="2" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
-        <Containable items="oxygenitetank">
-          <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
-            <Conditional IsDead="false" />
-            <Conditional HullOxygenPercentage="lt 50" />
-            <Conditional DecreasedOxygenConsumption="lt 99" />
-            <Conditional NeedsAir="true" />
-          </StatusEffect>
-        </Containable>
-        <Containable items="weldingfueltank" blameequipperfordeath="true">
-          <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
-            <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
-            <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
-            <Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
-          </StatusEffect>
-          <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" Oxygen="-5.0" comparison="And">
-            <Conditional IsDead="false" />
-            <Conditional DecreasedOxygenConsumption="lt 99" />
-            <Conditional NeedsAir="true" />
-          </StatusEffect>
-        </Containable>
-        <Containable items="incendiumfueltank" blameequipperfordeath="true">
-          <StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
-            <Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
-            <Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
-            <Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
-          </StatusEffect>
-          <StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" comparison="And" targetlimb="Torso">
-            <Affliction identifier="burn" amount="20.0"  />
-            <Conditional IsDead="false" />
-            <Conditional DecreasedOxygenConsumption="lt 99" />
-            <Conditional NeedsAir="true" />
-          </StatusEffect>
-        </Containable>
-      </SubContainer>
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="antibloodloss1,antibloodloss2,alienblood" />
-      </SubContainer>
-      <SubContainer capacity="1" maxstacksize="1">
-        <Containable items="antidama1,antidama2,deusizine,pomegrenadeextract" />
-      </SubContainer>
-    </ItemContainer>
+		<ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
+			<Containable items="none" />
+			<SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
+			<SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
+			<SlotIcon slotindex="2" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
+			<SubContainer capacity="1" maxstacksize="1">
+				<Containable items="oxygensource,weldingtoolfuel" excludeditems="oxygenitetank" />
+				<Containable items="oxygenitetank">
+					<StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
+						<Conditional IsDead="false" />
+						<Conditional HullOxygenPercentage="lt 50" />
+						<Conditional DecreasedOxygenConsumption="lt 99" />
+						<Conditional NeedsAir="true" />
+					</StatusEffect>
+				</Containable>
+				<Containable items="weldingfueltank" blameequipperfordeath="true">
+					<StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
+						<Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
+						<Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
+						<Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
+					</StatusEffect>
+					<StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" Oxygen="-5.0" comparison="And">
+						<Conditional IsDead="false" />
+						<Conditional DecreasedOxygenConsumption="lt 99" />
+						<Conditional NeedsAir="true" />
+					</StatusEffect>
+				</Containable>
+				<Containable items="incendiumfueltank" blameequipperfordeath="true">
+					<StatusEffect type="OnWearing" target="Contained" Condition="-0.5" comparison="And">
+						<Conditional TargetContainer="true" TargetGrandparent="true" IsDead="false" />
+						<Conditional TargetContainer="true" TargetGrandparent="true" DecreasedOxygenConsumption="lt 99" />
+						<Conditional TargetContainer="true" TargetGrandparent="true" NeedsAir="true" />
+					</StatusEffect>
+					<StatusEffect type="OnWearing" target="Character" OxygenAvailable="-100.0" comparison="And" targetlimb="Torso">
+						<Affliction identifier="burn" amount="20.0"  />
+						<Conditional IsDead="false" />
+						<Conditional DecreasedOxygenConsumption="lt 99" />
+						<Conditional NeedsAir="true" />
+					</StatusEffect>
+				</Containable>
+			</SubContainer>
+			<SubContainer capacity="1" maxstacksize="1">
+				<Containable items="antibloodloss1,antibloodloss2,alienblood" />
+			</SubContainer>
+			<SubContainer capacity="1" maxstacksize="1">
+				<Containable items="antidama1,antidama2,deusizine,pomegrenadeextract" />
+			</SubContainer>
+		</ItemContainer>
 	</Item>
 	<Item name="" identifier="Wf_New_XDS-01_Engine" subcategory="EPSP" category="Diving" tags="diving,provocative,mediumitem" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
 		<PreferredContainer primary="divingcab" />

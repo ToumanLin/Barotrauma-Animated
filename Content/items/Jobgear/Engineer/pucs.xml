@@ -3,7 +3,7 @@
   <!-- PUCS -->
   <!-- MOD FEATURE Remove it from Equipment category -->
   <Item name="" identifier="pucs" category="Diving" tags="diving,deepdiving,divinggear_wearableindoors,human" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5" cargocontaineridentifier="">
-    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />    
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
     <Price baseprice="670" sold="false">
       <Price storeidentifier="merchantoutpost" />
       <Price storeidentifier="merchantcity" minavailable="0" maxavailable="3" sold="true">
@@ -11,8 +11,7 @@
       </Price>
       <Price storeidentifier="merchantresearch" multiplier="1.2" />
       <Price storeidentifier="merchantmilitary" />
-      <Price storeidentifier="merchantmine" multiplier="1.1" />
-    </Price>
+      <Price storeidentifier="merchantmine" multiplier="1.1" /></Price>
     <Deconstruct time="45">
       <Item identifier="titaniumaluminiumalloy" />
       <Item identifier="titaniumaluminiumalloy" />
@@ -66,15 +65,15 @@
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
         <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
         <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
-      </StatusEffect>      
+      </StatusEffect>
       <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" comparison="And" targetslot="0">
         <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
       <!-- MOD FEATURE Refill oxygen in beathable hull -->
       <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
-          <Conditional HullOxygenPercentage="gte 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        <Conditional HullOxygenPercentage="gte 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
       </StatusEffect>
       <!-- consume oxygen if not in water and there's not enough oxygen in the hull -->
       <StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
@@ -82,7 +81,7 @@
         <Conditional targetcontainer="true" targetgrandparent="true" DecreasedOxygenConsumption="lt 99" />
         <Conditional targetcontainer="true" targetgrandparent="true" HullOxygenPercentage="lt 50" />
         <Conditional targetcontainer="true" targetgrandparent="true" NeedsAir="true" />
-        <Conditional InWater="false" />        
+        <Conditional InWater="false" />
         <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
       <!-- consume oxygen if in water -->

@@ -13,8 +13,7 @@
       </Price>
       <Price storeidentifier="merchantmilitary" multiplier="1" sold="false" />
       <Price storeidentifier="merchantmine" multiplier="1.1" sold="false" />
-      <Price storeidentifier="MerchantEAHI" multiplier="1.0" sold="true" minavailable="1" maxavailable="2" />
-    </Price>
+      <Price storeidentifier="MerchantEAHI" multiplier="1.0" sold="true" minavailable="1" maxavailable="2" /></Price>
     <Deconstruct time="45">
       <Item identifier="pucs" />
       <Item identifier="pressurestabilizer" />
@@ -69,8 +68,7 @@
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="6200.0" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" /><TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -82,9 +80,9 @@
       </StatusEffect>
       <!-- MOD FEATURE Refill oxygen in beathable hull -->
       <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
-          <Conditional HullOxygenPercentage="gte 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        <Conditional HullOxygenPercentage="gte 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
       </StatusEffect>
       <!-- consume oxygen if not in water and there's not enough oxygen in the hull -->
       <StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
@@ -263,8 +261,6 @@
     </ItemContainer>
     <aitarget maxsightrange="1500" />
   </Item>
-
-
   <!-- COMBAT EPSP -->
   <Item name="" identifier="i_Wf_pucs_R" variantof="i_Wf_pucs">
     <Price baseprice="1050">
@@ -305,7 +301,6 @@
       </sprite>
       <!-- Add a necklance -->
       <sprite name="Wf pucs Torso" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="40,0,40,28" origin="0.625,2.893" />
-
       <sprite name="Invisible EPS Right Hand" texture="EAHI_pucs.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Left Hand" texture="EAHI_pucs.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Right Lower Arm" texture="EAHI_pucs.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
@@ -328,8 +323,6 @@
       <StatValue stattype="PropulsionSpeed" value="0.45" />
     </Wearable>
   </Item>
-
-
   <!-- ABYSSS EPSP -->
   <Item name="" identifier="i_Wf_pucs_B" variantof="i_Wf_pucs">
     <Price baseprice="1500">
@@ -372,7 +365,6 @@
       </sprite>
       <!-- Add a necklance -->
       <sprite name="Wf pucs Torso" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,28,40,28" origin="0.625,2.893" />
-
       <sprite name="Invisible EPS Right Hand" texture="EAHI_pucs.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Left Hand" texture="EAHI_pucs.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Right Lower Arm" texture="EAHI_pucs.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
@@ -390,8 +382,7 @@
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="10000.0" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" /><TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- MOD FEATURE Damage Modifier -->
       <!-- MOD FEATURE INCREASE DEFEND-->
@@ -451,8 +442,6 @@
     </ItemContainer>
     <aitarget maxsightrange="1500" />
   </Item>
-
-
   <!-- SPECIAL OPERATION EPSP -->
   <Item name="" identifier="EAHI_pucs" subcategory="EPSP" category="Diving" tags="diving,deepdiving,divinggear_wearableindoors,Wf_diving,wf_items" allowasextracargo="False" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" HideConditionBar="false" botpriority="5">
     <Price baseprice="2000">
@@ -505,7 +494,6 @@
       </sprite>
       <!-- Add a necklance -->
       <sprite name="Wf pucs Torso" texture="EAHI_pucs.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="40,28,40,28" origin="0.625,2.893" />
-
       <sprite name="Invisible EPS Right Hand" texture="EAHI_pucs.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Left Hand" texture="EAHI_pucs.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
       <sprite name="Invisible EPS Right Lower Arm" texture="EAHI_pucs.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" sourcerect="0,0,1,1" origiin="0.5,0.5" />
@@ -525,8 +513,7 @@
       <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" PressureProtection="10000.0" LowPassMultiplier="1.0" setvalue="true" disabledeltatime="true">
         <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="250" loop="true" />
         <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="250" loop="true" />
-        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
+        <!-- <TriggerAnimation Type="Walk" FileName="HumanWalkDivingSuit" priority="1" ExpectedSpecies="Human" /><TriggerAnimation Type="Run" FileName="HumanRunDivingSuit" priority="1" ExpectedSpecies="Human" /> -->
       </StatusEffect>
       <!-- Refill oxygen when the suit is contained. -->
       <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
@@ -538,9 +525,9 @@
       </StatusEffect>
       <!-- MOD FEATURE Refill oxygen in beathable hull -->
       <StatusEffect type="OnWearing" target="Contained" Condition="0.3333" targetslot="0" interval="1" comparison="And" disabledeltatime="true">
-          <Conditional HullOxygenPercentage="gte 50" />
-          <Conditional InWater="false" />
-          <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
+        <Conditional HullOxygenPercentage="gte 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="refillableoxygensource" type="Contained" excludebroken="false" />
       </StatusEffect>
       <!-- consume oxygen if not in water and there's not enough oxygen in the hull -->
       <StatusEffect type="OnWearing" target="Contained" UseHullOxygen="false" Condition="-0.3" comparison="And" targetslot="0">
