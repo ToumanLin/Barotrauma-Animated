@@ -39,10 +39,10 @@
 		</Effect>
 		<icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="100,150,255,255" origin="0,0"/>
 	</Affliction>
-	<!-- XDS -->
+	<!-- XDS01 -->
   <AfflictionHusk
-  name="XDS Engine"
-  identifier="XDSengine"
+  name="XDS-01 Engine"
+  identifier="XDS01engine"
   type="alieninfection"
   healableinmedicalclinic="false"
   limbspecific="false"
@@ -59,20 +59,21 @@
   transformthresholdondeath="1000"
   sendmessages="false"
   maxstrength="100"
+	duration="0.13"
   iconcolors="94,54,95;163,73,164;200,191,231">
 		<icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="181,230,29,255" origin="0,0"/>
 		<Effect minstrength="0" maxstrength="100"
 						resistancefor="damage"
 						resistancelimbs="Torso"
 						minresistance="0.1"
-						maxresistance="0.3"
-						strengthchange="-10">
+						maxresistance="0.3">
 		</Effect>
 	</AfflictionHusk>
-	<Affliction name="" description="" identifier="XDSisOn" type="resistance" limbspecific="false" maxstrength="2"  >
-		<Effect minstrength="0" maxstrength="100" strengthchange="-2">
+	<Affliction name="" description="" identifier="XDSisOn" type="resistance" limbspecific="false" maxstrength="2" duration="0.13" >
+		<Effect minstrength="0" maxstrength="100" >
 			<StatValue stattype="RangedSpreadReduction" value="0.5" />
 			<StatValue stattype="attackmultiplier" minvalue="0" maxvalue="0.3" />
 		</Effect>
 	</Affliction>
+	<Affliction identifier="XDS01inner_equipped" type="resistance" description="Active" isbuff="true" maxstrength="1" duration="0.13" hideiconafterdelay="true" showiconthreshold="1000" />
 </Afflictions>
