@@ -158,10 +158,11 @@
 				<Conditional explosiondamage="gt 0.0" />
 				<Conditional concussion="gt 0.0" />
 			</StatusEffect>
-			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="damage" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
 			<damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
-			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.3" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.1" probabilitymultiplier="0.1" damagesound="LimbArmor" />
 			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="hallucinating" damagemultiplier="0.1" />
 			<!-- COPY VANILLA PUCS START -->
 			<ItemComponent IsActiveConditionalComparison="Or">
@@ -270,9 +271,10 @@
 				<TriggerAnimation Type="Crouch" FileName="HumanCrouchHeels" priority="1" ExpectedSpecies="Human" />
 				<Affliction identifier="XDS01inner_equipped" amount="1" />
 			</StatusEffect>
-			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.90" />
-			<damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, blunttrauma" damagemultiplier="0.95" />
-			<damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.90" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.2" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="AcidBurn" damagemultiplier="0.2" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.20" />
+			<damagemodifier armorsector="0.0,360.0" afflictiontypes="damage" damagemultiplier="0.20" />
 		</Wearable>
 	</Item>
 
@@ -326,7 +328,8 @@
 				<ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.2" scalemax="0.5" />
 				<sound file="Content/Items/Diving/ScooterLoop.ogg" range="500.0" loop="true" />
 			</StatusEffect>
-			<damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+			<damagemodifier afflictionidentifiers="blunttrauma" armorsector="120.0,270.0" damagemultiplier="0.05" damagesound="LimbArmor" deflectprojectiles="true" />
+			<damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
 			<damagemodifier afflictionidentifiers="bitewounds" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
 			<damagemodifier afflictiontypes="bleeding" armorsector="120.0,270.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
 			<damagemodifier armorsector="120.0,270.0" afflictiontypes="burn" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
@@ -401,9 +404,10 @@
 					<LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
 				</LightComponent>
 			</sprite>
-			<damagemodifier afflictionidentifiers="blunttrauma,lacerations,bitewounds,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.80" damagesound="LimbArmor" />
-			<damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.85" />
-			<damagemodifier afflictionidentifiers="huskinfection" probabilitymultiplier="0.8" armorsector="0.0,360.0" damagemultiplier="0.9" damagesound="LimbArmor"/>
+			<damagemodifier afflictionidentifiers="blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.05" damagesound="LimbArmor" />
+			<damagemodifier afflictiontypes="Stun" armorsector="0.0,360.0" damagemultiplier="0.05" />
+			<damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagemultiplier="0.2" />
+			<damagemodifier afflictionidentifiers="huskinfection" probabilitymultiplier="0.1" armorsector="0.0,360.0" damagemultiplier="0.9" damagesound="LimbArmor"/>
 		</Wearable>
 	</Item>
 
