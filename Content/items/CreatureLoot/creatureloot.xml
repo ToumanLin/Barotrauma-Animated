@@ -64,12 +64,16 @@
       <sprite name="mudraptorshell Left Thigh" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="mudraptorshell Right Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
       <sprite name="mudraptorshell Left Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="mudraptorshell Left Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
-      <sprite name="mudraptorshell Right Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Left Shoe" texture="mudraptorshell.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="336,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
+      <sprite name="mudraptorshell Right Shoe" texture="mudraptorshell.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="272,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
       <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
-      <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
-      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" >
+        <TriggerAnimation Type="Walk" FileName="HumanWalkHeels" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunHeels" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Crouch" FileName="HumanCrouchHeels" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
     </Wearable>
   </Item>
   <!-- NEW 迅猛龙角 -->
