@@ -10,3 +10,5 @@ All override & new items are listed in the Itemlist.txt
 
 Classic Verison: %ModDir:2809175631%
 Lite Version: %ModDir:2850994195%
+
+label all vanilla uniforms as wf_withboots
