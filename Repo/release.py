@@ -40,16 +40,11 @@ def _clean_directory(directory_path: str, exclude_file: str = None):
     """
     Cleans all files and subdirectories within the given directory.
     Optionally excludes a specific file from deletion.
-    Always excludes 'release.bat' from deletion.
     """
     print(f"Cleaning directory: {directory_path}...")
     try:
         for item in os.listdir(directory_path):
             item_path = os.path.join(directory_path, item)
-            # Always exclude 'release.bat'
-            if os.path.normcase(item) == "ZZ_Release.bat":
-                continue
-            # Optionally exclude another file
             if exclude_file and os.path.normcase(item_path) == os.path.normcase(os.path.abspath(exclude_file)):
                 continue
             if os.path.isfile(item_path):
@@ -95,6 +90,23 @@ def _copy_files_and_folders(source_root: str, destination_root: str, folders_to_
         except Exception as e:
             print(f"Error copying file '{file_name}': {e}")
             sys.exit(1)
+
+def _copy_release_batch_file(source_repo_dir: str, destination_release_dir: str):
+    """
+    Copies the ZZ_Release.bat file from the Repo directory to the 00_RELEASE directory.
+    """
+    print("\nCopying ZZ_Release.bat to output directory...")
+    src_batch_file = os.path.join(source_repo_dir, 'ZZ_Release.bat')
+    dest_batch_file = os.path.join(destination_release_dir, 'ZZ_Release.bat')
+    try:
+        if os.path.exists(src_batch_file):
+            shutil.copy2(src_batch_file, dest_batch_file)
+            print(f"Copied 'ZZ_Release.bat' to '{dest_batch_file}'")
+        else:
+            print(f"Warning: 'ZZ_Release.bat' not found in Repo directory at '{src_batch_file}'. Skipping copy.")
+    except Exception as e:
+        print(f"Error copying 'ZZ_Release.bat': {e}")
+        sys.exit(1)
 
 # --- Core Release Process Steps ---
 
@@ -171,7 +183,9 @@ def run_release_process():
 
     # Clean the output directory (where the new release files will go)
     # The current script (release.py) might be in the output directory if executed directly there.
-    _clean_directory(release_output_dir, exclude_file=os.path.abspath(__file__))
+    # We must exclude the 'ZZ_Release.bat' from deletion if it exists in the output directory
+    # so that the batch script isn't deleted by its own launched Python script before it finishes.
+    _clean_directory(release_output_dir, exclude_file=os.path.join(release_output_dir, 'ZZ_Release.bat'))
 
     # Generate the item list (this script will place it in mod_root_dir/About)
     generate_item_list(repo_dir, mod_root_dir)
@@ -187,6 +201,9 @@ def run_release_process():
     if not modify_release_filelist(copied_filelist_path):
         print("Release process aborted due to filelist modification failure.")
         sys.exit(1)
+
+    # Copy the ZZ_Release.bat back to the output directory
+    _copy_release_batch_file(repo_dir, release_output_dir)
 
     print("\n--- Mod Release Preparation Done. ---")
     input("Press Enter to exit...")
