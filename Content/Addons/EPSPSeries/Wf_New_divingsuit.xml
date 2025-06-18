@@ -250,7 +250,7 @@
 		<InventoryIcon texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="368,0,82,126" origin="0.5,0.5" />
 		<Sprite name="XDS Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
 		<Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
-		<Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+		<Wearable slots="InnerClothes" msg="ItemMsgPickUpSelect">
 			<sprite name="XDS01 Inner Torso" texture="Wf_New_XDS01_inner.png" limb="Torso" hidelimb="false" inherittexturescale="true" sourcerect="160,0,112,208" origin="0.5,0.4615" />
 			<sprite name="XDS01 Inner Right Hand" texture="Wf_New_XDS01_inner.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
 			<sprite name="XDS01 Inner Left Hand" texture="Wf_New_XDS01_inner.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
@@ -296,10 +296,15 @@
 		<Price baseprice="10000" sold="false" />
 		<InventoryIcon texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" origin="0.5,0.5" />
 		<Sprite texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" />
-		<Body width="100" height="100" density="50" />
+		<Body width="100" height="100" density="10" />
 		<Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
 			<sprite name="XDS01_Engine" texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,1,1" limb="Torso" inherittexturescale="true" origin="0.5,0.5" />
-			<sprite name="XDS01_Helmet" texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,1,1" limb="Head" inherittexturescale="true" origin="0.5,0.5" />
+			<sprite name="XDS01_Helmet" texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,1,1" limb="Head" inherittexturescale="true" origin="0.5,0.5" >
+				<LightComponent range="0.0" lightcolor="1,1,1,0" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+					<poweronsound file="%ModDir%/Content/Addons/EPSPSeries/XDS_poweron.ogg" range="100" loop="false" />
+					<sprite texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="0,0,1,1" origin="0.84947,0.7225" />
+				</LightComponent>
+			</sprite>
 			<!-- MOD FEATURE EXO aff & engine limbs aff -->
 			<StatusEffect type="OnWearing" target="Character" interval="0.1" disabledeltatime="true">
         <Affliction identifier="recoilstabilized" amount="1" />
@@ -314,6 +319,10 @@
 				<TriggerAnimation Type="SwimSlow" FileName="HumanSwimSlowXDS" priority="10" ExpectedSpecies="Human" />
 				<TriggerAnimation Type="SwimFast" FileName="HumanSwimFastXDS" priority="10" ExpectedSpecies="Human" />
 				<Affliction identifier="XDSisOn" amount="1" />
+			</StatusEffect>
+			<StatusEffect type="OnWearing" target="This,Character">
+				<Conditional Voltage="eq 0.1" />
+				<Sound file="%ModDir%/Content/Addons/EPSPSeries/XDS_poweroff.ogg" range="100" loop="false" />
 			</StatusEffect>
 			<!-- MOD FEATURE Cost fuel -->
 			<StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.1" targetslot="0" comparison="And">
@@ -357,7 +366,7 @@
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
       <SubContainer capacity="1" maxstacksize="1">
         <Containable items="divingsuitfuel">
-          <StatusEffect type="OnContaining" target="This,Character" Voltage="1.0" setvalue="true" disabledeltatime="true" comparison="and" >
+          <StatusEffect type="OnContaining" target="This,Character" Voltage="1.0" setvalue="true" comparison="and" >
             <Conditional IsDead="false" />
 						<conditional XDS01inner_equipped="gt 0" />
           </StatusEffect>
@@ -395,7 +404,7 @@
 				<StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
 			</TickBox>
 		</CustomInterface>
-		<Wearable slots="Any,Head" msg="ItemMsgPickUpSelect">
+		<Wearable slots="Head" msg="ItemMsgPickUpSelect">
 			<sprite name="Wf_New_XD-01 Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" sourcerect="611,0,45,106" origin="0.59,0.5719">
 				<LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
 					<StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">

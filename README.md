@@ -12,3 +12,6 @@ Classic Verison: %ModDir:2809175631%
 Lite Version: %ModDir:2850994195%
 
 label all vanilla uniforms as wf_withboots
+
+更新流程:
+ 把00_RELEASE文件夹复制到LocalMods, 然后双击ZZ_release.bat 
