@@ -97,90 +97,163 @@
         <Conditional InWater="true" />
         <RequiredItem items="oxygensource" type="Contained" />
       </StatusEffect>
-      <!-- MOD FEATURE Auto-inject System -->
-      <!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="2.5" />
-        <RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="psychosis" amount="2.25" />
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="alienblood" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--Inject Morphine & Fentanyl & Deusizine, slot 2 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="5" />
-        <ReduceAffliction type="burn" amount="0.1" />
-        <Affliction identifier="oxygenlow" amount="2" />
-        <Affliction identifier="opiateaddiction" amount="0.5" />
-        <Affliction identifier="opiateoverdose" amount="1.0" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
-        <RequiredItem items="antidama1" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="15" />
-        <ReduceAffliction type="burn" amount="1" />
-        <Affliction identifier="oxygenlow" amount="6" />
-        <Affliction identifier="opiateaddiction" amount="1.5" />
-        <Affliction identifier="opiateoverdose" amount="4.5" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="20" />
-        <RequiredItem items="antidama2" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="2" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="burn" amount="0.02" />
-        <ReduceAffliction type="damage" amount="3" />
-        <ReduceAffliction identifier="oxygenlow" amount="3" />
-        <ReduceAffliction identifier="bloodloss" amount="2" />
-        <RequiredItem items="deusizine" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-        <Conditional bloodloss="gt 5.0" />
-        <Conditional oxygenlow="gt 50.0" />
-      </StatusEffect>
-      <!-- Inject Pomegrenade Extract -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-50" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="0.32" />
-        <ReduceAffliction type="burn" amount="0.32" />
-        <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
+			<!-- MOD FEATURE Auto-inject System START -->
+				<!-- Explaanation:
+					GameVersion: 1.9.6.0
+					Check file: Content/Items/Medical/medical.xml, Content/Items/CreatureLoot/creatureloot.xml
+					Execute Interval: 0.5 seconds
+					Duration calculation: condition = -50 / original duration
+					Reduce/Add Afflication amount: original amount / 2
+				-->
+				<!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 2.5 duration 10
+						Reduce infection by 0.5 duration 10
+					-->
+					<ReduceAffliction type="bloodloss" amount="1.25" />
+					<ReduceAffliction identifier="infection" amount="0.25" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 8 duration 15
+					-->
+					<ReduceAffliction type="bloodloss" amount="4" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="alienblood" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 6 duration 15
+					-->
+					<ReduceAffliction type="bloodloss" amount="3" />
+					<!-- Original Side Effects:
+						Add psychosis by 3 duration 15
+						Add organdamage by 0.65 duration 15
+					-->
+					<Affliction identifier="psychosis" amount="1.5" />
+					<Affliction identifier="organdamage" amount="0.325" />
+				</StatusEffect>
+				<!--Inject Morphine & Fentanyl & Deusizine & Pomegrenade Extract, slot 2 -->
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antidama1" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 2 duration 20
+						Reduce burn by 0.1 duration 20
+					-->
+					<ReduceAffliction type="damage" amount="0.5" />
+					<ReduceAffliction type="burn" amount="0.05" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 1 duration 20
+						Add opiateaddiction by 1 duration 20
+						Add opiateoverdose by 1 duration 20
+						Reduce opiatewithdrawal by 3.75 duration 20
+					-->
+					<Affliction identifier="oxygenlow" amount="0.5" />
+					<Affliction identifier="opiateaddiction" amount="0.5" />
+					<Affliction identifier="opiateoverdose" amount="0.5" />
+					<ReduceAffliction identifier="opiatewithdrawal" amount="1.875" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antidama2" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 15 duration 5
+						Reduce burn by 1 duration 5
+					-->
+					<ReduceAffliction type="damage" amount="7.5" />
+					<ReduceAffliction type="burn" amount="0.5" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 5 duration 5
+						Add opiateoverdose by 5 duration 5
+						Reduce opiatewithdrawal by 4 duration 25 total 100
+					-->
+					<Affliction identifier="oxygenlow" amount="2.5" />
+					<Affliction identifier="opiateoverdose" amount="2.5" />
+					<ReduceAffliction identifier="opiatewithdrawal" amount="10" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="deusizine" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<Conditional bloodloss="gt 5.0" />
+					<Conditional oxygenlow="gt 50.0" />
+					<!-- Original Effect:
+						Add strengthen by 200 duration 1
+						Reduce damage by 3 duration 20
+						Reduce bloodloss by 2.5 duration 20
+						Reduce internaldamage by 1 duration 20
+						Reduce infection by 1.25 duration 20
+						Reduce stun by 0.3 duration 20
+						Reduce oxygenlow by 2.5 duration 20
+					-->
+					<!-- Here I use wf_strengthen instead of strengthen because the original strengthen change animation which will possibly override heels animation -->
+					<Affliction identifier="wf_strengthen" amount="200" />
+					<ReduceAffliction type="damage" amount="1.5" />
+					<ReduceAffliction identifier="bloodloss" amount="1.25" />
+					<ReduceAffliction identifier="internaldamage" amount="0.5" />
+					<ReduceAffliction identifier="infection" amount="0.625" />
+					<ReduceAffliction identifier="stun" amount="0.15" />
+					<ReduceAffliction identifier="oxygenlow" amount="1.25" />
+					<!-- Side Effects:
+						Add burn by 0.2 duration 20
+					-->
+					<Affliction identifier="burn" amount="0.1" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 0.32 duration 25
+						Reduce burn by 0.32 duration 25
+					-->
+					<ReduceAffliction type="damage" amount="0.16" />
+					<ReduceAffliction type="burn" amount="0.16" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 20 duration 1
+					-->
+					<Affliction identifier="oxygenlow" amount="0.4" />
+				</StatusEffect>
+			<!-- MOD FEATURE Auto-inject System END -->
       <!-- MOD FEATURE Damage Modifier -->
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.8" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
@@ -547,90 +620,163 @@
         <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.2" scalemax="0.5" />
         <sound file="Content/Items/Diving/ScooterLoop.ogg" range="500.0" loop="true" />
       </StatusEffect>
-      <!-- MOD FEATURE Auto-inject System -->
-      <!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-10" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="2.5" />
-        <RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="psychosis" amount="2.25" />
-        <ReduceAffliction type="bloodloss" amount="6" />
-        <RequiredItem items="alienblood" type="Contained" targetslot="1" />
-        <Conditional bloodloss="gt 5.0" />
-      </StatusEffect>
-      <!--Inject Morphine & Fentanyl & Deusizine, slot 2 -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="5" />
-        <ReduceAffliction type="burn" amount="0.1" />
-        <Affliction identifier="oxygenlow" amount="2" />
-        <Affliction identifier="opiateaddiction" amount="0.5" />
-        <Affliction identifier="opiateoverdose" amount="1.0" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="3.0" />
-        <RequiredItem items="antidama1" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-20" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="15" />
-        <ReduceAffliction type="burn" amount="1" />
-        <Affliction identifier="oxygenlow" amount="6" />
-        <Affliction identifier="opiateaddiction" amount="1.5" />
-        <Affliction identifier="opiateoverdose" amount="4.5" />
-        <ReduceAffliction identifier="opiatewithdrawal" amount="20" />
-        <RequiredItem items="antidama2" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-5" targetslot="2" interval="0.2" disabledeltatime="true">
-        <Affliction identifier="burn" amount="0.02" />
-        <ReduceAffliction type="damage" amount="3" />
-        <ReduceAffliction identifier="oxygenlow" amount="3" />
-        <ReduceAffliction identifier="bloodloss" amount="2" />
-        <RequiredItem items="deusizine" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-        <Conditional bloodloss="gt 5.0" />
-        <Conditional oxygenlow="gt 50.0" />
-      </StatusEffect>
-      <!-- Inject Pomegrenade Extract -->
-      <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-50" targetslot="2" interval="0.2" disabledeltatime="true">
-        <ReduceAffliction type="damage" amount="0.32" />
-        <ReduceAffliction type="burn" amount="0.32" />
-        <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
-        <Conditional internaldamage="gt 0.0" />
-        <Conditional blunttrauma="gt 0.0" />
-        <Conditional lacerations="gt 0.0" />
-        <Conditional bitewounds="gt 0.0" />
-        <Conditional gunshotwound="gt 0.0" />
-        <Conditional organdamage="gt 0.0" />
-        <Conditional explosiondamage="gt 0.0" />
-        <Conditional concussion="gt 0.0" />
-      </StatusEffect>
+			<!-- MOD FEATURE Auto-inject System START -->
+				<!-- Explaanation:
+					GameVersion: 1.9.6.0
+					Check file: Content/Items/Medical/medical.xml, Content/Items/CreatureLoot/creatureloot.xml
+					Execute Interval: 0.5 seconds
+					Duration calculation: condition = -50 / original duration
+					Reduce/Add Afflication amount: original amount / 2
+				-->
+				<!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antibloodloss1" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 2.5 duration 10
+						Reduce infection by 0.5 duration 10
+					-->
+					<ReduceAffliction type="bloodloss" amount="1.25" />
+					<ReduceAffliction identifier="infection" amount="0.25" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antibloodloss2" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 8 duration 15
+					-->
+					<ReduceAffliction type="bloodloss" amount="4" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="1" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="alienblood" type="Contained" targetslot="1" />
+					<Conditional bloodloss="gt 5.0" />
+					<!-- Original Effect:
+						Reduce bloodloss by 6 duration 15
+					-->
+					<ReduceAffliction type="bloodloss" amount="3" />
+					<!-- Original Side Effects:
+						Add psychosis by 3 duration 15
+						Add organdamage by 0.65 duration 15
+					-->
+					<Affliction identifier="psychosis" amount="1.5" />
+					<Affliction identifier="organdamage" amount="0.325" />
+				</StatusEffect>
+				<!--Inject Morphine & Fentanyl & Deusizine & Pomegrenade Extract, slot 2 -->
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antidama1" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 2 duration 20
+						Reduce burn by 0.1 duration 20
+					-->
+					<ReduceAffliction type="damage" amount="0.5" />
+					<ReduceAffliction type="burn" amount="0.05" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 1 duration 20
+						Add opiateaddiction by 1 duration 20
+						Add opiateoverdose by 1 duration 20
+						Reduce opiatewithdrawal by 3.75 duration 20
+					-->
+					<Affliction identifier="oxygenlow" amount="0.5" />
+					<Affliction identifier="opiateaddiction" amount="0.5" />
+					<Affliction identifier="opiateoverdose" amount="0.5" />
+					<ReduceAffliction identifier="opiatewithdrawal" amount="1.875" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="antidama2" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 15 duration 5
+						Reduce burn by 1 duration 5
+					-->
+					<ReduceAffliction type="damage" amount="7.5" />
+					<ReduceAffliction type="burn" amount="0.5" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 5 duration 5
+						Add opiateoverdose by 5 duration 5
+						Reduce opiatewithdrawal by 4 duration 25 total 100
+					-->
+					<Affliction identifier="oxygenlow" amount="2.5" />
+					<Affliction identifier="opiateoverdose" amount="2.5" />
+					<ReduceAffliction identifier="opiatewithdrawal" amount="10" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="deusizine" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<Conditional bloodloss="gt 5.0" />
+					<Conditional oxygenlow="gt 50.0" />
+					<!-- Original Effect:
+						Add strengthen by 200 duration 1
+						Reduce damage by 3 duration 20
+						Reduce bloodloss by 2.5 duration 20
+						Reduce internaldamage by 1 duration 20
+						Reduce infection by 1.25 duration 20
+						Reduce stun by 0.3 duration 20
+						Reduce oxygenlow by 2.5 duration 20
+					-->
+					<!-- Here I use wf_strengthen instead of strengthen because the original strengthen change animation which will possibly override heels animation -->
+					<Affliction identifier="wf_strengthen" amount="200" />
+					<ReduceAffliction type="damage" amount="1.5" />
+					<ReduceAffliction identifier="bloodloss" amount="1.25" />
+					<ReduceAffliction identifier="internaldamage" amount="0.5" />
+					<ReduceAffliction identifier="infection" amount="0.625" />
+					<ReduceAffliction identifier="stun" amount="0.15" />
+					<ReduceAffliction identifier="oxygenlow" amount="1.25" />
+					<!-- Side Effects:
+						Add burn by 0.2 duration 20
+					-->
+					<Affliction identifier="burn" amount="0.1" />
+				</StatusEffect>
+				<StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2" targetslot="2" interval="0.5" disabledeltatime="true">
+					<!-- Requirements -->
+					<RequiredItem items="pomegrenadeextract" type="Contained" targetslot="2" />
+					<Conditional internaldamage="gt 0.0" />
+					<Conditional blunttrauma="gt 0.0" />
+					<Conditional lacerations="gt 0.0" />
+					<Conditional bitewounds="gt 0.0" />
+					<Conditional gunshotwound="gt 0.0" />
+					<Conditional organdamage="gt 0.0" />
+					<Conditional explosiondamage="gt 0.0" />
+					<Conditional concussion="gt 0.0" />
+					<!-- Original Effect:
+						Reduce damage by 0.32 duration 25
+						Reduce burn by 0.32 duration 25
+					-->
+					<ReduceAffliction type="damage" amount="0.16" />
+					<ReduceAffliction type="burn" amount="0.16" />
+					<!-- Original Side Effects:
+						Add oxygenlow by 20 duration 1
+					-->
+					<Affliction identifier="oxygenlow" amount="0.4" />
+				</StatusEffect>
+			<!-- MOD FEATURE Auto-inject System END -->
       <!-- MOD FEATURE Damage Modifier -->
       <!-- MOD FEATURE -->
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
