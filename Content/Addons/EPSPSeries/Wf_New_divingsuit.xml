@@ -509,6 +509,14 @@
       <Containable Items="electriciansgoggles">
         <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
       </Containable>
+			<!-- Check Content/Addons/ESMTSeries/ESMTSeries.xml -->
+      <Containable Items="EAHI_nightvisiongoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+				<StatusEffect type="OnWearing" target="Contained,Character" interval="0.1" disabledeltatime="true">
+					<RequiredItem items="EAHI_nightvisiongoggles" type="Contained" />
+					<Affliction identifier="wf_nightvision" />
+				</StatusEffect>
+      </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
     <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />

@@ -268,12 +268,12 @@
       <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       <sprite name="Ballistic Helmet 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="4,213,92,88" origin="0.5165,0.6001" />
     </Wearable>
-    <!-- MOD FEATURE Helmet with goggles START -->
+		<!-- MOD FEATURE Helmet with goggles START -->
      <!-- Explaination: 
       GameVersion: 1.9.6.0
       When Containing different goggles, it will change the HUD to the corresponding goggles.
      -->
-    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
       </Containable>
@@ -285,6 +285,14 @@
       </Containable>
       <Containable Items="electriciansgoggles">
         <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+      </Containable>
+			<!-- Check Content/Addons/ESMTSeries/ESMTSeries.xml -->
+      <Containable Items="EAHI_nightvisiongoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+				<StatusEffect type="OnWearing" target="Contained,Character" interval="0.1" disabledeltatime="true">
+					<RequiredItem items="EAHI_nightvisiongoggles" type="Contained" />
+					<Affliction identifier="wf_nightvision" />
+				</StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
@@ -319,7 +327,7 @@
       <SkillModifier skillidentifier="weapons" skillvalue="10" />
       <sprite name="Ballistic Helmet 2 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="110,207,104,107" origin="0.5105,0.523" />
     </Wearable>
-    <!-- MOD FEATURE Helmet with goggles START -->
+		<!-- MOD FEATURE Helmet with goggles START -->
      <!-- Explaination: 
       GameVersion: 1.9.6.0
       When Containing different goggles, it will change the HUD to the corresponding goggles.
@@ -336,6 +344,14 @@
       </Containable>
       <Containable Items="electriciansgoggles">
         <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+      </Containable>
+			<!-- Check Content/Addons/ESMTSeries/ESMTSeries.xml -->
+      <Containable Items="EAHI_nightvisiongoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+				<StatusEffect type="OnWearing" target="Contained,Character" interval="0.1" disabledeltatime="true">
+					<RequiredItem items="EAHI_nightvisiongoggles" type="Contained" />
+					<Affliction identifier="wf_nightvision" />
+				</StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
@@ -369,7 +385,7 @@
       <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       <sprite name="Ballistic Helmet 3 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="214,202,96,101" origin="0.5401,0.6" />
     </Wearable>
-    <!-- MOD FEATURE Helmet with goggles START -->
+		<!-- MOD FEATURE Helmet with goggles START -->
      <!-- Explaination: 
       GameVersion: 1.9.6.0
       When Containing different goggles, it will change the HUD to the corresponding goggles.
@@ -386,6 +402,14 @@
       </Containable>
       <Containable Items="electriciansgoggles">
         <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+      </Containable>
+			<!-- Check Content/Addons/ESMTSeries/ESMTSeries.xml -->
+      <Containable Items="EAHI_nightvisiongoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+				<StatusEffect type="OnWearing" target="Contained,Character" interval="0.1" disabledeltatime="true">
+					<RequiredItem items="EAHI_nightvisiongoggles" type="Contained" />
+					<Affliction identifier="wf_nightvision" />
+				</StatusEffect>
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
