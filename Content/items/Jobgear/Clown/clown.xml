@@ -84,23 +84,28 @@
       <sprite name="Clown Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" sourcerect="496,202,80,100" origin="0.8,0.7" />
       <StatusEffect statuseffecttags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
     </Wearable>
-    <!-- MOD FEATURE ADD slots for goggles-->
-    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+    <!-- MOD FEATURE Helmet with goggles START -->
+     <!-- Explaination: 
+      GameVersion: 1.9.6.0
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
       </Containable>
       <Containable Items="healthscanner">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
       </Containable>
       <Containable Items="thermalgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
       </Containable>
       <Containable Items="electriciansgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
     <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
   </Item>
   <Item name="" identifier="clownsuitunique" subcategory="wf_withboots" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,clowngear,clowns" description="" impactsoundtag="impact_soft" hideinmenus="false" scale="0.5">
     <Price baseprice="40" sold="false" canbespecial="false" />

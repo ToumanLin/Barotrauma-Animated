@@ -284,23 +284,28 @@
       <sprite name="Succubus Mask Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="547,400,60,80" origin="0.608,0.806" />
       <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
     </Wearable>
-    <!-- MOD FEATURE ADD slots for goggles-->
-    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+    <!-- MOD FEATURE Helmet with goggles START -->
+     <!-- Explaination: 
+      GameVersion: 1.9.6.0
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
       </Containable>
       <Containable Items="healthscanner">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
       </Containable>
       <Containable Items="thermalgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
       </Containable>
       <Containable Items="electriciansgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
     <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
   </Item>
   <!--异星装甲头盔 -->
   <Item name="" identifier="Exotic_Amor_suit_head" subcategory="waifu_wip" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" description="" hideinmenus="true" scale="0.50" >
@@ -318,23 +323,28 @@
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
     </Wearable>
-    <!-- MOD FEATURE ADD slots for goggles-->
-    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+    <!-- MOD FEATURE Helmet with goggles START -->
+     <!-- Explaination: 
+      GameVersion: 1.9.6.0
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
       </Containable>
       <Containable Items="healthscanner">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
       </Containable>
       <Containable Items="thermalgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
       </Containable>
       <Containable Items="electriciansgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
     <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
   </Item>
   <!-- 棱镜 -->
   <Item name="" identifier="PrayerMio_hat" subcategory="waifu_wip" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing" description="" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" >
@@ -360,7 +370,6 @@
           <sprite texture="%ModDir%/Content/Uniform_new/00_headgears_new.png" depth="0.025" sourcerect="400,0,100,100" origin="0.6,0.7" alpha="1.0" />
         </LightComponent>
       </sprite>
-      <!-- <sprite name="XDS01_Helmet" texture="Wf_New_XDS01_Engine.png" sourcerect="608,110,140,130" limb="Head" inheritlimbdepth="true" depth="0.5" scale="0.5" origin="0.555,0.67" CanbehiddenbyOtherWearables="false"><LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false"><StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true"><Conditional IsDead="false" /></StatusEffect><sprite texture="%ModDir%/Content/Items/New/Wf_New_XDS01_Lights.png" depth="0.025" sourcerect="304,120,140,120" origin="0.4,0.8" alpha="1.0" /></LightComponent></sprite> -->
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds,blunttrauma" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,gunshotwound" damagemultiplier="0.15" damagesound="" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="bleeding" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
@@ -369,22 +378,27 @@
       <damagemodifier armorsector="0.0,360.0" afflictiontypes="psychosis" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
       <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="concussion" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
     </Wearable>
-    <!-- MOD FEATURE ADD slots for goggles-->
-    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+    <!-- MOD FEATURE Helmet with goggles START -->
+     <!-- Explaination: 
+      GameVersion: 1.9.6.0
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
       <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
         <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
       </Containable>
       <Containable Items="healthscanner">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
       </Containable>
       <Containable Items="thermalgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
       </Containable>
       <Containable Items="electriciansgoggles">
-        <StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
       </Containable>
       <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
     </ItemContainer>
     <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
   </Item>
 </Items></Override>

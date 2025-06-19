@@ -491,6 +491,28 @@
 			<damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagemultiplier="0.2" />
 			<damagemodifier afflictionidentifiers="huskinfection" probabilitymultiplier="0.1" armorsector="0.0,360.0" damagemultiplier="0.9" damagesound="LimbArmor"/>
 		</Wearable>
+		<!-- MOD FEATURE Helmet with goggles START -->
+     <!-- Explaination: 
+      GameVersion: 1.9.6.0
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+     <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+        <StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
+      </Containable>
+      <Containable Items="healthscanner">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+      </Containable>
+      <Containable Items="thermalgoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+      </Containable>
+      <Containable Items="electriciansgoggles">
+        <StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+      </Containable>
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
 	</Item>
 
 	<!--Materials-->
