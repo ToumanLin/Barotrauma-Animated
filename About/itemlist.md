@@ -83,7 +83,6 @@
 | researcherclothes | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | respawndivingsuit | Disposable Diving Suit | 一次性潜水服 |
 | revolver | Revolver | 左轮手枪 |
-| rifle | Rifle | 步枪 |
 | safetyharness | Safety Harness | 安全背带 |
 | securitypatrolclothes | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | securityseparatistsuniform1 | Separatist Security Officer Fatigues | 分离派安保官工装 |
@@ -184,6 +183,11 @@
 | exotic_matter | Exotic matter | 异星物质 |
 | genesplicer | Gene Splicer | 基因拼接器 |
 | guardiansuit | Guardian battle suit | 卫士战斗服 |
+| h_administratorclothes | <span style="color:red">UKN</span> | 站点管理员制服 高跟 |
+| h_artiedolittleclothes | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
+| h_assistantclothes | <span style="color:red">UKN</span> | 助手服 高跟 |
+| h_banditclothes1 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
+| h_banditclothes2 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
 | h_captainseparatistsuniform1 | <span style="color:red">UKN</span> | 指挥官制服 高跟 |
 | h_captainseparatistsuniform2 | <span style="color:red">UKN</span> | 老兵军服 高跟 |
 | h_captainseparatistsuniform3 | <span style="color:red">UKN</span> | 军阀套装 高跟 |
@@ -191,6 +195,7 @@
 | h_captainsuniform2 | Renegade's Jacket With Heels | 叛逆者夹克 高跟 |
 | h_captainsuniform3 | Admiral's Uniform With Heels | 海军上将制服 高跟 |
 | h_captainsuniform4 | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
+| h_clowncostume | <span style="color:red">UKN</span> | 小丑服 高跟 |
 | i_Wf_pucs | EPSP (transparent) | 透明版 实验性压力稳定PUCS (EPSP) |
 | i_Wf_pucs_B | Abyss EPSP (transparent) | 透明版 深潜型 EPSP |
 | i_Wf_pucs_R | Combat EPSP (transparent) | 透明版 战斗型 EPSP |
