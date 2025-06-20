@@ -128,6 +128,7 @@
 | EAHI_kuorongbag | Prototype Expansion Pack | 多用扩容弹夹 |
 | EAHI_laserpointer | Laser Pointer | 激光指示器 |
 | EAHI_multifunctionTool | Tri-Tool | 多功能工具 |
+| EAHI_nightvisiongoggles | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | EAHI_pucs | EPSP (transparent) | 透明版 特种作战 EPSP |
 | EAHI_serum | Exotic Matter Extraction Serum | 异星物质提取液 |
 | EAHI_suit | EAHI Uniform | EAHI制服 |
@@ -158,12 +159,12 @@
 | Wf_G.B.E_beam_s | few Gravitons | 少量重力子 |
 | Wf_G.B.E_kai | Micron Graviton Beam Pistol (MG.B.P) | 微量重力子放射线手枪 |
 | Wf_G.B.E_kai_beam | Micron Graviton Beam | 微量重力子放射线 |
-| Wf_New_XDS-01 | <span style="color:red">UKN</span> | XDS-01 潜水服 旧版 |
-| Wf_New_XDS-01_Engine | <span style="color:red">UKN</span> | XDS-01 潜水服引擎 旧版 |
-| Wf_New_XDS01_Engine | XDS-01 Engine | XDS-01潜水服引擎 |
-| Wf_New_XDS01_Helmet | XDS-01 Helmet | <span style="color:red">UKN</span> |
-| Wf_New_XDS01_Inner | XDS-01 Inner Suit | <span style="color:red">UKN</span> |
-| Wf_New_XDS01_coat | XDS-01 Coat | <span style="color:red">UKN</span> |
+| Wf_New_XDS-01 | XDS-01 Diving Suit (Legacy) | XDS-01 潜水服 旧版 |
+| Wf_New_XDS-01_Engine | XDS-01 Diving Suit Engine (Legacy) | XDS-01 反重力引擎 旧版 |
+| Wf_New_XDS01_Engine | XDS-01 Anti-Gravity Engine | XDS-01 反重力引擎 |
+| Wf_New_XDS01_Helmet | XDS-01 Helmet | XDS-01 头盔 |
+| Wf_New_XDS01_Inner | XDS-01 inner suit | XDS-01 内层服装 |
+| Wf_New_XDS01_coat | XDS-01 Coat | XDS-01 外层服装 |
 | Wf_New_XDS_Gun1 | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | Wf_Research_Box | Secure Safe | 保险箱 |
 | Wf_Research_Log | XDS-01 Research Log | XDS-01研究日志 |
@@ -188,9 +189,9 @@
 | h_assistantclothes | <span style="color:red">UKN</span> | 助手服 高跟 |
 | h_banditclothes1 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
 | h_banditclothes2 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
-| h_captainseparatistsuniform1 | <span style="color:red">UKN</span> | 指挥官制服 高跟 |
-| h_captainseparatistsuniform2 | <span style="color:red">UKN</span> | 老兵军服 高跟 |
-| h_captainseparatistsuniform3 | <span style="color:red">UKN</span> | 军阀套装 高跟 |
+| h_captainseparatistsuniform1 | Commander's Uniform With Heels | 指挥官制服 高跟 |
+| h_captainseparatistsuniform2 | Veteran's Fatigues With Heels | 老兵军服 高跟 |
+| h_captainseparatistsuniform3 | Warlord's Attire With Heels | 军阀套装 高跟 |
 | h_captainsuniform1 | Veteran's Jacket With Heels | 老水手夹克 高跟 |
 | h_captainsuniform2 | Renegade's Jacket With Heels | 叛逆者夹克 高跟 |
 | h_captainsuniform3 | Admiral's Uniform With Heels | 海军上将制服 高跟 |
