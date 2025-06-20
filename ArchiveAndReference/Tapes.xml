@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Override><Items>
+  <Item name="" identifier="EAHI_tape_blank" subcategory="EAHI" category="Misc" maxstacksize="10" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,chem,wf_items" useinhealthinterface="true" scale="0.4" RequireAimToUse="True" hideinmenus="false">
+    <PreferredContainer primary="locker" />
+    <Price baseprice="60" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Deconstruct time="10" />
+    <InventoryIcon texture="%ModDir%/Content/Addons/gfx.png" sourcerect="128,308,44,44" depth="0.6" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Addons/gfx.png" sourcerect="128,308,44,44" depth="0.6" origin="0.5,0.5" />
+    <Body width="25" height="25" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-5,0" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect"/>
+  </Item>
+  <Item name="" identifier="EAHI_tape_epsp" subcategory="EAHI" category="Misc" maxstacksize="10" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,chem,wf_items" useinhealthinterface="true" scale="0.4" RequireAimToUse="True" hideinmenus="false">
+    <PreferredContainer primary="locker" />
+    <Price baseprice="60" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Deconstruct time="10" requireddeconstructor="deconstructor"/>
+    <Deconstruct time="10" requireddeconstructor="EAHI_ProcessBrench" >
+      <!-- TODO -->
+      <Item identifier="exotic_matter" requiredotheritem="mudraptorshell,shellshield,molochbone,hammerheadribs,endwormshell,watchershell" amount="3" activatebuttontext="EAHI_ProcessBrench.extract" infotext="EAHI_ProcessBrench.Process.infotext" infotextonotheritemmissing="EAHI_ProcessBrench.missingitem" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="EAHI_TapeWriter" requiredtime="10" amount="1" >
+      <RequiredItem identifier="EAHI_tape_blank" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Addons/gfx.png" sourcerect="128,308,44,44" depth="0.6" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Addons/gfx.png" sourcerect="128,308,44,44" depth="0.6" origin="0.5,0.5" />
+    <Body width="25" height="25" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-5,0" holdangle="0" aimangle="45" aimable="false" msg="ItemMsgPickUpSelect"/>
+  </Item>
+</Items></Override>

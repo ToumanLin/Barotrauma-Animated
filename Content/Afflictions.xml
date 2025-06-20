@@ -49,16 +49,16 @@
       <StatusEffect target="Character" comparison="and">
         <Conditional ishuman="true" />
         <Conditional hasspecifiertag="male"/>
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
       </StatusEffect>
       <StatusEffect target="Character" comparison="and">
         <Conditional ishuman="true" />
         <Conditional hasspecifiertag="female"/>
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
       </StatusEffect>
       <StatusEffect target="Character" duration="2">
         <TriggerAnimation Type="Walk" filename="Vomit" priority="10" ExpectedSpecies="Human" />
@@ -118,16 +118,16 @@
       <StatusEffect target="Character" comparison="and">
         <Conditional ishuman="true" />
         <Conditional hasspecifiertag="male"/>
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeMale1.ogg" selectionmode="Random" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeMale2.ogg" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeMale3.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeMale1.ogg" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeMale2.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeMale3.ogg" />
       </StatusEffect>
       <StatusEffect target="Character" comparison="and">
         <Conditional ishuman="true" />
         <Conditional hasspecifiertag="female"/>
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
-        <Sound file="%ModDir:2809175631%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale2.ogg" />
+        <Sound file="%ModDir%/Content/Sounds/HUMAN_chokeFemale3.ogg" />
       </StatusEffect>
       <StatusEffect target="Character" duration="2">
         <TriggerAnimation Type="Walk" filename="Vomit" priority="10" ExpectedSpecies="Human" />
@@ -146,6 +146,26 @@
     </PeriodicEffect>
 
     <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,896,128,128" origin="0,0"/>
+  </Affliction>
+  <Affliction
+    name=""
+    description=""
+    nameidentifier="strengthen"
+    identifier="wf_strengthen"
+    descriptionidentifier="Strengthen"
+    type="strengthbuff"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="600"
+    MedicalSkillGain="0.01">
+    <Effect minstrength="0" maxstrength="600"
+      strengthchange="-1"
+      resistancefor="damage"
+      minresistance="0"
+      maxresistance="0.5">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="0" maxvalue="0.35" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0"/>
   </Affliction>
   </Afflictions>
 </Override>
