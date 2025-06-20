@@ -373,6 +373,7 @@
 		<Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
 			<sprite name="XDS01_Engine" texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,1,1" limb="Torso" inherittexturescale="true" origin="0.5,0.5" />
 			<sprite name="XDS01_Helmet" texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,1,1" limb="Head" inherittexturescale="true" origin="0.5,0.5" >
+				<!-- TODO This LightComponant do nothing, it used only for activate poweron sound, so maybe I should change the logic somehow in the future -->
 				<LightComponent range="0.0" lightcolor="1,1,1,0" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
 					<poweronsound file="%ModDir%/Content/Addons/EPSPSeries/XDS_poweron.ogg" range="100" loop="false" />
 					<sprite texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="0,0,1,1" origin="0.84947,0.7225" />
@@ -398,7 +399,7 @@
 				<Sound file="%ModDir%/Content/Addons/EPSPSeries/XDS_poweroff.ogg" range="100" loop="false" />
 			</StatusEffect>
 			<!-- MOD FEATURE Cost fuel -->
-			<StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.1" targetslot="0" comparison="And">
+			<StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.05" targetslot="0" comparison="And">
         <Conditional IsDead="false" />
         <RequiredItem items="divingsuitfuel" targetslot="0" type="Contained" />
       </StatusEffect>
@@ -422,11 +423,11 @@
       <LightComponent LightColor="220,255,150,200" range="500" powerconsumption="10" IsOn="true">
         <LightTexture texture="Content/Lights/lightcone.png" origin="-0.01, 0.5117" size="1.0,1.0" />
       </LightComponent>
-      <StatusEffect type="OnSecondaryUse" target="Contained" targetslot="0" Condition="-0.01" />
+      <!-- <StatusEffect type="OnSecondaryUse" target="Contained" targetslot="0" Condition="-0.01" /> -->
     </Holdable>
     <Propulsion force="240" usablein="both" particles="bubbles">
       <RequiredItems items="divingsuitfuel" type="Contained" targetslot="0" msg="ItemMsgFuelRequired" />
-      <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.09">
+      <StatusEffect type="OnUse" target="Contained" targetslot="0" Condition="-0.02">
         <RequiredItem items="divingsuitfuel" type="Contained" />
       </StatusEffect>
       <StatusEffect type="OnUse" target="Contained" targetslot="0">
@@ -437,6 +438,7 @@
     </Propulsion>
     <ItemContainer capacity="0" hideitems="true" containedstateindicatorstyle="Default" containedstateindicatorslot="0">
       <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
+			<!-- TODO Change Divingsuitfuel to a new fuel specific to this suit -->
       <SubContainer capacity="1" maxstacksize="1">
         <Containable items="divingsuitfuel">
           <StatusEffect type="OnContaining" target="This,Character" Voltage="1.0" setvalue="true" comparison="and" >
