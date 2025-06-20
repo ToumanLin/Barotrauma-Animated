@@ -128,7 +128,7 @@
 | EAHI_kuorongbag | Prototype Expansion Pack | 多用扩容弹夹 |
 | EAHI_laserpointer | Laser Pointer | 激光指示器 |
 | EAHI_multifunctionTool | Tri-Tool | 多功能工具 |
-| EAHI_nightvisiongoggles | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
+| EAHI_nightvisiongoggles | Night Vision Goggles | 夜视仪 |
 | EAHI_pucs | EPSP (transparent) | 透明版 特种作战 EPSP |
 | EAHI_serum | Exotic Matter Extraction Serum | 异星物质提取液 |
 | EAHI_suit | EAHI Uniform | EAHI制服 |
