@@ -449,7 +449,8 @@
         </Containable>
       </SubContainer>
       <SubContainer capacity="11" maxstacksize="32">
-        <Containable items="smallitem" />
+				<!-- By far make it contain all items -->
+        <!-- <Containable items="smallitem, mediumitem" /> -->
       </SubContainer>
     </ItemContainer>
 	</Item>
@@ -585,11 +586,11 @@
 			<Item identifier="Wf_New_XDS01_coat" />
 			<Item identifier="Wf_New_XDS01_Helmet" />
 		</Deconstruct>
-		<Sprite name="Wf_New_XDS-01 Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
-		<InventoryIcon texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="286,0,82,126" origin="0.5,0.5" />
-		<ContainedSprite name="Wf_New_XDS-01 In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
-		<ContainedSprite name="Wf_New_XDS-01 Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
-		<ContainedSprite name="Wf_New_XDS-01 In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
+		<Sprite name="Wf_New_XDS-01 Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
+		<InventoryIcon texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="286,0,82,126" origin="0.5,0.5" />
+		<ContainedSprite name="Wf_New_XDS-01 In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
+		<ContainedSprite name="Wf_New_XDS-01 Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+		<ContainedSprite name="Wf_New_XDS-01 In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
 		<Body radius="45" width="34" density="15" />
 		<CustomInterface canbeselected="false" drawhudwhenequipped="true">
 			<GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
@@ -607,20 +608,23 @@
 					<LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
 				</LightComponent>
 			</sprite>
-			<sprite name="XDS-01 Torso" texture="Wf_New_XDS-01.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Right Hand" texture="Wf_New_XDS-01.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Left Hand" texture="Wf_New_XDS-01.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Right Lower Arm" texture="Wf_New_XDS-01.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,0,64,96" Origin="0.5,0.5" />
-			<sprite name="XDS-01 Left Lower Arm" texture="Wf_New_XDS-01.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,96" Origin="0.5,0.5" />
-			<sprite name="XDS-01 Right Upper Arm" texture="Wf_New_XDS-01.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="400,160,64,112" Origin="0.5,0.607142" />
-			<sprite name="XDS-01 Left Upper Arm" texture="Wf_New_XDS-01.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="464,160,64,112" Origin="0.5,0.607142" />
-			<sprite name="XDS-01 Waist" texture="Wf_New_XDS-01.png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,208,112,64" Origin="0.5,0.5" />
-			<sprite name="XDS-01 Right Thigh" texture="Wf_New_XDS-01.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Left Thigh" texture="Wf_New_XDS-01.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Right Leg" texture="Wf_New_XDS-01.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Left Leg" texture="Wf_New_XDS-01.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Left Shoe" texture="Wf_New_XDS-01.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
-			<sprite name="XDS-01 Right Shoe" texture="Wf_New_XDS-01.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Torso" texture="Wf_New_XDS01_inner.png" limb="Torso" hidelimb="false" inherittexturescale="true" sourcerect="160,0,112,208" origin="0.5,0.4615" />
+			<sprite name="XDS01 Inner Right Hand" texture="Wf_New_XDS01_inner.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Left Hand" texture="Wf_New_XDS01_inner.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Right Lower Arm" texture="Wf_New_XDS01_inner.png" limb="RightArm" hidelimb="false" inherittexturescale="true" SourceRect="272,0,64,96" Origin="0.5,0.5" />
+			<sprite name="XDS01 Inner Left Lower Arm" texture="Wf_New_XDS01_inner.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" SourceRect="336,0,64,96" Origin="0.5,0.5" />
+			<sprite name="XDS01 Inner Right Upper Arm" texture="Wf_New_XDS01_inner.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" SourceRect="400,160,64,112" Origin="0.5,0.607142" />
+			<sprite name="XDS01 Inner Left Upper Arm" texture="Wf_New_XDS01_inner.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" SourceRect="464,160,64,112" Origin="0.5,0.607142" />
+			<sprite name="XDS01 Inner Waist" texture="Wf_New_XDS01_inner.png" limb="Waist" hidelimb="false" inherittexturescale="true" SourceRect="154,208,112,64" Origin="0.5536,0.5" />
+			<sprite name="XDS01 Inner Right Thigh" texture="Wf_New_XDS01_inner.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Left Thigh" texture="Wf_New_XDS01_inner.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Right Leg" texture="Wf_New_XDS01_inner.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Left Leg" texture="Wf_New_XDS01_inner.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+			<sprite name="XDS01 Inner Left Shoe" texture="Wf_New_XDS01_inner.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" sourcerect="330,208,64,64" origin="0.5738, 0.4125" sound="footstep_armor_heavy_heels" />
+			<sprite name="XDS01 Inner Right Shoe" texture="Wf_New_XDS01_inner.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" sourcerect="266,208,64,64" origin="0.5738, 0.4125" sound="footstep_armor_heavy_heels" />
+			<sprite name="XDS01 Torso" texture="Wf_New_XDS01_outer.png" limb="Torso" hidelimb="false" inherittexturescale="true" sourcerect="160,0,112,208" origin="0.5,0.4615" />
+			<sprite name="XDS01 Right Upper Arm" texture="Wf_New_XDS01_outer.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" SourceRect="400,160,64,112" Origin="0.5,0.607142" />
+			<sprite name="XDS01 Left Upper Arm" texture="Wf_New_XDS01_outer.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" SourceRect="464,160,64,112" Origin="0.5,0.607142" />
       <!-- MOD FEATURE Water Flow Ressitance -->
       <StatValue stattype="FlowResistance" value="0.25" />
       <!-- MOD FEATURE Speed&hearing Change, Remove triggerAnimation -->
@@ -896,8 +900,8 @@
 			<Item identifier="Wf_New_XDS01_Engine" />
 		</Deconstruct>
 		<Price baseprice="10000" sold="false" />
-		<InventoryIcon texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" origin="0.5,0.5" />
-		<Sprite texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" />
+		<InventoryIcon texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" origin="0.5,0.5" />
+		<Sprite texture="Wf_New_XDS01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" />
 		<Body width="100" height="100" density="50" />
 		<CustomInterface canbeselected="false" drawhudwhenequipped="true">
 			<GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="0,475" style="ItemUI" />
@@ -950,7 +954,7 @@
 		</ItemContainer>
 	</Item>
 
-	<Item name="WF_testGun" identifier="Wf_New_XDS_Gun1" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon,provocativetohumanai" Scale="0.5" impactsoundtag="impact_metal_heavy">
+	<Item name="WF_testGun" identifier="Wf_New_XDS_Gun1" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon,provocativetohumanai" Scale="0.5" impactsoundtag="impact_metal_heavy" hideinmenus="true">
     <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab"/>
 		<!-- TODO Price Deconstruct Fabricate -->
     <Price baseprice="900" sold="false">
