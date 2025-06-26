@@ -383,7 +383,7 @@
 			<!-- MOD FEATURE EXO aff & engine limbs aff -->
 			<StatusEffect type="OnWearing" target="Character" interval="0.1" disabledeltatime="true">
         <Affliction identifier="recoilstabilized" amount="1" />
-        <Affliction identifier="XDS01engine" amount="1" />
+        <Affliction identifier="XDS01engine" amount="100" strength="100" stackable="true" />
       </StatusEffect>
 			<!-- MOD FEATURE Active state floating animation -->
 			<StatusEffect type="OnWearing" target="This,Character" setvalue="true" comparison="And">
@@ -475,10 +475,15 @@
 		<InventoryIcon name="XDS Helmet Icon" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="611,0,45,106" origin="0.5,0.5" />
 		<Body radius="20" width="20" height="25" density="10" />
 		<CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
-			<GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+			<GuiFrame relativesize="0.07,0.14" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
 			<TickBox text="epsp.light">
 				<StatusEffect type="OnUse" target="This" IsOn="true" />
 				<StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+			</TickBox>
+			<!-- TODO Change test to localization string -->
+			<TickBox text="Close Helmet Slot">
+				<StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="false" movableframe="false" drawinventory="false" />
+				<StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="true" movableframe="true" drawinventory="true" />
 			</TickBox>
 		</CustomInterface>
 		<Wearable slots="Head" msg="ItemMsgPickUpSelect">
@@ -495,11 +500,18 @@
 			<damagemodifier afflictiontypes="damage" armorsector="0.0,360.0" damagemultiplier="0.2" />
 			<damagemodifier afflictionidentifiers="huskinfection" probabilitymultiplier="0.1" armorsector="0.0,360.0" damagemultiplier="0.9" damagesound="LimbArmor"/>
 		</Wearable>
-		<!-- MOD FEATURE Helmet with goggles START -->
+		<!-- MOD FEATURE Helmet with goggles ver1.0 W/O CustomInterface START -->
      <!-- Explaination: 
       GameVersion: 1.9.6.0
       When Containing different goggles, it will change the HUD to the corresponding goggles.
      -->
+		 <!-- <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+			<GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+			<TickBox text="Close Helmet Slot">
+				<StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="false" movableframe="false" />
+				<StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="true" movableframe="true" />
+			</TickBox>
+		</CustomInterface> -->
      <ItemContainer hideitems="true" capacity="0" maxstacksize="1" keepopenwhenequipped="true" movableframe="true">
 			<SubContainer capacity="1" maxstacksize="1">
 				<Containable items="healthscanner,thermalgoggles,electriciansgoggles,EAHI_nightvisiongoggles">
