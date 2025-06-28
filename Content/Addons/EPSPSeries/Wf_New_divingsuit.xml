@@ -481,7 +481,7 @@
 				<StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
 			</TickBox>
 			<!-- TODO Change test to localization string -->
-			<TickBox text="Close Helmet Slot">
+			<TickBox text="wf.closehelmetslot">
 				<StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="false" movableframe="false" drawinventory="false" />
 				<StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="true" movableframe="true" drawinventory="true" />
 			</TickBox>
@@ -507,7 +507,7 @@
      -->
 		 <!-- <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
 			<GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
-			<TickBox text="Close Helmet Slot">
+			<TickBox text="wf.closehelmetslot">
 				<StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="false" movableframe="false" />
 				<StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="true" movableframe="true" />
 			</TickBox>
@@ -594,6 +594,30 @@
 			<GuiFrame relativesize="0.35,0.35" anchor="Center" />
 		</Terminal>
 	</Item>
+
+  <Item name="Test Charger" identifier="testcharger" tags="chair,railgunequipment,railgunammo,depthchargeammo" allowattachitems="false" texturescale="1.0,1.0" scale="0.5" category="Decorative" canflipy="false">
+    <InventoryIcon texture="Content/Map/Outposts/Art/MedicalColonyAssets.png" sourcerect="452,781,249,225" origin="0.5,0.5" />
+    <Sprite texture="Content/Map/Outposts/Art/MedicalColonyAssets.png" sourcerect="452,781,249,225" depth="0.55" origin="0.5,0.5" />
+    <ContainedSprite name="Boarding Pod Contained" allowedcontainertags="depthchargeammosource" texture="TurretsAndDepthCharges.png" sourcerect="489,90,119,95" depth="0.54" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Holdable slots="RightHand+LeftHand" holdpos="90,-80" handle1="-98,100" handle2="-98,100" aimable="false" msg="ItemMsgPickUpSelect">
+      <!-- slow down the character when holding the item -->
+      <StatValue stattype="MovementSpeed" value="-0.2" />
+      <StatusEffect type="OnActive" target="Character" DisableRunning="false" />
+    </Holdable>
+    <sprite texture="Content/Map/Outposts/Art/MedicalColonyAssets.png" sourcerect="452,781,249,225" depth="0.55" premultiplyalpha="false" origin="0.5,0.5" />
+    <Controller UserPos="0,90" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="false" AllowSelectingWhenSelectedByOther="false" selectkey="Use" drawuserbehind="true" forceusertostayattached="true" msg="itemmsggoinside">
+      <limbposition limb="Head" position="160,25" />
+      <limbposition limb="Torso" position="145,-50" />
+      <limbposition limb="Waist" position="62,-85" />
+      <limbposition limb="RightLeg" position="180,-120" />
+      <limbposition limb="LeftLeg" position="180,-120" />
+      <limbposition limb="RightFoot" position="180,-220" />
+      <limbposition limb="LeftFoot" position="180,-220" />
+      <limbposition limb="RightHand" position="105,-70" />
+      <limbposition limb="LeftHand" position="105,-70" />
+    </Controller>
+  </Item>
 
 	<!-- Legacy -->
 	<Item name="" identifier="Wf_New_XDS-01" subcategory="EPSP" category="Diving" tags="diving,deepdiving,divinggear_wearableindoors,human" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5" cargocontaineridentifier="" hideinmenus="true">
