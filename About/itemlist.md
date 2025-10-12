@@ -222,9 +222,11 @@
 | succubusmask | Succubus Mask | 魅魔面罩 |
 | succubussuit | Succubus set | 魅魔套装 |
 | teleportine | teleportine | 传送药水 |
+| testcharger | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | testpermit | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | tight_combatsuit_1 | tight combat suit mk1 | 紧身战斗服mk1 |
 | tight_combatsuit_2 | tight combat suit mk2 | 紧身战斗服mk2 |
 | underwear | Standard Underwear | 标准内衣 |
+| underwear_1 | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | wf_mudraptorshell | Mudraptor Shell Suit (WIP) | 迅猛龙甲壳服装(WIP) |
 | whiteswimmingsuit | White Competitive Swimsuit | 白色竞技泳衣 |
