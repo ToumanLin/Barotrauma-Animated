@@ -104,21 +104,45 @@
 			<SkillModifier skillidentifier="weapons" skillvalue="5" />
 			<sprite name="kep cap Wearable" texture="%ModDir%/Content/Addons/TSM/kepsuit.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="false" scale="1.5" hidelimb="false" sourcerect="666,6,113,72" origin="0.47,1.0" />
 		</Wearable>
-		<ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
-			<SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
-			<Containable items="healthscanner,thermalgoggles,electriciansgoggles">
-				<StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
-			</Containable>
-			<Containable Items="healthscanner">
-				<StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
-			</Containable>
-			<Containable Items="thermalgoggles">
-				<StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
-			</Containable>
-			<Containable Items="electriciansgoggles">
-				<StatusEffect type="OnInserted" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
-			</Containable>
+		<!-- MOD FEATURE Helmet with goggles ver1.3 W Pressure Stabilizer START -->
+     <!-- Explaination: 
+      GameVersion: 1.10.7.1
+      When Containing different goggles, it will change the HUD to the corresponding goggles.
+     -->
+		 <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+			<GuiFrame relativesize="0.07,0.07" anchor="BottomRight" pivot="BottomRight" relativeoffset="0.2,0.11" />
+			<TickBox text="wf.closehelmetslot">
+				<StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="false" movableframe="false" />
+				<StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="ItemContainer" keepopenwhenequipped="true" movableframe="true" />
+			</TickBox>
+		</CustomInterface>
+     <ItemContainer hideitems="true" capacity="0" maxstacksize="1" keepopenwhenequipped="true" movableframe="true">
 			<SubContainer capacity="1" maxstacksize="1">
+				<Containable items="healthscanner,thermalgoggles,electriciansgoggles,EAHI_nightvisiongoggles">
+					<StatusEffect type="OnRemoved" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" showdeadcharacters="false" debugwiring="false" />
+				</Containable>
+				<Containable Items="healthscanner">
+					<StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,60" showtexts="true" showdeadcharacters="true" />
+				</Containable>
+				<Containable Items="thermalgoggles">
+					<StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+				</Containable>
+				<Containable Items="electriciansgoggles">
+					<StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+				</Containable>
+				<!-- Check Content/Addons/ESMTSeries/ESMTSeries.xml -->
+				<Containable Items="EAHI_nightvisiongoggles">
+					<StatusEffect type="OnContaining" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+					<StatusEffect type="OnWearing" target="Contained,Character" interval="0.1" disabledeltatime="true">
+						<RequiredItem items="EAHI_nightvisiongoggles" type="Contained" />
+						<Affliction identifier="wf_nightvision" />
+					</StatusEffect>
+				</Containable>
+			</SubContainer>
+			<SubContainer capacity="1" maxstacksize="1">
+				<Containable items="healthscanner,thermalgoggles,electriciansgoggles,EAHI_nightvisiongoggles" />
+			</SubContainer>
+						<SubContainer capacity="1" maxstacksize="1">
 				<Containable items="pressurestabilizer">
 					<StatusEffect type="OnWearing" target="Character,Contained" condition="-0.1" targetslot="1" interval="0.5" comparison="and" disabledeltatime="true">
 						<Conditional oxygenlow="gt 25" />
@@ -147,10 +171,10 @@
 					</StatusEffect>
 				</Containable>
 			</SubContainer>
-			<SlotIcon slotindex="0" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
-			<SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,640,64,64" origin="0.5,0.5" />
-		</ItemContainer>
-		<StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/Items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" showdeadcharacters="false" showtexts="false" />
+    <!-- MOD FEATURE Helmet with goggles END -->
 	</Item>
 	<!-- 三神丘作战服 -->
 	<Item identifier="kep_uniform" aliases="tsm_kepsuit_0" category="Equipment" tags="smallitem,clothing,wf_items" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
