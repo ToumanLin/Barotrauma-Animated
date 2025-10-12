@@ -3,10 +3,28 @@
 
 文件解释:
   [About](./About)文件夹中提供了 [修改日志](./About/changelog.txt), 和本Mod的 [item增加和覆盖列表](./About/itemlist.md)
+
+
   [Content](./Content)文件夹是mod内容
-  [Repo](./Repo)文件夹是存放一些工具脚本, 如[自动生成物品列表](./Repo/item_list_generator.py), [自动发布更新](./Repo/release.py), [生成潜在需要更进游戏更新的物品列表](./Repo/GameUpdateChecker.py), [自动计算Origin](./Repo/自动计算新Origin.xlsx)
+
+
+  [Repo](./Repo)文件夹是存放一些工具脚本
+
+
+  -[自动生成物品列表](./Repo/item_list_generator.py)
+   自动和原版游戏对比ID, 给出覆盖的物品表, 和新增的物品表
+  
+  -[自动发布更新](./Repo/release.py)
+    自动删除dev内容, 推送到00_RELEASE文件夹
+    
+  -[生成潜在需要更进游戏更新的物品列表](./Repo/GameUpdateChecker.py)
+      拉取游戏的上一次更新, 给出潜在需要更新的物品列表
+
+  -[自动计算Origin](./Repo/自动计算新Origin.xlsx)
+      输入旧坐标和新坐标, 自动计算新原点
 
 Github link: [https://github.com/Raven-233486/Barotrauma-Animated](https://github.com/Raven-233486/Barotrauma-Animated)
+
 All override & new items are listed in the Itemlist.txt
 
 Classic Verison: %ModDir:2809175631%
