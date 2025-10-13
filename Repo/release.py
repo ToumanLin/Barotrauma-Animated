@@ -3,6 +3,7 @@ import shutil
 import sys
 import io
 import subprocess
+import re
 
 # --- Configuration Constants ---
 # Default path for Barotrauma's vanilla content.
@@ -19,6 +20,54 @@ def _get_script_and_mod_paths() -> tuple[str, str, str]:
     mod_root_dir = os.path.abspath(os.path.join(current_repo_dir, '..'))
     release_output_dir = os.getcwd()
     return current_repo_dir, mod_root_dir, release_output_dir
+
+def _get_current_modversion(mod_root_dir: str) -> str:
+    """
+    Reads the current modversion from the changelog.txt file (line 5).
+    """
+    changelog_path = os.path.join(mod_root_dir, 'About', 'changelog.txt')
+    if not os.path.exists(changelog_path):
+        print(f"Warning: changelog.txt not found at {changelog_path}")
+        return "1.0.0"
+    
+    try:
+        with io.open(changelog_path, 'r', encoding='utf-8-sig') as f:
+            lines = f.readlines()
+        
+        # Get version from line 5 (index 4)
+        if len(lines) >= 5:
+            current_version = lines[4].strip()
+            # Basic validation for version format
+            if re.match(r'^\d+\.\d+\.\d+$', current_version):
+                return current_version
+            else:
+                print(f"Warning: Invalid version format in changelog.txt line 5: {current_version}")
+                return "1.0.0"
+        else:
+            print("Warning: changelog.txt has fewer than 5 lines")
+            return "1.0.0"
+    except Exception as e:
+        print(f"Error reading changelog.txt: {e}")
+        return "1.0.0"
+
+def _prompt_for_new_version(current_version: str) -> str:
+    """
+    Prompts the user to input a new version number.
+    If user just presses Enter, uses the current version.
+    """
+    print(f"\nCurrent modversion: {current_version}")
+    while True:
+        new_version = input("Enter new modversion ([Main Version].[Sub Version].[Update Count]) or press Enter to keep current: ").strip()
+        if not new_version:
+            # User just pressed Enter, use current version
+            print(f"Using current version: {current_version}")
+            return current_version
+        else:
+            # Basic validation for version format (x.y.z)
+            if re.match(r'^\d+\.\d+\.\d+$', new_version):
+                return new_version
+            else:
+                print("Invalid version format. Please use format: x.y.z (e.g., 2.0.2)")
 
 def _perform_safety_checks(mod_root_dir: str, release_output_dir: str):
     """
@@ -135,7 +184,7 @@ def generate_item_list(repo_dir: str, mod_root_dir: str):
         print(f"Error: Python interpreter '{sys.executable}' not found. Ensure Python is in your PATH.")
         sys.exit(1)
 
-def modify_release_filelist(filelist_path: str) -> bool:
+def modify_release_filelist(filelist_path: str, new_version: str) -> bool:
     """
     Modifies the filelist.xml copied to the release directory.
     This function contains the logic previously in filelist_modifier.py.
@@ -147,18 +196,26 @@ def modify_release_filelist(filelist_path: str) -> bool:
 
     try:
         with io.open(filelist_path, 'r', encoding='utf-8-sig') as f:
-            lines = f.readlines()
+            content = f.read()
 
-        filtered = [l for l in lines if "ArchiveAndReference" not in l]
-        content = "".join(filtered)
+        # Remove ArchiveAndReference lines
+        lines = content.split('\n')
+        filtered_lines = [line for line in lines if "ArchiveAndReference" not in line]
+        content = '\n'.join(filtered_lines)
         
+        # Update the name attribute (remove -DEV and add steamworkshopid)
         old_name_attr = 'name="[EA-HI]木卫二萌化计划-DEV"'
         new_name_attr = 'name="[EA-HI]木卫二萌化计划" steamworkshopid="2809175631"'
         content = content.replace(old_name_attr, new_name_attr)
+        
+        # Update the modversion
+        old_version_pattern = r'modversion="[^"]*"'
+        new_version_attr = f'modversion="{new_version}"'
+        content = re.sub(old_version_pattern, new_version_attr, content)
 
         with io.open(filelist_path, 'w', encoding='utf-8-sig') as f:
             f.write(content)
-        print("Filelist.xml modified successfully.")
+        print(f"Filelist.xml modified successfully. Updated version to: {new_version}")
         return True
     except Exception as e:
         print(f"Error modifying filelist.xml: {e}")
@@ -198,7 +255,12 @@ def run_release_process():
 
     # Modify the filelist.xml that was just copied to the release output directory
     copied_filelist_path = os.path.join(release_output_dir, 'filelist.xml')
-    if not modify_release_filelist(copied_filelist_path):
+    
+    # Get current version and prompt for new version
+    current_version = _get_current_modversion(mod_root_dir)
+    new_version = _prompt_for_new_version(current_version)
+    
+    if not modify_release_filelist(copied_filelist_path, new_version):
         print("Release process aborted due to filelist modification failure.")
         sys.exit(1)
 

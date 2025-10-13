@@ -184,11 +184,11 @@
 | exotic_matter | Exotic matter | 异星物质 |
 | genesplicer | Gene Splicer | 基因拼接器 |
 | guardiansuit | Guardian battle suit | 卫士战斗服 |
-| h_administratorclothes | <span style="color:red">UKN</span> | 站点管理员制服 高跟 |
+| h_administratorclothes | Station Administrator's Outfit With Heels | 站点管理员制服 高跟 |
 | h_artiedolittleclothes | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
-| h_assistantclothes | <span style="color:red">UKN</span> | 助手服 高跟 |
-| h_banditclothes1 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
-| h_banditclothes2 | <span style="color:red">UKN</span> | 土匪套装 高跟 |
+| h_assistantclothes | Assistant Clothes With Heels | 助手服 高跟 |
+| h_banditclothes1 | Bandit Outfit With Heels | 土匪套装 高跟 |
+| h_banditclothes2 | Bandit Outfit With Heels | 土匪套装 高跟 |
 | h_captainseparatistsuniform1 | Commander's Uniform With Heels | 指挥官制服 高跟 |
 | h_captainseparatistsuniform2 | Veteran's Fatigues With Heels | 老兵军服 高跟 |
 | h_captainseparatistsuniform3 | Warlord's Attire With Heels | 军阀套装 高跟 |
@@ -196,7 +196,7 @@
 | h_captainsuniform2 | Renegade's Jacket With Heels | 叛逆者夹克 高跟 |
 | h_captainsuniform3 | Admiral's Uniform With Heels | 海军上将制服 高跟 |
 | h_captainsuniform4 | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
-| h_clowncostume | <span style="color:red">UKN</span> | 小丑服 高跟 |
+| h_clowncostume | Clown Costume With Heels | 小丑服 高跟 |
 | i_Wf_pucs | EPSP (transparent) | 透明版 实验性压力稳定PUCS (EPSP) |
 | i_Wf_pucs_B | Abyss EPSP (transparent) | 透明版 深潜型 EPSP |
 | i_Wf_pucs_R | Combat EPSP (transparent) | 透明版 战斗型 EPSP |
@@ -222,9 +222,11 @@
 | succubusmask | Succubus Mask | 魅魔面罩 |
 | succubussuit | Succubus set | 魅魔套装 |
 | teleportine | teleportine | 传送药水 |
+| testcharger | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | testpermit | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | tight_combatsuit_1 | tight combat suit mk1 | 紧身战斗服mk1 |
 | tight_combatsuit_2 | tight combat suit mk2 | 紧身战斗服mk2 |
 | underwear | Standard Underwear | 标准内衣 |
+| underwear_1 | <span style="color:red">UKN</span> | <span style="color:red">UKN</span> |
 | wf_mudraptorshell | Mudraptor Shell Suit (WIP) | 迅猛龙甲壳服装(WIP) |
 | whiteswimmingsuit | White Competitive Swimsuit | 白色竞技泳衣 |
