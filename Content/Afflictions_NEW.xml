@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Afflictions>
+<Override><Afflictions>
 	<!--电基鱼叉枪：给玩家一个提升攻击力的buff-->
 	<Affliction name="" description="" identifier="wf_blameipromotion" type="buff" isbuff="true" limbspecific="false" maxstrength="100"  showiconthreshold="infinity" showicontoothersthreshold="infinity">
 		<Effect minstrength="0" maxstrength="100" strengthchange="-10">
@@ -59,7 +59,7 @@
 		transformthresholdondeath="1000"
 		sendmessages="false"
 		maxstrength="100"
-		duration="0.13"
+		duration="0.2"
 		iconcolors="94,54,95;163,73,164;200,191,231">
 		<icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="181,230,29,255" origin="0,0"/>
 		<Effect minstrength="0" maxstrength="100"
@@ -81,4 +81,14 @@
 		<Effect minstrength="0" maxstrength="100" />
     <AfflictionOverlay texture="%ModDir%/Content/UI/nightvision.png" />
   </Affliction>
-</Afflictions>
+	<!-- Heels: This do not work, it's just a placeholder, I don't like this idea -->
+	<Affliction name="Wf_Heels" identifier="Wf_Heels" type="buff" isbuff="true" limbspecific="false" maxstrength="1">
+		<Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+			<StatusEffect target="Character">
+        <TriggerAnimation Type="Walk" path="%ModDir%/Content/Characters/Human/Animations/HumanWalkHeels.xml" priority="0" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" path="%ModDir%/Content/Characters/Human/Animations/HumanRunHeels.xml" priority="0" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Crouch" path="%ModDir%/Content/Characters/Human/Animations/HumanCrouchHeels.xml" priority="0" ExpectedSpecies="Human" />
+			</StatusEffect>
+		</Effect>
+	</Affliction>
+</Afflictions></Override>
