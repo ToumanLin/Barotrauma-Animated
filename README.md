@@ -42,9 +42,9 @@ label all vanilla uniforms as wf_withboots
       <sprite name="[place holder] Right Shoe" texture="[place holder]_2.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" sourcerect="272,208,64,64" origin="0.48, 0.4125" sound="footstep_metal_heels" />
   3. 增加heels animation
       <StatusEffect type="OnWearing" target="Character" setvalue="true" >
-        <TriggerAnimation Type="Walk" FileName="HumanWalkHeels" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Run" FileName="HumanRunHeels" priority="1" ExpectedSpecies="Human" />
-        <TriggerAnimation Type="Crouch" FileName="HumanCrouchHeels" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Walk" path="%ModDir%/Content/Characters/Human/Animations/HumanWalkHeels.xml" priority="0" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" path="%ModDir%/Content/Characters/Human/Animations/HumanRunHeels.xml" priority="0" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Crouch" path="%ModDir%/Content/Characters/Human/Animations/HumanCrouchHeels.xml" priority="0" ExpectedSpecies="Human" />
       </StatusEffect>
   4. 别忘了本地化, description
 
