@@ -3,10 +3,21 @@ import subprocess
 import sys
 import re
 import shutil
-from typing import Set, Dict, Tuple
+from typing import Set, Dict, Tuple, List, Optional
+import xml.etree.ElementTree as stdlib_et
+
+try:
+    from lxml import etree
+except ImportError:
+    etree = None
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
 # 导入您提供的现有脚本中的函数, 以便重用逻辑
 # 假设 update_checker.py, release.py 和 item_list_generator.py 都在同一个 Repo 文件夹中
+# 使用 conda Baro_dev 环境运行
 try:
     import item_list_generator
 except ImportError:
@@ -27,9 +38,178 @@ def _get_paths() -> Tuple[str, str, str, str]:
 
 # --- 核心功能 ---
 
+EXCLUDED_ITEM_ANCESTORS = {
+    'Fabricate',
+    'Deconstruct',
+    'Inventory',
+    'ItemSet',
+    'npcsets',
+    'Jobs',
+    'Missions',
+}
+
+
+def _run_git(args: List[str], cwd: str, check: bool = True) -> subprocess.CompletedProcess:
+    """Run a git command and return the completed process."""
+    return subprocess.run(
+        ['git'] + args,
+        cwd=cwd,
+        capture_output=True,
+        check=check,
+    )
+
+
+def _get_changed_xml_files(vanilla_content_path: str) -> List[Tuple[str, str, str]]:
+    """
+    Return changed XML files as (status, old_path, new_path).
+    Renames/copies include both old and new paths; other statuses use the same path twice.
+    """
+    result = _run_git(['diff-tree', '--no-commit-id', '--name-status', '-r', 'HEAD'], vanilla_content_path)
+    changed_files = []
+
+    for raw_line in result.stdout.decode('utf-8', errors='replace').splitlines():
+        if not raw_line.strip():
+            continue
+
+        parts = raw_line.split('\t')
+        status = parts[0]
+
+        if (status.startswith('R') or status.startswith('C')) and len(parts) >= 3:
+            old_path, new_path = parts[1], parts[2]
+        elif len(parts) >= 2:
+            old_path = new_path = parts[1]
+        else:
+            continue
+
+        if old_path.endswith('.xml') or new_path.endswith('.xml'):
+            changed_files.append((status, old_path, new_path))
+
+    return changed_files
+
+
+def _read_git_file(vanilla_content_path: str, revision: str, file_path_rel: str) -> Optional[bytes]:
+    """Read a file from a git revision. Returns None when the file does not exist there."""
+    result = _run_git(['show', f'{revision}:{file_path_rel}'], vanilla_content_path, check=False)
+    if result.returncode != 0:
+        return None
+    return result.stdout
+
+
+def _read_worktree_file(file_path_abs: str) -> Optional[bytes]:
+    if not os.path.exists(file_path_abs):
+        return None
+
+    with open(file_path_abs, 'rb') as file:
+        return file.read()
+
+
+def _extract_item_snapshots(xml_content: Optional[bytes]) -> Dict[str, bytes]:
+    """
+    Extract comparable XML snapshots for real item definitions, keyed by identifier.
+    Whitespace-only formatting differences are ignored by remove_blank_text + c14n.
+    """
+    if not xml_content:
+        return {}
+
+    if etree is not None:
+        return _extract_item_snapshots_lxml(xml_content)
+
+    return _extract_item_snapshots_stdlib(xml_content)
+
+
+def _extract_item_snapshots_lxml(xml_content: bytes) -> Dict[str, bytes]:
+    parser = etree.XMLParser(recover=True, remove_blank_text=True, remove_comments=True, encoding='utf-8')
+    root = etree.fromstring(xml_content, parser=parser)
+    if root is None:
+        return {}
+
+    items = _find_item_nodes(root)
+    return _build_lxml_snapshots(items)
+
+
+def _extract_item_snapshots_stdlib(xml_content: bytes) -> Dict[str, bytes]:
+    root = stdlib_et.fromstring(xml_content)
+    items = _find_item_nodes(root)
+    return _build_stdlib_snapshots(items)
+
+
+def _local_tag(tag: str) -> str:
+    return tag.rsplit('}', 1)[-1]
+
+
+def _find_item_nodes(root) -> List:
+    items = []
+
+    def walk(node, has_excluded_ancestor: bool):
+        tag = _local_tag(node.tag)
+        if tag == 'Item' and node.get('identifier') and not has_excluded_ancestor:
+            items.append(node)
+
+        child_has_excluded_ancestor = has_excluded_ancestor or tag in EXCLUDED_ITEM_ANCESTORS
+        for child in list(node):
+            walk(child, child_has_excluded_ancestor)
+
+    walk(root, False)
+    return items
+
+
+def _build_lxml_snapshots(items: List) -> Dict[str, bytes]:
+    snapshots = {}
+    for item in items:
+        item_id = item.get('identifier')
+        if not item_id:
+            continue
+
+        item_snapshot = etree.tostring(item, method='c14n', with_comments=False)
+        snapshots.setdefault(item_id, []).append(item_snapshot)
+
+    return {
+        item_id: b'\n'.join(sorted(item_snapshots))
+        for item_id, item_snapshots in snapshots.items()
+    }
+
+
+def _build_stdlib_snapshots(items: List) -> Dict[str, bytes]:
+    snapshots = {}
+    for item in items:
+        item_id = item.get('identifier')
+        if not item_id:
+            continue
+
+        _normalize_stdlib_element(item)
+        item_snapshot = stdlib_et.tostring(item, encoding='utf-8', short_empty_elements=True)
+        snapshots.setdefault(item_id, []).append(item_snapshot)
+
+    return {
+        item_id: b'\n'.join(sorted(item_snapshots))
+        for item_id, item_snapshots in snapshots.items()
+    }
+
+
+def _normalize_stdlib_element(element) -> None:
+    element.attrib = dict(sorted(element.attrib.items()))
+
+    if element.text is not None and not element.text.strip():
+        element.text = None
+    if element.tail is not None and not element.tail.strip():
+        element.tail = None
+
+    for child in list(element):
+        _normalize_stdlib_element(child)
+
+
+def _get_changed_item_ids(old_items: Dict[str, bytes], new_items: Dict[str, bytes]) -> Set[str]:
+    """Return item identifiers whose XML changed between old and new snapshots."""
+    changed_item_ids = set()
+    for item_id in set(old_items).union(new_items):
+        if old_items.get(item_id) != new_items.get(item_id):
+            changed_item_ids.add(item_id)
+    return changed_item_ids
+
+
 def get_updated_vanilla_items(vanilla_content_path: str) -> Tuple[Set[str], Dict[str, str]]:
     """
-    使用 git 获取上一次 commit 中修改的 XML 文件, 并提取其中的 item identifiers.
+    使用 git 获取上一次 commit 中修改的 XML 文件, 并提取其中真正变更的 item identifiers.
     返回一个包含所有 item ID 的集合, 以及一个 ID到其文件路径的映射.
     """
     print(f"\n1. 正在检查 '{vanilla_content_path}' 的 git 历史记录...")
@@ -38,45 +218,49 @@ def get_updated_vanilla_items(vanilla_content_path: str) -> Tuple[Set[str], Dict
         sys.exit(1)
 
     try:
-        command = ['git', 'diff-tree', '--no-commit-id', '--name-only', '-r', 'HEAD']
-        result = subprocess.run(command, cwd=vanilla_content_path, capture_output=True, text=True, check=True, encoding='utf-8')
-        changed_files = result.stdout.strip().split('\n')
+        xml_files = _get_changed_xml_files(vanilla_content_path)
     except FileNotFoundError:
         print("错误: 'git' 命令未找到. 请确保 Git 已经安装并且在系统的 PATH 中.")
         sys.exit(1)
     except subprocess.CalledProcessError as e:
-        print(f"错误: 执行 git 命令失败. \n{e.stderr}")
+        stderr = e.stderr.decode('utf-8', errors='replace') if e.stderr else ''
+        print(f"错误: 执行 git 命令失败. \n{stderr}")
         sys.exit(1)
 
     updated_item_ids = set()
     item_path_map = {}
     
-    xml_files = [f for f in changed_files if f.endswith('.xml')]
     if not xml_files:
         print("在上一次 git commit 中没有找到被修改的 .xml 文件.")
         return updated_item_ids, item_path_map
 
     print(f"发现在上一次 commit 中有 {len(xml_files)} 个 .xml 文件被修改:")
-    for file_path_rel in xml_files:
-        print(f"  - {file_path_rel}")
-        file_path_abs = os.path.join(vanilla_content_path, file_path_rel)
-        if not os.path.exists(file_path_abs):
+    for status, old_path_rel, new_path_rel in xml_files:
+        display_path = new_path_rel if not status.startswith('D') else old_path_rel
+        
+        # 排除 Items/Assemblies 目录，因为它们保存的是物品组合而不是单独物品的定义
+        if display_path.replace('\\', '/').startswith('Items/Assemblies/'):
             continue
+
+        print(f"  - {display_path}")
         
         try:
-            with open(file_path_abs, 'r', encoding='utf-8') as file:
-                content = file.read()
-                cleaned_content = item_list_generator.remove_unwanted_sections(content)
-                identifiers = item_list_generator.extract_identifiers_from_xml(cleaned_content)
-                
-                if identifiers:
-                    updated_item_ids.update(identifiers)
-                    for item_id in identifiers:
-                        item_path_map[item_id] = file_path_rel.replace('\\', '/')
+            old_xml = None if status.startswith('A') else _read_git_file(vanilla_content_path, 'HEAD^', old_path_rel)
+            new_xml = None if status.startswith('D') else _read_worktree_file(os.path.join(vanilla_content_path, new_path_rel))
+
+            old_items = _extract_item_snapshots(old_xml)
+            new_items = _extract_item_snapshots(new_xml)
+            identifiers = _get_changed_item_ids(old_items, new_items)
+
+            if identifiers:
+                updated_item_ids.update(identifiers)
+                report_path = new_path_rel if not status.startswith('D') else old_path_rel
+                for item_id in identifiers:
+                    item_path_map[item_id] = report_path.replace('\\', '/')
         except Exception as e:
-            print(f"处理文件 '{file_path_abs}' 时出错: {e}")
+            print(f"处理文件 '{display_path}' 时出错: {e}")
             
-    print(f"从更新的香草文件中提取了 {len(updated_item_ids)} 个唯一的 item ID.")
+    print(f"从更新的香草文件中提取了 {len(updated_item_ids)} 个真正变更的唯一 item ID.")
     return updated_item_ids, item_path_map
 
 
