@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-	<Item name="" identifier="Wf_New_XDS01_coat" subcategory="EPSP" category="Diving" tags="diving,deepdiving,divinggear_wearableindoors,human" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5" cargocontaineridentifier="">
+	<Item name="" identifier="Wf_New_XDS01_coat" subcategory="EPSP" category="Diving" tags="diving,deepdiving,clowngear,clowns,divinggear_wearableindoors,human" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy" botpriority="5" cargocontaineridentifier="">
 		<Price baseprice="15000" sold="false" />
 		<PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
 		<Deconstruct time="45">
@@ -307,7 +307,7 @@
 		</ItemContainer>
 	</Item>
 
-	<Item name="" identifier="Wf_New_XDS01_Inner" description="" subcategory="EPSP" category="Diving" tags="smallitem,clothing" scale="0.5" impactsoundtag="impact_soft" fireproof="false">
+	<Item name="" identifier="Wf_New_XDS01_Inner" description="" subcategory="EPSP" category="Diving" tags="smallitem,clothing,clowngear,clowns" scale="0.5" impactsoundtag="impact_soft" fireproof="false">
 		<PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.05" />
 		<Price baseprice="350"></Price>
 		<Deconstruct time="15">
@@ -315,12 +315,11 @@
 			<Item identifier="physicorium" />
 		</Deconstruct>
 		<Fabricate suitablefabricators="fabricator" requiredtime="30" amount="1">
-			<RequiredSkill identifier="tailoring" level="50" />
 			<RequiredSkill identifier="mechanical" level="30" />
-			<Item identifier="rubber" amount="2" />
-			<Item identifier="physicorium" />
-			<Item identifier="organicfiber" amount="2" />
-			<Item identifier="Wf_Research_chip" />
+			<RequiredItem identifier="rubber" amount="2" />
+			<RequiredItem identifier="physicorium" />
+			<RequiredItem identifier="organicfiber" amount="2" />
+			<RequiredItem identifier="Wf_Research_chip" />
 		</Fabricate>
 		<InventoryIcon texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="368,0,82,126" origin="0.5,0.5" />
 		<Sprite name="XDS Item" texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
@@ -340,7 +339,7 @@
 			<sprite name="XDS01 Inner Left Leg" texture="Wf_New_XDS01_inner.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
 			<sprite name="XDS01 Inner Left Shoe" texture="Wf_New_XDS01_inner.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" sourcerect="330,208,64,64" origin="0.5738, 0.4125" sound="footstep_armor_heavy_heels" />
 			<sprite name="XDS01 Inner Right Shoe" texture="Wf_New_XDS01_inner.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" sourcerect="266,208,64,64" origin="0.5738, 0.4125" sound="footstep_armor_heavy_heels" />
-			<!-- MOD FEATURE add "clown" Tag -->
+			<!-- MOD FEATURE add "clown" Tag, Note: "You need clowngear, clownmask, clowns, three tags to activate clownpower" -->
 			<StatusEffect statuseffecttags="clown" type="OnWearing" target="Character" duration="0.1" stackable="false" />
 			<StatusEffect type="OnWearing" target="Character" setvalue="true" >
 				<TriggerAnimation Type="Walk" path="%ModDir%/Content/Characters/Human/Animations/HumanWalkHeels.xml" priority="0" ExpectedSpecies="Human" />
@@ -356,7 +355,7 @@
 		</Wearable>
 	</Item>
 
-	<Item name="" identifier="Wf_New_XDS01_Engine" subcategory="EPSP" category="Diving" tags="diving,provocative,mediumitem" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
+	<Item name="" identifier="Wf_New_XDS01_Engine" subcategory="EPSP" category="Diving" tags="diving,provocative,mediumitem,clowngear,clowns" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
 		<PreferredContainer primary="divingcab" />
 		<Deconstruct time="10">
 			<Item identifier="physicorium" />
@@ -384,7 +383,7 @@
 					<sprite texture="%ModDir%/Content/Addons/EPSPSeries/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="0,0,1,1" origin="0.84947,0.7225" />
 				</LightComponent>
 			</sprite>
-			<!-- MOD FEATURE add "clown" Tag -->
+			<!-- MOD FEATURE add "clown" Tag, Note: "You need clowngear, clownmask, clowns, three tags to activate clownpower" -->
 			<StatusEffect statuseffecttags="clown" type="OnWearing" target="Character" duration="0.1" stackable="false" />
 			<!-- MOD FEATURE EXO aff & engine limbs aff -->
 			<StatusEffect type="OnWearing" target="Character" interval="0.1" disabledeltatime="true">
@@ -461,7 +460,7 @@
     </ItemContainer>
 	</Item>
 	
-	<Item name="" identifier="Wf_New_XDS01_Helmet" subcategory="EPSP" category="Diving" tags="smallitem" scale="0.4" fireproof="false" description="" impactsoundtag="impact_metal_light" >
+	<Item name="" identifier="Wf_New_XDS01_Helmet" subcategory="EPSP" category="Diving" tags="smallitem,clownmask,clowns" scale="0.4" fireproof="false" description="" impactsoundtag="impact_metal_light" >
 		<Price baseprice="1200" sold="false" />
 		<Deconstruct time="15">
 			<Item identifier="plastic" />
@@ -501,7 +500,7 @@
 					<LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
 				</LightComponent>
 			</sprite>
-			<!-- MOD FEATURE add "clown" Tag -->
+			<!-- MOD FEATURE add "clown" Tag, Note: "You need clowngear, clownmask, clowns, three tags to activate clownpower" -->
 			<StatusEffect statuseffecttags="clown" type="OnWearing" target="Character" duration="0.1" stackable="false" />
 			<damagemodifier afflictionidentifiers="blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.05" damagesound="LimbArmor" />
 			<damagemodifier afflictiontypes="Stun" armorsector="0.0,360.0" damagemultiplier="0.05" />
