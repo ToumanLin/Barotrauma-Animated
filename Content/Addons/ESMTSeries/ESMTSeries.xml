@@ -526,7 +526,9 @@
     <Sprite name="Thermal Goggles" texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" sourcerect="0,224,64,31" depth="0.6" origin="0.5,0.5" />
     <Body width="70" height="24" density="15" />
     <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
-      <sprite name="Thermal Goggles Wearable" texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="1,192,64,31" origin="0.4,0.5" />
+      <sprite name="Thermal Goggles Wearable" texture="%ModDir%/Content/Items/Jobgear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="1,192,64,31" origin="0.4,0.5">
+        <LightComponent LightColor="150,255,150,100" range="1536" castshadows="false" powerconsumption="infinity" IsOn="true" flicker="0.1" flickerspeed="0.3" pulsefrequency="0.1" pulseamount="0.1" />
+      </sprite>
       <StatusEffect type="OnWearing" target="Character" interval="0.1" disabledeltatime="true">
         <Affliction identifier="wf_nightvision" />
       </StatusEffect>
