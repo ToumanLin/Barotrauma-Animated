@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="Otfx_huntrobot" SpeciesTranslationOverride="" DisplayName="" Group="human" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" UseHumanAI="False" IsMachine="True" CanSpeak="False" ShowHealthBar="True" UseBossHealthBar="False" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="False" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False" AITurretPriority="1" AISlowTurretPriority="1" DespawnContainer="">
+  <ragdolls folder="%ModDir%/Characters/Otfx_huntrobot/Ragdolls/" />
+  <animations folder="%ModDir%/Characters/Otfx_huntrobot/Animations/" />
+  <health Vitality="80" DoesBleed="False" CrushDepth="Infinity" UseHealthWindow="False" BleedingReduction="0" BurnReduction="3" ConstantHealthRegeneration="3" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="True" PoisonVulnerability="1" EmpVulnerability="1" ApplyAfflictionColors="False">
+    <Limb>
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+  </health>
+  <ai CombatStrength="200" Sight="2" Hearing="1" AggressionHurt="0" AggressionGreed="0" FleeHealthThreshold="0" AttackWhenProvoked="False" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="False" RandomAttack="False" CanOpenDoors="False" UsePathFindingToGetInside="False" KeepDoorsClosed="False" AvoidAbyss="True" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <target Tag="hostile" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="stronger" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="weaker" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="equal" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="owner" State="Protect" Priority="10" ReactDistance="300" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <petbehavior maxhappiness="100" happinessdecreaserate="0" hungerincreaserate="0" playforce="0" toggleowner="true" hidestatusindicators="true" playcooldown="0" />
+    <latchonto attachtocharacters="true" attachtosub="false" attachtowalls="false" mindeattachspeed="5.0" maxdeattachspeed="8.0" damageondetach="0.0" detachstun="0.0" attachlimb="Torso" localattachpos="0,0" offset="0" attachlimbrotation="135" weld="false" maxattachduration="-1.0" cooldown="0.5" />
+  </ai>
+  <StatusEffect type="OnActive" target="This">
+    <Sound file="%ModDir%/Characters/Otfx_huntrobot/HUNTROBOT_idle1.ogg" loop="true" range="1000" volume="0.25" selectionmode="Random" />
+    <Sound file="%ModDir%/Characters/Otfx_huntrobot/HUNTROBOT_idle2.ogg" loop="true" range="1000" volume="0.25" />
+    <Conditional islatched="false" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="This">
+    <Sound file="%ModDir%/Characters/Otfx_huntrobot/HUNTROBOT_hit1.ogg" loop="true" range="1000" volume="0.25" selectionmode="Random" />
+    <Sound file="%ModDir%/Characters/Otfx_huntrobot/HUNTROBOT_hit2.ogg" loop="true" range="1000" volume="0.25" />
+    <Conditional islatched="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" targetlimb="Torso">
+    <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" particleamount="100" velocitymin="100" velocitymax="1000" scalemin="0.3" scalemax="0.5" />
+    <Explosion range="180" force="10" flash="true" shockwave="true" sparks="true" flames="true" smoke="true" underwaterbubble="true" structuredamage="50" itemdamage="200" decal="explosion" decalsize="0.3">
+      <Affliction identifier="explosiondamage" strength="75" />
+      <Affliction identifier="stun" strength="2.0" />
+    </Explosion>
+    <Sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="3000.0" selectionmode="Random" />
+    <Sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="3000.0" />
+    <Sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="3000.0" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" delay="0.2">
+    <RemoveCharacter />
+  </StatusEffect>
+  <Sound File="Content/Sounds/Impact/MetalImpactLight1.ogg" State="Damage" Range="500" Volume="1" Tags="" />
+  <Sound File="Content/Sounds/Impact/MetalImpactLight2.ogg" State="Damage" Range="500" Volume="1" Tags="" />
+  <Sound File="Content/Sounds/Impact/MetalImpactLight3.ogg" State="Damage" Range="500" Volume="1" Tags="" />
+  <Sound File="Content/Sounds/Impact/MetalImpactLight4.ogg" State="Damage" Range="600" Volume="1" Tags="" />
+  <Sound File="Content/Sounds/Impact/MetalImpactLight5.ogg" State="Damage" Range="600" Volume="1" Tags="" />
+</Character>

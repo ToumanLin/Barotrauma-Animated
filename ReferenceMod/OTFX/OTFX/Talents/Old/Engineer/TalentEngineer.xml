@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="castledoctrine">
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="1,7" sheetelementsize="128,128" />
+    <Description tag="talentdescription.unlockrecipe">
+      <Replace tag="[itemname]" value="entityname.dirtybomb" color="gui.orange" />
+    </Description>
+    <Description tag="talentdescription.increaseattackpowertomonstersinsub">
+      <Replace tag="[attackpowerincrease]" value="35" color="gui.green" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Enemy,InFriendlySubmarine" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="0.35" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AddedRecipe itemidentifier="dirtybomb" />
+  </Talent>
+</Talents>

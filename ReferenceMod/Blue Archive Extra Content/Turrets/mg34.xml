@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--mg34-->
+  <Item name="Mounted MG34" description="" identifier="mg34" Tags="turret,mg34bunker_gun" category="Weapon" DisableItemUsageWhenSelected="true" subcategory="subweapons" canflipx="true" pickdistance="500" interactthroughwalls="true" Scale="0.5" interactdistance="500" focusonselected="true" offsetonselected="750" type="Controller" disableitemusagewhenselected="true" isshootable="true" requireaimtouse="true" requireaimtosecondaryuse="true" linkable="true" allowedlinks="mg34equipment">
+    <Sprite texture="%ModDir%/Turrets/mg34stand.png" depth="0.01" sourcerect="0,0,276,208" canflipy="true" canflipx="true" />
+    <MinimapIcon name="Command_Weapons_Coilgun" texture="Content/UI/CommandUIAtlas.png" sourcerect="768,0,128,128" />
+    <Body width="80" radius="80" density="20" />
+    <Turret launchimpulse="100.0" canbeselected="false" linkable="true" barrelpos="190,25" firingoffset="0,-180" rotationlimits="-12,10" recoildistance="30" reload="0.05" springstiffnesslowskill="20" springstiffnesshighskill="20" springdampinglowskill="5" springdampinghighskill="5" rotationspeedlowskill="3" rotationspeedhighskill="3" MaxAngleOffset="10" AICurrentTargetPriorityMultiplier="1.1">
+      <StatusEffect type="OnUse" target="This" forceplaysounds="false"> /&gt;
+	    <sound file="%ModDir%/Turrets/mg34sound2.ogg" range="10000" volume="2" type="OnUse" loop="true" /></StatusEffect>
+      <WeaponIndicator texture="Content/UI/WeaponUI.png" sourcerect="425,913,66,36" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Turrets/mg34barrel1.png" depth="0.011" sourcerect="0,0,300,569" origin="0.5, 0.4" canflipy="true" canflipx="true" />
+      <BarrelSprite texture="%ModDir%/Turrets/mg34barrel2.png" depth="0.012" sourcerect="0,0,300,569" origin="0.5, 0.4" canflipy="true" canflipx="true" />
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="10" velocitymax="10" scalemin="0.5" scalemax="0.5" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="1000.0" structuredamage="0" force="0.01" camerashake="5.0" flames="false" smoke="false" sparks="false" underwaterbubble="false"></Explosion>
+      </StatusEffect>
+    </Turret>
+    <Controller UserPos="0,-20" direction="Right" canbeselected="true" characterusable="true" AllowSelectingWhenSelectedByOther="false" selectkey="Action" drawuserbehind="true" forceusertostayattached="true" msg="control" showprojectileindicator="true">
+      <limbposition limb="Head" position="74,-200" />
+      <limbposition limb="Torso" position="74,-200" />
+    </Controller>
+    <Holdable slots="RightHand+LeftHand" holdpos="120,30" handle1="-20,0" handle2="0,-120" holdangle="80" aimable="false" msg="MG34" controlpose="true" attachable="true" attachedbydefault="false" AttachesToFloor="true" DisallowAttachingOverTags="container,planter" AllowAccessWhenDropped="False">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.3" setvalue="true" disabledeltatime="true"></StatusEffect>
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.3" setvalue="true" disabledeltatime="true" />
+    </Holdable>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <aitarget maxsightrange="3000" maxsoundrange="8000" fadeouttime="5" />
+    <ItemContainer hideitems="false" drawinventory="true" capacity="1" maxstacksize="1" canbeselected="true" selectkey="Select" msg="ItemMsgInteractSelect" keepopenwhenequipped="false" movableframe="true" allowuioverlap="true" ItemsUseInventoryPlacement="true" AllowAccessWhenDropped="False">
+      <GuiFrame relativesize="0.18,0.23" anchor="BottomCenter" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="mg34ammo" />
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="mg34 Loader" identifier="mg34loader" tags="mg34equipment,mg34ammosource,turretammosource,mg34ammoloader" noninteractable="false" hideinmenus="false" category="Machine,Weapon" subcategory="subweapons" linkable="true" allowedlinks="mg34" scale="0.5" damagedbyexplosions="true" explosiondamagemultiplier="0.2">
+    <Upgrade gameversion="0.14.7.0" rectwidth="82" rectheight="176" itempos="82,-270" />
+    <SwappableItem canbebought="false" origin="82,352" spawnwithid="mg34ammobox" />
+    <UpgradePreviewSprite texture="Content/UI/WeaponUI.png" sourcerect="208,968,32,46" origin="0.5,0.5" />
+    <Sprite name="mg34 Loader Front" texture="%ModDir%/Turrets/mg34_loader.png" depth="0.78" sourcerect="0,0,86,70" origin="0.5,0.5" />
+    <DecorativeSprite name="Ammobelt" texture="Content/Items/Weapons/Loaders.png" depth="0.79" sourcerect="499,663,52,142" origin="0.5,0.5" offset="0,12">
+      <IsActiveConditional targetcontaineditem="true" condition="gt 0.0" />
+      <IsActiveConditional targetcontaineditem="true" hastag="! noammobelt" />
+    </DecorativeSprite>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" deteriorationspeed="10" mindeteriorationdelay="60" maxdeteriorationdelay="300" MinDeteriorationCondition="0" RepairThreshold="50" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="-0.1,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="55" />
+      <RequiredItem items="wrench" type="Equipped" />
+      <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+      <ParticleEmitter particle="smoke" particlespersecond="2" scalemin="1" scalemax="2.5" anglemax="360" velocitymin="-50" velocitymax="50" mincondition="15.0" maxcondition="50.0" />
+      <ParticleEmitter particle="heavysmoke" particlespersecond="2" scalemin="1.0" scalemax="2.5" anglemax="360" distancemax="60" mincondition="0.0" maxcondition="15.0" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="1000" />
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="stun" strength="4" />
+      </StatusEffect>
+    </Repairable>
+    <ItemContainer hideitems="false" drawinventory="true" capacity="1" maxstacksize="1" slotsperrow="6" itempos="82,-270" iteminterval="0,0" itemrotation="0" canbeselected="true" msg="ItemMsgInteractSelect" containedspritedepth="0.79">
+      <GuiFrame relativesize="0.18,0.23" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="mg34ammo" />
+      <!-- when the mg34 is fired, it triggers this statuseffect, causing contained ammunition boxes to spawn new ammo -->
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="condition_out" displayname="connection.conditionout" />
+      <output name="contained_conditions" displayname="connection.ammunitionout" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="mg34 Round" identifier="mg34round" category="Weapon" scale="0.4" sonarsize="2" noninteractable="true" hideinmenus="false">
+    <!--<Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="143,310,369,66" depth="0.55" />-->
+    <Sprite texture="%ModDir%/Turrets/Projectiletypeshot_368_48.png" sheetindex="0,6" sheetelementsize="368,1" depth="0.55" />
+    <Body width="170" height="20" density="10" ignoresrotation="true" />
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-20" handle1="-10,0" handle2="10,0" aimable="false" />
+    <Projectile characterusable="false" hitscan="true" spread="11.5" removeonhit="true" damagedoors="false" friendlyfire="false">
+      <Attack structuredamage="0" itemdamage="0" severlimbsprobability="0.3" penetration="0.2">
+        <Affliction identifier="gunshotwound" strength="10" />
+        <Affliction identifier="internaldamage" strength="10" />
+        <Affliction identifier="lacerations" strength="2" />
+        <Affliction identifier="bleeding" strength="2" />
+        <Affliction identifier="stun" strength="0.025" />
+        <Affliction identifier="stun" strength="0.025" probability="0.5" />
+      </Attack>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="2">
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" copyentityangle="true" particleamount="1" velocitymin="0" velocitymax="0" scalemin="1.0" scalemax="5.0" />
+        <ParticleEmitter particle="weldspark" copyentityangle="true" anglemin="-40" anglemax="40" particleamount="8" velocitymin="-300" velocitymax="-800" scalemin="1" scalemax="2" />
+        <ParticleEmitter particle="shrapnel" copyentityangle="true" anglemin="0" anglemax="360" particleamount="5" velocitymin="100" velocitymax="500" scalemin="0.4" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="mg34 Gun Ammobox" identifier="mg34ammobox" scale="0.5" tags="mg34equipment,mg34ammo,ammobox" category="Weapon" noninteractable="false" hideinmenus="false" linkable="true" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="">
+    <PreferredContainer primary="mg34ammoloader" amount="1" mincondition="1" />
+    <Sprite texture="%ModDir%/Turrets/mg34_loader.png" depth="0.54" sourcerect="0,0,86,70" origin="0.5,0.5" />
+    <Body width="90" height="72" density="30" />
+    <Holdable canbecombined="true" removeoncombined="false" slots="RightHand,LeftHand" holdpos="0,-30" handle1="0,-30" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatValue stattype="MovementSpeed" value="-0.2" />
+    </Holdable>
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true">
+      <StatusEffect type="OnUse" target="This" condition="-0.33" disabledeltatime="true">
+        <RequiredItem items="mg34round" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <SpawnItem identifiers="mg34round" spawnposition="ThisInventory" />
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <Conditional condition="eq 0" />
+        <sound file="%ModDir%/Turrets/mg34reload.ogg" range="300" volume="5" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" condition="+100" delay="5" disabledeltatime="true"></StatusEffect>
+      <Containable items="mg34round" />
+    </ItemContainer>
+  </Item>
+</Items>

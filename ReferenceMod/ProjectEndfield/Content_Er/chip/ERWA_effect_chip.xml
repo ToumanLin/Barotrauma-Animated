@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_effect_vanguard.xml
+++	Version     :	0.1 (alpha)
+++	Time Create :	TK5202312211229
+++	Time Modify :	TK5202312212105
+++	Author      :	Erthex
+-->
+<Afflictions>
+  <!--遁形-->
+  <Affliction name="遁形" description="猎杀，无处可逃" identifier="shadow" type="ERWA_buff" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="30" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="10" strengthchange="-10">
+      <StatusEffect type="OnActive" targettype="Character" stackable="true" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" setvalue="true" SpeedMultiplier="0.7" />
+    </Effect>
+    <Effect minstrength="10" maxstrength="20" strengthchange="-10" minresistance="0.5" maxresistance="0.5" resistancefor="damage,burn,bleeding">
+      <StatusEffect type="OnActive" targettype="Character" stackable="true" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" setvalue="true" SpeedMultiplier="0.7" />
+    </Effect>
+    <Effect minstrength="20" maxstrength="30" strengthchange="-10" minresistance="1.0" maxresistance="1.0" resistancefor="damage,burn,bleeding">
+      <StatusEffect type="OnActive" targettype="Character" stackable="true" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" setvalue="true" SpeedMultiplier="0.7" />
+    </Effect>
+    <Description text="遁形，现身，猎杀时刻" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--鹰眼标记：人类-->
+  <Affliction name="鹰眼标记" description="你被鹰眼标记了" identifier="locked_human" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="10" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="10" strengthchange="-10">
+      <StatusEffect target="Character" type="OnActive" setvalue="true">
+        <Conditional shadow="gt 0" />
+        <Affliction identifier="shadow" amount="0" />
+      </StatusEffect>
+    </Effect>
+    <Description text="你被鹰眼标记了,无法触发遁形效果；或许你应该庆幸自己不是怪物" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <!--鹰眼标记：怪物-->
+  <Affliction name="鹰眼标记(怪物)" description="你被鹰眼标记了" isbuff="true" hideiconafterdelay="true" indicatorlimb="Torso" identifier="locked_monster" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" limbspecific="false" showbarinhealthmenu="false" type="ERWA_effect" maxstrength="30" showiconthreshold="1000" iconcolors="0,255,127" resetbetweenrounds="true">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="20" strengthchange="-3">
+      <StatusEffect target="Character" type="OnActive" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Conditional ishuman="false" />
+        <Affliction identifier="locked_monster" amount="30" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="20" maxstrength="30" strengthchange="-10" minresistance="-0.2" maxresistance="-0.2" resistancefor="damage,burn">
+      <StatusEffect target="Character" type="OnActive" setvalue="true">
+        <Conditional ishuman="true" />
+        <Affliction identifier="locked_monster" amount="10" />
+      </StatusEffect>
+    </Effect>
+    <Description text="你被鹰眼标记了，防御力降低" target="Any" minstrength="0" maxstrength="30" />
+  </Affliction>
+  <!--辅助-->
+  <Affliction name="辅助(等级1)" description="辅助让你的技能等级增加了" identifier="watcher_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="ElectricalSkillBonus" value="10" />
+      <StatValue stattype="HelmSkillBonus" value="10" />
+      <StatValue stattype="MechanicalSkillBonus" value="10" />
+      <StatValue stattype="MedicalSkillBonus" value="10" />
+      <StatValue stattype="WeaponsSkillBonus" value="10" />
+      <StatValue stattype="RepairSpeed" value="0.25" />
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="0.25" />
+    </Effect>
+    <Description text="所有技能+10" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="辅助(等级2)" description="辅助让你的技能等级增加了" identifier="watcher_2" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="ElectricalSkillBonus" value="20" />
+      <StatValue stattype="HelmSkillBonus" value="20" />
+      <StatValue stattype="MechanicalSkillBonus" value="20" />
+      <StatValue stattype="MedicalSkillBonus" value="20" />
+      <StatValue stattype="WeaponsSkillBonus" value="20" />
+      <StatValue stattype="RepairSpeed" value="0.25" />
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="0.25" />
+    </Effect>
+    <Description text="所有技能+20" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="辅助(等级3)" description="辅助让你的技能等级增加了" identifier="watcher_3" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="ElectricalSkillBonus" value="30" />
+      <StatValue stattype="HelmSkillBonus" value="30" />
+      <StatValue stattype="MechanicalSkillBonus" value="30" />
+      <StatValue stattype="MedicalSkillBonus" value="30" />
+      <StatValue stattype="WeaponsSkillBonus" value="30" />
+      <StatValue stattype="RepairSpeed" value="0.25" />
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="0.25" />
+    </Effect>
+    <Description text="所有技能+30" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <!--特种-->
+  <Affliction name="机甲重炮(等级1)" description="外骨骼一穿，重炮碎大山" identifier="cannon_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="AttackMultiplier" value="0.20" />
+      <StatValue stattype="MovementSpeed" value="0.15" />
+      <StatValue stattype="SwimmingSpeed" value="0.15" />
+      <StatusEffect type="OnActive" target="Character" comparison="and" setvalue="true">
+        <Conditional recoilstabilized="lte 0" />
+        <Affliction identifier="cannon_1" amount="0" />
+      </StatusEffect>
+    </Effect>
+    <Description text="大炮一响，黄金万两" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="机甲重炮(等级2)" description="外骨骼一穿，重炮碎大山" identifier="cannon_2" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="AttackMultiplier" value="0.40" />
+      <StatValue stattype="MovementSpeed" value="0.15" />
+      <StatValue stattype="SwimmingSpeed" value="0.15" />
+      <StatusEffect type="OnActive" target="Character" comparison="and" setvalue="true">
+        <Conditional recoilstabilized="lte 0" />
+        <Affliction identifier="cannon_2" amount="0" />
+      </StatusEffect>
+    </Effect>
+    <Description text="大炮一响，黄金万两" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="机甲重炮(等级3)" description="外骨骼一穿，重炮碎大山" identifier="cannon_3" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="AttackMultiplier" value="0.60" />
+      <StatValue stattype="MovementSpeed" value="0.15" />
+      <StatValue stattype="SwimmingSpeed" value="0.15" />
+      <StatusEffect type="OnActive" target="Character" comparison="and" setvalue="true">
+        <Conditional recoilstabilized="lte 0" />
+        <Affliction identifier="cannon_3" amount="0" />
+      </StatusEffect>
+    </Effect>
+    <Description text="大炮一响，黄金万两" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <!--术士-->
+  <Affliction name="术士的加护(等级1)" description="制作等级增加了" identifier="witcher_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="SkillGainSpeed" value="0.5" />
+      <StatValue stattype="IncreaseFabricationQuality" value="1" />
+    </Effect>
+    <Description text="术士的加护" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="术士的加护(等级2)" description="制作等级增加了" identifier="witcher_2" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="SkillGainSpeed" value="1.0" />
+      <StatValue stattype="IncreaseFabricationQuality" value="1" />
+    </Effect>
+    <Description text="术士的加护" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+  <Affliction name="术士的加护(等级3)" description="制作等级增加了" identifier="witcher_3" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showbarinhealthmenu="false" showiconthreshold="1000" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0" maxstrength="3" strengthchange="-10">
+      <StatValue stattype="SkillGainSpeed" value="1.5" />
+      <StatValue stattype="IncreaseFabricationQuality" value="1" />
+    </Effect>
+    <Description text="术士的加护" target="Any" minstrength="0" maxstrength="10" />
+  </Affliction>
+</Afflictions>

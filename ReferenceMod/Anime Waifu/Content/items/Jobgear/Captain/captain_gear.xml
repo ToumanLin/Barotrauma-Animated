@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="chitinhelmet" category="Equipment" tags="sterile,smallitem" impactsoundtag="impact_metal_heavy" scale="0.4" cargocontaineridentifier="metalcrate">
+      <PreferredContainer primary="armcab" />
+      <Price baseprice="175" sold="false">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.6" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="chitin" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredItem identifier="chitin" />
+        <RequiredItem identifier="chitin" />
+        <RequiredItem identifier="chitin" />
+      </Fabricate>
+      <Sprite texture="Content/Characters/Pets/pets.png" sourcerect="386,260,62,58" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="Content/Characters/Pets/pets.png" sourcerect="453,258,56,56" origin="0.5,0.5" />
+      <Body radius="30" density="20" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.6" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="208,0,101,106" origin="0.5505872,0.67630357" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <!-- HATS START -->
+    <Item name="" identifier="captainscap1" aliases="captainscap" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="Captain's Cap 1" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="610,15,120,82" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Captain's Cap 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" depth="0.6" inheritscale="true" CanbehiddenbyOtherWearables="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="608,0,131,124" origin="0.50450814,0.66468996">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <Item name="" identifier="captainscap2" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="BeretSepar" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" depth="0.6" sourcerect="177,102,90,44" origin="0.49889043,0.5001155" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="BeretSepar wearable" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" limb="Head" CanbehiddenbyOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="163,85,130,85" origin="0.5008794,0.89988774">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <Item name="" identifier="captainscap3" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="Captain's Cap 3" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="375,123,84,53" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Captain's Cap 3 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" CanbehiddenbyOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="374,123,86,64" origin="0.50,1.0">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <Item name="" identifier="captainsseparatistcap1" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="Captain's Cap 1" texture="%ModDir%/Content/Items/Jobgear/headgears4.png" limb="Head" sourcerect="299,110,92,59" origin="0.49839687,0.5011974" />
+      <Body width="75" height="55" density="15" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Captain's Cap 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears4.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="301,106,99,68" origin="0.5,1">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <Item name="" identifier="captainsseparatistcap2" aliases="captainscap" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="captainsseparatistcap2" texture="%ModDir%/Content/Items/Jobgear/headgears3.png" depth="0.6" sourcerect="624,26,89,45" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="captainsseparatistcap2" texture="%ModDir%/Content/Items/Jobgear/headgears3.png" limb="Head" inheritlimbdepth="true" depth="0.6" inheritscale="true" CanbehiddenbyOtherWearables="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="608,0,131,124" origin="0.50450814,0.66468996">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <!-- HATS END -->
+    <!-- UNIFORMS START -->
+    <Item name="" identifier="captainsuniform1" aliases="captainsuniform" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Captain's Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Captain/captain_1.png" sourcerect="171,16,90,172" origin="0.5,0.5" />
+      <Sprite name="Captain's Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="247,209,125,77" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="Captain's Uniform 1 Torso" texture="captain_1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Hand" texture="captain_1.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Hand" texture="captain_1.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Lower Arm" texture="captain_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Lower Arm" texture="captain_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Upper Arm" texture="captain_1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Upper Arm" texture="captain_1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Waist" texture="captain_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Thigh" texture="captain_1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Thigh" texture="captain_1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Leg" texture="captain_1.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Leg" texture="captain_1.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="captainsuniform2" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="captain_2.png" sourcerect="169,21,92,154" origin="0.5,0.5" />
+      <Sprite name="captain_2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="245,148,118,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="captain_2 Torso" texture="captain_2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Hand" texture="captain_2.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Hand" texture="captain_2.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Lower Arm" texture="captain_2.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Lower Arm" texture="captain_2.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Upper Arm" texture="captain_2.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Upper Arm" texture="captain_2.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Waist" texture="captain_2.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Thigh" texture="captain_2.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Thigh" texture="captain_2.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Leg" texture="captain_2.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Leg" texture="captain_2.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Right Shoe" texture="captain_2.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="captain_2 Left Shoe" texture="captain_2.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="captainsuniform3" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Captain's Uniform 3 Icon" texture="%ModDir%/Content/Items/Jobgear/Captain/captain_3.png" sourcerect="186,23,71,128" origin="0.5,0.5" />
+      <Sprite name="Captain's Uniform 3" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="244,292,125,62" depth="0.6" origin="0.5,0.5" />
+      <Body width="150" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v2-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <sprite name="Captain's Uniform 1 Torso" texture="captain_3.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Hand" texture="captain_3.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Hand" texture="captain_3.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Lower Arm" texture="captain_3.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Lower Arm" texture="captain_3.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Upper Arm" texture="captain_3.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Upper Arm" texture="captain_3.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Waist" texture="captain_3.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Thigh" texture="captain_3.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Thigh" texture="captain_3.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Leg" texture="captain_3.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Leg" texture="captain_3.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Left Shoe" texture="captain_3.png" limb="LeftFoot" sound="" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Captain's Uniform 1 Right Shoe" texture="captain_3.png" limb="RightFoot" sound="" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="captainseparatistsuniform1" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Captain Separatist's Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Captain/captain_separatist_1.png" sourcerect="156,22,102,167" origin="0.5,0.5" />
+      <Sprite name="Captain Separatist's Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="124,284,119,70" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <sprite name="Pirate Uniform 3 Torso" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="Torso" hidelimb="false" inheritsourcerect="false" sourcerect="153,20,107,169" inheritorigin="false" origin="0.585,0.521" inheritscale="true" inheritlimbdepth="true" />
+        <sprite name="Pirate Uniform 3 Right Hand" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Hand" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Lower Arm" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Left Lower Arm" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Right Upper Arm" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 2 Left Upper Arm" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftForearm" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 3 Waist" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Thigh" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Thigh" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Leg" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Leg" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="Pirate Uniform 3 Left Shoe" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Shoe" texture="%moddir%/content/items/jobgear/captain/captain_separatist_1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="captainseparatistsuniform2" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Captain Separatist's Uniform 2 Icon" texture="%ModDir%/Content/Items/Jobgear/Captain/captain_separatist_2.png" sourcerect="157,21,101,168" origin="0.5,0.5" />
+      <Sprite name="Captain Separatist's Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="0,298,118,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <sprite name="Pirate Uniform 3 Torso" texture="captain_separatist_2.png" limb="Torso" hidelimb="false" inheritsourcerect="false" sourcerect="153,20,107,169" inheritorigin="false" origin="0.585,0.521" inheritscale="true" inheritlimbdepth="true" />
+        <sprite name="Pirate Uniform 3 Right Hand" texture="captain_separatist_2.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Hand" texture="captain_separatist_2.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Lower Arm" texture="captain_separatist_2.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Left Lower Arm" texture="captain_separatist_2.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Right Upper Arm" texture="captain_separatist_2.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 2 Left Upper Arm" texture="captain_separatist_2.png" limb="LeftForearm" hidelimb="false" depthlimb="LeftArm" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 3 Waist" texture="captain_separatist_2.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Thigh" texture="captain_separatist_2.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Thigh" texture="captain_separatist_2.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Leg" texture="captain_separatist_2.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Leg" texture="captain_separatist_2.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="Pirate Uniform 3 Left Shoe" texture="captain_separatist_2.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Shoe" texture="captain_separatist_2.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="captainseparatistsuniform3" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Captain Separatist's Uniform 3 Icon" texture="%ModDir%/Content/Items/Jobgear/Captain/captain_separatist_3.png" sourcerect="157,21,101,168" origin="0.5,0.5" />
+      <Sprite name="Captain Separatist's Uniform 3" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="124,358,118,70" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <sprite name="Pirate Uniform 3 Torso" texture="captain_separatist_3.png" limb="Torso" hidelimb="false" inheritsourcerect="false" sourcerect="153,20,107,169" inheritorigin="false" origin="0.585,0.521" inheritscale="true" inheritlimbdepth="true" />
+        <sprite name="Pirate Uniform 3 Right Hand" texture="captain_separatist_3.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Hand" texture="captain_separatist_3.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Lower Arm" texture="captain_separatist_3.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Left Lower Arm" texture="captain_separatist_3.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Right Upper Arm" texture="captain_separatist_3.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 2 Left Upper Arm" texture="captain_separatist_3.png" limb="LeftForearm" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 3 Waist" texture="captain_separatist_3.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Thigh" texture="captain_separatist_3.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Thigh" texture="captain_separatist_3.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Leg" texture="captain_separatist_3.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Leg" texture="captain_separatist_3.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="Pirate Uniform 3 Left Shoe" texture="captain_separatist_3.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Shoe" texture="captain_separatist_3.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <!-- UNIFORMS END -->
+    <Item name="" identifier="captainscap11" aliases="captainscap" category="alien" subcategory="Clothes" tags="sterile,hats_aw_armor,clowngear,clownmask,smallitem,helmet,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="armcab" spawnprobability="0.0" />
+      <Price baseprice="175" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1.3" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="1.2" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw_armor" />
+      </Fabricate>
+      <Sprite name="Captain's Cap 1" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="610,15,120,82" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <sprite name="Captain's Cap 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" depth="0.6" inheritscale="true" CanbehiddenbyOtherWearables="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="608,0,131,124" origin="0.50450814,0.66468996" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="captainscap31" category="alien" subcategory="Clothes" tags="sterile,hats_aw_armor,clowngear,clownmask,smallitem,helmet,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="armcab" spawnprobability="0.0" />
+      <Price baseprice="175" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1.3" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="1.2" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw_armor" />
+      </Fabricate>
+      <Sprite name="Captain's Cap 3" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="375,123,84,53" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <sprite name="Captain's Cap 3 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" CanbehiddenbyOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="374,123,86,64" origin="0.50,1.0" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="captainscap21" category="alien" subcategory="Clothes" tags="sterile,hats_aw_armor,clowngear,clownmask,smallitem,helmet,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="armcab" spawnprobability="0.0" />
+      <Price baseprice="175" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1.3" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="1.2" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw_armor" />
+      </Fabricate>
+      <Sprite name="BeretSepar" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" depth="0.6" sourcerect="177,102,90,44" origin="0.49889043,0.5001155" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <sprite name="BeretSepar wearable" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" limb="Head" CanbehiddenbyOtherWearables="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="163,85,130,85" origin="0.5008794,0.89988774" />
+      </Wearable>
+    </Item>
+    <Item name="" nameidentifier="" identifier="captainsseparatistcap11" category="alien" subcategory="Clothes" tags="sterile,hats_aw_armor,clowngear,clownmask,smallitem,helmet" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="armcab" spawnprobability="0.0" />
+      <Price baseprice="175" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1.3" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="1.2" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw_armor" />
+      </Fabricate>
+      <Sprite name="Captain's Cap 1" texture="%ModDir%/Content/Items/Jobgear/headgears4.png" limb="Head" sourcerect="299,110,92,59" origin="0.49839687,0.5011974" />
+      <Body width="75" height="55" density="15" />
+      <Wearable limbtype="Head" slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <sprite name="Captain's Cap 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears4.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="301,106,99,68" origin="0.5,1" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="captainsseparatistcap21" aliases="captainscap" category="alien" subcategory="Clothes" tags="sterile,hats_aw_armor,clowngear,clownmask,smallitem,helmet,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="armcab" spawnprobability="0.0" />
+      <Price baseprice="175" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1.3" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="1.2" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="hats_aw_armor" />
+      </Fabricate>
+      <Sprite name="captainsseparatistcap2" texture="%ModDir%/Content/Items/Jobgear/headgears3.png" depth="0.6" sourcerect="624,26,89,45" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <sprite name="captainsseparatistcap2" texture="%ModDir%/Content/Items/Jobgear/headgears3.png" limb="Head" inheritlimbdepth="true" depth="0.6" inheritscale="true" CanbehiddenbyOtherWearables="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="608,0,131,124" origin="0.50450814,0.66468996" />
+      </Wearable>
+    </Item>
+    <!-- legacy items not used -->
+    <!-- legacy items not used -->
+    <!-- legacy items not used -->
+    <Item name="" identifier="chitinhelmet0" hideinmenus="true" category="alien" tags="sterile,clowngear,clownmask,smallitem" impactsoundtag="impact_metal_heavy" scale="0.4" cargocontaineridentifier="metalcrate">
+      <PreferredContainer primary="armcab" />
+      <Deconstruct time="2">
+        <Item identifier="chitinhelmet" />
+      </Deconstruct>
+      <Sprite texture="Content/Characters/Pets/pets.png" sourcerect="386,260,62,58" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="%ModDir%/Content/items/Jobgear/headgears3.png" sourcerect="210,10,92,92" origin="0.5,0.5" />
+      <Body radius="30" density="20" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.6" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="0,0,1,1" origin="0.5505872,0.67630357" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <Item name="" identifier="baseballcap_0" hideinmenus="true" category="alien" subcategory="Clothes" tags="sterile,hats_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="0" spawnprobability="0.0" />
+      <Deconstruct time="2">
+        <Item identifier="baseballcap" />
+      </Deconstruct>
+      <Sprite name="Baseball Cap" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" depth="0.6" sourcerect="313,322,95,56" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Baseball Cap Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears2.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.1" hidelimb="false" sourcerect="0,0,0,1" origin="0.46187487,0.8114851">
+          <LightComponent LightColor="0.5,0.5,0.5,1.0" Flicker="0.02" range="380" powerconsumption="1.0" IsOn="true" canbeselected="false" allowingameediting="false">
+            <LightTexture texture="%ModDir%/Content/Lights/divinghelmetlight_for_transparent_suits.png" origin="0.05, 0.50" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.2">
+          <Conditional IsDead="false" />
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles,mobilebattery">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="240,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+  </Items>
+</Override>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_throwingknife" category="Weapon" tags="smallitem,weapon" maxstacksize="12" scale="0.5" cargocontaineridentifier="metalcrate" impacttolerance="8" impactsoundtag="impact_metal_light">
+    <Price baseprice="15">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="4" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="12">
+      <RequiredSkill identifier="weapons" level="45" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="plastic" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="256,192,59,17" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="256,192,59,17" depth="0.55" origin="0.5,0.5" />
+    <Body width="59" height="17" density="25" />
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" aimpos="-10,30" handle1="10,0" holdangle="-150" aimable="true" msg="ItemMsgPickUpSelect" canbecombined="false">
+      <!-- simulate throwing actions -->
+      <StatusEffect type="OnSecondaryUse" target="This" aimpos="50,10" setvalue="true">
+        <Conditional targetitemcomponent="RangedWeapon" reloadtimer="gt 0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" aimpos="-10,30" setvalue="true">
+        <Conditional targetitemcomponent="RangedWeapon" reloadtimer="lt 0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" aimpos="50,10" setvalue="true" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" reloadtimer="lt 0.1" />
+      </StatusEffect>
+      <!-- clone self only once -->
+      <StatusEffect type="OnActive" target="This" oneshot="true">
+        <SpawnItem identifier="otfx_throwingknife" spawnposition="ThisInventory" spawnifinventoryfull="true" />
+      </StatusEffect>
+    </Holdable>
+    <RangedWeapon weapondamagemodifier="1.5" barrelpos="0,0" spread="1" unskilledspread="20" reload="0.6" combatpriority="40" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <Sound file="%ModDir%/OTFX/Items/Weapons/throwingknife_toss1.ogg" type="OnUse" range="500" selectionmode="Random" />
+      <Sound file="%ModDir%/OTFX/Items/Weapons/throwingknife_toss2.ogg" type="OnUse" range="500" />
+      <StatusEffect type="OnUse" target="This" hiddeningame="true">
+        <Explosion range="50" force="5" showeffects="false" ignorecover="true" />
+        <Remove />
+      </StatusEffect>
+      <RequiredSkill identifier="weapons" level="70" />
+      <RequiredItems identifier="otfx_throwingknife" type="Contained" />
+    </RangedWeapon>
+    <Projectile characterusable="false" launchimpulse="15" impulsespread="0.01" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodoors="true">
+      <Attack targetimpulse="3" severlimbsprobability="0.1" itemdamage="3" structuredamage="2" structuresoundtype="StructureSlash">
+        <Affliction identifier="lacerations" strength="10" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="stun" strength="0.2" />
+        <Affliction identifier="otfx_deepwound" strength="1.0" probability="0.15" />
+        <Affliction identifier="otfx_fallintodanger" strength="20" probability="0.25" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="Character" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="1000" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="1000" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="1000" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="1000" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="1000" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="1000" />
+      </StatusEffect>
+      <RequiredSkill identifier="weapons" level="70" />
+    </Projectile>
+    <ItemContainer characterusable="false" canbeselected="false" capacity="0" />
+    <!-- secondary ItemContainer prevents characters from accessing itself -->
+    <ItemContainer characterusable="false" canbeselected="false" capacity="1" maxstacksize="1" hideitems="true" allowaccess="false" allowdraganddrop="false" allowswappingcontaineditems="false" autofill="false" removecontaineditemsondeconstruct="true">
+      <Containable items="otfx_throwingknife" />
+    </ItemContainer>
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <SkillRequirementHint identifier="weapons" level="70" />
+  </Item>
+</Items>

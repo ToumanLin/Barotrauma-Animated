@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <!--godmode-->
+    <ScriptedEvent identifier="ba_npcevent_godmode_srt" tags="ba_npcevent_godmode_srt" commonness="0">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_saki" tag="saki" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="miyu" />
+      <TagAction criteria="humanprefabidentifier:npc_moe" tag="moe" />
+      <!--<TagAction criteria="humanprefabidentifier:npc_miyako" tag="miyako" />-->
+      <GodModeAction targettag="saki" enabled="true" />
+      <GodModeAction targettag="miyu" enabled="true" />
+      <GodModeAction targettag="moe" enabled="true" />
+      <!--<GodModeAction targettag="miyako" enabled="true" />-->
+    </ScriptedEvent>
+    <!--Moe-->
+    <ScriptedEvent identifier="moe_idle_event1" tags="moe_idle_event1" commonness="0">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_moe" tag="moe" />
+      <!--BROKEN FOR SOME REASON-->
+      <Label name="action_moe_reset" />
+      <WaitAction time="1" />
+      <CheckDataAction identifier="is_moe_idling" condition="eq 1">
+        <Success>
+          <SpawnAction itemidentifier="baemote_assignmentboard" targettag="baemote_assignmentboard" targetinventory="moe" Equip="true" />
+          <WaitAction time="5" />
+          <GoTo name="action_moe_reset" />
+        </Success>
+        <Failure>
+          <RemoveItemAction targettag="moe" itemidentifiers="baemote_assignmentboard" />
+          <WaitAction time="5" />
+          <GoTo name="action_moe_reset" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--Miyu-->
+    <ScriptedEvent identifier="miyu_idle_event1" tags="miyu_idle_event1" commonness="0">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="miyu" />
+      <TagAction criteria="itemtag:miyu_chair" tag="miyu_chair" SubmarineType="Outpost" chooserandom="true" />
+      <!--<NPCOperateItemAction npctag="miyu" targettag="miyu_chair" ItemComponentName="Controller" Operate="true" />
+      <WaitAction time="5" />
+      <Label name="action_miyu_reset" />
+      <WaitAction time="1" />
+				<CheckDataAction identifier="srt_meeting" condition="eq 0">
+					<Success>
+						<CheckDataAction identifier="is_miyu_idling" condition="eq 0">
+							<Success>
+								<SpawnAction itemidentifier="miyugun_prop" targettag="miyugun_prop" targetinventory="miyu" />
+								<SpawnAction itemidentifier="ba76251mmmagazine" targettag="ba76251mmmagazine_prop" targetinventory="miyugun_prop" />
+								<SetDataAction identifier="is_miyu_idling" value="1" />
+								<WaitAction time="7" />
+								<RemoveItemAction targettag="miyu" itemidentifiers="miyugun_prop" />
+								<RemoveItemAction targettag="miyugun_prop" itemidentifiers="ba76251mmmagazine_prop" />
+								<GoTo name="action_miyu_reset" />
+							</Success>
+							<Failure>
+								<RNGAction chance="0.03">
+									<Success>
+										<SetDataAction identifier="is_miyu_idling" value="0" />
+										<GoTo name="action_miyu_reset" />
+									</Success>
+									<Failure>
+										<GoTo name="action_miyu_reset" />
+									</Failure>
+								</RNGAction>
+							</Failure>
+						</CheckDataAction>
+        </Success>
+        <Failure>
+			<NPCFollowAction npctag="miyu" targettag="ba_command_item_follow" follow="true" />
+        </Failure>
+      </CheckDataAction>-->
+    </ScriptedEvent>
+    <!--Blue Archive Event-->
+    <ScriptedEvent identifier="arona_giveloot_event" tags="arona_giveloot_event">
+      <TagAction criteria="player" tag="player" />
+      <SpawnAction speciesname="arona" npcsetidentifier="set_none" npcidentifier="npc_arona" targettag="arona" spawnpointtag="triggerer_player" teamtag="1" />
+      <Label name="reset" />
+      <ClearTagAction tag="triggerer_player" />
+      <ClearTagAction tag="envelope" />
+      <ConversationAction text="Gacha?" invokertag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_2" speakertag="arona">
+        <Option text="Yes">
+          <ConversationAction text="What would you want to do?" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_31">
+            <!--single-->
+            <Option text="Single Rolls">
+              <CheckItemAction targettag="triggerer_player" itemidentifiers="gachaticket1">
+                <Success>
+                  <RemoveItemAction targettag="triggerer_player" itemidentifier="gachaticket1" />
+                  <SpawnAction itemidentifier="envelopes_archive" targettag="envelope" targetinventory="triggerer_player" Equip="true" />
+                  <GoTo name="gacha10" />
+                </Success>
+                <Failure>
+                  <ConversationAction text="Sensei You don't have any ticket for this action!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_26" />
+                  <GoTo name="reset" />
+                </Failure>
+              </CheckItemAction>
+            </Option>
+            <!--10 rolls-->
+            <Option text="x10 Rolls">
+              <CheckItemAction targettag="triggerer_player" itemidentifiers="gachaticket10">
+                <Success>
+                  <RemoveItemAction targettag="triggerer_player" itemidentifier="gachaticket10" />
+                  <SpawnAction itemidentifier="envelopes_archive" targettag="envelope" targetinventory="triggerer_player" Equip="true" />
+                  <GoTo name="gacha1" />
+                </Success>
+                <Failure>
+                  <ConversationAction text="Sensei You don't have enough ticket for this action!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_26" />
+                  <GoTo name="reset" />
+                </Failure>
+              </CheckItemAction>
+            </Option>
+          </ConversationAction>
+        </Option>
+        <Option text="Nevermind">
+          <ConversationAction text="Hmm~" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_33" />
+          <Goto name="reset" />
+        </Option>
+      </ConversationAction>
+      <!--GACHA TIME!!!!-->
+      <Label name="gacha1" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha2" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha2" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha2" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha2" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha3" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha3" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha3" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha3" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha4" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha4" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha4" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha4" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha5" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha5" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha5" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha5" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha6" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha6" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha6" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha6" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha7" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha7" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha7" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha7" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha8" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha8" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha8" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha8" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha9" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha9" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha9" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha9" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="gacha10" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="gacha10" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="gacha10" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="gacha10" />
+      <RNGAction chance="0.03">
+        <Success>
+          <SpawnAction itemidentifier="envelopepurple" targetinventory="envelope" />
+          <StatusEffectAction targettag="triggerer_player">
+            <StatusEffect target="this">
+              <Sound file="%ModDir%/Events/Sounds/Arona_huh.ogg" />
+            </StatusEffect>
+          </StatusEffectAction>
+          <ConversationAction text="Woah, a purple envelope, that's super rare!" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Arona_Expression_25" />
+          <Goto name="end" />
+        </Success>
+        <Failure>
+          <RNGAction chance="0.185">
+            <Success>
+              <SpawnAction itemidentifier="envelopeyellow" targetinventory="envelope" />
+              <Goto name="end" />
+            </Success>
+            <Failure>
+              <SpawnAction itemidentifier="envelopeblue" targetinventory="envelope" />
+              <Goto name="end" />
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+      <Label name="end" />
+      <ConversationAction text="It is done sensei!" targettag="triggerer_player" endeventifinterrupted="true" eventsprite="Arona_Expression_32" endconversation="true" />
+      <Goto name="reset" />
+    </ScriptedEvent>
+    <!--CHARACTER BEHAVIOR-->
+    <ScriptedEvent identifier="event_shiroko_spawndrone_behavior" tags="skill_action_behavior">
+      <TagAction criteria="humanprefabidentifier:npc_shiroko" tag="shiroko" />
+      <Label name="action_moe_reset" />
+      <WaitAction time="1" />
+      <CheckDataAction identifier="is_moe_idling" condition="eq 1">
+        <Success>
+          <SpawnAction itemidentifier="baemote_assignmentboard" targettag="baemote_assignmentboard" targetinventory="moe" Equip="true" />
+          <WaitAction time="5" />
+          <GoTo name="action_moe_reset" />
+        </Success>
+        <Failure>
+          <RemoveItemAction targettag="moe" itemidentifiers="baemote_assignmentboard" />
+          <WaitAction time="5" />
+          <GoTo name="action_moe_reset" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--CHARACTER BEHAVIOR-->
+    <ScriptedEvent identifier="event_teleport_f2">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="itemtag:abydosdoor_f1" tag="abydosdoor_f1" />
+      <TagAction criteria="itemtag:abydosdoor_f2" tag="abydosdoor_f2" />
+      <TeleportAction TargetTag="player" spawnpointtag="abydosdoor_f2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="event_teleport_f1">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="itemtag:abydosdoor_f1" tag="abydosdoor_f1" />
+      <TagAction criteria="itemtag:abydosdoor_f2" tag="abydosdoor_f2" />
+      <TeleportAction TargetTag="player" spawnpointtag="abydosdoor_f1" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

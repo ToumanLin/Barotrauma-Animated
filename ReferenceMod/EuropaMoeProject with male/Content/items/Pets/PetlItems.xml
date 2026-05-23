@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="chitinhelmet" category="Equipment" tags="smallitem,clothing" impactsoundtag="impact_metal_heavy" scale="0.4" cargocontaineridentifier="metalcrate">
+      <Price baseprice="175" sold="false">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.6" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="chitin" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredItem identifier="chitin" />
+        <RequiredItem identifier="chitin" />
+        <RequiredItem identifier="chitin" />
+      </Fabricate>
+      <Sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="724,94,112,106" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="724,94,112,106" origin="0.5,0.5" />
+      <Body radius="30" density="50" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.6" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidewearablesoftype="Hair" sourcerect="724,94,112,106" origin="0.52,0.56" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

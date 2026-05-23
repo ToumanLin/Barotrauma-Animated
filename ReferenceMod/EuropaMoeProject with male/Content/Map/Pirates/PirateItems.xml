@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <!--官方0.19修改了服装的物理体积和密度，但是忘改了海盗服的，这里帮他们提前修复一下-->
+  <Items>
+    <Item name="" identifier="separatistcommoner1" nameidentifier="pirateclothes" aliases="pirateclothes" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="150" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="2" maxavailable="5" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Sprite name="pirate" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="767,233,122,58" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="1,10" sheetelementsize="64,64" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Pirate Uniform 2 Right Hand" texture="pirate_2_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Left Hand" texture="pirate_2_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Lower Arm" texture="pirate_2_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Left Lower Arm" texture="pirate_2_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 2 Right Upper Arm" texture="pirate_2_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 2 Left Upper Arm" texture="pirate_2_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 2 Torso" texture="pirate_2_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="157,0,115,192" origin="0.51079924,0.5" />
+        <sprite name="Pirate Uniform 2 Waist" texture="pirate_2_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Thigh" texture="pirate_2_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Left Thigh" texture="pirate_2_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Right Leg" texture="pirate_2_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Left Leg" texture="pirate_2_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 2 Left Shoe" texture="pirate_2_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Pirate Uniform 2 Right Shoe" texture="pirate_2_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" identifier="piratecaptainhat" category="Equipment" tags="smallitem,clothing,separatists" scale="0.4" cargocontaineridentifier="metalcrate">
+      <Price baseprice="175" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" minavailable="2" maxavailable="5" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="10" />
+      <Sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="258,408,103,64" depth="0.6" origin="0.5,0.5" />
+      <Body radius="30" density="50" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="258,408,103,64" origin="0.54,1" />
+        <SkillModifier skillidentifier="helm" skillvalue="12" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" identifier="piratebandana" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" description="" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="15" sold="false" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="3" maxavailable="5" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+      </Price>
+      <Deconstruct time="10" />
+      <Sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="123,406,124,94" origin="0.5,0.5" scale="0.4" />
+      <Body width="20" radius="15" density="15" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="123,406,124,94" origin="0.57,0.72" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      </Wearable>
+    </Item>
+    <!--需要优化贴图-->
+    <Item name="" fallbacknameidentifier="bodyarmor" identifier="piratebodyarmor" category="Equipment" tags="smallitem,clothing,separatists" scale="0.35" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
+      <Price baseprice="480" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="0" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="2" maxavailable="5" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" minavailable="4" maxavailable="6" sold="true">
+          <Reputation faction="separatists" min="50" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="40">
+        <Item identifier="ballisticfiber" />
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="320,640,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Map/Pirates/PirateEquip.png" sourcerect="14,45,103,158" depth="0.6" origin="0.5,0.5" />
+      <Body radius="45" height="35" density="40" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <SkillModifier skillidentifier="weapons" skillvalue="10" />
+        <sprite name="Pirate Armor Wearable" texture="%ModDir%/Content/Map/Pirates/PirateEquip_[GENDER].png" limb="Torso" hidelimb="false" depthlimb="Torso" inherittexturescale="true" inheritorigin="false" ignorelimbscale="true" scale="0.65" inheritsourcerect="false" sourcerect="5,2,128,241" origin="0.56421875,0.538" />
+      </Wearable>
+    </Item>
+    <!--需要优化贴图-->
+    <Item name="" fallbacknameidentifier="ballistichelmet1" identifier="piratehelmet" aliases="ballistichelmet" category="Equipment" tags="smallitem,clothing,separatists" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+      <Price baseprice="225" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="ballisticfiber" />
+      </Deconstruct>
+      <Sprite name="Pirate Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="716,242,97,42" depth="0.6" origin="0.5,0.5" />
+      <Body radius="30" density="50" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, blunttrauma" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <sprite name="Pirate Helmet 1 Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.8" hidelimb="false" sourcerect="716,242,97,42" origin="0.68,0.6" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" nameidentifier="pirateclothes" identifier="separatistcommoner2" aliases="pirateclothesnovice" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="150" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="2,10" sheetelementsize="64,64" />
+      <Sprite name="pirate" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="898,222,120,66" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Pirate Uniform 1 Torso" texture="pirate_1_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Right Hand" texture="pirate_1_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Hand" texture="pirate_1_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Right Lower Arm" texture="pirate_1_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Lower Arm" texture="pirate_1_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Right Upper Arm" texture="pirate_1_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Upper Arm" texture="pirate_1_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Waist" texture="pirate_1_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Right Thigh" texture="pirate_1_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Thigh" texture="pirate_1_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Right Leg" texture="pirate_1_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Leg" texture="pirate_1_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 1 Left Shoe" texture="pirate_1_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Pirate Uniform 1 Right Shoe" texture="pirate_1_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+      </Wearable>
+    </Item>
+    <!--修改贴图-->
+    <Item name="" identifier="separatistcommoner3" aliases="pirateclotheshard" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,separatists" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="450" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.3" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sheetindex="0,10" sheetelementsize="64,64" />
+      <Sprite name="pirate" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="904,294,118,59" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Pirate Uniform 3 Torso" texture="pirate_3_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,233" origin="0.49769565,0.414" />
+        <sprite name="Pirate Uniform 3 Right Hand" texture="pirate_3_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Hand" texture="pirate_3_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Lower Arm" texture="pirate_3_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 3 Left Lower Arm" texture="pirate_3_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Pirate Uniform 3 Right Upper Arm" texture="pirate_3_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 3 Left Upper Arm" texture="pirate_3_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Pirate Uniform 3 Waist" texture="pirate_3_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+        <sprite name="Pirate Uniform 3 Right Thigh" texture="pirate_3_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Thigh" texture="pirate_3_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Right Leg" texture="pirate_3_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Pirate Uniform 3 Left Leg" texture="pirate_3_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="Pirate Uniform 3 Left Shoe" texture="pirate_3_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Pirate Uniform 3 Right Shoe" texture="pirate_3_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.8" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

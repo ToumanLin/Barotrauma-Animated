@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="orangejumpsuit1" aliases="orangejumpsuit" category="Equipment" subcategory="Clothes" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Engineer Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Engineer/engineer_1.png" sourcerect="188,33,71,114" origin="0.5,0.5" />
+      <Sprite name="Engineer Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="375,293,121,64" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="Engineer's Uniform 1 Torso" texture="engineer_1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Hand" texture="engineer_1.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Hand" texture="engineer_1.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Lower Arm" texture="engineer_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Lower Arm" texture="engineer_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Upper Arm" texture="engineer_1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Upper Arm" texture="engineer_1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Waist" texture="engineer_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Thigh" texture="engineer_1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Thigh" texture="engineer_1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Leg" texture="engineer_1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Leg" texture="engineer_1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Left Shoe" texture="engineer_1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's Uniform 1 Right Shoe" texture="engineer_1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.4" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="orangejumpsuit2" category="Equipment" subcategory="Clothes" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Engineer Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Engineer/engineer_2.png" sourcerect="188,19,72,139" origin="0.5,0.5" />
+      <Sprite name="Engineer Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="123,221,117,55" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="Engineer's separatist Uniform  1 Torso" texture="engineer_2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Hand" texture="engineer_2.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Hand" texture="engineer_2.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Lower Arm" texture="engineer_2.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Lower Arm" texture="engineer_2.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Upper Arm" texture="engineer_2.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Upper Arm" texture="engineer_2.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Waist" texture="engineer_2.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Thigh" texture="engineer_2.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Thigh" texture="engineer_2.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Leg" texture="engineer_2.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Leg" texture="engineer_2.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Shoe" texture="engineer_2.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Shoe" texture="engineer_2.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.4" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="2" maxstacksize="63" slotsperrow="1" containedstateindicatorslot="0">
+        <Containable items="magazine,weapon,gunsmith,ammobox,railgunammo,grapple,depthchargeammo,explosive,harpoonammo,hmgammo,grenade,alienpowercell,handcannonammo,revolverammo,pistolammoitem,shotgunammo,smgammo,stungunammo,rifleammo,assaultrifleammo,reactorfuel,scrapcannonammo,weldingfuel" excludeditems="Uguns_heavy,hmg,autoshotgun,grenadelauncher,nucleargun,assaultrifle,arcemitter,scrapcannon,toolbox,toolbelt,toolbelt_0,clothing" />
+        <SlotIcon slotindex="0" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="engineerseparatistsuniform1" category="Equipment" subcategory="Clothes" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Engineer Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Engineer/engineer_separatist_1.png" sourcerect="189,23,69,133" origin="0.5,0.5" />
+      <Sprite name="Engineer Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="123,221,117,55" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="Engineer's separatist Uniform  1 Torso" texture="engineer_separatist_1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Hand" texture="engineer_separatist_1.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Hand" texture="engineer_separatist_1.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Lower Arm" texture="engineer_separatist_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Engineer's separatist Uniform  1 Left Lower Arm" texture="engineer_separatist_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Engineer's separatist Uniform  1 Right Upper Arm" texture="engineer_separatist_1.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Engineer's separatist Uniform  1 Left Upper Arm" texture="engineer_separatist_1.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Engineer's separatist Uniform  1 Waist" texture="engineer_separatist_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Thigh" texture="engineer_separatist_1.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Thigh" texture="engineer_separatist_1.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Leg" texture="engineer_separatist_1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Leg" texture="engineer_separatist_1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Shoe" texture="engineer_separatist_1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Shoe" texture="engineer_separatist_1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.4" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="2" maxstacksize="63" slotsperrow="1" containedstateindicatorslot="0">
+        <Containable items="magazine,weapon,gunsmith,ammobox,railgunammo,grapple,depthchargeammo,explosive,harpoonammo,hmgammo,grenade,alienpowercell,handcannonammo,revolverammo,pistolammoitem,shotgunammo,smgammo,stungunammo,rifleammo,assaultrifleammo,reactorfuel,scrapcannonammo,weldingfuel" excludeditems="Uguns_heavy,hmg,autoshotgun,grenadelauncher,nucleargun,assaultrifle,arcemitter,scrapcannon,toolbox,toolbelt,toolbelt_0,clothing" />
+        <SlotIcon slotindex="0" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="engineerseparatistsuniform2" category="Equipment" subcategory="Clothes" hideinmenus="true" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Engineer Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/Engineer/engineer_separatist_1.png" sourcerect="189,22,69,134" origin="0.5,0.5" />
+      <Sprite name="Engineer Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="0,220,117,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--<StatusEffect type="OnWearing" target="Character" duration="1" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="-10.0" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" stackable="false" disabledeltatime="true">
+          <Affliction identifier="hideunderwear" amount="100.0" />
+        </StatusEffect>-->
+        <sprite name="Engineer's separatist Uniform  1 Torso" texture="engineer_separatist_1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Hand" texture="engineer_separatist_1.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Hand" texture="engineer_separatist_1.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Lower Arm" texture="engineer_separatist_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Engineer's separatist Uniform  1 Left Lower Arm" texture="engineer_separatist_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="Engineer's separatist Uniform  1 Right Upper Arm" texture="engineer_separatist_1.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Engineer's separatist Uniform  1 Left Upper Arm" texture="engineer_separatist_1.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="Engineer's separatist Uniform  1 Waist" texture="engineer_separatist_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Thigh" texture="engineer_separatist_1.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Thigh" texture="engineer_separatist_1.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Leg" texture="engineer_separatist_1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Leg" texture="engineer_separatist_1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Left Shoe" texture="engineer_separatist_1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Engineer's separatist Uniform  1 Right Shoe" texture="engineer_separatist_1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.4" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+  </Items>
+</Override>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <!--escort hoshino-->
+  <EscortMission identifier="mission_escort_hoshinonpc" tags="escort_hoshinonpc" type="Escort" difficulty="1" commonness="0" reward="100" baseescortedcharacters="1" scalingescortedcharacters="0.0">
+    <Characters>
+      <Character from="set_abydos" identifier="npc_hoshino" />
+    </Characters>
+    <Icon texture="%ModDir%/Events/Spawner/Abydossidcard.png" sourcerect="0,0,184,200" color="255,255,255" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="mission_escort_hoshinonpc" text="mission_escort_hoshinonpc" />
+    <Metadata identifier="mission_escort_hoshinonpc_completed" value="1" operation="Add" />
+  </EscortMission>
+  <!--Trinity questlines-->
+  <EscortMission identifier="mission_escort_jtfcrewtransport1" tags="mission_escort_jtfcrewtransport1" type="Escort" difficulty="1" commonness="0" reward="650" baseescortedcharacters="1" scalingescortedcharacters="0.0">
+    <Characters>
+      <Character from="set_jtf" identifier="jtf_assault" />
+      <Character from="set_jtf" identifier="jtf_melee" />
+      <Character from="set_jtf" identifier="jtf_rifleman" />
+    </Characters>
+    <Icon texture="%ModDir%/NPCs/ClubIcons.png" sheetindex="0,1" sheetelementsize="256,256" color="255,255,255" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="mission_escort_jtfcrewtransport1" text="mission_escort_jtfcrewtransport1" />
+    <Metadata identifier="mission_escort_jtfcrewtransport1_completed" value="1" operation="Add" />
+  </EscortMission>
+  <!--attack interceptor-->
+  <PirateMission type="missionevent_gehennainterceptor" identifier="mission_gehenna_interceptor" tags="missionevent_gehennasub1,gehennainterceptor" faction="gehenna" difficulty="3" commonness="100" reward="6000" addedmissiondifficultyperplayer="8" maxleveldifficulty="100">
+    <Characters>
+      <Character typeidentifier="gehenna_melee" minamount="1" maxamount="2" />
+      <Character typeidentifier="gehenna_rifleman" minamount="2" maxamount="4" />
+      <Character typeidentifier="gehenna_smg" minamount="1" maxamount="3" />
+    </Characters>
+    <Icon texture="%ModDir%/NPCs/ClubIcons.png" sheetindex="0,1" sheetelementsize="256,256" color="255,255,255" />
+    <message header="missionname.gehennainterceptor1" text="missiondescription.gehennainterceptor1" />
+    <LocationType from="AnyOutpost" to="Any" />
+    <Metadata identifier="mission_destroy_gehennainterceptor_completed" value="1" operation="Add" />
+  </PirateMission>
+  <!--<OutpostDestroyMission
+	  name="Rabbit Platoon Assault 1"
+	    tags="abandonedoutpost"
+	  identifier="srt_assault1"
+    type="OutpostDestroy"
+    achievementidentifier="huskcultspecialassassinate"
+    reward="2000"
+    difficulty="4"
+    commonness="0"
+    allowretry="true"
+    sonarlabel="target"
+    BlockLocationTypeChanges="true">
+		<Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48"/>
+		<LocationType identifier="Abandoned" />
+		<LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="0,0" cooldownafterchange="0" />
+		<Characters>
+			<Character identifier="husk" min="4" max="6" requirekill="true" />
+			<Character identifier="husk" min="2" max="3" requirekill="true" multiplayeronly="true"/>
+			<Character identifier="husk_prowler" min="2" max="3" requirekill="true" />
+			<Character identifier="husk_chimera" min="0" max="1" requirekill="true" />
+		</Characters>
+		<Icon texture="%ModDir%/NPCs/ClubIcons.png" sheetindex="2,1" sheetelementsize="256,256" origin="0.5,0.5" />
+		<LocationType identifier="trinityconstructionsite" />
+	</OutpostDestroyMission>-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--BASE BUILDING QUEST LINE-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <!--//////////////////////////////////-->
+  <GotoMission identifier="Trinity_Basebuilding1" type="GoTo" commonness="0" sonarlabel="Trinity Construction Site" BlockLocationTypeChanges="true">
+    <Icon texture="%ModDir%/Events/SchoolIcons4.png" sheetindex="0,2" sheetelementsize="256,256" color="255,255,200,255" />
+    <LocationType identifier="trinity_base" />
+    <TriggerEvent eventidentifier="Trinity_basebuilding_rename1" nextround="true" />
+    <message header="Visits Trinity Construction Site" text="You have discovered Trinity Construction Site, this place will serve as Trinity and SRT's base of operation, and will gradually expands as you progresses the questline." />
+  </GotoMission>
+  <GotoMission identifier="Trinity_Basebuilding2_trigger" type="GoTo" commonness="0">
+    <Icon texture="%ModDir%/Events/SchoolIcons4.png" sheetindex="0,2" sheetelementsize="256,256" color="255,255,200,255" />
+    <TriggerEvent eventidentifier="Trinity_basebuilding2" nextround="true" />
+    <message header="Exit base" text="test trigger" />
+  </GotoMission>
+  <GotoMission identifier="Trinity_basebuilding2" type="GoTo" commonness="0" BlockLocationTypeChanges="true">
+    <Icon texture="%ModDir%/Events/SchoolIcons4.png" sheetindex="0,2" sheetelementsize="256,256" color="255,255,200,255" />
+    <LocationType identifier="trinity_base" />
+    <LocationTypeChange from="trinity_base" to="trinity_base_tier2" />
+    <TriggerEvent eventidentifier="Trinity_Basebuilding2" />
+    <TriggerEvent eventidentifier="Trinity_basebuilding_rename2" />
+    <message header="Upgrading Base" text="test upgrading" />
+  </GotoMission>
+  <!--//////////////////////////////////-->
+  <!--monster-->
+  <!--//////////////////////////////////-->
+  <!--<MonsterMission identifier="killsuperperoro" tags="killmonster,killmonster_set3" type="trinitykillsuperperoro" difficulty="3" commonness="100" reward="6000" maxsonarmarkerdistance="20000" sonarlabel="character.Seroro Swarm" monsterfile="Superperoro">
+    <monster character="Peroro" min="10" max="20" />
+    <monster character="superperoro" min="1" max="1" />
+    <Reputation identifier="location" amount="2" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,768,256,256" color="214,50,48" />
+  </MonsterMission>-->
+  <!--attack gehenna outpost-->
+  <PirateMission type="Pirate" identifier="hostile_gehenna_scoutsub1" faction="gehenna" tags="hostile_gehenna_scoutsub1,gehennascout1" showinmenus="false" showstartmessage="true" issideobjective="true" difficulty="0" commonness="100" reward="0" addedmissiondifficultyperplayer="8">
+    <Reputation identifier="trinity" amount="10" />
+    <Characters>
+      <Character typeidentifier="ba_dcm_captain" minamount="1" maxamount="1" />
+      <Character typeidentifier="ba_dcm_pioneer" minamount="1" maxamount="1" />
+      <Character typeidentifier="ba_dcm_mechanic" minamount="1" maxamount="1" />
+      <Character typeidentifier="ba_dcm_weaponcrew" minamount="1" maxamount="2" />
+    </Characters>
+    <CharacterTypes>
+      <CharacterType typeidentifier="ba_dcm_captain">
+        <Character identifier="ba_dcm_captain" from="ba_gehenna" preferreddifficulty="40" />
+      </CharacterType>
+      <CharacterType typeidentifier="ba_dcm_pioneer">
+        <Character identifier="ba_dcm_pioneer" from="ba_gehenna" preferreddifficulty="40" />
+      </CharacterType>
+      <CharacterType typeidentifier="ba_dcm_mechanic">
+        <Character identifier="ba_dcm_mechanic" from="ba_gehenna" preferreddifficulty="40" />
+      </CharacterType>
+      <CharacterType typeidentifier="ba_dcm_weaponcrew">
+        <Character identifier="ba_dcm_weaponcrew" from="ba_gehenna" preferreddifficulty="40" />
+      </CharacterType>
+    </CharacterTypes>
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55" />
+    <message header="Gehenna Scout Class Vessel" text="" />
+    <LocationType from="AnyOutpost" to="Any" />
+  </PirateMission>
+  <!--<AbandonedOutpostMission
+  identifier="attackgehennaoutpost1"
+  tags="gehennaoutpost"
+  type="attackgehennaoutpost1"
+    reward="4500"
+    difficulty="1"
+    commonness="100"
+    allowretry="true"
+    sonarlabel="target"
+    unhideentitysubcategories="abandonedhuman"
+      requiredlocationfaction="gehenna"
+    minleveldifficulty="50"
+		BlockLocationTypeChanges="true">
+		<Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48"/>
+		<LocationType identifier="gehennaoutpost" />
+		<LocationType identifier="gehennaoutpost" />
+		<Characters>
+			<Character identifier="husk" min="4" max="6" requirekill="true" />
+			<Character identifier="husk" min="3" max="4" requirekill="true" multiplayeronly="true"/>
+			<Character identifier="huskextremist" from="abandonedoutpostnpcs" requirekill="true" moduleflags="crewmodule" />
+			<Character identifier="huskextremist" from="abandonedoutpostnpcs" requirekill="true" moduleflags="researchmodule" />
+			<Character identifier="huskextremist" from="abandonedoutpostnpcs" requirekill="true" moduleflags="researchmodule" />
+			<Character identifier="huskextremist" from="abandonedoutpostnpcs" requirekill="true" moduleflags="researchmodule" multiplayeronly="true"/>
+			<Character identifier="huskextremist" from="abandonedoutpostnpcs" requirekill="true" moduleflags="researchmodule" multiplayeronly="true"/>
+			<Character identifier="huskextremist_leader" from="abandonedoutpostnpcs" requirekill="true" moduleflags="researchmodule" />
+		</Characters>
+		<TriggerEvent state="0" delay="5" eventidentifier="huskextremists" campaignonly="true"/>
+		<TriggerEvent state="0" delay="5" eventidentifier="spawnevent_srt_noncombat" campaignonly="true"/>
+		<message header="missionname.attackgehennaoutpost1" text="missiondescription.attackgehennaoutpost1"/>
+	</AbandonedOutpostMission>-->
+  <!--wincondition="KillCount"-->
+  <GotoMission identifier="minigame_attackdefense" type="minigame_attackdefense" multiplayeronly="false" allowrespawning="true" loadsubmarines="true" AllowOutpostNPCs="False" ForceOutpostGenerationParameters="minigame_ad_map1" AllowOutpostSelectionFromTag="module_attackdefense" allowothermissionsinlevel="true" ForceRespawnMode="MidRound" BlockLocationTypeChanges="true">
+    <LocationType identifier="ba_location_attackdefense" />
+    <Icon texture="%ModDir%/Events/SchoolIcons4.png" sheetindex="0,2" sheetelementsize="256,256" color="255,255,200,255" />
+    <!--<TriggerEvent state="0" delay="5" eventidentifier="ba_manager_attackdefense_minigame" campaignonly="true"/>-->
+    <!--<message text="missionmessage0.outpostdeathmatch"/>
+		<message text="missionmessage1.outpostdeathmatch"/>-->
+    <!--<OverrideMusic state="0" type="pve" />-->
+  </GotoMission>
+</Missions>

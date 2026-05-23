@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_trashcanarmor" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Deconstruct time="15">
+      <Item identifier="scrap" amount="3" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem identifier="scrap" amount="5" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/OTFX/Items/Jobgear/Commoner/trashcanarmor.png" sourcerect="0,0,128,206" depth="0.75" origin="0.5,0.5" />
+    <Body width="121" height="201" density="25" />
+    <Wearable pickkey="Use" slots="Any,OuterClothes" msg="itemmsgpickupuse">
+      <sprite name="" texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" limb="Head" />
+      <sprite name="" texture="%ModDir%/OTFX/Items/Jobgear/Commoner/trashcanarmor.png" sourcerect="0,0,128,206" limb="Torso" hidelimb="false" inherittexturescale="true" inheritlimbdepth="true" hideotherwearables="true" />
+      <sprite name="" texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" limb="Waist" />
+      <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.8" />
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="HitMetal" damageparticle="shrapnel" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="gunshotwound,explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.45" damagesound="HitMetal" damageparticle="shrapnel" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.25" damagesound="HitMetal" damageparticle="spark" deflectprojectiles="true" />
+    </Wearable>
+    <ItemContainer selectkey="Select" capacity="3" slotsperrow="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+</Items>

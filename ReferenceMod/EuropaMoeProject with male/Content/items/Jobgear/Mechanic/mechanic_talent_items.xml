@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 安全背带:修改贴图 -->
+    <Item name="" identifier="safetyharness" category="Equipment" tags="smallitem,clothing" scale="0.35" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" secondary="engcab" />
+      <Price baseprice="120" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.2" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="1.2" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="rubber" />
+        <Item identifier="steel" />
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="rubber" amount="2" />
+        <RequiredItem identifier="steel" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="198,132,67,57" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="58,326,143,40" depth="0.6" origin="0.5,0.5" />
+      <Body width="120" height="35" density="25" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.25" />
+        <sprite name="safetyharness Torso" texture="safetyharness_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Hand" texture="safetyharness_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Hand" texture="safetyharness_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Lower Arm" texture="safetyharness_[GENDER].png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Lower Arm" texture="safetyharness_[GENDER].png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Upper Arm" texture="safetyharness_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Upper Arm" texture="safetyharness_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Waist" texture="safetyharness_[GENDER].png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="makeshiftarmor" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <Price baseprice="140" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="40">
+        <Item identifier="organicfiber" amount="1" />
+        <Item identifier="iron" amount="4" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+        <RequiredItem identifier="iron" amount="6" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Makeshift Armor Item" texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="167,25,86,126" depth="0.55" origin="0.5,0.5" />
+      <Body width="62" height="120" density="25" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Makeshift Armor Torso" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Hand" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Hand" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Upper Arm" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Upper Arm" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Forearm" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Forearm" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Waist" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Thigh" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Thigh" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Leg" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Leg" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Shoe" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" hideotherwearables="true" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Makeshift Armor Right Shoe" texture="%ModDir%/Content/Items/Diving/MakeshiftArmor_[GENDER].png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" hideotherwearables="true" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="2" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="2" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="2" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="2" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="" identifier="ironhelmet" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.325">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="50" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="iron" amount="2" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="iron" amount="4" />
+      </Fabricate>
+      <Body width="70" height="80" />
+      <Sprite name="Makeshift Helmet Item" texture="Content/Items/Jobgear/headgears.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" sourcerect="693,559,65,40" origin="0.54,1.1" />
+      </Wearable>
+    </Item>
+    <Item name="Exosuit Locker Vertical" identifier="EXOdivingsuitlocker" description="Installation: RMB+E" category="Diving" tags="container,divingsuitcontainer,divingsuitcontainerwindow" pickdistance="50" scale="0.5">
+      <!-- 合成 -->
+      <!--<Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+        <RequiredSkill identifier="mechanical" level="40" />
+        <RequiredSkill identifier="electrical" level="40" />
+        <RequiredItem identifier="steel" amount="4" />
+        <RequiredItem identifier="iron" amount="4" />
+      </Fabricate> -->
+      <!-- 分解 -->
+      <!--<Deconstruct time="15">
+        <Item identifier="steel" amount="4" />
+        <Item identifier="iron" amount="4" />
+      </Deconstruct> -->
+      <!-- 贴图 -->
+      <Sprite name="Exosuit Locker Vertical" texture="%ModDir%/EXOPLACE.png" depth="0.74" sourcerect="12,20,255,380" origin="0.5,0.5" />
+      <DecorativeSprite texture="%ModDir%/EXOPLACE.png" depth="0.72" sourcerect="260,20,255,380" origin="0.5,0.5" />
+      <!-- 耗电 -->
+      <Powered powerconsumption="50" currpowerconsumption="50" isactive="true">
+        <GuiFrame relativesize="0.18,0.15" minsize="350,160" maxsize="420,192" anchor="Center" relativeoffset="0,-0.1" style="ItemUI" msg="ItemMsgInteractSelect" />
+      </Powered>
+      <!-- 接线面板 -->
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredSkill identifier="electrical" level="40" />
+        <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+          <Sound file="Content/Items/Weapons/ElectricalDischarger.ogg" range="1000" />
+          <Explosion range="100.0" stun="0" force="5.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+          <Affliction identifier="stun" strength="3" />
+          <Affliction identifier="burn" strength="5" />
+        </StatusEffect>
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <ParticleEmitter particle="spark" particleburstamount="5" particleburstinterval="1.05" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="2" scalemin="1" scalemax="2" mincondition="0.0" maxcondition="50.0" />
+        <input name="power_in" displayname="connection.powerin" />
+      </ConnectionPanel>
+      <!-- 放置物品 -->
+      <ItemContainer hideitems="false" drawinventory="true" capacity="1" slotsperrow="1" itempos="124,-168" iteminterval="0,0" canbeselected="true" containedspritedepth="0.73" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+        <Containable items="deepdivinglarge,exosuitPA" />
+      </ItemContainer>
+      <!-- 实体大小 -->
+      <Body width="250" height="350" density="20" />
+      <!-- 拆卸安装手持 -->
+      <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" limitedattachable="true" aimable="true">
+        <RequiredItem items="wrench" type="Equipped" />
+        <StatusEffect target="This" type="Always">
+          <Conditional attached="false" targetitemcomponentname="Holdable" />
+          <DropContainedItems />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="" identifier="exosuit" category="Diving,Equipment" tags="deepdiving,divinggear_wearableindoors,deepdivinglarge" scale="0.605" fireproof="true" description="" isshootable="true" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+      <Price baseprice="80" canbespecial="false" sold="false" />
+      <Deconstruct time="30">
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="rubber" />
+        <Item identifier="rubber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="60" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+        <RequiredItem identifier="rubber" amount="3" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" sourcerect="488,622,128,128" origin="0.5,0.5" />
+      <Sprite name="Exosuit Item" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" sourcerect="7,487,203,244" depth="0.55" origin="0.5,0.5" />
+      <Body width="150" height="230" density="15" />
+      <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select" allowusewhenworn="true">
+        <sprite name="Exosuit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.45" hideotherwearables="true" hidewearablesoftype="" sourcerect="229,457,235,261" origin="0.548,0.61" />
+        <sprite name="Exosuit Torso" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="Torso" scale="1" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" origin="0.6,0.615" inheritlimbdepth="true" inheritsourcerect="false" sourcerect="305,106,152,200">
+          <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false" offset="-50,-50">
+            <LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.09, 0.47" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <sprite name="Exosuit Torso block" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="Torso" depthlimb="Head" hidelimb="false" inherittexturescale="true" CanBeHiddenByOtherWearables="false" origin="0.5812,1.262" sourcerect="503,460,152,100" />
+        <sprite name="Exosuit Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" inheritlimbdepth="true" SourceRect="539,288,32,40" origin="0.47,0.59" />
+        <sprite name="Exosuit Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="602,288,32,40" origin="0.47,0.59" />
+        <sprite name="Exosuit Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" inheritlimbdepth="true" SourceRect="529,88,47,105" origin="0.48,0.52" />
+        <sprite name="Exosuit Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="592,88,47,105" origin="0.48,0.52" />
+        <sprite name="Exosuit Right Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" inheritlimbdepth="true" SourceRect="522,205,54,72" origin="0.53,0.57" />
+        <sprite name="Exosuit Left Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="595,213,35,58" origin="0.47,0.59" />
+        <sprite name="Exosuit Waist" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="Waist" hidelimb="true" scale="1" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" inheritlimbdepth="true" SourceRect="337,335,98,65" origin="0.51,0.58" />
+        <sprite name="Exosuit Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" inheritlimbdepth="true" SourceRect="72,105,76,125" origin="0.57,0.58" />
+        <sprite name="Exosuit Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="173,105,76,125" origin="0.57,0.58" />
+        <sprite name="Exosuit Right Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritlimbdepth="true" inheritsourcerect="false" SourceRect="63,253,85,142" origin="0.595,0.62" />
+        <sprite name="Exosuit Left Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="164,253,85,142" origin="0.595,0.62" />
+        <sprite name="Exosuit Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" sourcerect="602,363,78,50" origin="0.51,0.55" />
+        <sprite name="Exosuit Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/Exosuit2.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" sourcerect="495,363,78,50" origin="0.51,0.55" />
+        <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" />
+        <!-- 可充气充电 -->
+        <StatusEffect type="OnContained" target="Contained" targetslot="0" Condition="2.0" interval="1" disabledeltatime="true">
+          <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+          <RequiredItem items="oxygentank" targetslot="0" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnContained" target="Contained" targetslot="1" Condition="2.0" interval="1" disabledeltatime="true">
+          <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+          <RequiredItem items="mobilebattery" targetslot="1" type="Contained" excludebroken="false" excludefullcondition="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.2" HideFace="true" ObstructVisionAmount="0.5" PressureProtection="10000.0" setvalue="true" disabledeltatime="true">
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalkExosuit" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRunExosuit" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <!-- 重机枪无后座 -->
+        <StatusEffect type="OnWearing" target="Character" interval="0.9" disabledeltatime="true">
+          <Affliction identifier="recoilstabilized" amount="1" />
+        </StatusEffect>
+        <!-- 移速缓慢 -->
+        <StatusEffect type="OnWearing" target="This,Character" UseHullOxygen="true" SpeedMultiplier="0.4" setvalue="true" disabledeltatime="true">
+          <Conditional Voltage="gt 0.5" />
+        </StatusEffect>
+        <!-- 消耗电量 -->
+        <StatusEffect type="OnWearing" target="Contained" Condition="-0.1" interval="1" disabledeltatime="true" targetslot="1">
+          <RequiredItem items="mobilebattery" targetslot="1" type="Contained" />
+        </StatusEffect>
+        <!-- 电量用尽时无法移动-->
+        <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="0.0" setvalue="true" disabledeltatime="true">
+          <Conditional Voltage="lte 0.5" />
+        </StatusEffect>
+        <!-- 装入燃料罐 -->
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-110.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
+          <Conditional IsDead="false" />
+          <RequiredItem items="weldingfueltank" targetslot="0" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" targetlimbs="Torso" Oxygen="-110.0" Condition="-0.5" interval="1" disabledeltatime="true" targetslot="0">
+          <Conditional IsDead="false" />
+          <RequiredItem items="incendiumfueltank" targetslot="0" type="Contained" />
+          <Affliction identifier="burn" amount="0.05" />
+        </StatusEffect>
+        <!-- 装入氧气罐 -->
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+          <Conditional InWater="true" />
+          <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <!-- 装入液氧罐 -->
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.05" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.05" comparison="And" targetslot="0">
+          <Conditional InWater="true" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <!-- 装入雷速电池移速增加 -->
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="1.5" setvalue="true" comparison="Or">
+          <Conditional IsDead="false" />
+          <RequiredItem items="fulguriumbatterycell" targetslot="1" type="Contained" />
+        </StatusEffect>
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,lacerations,explosiondamage" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="bitewounds, bleeding" damagemultiplier="0.25" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="stun" damagemultiplier="0.1" probabilitymultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="acidburn" damagemultiplier="0.25" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.3" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+        <sound file="Content/Items/Weapons/WEAPONS_chargeUp.ogg" type="OnWearing" range="500.0" volumeproperty="Speed" volume="0.2" loop="true" frequencymultiplier="0.5" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+      <ItemContainer capacity="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0">
+        <SlotIcon slotindex="0" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="777,779,112,100" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/WeaponUI.png" sourcerect="64,961,32,22" origin="0.5,0.45" />
+        <SlotIcon slotindex="2" texture="Content/UI/InventoryUIAtlas.png" sourcerect="888,278,62,44" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="oxygensource,weldingtoolfuel" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mobilebattery">
+            <StatusEffect type="OnContaining" target="This" Voltage="1.0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mountableweapon,smallitem"></Containable>
+        </SubContainer>
+        <SubContainer capacity="9">
+          <Containable items="smallitem" />
+        </SubContainer>
+      </ItemContainer>
+      <ItemComponent IsActiveConditionalComparison="Or">
+        <IsActive HullOxygenPercentage="lt 50" />
+        <IsActive InWater="eq true" />
+        <StatusEffect type="OnActive" target="Contained,Character" targetslot="0" comparison="And">
+          <RequiredItem items="oxygensource" type="Contained" />
+          <Conditional condition="lt 5.0" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="250" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="Contained" targetslot="0" playsoundonrequireditemfailure="true">
+          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+          <Conditional condition="lte 0.0" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="250" loop="true" />
+        </StatusEffect>
+      </ItemComponent>
+      <aitarget maxsightrange="1500" />
+    </Item>
+    <!-- 重型扳手: bigger better stronger -->
+    <Item name="" identifier="heavywrench" variantof="wrench" addedrepairspeedmultiplier="0.4">
+      <Preferredcontainer secondary="respawncontainer" amount="1" spawnprobability="0" notcampaign="true" />
+      <PreferredContainer primary="engcab" spawnprobability="0" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0" />
+      <PreferredContainer primary="wreckengcab,abandonedengcab,outpostengcab,beaconengcab" spawnprobability="0" />
+      <PreferredContainer secondary="outpostcrewcabinet" spawnprobability="0" />
+      <PreferredContainer secondary="outposttrashcan" spawnprobability="0" />
+      <Price baseprice="190" sold="false" />
+      <Deconstruct>
+        <Item identifier="steel" />
+        <Item identifier="titanium" />
+      </Deconstruct>
+      <Fabricate requiresrecipe="true">
+        <RequiredItem identifier="titanium" amount="2" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Jobgear/TalentGear.png" sourcerect="157,492,114,20" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/items/Jobgear/Mechanic/heavywrench_plus.png" sourcerect="0,0,171,36" depth="0.55" origin="0.5,0.5" />
+      <Body width="114" height="20" density="30" />
+      <MeleeWeapon slots="RightHand+LeftHand,Any" range="130" reload="1.1" controlpose="true" aimpos="45,10" handle1="-25,0" handle2="-12.5,0.5" holdangle="56" combatpriority="20">
+        <StatusEffect type="OnFailure" target="This" reload="1.5" setvalue="true" />
+        <StatusEffect type="OnUse" target="This" reload="1.1" setvalue="true" delay="1.4" />
+        <RequiredSkill identifier="mechanical" level="40" />
+        <Attack targetimpulse="15" structuredamage="15" itemdamage="15">
+          <Affliction identifier="blunttrauma" strength="63" />
+          <Affliction identifier="stun" strength="1" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
+            <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+            <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+          </StatusEffect>
+          <StatusEffect type="OnUse" target="This">
+            <Conditional skillrequirement="true" mechanical="lt 40" />
+            <Affliction identifier="stun" strength="0.25" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <SkillRequirementHint identifier="mechanical" level="40" />
+    </Item>
+    <!-- 废铁炮：添加动画 -->
+    <Item name="" identifier="scrapcannon" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,mountableweapon,provocativetohumanai" Scale="0.5" impactsoundtag="impact_metal_heavy" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
+      <Price baseprice="640" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="0" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="70" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="70" />
+        </Price>
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="copper" />
+        <Item identifier="plastic" />
+        <Item identifier="lead" />
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="65" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="lead" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="354,371,158,55" depth="0.55" origin="0.5,0.45" />
+      <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="354,371,158,55" depth="0.55" origin="0.5,0.45" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="699,662,158,55" depth="0.55" origin="0.5,0.45" maxcondition="50" />
+      <Body width="158" height="40" density="25" />
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="50,-15" aimpos="48,4" handle1="-22,-20" handle2="10,-3" holdangle="-25" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Scrap Cannon Worn" texture="Content/Items/JobGear/TalentGear.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="354,371,158,55" limb="Torso" scale="0.5" origin="0.5,1.0" />
+      </Wearable>
+      <RangedWeapon reload="3.0" barrelpos="67,5" spread="0" unskilledspread="4" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+        <ParticleEmitter particle="shrapnel" particleamount="50" velocitymin="500" velocitymax="1500" anglemin="-30" anglemax="30" scalemin="0.5" scalemax="1.0" />
+        <ParticleEmitter particle="spark" particleamount="50" velocitymin="500" velocitymax="1500" anglemin="-30" anglemax="30" scalemin="0.5" scalemax="1.0" />
+        <Sound file="Content/Items/Jobgear/Mechanic/WEAPON_scrapCannonShot1.ogg" range="3000" type="OnUse" selectionmode="Random" volume="2" />
+        <Sound file="Content/Items/Jobgear/Mechanic/WEAPON_scrapCannonShot2.ogg" range="3000" type="OnUse" volume="2" />
+        <Sound file="Content/Items/Jobgear/Mechanic/WEAPON_scrapCannonShot3.ogg" range="3000" type="OnUse" volume="2" />
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-8">
+          <Explosion range="250.0" force="3" shockwave="false" smoke="true" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Contained" Condition="-12.5" targetslot="1" disabledeltatime="true" />
+        <RequiredItems items="scrapcannonammo" type="Contained" msg="itemmsgammorequired" />
+        <RequiredItems items="mobilebattery" type="Contained" msg="itemmsgbatterycellrequired" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <RequiredSkill identifier="mechanical" level="45" />
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" allowaccess="false" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="32" slotsperrow="3" hideitems="true" containedstateindicatorslot="1" containedstateindicatorstyle="battery">
+        <Containable items="scrapcannonammo">
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" tags="mediumitem,weapon,gun,mountableweapon,provocativetohumanai,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，装填弹匣时触发 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="35,-2" handle1="-22,-20" handle2="10,-3" holdangle="-25" aimangle="-10" delay="0.01" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="35,-2" handle1="0,0" handle2="10,-3" holdangle="-25" aimangle="-10" delay="0.3" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="35,-2" handle1="25,0" handle2="10,-3" holdangle="-25" aimangle="-10" delay="0.7" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="32,-10" handle1="-30,-30" handle2="10,-3" holdangle="-25" aimangle="10" delay="1.0" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="32,-10" handle1="10,-5" handle2="10,-3" holdangle="-25" aimangle="10" delay="1.5" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="32,-10" handle1="20,0" handle2="10,-3" holdangle="-25" aimangle="10" delay="1.7" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="32,-10" handle1="30,0" handle2="10,-3" holdangle="-25" aimangle="10" delay="2.1" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="32,-10" handle1="0,0" handle2="10,-3" holdangle="-25" aimangle="10" delay="2.4" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-5" aimpos="48,4" handle1="-22,-20" handle2="10,-3" holdangle="-25" aimangle="0" delay="2.7" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-15" aimpos="48,4" handle1="-22,-20" handle2="10,-3" holdangle="-25" aimangle="0" delay="2.8" condition="100" maxchargetime="0" tags="mediumitem,weapon,gun,mountableweapon,provocativetohumanai" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.4">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_harpoongun_open.ogg" range="500" volume="4" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="1.6">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_nucleargun_reload_step_2.ogg" range="500" volume="1" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="2.3">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_harpoongun_close.ogg" range="500" volume="4" />
+          </StatusEffect>
+          <!-- 为规避联机时因为延迟而装弹失败所单独设置的SE -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mobilebattery" />
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="25" />
+      <SkillRequirementHint identifier="mechanical" level="45" />
+    </Item>
+  </Items>
+</Override>

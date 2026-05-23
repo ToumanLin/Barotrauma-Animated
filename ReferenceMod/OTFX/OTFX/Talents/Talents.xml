@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="otfx_powerfuldash">
+    <Description tag="talentdescription.otfx_powerfuldash">
+      <Replace tag="[strength]" value="2" color="gui.green" />
+      <Replace tag="[interval]" value="7" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="5,4" sheetelementsize="128,128" />
+    <AbilityGroupInterval interval="1">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+              <Affliction identifier="otfx_powerfuldash" amount="1.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnRagdoll">
+      <Conditions>
+        <AbilityConditionHasVelocity velocity="4.4" />
+        <AbilityConditionHasAffliction afflictionidentifier="otfx_powerfuldash" minimumpercentage="1.0" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects nearbycharactersappliestoself="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="NearbyCharacters" range="150" setvalue="true">
+              <Affliction identifier="stun" strength="1.4" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+        <CharacterAbilityApplyStatusEffects nearbycharactersappliestoself="false" nearbycharactersappliestoallies="false">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="NearbyCharacters" range="150" setvalue="true">
+              <Affliction identifier="stun" strength="2.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="otfx_powerfuldash" strength="100" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_disableforceloot">
+    <Description tag="talentdescription.otfx_disableforceloot" />
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="4,1" sheetelementsize="128,128" />
+    <AbilityGroupEffect abilityeffecttype="OnLootCharacter">
+      <Conditions>
+        <AbilityConditionCharacter targettypes="Enemy,Alive">
+          <Conditional isknockeddown="false" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects applytoself="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" lockhands="true" />
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_incendiumsmgigniteround" ishiddenextratalent="true">
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="handheldranged" itemidentifier="smground" />
+        <AbilityConditionHasStatusTag tag="otfx_incendiumsmgignite" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="otfx_burning" amount="5" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_incendiumsmgigniterounddepletedfuel" ishiddenextratalent="true">
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="handheldranged" itemidentifier="smgrounddepletedfuel" />
+        <AbilityConditionHasStatusTag tag="otfx_incendiumsmgignite" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="otfx_burning" amount="5" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_incendiumsmgigniteroundop" ishiddenextratalent="true">
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="handheldranged" itemidentifier="otfx_smgroundop" />
+        <AbilityConditionHasStatusTag tag="otfx_incendiumsmgignite" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData>
+          <Afflictions>
+            <Affliction identifier="otfx_burning" amount="6" />
+          </Afflictions>
+        </CharacterAbilityModifyAttackData>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_gassuffocation" ishiddenextratalent="true">
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionCharacter invert="true">
+          <Conditional usehulloxygen="true" />
+          <Conditional needsoxygen="true" />
+        </AbilityConditionCharacter>
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="otfx_gassuffocationinhaling" multiplier="0.0" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+</Talents>

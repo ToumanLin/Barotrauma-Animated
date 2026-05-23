@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" description="" identifier="otfx_securityautocoilgun" category="machine,weapon" subcategory="otfx" tags="mediumitem,autoturret,provocative,provocativetohumanai" health="100" interactthroughwalls="true" scale="0.25" spritecolor="1.0,1.0,1.0,1.0" damagedbyexplosions="true" explosiondamagemultiplier="0.2" damagedbymeleeweapons="true" damagedbyrepairtools="true" damagedbymonsters="true">
+    <Price baseprice="700" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.25" />
+      <Price storeidentifier="merchantcity" multiplier="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="55" requiresrecipe="false">
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="768,0,128,128" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/Turrets.png" depth="0.55" sourcerect="772,8,248,248" canflipy="false" origin="0.5,0.5" />
+    <Body width="148" height="148" />
+    <Holdable pickkey="Use" slots="RightHand+LeftHand" blocksplayers="true" canpush="false" aimable="true" holdpos="45,-10" aimpos="65,-10" handle1="-10,-45" handle2="10,-45" msg="ItemMsgPickUpUse">
+      <StatusEffect type="OnActive" target="This" tags="holding" duration=".033" stackable="false" />
+    </Holdable>
+    <Turret launchimpulse="80.0" canbeselected="false" characterusable="false" autooperate="true" airange="1000" barrelpos="126,82" firingoffset="0,-190" rotationlimits="-210,30" powerconsumption="0.0" recoildistance="50" reload="0.25" springstiffnesslowskill="2" springstiffnesshighskill="50" springdampinglowskill="0.5" springdampinghighskill="10" rotationspeedlowskill="1" rotationspeedhighskill="8" maxangleoffset="10" aicurrenttargetprioritymultiplier="1.1" targetcharacters="true" targetmonsters="true" targethumans="true" targetsubmarines="false" targetitems="true" friendlyteam="FriendlyNPC" isactiveconditionalcomparison="Or">
+      <Sound file="Content/Items/Weapons/Coilgun1.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/Coilgun2.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" />
+      <Sound file="Content/Items/Weapons/Coilgun3.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" />
+      <Sound file="Content/Items/Weapons/Coilgun4.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" />
+      <Sound file="Content/Items/Weapons/Coilgun5.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" />
+      <Sound file="Content/Items/Weapons/Coilgun6.ogg" type="OnUse" range="3000" volume="0.6" frequency="2.0" />
+      <RailSprite texture="Content/Items/Weapons/Turrets.png" depth="0.551" sourcerect="901,256,120,287" origin="0.64, 0.7" />
+      <BarrelSprite texture="Content/Items/Weapons/Turrets.png" depth="0.552" sourcerect="776,256,125,333" origin="0.6, 0.8" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" range="900" volume="0.3" frequency="1.3" />
+      <StartMoveSound file="Content/Items/Weapons/RailgunStart.ogg" range="900" volume="0.3" frequency="1.3" />
+      <EndMoveSound file="Content/Items/Weapons/RailgunStop.ogg" range="900" volume="0.3" frequency="1.3" />
+      <LightComponent allowingameediting="false" lightcolor="0.8,0.8,0.8,0.8" range="500" directional="true" flicker="0.03" ison="true">
+        <LightTexture texture="%ModDir%/OTFX/Lights/lightlaser.png" origin="-0.05,0.500" size="1.0,0.25" />
+      </LightComponent>
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="5" velocitymax="10" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="100.0" force="2.0" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="3.0" />
+      </StatusEffect>
+    </Turret>
+    <ItemContainer selectkey="Select" canbeselected="true" capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorslot="0" containedstateindicatorstyle="bullet">
+      <GuiFrame relativesize="0.15,0.1875" anchor="Center" minsize="105,128" maxsize="210,210" style="ItemUI" />
+      <Containable identifier="otfx_securityautocoilgunammobox" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="otfx_securityautocoilgunteammodule1" allowvariants="false">
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Turret" FriendlyTeamType="Team1" delay=".016" />
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="LightComponent" lightcolor="0.45,0.45,0.8,1.0" delay=".016" />
+        </Containable>
+        <Containable identifier="otfx_securityautocoilgunteammodule2" allowvariants="false">
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="Turret" FriendlyTeamType="Team2" delay=".016" />
+          <StatusEffect type="OnInserted" target="This" targetitemcomponent="LightComponent" lightcolor="0.45,0.8,0.45,1.0" delay=".016" />
+        </Containable>
+        <Containable tag="otfx_securityautocoilgunteammodule">
+          <StatusEffect type="OnRemoved" target="This" targetitemcomponent="Turret" FriendlyTeamType="FriendlyNPC" />
+          <StatusEffect type="OnRemoved" target="This" targetitemcomponent="LightComponent" lightcolor="0.8,0.8,0.8,0.8" />
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <CustomInterface selectkey="Select" canbeselected="true" allowuioverlap="true" drawhudwhenequipped="false">
+      <GuiFrame relativesize="0.10,0.18" anchor="Center" pivot="TopLeft" relativeoffset="0.08,0.0" style="ItemUI" draggable="true" />
+      <Button text="label.lockcontainer">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer" drawinventory="false" allowaccess="false" />
+      </Button>
+      <Button text="label.unlockcontainer3s">
+        <StatusEffect type="OnUse" target="This" tags="unlock" duration="0.5" stackable="false">
+          <Sound file="%ModDir%/OTFX/Sounds/unlock_box.ogg" range="500" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" drawinventory="true" allowaccess="true" delay="3.0" stackable="false" checkconditionalalways="true">
+          <Conditional hasstatustag="unlock" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <ItemComponent>
+      <IsActive targetitemcomponent="Turret" drawable="false" />
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Turret" drawable="true" autooperate="true">
+        <Conditional parentinventory="null" />
+        <Conditional hasstatustag="holding" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" targetitemcomponent="Turret" drawable="false" autooperate="false" comparison="And">
+        <Conditional parentinventory="! null" hasstatustag="! holding" />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This" forceplaysounds="true">
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemin="-60" distancemax="60" particleamount="3" velocitymin="200" velocitymax="300" scalemin="0.7" scalemax="1.2" colormultiplier="198,154,148" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal1.ogg" range="800" volume="0.65" selectionmode="Random" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal2.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal3.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal4.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal5.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitMetal6.ogg" range="800" volume="0.65" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="4000" volume="0.8" frequency="1.5" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="4000" volume="0.8" frequency="1.5" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="4000" volume="0.8" frequency="1.5" />
+        <Explosion range="500" ballastfloradamage="50" structuredamage="75" levelwalldamage="75" itemdamage="250" force="10" debris="false" decal="explosion" decalsize="0.3">
+          <Affliction identifier="explosiondamage" strength="62.5" />
+          <Affliction identifier="burn" strength="7.5" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="10" probability="0.1" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="3.5" />
+        </Explosion>
+        <DropContainedItems />
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+    <AiTarget maxsightrange="900" maxsoundrange="3000" fadeouttime="5" />
+  </Item>
+  <Item name="" identifier="otfx_securityautocoilgunammobox" scale="0.25" tags="smallitem" category="Weapon" subcategory="otfx" maxstacksize="1" maxstacksizecharacterinventory="1" maxstacksizeholdableorwearableinventory="1" cargocontaineridentifier="" impactsoundtag="impact_metal_light">
+    <Deconstruct time="10">
+      <Item identifier="aluminium" outconditionmax="0.5" copycondition="true" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="2">
+      <RequiredSkill identifier="weapons" level="25" />
+      <RequiredItem tag="munition_core" amount="2" description="fabricationdescription.munition_core" />
+      <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <Fabricate suitablefabricators="fabricator" displayname="recycleitem" requiredtime="10">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem tag="munition_core" amount="1" description="fabricationdescription.munition_core" />
+      <RequiredItem identifier="otfx_securityautocoilgunammobox" mincondition="0.0" maxcondition="0.1" usecondition="false" description="fabricationdescription.ammoboxrecycle" header="fabricationheader.ammoboxrecycle" />
+    </Fabricate>
+    <Sprite texture="Content/Items/Containers/containers.png" depth="0.54" sourcerect="800,788,95,78" origin="0.5,0.5" />
+    <Body width="90" height="72" density="30" />
+    <Holdable slots="Any,RightHand+LeftHand" holdpos="40,-20" handle1="-1,-5" handle2="1,-3" aimable="false" msg="ItemMsgPickUpSelect" />
+    <ItemContainer capacity="1" maxstacksize="1" showcontainedstateindicator="true" showconditionincontainedstateindicator="true" containedstateindicatorstyle="bullet" spawnwithid="otfx_securityautocoilgunbolt">
+      <SlotIcon slotindex="0" texture="Content/Map/LabelLetters.png" sourcerect="768,128,128,128" origin="0.5,0.5" />
+      <Containable identifier="otfx_securityautocoilgunbolt" />
+      <SlotIcon slotindex="1" texture="Content/Map/LabelLetters.png" sourcerect="0,128,128,128" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="otfx_securityautocoilgunbolt">
+          <StatusEffect type="OnContaining" target="This">
+            <SpawnItem identifier="otfx_securityautocoilgunbolt" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+            <Conditional isfullcondition="true" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="This" condition="+1.0" disabledeltatime="true">
+            <Conditional isfullcondition="false" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="Contained">
+            <Remove />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="ItemContainer" containeditemcount="lt 1" />
+      <StatusEffect type="OnActive" target="This" condition="-1.0" disabledeltatime="true">
+        <SpawnItem identifier="otfx_securityautocoilgunbolt" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="" identifier="otfx_securityautocoilgunbolt" category="Weapon" subcategory="otfx" scale="0.5" sonarsize="1" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="170" height="10" density="10.5" />
+    <Pickable slots="None" />
+    <Projectile characterusable="false" launchimpulse="40" damagedoors="true">
+      <Attack structuredamage="5" itemdamage="5" severlimbsprobability="0.125" penetration="0.1" avoidfriendlyfire="false">
+        <Affliction identifier="lacerations" strength="15" />
+        <Affliction identifier="bleeding" strength="1.5" />
+        <Affliction identifier="stun" strength="0.075" probability="0.05" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This" lifetime="2">
+        <ParticleEmitter particle="ammotrailwater" copyentityangle="true" anglemin="-5" anglemax="5" particleamount="5" velocitymin="-10" velocitymax="-100" scalemin="0.25" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true" delay="3" stackable="false" />
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <ParticleEmitter particle="shrapnel" copyentityangle="true" anglemin="0" anglemax="360" particleamount="10" velocitymin="100" velocitymax="2000" scalemin="0.2" scalemax="0.25" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="" identifier="otfx_securityautocoilgunteammodule1" category="Electrical" subcategory="otfx" tags="smallitem,otfx_securityautocoilgunteammodule" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_light">
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="false">
+      <RequiredSkill identifier="electrical" level="35" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="copper" amount="2" />
+      <RequiredItem identifier="tin" amount="2" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="512,896,64,61" depth="0.8" origin="0.5,0.5" />
+    <Body width="58" height="58" density="15" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="" identifier="otfx_securityautocoilgunteammodule2" variantof="otfx_securityautocoilgunteammodule1">
+    <Sprite sourcerect="512,960,64,61" />
+  </Item>
+</Items>

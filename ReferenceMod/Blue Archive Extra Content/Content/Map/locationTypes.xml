@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<locationtypes>
+  <!--
+    Identifier="uusi-turcu"                             Unique identifier for the location type. Fallback to element name if not set.
+    
+    ForceLocationName="locationname.uusiturcu"          Can be used to force the name of the locations of this type. You could for example have a special location type for a 
+                                                        unique city called "Uusi-Turcu". Can either be the identifier of the name or the actual name.
+    
+    ForceLocationTypeName="city"                        Can be used to force the location type to use the name of some other location type. For example, you might want to 
+                                                        display the name of the unique "Uusi-Turcu" location as "City" on the campaign map. Prefix of 'LocationName.' is 
+                                                        added internally when fetching translations.
+    
+    ForceLocationTypeDescription="city"                 Can be used to force the location type to use the description of some other location type. 
+                                                        Adds prefix 'LocationDescription.' internally before fetching translations.
+                                                        
+    ForceOutpostGenerationParams="uusi-turcu"           If set, the outpost generation parameters are forced to this when generating the outpost.
+    
+    EventLocationType="city"                            Can be used to allow events intended for another location type to appear in this location type as well. 
+                                                        For example, you could allow generic "city" events to appear in the unique "Uusi-Turcu" location.
+                                                        
+    BackgroundMusicLocationType="city"                  Can be used to make the location type use the same background music tracks as another location type.
+    
+    BiomeGate="Force"                                   Allow = a location of this type can be chosen as a gate between biomes, Deny = can't be chosen as a gate, 
+                                                        Force = a location of this type is forced as the gate if the location type can appear in the biome.
+    
+    UseOutpostModulesOfLocationType="city"              If set, outpost modules configured to be suitable for the specified location type can also be used in this 
+                                                        type of location. For example, setting this to "city" would mean the city modules can be used in these types 
+                                                        of locations (in addition to the modules configured specifically for this location type, if there are any).
+    
+    // use AreaSettings to determine count limits for locations of the type in either a zone or a biome (but not both at once)
+    
+    The distribution of location types on the campaign map can be configured in multiple ways.
+    
+    Either based on biome:    
+    <AreaSettings biome="europanridge" ... /> 
+    
+    Or based on difficulty zones (which in vanilla game correspond to biomes, but it's possible to configure multiple biomes to appear within a zone):    
+    <AreaSettings zone="1" ... /> 
+    
+    The following attributes are available for both:
+    mincount = Minimum number of the location type to place in the biome/zone. Optional.
+    maxcount = Maximum number of the location type to place in the biome/zone.  Optional.
+    commonness = How common the location type is in the biome/zone. The higher the value, the more common the location type is. Optional.
+    desiredPosition = Where in the biome/zone should the location(s) be placed? 0 = at the left side, 0.5 = in the middle, 1 = at the right side. Optional. Generally only used for locations that there's only one of.    
+  -->
+  <!--
+  ChangeTo:
+    requiredlocations                       = The change can only happen if there's at least one of the given types of locations near this one.
+    requiredproximity                       = How close the location needs to be to one of the RequiredLocations for the change to occur (defaults to 1).
+    probability                             = Base probability per turn for the location to change if near one of the RequiredLocations.
+    requiredproximityforprobabilityincrease = How close the location needs to be to one of the RequiredLocations for the probability to increase.
+    proximityprobabilityincrease            = How much the probability increases per turn if within RequiredProximityForProbabilityIncrease steps of RequiredLocations.
+    
+    disallowedadjacentlocations             = The change can't happen if there's one or more of the given types of locations near this one
+    disallowedproximity                     = How close the location needs to be to one of the DisallowedAdjacentLocations for the change to be disabled (defaults to 1).
+    
+    requirediscovered                       = Does this location need to be discovered before the change can occur (defaults to true).
+    
+    requireddurationrange                   = If a type change is triggered, a value is randomly chosen within this range and the change is delayed for that many turns.
+    requiredduration                        = Can be used in place of the previous attribute if you want to use a fixed delay. 
+    
+    locationtypechangecooldown              = The location can't change it's type for this many turns after this location type changes occurs.
+    
+  Store:
+    dailyspecialscount        = The number of daily specials for merchants at this location type. Defaults to 1.
+    requestedgoodscount       = The number of requested goods for merchants at this location type. Defaults to 1.
+    maxreputationmodifier     = The maximum effect positive reputation can have on store prices. Defaults to 0.1.
+    minreputationmodifier     = The maximum effect negative reputation can have on store prices. Defaults to 1.
+    sellpricemodifier         = Used to determine the selling price from the base price of an item. Defaults to 0.3.
+    dailyspecialpricemodifier = Change in buying price of daily specials. Defaults to 0.5.
+    requestgoodpricemodifier  = Change in selling price of requested goods. Defaults to 2.
+    initialbalance            = Initial balance of the store. Defaults to 5000.
+    pricemodifierrange        = The range of randomized price modifier. Randomized for each store individually. Defaults to 5. Note: value is direct percentage, i.e. 5 = 5%. 
+  -->
+  <!-- biome identifiers:
+  coldcaverns,
+  europanridge,
+  theaphoticplateau,
+  thegreatsea,
+  hydrothermalwastes,
+  endzone
+ -->
+  <Trinityconstructionsite identifier="trinityconstructionsite" Faction="trinity" replaceinradiation="abandoned" ForceOutpostGenerationParams="trinityconstructionsite" descriptioninradiation="locationdescription.abandonedirradiated" allowinrandomlevels="false" ignoregenericevents="true" showsonarmarker="true" outpostteam="None" BiomeGate="Deny">
+    <Symbol texture="Content/Map/MapAtlas.png" sourcerect="256,640,128,128" color="128,206,175,255" />
+    <RadiationSymbol texture="Content/Map/MapAtlas.png" sourcerect="896,512,128,128" color="245,105,105" />
+    <Portrait name="TrinityPortrait" texture="%ModDir%/Events/BannerTrinity.png" sourcerect="0,0,1000,700" color="255,255,255,255" />
+    <Store maxreputationmodifier="0.1" minreputationmodifier="1.0" sellpricemodifier="0.3" dailyspecialpricemodifier="0.5" requestgoodpricemodifier="2" initialbalance="6000" pricemodifierrange="5" dailyspecialscount="3" requestedgoodscount="3" />
+  </Trinityconstructionsite>
+  <Trinity_Base identifier="trinity_base" name="Trinity Base" Faction="trinity" showsonarmarker="true" hasoutpost="true" outpostteam="FriendlyNPC" allowinrandomlevels="false" ignoregenericevents="true" ForceOutpostGenerationParams="trinity_module_tier1" UsePortraitInRandomLoadingScreens="false" BiomeGate="Deny">
+    <Store maxreputationmodifier="0.1" minreputationmodifier="1.0" sellpricemodifier="0.3" dailyspecialpricemodifier="0.5" requestgoodpricemodifier="2" initialbalance="6000" pricemodifierrange="5" dailyspecialscount="3" requestedgoodscount="3" />
+    <Symbol texture="Content/Map/MapAtlas.png" sourcerect="256,640,128,128" color="128,206,175,255" />
+    <RadiationSymbol texture="Content/Map/MapAtlas.png" sourcerect="896,512,128,128" color="245,105,105" />
+    <Portrait name="TrinityPortrait" texture="%ModDir%/Events/BannerTrinity.png" sourcerect="0,0,1000,700" color="255,255,255,255" />
+  </Trinity_Base>
+  <ba_location_attackdefense identifier="ba_location_attackdefense" name="Trinity VS Gehenna" Faction="none" showsonarmarker="true" hasoutpost="true" outpostteam="Team0" allowinrandomlevels="false" ignoregenericevents="true" ForceOutpostGenerationParams="minigame_module_attackdefense" AllowOutpostSelectionFromTag="minigame_ad_map1" UsePortraitInRandomLoadingScreens="false" BiomeGate="Deny">
+    <Symbol texture="Content/Map/MapAtlas.png" sourcerect="256,640,128,128" color="128,206,175,255" />
+    <RadiationSymbol texture="Content/Map/MapAtlas.png" sourcerect="896,512,128,128" color="245,105,105" />
+    <Portrait name="TrinityPortrait" texture="%ModDir%/Events/BannerTrinity.png" sourcerect="0,0,1000,700" color="255,255,255,255" />
+  </ba_location_attackdefense>
+</locationtypes>

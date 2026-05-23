@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Talents>
+    <Talent identifier="munitionsexpertise">
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.smgmagazine,entityname.shotgunshell,entityname.machinepistolmagazine,entityname.DeadEyesmagazine" color="gui.orange" />
+      </Description>
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="6,3" sheetelementsize="128,128" />
+      <AddedRecipe itemidentifier="smgmagazine" />
+      <AddedRecipe itemidentifier="machinepistolmagazine" />
+      <AddedRecipe itemidentifier="shotgunshell" />
+      <AddedRecipe itemidentifier="DeadEyesmagazine" />
+    </Talent>
+    <Talent identifier="weaponsmith">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="2,2" sheetelementsize="128,128" />
+      <Description tag="talentdescription.crafthighqualityweapons">
+        <Replace tag="[qualitybonus]" value="1" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.shotgun,entityname.smg,entityname.smgunique" color="gui.orange" />
+      </Description>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGivePermanentStat statidentifier="weapon" stattype="IncreaseFabricationQuality" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AddedRecipe itemidentifier="shotgun" />
+      <AddedRecipe itemidentifier="smg" />
+      <AddedRecipe itemidentifier="smgunique" />
+    </Talent>
+  </Talents>
+</Override>

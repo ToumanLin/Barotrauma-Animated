@@ -1,0 +1,70 @@
+To remove underwear(bra and pants) when wearing clothes you need to add:
+       <!--Hide Underwear v2--> <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false"> <Affliction identifier="hideunderwear" amount="10.0" MultiplyByMaxVitality="true"  /> </StatusEffect><!-- --> <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1" stackable="false" > <ReduceAffliction identifier="hideunderwear" amount="0.038" MultiplyByMaxVitality="true" /> </StatusEffect>
+Add this only to items where you can actually see underwear, since it adds some minor load on server.
+
+I tested it with 20 characters with same clothes and no items in inventory. 
+Update rate at ms:
+1.81 no status effects at all.
+1.85 with hide underwear.
+Its not much, but its never enough of optimisation. 
+
+
+
+
+Same method applies for husk infection and diving suits.
+      <!--Hide hidehusklimbs v2--> <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false"> <Affliction identifier="hidehusklimbs" amount="3.0" MultiplyByMaxVitality="true"  /> </StatusEffect>
+
+
+
+To prevent some textures have white outlines, cover all sprites edges with small very transparent brush (for example 20% opacity and 20% flow).
+
+
+To make patch weight less(if you are using photoshop), you can save png with 8bit compression. 
+This can save from 2 up to 4 times in space, but at the end, it can create some white pixels on edges, 
+which you still can paint over.
+(Export>export As>PNG>"smaller file size 8-bit")
+
+
+
+
+
+
+
+
+
+Diving suits also has unique breathing system, add it to "wearable":
+        <!-- play underwater breathing sound outside water -->
+        <StatusEffect type="OnWearing" target="Character" interval="5" comparison="And">
+          <Conditional InWater="false" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath1.ogg" range="250" volume="1.1" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath2.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath3.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath4.ogg" range="250" volume="1.1" />
+        </StatusEffect>
+        <!-- shish -->
+        <StatusEffect type="OnWearing" target="limb" targetlimb="head" interval="5" duration="0.5" comparison="And">
+          <Conditional InWater="true" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath1.ogg" range="250" volume="1.1" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath2.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath3.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath4.ogg" range="250" volume="1.1" />
+          <ParticleEmitter particle="risingbubbles" velocitymin="7.0" velocitymax="10.0" scalemin="0.36" scalemax="0.43" particlespersecond="25" />
+        </StatusEffect>
+        <!-- play underwater breathing sound and create bubbles when in water -->
+        <StatusEffect type="OnWearing" target="limb" targetlimb="head" interval="5" duration="0.5" comparison="And">
+          <Conditional InWater="true" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater1.ogg" range="250" volume="0.9" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater2.ogg" range="250" volume="0.9" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater3.ogg" range="250" volume="0.9" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater4.ogg" range="250" volume="0.9" />
+          <ParticleEmitter particle="risingbubbles" velocitymin="7.0" velocitymax="10.0" scalemin="0.36" scalemax="0.43" particlespersecond="25" />
+        </StatusEffect>
+        <!-- cut -->
+
+
+
+
+

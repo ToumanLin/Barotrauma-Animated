@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Item name="" identifier="backpack" category="Equipment" tags="sterile,mediumitem,mobilecontainer,largemobilecontainer,tool" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab" />
+    <PreferredContainer primary="outpostcrewcabinet" />
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" amount="3" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+      <Item identifier="organicfiber" amount="5" />
+    </Fabricate>
+    <Price baseprice="200" minleveldifficulty="50">
+      <Price storeidentifier="merchantoutpost" minavailable="4" />
+      <Price storeidentifier="merchantcity" minavailable="6" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+      <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+    </Price>
+    <InventoryIcon texture="Content/Items/Tools/tools.png" sourcerect="3,259,68,110" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="3,259,68,110" depth="0.6" />
+    <Body width="60" height="100" density="15" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+      <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge" texture="%ModDir%/Content/items/Jobgear/backpack.png" sourcerect="47,0,110,160" limb="Torso" depthlimb="Torso" inherittexturescale="true" origin="0.7884737,0.52725047" />
+      <StatValue stattype="MovementSpeed" value="-0.3" />
+      <StatValue stattype="PropulsionSpeed" value="-0.3" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,50" handle2="10,50" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      <StatValue stattype="PropulsionSpeed" value="-0.3" />
+    </Holdable>
+    <ItemContainer capacity="12" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="backpack_0" category="Equipment" hideinmenus="true" tags="sterile,backpack,mediumitem,mobilecontainer,largemobilecontainer,tool,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" />
+    <Price baseprice="200" minleveldifficulty="99">
+      <Price storeidentifier="merchantoutpost" minavailable="4" />
+      <Price storeidentifier="merchantcity" minavailable="6" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+      <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="2">
+      <Item identifier="backpack" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/items/Jobgear/BackpackToolbeltMu.png" sourcerect="3,259,68,110" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/Jobgear/BackpackToolbeltMu.png" sourcerect="3,259,68,110" origin="0.5,0.5" />
+    <Body width="60" height="100" density="15" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <StatusEffect type="OnWearing" target="Character" PropulsionSpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      <sprite name="ToolBelt" texture="Content/Items/Tools/tools.png" sourcerect="1,1,1,1" limb="Torso" inherittexturescale="true" origin="0.5,-0.2" />
+      <StatValue stattype="MovementSpeed" value="-0.3" />
+      <StatValue stattype="PropulsionSpeed" value="-0.3" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,50" handle2="10,50" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      <StatValue stattype="PropulsionSpeed" value="-0.3" />
+    </Holdable>
+    <ItemContainer capacity="12" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="toolbelt_0" category="Equipment" hideinmenus="true" tags="sterile,toolbelt,mediumitem,mobilecontainer,tool,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" />
+    <Price baseprice="65" minleveldifficulty="99">
+      <Price storeidentifier="merchantoutpost" minavailable="0" minleveldifficulty="85" />
+      <Price storeidentifier="merchantcity" minavailable="0" minleveldifficulty="85" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="0" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="0" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="0" />
+      <Price storeidentifier="merchantengineering" minavailable="0" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/items/Jobgear/BackpackToolbeltMu.png" sourcerect="256,102,112,54" depth="0.6" />
+    <Sprite texture="%ModDir%/Content/items/Jobgear/BackpackToolbeltMu.png" sourcerect="256,102,112,54" depth="0.6" />
+    <Body width="100" height="45" density="15" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="ToolBelt" texture="Content/Items/Tools/tools.png" sourcerect="1,1,1,1" limb="Torso" inherittexturescale="true" origin="0.5,-0.2" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+</Override>

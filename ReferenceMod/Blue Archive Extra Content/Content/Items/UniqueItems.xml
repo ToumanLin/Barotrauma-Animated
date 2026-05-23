@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Professor's Walking Cane" identifier="niyaniyacane" category="Equipment" Tags="smallitem,BAmeleeweapon" cargocontaineridentifier="metalcrate" Scale="0.28" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="iron" />
+    </Fabricate>
+    <InventoryIcon texture="NiyaNiyaitem.png" sourcerect="3,1,51,466" origin="0.5,0.5" />
+    <Sprite texture="NiyaNiyaitem.png" sourcerect="3,1,51,466" depth="0.55" origin="2.5,0.5" />
+    <Body width="120" height="20" density="30" />
+    <MeleeWeapon slots="RightHand,LeftHand,Any" controlpose="true" aimpos="70,0" holdangle="0" aimangle="-40" reload="0.5" handle1="-30,0" range="100" combatpriority="20" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="8" itemdamage="8" targetimpulse="20">
+        <Affliction identifier="blunttrauma" strength="7" />
+        <Affliction identifier="stun" strength="0.20" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <aitarget sightrange="1000" soundrange="500" fadeouttime="1" />
+    <Quality>
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="Professor's Briefcase" identifier="niyaniyabriefcase" category="Equipment" subcategory="Backpack" tags="mediumitem,mobilecontainer,largemobilecontainer" showcontentsintooltip="true" Scale="0.2" fireproof="true" description="Used to carry personal belongings by the Smug Professor" impactsoundtag="impact_soft">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="organicfabric" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="organicfiber" amount="3" />
+    </Fabricate>
+    <Body width="300" height="230" density="20" />
+    <Sprite texture="NiyaNiyaitem.png" sourcerect="62,196,365,270" depth="0.6" />
+    <ItemContainer capacity="20" maxstacksize="32" movableframe="true">
+      <Containable items="smallitem,handheldammo,grenade,handgrenade,weapon" />
+    </ItemContainer>
+    <Holdable characterusable="false" slots="RightHand,LeftHand" holdpos="0,0" holdangle="70" handle1="-20,140" msg="ItemMsgPickUpSelect" />
+  </Item>
+</Items>

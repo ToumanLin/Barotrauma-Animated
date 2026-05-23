@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <!--Trinity questline-->
+  <!--escorts 3 jtf members to ichika-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="BAstudent_Trinity_quest1" commonness="100">
+      <CheckDataAction identifier="mission_escort_jtfcrewtransport1_completed" condition="gt 0">
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="jtfmember1" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+          <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="jtfmember2" spawnpointtag="jtfmember1" />
+          <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="jtfmember3" spawnpointtag="jtfmember2" />
+          <NPCFollowAction npctag="jtfmember2" targettag="jtfmember1" follow="true" />
+          <NPCFollowAction npctag="jtfmember3" targettag="jtfmember2" follow="true" />
+          <TriggerAction target1tag="jtfmember1" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+          <NPCFollowAction npctag="jtfmember1" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" speakertag="jtfmember1" text="eventtext.BAstudent_Trinity_quest1.d1" eventsprite="portrait_jtfmember2">
+            <Option text="eventtext.BAstudent_Trinity_quest1.d1.o1">
+              <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest1.o1.d1" eventsprite="portrait_jtfmember6">
+                <Option text="eventtext.BAstudent_Trinity_quest1.o1.o1">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest1.o1.o1.d1" eventsprite="portrait_jtfmember4" />
+                  <NPCFollowAction npctag="jtfmember1" targettag="triggerer_player" follow="false" />
+                  <MissionAction missiontag="mission_escort_jtfcrewtransport1" />
+                </Option>
+                <Option text="eventtext.BAstudent_Trinity_quest1.o1.o2">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest1.o1.o2.d1" eventsprite="portrait_jtfmember5" />
+                  <NPCFollowAction npctag="jtfmember1" targettag="triggerer_player" follow="false" />
+                </Option>
+              </ConversationAction>
+            </Option>
+          </ConversationAction>
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--after finished the last mission, the jtfs spawns with ichika, there is no quest for this-->
+    <ScriptedEvent identifier="BAstudent_Trinity_quest2" commonness="100">
+      <CheckDataAction identifier="BAstudent_Trinity_quest2_completed" condition="eq 0">
+        <Success>
+          <CheckDataAction identifier="mission_escort_jtfcrewtransport1_completed" condition="gt 0">
+            <Success>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_trinity" npcidentifier="npc_ichika" targettag="ichika" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="jtfmember1" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="jtfmember2" spawnpointtag="jtfmember1" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="jtfmember3" spawnpointtag="jtfmember2" />
+              <SetDataAction identifier="BAstudent_Trinity_quest2_completed" value="1" />
+              <TagAction criteria="hullname:admin" tag="admin" submarinetype="Outpost" />
+              <NPCFollowAction npctag="ichika" targettag="admin" follow="true" />
+              <NPCWaitAction npctag="jtfmember1" targettag="triggerer_player" wait="true" />
+              <NPCFollowAction npctag="jtfmember2" targettag="jtfmember1" follow="true" />
+              <NPCFollowAction npctag="jtfmember3" targettag="jtfmember2" follow="true" />
+              <WaitAction time="2.0" />
+              <TriggerAction target1tag="jtfmember1" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+              <NPCFollowAction npctag="jtfmember1" targettag="triggerer_player" follow="true" />
+              <ConversationAction targettag="triggerer_player" speakertag="jtfmember1" text="Thank you for helping us, miss Ichika should be here somewhere, we'll look for her" eventsprite="portrait_jtfmember3">
+                <Option text="Okay">
+                  <ConversationAction targettag="triggerer_player" text="I wonder where she would be, maybe the nearby office? We're supposed to report to her immediately." eventsprite="portrait_jtfmember4" />
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="jtfmember1" targettag="ichika" follow="true" />
+              <ConversationAction targettag="triggerer_player" speakertag="ichika" text="eventtext.BAstudent_Trinity_quest2.d1" eventsprite="portrait_Ichika9">
+                <Option text="Next">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1" eventsprite="portrait_jtfmember3">
+                    <Option text="Next">
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1" eventsprite="portrait_Ichika8">
+                        <Option text="Hello!">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d2" eventsprite="portrait_Ichika6">
+                            <Option text="It's my pleasure">
+                              <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1" eventsprite="portrait_Ichika20">
+                                <Option text="The girls had already paid the trip, so we're all good.">
+                                  <SpawnAction itemidentifier="ba_spawner_jtfreinforcement_crew" targetinventory="triggerer_player" />
+                                  <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1" eventsprite="portrait_Ichika2">
+                                    <Option text="That sounds quite handy.">
+                                      <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1.d1" eventsprite="portrait_jtfmember4">
+                                        <Option text="Sure, I'll call you when the time come, I think we all needed to support each other, especially in Europa">
+                                          <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1.d1.d1" eventsprite="portrait_Ichika22">
+                                            <Option text="Will we meet again?">
+                                              <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1.d1.d1.d1" eventsprite="portrait_Ichika2">
+                                                <Option text="That sounds good!">
+                                                  <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1.d1.d1.d1.d1" eventsprite="portrait_Ichika21">
+                                                    <Option text="Next">
+                                                      <NPCFollowAction npctag="ichika" targettag="admin" follow="false" />
+                                                      <WaitAction time="0.5" />
+                                                      <ConversationAction targettag="triggerer_player" text="eventtext.BAstudent_Trinity_quest2.d1.d1.d1.d1.d1.d1.d1.d1.d1.d1" eventsprite="portrait_Ichika1" />
+                                                      <TagAction criteria="hullname:centralaccesspassage" tag="centralaccesspassage" submarinetype="Outpost" />
+                                                      <NPCFollowAction npctag="ichika" targettag="centralaccesspassage" follow="true" />
+                                                    </Option>
+                                                  </ConversationAction>
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+              <WaitAction time="5.0" />
+              <ConversationAction targettag="triggerer_player" speakertag="ichika" text="Don't mind us, we're just waiting for our vessel." eventsprite="portrait_Ichika20" />
+              <WaitAction time="5.0" />
+              <ConversationAction targettag="triggerer_player" speakertag="ichika" text="Is something wrong?" eventsprite="portrait_Ichika22" />
+              <WaitAction time="5.0" />
+              <ConversationAction targettag="triggerer_player" speakertag="ichika" text="Eheh..." eventsprite="portrait_Ichika20" />
+              <WaitAction time="5.0" />
+              <ConversationAction targettag="triggerer_player" speakertag="ichika" text="..." eventsprite="portrait_Ichika6" />
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="BAstudent_Trinity_quest3" commonness="100">
+      <CheckDataAction identifier="BAstudent_Trinity_quest3_completed" condition="gt 0">
+        <Failure>
+          <CheckDataAction identifier="BAstudent_Trinity_quest2_completed" condition="gt 0">
+            <Success>
+              <SetDataAction identifier="BAstudent_Trinity_quest3_completed" value="1" />
+              <TagAction criteria="player" tag="player" />
+              <TagAction criteria="hullname:admin" tag="admin" submarinetype="Outpost" />
+              <TagAction criteria="hullname:centralaccesspassage" tag="centralaccesspassage" submarinetype="Outpost" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_trinity" npcidentifier="npc_ichika" targettag="ichika" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="jtfmember1" spawnpointtag="ichika" />
+              <SpawnAction itemidentifier="baemote_phoneread" targetinventory="ichika" />
+              <SpawnAction itemidentifier="baemote_hipsright" targetinventory="ichika" />
+              <NPCFollowAction npctag="ichika" targettag="admin" follow="true" />
+              <NPCFollowAction npctag="jtfmember1" targettag="ichika" follow="true" />
+              <TriggerAction target1tag="ichika" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="eventtext.BAstudent_Trinity_quest3.d1" speakertag="ichika" endeventifinterrupted="false" eventsprite="portrait_Ichika5">
+                <Option text="eventtext.BAstudent_Trinity_quest3.d1.o1">
+                  <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.d1" eventsprite="portrait_Ichika3">
+                    <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1">
+                      <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.d1" eventsprite="portrait_Ichika7">
+                        <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1">
+                          <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.d1" eventsprite="portrait_Ichika8">
+                            <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1">
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_hipsright" />
+                              <SpawnAction itemidentifier="baemote_phoneclick2" targetinventory="ichika" />
+                              <WaitAction time="0.3" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneclick2" />
+                              <SpawnAction itemidentifier="baemote_phoneclick1" targetinventory="ichika" />
+                              <WaitAction time="0.1" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneclick1" />
+                              <SpawnAction itemidentifier="baemote_phoneclick2" targetinventory="ichika" />
+                              <WaitAction time="0.3" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_hipsright" />
+                              <SpawnAction itemidentifier="baemote_phoneclick2" targetinventory="ichika" />
+                              <WaitAction time="0.3" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneclick2" />
+                              <SpawnAction itemidentifier="baemote_phoneclick1" targetinventory="ichika" />
+                              <WaitAction time="0.1" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneclick1" />
+                              <SpawnAction itemidentifier="baemote_phoneclick2" targetinventory="ichika" />
+                              <WaitAction time="0.5" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneclick2" />
+                              <NPCFollowAction npctag="ichika" targettag="triggerer_player" follow="true" />
+                              <WaitAction time="1.0" />
+                              <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneread" />
+                              <SpawnAction itemidentifier="baemote_phoneshow" targetinventory="ichika" />
+                              <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.d1" eventsprite="portrait_Ichika22">
+                                <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1">
+                                  <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.d1" eventsprite="portrait_Ichika19">
+                                    <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.o1">
+                                      <RemoveItemAction targettag="ichika" itemidentifiers="baemote_phoneshow" />
+                                      <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.o1.d1" eventsprite="portrait_Ichika8">
+                                        <Option text="Next">
+                                          <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.o1.o1.d1" eventsprite="portrait_Ichika22">
+                                            <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.o1.o1.o1">
+                                              <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o1.o1.o1.o1.o1.o1.d1" eventsprite="portrait_Ichika2"></ConversationAction>
+                                              <MissionAction missiontag="missionevent_gehennainterceptor" />
+                                              <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="jtfmember2" spawnlocation="Outpost" targetmoduletags="airlockacess" />
+                                              <NPCFollowAction npctag="jtfmember2" targettag="ichika" follow="true" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="eventtext.BAstudent_Trinity_quest3.o1.o1.o2">
+                          <ConversationAction text="eventtext.BAstudent_Trinity_quest3.o1.o1.o2.d1" eventsprite="portrait_Ichika20"></ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+              <TriggerAction target1tag="jtfmember2" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="eventtext.BAstudent_Trinity_quest3.d2" speakertag="jtfmember2" endeventifinterrupted="false" eventsprite="portrait_jtfmember6">
+                <Option text="eventtext.BAstudent_Trinity_quest3.d2.o1">
+                  <ConversationAction text="eventtext.BAstudent_Trinity_quest3.d2.o1.d1" eventsprite="portrait_Ichika17">
+                    <Option text="eventtext.BAstudent_Trinity_quest3.d2.o1.o1">
+                      <ConversationAction text="eventtext.BAstudent_Trinity_quest3.d2.o1.o1.d1" eventsprite="portrait_Ichika22"></ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="jtfmember2" targettag="jtfmember1" follow="true" />
+              <NPCFollowAction npctag="ichika" targettag="centralaccesspassage" follow="true" />
+            </Success>
+          </CheckDataAction>
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--check whether mission is completed, if not reset and give the quests again-->
+    <ScriptedEvent identifier="BAstudent_Trinity_quest3_return" commonness="100">
+      <CheckDataAction identifier="BAstudent_Trinity_quest3_completed" condition="gt 0">
+        <Success>
+          <CheckDataAction identifier="mission_destroy_gehennainterceptor_completed" condition="gt 0">
+            <Failure>
+              <CheckReputationAction targettype="faction" identifier="trinity" condition="gte 0">
+                <Success>
+                  <TagAction criteria="player" tag="player" />
+                  <TagAction criteria="hullname:admin" tag="admin" submarinetype="Outpost" />
+                  <SpawnAction speciesname="human" npcsetidentifier="set_trinity" npcidentifier="npc_ichika" targettag="ichika" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+                  <SpawnAction speciesname="human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="jtfmember1" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+                  <NPCFollowAction npctag="jtfmember1" targettag="ichika" follow="true" />
+                  <TriggerAction target1tag="ichika" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+                  <NPCFollowAction npctag="ichika" targettag="triggerer_player" follow="true" />
+                  <ConversationAction text="Hello there, it seems like we weren't able to deal with the Interceptor..." speakertag="ichika" endeventifinterrupted="false" eventsprite="portrait_Ichika8">
+                    <Option text="We should try again, maybe we can find a way this time.">
+                      <ConversationAction text="Thank you, I will report to the student council for further reports." eventsprite="portrait_Ichika1"></ConversationAction>
+                      <MissionAction missiontag="missionevent_gehennasub1" />
+                      <NPCFollowAction npctag="ichika" targettag="triggerer_player" follow="false" />
+                      <WaitAction time="3" />
+                      <NPCFollowAction npctag="ichika" targettag="admin" follow="true" />
+                    </Option>
+                    <Option text="I'm sorry Ichika, but me and the crew don't want to meddles with Trinity's affair anymore.">
+                      <ConversationAction text="Is that so, well that's unfortuante." eventsprite="portrait_Ichika6">
+                        <Option text="I'm sorry Ichika, maybe not this time.">
+                          <ConversationAction text="Is that so, well that's unfortuante, if you want to help us in the future you know where to find us." eventsprite="portrait_Ichika7"></ConversationAction>
+                          <NPCFollowAction npctag="ichika" targettag="triggerer_player" follow="false" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Success>
+              </CheckReputationAction>
+            </Failure>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--<ScriptedEvent identifier="ichikaoutpostmission" commonness="100">
+			<SpawnAction speciesname="human" npcsetidentifier="set_trinity" npcidentifier="npc_ichika" targettag="ichika" spawnlocation="Outpost" targetmoduletags="airlock" />
+			<TagAction criteria="player" tag="player" />
+			<TagAction criteria="humanprefabidentifier:npc_ichika" tag="ichika" />
+			<NPCChangeTeamAction npctag="ichika" teamid="FriendlyNPC" />
+			<Label name="waitforspotting" />
+			<WaitAction time="1" />
+			<CheckVisibilityAction EntityTag="ichika" TargetTag="player" ApplyTagToEntity="talk_ichika" ApplyTagToTarget="triggerer_player">
+				<Failure>
+					<Goto name="waitforspotting" />
+				</Failure>
+			</CheckVisibilityAction>
+			<NPCWaitAction npctag="talk_ichika" wait="true" />
+			<ConversationAction text="eventtext.huskextremists1.c1" targettag="triggerer_player">
+				<Option text="eventtext.huskextremists1.o1.o1.o3" endconversation="true">
+					<MissionAction missionidentifier="attackgehennaoutpost1" locationtype="gehennaoutpost" minlocationdistance="1" CreateLocationIfNotFound="true"/>
+				</Option>
+			</ConversationAction>
+			<NPCWaitAction npctag="talk_ichika" wait="false" />
+		</ScriptedEvent>-->
+    <!--unused-->
+    <!--<ScriptedEvent identifier="missionevent_attackgehennaoutpost" commonness="100">
+			<SpawnAction speciesname="Baichikanpc" npcsetidentifier="bastudents_trinity" npcidentifier="bajtfcaptain" targettag="missionnpc" spawnlocation="Outpost" spawnpointtype="Path" />
+			<ConversationAction text="EventText.missionevent_killmonster.c1" speakertag="missionnpc" endeventifinterrupted="false" dialogtype="Small" />
+			<MissionAction missiontag="missionevent_gehennasub1" />
+		</ScriptedEvent>-->
+  </EventPrefabs>
+</Randomevents>

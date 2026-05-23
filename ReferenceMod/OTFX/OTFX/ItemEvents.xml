@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <ScriptedEvent identifier="otfx_revolverdemonsbetshuffle">
+      <RNGAction chance="0.5">
+        <Success>
+          <RNGAction chance="0.66667">
+            <Success>
+              <RNGAction chance="0.5">
+                <Success>
+                  <StatusEffectAction targettag="roulette">
+                    <StatusEffect target="This" condition="100.0" setvalue="true" />
+                  </StatusEffectAction>
+                </Success>
+                <Failure>
+                  <StatusEffectAction targettag="roulette">
+                    <StatusEffect target="This" condition="200.0" setvalue="true" />
+                  </StatusEffectAction>
+                </Failure>
+              </RNGAction>
+            </Success>
+            <Failure>
+              <StatusEffectAction targettag="roulette">
+                <StatusEffect target="This" condition="300.0" setvalue="true" />
+              </StatusEffectAction>
+            </Failure>
+          </RNGAction>
+        </Success>
+        <Failure>
+          <RNGAction chance="0.66667">
+            <Success>
+              <RNGAction chance="0.5">
+                <Success>
+                  <StatusEffectAction targettag="roulette">
+                    <StatusEffect target="This" condition="400.0" setvalue="true" />
+                  </StatusEffectAction>
+                </Success>
+                <Failure>
+                  <StatusEffectAction targettag="roulette">
+                    <StatusEffect target="This" condition="500.0" setvalue="true" />
+                  </StatusEffectAction>
+                </Failure>
+              </RNGAction>
+            </Success>
+            <Failure>
+              <StatusEffectAction targettag="roulette">
+                <StatusEffect target="This" condition="600.0" setvalue="true" />
+              </StatusEffectAction>
+            </Failure>
+          </RNGAction>
+        </Failure>
+      </RNGAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

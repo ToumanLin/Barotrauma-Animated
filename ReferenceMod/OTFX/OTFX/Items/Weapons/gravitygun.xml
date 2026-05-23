@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_gravitysphereprojectile" tags="smallitem,handheldammo,harpoonammo" maxstacksize="32" maxstacksizecharacterinventory="8" showcontentsintooltip="true" category="Weapon" sonarsize="5" scale="0.5" impactsoundtag="" cargocontaineridentifier="">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="134,899,52,52" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="30" density="10.5" gravityscale="0.0" angulardamping="0.0" lineardamping="0.6" friction="0.0" restitution="0.0" />
+    <Holdable canbecombined="false" slots="Any,LeftHand,RightHand" holdpos="0,-15" handle1="-30,-5" holdangle="170" aimable="false" msg="ItemMsgPickUpSelect">
+      <!-- slow down the character when holding the item -->
+      <StatValue stattype="MovementSpeed" value="-0.2" />
+      <!-- adjust hold position when swimming -->
+      <StatusEffect type="OnActive" target="This" holdpos="-10,-15" handle1="0,-5" holdangle="70" setvalue="true" interval="1.1">
+        <Conditional InWater="true" />
+      </StatusEffect>
+      <!-- revert hold position adjustment when walking -->
+      <StatusEffect type="OnActive" target="This" holdpos="0,-15" handle1="-30,-5" holdangle="170" setvalue="true" interval="1.1">
+        <Conditional InWater="false" />
+      </StatusEffect>
+    </Holdable>
+    <Projectile characterusable="false" launchimpulse="-9" damagedoors="true" maxtargetstohit="100">
+      <StatusEffect type="OnUse" target="This" delaytype="ReachCursor" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" isactive="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Explosion range="300.0" structuredamage="100.0" itemdamage="100" severlimbsprobability="0.75" force="80.0" flash="true" flashcolor="0,162,232,255" flashrange="3000" flashduration="0.5" camerashake="80.0" camerashakerange="3000" penetration="0.75" shockwave="true" flames="false" underwaterbubble="false" sparks="false" smoke="false">
+          <Affliction identifier="internaldamage" strength="150" />
+          <Affliction identifier="stun" strength="6" />
+        </Explosion>
+        <ParticleEmitter particle="gravityshellfx" particleamount="60" scalemin="1.0" scalemax="2.0" colormultiplier="1.0,1.0,1.0,0.75" lifetimemultiplier="0.75" />
+        <Sound file="Content/Items/Weapons/GRAVITYSHELLS_explosion.ogg" volume="2" dontmuffle="true" range="50000" />
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <Powered>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="gravityshellfx" particlespersecond="15" />
+        <ParticleEmitter particle="skyholderfx2" particlespersecond="200" anglemax="360" distancemin="400" distancemax="500" velocitymin="-500" velocitymax="-900" />
+        <sound file="Content/Items/Weapons/GRAVITYSHELLS_loop.ogg" volume="2" range="3000" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" delay="10.0" stackable="false" condition="0.0" setvalue="true" />
+      <!--Apply force towards the center, affecting creatures, humans and items -->
+      <TriggerComponent triggeredby="Creature,Human,Item" force="500" radius="8000" distancebasedforce="false" />
+      <TriggerComponent triggeredby="Submarine" force="10000" radius="8000" distancebasedforce="false" />
+      <!--Heavily damage entities close to the center-->
+      <TriggerComponent triggeredby="Creature,Human,Item" force="0" radius="200">
+        <Attack>
+          <Affliction identifier="internaldamage" strength="80" />
+          <Affliction identifier="stun" strength="2" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This">
+          <ParticleEmitter particle="cyborgammotracer" particlespersecond="5" anglemin="0" anglemax="360" distancemin="0" distancemax="50" scalemin="1" scalemax="2.5" velocitymin="-50" velocitymax="0" />
+          <sound file="Content/Items/Weapons/GRAVITYSHELLS_damageLoop.ogg" volume="2" range="3000" loop="true" />
+        </StatusEffect>
+      </TriggerComponent>
+      <LightComponent lightcolor="0,162,232,255" flicker="0.5" range="300"></LightComponent>
+    </Powered>
+  </Item>
+</Items>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="safetyharness" category="Equipment" tags="smallitem,clothing" scale="0.35" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_soft">
+      <Price baseprice="120" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="1.2" sold="false" />
+        <Price locationtype="city" multiplier="1.2" sold="false" />
+        <Price locationtype="research" multiplier="1.0" sold="false" />
+        <Price locationtype="military" multiplier="1.0" sold="false" />
+        <Price locationtype="mine" multiplier="1.2" sold="false" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="rubber" />
+        <Item identifier="steel" />
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem identifier="steel" />
+        <RequiredItem identifier="organicfiber" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="198,132,67,57" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="58,326,143,40" depth="0.6" origin="0.5,0.5" />
+      <Body width="120" height="35" density="40" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictiontypes="lacerations" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.25" />
+        <sprite name="safetyharness Torso" texture="safetyharness.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Hand" texture="safetyharness.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Hand" texture="safetyharness.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Lower Arm" texture="safetyharness.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Lower Arm" texture="safetyharness.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Upper Arm" texture="safetyharness.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Upper Arm" texture="safetyharness.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Waist" texture="safetyharness.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="ironhelmet" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.325">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="50" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="iron" amount="2" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="iron" amount="4" />
+      </Fabricate>
+      <Body width="70" height="80" density="30" />
+      <Sprite name="Mudraptor Helmet Item" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="true" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidewearablesoftype="Hair" sourcerect="926,0,98,125" origin="0.5401,0.508" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="MakeshiftArmor" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <Price baseprice="140" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="40">
+        <Item identifier="organicfiber" amount="1" />
+        <Item identifier="iron" amount="4" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+        <RequiredItem identifier="iron" amount="6" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Makeshift Armor Item" texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="167,25,86,126" depth="0.55" origin="0.5,0.5" />
+      <Body width="62" height="120" density="30" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Makeshift Armor Torso" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="272,0,64,92" Origin="0.5,0.521739" />
+        <sprite name="Makeshift Armor Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="336,0,64,92" Origin="0.5,0.521739" />
+        <sprite name="Makeshift Armor Right Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="272,92,64,68" Origin="0.5,0.52941" />
+        <sprite name="Makeshift Armor Left Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="336,92,64,68" Origin="0.5,0.52941" />
+        <sprite name="Makeshift Armor Waist" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+      <ItemComponent>
+        <StatusEffect type="OnWearing" target="Character">
+          <Affliction identifier="Heels" amount="1" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+  </Override>
+  <Item name="" identifier="Mudraptorarmor" category="Equipment" tags="smallitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+    <Price baseprice="2540" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+      <Price storeidentifier="merchantcity" multiplier="1.2" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="40">
+      <Item identifier="organicfiber" amount="1" />
+      <Item identifier="iron" amount="4" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredSkill identifier="mechanical" level="60" />
+      <RequiredItem identifier="organicfiber" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="6" />
+      <RequiredItem identifier="mudraptorshell" />
+    </Fabricate>
+    <InventoryIcon name="MudraptorArmor Icon" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" sourcerect="160,0,112,184" origin="0.5,0.5" />
+    <Sprite name="Mudraptor Armor Item" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" sourcerect="160,0,112,184" depth="0.55" origin="0.5,0.5" />
+    <Body width="62" height="120" density="30" />
+    <Wearable slots="Any,InnerClothes+Head" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnWearing" target="Character" WalkingSpeed="0.8" SwimmingSpeed="0.6" PropulsionSpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" />
+      <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
+      <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.4" />
+      <damagemodifier afflictionidentifiers="blunttrauma,gunshotwound,lacerations" armorsector="0.0,360.0" damagemultiplier="0.35" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.25" damagesound="LimbArmor" />
+      <sprite name="Mudraptor Armor Head" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="Head" hidelimb="false" inherittexturescale="false" scale="0.5" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" SourceRect="568,197,95,71" Origin="0.62,0.69" />
+      <sprite name="Mudraptor Armor Torso" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Mudraptor Armor Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" SourceRect="272,168,64,40" />
+      <sprite name="Mudraptor Armor Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" SourceRect="336,168,64,40" />
+      <sprite name="Mudraptor Armor Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" SourceRect="272,0,64,88" Origin="0.5,0.545454" />
+      <sprite name="Mudraptor Armor Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" SourceRect="336,0,64,88" Origin="0.5,0.545454" />
+      <sprite name="Mudraptor Armor Right Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="false" SourceRect="272,92,64,80" Origin="0.5,0.5" />
+      <sprite name="Mudraptor Armor Left Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="false" SourceRect="336,92,64,80" Origin="0.5,0.5" />
+      <sprite name="Mudraptor Armor Waist" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="400,0,168,208" Origin="0.78571,0.2" />
+      <sprite name="Mudraptor Armor Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Mudraptor Armor Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Mudraptor Armor Right Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Mudraptor Armor Left Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Mudraptor Armor Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" SourceRect="266,208,64,60" Origin="0.59375,0.5" />
+      <sprite name="Mudraptor Armor Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MudraptorArmor.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" SourceRect="330,208,64,60" Origin="0.59375,0.5" />
+    </Wearable>
+    <GeneticMaterial nameidentifier="MudraptorTail" effect="MudraptorTail" CanBeUntainted="true" tooltipvaluemin="20" tooltipvaluemax="60" />
+    <ItemComponent>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="Heels" amount="1" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+</Items>

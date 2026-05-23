@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <!--Test Events-->
+    <ScriptedEvent identifier="ba_command_event_command_mobchan_follow" commonness="0">
+      <!--<TagAction criteria="hullname:centralaccesspassage" tag="centralaccesspassage" submarinetype="Outpost" />-->
+      <TagAction criteria="player" tag="player" />
+      <Label name="reset" />
+      <TagAction criteria="humanprefabidentifier:ba_mobchan" tag="mobchan" />
+      <TagAction criteria="humanprefabidentifier:npc_moe" tag="moe" />
+      <NPCFollowAction npctag="mobchan" targettag="moe" follow="true" />
+      <!--force npcs to follow players, but stop when see enemy in range-->
+      <Label name="vision_check" />
+      <CheckVisibilityAction EntityTag="mobchan" TargetTag="moe" MaxDistance="1000">
+        <Success>
+          <NPCFollowAction npctag="mobchan" targettag="moe" follow="false" />
+          <NPCWaitAction npctag="mobchan" wait="true" />
+          <GoTo name="vision_check2" />
+        </Success>
+        <Failure>
+          <GoTo name="vision_check" />
+        </Failure>
+      </CheckVisibilityAction>
+      <Label name="vision_check2" />
+      <TagAction criteria="humanprefabidentifier:npc_moe" tag="moe" />
+      <CheckVisibilityAction EntityTag="mobchan" TargetTag="moe" MaxDistance="1000" isdead="true">
+        <Success>
+          <WaitAction time="1" />
+          <GoTo name="vision_check2" />
+        </Success>
+        <Failure>
+          <GoTo name="reset" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

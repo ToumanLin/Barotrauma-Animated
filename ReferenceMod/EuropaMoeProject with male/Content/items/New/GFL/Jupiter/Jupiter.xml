@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--伸冤者印记-->
+  <Item name="The Mark of Vengeance" identifier="the_jupiter" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,mountableweapon" Scale="0.5" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" secondary="weaponholder,armcab" />
+    <Price baseprice="2400" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="physicorium" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="fulgurium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="90">
+      <RequiredSkill identifier="electrical" level="65" />
+      <RequiredSkill identifier="weapons" level="65" />
+      <RequiredItem identifier="physicorium" amount="3" />
+      <RequiredItem identifier="fulgurium" amount="3" />
+      <RequiredItem identifier="the_jupiter_buleprint" mincondition="0" usecondition="true" />
+      <RequiredItem identifier="the_jupiter_collapse_liquid" amount="2" mincondition="0.75" usecondition="false" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="388,136,90,83" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="11,139,329,82" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="11,20,329,82" maxcondition="50" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <BrokenSprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="380,28,312,56" maxcondition="0" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <Body width="312" height="56" density="25" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="32,16" aimpos="35,15" handle1="-1,-28" handle2="-18,-25" holdangle="-42" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="The Jupiter Worn" texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" canbehiddenbyotherwearables="false" rotation="-30" ignorelimbscale="true" depth="0.6" scale="0.5" sourcerect="380,28,312,56" limb="Torso" depthlimb="LeftArm" origin="0.465,0.0075" />
+      <sprite name="Sling" texture="%ModDir%/Content/items/New/GFL/Jupiter/sling.png" canbehiddenbyotherwearables="false" ignorelimbscale="true" scale="0.5" sourcerect="0,0,184,140" limb="Torso" origin="0.47,0.5125" />
+    </Wearable>
+    <!--Flashlight-->
+    <LightComponent range="800" lightcolor="250,224,165,120" IsOn="true" checkconditionalalways="true">
+      <LightTexture texture="Content/Lights/lightcone.png" origin="0.0,0.5" size="1.0,0.5" />
+    </LightComponent>
+    <!--Decoration-->
+    <LightComponent range="0.0" lightcolor="255,255,0,100" IsOn="true" checkconditionalalways="true">
+      <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter_light_component.png" sourcerect="11,139,329,82" depth="0.9" origin="0.5,0.5" />
+    </LightComponent>
+    <!--Light hint for condition.-->
+    <LightComponent range="0.0" lightcolor="255,51,51,120" IsOn="true" checkconditionalalways="true">
+      <Conditional condition="lte 50" target="This,Contained" />
+      <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter_light_component.png" sourcerect="11,20,329,82" depth="0.55" origin="0.5,0.5" />
+    </LightComponent>
+    <LightComponent range="0.0" lightcolor="51,255,51,120" IsOn="true" checkconditionalalways="true">
+      <Conditional condition="gt 50" target="This,Contained" />
+      <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter_light_component.png" sourcerect="11,20,329,82" depth="0.55" origin="0.5,0.5" />
+    </LightComponent>
+    <RangedWeapon reload="0.45" holdtrigger="true" barrelpos="132,4" spread="5" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.3">
+      <Crosshair texture="%ModDir%/Content/items/New/GFL/Jupiter/Crosshairs_Jupiter.png" sourcerect="0,0,256,256" />
+      <CrosshairPointer texture="%ModDir%/Content/items/New/GFL/Jupiter/Crosshairs_Jupiter.png" sourcerect="256,0,256,256" />
+      <ParticleEmitter particle="FlareBubbles" scalemin="1.4" scalemax="1.8" particleamount="14" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
+      <ParticleEmitter particle="GlowDot" scalemin="4.0" scalemax="4.0" particleamount="20" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" colormultiplier="153,0,153,255" />
+      <ParticleEmitter particle="muzzleflashcoilgun" particleamount="1" velocitymin="50" velocitymax="100" colormultiplier="204,0,102,255" scale="0.75" />
+      <ParticleEmitterCharge particle="chargenucleargun" particlespersecond="60" scalemultiplier="0.75,0.75" scalemin="1.0" scalemax="1.0" anglemin="0" anglemax="359" colormultiplier="153,0,153,255" />
+      <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/weapon_fire.ogg" volume="1.5" type="OnUse" range="3000" />
+      <ChargeSound file="%ModDir%/Content/items/New/GFL/Jupiter/weapon_charging.ogg" volume="0.5" range="3000" />
+      <!--Can not fire when condition is no enough.-->
+      <StatusEffect type="Always" target="This" maxchargetime="120" setvalue="true" disabledeltatime="true">
+        <Conditional condition="lt 20" />
+      </StatusEffect>
+      <!--Sound effects-->
+      <StatusEffect type="Always" target="This" checkconditionalalways="true" disabledeltatime="true">
+        <Conditional condition="lt 20" />
+        <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/hint_loop.ogg" loop="true" range="750" volume="3" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" checkconditionalalways="true" disabledeltatime="true">
+        <Conditional condition="lt 20" />
+        <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/hint_1.ogg" range="300" volume="3" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/hint_2.ogg" range="300" volume="3" />
+        <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/hint_3.ogg" range="300" volume="3" />
+        <Sound file="%ModDir%/Content/items/New/GFL/Jupiter/hint_4.ogg" range="300" volume="3" />
+      </StatusEffect>
+      <!--Reset maxchargetime when condition is above 20.-->
+      <StatusEffect type="Always" target="This" maxchargetime="0.4" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+        <Conditional condition="gte 20" />
+      </StatusEffect>
+      <!--Fire-->
+      <StatusEffect type="OnUse" target="This,Contained">
+        <Use />
+        <Conditional condition="gte 20" />
+      </StatusEffect>
+      <!--20% condition cost per shot-->
+      <StatusEffect type="OnUse" target="This,Contained" offset="10,-10">
+        <Explosion range="75.0" force="3" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="3.0" />
+        <Conditional condition="gte 20" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This,Contained" condition="-20" disabledeltatime="true">
+        <Conditional condition="gte 20" />
+      </StatusEffect>
+      <!--Recover condition.-->
+      <StatusEffect type="OnContained" target="This,Contained" condition="1" />
+      <!--I actually wanted to make a standalone texture for dropped Jupiter, but I didn't figure out how to make it without broken sprite, so here's the result: when dropped, condition reset.-->
+      <StatusEffect type="OnNotContained" target="This" condition="0" setvalue="true" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="the_jupiter_collapse_liquid" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="the_jupiter_collapse_liquid" />
+      </ItemContainer>
+      <RequiredItems items="the_jupiter_collapse_liquid" type="Contained" msg="ItemMsgAmmoRequired">
+        <Conditional condition="gte 20" />
+      </RequiredItems>
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <SkillRequirementHint identifier="weapons" level="75" />
+  </Item>
+  <!--射线-->
+  <Item name="" identifier="the_jupiter_laser" category="Weapon" scale="0.5" sonarsize="2" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" origin="0.5,0.5" />
+    <Body width="170" height="10" density="20" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracernucleargun" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="1,2" colormultiplier="153,0,153,255" />
+      <ParticleEmitter particle="FlareBubbles" emitacrossrayinterval="50" />
+      <Attack structuredamage="100" targetforce="5" itemdamage="100" severlimbsprobability="0.5" penetration="1.5">
+        <Affliction identifier="explosiondamage" strength="150" />
+        <Affliction identifier="burn" strength="75" />
+        <Affliction identifier="radiationsickness" strength="75" />
+        <Affliction identifier="stun" strength="10" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="muzzleflashnucleargun" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemin="0.5" scalemax="0.8" scalemultiplier="0.75,0.75" colormultiplier="153,0,153,255" />
+        <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="300" velocitymax="350" scalemin="1.5" scalemax="1.9" drawontop="true" colormultiplier="153,0,153,255" />
+        <ParticleEmitter particle="FlareBubbles" particleamount="3" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" colormultiplier="153,0,153,255" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" disabledeltatime="true">
+        <Explosion range="225.0" ballastfloradamage="150" structuredamage="100" itemdamage="100" force="10.0" flames="false" smoke="false" sparks="false" underwaterbubble="true" flashcolor="255,0,0,255" penetration="1">
+          <Affliction identifier="burn" strength="100" />
+          <Affliction identifier="explosiondamage" strength="250" />
+          <Affliction identifier="radiationsickness" strength="50" />
+          <Affliction identifier="stun" strength="15" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--坍塌液-->
+  <Item name="Collapse liquid" identifier="the_jupiter_collapse_liquid" nameidentifier="" category="Material" maxstacksize="1" tags="smallitem,researchmaterial" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light" hideconditionbar="true" hideconditionintooltip="false" allowsellingwhenbroken="true" scale="0.35">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="ruinstoragelarge" spawnprobability="0.01" />
+    <Price baseprice="2250" sold="false" />
+    <InventoryIcon texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="667,133,45,46" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="498,134,59,93" depth="0.6" origin="0.5,0.5" scale="0.35" />
+    <Body width="30" height="45" density="20" />
+    <Holdable handle1="0,0" slots="Any,RightHand,LeftHand" aimable="false" aimpos="32, 4" aimangle="45" penetration="1">
+      <!--Don't drink this s**t.-->
+      <StatusEffect type="OnSecondaryUse" target="This" condition="-0.5" inerval="1" disabledeltatime="true" />
+      <StatusEffect type="OnSecondaryUse" target="Character" interval="0.5" delay="2" disabledeltatime="true">
+        <Affliction identifier="nausea" strength="25" />
+        <Affliction identifier="internaldamage" strength="3" />
+        <Affliction identifier="organdamage" strength="30" />
+        <Affliction identifier="radiationsickness" strength="40" />
+      </StatusEffect>
+    </Holdable>
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" hideconditionbar="true" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="the_jupiter_laser" removecontaineditemsondeconstruct="true">
+      <Containable items="the_jupiter_laser" />
+      <StatusEffect type="OnUse" target="This" condition="-20" disabledeltatime="true">
+        <SpawnItem identifiers="the_jupiter_laser" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <!--低浓度坍塌液-->
+  <Item name="" variantof="the_jupiter_collapse_liquid" identifier="the_jupiter_collapse_liquid_low" nameidentifier="" category="Material" maxstacksize="1" tags="smallitem,researchmaterial" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light" hideconditionbar="true" hideconditionintooltip="false" allowsellingwhenbroken="true" scale="0.35">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckarmcab,wreckstoragecab,abandonedstoragecab" spawnprobability="0.075" />
+    <PreferredContainer secondary="ruinstoragelarge" spawnprobability="0.075" />
+    <Price baseprice="750" sold="false" />
+    <InventoryIcon texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="667,133,45,46" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="498,134,59,93" depth="0.6" origin="0.5,0.5" scale="0.35" />
+    <Deconstruct time="5" requireddeconstructor="geneticresearchstation">
+      <Item identifier="the_jupiter_collapse_liquid_high" requiredotheritem="the_jupiter_collapse_liquid_low" activatebuttontext="researchstation.combine" infotext="researchstation.combine.infotext" infotextonotheritemmissing="researchstation.refine.missingitem" />
+    </Deconstruct>
+  </Item>
+  <!--高浓度坍塌液-->
+  <Item name="" variantof="the_jupiter_collapse_liquid" identifier="the_jupiter_collapse_liquid_high" nameidentifier="" category="Material" maxstacksize="1" tags="smallitem,researchmaterial" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light" hideconditionbar="true" hideconditionintooltip="false" allowsellingwhenbroken="true" scale="0.35">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckarmcab,wreckstoragecab,abandonedstoragecab" spawnprobability="0.032" />
+    <PreferredContainer secondary="ruinstoragelarge" spawnprobability="0.032" />
+    <Price baseprice="1500" sold="false" />
+    <InventoryIcon texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="667,133,45,46" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="498,134,59,93" depth="0.6" origin="0.5,0.5" scale="0.35" />
+    <Deconstruct time="5" requireddeconstructor="geneticresearchstation">
+      <Item identifier="the_jupiter_collapse_liquid" requiredotheritem="the_jupiter_collapse_liquid_high" activatebuttontext="researchstation.combine" infotext="researchstation.combine.infotext" infotextonotheritemmissing="researchstation.refine.missingitem" />
+    </Deconstruct>
+  </Item>
+  <!--设计图-->
+  <Item name="Blueprint" identifier="the_jupiter_buleprint" nameidentifier="" category="Material" maxstacksize="1" tags="smallitem" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light" scale="0.35">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckarmcab,wreckstoragecab,abandonedstoragecab" spawnprobability="0.024" />
+    <Price baseprice="3000" sold="false" />
+    <InventoryIcon texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="663,184,50,51" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/items/New/GFL/Jupiter/Jupiter.png" sourcerect="582,138,66,91" depth="0.6" origin="0.5,0.5" />
+    <Body width="30" height="45" density="20" />
+    <Holdable handle1="0,0" slots="Any,RightHand,LeftHand" />
+  </Item>
+</Items>

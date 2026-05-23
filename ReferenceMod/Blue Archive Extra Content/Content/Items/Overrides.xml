@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <!--Yuzu Box-->
+  <Item name="Prototype Stealth Device" identifier="Yuzubox" health="40" nameidentifier="Yuzubox" category="Misc" subcategory="Student's Items" cargocontaineridentifier="metalcrate" tags="deepdivinglarge, largeitem" scale="0.73" impactsoundtag="impact_soft">
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+      <Item identifier="organicfiber" />
+    </Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <InventoryIcon texture="yuzuitem.png" sourcerect="304,0,208,144" origin="0.5,0.5" />
+    <Sprite texture="yuzuitem.png" sourcerect="304,0,208,144" depth="0.62" origin="0.5,0.5" CanBeHiddenByItem="deepdivinglarge" />
+    <Body width="208" height="130" density="9" friction="0.8" restitution="0.2" />
+    <Controller UserPos="0,90" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="false" AllowSelectingWhenSelectedByOther="true" selectkey="Use" drawuserbehind="true" forceusertostayattached="false" msg="itemmsggoinside">
+      <limbposition limb="Head" position="100,30" />
+      <limbposition limb="Torso" position="80,-50" />
+      <limbposition limb="Waist" position="62,-85" />
+      <limbposition limb="RightLeg" position="180,-120" />
+      <limbposition limb="LeftLeg" position="180,-120" />
+      <limbposition limb="RightFoot" position="180,-220" />
+      <limbposition limb="LeftFoot" position="180,-220" />
+      <limbposition limb="RightHand" position="105,-70" />
+      <limbposition limb="LeftHand" position="105,-70" />
+    </Controller>
+    <Wearable slots="RightHand + LeftHand" msg="ItemMsgPickUpSelect" canbeselected="false" noninteractable="true">
+      <sprite name="Yuzu's box Hair" texture="yuzuitem.png" limb="Head" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Torso" texture="yuzuitem.png" limb="Torso" hidelimb="true" inherittexturescale="false" hideotherwearables="true" inheritorigin="false" inheritlimbdepth="false" inheritsourcerect="false" rotation="23" sourcerect="304,0,208,144" origin="0.48,0.48" scale="0.75" depth="0.01" />
+      <sprite name="Yuzu's box Left Lower Arm" texture="yuzuitem.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Right Lower Arm" texture="yuzuitem.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Left Upper Arm" texture="yuzuitem.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Right Upper Arm" texture="yuzuitem.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Waist" texture="yuzuitem.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Right Thigh" texture="yuzuitem.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Left Thigh" texture="yuzuitem.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Right Leg" texture="yuzuitem.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Left Leg" texture="yuzuitem.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Right Shoe" texture="yuzuitem.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Left Shoe" texture="yuzuitem.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="0,0,1,1" />
+      <sprite name="Yuzu's box Left Hand" texture="yuzuitem.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Yuzu's box Right Hand" texture="yuzuitem.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.6" setvalue="true" disabledeltatime="true" setactive="true">
+        <TriggerAnimation Type="Walk" FileName="BoxWalk" priority="10" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="BoxRun" priority="10" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Crouch" FileName="BoxCrouch" priority="10" ExpectedSpecies="Human" />
+        <StatValue stattype="PropulsionSpeed" value="-0.9" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Wearable>
+  </Item>
+</Override>

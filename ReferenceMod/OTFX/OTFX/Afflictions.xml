@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction identifier="otfx_tinnitus" type="" isbuff="false" limbspecific="false" indicatorlimb="Head" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect strengthchange="-90" minstrength="0" maxstrength="90" />
+    <Effect strengthchange="-1" minstrength="90" maxstrength="100">
+      <StatusEffect target="Character" lowpassmultiplier="0.0" setvalue="true">
+        <Sound file="%ModDir%/OTFX/Items/Weapons/10seconds_tinnitus.ogg" dontmuffle="true" />
+        <Conditional islocalplayer="true" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_blinding" type="" isbuff="false" limbspecific="false" indicatorlimb="Head" maxstrength="12" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect strengthchange="-1" minstrength="0" maxstrength="8" minchromaticaberration="0.0" maxchromaticaberration="100.0" minscreenblur="0" maxscreenblur="1" minafflictionoverlayalphamultiplier="0.0" maxafflictionoverlayalphamultiplier="1.0"></Effect>
+    <Effect strengthchange="-0.34" minstrength="8" maxstrength="12" minscreenblur="1" maxscreenblur="1" minafflictionoverlayalphamultiplier="1.0" maxafflictionoverlayalphamultiplier="1.0">
+      <StatusEffect target="Character">
+        <Affliction identifier="otfx_blindingmitigate" strength="100" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="%ModDir%/OTFX/Sounds/eyegoo_1.ogg" dontmuffle="true" selectionmode="Random" />
+        <Sound file="%ModDir%/OTFX/Sounds/eyegoo_2.ogg" dontmuffle="true" />
+        <Conditional islocalplayer="true" />
+      </StatusEffect>
+    </Effect>
+    <afflictionoverlay texture="%ModDir%/OTFX/Sprites/UI/Blinding.png" />
+  </Affliction>
+  <Affliction identifier="otfx_blindingmitigate" type="" isbuff="true" limbspecific="false" indicatorlimb="Head" maxstrength="100" duration="2.0" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect strengthchange="0" minstrength="0" maxstrength="100" resistancefor="otfx_blinding" minresistance="0.0" maxresistance="1.0" />
+  </Affliction>
+  <Affliction identifier="otfx_burning" type="burn" isbuff="false" limbspecific="true" maxstrength="16" activationthreshold="1.0" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="6" strengthchange="-1">
+      <StatusEffect target="Limb" interval="0.3">
+        <Explosion range="0" showeffects="false" flash="true" flashduration="1.2" flashrange="500" flashcolor="0.1125,0.0500,0.0325" />
+        <Conditional hide="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb" setvalue="true">
+        <Affliction identifier="burning" amount="0.9" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="1" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.26" scalemax="0.39" anglemin="0" anglemax="360" distancemin="0" distancemax="10" />
+        <ParticleEmitter particle="smoke" particlespersecond="6" scalemin="0.9" scalemax="1.3" colormultiplier="1.0,1.0,1.0,0.8" />
+        <ParticleEmitter particle="otfx_burningsmoke" particlespersecond="1" scalemin="0.9" scalemax="1.3" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Sounds/FireSmall.ogg" range="1500.0" loop="true" volume="0.4" frequency="0.9" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="0.6" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.26" scalemax="0.39" anglemin="0" anglemax="360" distancemin="0" distancemax="10" colormultiplier="1.0,1.0,1.0,0.6" />
+        <ParticleEmitter particle="steamspray" particlespersecond="2" scalemin="0.2" scalemax="0.3" anglemin="100" anglemax="120" velocitymin="50" velocitymax="100" />
+        <ParticleEmitter particle="bubbles" particlespersecond="10" anglemin="0" anglemax="360" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="50" />
+        <ReduceAffliction identifier="otfx_burning" amount="16.0" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Items/Tools/FlareLoop.ogg" range="1500.0" loop="true" volume="0.4" frequency="0.9" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="6" maxstrength="11" strengthchange="-1">
+      <StatusEffect target="Limb" interval="0.3">
+        <Explosion range="0" showeffects="false" flash="true" flashduration="1.2" flashrange="540" flashcolor="0.1125,0.0500,0.0325" />
+        <Conditional hide="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb" setvalue="true">
+        <Affliction identifier="burning" amount="0.9" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="1.5" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.325" scalemax="0.455" anglemin="0" anglemax="360" distancemin="0" distancemax="10" />
+        <ParticleEmitter particle="smoke" particlespersecond="6" scalemin="1.1" scalemax="1.5" colormultiplier="1.0,1.0,1.0,0.8" />
+        <ParticleEmitter particle="otfx_burningsmoke" particlespersecond="1" scalemin="1.1" scalemax="1.5" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Sounds/FireSmall.ogg" range="1500.0" loop="true" volume="0.5" frequency="0.8" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="0.9" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.325" scalemax="0.455" anglemin="0" anglemax="360" distancemin="0" distancemax="10" colormultiplier="1.0,1.0,1.0,0.6" />
+        <ParticleEmitter particle="steamspray" particlespersecond="2" scalemin="0.2" scalemax="0.3" anglemin="100" anglemax="120" velocitymin="50" velocitymax="100" />
+        <ParticleEmitter particle="bubbles" particlespersecond="10" anglemin="0" anglemax="360" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="50" />
+        <ReduceAffliction identifier="otfx_burning" amount="16.0" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Items/Tools/FlareLoop.ogg" range="1500.0" loop="true" volume="0.5" frequency="0.8" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="11" maxstrength="16" strengthchange="-1">
+      <StatusEffect target="Limb" interval="0.3">
+        <Explosion range="0" showeffects="false" flash="true" flashduration="1.2" flashrange="580" flashcolor="0.1125,0.0500,0.0325" />
+        <Conditional hide="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb" setvalue="true">
+        <Affliction identifier="burning" amount="0.9" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="2.0" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.39" scalemax="0.52" anglemin="0" anglemax="360" distancemin="0" distancemax="10" />
+        <ParticleEmitter particle="smoke" particlespersecond="6" scalemin="1.3" scalemax="1.7" colormultiplier="1.0,1.0,1.0,0.8" />
+        <ParticleEmitter particle="otfx_burningsmoke" particlespersecond="1" scalemin="1.3" scalemax="1.7" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Sounds/FireSmall.ogg" range="1500.0" loop="true" volume="0.6" frequency="0.7" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <Affliction identifier="burn" amount="1.2" />
+        <ParticleEmitter particle="otfx_burningflame" particlespersecond="20" scalemin="0.39" scalemax="0.52" anglemin="0" anglemax="360" distancemin="0" distancemax="10" colormultiplier="1.0,1.0,1.0,0.6" />
+        <ParticleEmitter particle="steamspray" particlespersecond="2" scalemin="0.2" scalemax="0.3" anglemin="100" anglemax="120" velocitymin="50" velocitymax="100" />
+        <ParticleEmitter particle="bubbles" particlespersecond="10" anglemin="0" anglemax="360" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="50" />
+        <ReduceAffliction identifier="otfx_burning" amount="16.0" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Items/Tools/FlareLoop.ogg" range="1500.0" loop="true" volume="0.6" frequency="0.7" />
+        <Conditional inwater="true" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_laserpointer" type="buff" isbuff="true" limbspecific="false" maxstrength="100" duration="0.1" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="RangedSpreadReduction" value="0.5" />
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_powerfuldash" type="talentbuff" isbuff="true" limbspecific="false" showiconthreshold="7" showicontoothersthreshold="infinity" maxstrength="7" iconcolors="64,8,8;128,8,8;192,8,8;255,8,8">
+    <Effect minstrength="0" maxstrength="7" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,896,128,128" color="193,114,10,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_broken" type="damage" limbspecific="true" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1" />
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="128,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_incapacitated" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-10">
+      <StatusEffect target="Character" lockhands="true" setvalue="true" />
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="384,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_hindered" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-50" minspeedmultiplier="1.0" maxspeedmultiplier="0.0" />
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="512,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_beartrap" nameidentifier="otfx_hindered" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" duration="2.0" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" minspeedmultiplier="1.0" maxspeedmultiplier="0.0" />
+  </Affliction>
+  <Affliction identifier="otfx_deepwound" type="damage" limbspecific="true" maxstrength="2.016" showiconthreshold="0" showicontoothersthreshold="0" affectmachines="false">
+    <Effect minstrength="0" maxstrength="2" strengthchange="+0.1">
+      <StatusEffect target="Limb" tags="otfx_deepwounded" duration=".033" stackable="false" />
+    </Effect>
+    <Effect minstrength="2" maxstrength="2.016">
+      <StatusEffect target="Limb" setvalue="true">
+        <Affliction identifier="otfx_deepwoundaftereffect" amount="100" />
+        <ReduceAffliction identifier="otfx_deepwound" amount="infinity" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="256,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_deepwoundaftereffect" type="" limbspecific="true" maxstrength="100" showiconthreshold="infinity" showicontoothersthreshold="infinity" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-200">
+      <StatusEffect target="Character" comparison="And">
+        <Conditional ishuman="true" hasspecifiertag="male" />
+        <Sound file="Content/Characters/Human/male_damage1.ogg" range="500" selectionmode="Random" />
+        <Sound file="Content/Characters/Human/male_damage2.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage3.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage4.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage5.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage6.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage7.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage8.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage9.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage10.ogg" range="500" />
+        <Sound file="Content/Characters/Human/male_damage11.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="And">
+        <Conditional ishuman="true" hasspecifiertag="female" />
+        <Sound file="Content/Characters/Human/female_damage1.ogg" range="500" selectionmode="Random" />
+        <Sound file="Content/Characters/Human/female_damage2.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage3.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage4.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage5.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage6.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage7.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage8.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage9.ogg" range="500" />
+        <Sound file="Content/Characters/Human/female_damage10.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="500" selectionmode="Random" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect target="Limb">
+        <ParticleEmitter Particle="gib" particlespersecond="20" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" velocitymin="50" velocitymax="100" drawontop="true" lifetimemultiplier="0.3" />
+        <ParticleEmitter Particle="blood" particlespersecond="20" anglemin="0" anglemax="0" />
+        <ParticleEmitter Particle="waterblood" particlespersecond="2" anglemin="0" anglemax="0" />
+        <ParticleEmitter Particle="gib" particlespersecond="20" anglemin="0" anglemax="360" velocitymin="50" velocitymax="100" lifetimemultiplier="0.3" />
+        <ParticleEmitter Particle="heavygib" particlespersecond="10" anglemin="0" anglemax="360" velocitymin="50" velocitymax="100" lifetimemultiplier="0.3" />
+        <Affliction identifier="lacerations" amount="175" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_deepwoundtakeeffectinstantly" type="" limbspecific="true" maxstrength="100" showiconthreshold="infinity" showicontoothersthreshold="infinity" duration=".033" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100">
+      <StatusEffect target="Limb" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_deepwound" amount="2.016" />
+        <ReduceAffliction identifier="otfx_deepwoundtakeeffectinstantly" amount="infinity" />
+        <Conditional hasstatustag="otfx_deepwounded" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="256,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_deepwoundtakeeffectinstantlytoalllimbs" type="" limbspecific="false" maxstrength="100" showiconthreshold="infinity" showicontoothersthreshold="infinity" duration=".033" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100">
+      <StatusEffect target="AllLimbs" setvalue="true">
+        <Affliction identifier="otfx_deepwoundtakeeffectinstantly" amount="100" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="256,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_fallintodanger" type="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="0" showicontoothersthreshold="0" affectmachines="false" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1" resistancefor="damage" minresistance="-0.5" maxresistance="-1.0" screeneffectfluctuationfrequency="0.034" minchromaticaberration="2.0" maxchromaticaberration="2.0" minradialdistort="0.35" maxradialdistort="0.35">
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="5" />
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="10" />
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="15" />
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="20" />
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="10" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true">
+        <requiredaffliction type="damage" minstrength="25" />
+        <ReduceAffliction identifier="otfx_fallintodanger" amount="10" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="768,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_prey" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0" affectmachines="false">
+    <Effect tag="provocative" minstrength="0" maxstrength="10" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="0.0" maxgrainstrength="0.25" resistancefor="bitewounds" minresistance="-0.20" maxresistance="-0.23">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.46" frequency="1.00" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+200" visibility="+200" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-200" visibility="-200" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="10" maxstrength="20" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="0.25" maxgrainstrength="0.5" resistancefor="bitewounds" minresistance="-0.23" maxresistance="-0.26">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.52" frequency="1.04" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+250" visibility="+250" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-250" visibility="-250" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="20" maxstrength="30" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="0.5" maxgrainstrength="0.75" resistancefor="bitewounds" minresistance="-0.26" maxresistance="-0.29">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.58" frequency="1.08" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+300" visibility="+300" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-300" visibility="-300" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="30" maxstrength="40" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="0.75" maxgrainstrength="1.0" resistancefor="bitewounds" minresistance="-0.29" maxresistance="-0.32">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.64" frequency="1.12" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+350" visibility="+350" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-350" visibility="-350" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="40" maxstrength="50" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="1.0" maxgrainstrength="1.25" resistancefor="bitewounds" minresistance="-0.32" maxresistance="-0.35">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.70" frequency="1.16" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+400" visibility="+400" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-400" visibility="-400" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="50" maxstrength="60" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="1.25" maxgrainstrength="1.5" resistancefor="bitewounds" minresistance="-0.35" maxresistance="-0.38">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.76" frequency="1.20" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+450" visibility="+450" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-450" visibility="-450" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="60" maxstrength="70" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="1.5" maxgrainstrength="1.75" resistancefor="bitewounds" minresistance="-0.38" maxresistance="-0.41">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.82" frequency="1.24" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+500" visibility="+500" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-500" visibility="-500" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="70" maxstrength="80" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="1.75" maxgrainstrength="2.0" resistancefor="bitewounds" minresistance="-0.41" maxresistance="-0.44">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.88" frequency="1.28" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+550" visibility="+550" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-550" visibility="-550" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="80" maxstrength="90" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="2.0" maxgrainstrength="2.25" resistancefor="bitewounds" minresistance="-0.44" maxresistance="-0.47">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="0.94" frequency="1.32" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+600" visibility="+600" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-600" visibility="-600" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <Effect tag="provocative" minstrength="90" maxstrength="100" strengthchange="-1.67" graincolor="155,75,75,255" mingrainstrength="2.25" maxgrainstrength="2.5" resistancefor="bitewounds" minresistance="-0.47" maxresistance="-0.50">
+      <StatusEffect target="Character">
+        <Conditional islocalplayer="true" />
+        <Sound file="%ModDir%/OTFX/Sounds/heartbeat.ogg" loop="true" volume="1.00" frequency="1.36" />
+      </StatusEffect>
+      <StatusEffect target="Character" noise="+650" visibility="+650" disabledeltatime="true" />
+      <StatusEffect target="Character" noise="-650" visibility="-650" delay="0.033" disabledeltatime="true" />
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="896,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_activemasclephagotroph" type="poison" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-3.34">
+      <StatusEffect target="Character" targetlimbs="LeftHand,RightHand,LeftLeg,RightLeg" interval="1.0" disabledeltatime="true" comparison="And">
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="500" frequency="2.0" selectionmode="Random" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" frequency="2.0" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" frequency="2.0" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" frequency="2.0" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" frequency="2.0" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" frequency="2.0" />
+        <Affliction identifier="otfx_activemasclephagotroph" strength="10.0" />
+        <Affliction identifier="explosiondamage" strength="1.3" />
+        <Affliction identifier="otfx_hindered" strength="100" probability="0.35" />
+        <Conditional currentspeed="gte 3.0" stun="lte 0" canrun="true" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/OTFX/UI/AfflictionIcons.png" sourcerect="640,256,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_cleaverpowerattack" type="" isbuff="true" limbspecific="false" indicatorlimb="Torso" maxstrength="500.016" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="+200" minspeedmultiplier="1.3" maxspeedmultiplier="2.0">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="0.0" maxvalue="1.5" />
+    </Effect>
+    <Effect minstrength="100" maxstrength="200" strengthchange="+280" minspeedmultiplier="2.0" maxspeedmultiplier="2.5">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="1.5" maxvalue="1.5" />
+    </Effect>
+    <Effect minstrength="200" maxstrength="300" strengthchange="+500" minspeedmultiplier="2.5" maxspeedmultiplier="1.0">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="1.5" maxvalue="0.0" />
+    </Effect>
+    <Effect minstrength="300" maxstrength="400" strengthchange="+100" minspeedmultiplier="1.0" maxspeedmultiplier="0.0" />
+    <Effect minstrength="400" maxstrength="500" strengthchange="+500" minspeedmultiplier="0.0" maxspeedmultiplier="1.0" />
+    <Effect minstrength="500" maxstrength="500.016" strengthchange="0">
+      <StatusEffect target="Character" disabledeltatime="true">
+        <ReduceAffliction identifier="otfx_cleaverpowerattack" strength="infinity" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_smoking" type="" isbuff="true" limbspecific="false" indicatorlimb="Head" maxstrength="500" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="500" strengthchange="0">
+      <StatusEffect target="Character" targetlimb="Head" multiplyafflictionsbymaxvitality="true">
+        <ParticleEmitter particle="otfx_exhalesmoke" copyentityangle="true" particlespersecond="5" anglemin="344" anglemax="344" distancemin="9" distancemax="10" velocitymin="30" velocitymax="50" scalemin="0.1" scalemax="0.1" colormultiplier="255,255,255,225" />
+        <Affliction identifier="otfx_exhalesmoke" amount="550" />
+        <ReduceAffliction identifier="otfx_smoking" amount="220" />
+        <Conditional hasstatustag="! otfx_inhaling" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_exhalesmoke" type="" isbuff="true" limbspecific="false" indicatorlimb="Head" maxstrength="150" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="150" strengthchange="-100">
+      <StatusEffect target="Character" targetlimb="Head" availableoxygen="0" setvalue="true">
+        <Sound file="%ModDir%/OTFX/Sounds/ExhaleSmoke.ogg" range="500" volume="1.0" loop="true" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_gassuffocationinhaling" type="" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="infinity" showicontoothersthreshold="infinity" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0.0">
+      <StatusEffect target="Character" interval="0.35" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_gassuffocationpoisoning" amount="21" />
+        <ReduceAffliction identifier="otfx_gassuffocationinhaling" amount="infinity" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_gassuffocationpoisoning" type="poison" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="5" showiconthreshold="0" showicontoothersthreshold="0" affectmachines="false">
+    <Effect minstrength="0" maxstrength="5" strengthchange="-0.25" resistancefor="otfx_gassuffocationpoisoningdamageupdate" minresistance="0.0" maxresistance="-99.0">
+      <StatusEffect target="Character" interval="0.5" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+        <Affliction identifier="otfx_gassuffocationpoisoningdamageupdate" amount="1.0" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="512,640,128,128" color="80,255,176,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_gassuffocationpoisoningdamageupdate" type="" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="infinity" showicontoothersthreshold="infinity" affectmachines="false">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-2000">
+      <StatusEffect target="Character" oxygenavailable="-5.0" disabledeltatime="true">
+        <Affliction identifier="organdamage" amount="0.5" />
+        <Affliction identifier="nausea" strength="0.9" />
+        <Affliction identifier="slow" amount="3.0" />
+        <Affliction identifier="incrementalstun" strength="2.0" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_smokegrenadescreentransform" type="" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="100" activationthreshold="60" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-100">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_smokegrenadescreening" amount="240" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="otfx_smokegrenadescreening" type="" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0.0" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="70" strengthchange="-120" graincolor="0.05,0.05,0.05,0.5" mingrainstrength="0.0" maxgrainstrength="6.3" resistancefor="otfx_smokegrenadescreentransform" minresistance="0.0" maxresistance="0.7">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="0.0" maxvalue="0.35" />
+      <StatValue stattype="SightRangeMultiplier" minvalue="-0.5" maxvalue="-0.85" />
+      <StatValue stattype="RangedSpreadReduction" minvalue="0.0" maxvalue="-0.35" />
+    </Effect>
+    <Effect minstrength="70" maxstrength="100" strengthchange="-120" graincolor="0.05,0.05,0.05,0.5" mingrainstrength="6.3" maxgrainstrength="9.0" resistancefor="otfx_smokegrenadescreentransform" minresistance="0.7" maxresistance="1.0">
+      <StatValue stattype="MeleeAttackMultiplier" minvalue="0.35" maxvalue="0.5" />
+      <StatValue stattype="SightRangeMultiplier" minvalue="-0.85" maxvalue="-1.0" />
+      <StatValue stattype="RangedSpreadReduction" minvalue="-0.35" maxvalue="-0.5" />
+      <StatusEffect target="Character">
+        <ReduceAffliction identifier="otfx_burning" amount="4.0" />
+        <ReduceAffliction identifier="burning" amount="4.0" />
+      </StatusEffect>
+      <AbilityFlag flagtype="IgnoredByEnemyAI" />
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="512,768,128,128" color="80,80,80,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_frankensteinarmyfollowed" type="" isbuff="true" limbspecific="false" indicatorlimb="Head" duration="0.6" showiconthreshold="infinity" showicontoothersthreshold="infinity" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" tag="Otfx_frankensteinarmyfollowed" />
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="safetyharness" category="Equipment" tags="sterile,smallitem,clothing" scale="0.35" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" secondary="engcab" />
+      <Price baseprice="120" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.2" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="1.2" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="rubber" />
+        <Item identifier="steel" />
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="rubber" amount="2" />
+        <RequiredItem identifier="steel" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="198,132,67,57" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="58,326,143,40" depth="0.6" origin="0.5,0.5" />
+      <Body width="120" height="35" density="15" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.25" />
+        <sprite name="Pirate Armor Wearable" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" ignorelimbscale="true" scale="0.65" inheritsourcerect="false" sourcerect="5,2,128,241" origin="0.56421875,0.5" />
+        <sprite name="safetyharness Right Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Left Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="safetyharness Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="makeshiftarmor" category="Equipment" tags="sterile,smallitem" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <Price baseprice="140" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="40">
+        <Item identifier="organicfiber" amount="1" />
+        <Item identifier="iron" amount="4" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="organicfiber" amount="2" />
+        <RequiredItem identifier="iron" amount="6" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Makeshift Armor Item" texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="167,25,86,126" depth="0.55" origin="0.5,0.5" />
+      <Body width="62" height="120" density="30" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.85" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Makeshift Armor Torso" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="272,0,64,92" Origin="0.5,0.521739" />
+        <sprite name="Makeshift Armor Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="336,0,64,92" Origin="0.5,0.521739" />
+        <sprite name="Makeshift Armor Right Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="272,92,64,68" Origin="0.5,0.52941" />
+        <sprite name="Makeshift Armor Left Forearm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" SourceRect="336,92,64,68" Origin="0.5,0.52941" />
+        <sprite name="Mechanic's Uniform 1 Waist" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Leg" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="LeftFoot" sound="footstep_Heavy_Heels" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Makeshift Armor Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Mechanic/MakeshiftArmor.png" limb="RightFoot" sound="footstep_Heavy_Heels" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+        <StatValue stattype="FlowResistance" value="0.5" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="makeshiftarmor1" category="Diving" tags="sterile,smallitem" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="secarmcab" />
+      <Deconstruct time="2">
+        <Item identifier="makeshiftarmor" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem identifier="makeshiftarmor" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Makeshift Armor Item" texture="Content/Items/Diving/MakeshiftArmor.png" sourcerect="167,25,86,126" depth="0.55" origin="0.5,0.5" />
+      <Body width="62" height="120" density="30" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.85" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="bitewounds, lacerations" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Wf pucs Torso" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Hand" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Hand" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Lower Arm" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Left Lower Arm" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Upper Arm" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Left Upper Arm" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Waist" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Thigh" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Left Thigh" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Leg" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Left Leg" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Left Shoe" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Wf pucs Right Shoe" texture="%ModDir%/Content/Items/diving/Abyss_DivingSuit_0.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+        <StatValue stattype="FlowResistance" value="0.5" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="ironhelmet" category="Equipment" tags="sterile,smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.325">
+      <PreferredContainer primary="secarmcab" amount="0" notcampaign="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,outpostarmcab" amount="1" spawnprobability="0.01" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="50" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="iron" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/Jobgear/headgears.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="iron" amount="4" />
+      </Fabricate>
+      <Body width="70" height="80" density="30" />
+      <Sprite name="Makeshift Helmet Item" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="false" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="926,0,98,125" origin="0.5401,0.508" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <!-- legacy items. Not used anymore-->
+    <!-- legacy items. Not used anymore-->
+    <!-- legacy items. Not used anymore-->
+    <!-- legacy items. Not used anymore-->
+    <Item name="" identifier="safetyharness0" hideinmenus="true" category="Equipment" tags="sterile,smallitem,clothing" scale="0.35" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" secondary="engcab" />
+      <Deconstruct time="2">
+        <Item identifier="safetyharness" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/items/Diving/exosuits.png" sourcerect="191,0,65,60" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="58,326,143,40" depth="0.6" origin="0.5,0.5" />
+      <Body width="120" height="35" density="15" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <damagemodifier afflictionidentifiers="lacerations" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.1" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.25" />
+        <sprite name="safetyharness Torso" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Right Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Left Hand" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Right Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Left Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <sprite name="safetyharness Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Mechanic/safetyharness.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" origin="0.45,0.5" inheritsourcerect="false" SourceRect="1,1,1,1" />
+        <StatValue stattype="FlowResistance" value="0.9" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="ironhelmet0" hideinmenus="true" category="Equipment" tags="sterile,smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.325">
+      <PreferredContainer primary="secarmcab" />
+      <Deconstruct time="2">
+        <Item identifier="ironhelmet" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/items/Jobgear/headgears3.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Body width="70" height="80" density="30" />
+      <Sprite name="Makeshift Helmet Item" texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="249,529,90,102" depth="0.6" origin="0.5,0.5" />
+      <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" ObstructVision="false" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+        <damagemodifier afflictionidentifiers="lacerations, bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <sprite name="Iron Helmet" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="1,0,1,1" origin="0.5401,0.508" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+  </Override>
+</Items>

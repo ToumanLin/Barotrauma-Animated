@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="JTF Turret" description="Mounted Turret" identifier="jtf_turret" Tags="turret,jtf_turret" category="Weapon" DisableItemUsageWhenSelected="true" subcategory="subweapons" canflipy="true" canflipx="true" pickdistance="200" interactthroughwalls="true" Scale="0.5" interactdistance="500" focusonselected="true" offsetonselected="750" type="Controller" isshootable="true">
+    <Sprite texture="%ModDir%/Turrets/jtfgun_stand.png" depth="0.01" sourcerect="0,0,330,210" />
+    <MinimapIcon name="Command_Weapons_Coilgun" texture="Content/UI/CommandUIAtlas.png" sourcerect="768,0,128,128" />
+    <StaticBody width="80" radius="80" />
+    <Turret canbeselected="false" barrelpos="190,25" firingoffset="0,-150" rotationlimits="-12,10" recoildistance="20" reload="0.1" springstiffnesslowskill="20" springstiffnesshighskill="20" springdampinglowskill="5" springdampinghighskill="5" rotationspeedlowskill="3" rotationspeedhighskill="3" MaxAngleOffset="10" AICurrentTargetPriorityMultiplier="1.1">
+      <WeaponIndicator texture="Content/UI/WeaponUI.png" sourcerect="425,913,66,36" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Turrets/jtfgun_rail.png" depth="0.011" sourcerect="0,0,300,569" origin="0.5, 0.38" />
+      <BarrelSprite texture="%ModDir%/Turrets/jtfgun_barrel.png" depth="0.012" sourcerect="0,0,300,569" origin="0.5, 0.4" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="10" velocitymax="10" scalemin="1.4" relativeoffset="5,5" />
+      <StatusEffect type="OnUse" target="This,Contained" forceplaysounds="true" disabledeltatime="true">
+        <ParticleEmitter particle="casingfirearm" AngleMin="110" AngleMax="120" DistanceMin="50" DistanceMax="50" VelocityMin="100" VelocityMax="100" ScaleMin="1.5" ScaleMultiplier="1,1" ParticlesPerSecond="1" ColorMultiplier="255,255,200,255" Distance="50" Velocity="600" CopyEntityAngle="true" />
+        <sound file="%ModDir%/Content/Sounds/SE_Shot_03.ogg" range="1500" intensityrange="0,100" volume="2" />
+        <Explosion range="1000.0" structuredamage="0" force="0.2" camerashake="20.0" shockwave="false" flames="false" smoke="false" sparks="false" underwaterbubble="false"></Explosion>
+        <Use />
+      </StatusEffect>
+    </Turret>
+    <ConnectionPanel selectkey="Select" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.1,0.2" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <aitarget maxsightrange="900" maxsoundrange="900" fadeouttime="5" />
+    <ItemContainer hideitems="true" drawinventory="true" capacity="1" maxstacksize="1" canbeselected="true" selectkey="Select" msg="ItemMsgInteractSelect" SpawnWithId="minigame_turret_ammobox">
+      <Containable items="jtf_ammo" hide="true" />
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="DCM Turret" description="Mounted Turret" identifier="dcm_turret" Tags="turret,dcm_turret" category="Weapon" DisableItemUsageWhenSelected="true" subcategory="subweapons" canflipy="true" canflipx="true" pickdistance="200" interactthroughwalls="true" Scale="0.5" interactdistance="500" focusonselected="true" offsetonselected="750" type="Controller" isshootable="true">
+    <Sprite texture="%ModDir%/Turrets/dcmgun_stand.png" depth="0.01" sourcerect="0,0,330,210" origin="0.6,0.5" />
+    <MinimapIcon name="Command_Weapons_Coilgun" texture="Content/UI/CommandUIAtlas.png" sourcerect="768,0,128,128" />
+    <StaticBody width="80" radius="80" />
+    <Turret canbeselected="false" barrelpos="190,25" firingoffset="0,-150" rotationlimits="-12,10" recoildistance="20" reload="0.1" springstiffnesslowskill="20" springstiffnesshighskill="20" springdampinglowskill="5" springdampinghighskill="5" rotationspeedlowskill="3" rotationspeedhighskill="3" MaxAngleOffset="10" AICurrentTargetPriorityMultiplier="1.1">
+      <WeaponIndicator texture="Content/UI/WeaponUI.png" sourcerect="425,913,66,36" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Turrets/dcmgun_rail.png" depth="0.011" sourcerect="0,0,300,569" origin="0.55, 0.38" />
+      <BarrelSprite texture="%ModDir%/Turrets/dcmgun_barrel.png" depth="0.012" sourcerect="0,0,300,569" origin="0.5, 0.4" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="10" velocitymax="10" scalemin="1.4" relativeoffset="5,5" />
+      <StatusEffect type="OnUse" target="This,Contained" forceplaysounds="true" disabledeltatime="true">
+        <ParticleEmitter particle="casingfirearm" AngleMin="110" AngleMax="120" DistanceMin="50" DistanceMax="50" VelocityMin="100" VelocityMax="100" ScaleMin="1.5" ScaleMultiplier="1,1" ParticlesPerSecond="1" ColorMultiplier="255,255,200,255" Distance="50" Velocity="600" CopyEntityAngle="true" />
+        <sound file="%ModDir%/Content/Sounds/SE_Shot_04.ogg" range="1500" intensityrange="0,100" volume="2" />
+        <Explosion range="1000.0" structuredamage="0" force="0.2" camerashake="20.0" shockwave="false" flames="false" smoke="false" sparks="false" underwaterbubble="false"></Explosion>
+        <Use />
+      </StatusEffect>
+    </Turret>
+    <ConnectionPanel selectkey="Select" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.1,0.2" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <aitarget maxsightrange="900" maxsoundrange="900" fadeouttime="5" />
+    <ItemContainer hideitems="true" drawinventory="true" capacity="1" maxstacksize="1" canbeselected="true" selectkey="Select" msg="ItemMsgInteractSelect" SpawnWithId="minigame_turret_ammobox">
+      <Containable items="dcm_ammo" hide="true" />
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Turret Controller (stand)" description="Style: Crouch" identifier="minigame_turret_control_stand" tags="periscope" category="Machine,Weapon" subcategory="subweapons" type="Controller" disableitemusagewhenselected="true" scale="0.5" isshootable="true" requireaimtouse="false" requireaimtosecondaryuse="false">
+    <SwappableItem canbebought="false" origin="67,0" />
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Controller allowingameediting="false" UserPos="-50,-100" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="true" AllowSelectingWhenSelectedByOther="false" msg="ItemMsgInteractSelect">
+      <limbposition limb="Head" position="-10,1" />
+      <limbposition limb="Torso" position="-20,-100" />
+      <limbposition limb="LeftHand" position="70,10" />
+      <limbposition limb="RightHand" position="70,10" />
+    </Controller>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="position_out" displayname="connection.turretaimingout" fallbackdisplayname="inputtype.aim" />
+      <output name="trigger_out" displayname="connection.turrettriggerout" fallbackdisplayname="inputtype.shoot" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="Turret Controller (crouch)" description="Style: Crouch" identifier="minigame_turret_control" tags="periscope" category="Machine,Weapon" subcategory="subweapons" type="Controller" disableitemusagewhenselected="true" scale="0.5" isshootable="true" requireaimtouse="false" requireaimtosecondaryuse="false">
+    <SwappableItem canbebought="false" origin="67,0" />
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Controller allowingameediting="false" UserPos="-50,-100" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="true" AllowSelectingWhenSelectedByOther="false" msg="ItemMsgInteractSelect">
+      <limbposition limb="Head" position="-10,50" />
+      <limbposition limb="Torso" position="-60,-100" />
+      <limbposition limb="LeftHand" position="100,-100" />
+      <limbposition limb="RightHand" position="100,-100" />
+      <limbposition limb="LeftLeg" position="-80,-140" />
+      <limbposition limb="RightLeg" position="10,-140" />
+    </Controller>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="position_out" displayname="connection.turretaimingout" fallbackdisplayname="inputtype.aim" />
+      <output name="trigger_out" displayname="connection.turrettriggerout" fallbackdisplayname="inputtype.shoot" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="Turret Controller (Prone)" description="Style: Prone" identifier="minigame_turret_control_prone" tags="periscope" category="Machine,Weapon" subcategory="subweapons" type="Controller" disableitemusagewhenselected="true" scale="0.5" isshootable="true" requireaimtouse="false" requireaimtosecondaryuse="false">
+    <SwappableItem canbebought="false" origin="67,0" />
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Controller allowingameediting="false" UserPos="-50,-200" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="true" AllowSelectingWhenSelectedByOther="false" msg="ItemMsgInteractSelect">
+      <limbposition limb="Head" position="-10,200" />
+      <limbposition limb="Torso" position="-80,-150" />
+      <limbposition limb="LeftArm" position="0,-180" />
+      <limbposition limb="RightArm" position="0,-180" />
+      <limbposition limb="LeftHand" position="120,0" />
+      <limbposition limb="RightHand" position="120,0" />
+      <limbposition limb="LeftLeg" position="-200,-200" />
+      <limbposition limb="RightLeg" position="-200,-200" />
+      <limbposition limb="LeftFoot" position="-300,-200" />
+      <limbposition limb="RightFoot" position="-300,-200" />
+    </Controller>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="position_out" displayname="connection.turretaimingout" fallbackdisplayname="inputtype.aim" />
+      <output name="trigger_out" displayname="connection.turrettriggerout" fallbackdisplayname="inputtype.shoot" />
+    </ConnectionPanel>
+  </Item>
+</Items>

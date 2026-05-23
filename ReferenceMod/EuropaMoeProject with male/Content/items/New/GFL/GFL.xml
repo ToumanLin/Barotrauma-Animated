@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--404-->
+  <Item name="Taskforce 404" identifier="404uniform" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="404 Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="0,0,128,128" origin="0.5,0.5" />
+    <Sprite name="404 Uniform" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="404 Uniform Torso" texture="404uniform_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Hand" texture="404uniform_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Left Hand" texture="404uniform_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Left Lower Arm" texture="404uniform_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Lower Arm" texture="404uniform_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Left Upper Arm" texture="404uniform_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Upper Arm" texture="404uniform_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Waist" texture="404uniform_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Thigh" texture="404uniform_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Left Thigh" texture="404uniform_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Leg" texture="404uniform_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Left Leg" texture="404uniform_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="404 Uniform Right Shoe" texture="404uniform_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="404 Uniform Left Shoe" texture="404uniform_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!-- Anti-Rain -->
+  <Item name="Anti-Rain" identifier="antirain" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Anti-Rain Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="128,0,128,128" origin="0.5,0.5" />
+    <Sprite name="Anti-Rain Uniform" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Anti-Rain Uniform Cape" texture="antirain_[GENDER].png" limb="Torso" depthlimb="LeftFoot" hidelimb="false" inherittexturescale="true" CanBeHiddenByOtherWearables="true" origin="0.505,-0.01" sourcerect="412,68,76,135" />
+      <sprite name="Anti-Rain Uniform Torso" texture="antirain_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,243" origin="0.49769565,0.404" />
+      <sprite name="Anti-Rain Uniform Right Hand" texture="antirain_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Left Hand" texture="antirain_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Left Lower Arm" texture="antirain_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Right Lower Arm" texture="antirain_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Left Upper Arm" texture="antirain_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Right Upper Arm" texture="antirain_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Waist" texture="antirain_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+      <sprite name="Anti-Rain Uniform Right Thigh" texture="antirain_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Left Thigh" texture="antirain_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Right Leg" texture="antirain_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Left Leg" texture="antirain_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Anti-Rain Uniform Right Shoe" texture="antirain_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Anti-Rain Uniform Left Shoe" texture="antirain_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--格里芬-->
+  <Item name="Griffin" identifier="GKuniform" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="GK Uniform Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="256,0,128,128" origin="0.5,0.5" />
+    <Sprite name="GK Uniform" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="GK Uniform Torso" texture="GKuniform_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,243" origin="0.49769565,0.404" />
+      <sprite name="GK Uniform Right Hand" texture="GKuniform_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Left Hand" texture="GKuniform_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Left Lower Arm" texture="GKuniform_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Right Lower Arm" texture="GKuniform_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Left Upper Arm" texture="GKuniform_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Right Upper Arm" texture="GKuniform_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Waist" texture="GKuniform_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+      <sprite name="GK Uniform Right Thigh" texture="GKuniform_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Left Thigh" texture="GKuniform_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Right Leg" texture="GKuniform_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Left Leg" texture="GKuniform_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="GK Uniform Right Shoe" texture="GKuniform_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="GK Uniform Left Shoe" texture="GKuniform_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--少前二UMP45-->
+  <Item name="Traitor Jacket" identifier="leva" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Leva Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="384,0,128,128" origin="0.5,0.5" />
+    <Sprite name="leva" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Leva Torso" texture="leva_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Hand" texture="leva_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Left Hand" texture="leva_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Left Lower Arm" texture="leva_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Lower Arm" texture="leva_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Left Upper Arm" texture="leva_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Upper Arm" texture="leva_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Waist" texture="leva_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Thigh" texture="leva_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Left Thigh" texture="leva_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Leg" texture="leva_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Left Leg" texture="leva_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Leva Right Shoe" texture="leva_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Leva Left Shoe" texture="leva_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--少前二维克托-->
+  <Item name="Vanguard" identifier="vector1" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Vector1 Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="0,128,128,128" origin="0.5,0.5" />
+    <Sprite name="vector1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Vector1 Torso" texture="vector1_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Hand" texture="vector1_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Left Hand" texture="vector1_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Left Lower Arm" texture="vector1_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Lower Arm" texture="vector1_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Left Upper Arm" texture="vector1_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Upper Arm" texture="vector1_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Waist" texture="vector1_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Thigh" texture="vector1_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Left Thigh" texture="vector1_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Leg" texture="vector1_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Left Leg" texture="vector1_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector1 Right Shoe" texture="vector1_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Vector1 Left Shoe" texture="vector1_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--少前二维克托（外套）-->
+  <Item name="Dagger Jacket" identifier="vector2" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Vector2 Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="128,128,128,128" origin="0.5,0.5" />
+    <Sprite name="vector2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Vector2 Torso" texture="vector2_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Hand" texture="vector2_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Left Hand" texture="vector2_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Left Lower Arm" texture="vector2_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Lower Arm" texture="vector2_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Left Upper Arm" texture="vector2_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Upper Arm" texture="vector2_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Waist" texture="vector2_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Thigh" texture="vector2_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Left Thigh" texture="vector2_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Leg" texture="vector2_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Left Leg" texture="vector2_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Vector2 Right Shoe" texture="vector2_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Vector2 Left Shoe" texture="vector2_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--少前一特典维克托/HK416-->
+  <Item name="Borderline" identifier="borderline" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Borderline Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="256,128,128,128" origin="0.5,0.5" />
+    <Sprite name="borderline" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Borderline Torso" texture="borderline_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Hand" texture="borderline_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Left Hand" texture="borderline_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Left Lower Arm" texture="borderline_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Lower Arm" texture="borderline_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Left Upper Arm" texture="borderline_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Upper Arm" texture="borderline_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Waist" texture="borderline_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Thigh" texture="borderline_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Left Thigh" texture="borderline_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Leg" texture="borderline_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Left Leg" texture="borderline_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Borderline Right Shoe" texture="borderline_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Borderline Left Shoe" texture="borderline_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--忤逆-->
+  <Item name="Defy" identifier="defy" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Defy Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="384,128,128,128" origin="0.5,0.5" />
+    <Sprite name="Defy" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Defy Torso" texture="defy_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Hand" texture="defy_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Left Hand" texture="defy_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Left Lower Arm" texture="defy_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Lower Arm" texture="defy_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Left Upper Arm" texture="defy_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Upper Arm" texture="defy_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Waist" texture="defy_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Thigh" texture="defy_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Left Thigh" texture="defy_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Leg" texture="defy_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Left Leg" texture="defy_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Defy Right Shoe" texture="defy_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Defy Left Shoe" texture="defy_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--情报员（画不出来啊，俺不中嘞）-->
+  <Item name="Intelligence Agent" identifier="JS9_uniform" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="JS9_uniform Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_icon.png" sourcerect="0,256,128,128" origin="0.5,0.5" />
+    <Sprite name="JS9_uniform" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="639,146,119,70" depth="0.6" origin="0.5,0.5" />
+    <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="JS9_uniform Torso" texture="JS9_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Hand" texture="JS9_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Left Hand" texture="JS9_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Left Lower Arm" texture="JS9_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Lower Arm" texture="JS9_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Left Upper Arm" texture="JS9_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Upper Arm" texture="JS9_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Waist" texture="JS9_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Thigh" texture="JS9_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Left Thigh" texture="JS9_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Leg" texture="JS9_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Left Leg" texture="JS9_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="JS9_uniform Right Shoe" texture="JS9_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="JS9_uniform Left Shoe" texture="JS9_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+    </Wearable>
+  </Item>
+  <!--IOP轻型外骨骼-->
+  <Item name="IOP Light Exoskeleton" identifier="exoskeleton_light" category="Equipment" tags="mediumitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="crewcab" />
+    <PreferredContainer primary="outpostcrewcabinet" />
+    <Price baseprice="750" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.2" minavailable="1" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="mechanical" level="60" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="rubber" />
+    </Fabricate>
+    <InventoryIcon name="Exoskeleton Light Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_gear_icon.png" sourcerect="0,0,128,128" origin="0.5,0.5" />
+    <Sprite name="Exoskeleton Light" texture="%ModDir%/Content/Items/New/GFL/exoskeleton_light_item.png" sourcerect="0,0,224,124" depth="0.6" origin="0.5,0.5" />
+    <Body width="120" height="80" density="30" friction="0.8" restitution="0.01" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-80" handle1="-4,48" handle2="0,48" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Exoskeleton Light Torso" texture="exoskeleton_light.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Hand" texture="exoskeleton_light.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Hand" texture="exoskeleton_light.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Lower Arm" texture="exoskeleton_light.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Lower Arm" texture="exoskeleton_light.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Upper Arm" texture="exoskeleton_light.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Upper Arm" texture="exoskeleton_light.png" limb="RightArm" depthlimb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Waist" texture="exoskeleton_light.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Thigh" texture="exoskeleton_light.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Thigh" texture="exoskeleton_light.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Leg" texture="exoskeleton_light.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Leg" texture="exoskeleton_light.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Right Shoe" texture="exoskeleton_light.png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Light Left Shoe" texture="exoskeleton_light.png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <StatusEffect type="OnWearing" target="This,Character" UseHullOxygen="true" SpeedMultiplier="1.75" PropulsionSpeedMultiplier="1.0" setvalue="true" disabledeltatime="true" comparison="Or">
+        <RequiredItem items="mobilebattery" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained" Condition="-0.03" interval="1" disabledeltatime="true" targetslot="0">
+        <RequiredItem items="batterycell" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained" Condition="-0.03" interval="2" disabledeltatime="true" targetslot="0">
+        <RequiredItem items="fulguriumbatterycell" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" comparison="Or" />
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" />
+      <damagemodifier afflictionidentifiers="bleeding" armorsector="0.0,360.0" damagemultiplier="0.75" damagesound="LimbArmor" />
+      <damagemodifier afflictionidentifiers="stun" armorsector="0.0,360.0" damagemultiplier="0.85" />
+      <damagemodifier afflictionidentifiers="explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.8" damagesound="LimbArmor" />
+      <StatValue stattype="FlowResistance" value="0.6" />
+      <StatValue stattype="MeleeAttackMultiplier" value="1.5" />
+    </Wearable>
+    <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="battery" containedstateindicatorslot="0">
+      <Containable items="mobilebattery" hide="true" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="%ModDir%/Content/Items/New/GFL/UI_EXOSKELETON_INVENTORY.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="mountableweapon,smallitem,toolbelt,riotshield"></Containable>
+      </SubContainer>
+    </ItemContainer>
+  </Item>
+  <!--IOP标准外骨骼-->
+  <Item name="IOP Standard Exoskeleton" identifier="exoskeleton_standard" category="Equipment" tags="mediumitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="crewcab" />
+    <PreferredContainer primary="outpostcrewcabinet" />
+    <Price baseprice="750" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.2" minavailable="1" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="mechanical" level="60" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="rubber" />
+    </Fabricate>
+    <InventoryIcon name="Exoskeleton Standard Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_gear_icon.png" sourcerect="128,0,128,128" origin="0.5,0.5" />
+    <Sprite name="Exoskeleton Standard" texture="%ModDir%/Content/Items/New/GFL/exoskeleton_standard_item.png" sourcerect="0,0,224,124" depth="0.6" origin="0.5,0.5" />
+    <Body width="120" height="80" density="30" friction="0.8" restitution="0.01" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-80" handle1="-4,48" handle2="0,48" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Exoskeleton Standard Torso" texture="exoskeleton_standard.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Hand" texture="exoskeleton_standard.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Hand" texture="exoskeleton_standard.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Lower Arm" texture="exoskeleton_standard.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Lower Arm" texture="exoskeleton_standard.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Upper Arm" texture="exoskeleton_standard.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Upper Arm" texture="exoskeleton_standard.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Waist" texture="exoskeleton_standard.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Thigh" texture="exoskeleton_standard.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Thigh" texture="exoskeleton_standard.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Leg" texture="exoskeleton_standard.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Leg" texture="exoskeleton_standard.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Right Shoe" texture="exoskeleton_standard.png" limb="RightFoot" sound="footstep_armor_heavy" depthlimb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.54,0.4631" canbehiddenbyotherwearables="false" />
+      <sprite name="Exoskeleton Standard Left Shoe" texture="exoskeleton_standard.png" limb="LeftFoot" sound="footstep_armor_heavy" depthlimb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.54,0.4631" canbehiddenbyotherwearables="false" />
+      <StatusEffect type="OnWearing" target="This,Character" UseHullOxygen="true" SpeedMultiplier="1.4" PropulsionSpeedMultiplier="1.0" setvalue="true" disabledeltatime="true" comparison="Or">
+        <RequiredItem items="mobilebattery" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained" Condition="-0.06" interval="1" disabledeltatime="true" targetslot="0">
+        <RequiredItem items="batterycell" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained" Condition="-0.06" interval="2" disabledeltatime="true" targetslot="0">
+        <RequiredItem items="fulguriumbatterycell" targetslot="0" type="Contained" />
+      </StatusEffect>
+      <!--取消使用重机枪的武器操作等级限制-->
+      <StatusEffect type="OnWearing" target="Character" interval="0.9" disabledeltatime="true">
+        <Affliction identifier="recoilstabilized" amount="1" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="0.5" setvalue="true" disabledeltatime="true" comparison="Or" />
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.15" damagesound="LimbArmor" />
+      <damagemodifier afflictionidentifiers="bleeding" armorsector="0.0,360.0" damagemultiplier="0.35" damagesound="LimbArmor" />
+      <damagemodifier afflictionidentifiers="stun" armorsector="0.0,360.0" damagemultiplier="0.7" />
+      <damagemodifier afflictionidentifiers="explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.6" damagesound="LimbArmor" />
+      <StatValue stattype="FlowResistance" value="0.9" />
+    </Wearable>
+    <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="battery" containedstateindicatorslot="0">
+      <Containable items="mobilebattery" hide="true" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <SlotIcon slotindex="1" texture="%ModDir%/Content/Items/New/GFL/UI_EXOSKELETON_INVENTORY.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="mountableweapon,smallitem,toolbelt,riotshield"></Containable>
+      </SubContainer>
+    </ItemContainer>
+  </Item>
+  <!--IOP镇暴装备-->
+  <Item name="IOP Armor Vest" identifier="iop_armorvest" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="1" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+    <Price baseprice="750" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.2" minavailable="1" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+      <Item identifier="ballisticfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="ballisticfiber" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      <RequiredItem identifier="bodyarmor" />
+      <RequiredItem identifier="rubber" />
+    </Fabricate>
+    <InventoryIcon name="IOP Armor Vest Icon" texture="%ModDir%/Content/Items/New/GFL/GFL_gear_icon.png" sourcerect="256,0,128,128" origin="0.5,0.5" />
+    <Sprite name="IOP Armor Vest" texture="%ModDir%/Content/Items/New/GFL/iop_armorvest_male.png" sourcerect="409,213,96,48" depth="0.6" origin="0.5,0.5" />
+    <Body width="120" height="50" density="30" />
+    <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="IOP Armor Vest Torso" texture="iop_armorvest_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Right Hand" texture="iop_armorvest_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Left Hand" texture="iop_armorvest_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Left Lower Arm" texture="iop_armorvest_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Right Lower Arm" texture="iop_armorvest_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Left Upper Arm" texture="iop_armorvest_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Right Upper Arm" texture="iop_armorvest_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="IOP Armor Vest Waist" texture="iop_armorvest_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.92" setvalue="true" disabledeltatime="true" />
+      <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
+      <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.85" />
+      <damagemodifier afflictionidentifiers="blunttrauma,gunshotwound,lacerations" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="explosiondamage" armorsector="0.0,360.0" damagemultiplier="0.8" damagesound="LimbArmor" />
+    </Wearable>
+  </Item>
+  <!--贝雷帽-->
+  <Item name="Beret" identifier="beret" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" scale="0.325" impactsoundtag="impact_soft">
+    <Sprite name="beret" texture="%ModDir%/Content/Items/New/GFL/beret.png" depth="0.6" sourcerect="5,3,87,39" origin="0.5,0.5" />
+    <Body radius="30" density="25" />
+    <Price baseprice="150" minavailable="1">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="1" />
+      <Price storeidentifier="merchantmine" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <Body width="80" height="45" density="30" />
+    <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <sprite name="beret" texture="%ModDir%/Content/Items/New/GFL/beret.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" sourcerect="5,3,87,39" origin="0.6,1.28" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.85" deflectprojectiles="true" />
+    </Wearable>
+  </Item>
+</Items>

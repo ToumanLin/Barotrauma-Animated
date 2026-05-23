@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+  <Items>
+    <Item name="" identifier="handcannonround" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,handcannonammo,handheldammo,pistolammoitem" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <PreferredContainer primary="handcannon" amount="6" spawnprobability="1.0" />
+      <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="6" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
+        <RequiredSkill identifier="weapons" level="45" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="166,430,40,43" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Jobgear/TalentGear.png" sourcerect="3,118,24,9" depth="0.55" origin="0.5,0.5" />
+      <Body width="34" height="14" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" hitscan="true" removeonhit="true" maxtargetstohit="2">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,115,200" scalemultiplier="1,1" />
+        <Attack structuredamage="20" targetforce="20" itemdamage="20" severlimbsprobability="1.0" penetration="0.5">
+          <Affliction identifier="gunshotwound" strength="60" />
+          <Affliction identifier="bleeding" strength="40" />
+          <Affliction identifier="stun" strength="0.75" />
+          <Affliction identifier="stun" strength="1.5" probability="0.85" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="6,6" colormultiplier="255,200,115,200" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.75" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="handcannon" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,weapon,gun,pistolitem,mountableweapon,provocativetohumanai" Scale="0.5" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" />
+      <PreferredContainer secondary="armcab,weaponholder" />
+      <Price baseprice="600" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="60" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+        <RequiredItem identifier="physicorium" />
+      </Fabricate>
+      <Deconstruct time="30">
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+        <Item identifier="physicorium" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="237,218,94,43" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="237,218,94,43" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="241,438,94,43" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="95" height="48" density="30" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" holdpos="42,-18" handle1="-38,-12" handle2="-38,-20" holdangle="40" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="1" barrelpos="40,6" spread="0" unskilledspread="8" combatPriority="90" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,286,256,226" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_1.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_3.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_4.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Captain/WEAPONS_handCannon_5.ogg" type="OnUse" range="3000" />
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="255,200,115,200" />
+        <StatusEffect type="OnUse" target="This"></StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="10,-6">
+          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!-- 上弹动画：有停火标签时无法开火 -->
+        <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="1" unskilledspread="4" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="4" unskilledspread="8" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-12">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--重置扩散-->
+        <StatusEffect type="Always" target="This" spread="0" unskilledspread="8" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="handcannonammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="60" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorstyle="bullet" containedstateindicatorslot="0" containedspritedepth="0.56">
+        <Containable items="handcannonammo" hide="true">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-14" aimpos="40,12" handle1="-38,-12" handle2="-38,-20" holdangle="60" aimangle="42" condition="100" delay="0.01" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-30" aimpos="45,0" handle1="-38,-12" handle2="-38,-20" holdangle="64" aimangle="48" condition="50" delay="0.15" setvalue="true" disabledeltatime="true">
+            <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="160" anglemax="240" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="55,-6" aimpos="52,1" handle1="-38,-12" handle2="-40,10" holdangle="-18" aimangle="-10" condition="50" delay="0.65" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="58,-6" aimpos="52,-2" handle1="-38,-12" handle2="-30,10" holdangle="-20" aimangle="-12" condition="50" delay="0.9" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="58,-6" aimpos="52,-2" handle1="-38,-12" handle2="-28,0" holdangle="-20" aimangle="-12" condition="50" delay="1.1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="58,-6" aimpos="56,-9" handle1="-38,-12" handle2="-28,10" holdangle="-20" aimangle="-18" condition="100" delay="1.3" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="58,-6" aimpos="55,0" handle1="-38,-12" handle2="-38,-20" holdangle="25" aimangle="12" condition="100" delay="1.5" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-18" aimpos="90,10" handle1="-38,-12" handle2="-38,-20" holdangle="40" aimangle="0" condition="100" delay="1.6" maxchargetime="0" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_revolver_reload.ogg" range="500" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="9,2" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="14,1" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-8,12" />
+          <Containable items="hybridscope" hide="false" itempos="-9,12">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="60" />
+    </Item>
+  </Items>
+</override>

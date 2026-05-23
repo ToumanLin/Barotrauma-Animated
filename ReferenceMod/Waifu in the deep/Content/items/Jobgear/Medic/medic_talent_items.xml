@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="autoinjectorheadset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="140">
+        <Price locationtype="outpost" multiplier="1" sold="false" />
+        <Price locationtype="city" multiplier="0.9" sold="false" />
+        <Price locationtype="research" multiplier="1" sold="false" />
+        <Price locationtype="military" multiplier="1" sold="false" />
+        <Price locationtype="mine" multiplier="1" sold="false" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="253,301,76,64" origin="0.35,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="fpgacircuit" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
+      <ItemContainer capacity="1" maxstacksize="1" autoinject="true">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" origin="0.5,0.5" />
+      </Wearable>
+    </Item>
+    <Item identifier="advancedgenesplicer" variantof="genesplicer" descriptionidentifier="advancedgenesplicer">
+      <Price baseprice="380" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="1" sold="false" />
+        <Price locationtype="city" multiplier="0.9" sold="false" />
+        <Price locationtype="research" multiplier="1.1" sold="false" />
+        <Price locationtype="military" multiplier="1.1" sold="false" />
+        <Price locationtype="mine" multiplier="1" sold="false" />
+      </Price>
+      <Deconstruct time="10">
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem identifier="silicon" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem identifier="silicon" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Genetic/Genetic.png" sourcerect="327,62,73,65" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="148,85,73,35" origin="0.5,0.5" />
+      <Body radius="8" width="48" density="30" />
+      <ItemContainer capacity="2" />
+      <Wearable>
+        <sprite name="Gene Splicer Wearable" texture="%ModDir%/Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="326,131,67,55" origin="0.6,0.0" />
+      </Wearable>
+    </Item>
+  </Override>
+</Items>

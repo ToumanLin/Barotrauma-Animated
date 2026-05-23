@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- left is behind character -->
+<Override>
+  <Item name="" description="" identifier="aw_belt" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <Item identifier="toolbelt" amount="1" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="581,326,119,186" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="256,102,112,54" depth="0.6" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="ToolBelt" texture="Content/Items/Tools/tools.png" sourcerect="256,102,112,54" limb="Torso" inherittexturescale="true" origin="0.5,-0.2" />
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot1" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="3,247,58,53" origin="0.5,0.5" />
+    <Sprite name="boot1_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw118 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot1.png" limb="RightLeg" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw118 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot1.png" limb="LeftLeg" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw118 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot1.png" sound="crockssuitfootstep" limb="RightFoot" hidelimb="true" hideotherwearables="true" inheritsourcerect="false" sourcerect="273,225,67,43" inheritorigin="false" origin="0.4348925,0.2" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+      <sprite name="aw118 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot1.png" sound="crockssuitfootstep" limb="LeftFoot" hidelimb="true" hideotherwearables="true" inheritsourcerect="false" sourcerect="340,225,67,43" inheritorigin="false" origin="0.43,0.2" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot2" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="128,250,54,219" origin="0.5,0.5" />
+    <Sprite name="boot2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Waist" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Thigh" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Thigh" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot3" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="66,242,57,226" origin="0.5,0.5" />
+    <Sprite name="boot3_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Waist" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot3.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot4" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="185,242,52,223" origin="0.5,0.5" />
+    <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Waist" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot4.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot14" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="374,23,59,208" origin="0.5,0.5" />
+    <Sprite name="boot14_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw111 Waist" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Right Thigh" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Left Thigh" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Right Leg" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Left Leg" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Right Shoe" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw111 Left Shoe" texture="%ModDir%/Content/Uniform_new/aw111.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot5" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="309,15,58,216" origin="0.5,0.5" />
+    <Sprite name="boot5_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw52 Waist" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Right Thigh" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Left Thigh" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Right Leg" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Left Leg" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Right Shoe" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw52 Left Shoe" texture="%ModDir%/Content/Uniform_new/aw52.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot6" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="245,15,60,216" origin="0.5,0.5" />
+    <Sprite name="boot6_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw49 Waist" texture="%ModDir%/Content/Uniform_new/aw49.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Right Thigh" texture="%ModDir%/Content/Uniform_new/aw49.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Left Thigh" texture="%ModDir%/Content/Uniform_new/aw49.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Right Leg" texture="%ModDir%/Content/Uniform_new/aw49.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Left Leg" texture="%ModDir%/Content/Uniform_new/aw49.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot6.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw49 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot6.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot7" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="186,15,59,216" origin="0.5,0.5" />
+    <Sprite name="boot7_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="crewchief Waist" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="Waist" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Right Thigh" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Thigh" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Right Leg" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Leg" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Right Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot8" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="121,8,60,223" origin="0.5,0.5" />
+    <Sprite name="boot8_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="crewchief Right Thigh" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="RightThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Thigh" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="LeftThigh" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Right Leg" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Leg" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Right Shoe" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="crewchief Left Shoe" texture="%ModDir%/Content/items/jobgear/captain/captain_1.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot9" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="13,187,48,53" origin="0.5,0.5" />
+    <Sprite name="boot9_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot9.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot9.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot9.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot9.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot10" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="74,178,48,53" origin="0.5,0.5" />
+    <Sprite name="boot10_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot10.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot10.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot10.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot10.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot11" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="74,126,48,51" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot11.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot11.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot11.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot11.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot12" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="73,78,46,42" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot13" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="69,9,49,62" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/Uniform_new/Kaltsit.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/Uniform_new/Kaltsit.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/Uniform_new/Kaltsit.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/Uniform_new/Kaltsit.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot15" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="0,0,60,181" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 left Thigh" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="RightLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="LeftLeg" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot15.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="" description="" identifier="aw_boot16" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+      <RequiredItem tag="toolbelt_aw" />
+    </Fabricate>
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="8,361,46,56" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="x_aw_boot17" description="" identifier="aw_boot17" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="9,425,50,49" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot17.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot17.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot17.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot17.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="x_aw_boot18" description="" identifier="aw_boot18" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="242,242,45,55" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot18.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot18.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot18.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot18.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="x_aw_boot19" description="" identifier="aw_boot19" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="240,302,46,50" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot19.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot19.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot19.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot19.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <Item name="x_aw_boot20" description="" identifier="aw_boot20" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+    <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+    <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+    <Deconstruct time="2">
+      <Item identifier="toolbelt" amount="1" />
+    </Deconstruct>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+    </ItemContainer>
+    <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="9,309,49,46" origin="0.5,0.5" />
+    <Sprite name="boot11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+    <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+      <sprite name="aw65 Right Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot20.png" limb="RightLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Leg" texture="%ModDir%/Content/Uniform_new/trenches/boot20.png" limb="LeftLeg" hideotherwearables="false" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot20.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot20.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <!--\/Reduce Lag by Despawning dropped gear. v2 <StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"> </StatusEffect> <StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect>  /\Reduce Lag by Despawning dropped gear. v2-->
+    </Wearable>
+  </Item>
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <Items>
+    <Item name="" description="" identifier="aw_trench1" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/aw54_1.png" sourcerect="199,13,90,171" origin="0.5,0.5" />
+      <Sprite name="trench2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="aw54 Torso" texture="%ModDir%/Content/Uniform_new/aw54_1.png" limb="Torso" hidelimb="true" hideotherwearables="true" inheritsourcerect="false" sourcerect="186,0,119,254" inheritorigin="false" origin="0.48888487,0.41115257" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite name="aw54 Left Lower Arm" texture="%ModDir%/Content/Uniform_new/aw54.png" limb="LeftForearm" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="aw54 Right Lower Arm" texture="%ModDir%/Content/Uniform_new/aw54.png" limb="RightForearm" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="aw54 Left Upper Arm" texture="%ModDir%/Content/Uniform_new/aw54.png" limb="LeftArm" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="aw54 Right Upper Arm" texture="%ModDir%/Content/Uniform_new/aw54.png" limb="RightArm" hidelimb="true" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench2" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="true" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench2.png" sourcerect="187,19,65,151" origin="0.5,0.5" />
+      <Sprite name="trench2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench2 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench2 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench2.png" limb="RightArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <!-- inheritlimbdepth="false" depth="0.06" -->
+        <sprite name="trench2 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench2.png" limb="LeftArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <!--\/Reduce Lag by Despawning dropped gear. v2<StatusEffect type="OnPicked" target="This" setvalue="true" Condition="1000"></StatusEffect><StatusEffect type="OnNotContained" target="This" Condition="-25" interval="7.5" stackable="false" disabledeltatime="true" /> <StatusEffect type="OnBroken" target="This" oneshot="true"> <Remove /></StatusEffect> /\Reduce Lag by Despawning dropped gear. v2-->
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench3" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" sourcerect="192,26,55,119" origin="0.5,0.5" />
+      <Sprite name="trench2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite limb="Torso" texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" hidelimb="false" inheritsourcerect="true" inheritorigin="true" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite name="trench3 Left Lower Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench3 Right Lower Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench3 Left Upper Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench3 Right Upper Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench3.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench4" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench4.png" sourcerect="191,30,73,134" origin="0.5,0.5" />
+      <Sprite name="trench2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite limb="Torso" texture="%ModDir%/Content/Uniform_new/trenches/trench4.png" hidelimb="false" hideotherwearables="false" inheritsourcerect="false" sourcerect="145,0,155,255" inheritorigin="false" origin="0.54789716,0.40230754" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite name="trench4_1 Left Lower Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench4_1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench4_1 Right Lower Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench4_1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench4_1 Left Upper Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench4_1.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+        <sprite name="trench4_1 Right Upper Arm" texture="%ModDir%/Content/Uniform_new/trenches/trench4_1.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" hideotherwearables="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench5" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench5.png" sourcerect="183,10,64,171" origin="0.5,0.5" />
+      <Sprite name="trench2_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite limb="Torso" texture="%ModDir%/Content/Uniform_new/trenches/trench5.png" hidelimb="false" hideotherwearables="false" inheritsourcerect="false" sourcerect="112,0,160,256" inheritorigin="false" origin="0.65,0.375" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite limb="RightArm" texture="%ModDir%/Content/Uniform_new/aw100.png" hidelimb="false" hideotherwearables="true" inheritsourcerect="true" inheritorigin="true" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite limb="RightForearm" texture="%ModDir%/Content/Uniform_new/aw100.png" hidelimb="false" hideotherwearables="true" inheritsourcerect="true" inheritorigin="true" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite limb="LeftArm" texture="%ModDir%/Content/Uniform_new/aw100.png" hidelimb="false" hideotherwearables="true" inheritsourcerect="true" inheritorigin="true" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite limb="LeftForearm" texture="%ModDir%/Content/Uniform_new/aw100.png" hidelimb="false" hideotherwearables="true" inheritsourcerect="true" inheritorigin="true" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench6" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" sourcerect="191,26,60,124" origin="0.5,0.5" />
+      <Sprite name="trench6_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench6 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench6 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" limb="RightArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench6 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" limb="LeftArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench6 RightForearm" texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" limb="RightForearm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench6 LeftForearm" texture="%ModDir%/Content/Uniform_new/trenches/trench6.png" limb="LeftForearm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench7" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench7.png" sourcerect="186,18,66,152" origin="0.5,0.5" />
+      <Sprite name="trench7_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench7 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench7.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench7 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench7.png" limb="RightArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench7 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench7.png" limb="LeftArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench8" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench8.png" sourcerect="186,19,68,152" origin="0.5,0.5" />
+      <Sprite name="trench8_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench8 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench8.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench8 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench8.png" limb="RightArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench8 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench8.png" limb="LeftArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench9" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench9.png" sourcerect="187,20,65,151" origin="0.5,0.5" />
+      <Sprite name="trench9_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench9 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench9.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench9 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench9.png" limb="RightArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench9 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench9.png" limb="LeftArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench10" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench10.png" sourcerect="186,19,67,151" origin="0.5,0.5" />
+      <Sprite name="trench10_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench10 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench10.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench10 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench10.png" limb="RightArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench10 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench10.png" limb="LeftArm" hidelimb="false" hideotherwearables="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench11" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench11.png" sourcerect="181,24,70,99" origin="0.5,0.5" />
+      <Sprite name="trench11_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench11 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench11.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench11 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench11.png" limb="RightArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench11 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench11.png" limb="LeftArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench12" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench12.png" sourcerect="181,24,71,99" origin="0.5,0.5" />
+      <Sprite name="trench12_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench12 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench12.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench12 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench12.png" limb="RightArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench12 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench12.png" limb="LeftArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_trench13" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/trench13.png" sourcerect="180,24,71,99" origin="0.5,0.5" />
+      <Sprite name="trench13_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="trench13 torso" texture="%ModDir%/Content/Uniform_new/trenches/trench13.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" depthlimb="none" />
+        <sprite name="trench13 RightArm" texture="%ModDir%/Content/Uniform_new/trenches/trench13.png" limb="RightArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="trench13 LeftArm" texture="%ModDir%/Content/Uniform_new/trenches/trench13.png" limb="LeftArm" hidelimb="false" hideotherwearables="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <Item name="" description="" identifier="aw_shoe0" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="3,247,58,53" origin="0.5,0.5" />
+      <Sprite name="boot0_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="aw118 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/shoe0.png" sound="crockssuitfootstep" limb="RightFoot" hidelimb="true" hideotherwearables="true" inheritsourcerect="false" sourcerect="265,225,67,43" inheritorigin="false" origin="0.54,0.2" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite name="aw118 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/shoe0.png" sound="crockssuitfootstep" limb="LeftFoot" hidelimb="true" hideotherwearables="true" inheritsourcerect="false" sourcerect="332,225,67,43" inheritorigin="false" origin="0.51,0.2" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe1" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/AW38.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="AW38 Right Shoe" texture="%ModDir%/Content/Uniform_new/AW38.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="AW38 Left Shoe" texture="%ModDir%/Content/Uniform_new/AW38.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe2" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="AW38 Right Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="AW38 Left Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/crewchief.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe3" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/items/jobgear/Commoner/Commoner5.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="AW38 Right Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/Commoner5.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="AW38 Left Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/Commoner5.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe4" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/items/jobgear/Commoner/Commoner1.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="AW38 Right Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/Commoner1.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="AW38 Left Shoe" texture="%ModDir%/Content/items/jobgear/Commoner/Commoner1.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe5" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/Maid2.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="Maid2 Right Shoe" texture="%ModDir%/Content/Uniform_new/Maid2.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Maid2 Left Shoe" texture="%ModDir%/Content/Uniform_new/Maid2.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe7" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/aw46.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="aw46 Right Shoe" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="aw46 Left Shoe" texture="%ModDir%/Content/Uniform_new/aw46.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe8" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/items/jobgear/Medic/surgeondNT.png" sourcerect="272,208,60,60" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="vip1 Right Shoe" texture="%ModDir%/Content/items/jobgear/Medic/surgeondNT.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="vip1 Left Shoe" texture="%ModDir%/Content/items/jobgear/Medic/surgeondNT.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+    <Item name="" description="" identifier="aw_shoe9" category="ItemAssembly" cargocontaineridentifier="metalcrate" tags="toolbelt_aw,mediumitem,mobilecontainer,tool,toolbelt,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" Scale="0.50" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="toolbelt_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="toolbelt" amount="1" />
+      </Deconstruct>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,toolbelt_0" />
+      </ItemContainer>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/trenches/1InventoryIcons.png" sourcerect="8,361,46,56" origin="0.5,0.5" />
+      <Sprite name="boot4_on_floor" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="511,293,119,57" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect">
+        <sprite name="aw65 Right Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="RightFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="aw65 Left Shoe" texture="%ModDir%/Content/Uniform_new/trenches/boot16.png" limb="LeftFoot" hideotherwearables="true" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

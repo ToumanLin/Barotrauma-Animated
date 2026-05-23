@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="divingsuitlocker2" category="Legacy" tags="container,divingsuitcontainer,divingsuitcontainerhorizontal" pickdistance="50" scale="0.6">
+      <Sprite name="Large Diving Suit Locker Horizontal" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.84" sourcerect="82,0,248,338" origin="0.5,0.5" />
+      <DecorativeSprite name="Diving Suit Locker Frame" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.82" sourcerect="0,340,232,69" origin="0.5,0.5" offset="0,130" />
+      <DecorativeSprite name="Diving Suit Locker Frame" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.82" sourcerect="0,340,232,69" origin="0.5,0.5" offset="0,65" />
+      <DecorativeSprite name="Diving Suit Locker Frame" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.82" sourcerect="0,340,232,69" origin="0.5,0.5" />
+      <DecorativeSprite name="Diving Suit Locker Frame" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.82" sourcerect="0,340,232,69" origin="0.5,0.5" offset="0,-65" />
+      <DecorativeSprite name="Diving Suit Locker Frame" texture="Content/Items/Containers/DivingSuitLocker.png" depth="0.82" sourcerect="0,340,232,69" origin="0.5,0.5" offset="0,-130" />
+      <!-- TODO: implement
+    <DecorativeSprite name="Diving Suit Locker Light" texture="DivingSuitLocker.png" depth="0.84" sourcerect="330,77,241,67" origin="0.5,0.5" />
+    -->
+      <ItemContainer hideitems="false" drawinventory="true" capacity="5" slotsperrow="5" itempos="132,-44" iteminterval="0,-65" itemrotation="0" containedspritedepth="0.83" canbeselected="true" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.25,0.2" anchor="Center" style="ItemUI" />
+        <Containable items="divingsuit,abyssdivingsuit,combatdivingsuit,pucs,slipsuit,Wf_pucs,Wf_pucs_R,Wf_pucs_B,Wf_pucs_D,Wf_New_XDS-01" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="divingsuitlocker" category="Diving" tags="container,divingsuitcontainer,divingsuitcontainerwindow" pickdistance="50" scale="0.5">
+      <Sprite name="Diving Suit Locker Vertical" texture="Content/Items/Containers/containers.png" depth="0.84" sourcerect="714,1,99,256" origin="0.5,0.5" />
+      <!--TODO: add light textures for powered-on state?-->
+      <Powered powerconsumption="10" currpowerconsumption="10" isactive="true">
+        <GuiFrame relativesize="0.18,0.15" minsize="350,160" maxsize="420,192" anchor="Center" relativeoffset="0,-0.1" style="ItemUI" msg="ItemMsgInteractSelect" />
+      </Powered>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredSkill identifier="electrical" level="20" />
+        <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+          <Sound file="Content/Items/Weapons/ElectricalDischarger.ogg" range="1000" />
+          <Explosion range="100.0" stun="0" force="5.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+          <Affliction identifier="stun" strength="3" />
+          <Affliction identifier="burn" strength="5" />
+        </StatusEffect>
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <ParticleEmitter particle="spark" particleburstamount="5" particleburstinterval="1.05" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="2" scalemin="1" scalemax="2" mincondition="0.0" maxcondition="50.0" />
+        <input name="power_in" displayname="connection.powerin" />
+      </ConnectionPanel>
+      <ItemContainer hideitems="false" drawinventory="true" capacity="1" slotsperrow="1" itempos="0,0" iteminterval="0,0" canbeselected="true" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+        <Containable items="divingsuit,abyssdivingsuit,combatdivingsuit,pucs,slipsuit,Wf_pucs,Wf_pucs_R,Wf_pucs_B,Wf_pucs_D,Wf_New_XDS-01" />
+      </ItemContainer>
+    </Item>
+  </Override>
+  <Item name="" identifier="XDS-01_ChargingPod" category="Equipment" tags="Pod" pickdistance="50" isshootable="true" scale="0.65">
+    <Body width="160" height="300" density="50" />
+    <BrokenSprite texture="XDS-Pod_1.png" sourcerect="0,0,211,381" maxcondition="90" />
+    <BrokenSprite texture="XDS-Pod_2.png" sourcerect="0,0,211,381" maxcondition="80" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredSkill identifier="mechanical" level="80" />
+      <Item identifier="organicfiber" amount="16" />
+      <Item identifier="physicorium" amount="6" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fulgurium" amount="3" />
+      <Item identifier="Wf_Research_chip_B" />
+    </Fabricate>
+    <Deconstruct time="40">
+      <Item identifier="organicfiber" amount="16" />
+      <Item identifier="physicorium" amount="6" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fulgurium" amount="3" />
+    </Deconstruct>
+    <Sprite name="Diving Suit Locker Vertical" texture="XDS-Pod.png" sourcerect="0,0,211,381" depth="0.6" origin="0.5,0.5" />
+    <Controller UserPos="0,-20" AllowInGameEditing="false" HideHUD="false" direction="Right" canbeselected="true" AllowSelectingWhenSelectedByBot="false" AllowSelectingWhenSelectedByOther="false" selectkey="Use" drawuserbehind="true" forceusertostayattached="true" msg="itemmsggoinside">
+      <RequiredItem tags="XDS-01" type="Picked" msg="ItemMsgUnauthorizedAccess" ignoreineditor="true" />
+      <limbposition limb="Head" position="74,-40" />
+      <limbposition limb="Torso" position="74,-40" />
+      <limbposition limb="Waist" position="74,-40" />
+      <limbposition limb="LeftHand" position="74,-40" />
+      <limbposition limb="RightHand" position="74,-40" />
+      <limbposition limb="RightLeg" position="74,-40" />
+      <limbposition limb="LeftLeg" position="74,-40" />
+      <limbposition limb="RightFoot" position="74,-40" />
+      <limbposition limb="LeftFoot" position="74,-40" />
+      <LightComponent range="0.0" PowerConsumption="10" lightcolor="255,255,255,100" blinkfrequency="1" AllowInGameEditing="false" IsOn="false">
+        <Sprite texture="%ModDir%/Content/Items/Containers/XDS-Pod_Lights.png" sourcerect="0,0,211,381" depth="0.54" origin="0.5,0.5" alpha="1.0" />
+      </LightComponent>
+      <StatusEffect type="OnActive" target="This" delay="0.25" setvalue="true" Voltage="1.0" TargetitemComponent="LightComponent" IsOn="true" checkconditionalalways="true" />
+      <!--Hide character-->
+      <StatusEffect type="OnActive" target="Character" indetectable="true" DisableFocusingOnEntities="true" invisibletimer="0.1" IgnoreMeleeWeapons="true" PressureProtection="10000.0" setvalue="true" />
+      <!--Check XDS-01's Condition
+		<StatusEffect type="OnActive" target="Character" StatusEffectTags="NeedCharging" duration="0.02" interval="0.01">
+        <Conditional HasStatusTag="eq NotFullyChraged" />
+      </StatusEffect>-->
+      <!--Initialization, hide and lock player-->
+      <StatusEffect type="OnActive" target="Character" delay="0.25" checkconditionalalways="true" interval="1">
+        <Affliction identifier="Charging" amount="1" />
+      </StatusEffect>
+      <!--Change Sprite while actived-->
+      <StatusEffect type="OnActive" target="Character,this" condition="90" setvalue="true">
+        <Conditional XDS-01="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character,this" condition="80" setvalue="true">
+        <Conditional XDS-01_B="gt 0" />
+      </StatusEffect>
+      <!--Beep when fully charaged
+	  <StatusEffect type="OnActive" target="Character"  checkconditionalalways="true" interval="0.04">
+		<Conditional HasStatusTag="! NeedCharging" />
+		<sound file="%Moddir%/Content/Sounds/Pod_finished.ogg" rang="500" volume="0.8"/>
+	  </StatusEffect>
+	  -->
+      <!--Return conditon to 100 when not activing.-->
+      <StatusEffect type="Always" target="This" condition="100" setvalue="true" checkconditionalalways="true">
+        <Conditional IsActive="false" />
+      </StatusEffect>
+    </Controller>
+    <Holdable selectkey="Select" pickkey="Select" slots="RightHand+LeftHand" msg="XdsPick" PickingTime="5.0" aimpos="85,-10" handle1="0,0" attachable="true" aimable="true" attachedbydefault="true">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+  </Item>
+</Items>

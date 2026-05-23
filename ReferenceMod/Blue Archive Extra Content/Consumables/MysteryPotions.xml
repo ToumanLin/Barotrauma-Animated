@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item identifier="mandrakeextract" category="Medical" subcategory="Food" cargocontaineridentifier="metalcrate" tags="smallitem" Scale="0.3" impactsoundtag="impact_soft">
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Sprite texture="Mandrake_Extract_1.png" sourcerect="0,0,100,100" depth="0.55" origin="0.5,0.5" />
+    <Body width="0" height="0" radius="50" density="5" friction="0.0" restitution="0.4" angulardamping="0.0" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,15" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-30.0">
+        <Sound file="%ModDir%/Sounds/ba_drinksip.ogg" range="250" volume="2" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This,Character">
+        <Conditional Condition="lte 1" />
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true" duration="1">
+        <ReduceAffliction identifier="babodytypeB" amount="2" />
+        <ReduceAffliction identifier="babodytypeB" amount="2" />
+        <ReduceAffliction identifier="ba_breasts" amount="2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="%ModDir%/Sounds/ba_pop.ogg" range="250" volume="2" loop="false" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item identifier="growthelixirb" category="Medical" subcategory="Food" cargocontaineridentifier="metalcrate" tags="smallitem" Scale="0.3" impactsoundtag="impact_soft">
+    <Sprite texture="Growth_Elixir_1.png" sourcerect="0,0,100,100" depth="0.55" origin="0.5,0.5" />
+    <Brokensprite texture="Growth_Elixir_0.png" sourcerect="0,0,100,100" depth="0.55" origin="0.5,0.5" />
+    <Body width="0" height="0" radius="50" density="5" friction="0.0" restitution="0.4" angulardamping="0.0" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,15" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-30.0">
+        <Sound file="%ModDir%/Sounds/ba_drinksip.ogg" range="250" volume="2" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This,Character">
+        <Conditional Condition="lte 1" />
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true" duration="1">
+        <Affliction identifier="ba_breasts" amount="2" />
+        <Affliction identifier="babodytypeB" amount="2" />
+        <ReduceAffliction identifier="babodytypeC" amount="2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="%ModDir%/Sounds/ba_pop.ogg" range="250" volume="2" loop="false" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item identifier="growthelixirc" category="Medical" subcategory="Food" cargocontaineridentifier="metalcrate" tags="smallitem" Scale="0.3" impactsoundtag="impact_soft">
+    <Sprite texture="Growth_Elixir_2.png" sourcerect="0,0,100,100" depth="0.55" origin="0.5,0.5" />
+    <Brokensprite texture="Growth_Elixir_0.png" sourcerect="0,0,100,100" depth="0.55" origin="0.5,0.5" />
+    <Body width="0" height="0" radius="50" density="5" friction="0.0" restitution="0.4" angulardamping="0.0" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,15" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" Condition="-30.0">
+        <Sound file="%ModDir%/Sounds/ba_drinksip.ogg" range="250" volume="2" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This,Character">
+        <Conditional Condition="lte 1" />
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true" duration="1">
+        <ReduceAffliction identifier="babodytypeB" amount="2" />
+        <Affliction identifier="babodytypeC" amount="2" />
+        <Affliction identifier="ba_breasts" amount="2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="%ModDir%/Sounds/ba_pop.ogg" range="250" volume="2" loop="false" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="ba_charactereditor" category="Misc" tags="smallitem" hideinmenus="true" Scale="0.3">
+    <Body width="138" height="116" density="10" />
+    <InventoryIcon texture="Character_Editor.png" Sourcerect="0,0,138,116" />
+    <Sprite texture="Character_Editor.png" Sourcerect="0,0,138,116" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Holdable slots="Any,RightHand+LeftHand" msg="ItemMsgPickUpSelect" spritecolor="0,0,0,0" holdangle="90" handle1="-20,-45">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true" LockGuiFramePosition="true">
+        <GuiFrame relativesize="0.15,0.3" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.7,0.350" hidedragicons="true" />
+        <Button text="Breast 0">
+          <StatusEffect type="Onuse" target="Character" setvalue="true">
+            <Affliction identifier="ba_breasts" strength="0" />
+            <Affliction identifier="babodytypeB" strength="0" />
+            <Affliction identifier="babodytypeC" strength="0" />
+          </StatusEffect>
+        </Button>
+        <Button text="Breast b">
+          <StatusEffect type="Onuse" target="Character" setvalue="true">
+            <Affliction identifier="ba_breasts" strength="1" />
+            <Affliction identifier="babodytypeB" strength="1" />
+            <Affliction identifier="babodytypeC" strength="0" />
+          </StatusEffect>
+        </Button>
+        <Button text="Breast C">
+          <StatusEffect type="Onuse" target="Character" setvalue="true">
+            <Affliction identifier="ba_breasts" strength="1" />
+            <Affliction identifier="babodytypeB" strength="0" />
+            <Affliction identifier="babodytypeC" strength="1" />
+          </StatusEffect>
+        </Button>
+        <Button text="Spawns Arona">
+          <StatusEffect type="OnUse" target="this,Character" EventUserTag="triggerer_player" disabledeltatime="true">
+            <TriggerEvent identifier="arona_giveloot_event" />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+    </Holdable>
+  </Item>
+  <Item name="Envelopes Archive" identifier="envelopes_archive" category="Misc" tags="smallitem" hideinmenus="true" Scale="0.3">
+    <Body width="138" height="116" density="10" />
+    <InventoryIcon texture="Envalopes_Archive.png" Sourcerect="0,0,138,116" />
+    <Sprite texture="Envalopes_Archive.png" Sourcerect="0,0,138,116" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Holdable slots="RightHand+LeftHand" msg="ItemMsgPickUpSelect" spritecolor="0,0,0,0" holdangle="90" handle1="-20,-45"></Holdable>
+    <ItemContainer capacity="10" maxstacksize="1" slotsperrow="1" drawinventory="true" ItemsUseInventoryPlacement="true" allowuioverlap="true" keepopenwhenequipped="true">
+      <GuiFrame relativesize="0.5,0.8" anchor="Center" style="ItemUI" />
+      <Containable items="ba_envelope" />
+    </ItemContainer>
+  </Item>
+  <Item name="1-Recruitment Ticket" maxstacksize="99" maxstacksizecharacterinventory="99" identifier="gachaticket1" tags="smallitem" Scale="0.25">
+    <Sprite texture="gachaticket1.png" sourcerect="0,0,200,200" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="10-Recruitment Ticket" maxstacksize="99" maxstacksizecharacterinventory="99" identifier="gachaticket10" tags="smallitem" Scale="0.25">
+    <Sprite texture="gachaticket10.png" sourcerect="0,0,200,200" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Purple Envelope" maxstacksize="1" maxstacksizecharacterinventory="99" identifier="envelopepurple" tags="smallitem,ba_envelope" Scale="0.25">
+    <Sprite texture="Envelope_purple.png" sourcerect="0,0,200,200" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Yellow Envelope" maxstacksize="1" maxstacksizecharacterinventory="99" identifier="envelopeyellow" tags="smallitem,ba_envelope" Scale="0.25">
+    <Sprite texture="Envelope_yellow.png" sourcerect="0,0,200,200" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Blue Envelope" maxstacksize="1" maxstacksizecharacterinventory="99" identifier="envelopeblue" tags="smallitem,ba_envelope" Scale="0.25">
+    <Sprite texture="Envelope_blue.png" sourcerect="0,0,200,200" depth="0.55" origin="0.5,0.5" />
+    <Body width="200" height="200" density="10" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+    <Deconstruct time="5"></Deconstruct>
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+  </Item>
+</Items>

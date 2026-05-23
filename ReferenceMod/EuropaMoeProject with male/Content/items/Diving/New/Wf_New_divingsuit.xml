@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="XDS-01" identifier="Wf_New_XDS-01" category="Equipment" tags="diving,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="15000" sold="false" />
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+    <Deconstruct time="45">
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredSkill identifier="mechanical" level="80" />
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="Wf_debris" mincondition="0.6" usecondition="true" />
+      <Item identifier="Wf_Research_chip" mincondition="0.6" usecondition="true" />
+    </Fabricate>
+    <Sprite name="PUCS Item" texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Items.png" sourcerect="286,0,82,126" origin="0.5,0.5" />
+    <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
+    <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+    <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.4,0.5" />
+    <Body radius="45" width="34" density="15" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
+      <TickBox text="Helmet Lights" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="OuterClothes+InnerClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="Wf_New_XD-01 Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" sourcerect="474,103,45,108" origin="0.59,0.56037">
+        <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01 Torso" texture="Wf_New_XDS-01_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,0,112,208" Origin="0.49769565,0.46990692" />
+      <sprite name="XDS-01 Right Hand" texture="Wf_New_XDS-01_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Hand" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Lower Arm" texture="Wf_New_XDS-01_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,0,64,96" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Left Lower Arm" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,96" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Upper Arm" texture="Wf_New_XDS-01_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="400,160,64,112" Origin="0.5,0.607142" />
+      <sprite name="XDS-01 Left Upper Arm" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="464,160,64,112" Origin="0.5,0.607142" />
+      <sprite name="XDS-01 Waist" texture="Wf_New_XDS-01_[GENDER].png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,208,112,64" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Thigh" texture="Wf_New_XDS-01_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Thigh" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Leg" texture="Wf_New_XDS-01_[GENDER].png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Leg" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Shoe" texture="Wf_New_XDS-01_[GENDER].png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,64" Origin="0.59375,0.4375" />
+      <sprite name="XDS-01 Right Shoe" texture="Wf_New_XDS-01_[GENDER].png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,64" Origin="0.59375,0.4375" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="2" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="2" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="2" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="2" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" UseHullOxygen="true" ObstructVision="false" PressureProtection="10000.0" LowPassMultiplier="1" setvalue="true" disabledeltatime="true">
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+        <RequiredItem items="oxygentank" type="Contained" excludebroken="false" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygentank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+        <Conditional InWater="true" />
+        <RequiredItem items="oxygentank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <Conditional IsDead="false" />
+        <RequiredItem items="weldingfueltank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <Conditional IsDead="false" />
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Affliction identifier="burn" amount="0.05" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+        <Conditional InWater="true" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.3" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="hallucinating" damagemultiplier="0.1" />
+      <ItemComponent>
+        <IsActive HullOxygenPercentage="lt 50" />
+        <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
+          <RequiredItem items="oxygensource" type="Contained" />
+          <Conditional condition="lt 5.0" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
+          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+          <Conditional condition="lte 0.0" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" />
+        </StatusEffect>
+      </ItemComponent>
+      <StatValue stattype="PropulsionSpeed" value="0.5" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
+      <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="oxygensource,weldingtoolfuel" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="chem,medical" />
+      </SubContainer>
+    </ItemContainer>
+  </Item>
+  <Item name="XDS-01 Engine" identifier="Wf_New_XDS-01_Engine" category="Equipment" tags="diving,provocative,mediumitem" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
+    <PreferredContainer primary="divingcab" />
+    <Deconstruct time="10">
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="80" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <Item identifier="physicorium" amount="2" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="Wf_debris" mincondition="0.4" usecondition="true" />
+      <Item identifier="Wf_Research_chip" mincondition="0.4" usecondition="true" />
+    </Fabricate>
+    <Price baseprice="10000" sold="false" />
+    <InventoryIcon texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" origin="0.5,0.5" />
+    <Sprite texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" />
+    <Body width="100" height="100" density="50" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="0,475" style="ItemUI" />
+      <TickBox text="Power On" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="XDS-01_Engine" texture="Wf_New_XDS-01_Engine.png" sourcerect="304,0,304,240" limb="Torso" inherittexturescale="true" origin="0.84947,0.7225" CanbehiddenbyOtherWearables="false">
+        <LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="0,0,304,240" origin="0.84947,0.7225" alpha="1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01_Helmet" texture="Wf_New_XDS-01_Engine.png" sourcerect="608,110,140,130" limb="Head" inheritlimbdepth="true" depth="0.5" scale="0.5" origin="0.555,0.67" CanbehiddenbyOtherWearables="false">
+        <LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="304,120,140,120" origin="0.4,0.8" alpha="1.0" />
+        </LightComponent>
+      </sprite>
+      <!--
+			<sprite name="XDS-01_leftleg" texture="Wf_New_XDS-01_Engine.png" sourcerect="0,0,10,10" limb="LeftLeg" inheritlimbdepth="true" inheritorigin="true" inheritscale="true" CanbehiddenbyOtherWearables="false">
+				<LightComponent range="0.0" lightcolor="255,255,255,150" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+					<StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+						<Conditional IsDead="false" />
+					</StatusEffect>
+					<sprite texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="524,128,80,128" Origin="0.5,0.5" alpha="1.0" />
+				</LightComponent>
+			</sprite>
+			<sprite name="XDS-01_rightleg" texture="Wf_New_XDS-01_Engine.png" sourcerect="0,0,10,10" limb="RightLeg" inheritlimbdepth="true" inheritorigin="true" inheritscale="true" CanbehiddenbyOtherWearables="false">
+				<LightComponent range="0.0" lightcolor="255,255,255,200" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+					<StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+						<Conditional IsDead="false" />
+					</StatusEffect>
+					<sprite texture="%ModDir%/Content/Items/Diving/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="444,128,80,128" Origin="0.5,0.5" alpha="1.0" />
+				</LightComponent>
+			</sprite>
+			-->
+      <StatusEffect type="OnWearing" target="this" condition="50" setvalue="true" disabledeltatime="true">
+        <Conditional targetitemcomponent="LightComponent" IsOn="eq true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this" condition="100" setvalue="true" disabledeltatime="true">
+        <Conditional targetitemcomponent="LightComponent" IsOn="eq false" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="3.0" setvalue="true" disabledeltatime="true" comparison="and">
+        <Conditional condition="50" />
+        <Conditional InWater="eq true" />
+        <ParticleEmitter particle="Wf_faradayfx" anglemax="360" distancemax="60" particlespersecond="20" />
+      </StatusEffect>
+      <!--
+			<StatusEffect type="OnWearing" target="Character" >
+				<Conditional vitality="lt 50"/>
+				<SpawnItem identifier="Wf_New_XDS-01_AntiGravityBall" spawnposition="this"/>
+			</StatusEffect>
+			-->
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="120.0,270.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="120.0,270.0" afflictiontypes="burn" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
+      <damagemodifier armorsector="120.0,270.0" afflictionidentifiers="huskinfection" damagemultiplier="0.1" probabilitymultiplier="0.05" damagesound="LimbArmor" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="82,-27" handle2="82,-27" holdangle="90.0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+  </Item>
+  <!--
+	<Item name="" identifier="Wf_New_XDS-01_AntiGravityBall" category="Misc" tag="smallitem,Wf_item" scale="0.5" >
+		<InventoryIcon texture="Wf_New_XDS-01_Engine.png" sourcerect="608,0,64,64" origin="0.5,0.5" />
+		<Sprite texture="Wf_New_XDS-01_Engine.png" sourcerect="608,0,64,64" depth="0.6" origin="0.5,0.5" />
+		<Body width="5" height="5" density="0" />
+		<TriggerComponent triggeredby="Item" force="-100" radius="500" distancebasedforce="true" canbepicked="true">
+			<StatusEffect type="OnActive" target="This">
+				<ParticleEmitter particle="Wf_gravityspherefx" particleamount="1" emitinterval="1.25" />
+			</StatusEffect>
+			<StatusEffect type="Always" target="this" >
+				<Active />
+			</StatusEffect>
+			<StatusEffect type="Always" target="this" delay="10.0" >
+				<Remove />
+			</StatusEffect>
+		</TriggerComponent>
+	</Item>
+	-->
+  <!--Materials-->
+  <Item name="Debris" identifier="Wf_debris" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0.01" />
+    <Deconstruct time="20">
+      <Item identifier="rubber" />
+      <Item identifier="alientrinket3" />
+      <Item identifier="alientrinket3" />
+    </Deconstruct>
+    <InventoryIcon texture="debris.png" sourcerect="0,0,135,135" />
+    <Sprite texture="debris.png" sourcerect="0,0,135,135" depth="0.55" origin="0.5,0.5" />
+    <Body width="100" height="120" density="50" />
+    <Holdable slots="RightHand+LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Research Box" identifier="Wf_Research_Box" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0.01" />
+    <Price baseprice="1500" sold="false" />
+    <Deconstruct time="20">
+      <Item identifier="Wf_Research_Log" />
+      <Item identifier="Wf_Research_chip" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_Materials.png" sourcerect="128,0,64,64" />
+    <Sprite texture="Wf_New_Materials.png" sourcerect="128,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="100" height="120" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Research chip" identifier="Wf_Research_chip" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <Price baseprice="2000" sold="false" />
+    <Deconstruct time="5">
+      <Item identifier="copper" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_Materials.png" sourcerect="64,0,64,64" />
+    <Sprite texture="Wf_New_Materials.png" sourcerect="64,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="36" height="36" density="50" />
+    <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Research Log" identifier="Wf_Research_Log" category="Electrical" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.25" impactsoundtag="impact_metal_light" isshootable="true">
+    <Upgrade gameversion="0.9.9000.0" scale="0.25" />
+    <Price baseprice="500" sold="false" />
+    <PreferredContainer primary="reactorcab" secondary="engcab" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="323,193,60,61" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" sourcerect="149,371,69,93" depth="0.8" origin="0.5,0.5" />
+    <Body width="60" height="90" density="8" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+    <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.35,0.35" anchor="Center" style="ItemUI" />
+    </Terminal>
+  </Item>
+</Items>

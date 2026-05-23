@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character specifiertags="true" skincolors="(#ffffff, 100);(#ffe4db, 0);(#ffc8b7, 0);(#f2958d, 0);(#4D3E3B, 0) " haircolors="     (#E4E4E4, 100);(#B5B5B5, 100);(#5F5F5F, 100);(#464646, 100);     (#FFBFAA, 100);(#FFD8AA, 100);(#FFEFAA, 100);(#E0FFAA, 100);(#B2FFAA, 100);(#AAFFC8, 100);(#AAFFF1, 100);(#AACBFF, 100);(#B0AAFF, 100);(#D3AAFF, 100);(#FCAAFF, 100);(#FFAAD5, 100);(#FFC8C8, 100);     (#FF5B5F, 100);(#FF935B, 100);(#FFC15B, 100);(#FFF88F, 100);(#FFF45B, 100);(#C8FF5B, 100);(#86FF5B, 100);(#5BFF8C, 100);(#5BFFCE, 100);(#5BF4FF, 100);(#5BBEFF, 100);(#5B82FF, 100);(#625BFF, 100);(#625BFF, 100);(#9C5BFF, 100);(#C45BFF, 100);(#EF5BFF, 100);(#FF5BCE, 100);(#FF5B9B, 100)" SpeciesName="Human" Tags="" SpeciesTranslationOverride="" DisplayName="" Group="human" Humanoid="True" HasInfo="True" CanInteract="True" CanClimb="True" ForceSlowClimbing="False" Husk="False" HuskedSpecies="" NonHuskedSpecies="" UseHuskAppendage="True" NeedsAir="True" NeedsWater="False" UseHumanAI="True" IsMachine="False" CanSpeak="True" ShowHealthBar="True" UseBossHealthBar="False" Noise="150" Visibility="150" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False" AITurretPriority="1" AISlowTurretPriority="1" DespawnContainer="" MusicType="monster" MusicCommonness="1" MusicRangeMultiplier="1" UnlockKillAchievementForWholeCrew="False">
+    <!--<names path="%ModDir%/Content/Characters/Bahuman/Bahuman_names.xml" />-->
+    <ragdolls folder="%ModDir%/Characters/Human/Ragdolls_A" />
+    <animations folder="%ModDir%/Characters/Human/Animations" />
+    <damageemitter drawontop="True" Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="0.25" ScaleMax="0.5" VelocityMin="50" VelocityMax="300" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="1" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <health Vitality="100" DoesBleed="True" CrushDepth="6000" UseHealthWindow="True" BleedingReduction="0" BurnReduction="0.075" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="False" PoisonImmunity="False" PoisonVulnerability="1" EmpVulnerability="0" ApplyMovementPenalties="True" DieFromBeheading="True" AllowSeveringLegs="False" ApplyAfflictionColors="True" Immunities="">
+      <MedUISilhouette texture="Content/UI/Health/MedUI_Silhouette.png" columns="8" rows="2" sourcerect="0,0,1008,748" />
+      <MedUIExtra texture="Content/UI/Health/MedUIExtra.png" columns="4" rows="4" sourcerect="0,0,1024,1024" />
+      <Limb name="Head">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,0,126,374" highlightarea="41,0,45,54" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="1.0" />
+      </Limb>
+      <Limb name="Torso">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,0,126,374" highlightarea="29,56,70,134" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,515,126,374" />
+        <VitalityMultiplier type="bleeding" multiplier="1.0" />
+      </Limb>
+      <Limb name="LeftArm">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,0,126,374" highlightarea="1,69,27,140" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="RightArm">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,0,126,374" highlightarea="100,69,27,140" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="LeftLeg">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,0,126,374" highlightarea="3,180,57,194" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+      <Limb name="RightLeg">
+        <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,0,126,374" highlightarea="68,180,57,194" />
+        <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,515,126,374" />
+        <VitalityMultiplier type="damage" multiplier="0.5" />
+      </Limb>
+    </health>
+    <Inventory showinventoryicons="True" AccessibleWhenDead="True" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any,HealthInterface" AccessibleWhenAlive="True" Commonness="1">
+      <!--<Item identifier="halo0" equip="true" />-->
+    </Inventory>
+    <Vars>
+      <Var var="GENDER" tags="female" />
+    </Vars>
+    <MenuCategory var="GENDER" />
+    <Pronouns var="GENDER" />
+    <Heads>
+      <Head tags="head1,female" sheetindex="0,0" />
+      <!--<Head tags="head1,female" sheetindex="1,0" />
+      <Head tags="head1,female" sheetindex="2,0" />
+      <Head tags="head1,female" sheetindex="3,0" />
+      <Head tags="head1,female" sheetindex="4,0" />
+      <Head tags="head1,female" sheetindex="5,0" />
+      <Head tags="head1,female" sheetindex="0,1" />
+      <Head tags="head1,female" sheetindex="1,1" />
+      <Head tags="head1,female" sheetindex="2,1" />
+      <Head tags="head1,female" sheetindex="3,1" />
+      <Head tags="head1,female" sheetindex="4,1" />
+      <Head tags="head1,female" sheetindex="5,1" />-->
+    </Heads>
+    <HeadAttachments>
+      <Wearable type="FaceAttachment" gender="female">
+        <sprite name="face 1" texture="%ModDir%/Characters/Human/Human_female_face.png" sheetindex="0,0" />
+      </Wearable>
+      <Wearable type="FaceAttachment" gender="female">
+        <sprite name="face 2" texture="%ModDir%/Characters/Human/Human_female_face.png" sheetindex="1,0" />
+      </Wearable>
+      <Wearable type="FaceAttachment" gender="female">
+        <sprite name="face 3" texture="%ModDir%/Characters/Human/Human_female_face.png" sheetindex="2,0" />
+      </Wearable>
+      <Wearable type="FaceAttachment" gender="female">
+        <sprite name="face 4" texture="%ModDir%/Characters/Human/Human_female_face.png" sheetindex="3,0" />
+      </Wearable>
+      <Wearable type="FaceAttachment" gender="female">
+        <sprite name="face 5" texture="%ModDir%/Characters/Human/Human_female_face.png" sheetindex="4,0" />
+      </Wearable>
+      <!--//////////////////////hair////////////////////////-->
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 1" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="0,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 2" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="1,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 3" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="2,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 4" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="3,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 5" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="4,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 6" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="5,0" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 7" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="0,1" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 8" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="1,1" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 9" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="2,1" />
+      </Wearable>
+      <Wearable type="Hair" replacewhenwearinghat="1" gender="female">
+        <sprite name="Hair 10" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="3,1" />
+      </Wearable>
+      <Wearable type="Hair" gender="female">
+        <sprite name="Hair 11" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="4,1" />
+      </Wearable>
+      <Wearable type="Hair" replacewhenwearinghat="1" gender="female">
+        <sprite name="Hair 12" texture="%ModDir%/Characters/Human/Human_female_hair.png" sheetindex="5,1" />
+      </Wearable>
+      <!--//////////////////////husk mask////////////////////////-->
+      <Wearable type="Husk">
+        <sprite name="Husk" texture="%ModDir%/Characters/Human/Human_husk.png" hidewearablesoftype="Beard,FaceAttachment" sheetindex="0,0" />
+      </Wearable>
+    </HeadAttachments>
+    <!--voice-->
+    <!--specified characters using afflictions from halo.xml-->
+    <!--Moe-->
+    <StatusEffect type="OnDamaged" target="Character" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Moe1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/moe_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/moe_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/moe_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <!--Miyu-->
+    <StatusEffect type="OnDamaged" target="Character" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Miyu1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/miyu_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/miyu_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/miyu_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/miyu_damage_4.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <!--Saki-->
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Saki1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/saki_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/saki_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/saki_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/saki_damage_4.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <!--Hoshino-->
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Hoshino1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Hoshino2="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino2_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino2_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino2_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Hoshino3="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino3_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino3_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/hoshino3_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <!--Kazusa-->
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_kazusa1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kazusa_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <!--Ichika-->
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Ichika1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/ichika_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/ichika_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/ichika_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Yuzu1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuzu_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuzu_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuzu_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Mika1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mika_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Seia1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/seia_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Aru1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/aru_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Kayoko1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_6.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_7.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_8.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/kayoko_damage_9.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Haruka1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/haruka_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/haruka_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/haruka_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Mutsuki1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/mutsuki_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Nonomi1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/nonomi_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Yuuka1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_6.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_7.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_8.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/yuuka_damage_9.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Momoi1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/momoi_damage_6.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Alice1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_3.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_4.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_5.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_6.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_7.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_8.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/alice_damage_9.ogg" range="1000" volume="1" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" comparison="and" checkconditionalalways="true">
+      <RequiredAffliction identifier="damage" minstrength="1" />
+      <conditional body_Ibuki1="gt 0" />
+      <Conditional isunconscious="false" />
+      <Conditional isdead="false" />
+      <sound file="%ModDir%/Content/Damage_Sound/ibuki_damage_1.ogg" range="1000" volume="1" selectionmode="Random" />
+      <sound file="%ModDir%/Content/Damage_Sound/ibuki_damage_2.ogg" range="1000" volume="1" />
+      <sound file="%ModDir%/Content/Damage_Sound/ibuki_damage_3.ogg" range="1000" volume="1" />
+    </StatusEffect>
+  </Character>
+</Override>

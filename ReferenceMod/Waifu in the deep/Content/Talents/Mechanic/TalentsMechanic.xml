@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Talents>
+    <Talent identifier="mudraptorwrestler">
+      <Icon texture="Content/UI/TalentsIcons3.png" sheetindex="2,6" sheetelementsize="128,128" />
+      <Description tag="talentdescription.mudraptorwrestler">
+        <Replace tag="[amount]" value="50" color="gui.green" />
+      </Description>
+      <Description tag="talentdescription.additionalstattypeself">
+        <Replace tag="[amount]" value="10" color="gui.green" />
+        <Replace tag="[stattype]" value="stattypenames.physicalresistance" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.Mudraptorarmor,entityname.Wf_Admiral_Katana_Mudraptor" color="gui.orange" />
+      </Description>
+      <AddedRecipe itemidentifier="Mudraptorarmor" />
+      <AddedRecipe itemidentifier="Wf_Admiral_Katana_Mudraptor" />
+      <AbilityGroupEffect abilityeffecttype="OnAttack">
+        <Conditions>
+          <AbilityConditionAttackData weapontype="NoWeapon,Melee" />
+          <AbilityConditionCharacter>
+            <Conditional group="eq mudraptor" />
+          </AbilityConditionCharacter>
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityModifyAttackData addeddamagemultiplier="0.5" />
+        </Abilities>
+      </AbilityGroupEffect>
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Abilities>
+          <CharacterAbilityGiveResistance resistanceid="damage" multiplier="0.9" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+  </Talents>
+</Override>

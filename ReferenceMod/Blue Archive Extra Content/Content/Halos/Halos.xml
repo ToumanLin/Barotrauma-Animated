@@ -1,0 +1,987 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="Halo" identifier="halo0" scale="0.9" description="Work like a headset, can be inserted with goggles., can be inserted with goggles." category="Misc" subcategory="Halos" tags="smallitem,mobileradio" cargocontaineridentifier="metalcrate">
+      <sprite name="Generic Halo" texture="Halos_generic.png" sheetindex="0,1" sheetelementsize="64,64" origin="0.5,0.5" />
+      <Body radius="80" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="5" requiresrecipe="false"></Fabricate>
+      <Deconstruct time="5"></Deconstruct>
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Generic Halo" texture="Halos_generic.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="1.5" sheetindex="0,0" sheetelementsize="64,64" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.9" ison="true">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+              <Conditional IsDead="false" />
+            </StatusEffect>
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Interval="1" Voltage="-10.0" setvalue="true">
+          <Conditional IsDead="true" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+        <Containable items="healthscanner,thermalgoggles,electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" thermalgoggles="false" showtexts="false" debugwiring="false" delay="1" stackable="false" />
+        </Containable>
+        <Containable Items="healthscanner">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,0,0,0" showtexts="true" />
+        </Containable>
+        <Containable Items="thermalgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,60" thermalgoggles="true" />
+        </Containable>
+        <Containable Items="electriciansgoggles">
+          <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,20,0,50" debugwiring="true" />
+        </Containable>
+      </ItemContainer>
+      <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+    </Item>
+    <!--/////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////-->
+    <!--non generic-->
+    <!--Sensei-->
+    <Item name="Sensei's Head" identifier="ba_halo_Sensei" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Sensei's Halo" texture="Halo_Sensei.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Sensei Head" texture="%ModDir%/Content/Halos/Head_Sensei1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.8" depth="0.6" origin="0.55,0.31" />
+      </Wearable>
+      <Fabricate suitablefabricators="none" requiredtime="5" requiresrecipe="true"></Fabricate>
+    </Item>
+    <Item name="Arona's Halo" identifier="ba_halo_Arona" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Arona's Halo" texture="Halo_Arona.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Halo Holder" texture="%ModDir%/Content/Halos/Halo_Arona.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="false" ignorelimbscale="true" scale="0.155" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Arona.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+      </Wearable>
+      <Fabricate suitablefabricators="none" requiredtime="5" requiresrecipe="true"></Fabricate>
+    </Item>
+    <!--HIGH LANDER-->
+    <Item name="Hikari's Halo" identifier="ba_halo_Hikari" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Hikari's Halo" texture="Halo_Hikari.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Hikari Head" texture="%ModDir%/Characters/Hikari/Head_Hikari1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Halo Holder" texture="%ModDir%/Content/Halos/Halo_Hikari.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="false" ignorelimbscale="true" scale="0.24" sheetindex="1,0" sheetelementsize="350,350" origin="0.8,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="1.23">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Hikari.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.8,0.88" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Hikari1" strength="2" />
+          <Affliction identifier="ba_bangs" strength="2" />
+          <Affliction identifier="ba_backhair_v3" strength="2" />
+        </StatusEffect>
+      </Wearable>
+      <Fabricate suitablefabricators="none" requiredtime="5" requiresrecipe="true"></Fabricate>
+    </Item>
+    <Item name="Nozomi's Halo" identifier="ba_halo_Nozomi" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Nozomi's Halo" texture="Halo_Nozomi.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Nozomi Head" texture="%ModDir%/Characters/Nozomi/Head_Nozomi1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Halo Holder" texture="%ModDir%/Content/Halos/Halo_Nozomi.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="false" ignorelimbscale="true" scale="0.24" sheetindex="1,0" sheetelementsize="350,350" origin="0.8,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="1.23">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Nozomi.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.8,0.88" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="ba_ponytails" strength="2" />
+          <Affliction identifier="body_Nozomi1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+      <Fabricate suitablefabricators="none" requiredtime="5" requiresrecipe="true"></Fabricate>
+    </Item>
+    <!--gehenna-->
+    <Item name="Aru's Halo" identifier="ba_halo_Aru" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Aru's Halo" texture="Halo_Aru.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Aru's Halo" texture="Halo_Aru.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Aru Head" texture="%ModDir%/Characters/Aru/Head_Aru1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Aru's Halo" texture="Halo_Aru.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.5" sheetindex="1,0" sheetelementsize="350,350" origin="0.7,0.8">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="1.26">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Aru.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.7,0.8" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Aru1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Haruka's Halo" identifier="ba_halo_Haruka" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Haruka's Halo" texture="halo_Haruka.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Haruka's Halo" texture="halo_Haruka.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Haruka Head" texture="%ModDir%/Characters/Haruka/Head_Haruka1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Haruka's Halo" texture="halo_Haruka.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/halo_Haruka.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Haruka1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Mutsuki's Halo" identifier="ba_halo_Mutsuki" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Mutsuki's Halo" texture="Halo_Mutsuki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Mutsuki's Halo" texture="Halo_Mutsuki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Mutsuki Head" texture="%ModDir%/Characters/Mutsuki/Head_Mutsuki1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Mutsuki's Halo" texture="Halo_Mutsuki.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Mutsuki.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Mutsuki1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Kayoko's Halo" identifier="ba_halo_Kayoko" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Kayoko's Halo" texture="Halo_Kayoko.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Kayoko's Halo" texture="Halo_Kayoko.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Kayoko Head" texture="%ModDir%/Characters/Kayoko/Head_Kayoko1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Kayoko's Halo" texture="Halo_Kayoko.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Kayoko.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Kayoko1" strength="2" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" Showhealthbar="false" duration="0.1" stackable="false" />
+      </Wearable>
+    </Item>
+    <Item name="Hina's Halo" identifier="ba_halo_Hina" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Hina's Halo" texture="Halo_Hina.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Hina's Halo" texture="Halo_Hina.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <Fabricate requiresrecipe="false" />
+        <sprite name="Hina Head" texture="%ModDir%/Characters/Hina/Head_Hina1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Hina's Halo" texture="Halo_Hina.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,1.1">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Hina.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,1.1" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Hina1" strength="2" />
+          <Affliction identifier="ba_bangs" strength="2" />
+          <Affliction identifier="ba_backhair_v3" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <!--millennium-->
+    <Item name="Niya Niya's Halo" identifier="ba_halo_Niyaniya" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Niyaniya's Halo" texture="Halo_NiyaNiya.png" sheetindex="0,9" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Niyaniya's Halo" texture="Halo_NiyaNiya.png" sheetindex="0,9" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Niyaniya Head" texture="%ModDir%/Characters/Niyaniya/Head_Niyaniya1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Niyaniya's Halo" texture="Halo_NiyaNiya.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_NiyaNiya.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Niyaniya1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <!--rabbit squad-->
+    <Item name="Saki's Halo" identifier="ba_halo_Saki" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Saki's Halo" texture="Halo_Saki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Saki's Halo" texture="Halo_Saki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Saki Head" texture="%ModDir%/Characters/Saki/Head_Saki1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Saki's Halo" texture="Halo_Saki.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Saki.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Saki1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Miyako's Halo" identifier="ba_halo_Miyako" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Miyako's Halo" texture="Halo_Miyako.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Miyako's Halo" texture="Halo_Miyako.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Miyako Head" texture="%ModDir%/Characters/Miyako/Head_Miyako1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Miyako's Halo" texture="Halo_Miyako.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Miyako.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Miyako1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Moe's Halo" identifier="ba_halo_Moe" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Moe's Halo" texture="Halo_Moe.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Moe's Halo" texture="Halo_Moe.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Moe Head" texture="%ModDir%/Characters/Moe/Head_Moe1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Moe's Halo" texture="Halo_Moe.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Moe.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Moe1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Miyu's Halo" identifier="ba_halo_Miyu" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Miyu's Halo" texture="Halo_Miyu.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Miyu's Halo" texture="Halo_Miyu.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Miyu Head" texture="%ModDir%/Characters/Miyu/Head_Miyu1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Miyu's Halo" texture="Halo_Miyu.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Miyu.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Miyu1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <!--game dev-->
+    <Item name="Alice's Halo" identifier="ba_halo_Alice" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Alice's Halo" texture="Halo_Alice.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Alice's Halo" texture="Halo_Alice.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Alice Head" texture="%ModDir%/Characters/Alice/Head_Alice1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Alice's Halo" texture="Halo_Alice.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Alice.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Alice1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Yuzu's halo" identifier="ba_halo_yuzu" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Yuzu's Halo" texture="Halo_Yuzu.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Yuzu's Halo" texture="Halo_Yuzu.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Yuzu Head" texture="%ModDir%/Characters/Yuzu/Head_Yuzu1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Yuzu's Halo" texture="Halo_Yuzu.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Yuzu.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Yuzu1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Momoi's halo" identifier="ba_halo_momoi" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Momoi's Halo" texture="Halo_Momoi.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Momoi's Halo" texture="Halo_Momoi.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Headset" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Momoi Head" texture="%ModDir%/Characters/Momoi/Head_Momoi1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Momoi's Halo" texture="Halo_Momoi.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Momoi.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Momoi1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Midori's halo" identifier="ba_halo_midori" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Midori's Halo" texture="Halo_Midori.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Midori's Halo" texture="Halo_Midori.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Headset" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Midori's Halo" texture="Halo_Midori.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Midori.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Yuuka's halo" identifier="ba_halo_yuuka" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Yuuka's Halo" texture="Halo_Yuuka.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Yuuka Head" texture="%ModDir%/Characters/Yuuka/Head_Yuuka1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Yuuka's Halo" texture="Halo_Yuuka.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Yuuka.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Yuuka1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <!--abydos-->
+    <Item name="Hoshino's halo" identifier="ba_halo_hoshino" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Hoshino Head" texture="%ModDir%/Characters/Hoshino/Head_Hoshino1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Hoshino.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Hoshino1" strength="2" />
+          <Affliction identifier="ba_backhair_v2" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Hoshino's halo (Young)" identifier="ba_halo_hoshino2" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Hoshino Head" texture="%ModDir%/Characters/Hoshino/Head_Hoshino2.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Hoshino.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Hoshino2" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Hoshino's halo (Summer)" identifier="ba_halo_hoshino3" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Hoshino Head" texture="%ModDir%/Characters/Hoshino/Head_Hoshino3.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Hoshino's Halo" texture="Halo_Hoshino.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Hoshino.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Hoshino3" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Nonomi's halo" identifier="ba_halo_nonomi" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Nonomi's Halo" texture="Halo_Nonomi.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Nonomi's Halo" texture="Halo_Nonomi.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Nonomi Head" texture="%ModDir%/Characters/Nonomi/Head_Nonomi1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Hoshino's Halo" texture="Halo_Nonomi.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Nonomi.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Nonomi1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Shiroko's halo" identifier="ba_halo_Shiroko" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Shiroko Head" texture="%ModDir%/Characters/Shiroko/Head_Shiroko1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Shiroko.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Shiroko1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Shiroko's halo (Masked)" identifier="ba_halo_Shiroko_mask" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Shiroko Head" texture="%ModDir%/Characters/Shiroko/Shiroko_Mask.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Shiroko's Halo" texture="Halo_Shiroko.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Shiroko.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Shiroko1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Ayane's halo" identifier="ba_halo_Ayane" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Ayane's Halo" texture="Halo_Ayane.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Ayane's Halo" texture="Halo_Ayane.png" limb="Head" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Ayane Head" texture="%ModDir%/Characters/Ayane/Head_Ayane1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Ayane's Halo" texture="Halo_Ayane.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Ayane.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <!--Trinity-->
+    <Item name="Karin's Halo" identifier="ba_halo_Karin" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon name="Karin's Halo" texture="Halo_Karin.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <sprite name="Karin's Halo" texture="Halo_Karin.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Karin Head" texture="%ModDir%/Characters/Karin/Head_Karin1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Karin's Halo" texture="Halo_Karin.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Karin.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Karin1" strength="2" />
+          <Affliction identifier="ba_karintint" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Kazusa's halo" identifier="ba_halo_Kazusa" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Kazusa's Halo" texture="Halo_Kazusa.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <InventoryIcon name="Kazusa's Halo" texture="Halo_Kazusa.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Kazusa Head" texture="%ModDir%/Characters/Kazusa/Head_Kazusa1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Kazusa's Halo" texture="Halo_Kazusa.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Kazusa.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Kazusa1" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Mobchan's halo" identifier="ba_halo_Mobchan" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <InventoryIcon texture="Halo_MobChan.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" scale="1.5" />
+      <sprite name="Mobchan's Halo" texture="Halo_MobChan.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Mobchan Head" texture="%ModDir%/Characters/Ichika/Head_Mobchan1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Mobchan's Halo" texture="Halo_MobChan.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_MobChan.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Mobchan1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Ichika's halo" identifier="ba_halo_ichika" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Ichika's Halo" texture="Halo_Ichika.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <InventoryIcon name="Ichika's Halo" texture="Halo_Ichika.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Ichika Head" texture="%ModDir%/Characters/Ichika/Head_Ichika1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Ichika's Halo" texture="Halo_Ichika.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Ichika.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Ichika1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+          <Affliction identifier="ba_wings" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Mika's halo" identifier="ba_halo_mika" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Mika's Halo" texture="Halo_Mika.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <InventoryIcon name="Mika's Halo" texture="Halo_Mika.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Mika Head" texture="%ModDir%/Characters/Mika/Head_Mika1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Mika's Halo" texture="Halo_Mika.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="false" depth="0.6" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Mika.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Mika1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+          <Affliction identifier="ba_wings" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Seia's halo" identifier="ba_halo_seia" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="false">
+      <sprite name="Seia's Halo" texture="Halo_Seia.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <InventoryIcon name="Seia's Halo" texture="Halo_Seia.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Seia Head" texture="%ModDir%/Characters/Seia/Head_Seia1.png" limb="Head" hidelimb="true" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" sheetindex="0,0" sheetelementsize="256,400" scale="0.58" depth="0.6" origin="0.55,0.31" />
+        <sprite name="Seia's Halo" texture="Halo_Seia.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.32" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.8">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_Seia.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Seia1" strength="2" />
+          <Affliction identifier="ba_backhair" strength="2" />
+          <Affliction identifier="seiahusktail" strength="2" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+    <Item name="Ibuki's halo" identifier="ba_halo_ibuki" description="Work like a headset, can be inserted with goggles." scale="0.2" tag="halos" category="Misc" subcategory="Halos" variantof="halo0" hideinmenus="true">
+      <sprite name="ibuki's Halo" texture="Halo_ibuki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <InventoryIcon name="ibuki's Halo" texture="Halo_ibuki.png" sheetindex="0,0" sheetelementsize="350,350" origin="0.5,0.5" />
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="ibuki's Halo" texture="Halo_ibuki.png" limb="Head" hideotherwearables="false" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="false" inheritlimbdepth="true" inheritscale="false" ignorelimbscale="true" scale="0.15" sheetindex="1,0" sheetelementsize="350,350" origin="0.9,0.9">
+          <LightComponent allowingameediting="false" canbeselected="false" range="0.0" powerconsumption="10" depth="0.1" ison="true" scale="0.15">
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0" pulseamount="0" lightcolor="100,100,100,255" setvalue="true" disabledeltatime="true">
+              <Conditional target="Character" health="gt 50" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="4.0" pulseamount="0.5" alpha="50" lightcolor="200,200,200,100" setvalue="true" disabledeltatime="true" comparison="And">
+              <Conditional target="Character" health="lte 50" />
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <StatusEffect type="OnWearing" target="This,Character" pulsefrequency="0.0" pulseamount="0.0" alpha="0" lightcolor="0,0,0,0" setvalue="true" disabledeltatime="true">
+              <Conditional IsDead="true" />
+            </StatusEffect>
+            <sprite name="Halo Mask" texture="%ModDir%/Content/Halos/Halo_ibuki.png" sheetindex="1,0" sheetelementsize="350,350" alpha="1" depth="0.6" origin="0.9,0.9" />
+          </LightComponent>
+        </sprite>
+        <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" Interval="0.1" setvalue="true">
+          <Conditional IsDead="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true">
+          <Affliction identifier="body_Ibuki1" strength="2" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <TriggerAnimation Type="Walk" FileName="IbukiWalk" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="IbukiRun" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

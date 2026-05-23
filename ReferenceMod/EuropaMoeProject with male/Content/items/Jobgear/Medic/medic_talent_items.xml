@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!--调整贴图大小-->
+    <Item name="" identifier="autoinjectorheadset" scale="0.5" category="Equipment,Medical" tags="smallitem,mobileradio" allowasextracargo="true" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="medcab" />
+      <Price baseprice="140" sold="false">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="253,301,76,64" origin="0.35,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" amount="2" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <WifiComponent range="45000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" autoinject="true">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.6" hideotherwearables="false" origin="0.5,0.5" />
+      </Wearable>
+    </Item>
+    <!-- 高级自注射耳机 -->
+    <Item name="" identifier="EAHI_autoinjectorheadset" scale="0.5" category="Equipment" tags="mobileradio,smallitem,idcard,id_captain,id_security,id_engineer,id_medic,id_assistant,id_mechanic,id_pirate,wreck_secureid,wreck_id,wreck_engineer,wreck_mechanic,wreck_medic,wreck_security,wreck_captain,wreck_admin,id_reactor,id_outpostsecurity" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="280" sold="false">
+        <Price locationtype="outpost" multiplier="1" sold="false" />
+        <Price locationtype="city" multiplier="0.9" sold="false" />
+        <Price locationtype="research" multiplier="1" sold="false" />
+        <Price locationtype="military" multiplier="1" sold="false" />
+        <Price locationtype="mine" multiplier="1" sold="false" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="236,439,60,48" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="236,439,60,48" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" amount="2" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="45" />
+        <RequiredItem identifier="healthscanner" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" amount="2" />
+      </Fabricate>
+      <WifiComponent range="45000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" containedstateindicatorstyle="syringe">
+        <SlotIcon slotindex="0" texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,448,64,64" origin="0.5,0.45" />
+        <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" origin="0.5,0.45" />
+        <Containable items="antibloodloss1,antibloodloss2,alienblood" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="antidama1,antidama2,deusizine" />
+        </SubContainer>
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="236,439,60,48" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.66" hideotherwearables="false" origin="0.81,0.7" />
+        <!-- MOD FEATURE Auto-inject System(Headset) START -->
+        <!-- Explaanation:
+					GameVersion: 1.9.6.0
+					Check file: Content/Items/Medical/medical.xml, Content/Items/CreatureLoot/creatureloot.xml
+					Execute Interval: 0.5 seconds
+					Duration calculation: condition = -50 / original duration
+					Reduce/Add Afflication amount: original amount / 2
+				-->
+        <!-- Inject Saline & Blood Pack & Alien Blood, slot 1 -->
+        <StatusEffect type="OnWearing" target="Character,Contained" condition="-5" targetslot="0" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="antibloodloss1" type="Contained" targetslot="0" />
+          <Conditional bloodloss="gt 5.0" />
+          <!-- Original Effect:
+						Reduce bloodloss by 2.5 duration 10
+						Reduce infection by 0.5 duration 10
+					-->
+          <ReduceAffliction type="bloodloss" amount="1.25" />
+          <ReduceAffliction identifier="infection" amount="0.25" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="0" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="antibloodloss2" type="Contained" targetslot="0" />
+          <Conditional bloodloss="gt 5.0" />
+          <!-- Original Effect:
+						Reduce bloodloss by 8 duration 15
+					-->
+          <ReduceAffliction type="bloodloss" amount="4" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character,Contained" condition="-3.33" targetslot="0" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="alienblood" type="Contained" targetslot="0" />
+          <Conditional bloodloss="gt 5.0" />
+          <!-- Original Effect:
+						Reduce bloodloss by 6 duration 15
+					-->
+          <ReduceAffliction type="bloodloss" amount="3" />
+          <!-- Original Side Effects:
+						Add psychosis by 3 duration 15
+						Add organdamage by 0.65 duration 15
+					-->
+          <Affliction identifier="psychosis" amount="1.5" />
+          <Affliction identifier="organdamage" amount="0.325" />
+        </StatusEffect>
+        <!--Inject Morphine & Fentanyl & Deusizine & Pomegrenade Extract, slot 2 -->
+        <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="1" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="antidama1" type="Contained" targetslot="1" />
+          <Conditional internaldamage="gt 0.0" />
+          <Conditional blunttrauma="gt 0.0" />
+          <Conditional lacerations="gt 0.0" />
+          <Conditional bitewounds="gt 0.0" />
+          <Conditional gunshotwound="gt 0.0" />
+          <Conditional organdamage="gt 0.0" />
+          <Conditional explosiondamage="gt 0.0" />
+          <Conditional concussion="gt 0.0" />
+          <!-- Original Effect:
+						Reduce damage by 2 duration 20
+						Reduce burn by 0.1 duration 20
+					-->
+          <ReduceAffliction type="damage" amount="0.5" />
+          <ReduceAffliction type="burn" amount="0.05" />
+          <!-- Original Side Effects:
+						Add oxygenlow by 1 duration 20
+						Add opiateaddiction by 1 duration 20
+						Add opiateoverdose by 1 duration 20
+						Reduce opiatewithdrawal by 3.75 duration 20
+					-->
+          <Affliction identifier="oxygenlow" amount="0.5" />
+          <Affliction identifier="opiateaddiction" amount="0.5" />
+          <Affliction identifier="opiateoverdose" amount="0.5" />
+          <ReduceAffliction identifier="opiatewithdrawal" amount="1.875" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-10" targetslot="1" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="antidama2" type="Contained" targetslot="1" />
+          <Conditional internaldamage="gt 0.0" />
+          <Conditional blunttrauma="gt 0.0" />
+          <Conditional lacerations="gt 0.0" />
+          <Conditional bitewounds="gt 0.0" />
+          <Conditional gunshotwound="gt 0.0" />
+          <Conditional organdamage="gt 0.0" />
+          <Conditional explosiondamage="gt 0.0" />
+          <Conditional concussion="gt 0.0" />
+          <!-- Original Effect:
+						Reduce damage by 15 duration 5
+						Reduce burn by 1 duration 5
+					-->
+          <ReduceAffliction type="damage" amount="7.5" />
+          <ReduceAffliction type="burn" amount="0.5" />
+          <!-- Original Side Effects:
+						Add oxygenlow by 5 duration 5
+						Add opiateoverdose by 5 duration 5
+						Reduce opiatewithdrawal by 4 duration 25 total 100
+					-->
+          <Affliction identifier="oxygenlow" amount="2.5" />
+          <Affliction identifier="opiateoverdose" amount="2.5" />
+          <ReduceAffliction identifier="opiatewithdrawal" amount="10" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2.5" targetslot="1" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="deusizine" type="Contained" targetslot="1" />
+          <Conditional internaldamage="gt 0.0" />
+          <Conditional blunttrauma="gt 0.0" />
+          <Conditional lacerations="gt 0.0" />
+          <Conditional bitewounds="gt 0.0" />
+          <Conditional gunshotwound="gt 0.0" />
+          <Conditional organdamage="gt 0.0" />
+          <Conditional explosiondamage="gt 0.0" />
+          <Conditional concussion="gt 0.0" />
+          <Conditional bloodloss="gt 5.0" />
+          <Conditional oxygenlow="gt 50.0" />
+          <!-- Original Effect:
+						Add strengthen by 200 duration 1
+						Reduce damage by 3 duration 20
+						Reduce bloodloss by 2.5 duration 20
+						Reduce internaldamage by 1 duration 20
+						Reduce infection by 1.25 duration 20
+						Reduce stun by 0.3 duration 20
+						Reduce oxygenlow by 2.5 duration 20
+					-->
+          <ReduceAffliction type="damage" amount="1.5" />
+          <ReduceAffliction identifier="bloodloss" amount="1.25" />
+          <ReduceAffliction identifier="internaldamage" amount="0.5" />
+          <ReduceAffliction identifier="infection" amount="0.625" />
+          <ReduceAffliction identifier="stun" amount="0.15" />
+          <ReduceAffliction identifier="oxygenlow" amount="1.25" />
+          <!-- Side Effects:
+						Add burn by 0.2 duration 20
+					-->
+          <Affliction identifier="burn" amount="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character,Contained" comparison="or" condition="-2" targetslot="1" interval="0.5" disabledeltatime="true">
+          <!-- Requirements -->
+          <RequiredItem items="pomegrenadeextract" type="Contained" targetslot="1" />
+          <Conditional internaldamage="gt 0.0" />
+          <Conditional blunttrauma="gt 0.0" />
+          <Conditional lacerations="gt 0.0" />
+          <Conditional bitewounds="gt 0.0" />
+          <Conditional gunshotwound="gt 0.0" />
+          <Conditional organdamage="gt 0.0" />
+          <Conditional explosiondamage="gt 0.0" />
+          <Conditional concussion="gt 0.0" />
+          <!-- Original Effect:
+						Reduce damage by 0.32 duration 25
+						Reduce burn by 0.32 duration 25
+					-->
+          <ReduceAffliction type="damage" amount="0.16" />
+          <ReduceAffliction type="burn" amount="0.16" />
+          <!-- Original Side Effects:
+						Add oxygenlow by 20 duration 1
+					-->
+          <Affliction identifier="oxygenlow" amount="0.4" />
+        </StatusEffect>
+        <!-- MOD FEATURE Auto-inject System(Headset) END -->
+      </Wearable>
+      <StatusHUD drawhudwhenequipped="true" overlaycolor="0,0,0,0" />
+    </Item>
+    <!--高阶基因拼接器：增加深度-->
+    <Item identifier="advancedgenesplicer" variantof="genesplicer" allowasextracargo="true" descriptionidentifier="advancedgenesplicer">
+      <PreferredContainer primary="medcab" secondary="medcab" />
+      <PreferredContainer secondary="abandonedmedcab,wreckmedcab,outpostmedcab" spawnprobability="0" />
+      <Price baseprice="550" sold="false" minleveldifficulty="65">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" multiplier="1.1" sold="true" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.1" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="fulgurium" />
+        <Item identifier="copper" amount="2" />
+        <Item identifier="rubber" />
+        <Item identifier="silicon" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="medical" level="60" />
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="fpgacircuit" amount="2" />
+        <RequiredItem identifier="rubber" amount="2" />
+        <RequiredItem identifier="silicon" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/Genetic/Genetic.png" sourcerect="327,62,73,65" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="148,85,73,35" origin="0.5,0.5" />
+      <Body radius="8" width="48" density="30" />
+      <ItemContainer capacity="2" />
+      <Wearable>
+        <sprite name="Gene Splicer Wearable" texture="Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="false" inheritscale="true" depth="0.9" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="326,131,67,55" origin="0.6,0.0" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

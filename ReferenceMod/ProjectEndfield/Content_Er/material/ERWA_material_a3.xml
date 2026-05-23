@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_material_a3.xml
+++	Version     :	0.2 (alpha)
+++	Time Create :	TK5202312200039
+++	Time Modify :	TK5202409031553
+++	Author      :	Erthex
+-->
+<Item identifier="ERWA_material_a3" tags="smallitem" category="Material" scale="0.25" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" maxstacksize="32" maxstacksizecharacterinventory="8" name="糖聚块" description="充满诱惑力的精加工糖块堆，通常用于制备药剂，机械化制作的大量糖块，可用于多种强化场合。">
+  <InventoryIcon texture="ERWA_material_a3_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" />
+  <Sprite texture="ERWA_material_a3_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" depth="0.55" />
+  <Body width="161" height="161" density="20" friction="0.2" restitution="0.0" />
+  <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="0" holdpos="0,0" msg="ItemMsgPickUpSelect" canbecombined="true" removeoncombined="true">
+    <StatusEffect type="OnBroken" target="This">
+      <Remove />
+    </StatusEffect>
+  </Holdable>
+  <PreferredContainer primary="storagecab" secondary="locker" />
+  <Price baseprice="525" canbespecial="false" displaynonempty="false">
+    <Price storeidentifier="merchantoutpost" multiplier="1.1" sold="false" />
+    <Price storeidentifier="merchantmine" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantresearch" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmilitary" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantcity" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantarmory" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmedical" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantengineering" multiplier="1.0" sold="false" />
+  </Price>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="1" displayname="合成">
+    <RequiredItem identifier="ERWA_material_a2" amount="2" />
+    <RequiredItem identifier="ERWA_material_b2" amount="2" />
+  </Fabricate>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="1" displayname="兑换">
+    <RequiredItem identifier="ERWA_ticket_2" amount="1" />
+  </Fabricate>
+  <Deconstruct time="5">
+    <Item identifier="ERWA_material_a1" amount="6" />
+    <Item identifier="antibloodloss1" amount="2" />
+    <Item identifier="antibiotics" amount="2" />
+  </Deconstruct>
+</Item>
+<!--
+++	File End
+-->

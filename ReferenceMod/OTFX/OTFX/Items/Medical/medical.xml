@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Cardiotonic name="" identifier="otfx_cardiotonic" category="Medical,Material" maxstacksize="8" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="True">
+    <PreferredContainer primary="medfabcab" secondary="medcontainer" />
+    <PreferredContainer secondary="abandonedmedcab,wreckmedcab" minamount="1" maxamount="2" spawnprobability="0.1" />
+    <Price baseprice="100">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantcity" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="0.9" minavailable="4" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" minavailable="4" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="0,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Medical/Medicines.png" sourcerect="0,0,30,57" depth="0.55" origin="0.5,0.5" />
+    <SuitableTreatment type="stun" suitability="10" />
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="medical" level="50" />
+      <RequiredItem identifier="adrenaline" />
+      <RequiredItem identifier="calcium" />
+      <RequiredItem identifier="phosphorus" />
+      <RequiredItem identifier="zinc" />
+      <RequiredItem identifier="antibloodloss1" amount="2" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <RequiredItem identifier="adrenaline" />
+      <Item identifier="sodium" />
+      <Item identifier="chlorine" />
+    </Deconstruct>
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="220" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+      <RequiredSkill identifier="medical" level="50" />
+      <StatusEffect type="OnSuccess" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnFailure" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect tags="medical" type="OnSuccess" target="UseTarget" duration="60">
+        <Affliction identifier="organdamage" strength="0.1" />
+        <ReduceAffliction identifier="progressivestun" strength="10" />
+        <ReduceAffliction identifier="incrementalstun" strength="0.5" />
+        <ReduceAffliction type="stun" strength="0.5" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="UseTarget" disabledeltatime="true">
+        <Affliction identifier="organdamage" strength="10" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="UseTarget" duration="60">
+        <Affliction identifier="organdamage" strength="0.1" />
+        <ReduceAffliction identifier="progressivestun" strength="5" />
+        <ReduceAffliction identifier="incrementalstun" strength="0.25" />
+        <ReduceAffliction type="stun" strength="0.25" />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+        <Affliction identifier="stun" strength="0.1" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <Projectile characterusable="false" launchimpulse="18.0" sticktocharacters="true" launchrotation="-90" inheritstatuseffectsfrom="MeleeWeapon" inheritrequiredskillsfrom="MeleeWeapon" />
+    <SkillRequirementHint identifier="medical" level="50" />
+  </Cardiotonic>
+</Items>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Sit Miyu" identifier="interactible_miyuchair" tags="miyu_chair,chair" canflipx="true" allowattachitems="true" scale="0.25" hideinmenus="false">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="miyupillow.png" depth="0.3" sourcerect="0,0,352,76" origin="0.5,0.5" />
+    <Body width="352" height="76" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="LeftHand" aimpos="80,-20" holdpos="60,-40" handle2="-30,0" controlpose="true" msg="Take Cover" attachable="true" attachedbydefault="true" aimable="false" AttachesToFloor="true">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.3" setvalue="true" />
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+    <!--<Controller UserPos="-50,50" direction="Right" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true" selectkey="Use" >
+			<limbposition limb="Torso" position="10,10" allowusinglimb="false" />
+			<limbposition limb="Waist" position="10,10" allowusinglimb="false" />
+			<limbposition limb="RightLeg" position="10,50" allowusinglimb="false" />
+			<limbposition limb="LeftLeg" position="10,50" allowusinglimb="false" />
+			<limbposition limb="RightFoot" position="-10,30" allowusinglimb="false" />
+			<limbposition limb="LeftFoot" position="-10,30" allowusinglimb="false" />
+		</Controller>-->
+    <Controller UserPos="0,30" direction="Right" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true">
+      <limbposition limb="Head" position="300,800" />
+      <limbposition limb="Torso" position="50,-10" />
+      <limbposition limb="Waist" position="-50,-100" />
+      <limbposition limb="RightLeg" position="100,-180" />
+      <limbposition limb="LeftLeg" position="100,-180" />
+      <limbposition limb="RightHand" position="120,-20" allowusinglimb="true" />
+      <limbposition limb="LeftHand" position="120,-20" allowusinglimb="true" />
+    </Controller>
+  </Item>
+  <Item name="Emote Emulator Device" identifier="baemotedevice" noninteractable="false" description="A Device to emote to your friends" scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="34" height="28" density="10" />
+    <Holdable slots="Any,RightHand+LeftHand" holdpos="40,10" handle1="0,-15" handle2="-3,10" holdangle="-25" aimable="false" msg="ItemMsgPickUpSelect">
+      <SkillModifier skillidentifier="helm" skillvalue="70" />
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true" LockGuiFramePosition="true">
+        <GuiFrame relativesize="0.15,0.15" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.7,0.350" hidedragicons="true" />
+        <Button text="Clear Music">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusicoff" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true" LockGuiFramePosition="true">
+        <GuiFrame relativesize="0.15,0.15" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="1.75,0.190" hidedragicons="true" />
+        <Button text="Pixel Time">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+        <Button text="Constant Moderato">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack2" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+        <Button text="Future Bossa">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack3" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true" LockGuiFramePosition="true">
+        <GuiFrame relativesize="0.15,0.15" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="1.75,0.310" hidedragicons="true" />
+        <Button text="Luminous Memory">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+        <Button text="Mid Summer Cat">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack5" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+        <Button text="Step By Step">
+          <StatusEffect type="OnUse" target="This" reload="0.5" tags="bamusictrack6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnUse" target="Contained" reload="0.5" setvalue="true" disabledeltatime="true">
+            <remove />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+    </Holdable>
+    <RangedWeapon drawhudwhenequipped="true">
+      <StatusEffect type="OnActive" target="Character" setvalue="true">
+        <SkillModifier skillidentifier="helm" skillvalue="10" />
+      </StatusEffect>
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" drawinventory="false">
+      <Containable items="bamusictracks,bamusictrack1,bamusictrack2,bamusictrack3,bamusictrack4,bamusictrack5,bamusictrack6" setactive="true" />
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack1" />
+        <SpawnItem identifiers="bamusictrack1" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack2" />
+        <SpawnItem identifiers="bamusictrack2" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack3" />
+        <SpawnItem identifiers="bamusictrack3" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack4" />
+        <SpawnItem identifiers="bamusictrack4" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack5" />
+        <SpawnItem identifiers="bamusictrack5" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" disabledeltatime="true" targetslot="1">
+        <Conditional hastag="bamusictrack6" />
+        <SpawnItem identifiers="bamusictrack6" spawnposition="ThisInventory" targetslot="1" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Shima Enaga" identifier="baemote_seiabird" noninteractable="false" description="Hold a Shima Enaga in your palm" scale="0.3" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="seiabird.png" depth="0.7" sheetindex="0,0" sheetelementsize="100,76" origin="0.5,0.5" />
+    <Body width="50" height="50" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,LeftHand,RightHand" aimable="false" handle2="-15,-34" handle1="-15,-34" holdpos="35,15" holdangle="3" delay="0.2">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      <StatusEffect type="OnNotContained" target="This" setvalue="true" disabledeltatime="true">
+        <RemoveItem />
+      </StatusEffect>
+    </Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Assignment Clip Board" identifier="baemote_assignmentboard" noninteractable="true" description="Displays assignments" scale="0.2" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Content/Emotes/Assignment_Board_icon.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Emotes/Assignment_Board_pen.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Body width="240" height="240" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="RightHand+LeftHand" aimable="false" handle1="0,-44" handle2="-40,24" holdpos="35,0" holdangle="-10" characterusable="false" swingamount="10,20" swingspeed="2" swingwhenusing="true"></Holdable>
+    <RangedWeapon>
+      <StatusEffect type="Always" target="This" holdpos="35,0" disabledeltatime="true"></StatusEffect>
+      <StatusEffect type="Always" target="This" holdpos="40,5" disabledeltatime="true" interval="0.2"></StatusEffect>
+      <StatusEffect type="Always" target="This" holdpos="40,10" disabledeltatime="true" interval="0.4"></StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" setvalue="true" disabledeltatime="true">
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Miyu's Binocular" identifier="miyubinocular" noninteractable="false" description="Displays assignments" scale="0.14" tag="equipment,smallitem" hideinmenus="false" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Content/Emotes/Miyu_Binocular_icon.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Emotes/Miyu_Binocular.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Body width="240" height="240" density="11" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-20" aimpos="23,20" aimangle="30" holdangle="-40" handle1="-60,-10" handle2="10,0" cameraaimoffset="800">
+      <StatusEffect type="OnContained" target="Character" setvalue="true" disabledeltatime="true">
+        <TriggerAnimation Type="Crouch" FileName="humanCrawl" priority="100" ExpectedSpecies="Human" />
+      </StatusEffect>
+    </Holdable>
+    <RangedWeapon drawhudwhenequipped="true" crosshairscale="0.2"></RangedWeapon>
+  </Item>
+  <Item name="Miyu's Binocular (prop" identifier="baemote_miyubinocular_prop" noninteractable="false" description="Displays assignments" scale="0.14" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Content/Emotes/Miyu_Binocular_icon.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Emotes/Miyu_Binocular.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Body width="240" height="240" density="11" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-20" aimpos="23,20" aimangle="0" holdangle="-40" handle1="-60,-10" handle2="10,0" cameraaimoffset="800"></Holdable>
+    <RangedWeapon drawhudwhenequipped="true" crosshairscale="0.2">
+      <StatusEffect type="Always" target="This" tags="look1" setvalue="true" disabledeltatime="true" interval="2" duration="1"></StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,30" aimangle="50" disabledeltatime="true" setvalue="true" delay="0.6">
+        <Conditional hasstatustag="eq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,28" aimangle="49" disabledeltatime="true" setvalue="true" delay="0.4">
+        <Conditional hasstatustag="eq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,26" aimangle="46" disabledeltatime="true" setvalue="true" delay="0.2">
+        <Conditional hasstatustag="eq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,24" aimangle="43" disabledeltatime="true" setvalue="true" delay="0.0">
+        <Conditional hasstatustag="eq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,22" aimangle="40" disabledeltatime="true" setvalue="true" delay="0.0">
+        <Conditional hasstatustag="neq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,20" aimangle="37" disabledeltatime="true" setvalue="true" delay="0.2">
+        <Conditional hasstatustag="neq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,18" aimangle="34" disabledeltatime="true" setvalue="true" delay="0.4">
+        <Conditional hasstatustag="neq look1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" aimpos="23,16" aimangle="30" disabledeltatime="true" setvalue="true" delay="0.6">
+        <Conditional hasstatustag="neq look1" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" setvalue="true" disabledeltatime="true">
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Hips Holding" identifier="baemote_hips" noninteractable="false" description="Put your hands on your hips!" scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="-20,-25" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Drinks Tray (Right)" identifier="baemote_drinktrayright" noninteractable="false" description="Hold wine tray on your right arm" scale="0.5" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="winetray.png" depth="0.7" sheetindex="0,0" sheetelementsize="100,76" origin="0.5,0.5" />
+    <Body width="50" height="50" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="RightHand" handle1="-10,-40" handle2="-100,-90" holdpos="50,10" holdangle="3" aimable="false" characterusable="false">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.6" setvalue="true" disabledeltatime="true" />
+    </Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Drinks Tray (Left)" identifier="baemote_drinktrayleft" noninteractable="false" description="Hold wine tray on your left arm" scale="0.5" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="winetray.png" depth="0.7" sheetindex="0,0" sheetelementsize="100,76" origin="0.5,0.5" />
+    <Body width="50" height="50" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="LeftHand" aimable="false" handle2="-10,-40" handle1="-100,-90" holdpos="50,10" holdangle="3" delay="0.2" characterusable="false">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.6" setvalue="true" disabledeltatime="true" />
+    </Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Hips Holding (Right)" identifier="baemote_hipsright" noninteractable="false" description="Put your hands on your hips!" scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="RightHand" aimable="false" characterusable="false" holdpos="-20,-25" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Hips Holding (Left)" identifier="baemote_hipsleft" noninteractable="false" description="Put your hands on your hips!" scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="LeftHand" aimable="false" characterusable="false" holdpos="-20,-25" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Watch Phone" identifier="baemote_phoneread" noninteractable="false" description="Pretends to read something." scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="ichikaphone.png" depth="0.7" sourcerect="0,0,100,100" origin="0.5,0.55" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="30,-20" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Show Phone" identifier="baemote_phoneshow" noninteractable="false" description="Pretends to read something." scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="ichikaphone.png" depth="0.7" sourcerect="0,0,100,100" origin="0.5,0.55" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="70,-10" holdangle="-20"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Click Phone" identifier="baemote_phoneclick1" noninteractable="false" description="Click on phone." scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="20,-20" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="Click Phone" identifier="baemote_phoneclick2" noninteractable="false" description="Click on phone." scale="0.25" tag="equipment,smallitem" hideinmenus="true" category="Miscs">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="15,-10" holdangle="40"></Holdable>
+    <RangedWeapon></RangedWeapon>
+  </Item>
+  <Item name="The Great Deliver" identifier="baemote_kiss" noninteractable="false" description="Show your loved one how much they mean to you, a kiss!" scale="0.25" hideinmenus="true" category="Misc">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <RangedWeapon slots="RightHand+LeftHand"></RangedWeapon>
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" aimpos="-60,-60" swingwhenuse="true" swingamount="100,100">
+      <StatusEffect type="OnSecondaryUse" target="This,Character"></StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Da Humpa!" identifier="baemote_humpa" noninteractable="false" description="DA HUMPA!" scale="0.25" hideinmenus="true" category="Machine">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <RangedWeapon slots="RightHand+LeftHand"></RangedWeapon>
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" aimpos="30,-60" swingwhenuse="true" swingamount="100,100">
+      <StatusEffect type="OnSecondaryUse" target="This,Character"></StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Hikari Pose" identifier="baemote_shupo_hikari" noninteractable="false" description="Poi Poi" scale="0.25" hideinmenus="true" category="Machine">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="20,10" holdangle="80">
+      <!--<StatusEffect type="OnActive" target="Character" lockhands="true"></StatusEffect>-->
+    </Holdable>
+  </Item>
+  <Item name="Hands On Ears" identifier="baemote_earmuffing" noninteractable="false" description="Poi Poi" scale="0.25" hideinmenus="true" category="Machine">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+    <Holdable slots="RightHand+LeftHand" aimable="false" characterusable="false" holdpos="20,10" holdangle="80">
+      <!--<StatusEffect type="OnActive" target="Character" lockhands="true"></StatusEffect>-->
+    </Holdable>
+  </Item>
+  <!--invisible firing-->
+  <!--<Item name="inivisible round" identifier="bainvisibleround" maxstacksize="32" maxstacksizecharacterinventory="20" scale="1.0" category="Weapon" interactthroughwalls="false" noninteractable="true" hideinmenus="true" cargocontaineridentifier="metalcrate" tags="baemoteammo,smallitem">
+    <InventoryIcon texture="%ModDir%/Textures/TalentsIcons3.png" depth="0.7" sheetindex="3,7" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+    <Body width="10" height="30" density="10" ignoresrotation="true" />
+    <Projectile characterusable="false" hitscan="true" damagedoors="false" removeonhit="true" friendlyfire="false">
+      <Attack structuredamage="0" targetforce="0" itemdamage="0" severlimbsprobability="0.0" penetration="0.0"></Attack>
+      <StatusEffect type="OnNotContained" target="This" stackable="false" delay="2">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="inivisible round Magazine" identifier="bainvisiblemagazine" noninteractable="true" scale="0.5" allowasextracargo="true" hideinmenu="true" cargocontaineridentifier="metalcrate" tags="baemoteammo,smallitem" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Content/Ammunitions/ammotype.png" sourcerect="0,50,50,50" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Ammunitions/ammotype.png" sourcerect="0,50,50,50" depth="0.55" origin="0.5,0.5" />
+    <Body width="25" height="46" density="25" />
+    <ItemContainer hideitems="true" capacity="1" ShowContents="false" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="bainvisibleround">
+      <Containable items="bainvisibleround" />
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <SpawnItem identifiers="bainvisibleround" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="false" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>-->
+</Items>

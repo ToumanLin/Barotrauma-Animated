@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="clowndivingmask" variantof="divingmask" tags="smallitem,clownmask,diving,lightdiving">
+      <Price baseprice="150" sold="false" canbespecial="false" />
+      <PreferredContainer primary="divingcab,supplycab" amount="0" />
+      <PreferredContainer amount="0" />
+      <PreferredContainer amount="0" />
+      <PreferredContainer amount="0" />
+      <PreferredContainer amount="0" />
+      <Sprite name="Clown Mask" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="328,304,51,51" origin="0.5,0.5" scale="0.5" />
+      <!-- clear inventory icon, we want to reuse the normal sprite -->
+      <InventoryIcon />
+      <Body width="5" radius="25" />
+      <!-- clear old fabrication and deconstruction elements, replace with new ones -->
+      <Fabricate />
+      <Deconstruct />
+      <Deconstruct time="10">
+        <Item identifier="divingmask" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+        <RequiredItem identifier="clownmask" />
+        <RequiredItem identifier="divingmask" />
+      </Fabricate>
+      <Wearable>
+        <sprite name="Clown Diving Mask Wearable" texture="%ModDir%/Content/Items/JobGear/TalentGear.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" sourcerect="378,301,80,70" origin="0.45,0.4" />
+        <StatusEffect tags="clown" type="OnWearing" target="Character" HideFace="true" duration="0.1" stackable="false" />
+        <!-- play underwater breathing sound outside water -->
+        <StatusEffect type="OnWearing" target="Character" interval="5" comparison="And">
+          <Conditional InWater="false" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath1.ogg" range="250" volume="1.1" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath2.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath3.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath4.ogg" range="250" volume="1.1" />
+        </StatusEffect>
+        <!-- shish -->
+        <StatusEffect type="OnWearing" target="limb" targetlimb="head" interval="5" duration="0.5" comparison="And">
+          <Conditional InWater="true" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath1.ogg" range="250" volume="1.1" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath2.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath3.ogg" range="250" volume="1.1" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreath4.ogg" range="250" volume="1.1" />
+          <ParticleEmitter particle="risingbubbles" velocitymin="7.0" velocitymax="10.0" scalemin="0.36" scalemax="0.43" particlespersecond="25" />
+        </StatusEffect>
+        <!-- play underwater breathing sound and create bubbles when in water -->
+        <StatusEffect type="OnWearing" target="limb" targetlimb="head" interval="5" duration="0.5" comparison="And">
+          <Conditional InWater="true" />
+          <Conditional IsDead="false" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater1.ogg" range="250" volume="0.9" selectionmode="Random" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater2.ogg" range="250" volume="0.9" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater3.ogg" range="250" volume="0.9" />
+          <Sound file="%moddir%/content/sounds/DivingSuitBreathUnderwater4.ogg" range="250" volume="0.9" />
+          <ParticleEmitter particle="risingbubbles" velocitymin="7.0" velocitymax="10.0" scalemin="0.36" scalemax="0.43" particlespersecond="25" />
+        </StatusEffect>
+        <!-- cut -->
+      </Wearable>
+    </Item>
+  </Override>
+</Items>

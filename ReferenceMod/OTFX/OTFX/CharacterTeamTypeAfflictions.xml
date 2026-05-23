@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="TeamTypeMarker" identifier="otfx_teamtypemarker" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="0" showicontoothersthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0">
+      <StatusEffect target="Character" setvalue="true">
+        <Affliction identifier="otfx_teamtypenone" amount="100" />
+        <Conditional teamid="None" />
+      </StatusEffect>
+      <StatusEffect target="Character" setvalue="true">
+        <Affliction identifier="otfx_teamtypeteam1" amount="100" />
+        <Conditional teamid="Team1" />
+      </StatusEffect>
+      <StatusEffect target="Character" setvalue="true">
+        <Affliction identifier="otfx_teamtypeteam2" amount="100" />
+        <Conditional teamid="Team2" />
+      </StatusEffect>
+      <StatusEffect target="Character" setvalue="true">
+        <ReduceAffliction identifier="otfx_teamtypemarker" amount="100" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="TeamType.None" identifier="otfx_teamtypenone" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" duration="1.5" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect tag="otfx_teamtypenone" minstrength="0" maxstrength="100" strengthchange="0" />
+  </Affliction>
+  <Affliction name="TeamType.Team1" identifier="otfx_teamtypeteam1" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" duration="1.5" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect tag="otfx_teamtypeteam1" minstrength="0" maxstrength="100" strengthchange="0" />
+  </Affliction>
+  <Affliction name="TeamType.Team2" identifier="otfx_teamtypeteam2" type="" limbspecific="false" indicatorlimb="Torso" maxstrength="100" duration="1.5" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect tag="otfx_teamtypeteam2" minstrength="0" maxstrength="100" strengthchange="0" />
+  </Affliction>
+</Afflictions>

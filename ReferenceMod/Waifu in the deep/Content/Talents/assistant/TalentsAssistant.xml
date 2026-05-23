@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Override>
+    <Talent identifier="graduationceremony">
+      <Icon texture="Content/UI/TalentsIcons2.png" sheetindex="2,5" sheetelementsize="128,128" />
+      <Description tag="talentdescription.unlockapprenticeshiptalents" />
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.ceremonialsword,entityname.Wf_Admiral_Katana,entityname.Wf_Admiral_Wakizashi" color="gui.orange" />
+      </Description>
+      <AddedRecipe itemidentifier="ceremonialsword" />
+      <AddedRecipe itemidentifier="Wf_Admiral_Katana" />
+      <AddedRecipe itemidentifier="Wf_Admiral_Wakizashi" />
+      <AbilityGroupEffect abilityeffecttype="None">
+        <Conditions>
+          <AbilityConditionHasPermanentStat statidentifier="graduationceremony" min="1" invert="true" />
+        </Conditions>
+        <Abilities>
+          <CharacterAbilityUnlockApprenticeshipTalentTree />
+          <CharacterAbilityGivePermanentStat statidentifier="graduationceremony" value="1" />
+        </Abilities>
+      </AbilityGroupEffect>
+    </Talent>
+  </Override>
+</Talents>

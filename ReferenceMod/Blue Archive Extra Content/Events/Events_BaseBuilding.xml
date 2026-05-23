@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <!--Base QUEST LINE-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="Trinity_basebuilding1" commonness="100">
+      <CheckDataAction identifier="Trinity_Construction_built" condition="eq false">
+        <Success>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_saki" targettag="saki" spawnlocation="Outpost" />
+          <NPCWaitAction npctag="saki" wait="true" />
+          <ConversationAction text="Trinity and SRT are setting up a base, and we're helping them with through joint operations." speakertag="saki" invokertag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_1" />
+          <NPCFollowAction npctag="saki" targettag="triggerer_player" follow="true" />
+          <ConversationAction text="As much as i disliked their attitudes, it's the only way we can get some budget around here. We're on the same boat right?" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_9">
+            <Option text="Pretty much.">
+              <ConversationAction text="I've heard alot about you, we will be moving there and stays for awhile, we had our crew posted there." targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_13" />
+              <ConversationAction text="At the moment we're on standby and waiting for assignments, so we've been doing cargo and escorting missions in our free time..." targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_10" />
+              <ConversationAction text="I'll give you the cordinate of the outpost, do visit us when you pass by." targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_2">
+                <Option text="Very well.">
+                  <ConversationAction text="That's about it, see you around~" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_6" />
+                  <NPCFollowAction npctag="saki" targettag="triggerer_player" follow="false" />
+                  <SetDataAction identifier="Trinity_Construction_built" value="true" />
+                  <MissionAction missionidentifier="Trinity_Basebuilding1" locationtype="trinity_base" CreateLocationIfNotFound="true" />
+                </Option>
+              </ConversationAction>
+            </Option>
+          </ConversationAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--Chat Events-->
+    <ScriptedEvent identifier="base_event_srt_chat0" tags="base_event_srt_chat0" commonness="0">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_saki" tag="saki" />
+      <CheckDataAction identifier="event_srt_thanks_finished" condition="eq 0">
+        <Success>
+          <ConversationAction text="EventText.Thankyou1" invokertag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_2" speakertag="saki" />
+          <NPCFollowAction npctag="saki" targettag="triggerer_player" follow="true" />
+          <ConversationAction text="EventText.Thankyou2" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_2" />
+          <ConversationAction text="EventText.Thankyou3" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_3" />
+          <ConversationAction text="EventText.Thankyou4" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_13" />
+          <ConversationAction text="EventText.Thankyou5" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_5" />
+          <ConversationAction text="EventText.Thankyou6" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_7" />
+          <ConversationAction text="EventText.Thankyou7" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_6" />
+          <ConversationAction text="EventText.Thankyou8" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_1" />
+          <ConversationAction text="EventText.Thankyou9" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Saki_Helmetless_Portrait_Expression_8" endconversation="true" />
+          <NPCFollowAction npctag="saki" targettag="triggerer_player" follow="false" />
+          <SetDataAction identifier="event_srt_thanks_finished" value="1" />
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--SPAWN EVENTS-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <ScriptedEvent identifier="base_spawn_srt" tags="base_spawn_srt" commonness="0">
+      <CheckDataAction identifier="spawnevent_srt_chat0_finished" condition="eq false">
+        <Success>
+          <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_saki" spawnlocation="Outpost" ContinueIfNoTargetsFound="true" />
+          <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_miyu" spawnlocation="Outpost" ContinueIfNoTargetsFound="true" />
+          <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_moe" spawnlocation="Outpost" ContinueIfNoTargetsFound="true" />
+          <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_miyako" spawnlocation="Outpost" ContinueIfNoTargetsFound="true" />
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--TRIGGER EVENTS-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--///////////////////-->
+    <!--renaming trigger-->
+    <ScriptedEvent identifier="Trinity_basebuilding_rename1" tags="Trinity_basebuilding_rename1" commonness="0">
+      <ModifyLocationAction faction="trinity" name="Trinity Construction Site" type="trinity_base" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Trinity_basebuilding_rename2" tags="Trinity_basebuilding_rename2" commonness="0">
+      <ModifyLocationAction faction="trinity" name="Trinity Outpost" type="trinity_base_tier2" />
+    </ScriptedEvent>
+    <!--base type change trigger-->
+    <ScriptedEvent identifier="Trinity_basebuildingtest_changetype1" commonness="0">
+      <ModifyLocationAction faction="trinity" name="Trinity Construction Site" type="trinity_base_tier1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Trinity_basebuildingtest_changetype2" commonness="0">
+      <ModifyLocationAction faction="trinity" name="Trinity Outpost" type="trinity_base_tier2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Trinity_basebuilding_changetype_mission_location" commonness="0">
+      <ModifyLocationAction faction="trinity" name="Mission location" type="ba_location_attackdefense" />
+    </ScriptedEvent>
+    <!--TOWER DEFENSE MINIGAME-->
+    <!--SPAWN TRIGGER-->
+    <ScriptedEvent identifier="ba_td_trigger1" tags="ba_td_trigger1" commonness="0">
+      <!--locationa nd npc tagging-->
+      <TagAction criteria="player" tag="player" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_moe" targettag="moe" spawnpointtag="spawn_moe" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_saki" targettag="saki" spawnpointtag="spawn_saki" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_miyu" targettag="miyu" spawnpointtag="spawn_miyu" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="miyu" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="moe" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="saki" />
+      <TagAction criteria="hullname:moe_module" tag="moe_module" submarinetype="Outpost" />
+      <TagAction criteria="hullname:miyu_module" tag="miyako_module" submarinetype="Outpost" />
+      <TagAction criteria="hullname:saki_module" tag="saki_module" submarinetype="Outpost" />
+      <Label name="Start_Mission0" />
+      <ConversationAction text="shall we start?" invokertag="triggerer_player" endeventifinterrupted="false" speakertag="moe" eventsprite="Moe_Portrait_Expression_2">
+        <!--check for cool down on request, you dont want players to stack requests-->
+        <Option text="Let's do it!">
+          <ConversationAction text="shall we start?" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" />
+          <NPCFollowAction npctag="miyu" targettag="miyu_module" follow="true" />
+          <NPCFollowAction npctag="moe" targettag="moe_module" follow="true" />
+          <NPCFollowAction npctag="saki" targettag="saki_module" follow="true" />
+          <GoTo name="Start_Mission_Proceed" />
+        </Option>
+        <!--starts with lv0 commission, ask miyako to level it up-->
+        <Option text="Not Yet">
+          <ConversationAction text="Make sure you bring enough ammo, you can also ask more from head quarter" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" />
+          <GoTo name="Start_Mission0" />
+        </Option>
+      </ConversationAction>
+      <Label name="Start_Mission_Proceed" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_td_trigger_attack" tags="ba_td_trigger_attack" commonness="0">
+      <!--locationa nd npc tagging-->
+      <TagAction criteria="player" tag="player" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_moe" targettag="moe" spawnpointtag="td_spawnpoint_enemy" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_srt" npcidentifier="npc_saki" targettag="saki" spawnpointtag="spawn_saki" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="miyu" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="moe" />
+      <TagAction criteria="humanprefabidentifier:npc_miyu" tag="saki" />
+      <!--<SpawnAction speciesname="mudraptor" spawnpointtag="td_spawnpoint_enemy" targettag="raptor_spawn"/>-->
+      <Label name="reset_action" />
+      <WaitAction time="3" />
+      <CheckVisibilityAction EntityTag="moe" TargetTag="saki" maxdistance="300">
+        <Success>
+          <NPCFollowAction npctag="moe" targettag="saki" follow="false" />
+        </Success>
+        <Failure>
+          <NPCFollowAction npctag="moe" targettag="saki" follow="true" />
+          <GoTo name="reset_action" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

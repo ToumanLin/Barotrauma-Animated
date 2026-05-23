@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="Hydra" identifier="otfx_hydra" type="geneticmaterialbuff" limbspecific="false" indicatorlimb="Torso" hideiconafterdelay="true" showiconthreshold="0" treatmentthreshold="100" maxstrength="100" iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="100" resistancefor="acidburn" minresistance="1.0" maxresistance="1.0">
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="0.5" />
+        <Affliction identifier="otfx_hydrainstability" amount="0.9" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="5" />
+        <Affliction identifier="otfx_hydrainstability" amount="9.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" delay="0.2">
+        <RequiredAffliction type="damage" minstrength="5" />
+        <SpawnItem identifiers="acidmistemitter" spawnposition="This" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="10" />
+        <Affliction identifier="otfx_hydrainstability" amount="9.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" delay="0.4">
+        <RequiredAffliction type="damage" minstrength="10" />
+        <SpawnItem identifiers="acidmistemitter" spawnposition="This" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="15" />
+        <Affliction identifier="otfx_hydrainstability" amount="9.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" delay="0.6">
+        <RequiredAffliction type="damage" minstrength="15" />
+        <SpawnItem identifiers="acidmistemitter" spawnposition="This" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="20" />
+        <Affliction identifier="otfx_hydrainstability" amount="9.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" delay="0.8">
+        <RequiredAffliction type="damage" minstrength="20" />
+        <SpawnItem identifiers="acidmistemitter" spawnposition="This" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" multiplyafflictionsbymaxvitality="true">
+        <RequiredAffliction type="damage" minstrength="25" />
+        <Affliction identifier="otfx_hydrainstability" amount="9.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged" delay="1.0">
+        <RequiredAffliction type="damage" minstrength="25" />
+        <SpawnItem identifiers="acidmistemitter" spawnposition="This" />
+      </StatusEffect>
+    </Effect>
+    <PeriodicEffect mininterval="5.0" maxinterval="5.0" minstrength="0" maxstrength="20">
+      <StatusEffect target="Character" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_hydraregeneration" amount="250" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <PeriodicEffect mininterval="5.0" maxinterval="5.0" minstrength="20" maxstrength="40">
+      <StatusEffect target="Character" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_hydraregeneration" amount="312.5" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <PeriodicEffect mininterval="5.0" maxinterval="5.0" minstrength="40" maxstrength="60">
+      <StatusEffect target="Character" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_hydraregeneration" amount="375" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <PeriodicEffect mininterval="5.0" maxinterval="5.0" minstrength="60" maxstrength="80">
+      <StatusEffect target="Character" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_hydraregeneration" amount="437.5" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <PeriodicEffect mininterval="5.0" maxinterval="5.0" minstrength="80" maxstrength="100">
+      <StatusEffect target="Character" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="otfx_hydraregeneration" amount="500" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="otfx_hydraregeneration" type="buff" isbuff="true" limbspecific="false" indicatorlimb="Torso" maxstrength="500" showiconthreshold="infinity" showicontoothersthreshold="infinity">
+    <Effect minstrength="0" maxstrength="500" strengthchange="-100">
+      <StatusEffect target="Character">
+        <ReduceAffliction type="damage" strength="3.75" />
+        <ReduceAffliction type="burn" strength="3.75" />
+        <ReduceAffliction identifier="bloodloss" strength="3.75" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="Hydra Instability" identifier="otfx_hydrainstability" type="geneticmaterialdebuff" limbspecific="false" indicatorlimb="Torso" hideiconafterdelay="true" showiconthreshold="0" treatmentthreshold="100" maxstrength="100" iconcolors="94,54,95;163,73,164;200,191,231">
+    <Effect minstrength="0" maxstrength="50" strengthchange="-1.0" minspeedmultiplier="1.00" maxspeedmultiplier="0.95" resistancefor="damage" minresistance="-0.00" maxresistance="-0.75" minscreenblur="0.00" maxscreenblur="0.05" minchromaticaberration="0.0" maxchromaticaberration="5.0" graincolor="0,0,0,255" mingrainstrength="0.0" maxgrainstrength="3.0"></Effect>
+    <Effect minstrength="50" maxstrength="100" strengthchange="-1.0" minspeedmultiplier="0.95" maxspeedmultiplier="0.65" resistancefor="damage" minresistance="-0.75" maxresistance="-1.25" minscreenblur="0.05" maxscreenblur="0.2" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="10.0" graincolor="0,0,0,255" mingrainstrength="3.0" maxgrainstrength="6.0"></Effect>
+    <icon texture="Content/UI/TalentsIcons3.png" sheetindex="5,0" sheetelementsize="128,128" color="163,73,764,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

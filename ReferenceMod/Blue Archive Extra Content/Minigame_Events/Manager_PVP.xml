@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RandomEvents>
+  <EventPrefabs>
+    <!--Tier 1 SPAWN-->
+    <ScriptedEvent identifier="BA_PVP_Spawner" tags="BA_PVP_Spawners">
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Handgun" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Handgun" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Handgun" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Handgun" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Defender" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Defender" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Rifle" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Rifle" />
+      <TriggerEventAction identifier="BA_PVP_Spawner2" />
+    </ScriptedEvent>
+    <!--Tier 2 SPAWN-->
+    <ScriptedEvent identifier="BA_PVP_Spawner2" tags="BA_PVP_Spawners2">
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Rifle" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Rifle" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Handgun" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Handgun" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Rifle" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Rifle" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Defender" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Defender" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Smg" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Smg" />
+      <TriggerEventAction identifier="BA_PVP_Spawner3" />
+    </ScriptedEvent>
+    <!--Tier 3 SPAWN (REPEAT)-->
+    <ScriptedEvent identifier="BA_PVP_Spawner3" tags="BA_PVP_Spawners3">
+      <Label name="reset" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Smg" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Smg" />
+      <TriggerEventAction identifier="PVP_JTF_Spawner_Assault" />
+      <TriggerEventAction identifier="PVP_DCM_Spawner_Assault" />
+      <GoTo name="reset" />
+    </ScriptedEvent>
+    <!--JTF Team1-->
+    <ScriptedEvent identifier="PVP_JTF_Spawner_Handgun">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_neutral" targettag="1" spawnpointtag="deathmatchteam1" teamtag="1" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_JTF_Spawner_Defender">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_defender" targettag="1" spawnpointtag="deathmatchteam1" teamtag="1" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_JTF_Spawner_Rifle">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_rifleman" targettag="1" spawnpointtag="deathmatchteam1" teamtag="1" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_JTF_Spawner_Smg">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_smg" targettag="1" spawnpointtag="deathmatchteam1" teamtag="1" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_JTF_Spawner_Assault">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="1" spawnpointtag="deathmatchteam1" teamtag="1" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="1" />
+    </ScriptedEvent>
+    <!--DCM Team2-->
+    <ScriptedEvent identifier="PVP_DCM_Spawner_Handgun">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_neutral" targettag="2" spawnpointtag="deathmatchteam2" teamtag="2" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_DCM_Spawner_Defender">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_defender" targettag="2" spawnpointtag="deathmatchteam2" teamtag="2" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_DCM_Spawner_Rifle">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_rifleman" targettag="2" spawnpointtag="deathmatchteam2" teamtag="2" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_DCM_Spawner_Smg">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_smg" targettag="2" spawnpointtag="deathmatchteam2" teamtag="2" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="PVP_DCM_Spawner_Assault">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_assault" targettag="2" spawnpointtag="deathmatchteam2" teamtag="2" />
+      <SpawnAction itemidentifier="te_dod_emitter" targetinventory="2" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</RandomEvents>

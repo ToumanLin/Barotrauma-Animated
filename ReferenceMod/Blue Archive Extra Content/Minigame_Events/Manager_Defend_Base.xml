@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RandomEvents>
+  <EventPrefabs>
+    <ScriptedEvent identifier="ba_Minigame_Despawn_Items">
+      <TagAction criteria="itemtag:minigameitem" tag="minigameitem" />
+      <OnRoundEndAction>
+        <StatusEffectAction targettag="minigameitem">
+          <StatusEffect target="This">
+            <Remove />
+          </StatusEffect>
+        </StatusEffectAction>
+      </OnRoundEndAction>
+    </ScriptedEvent>
+    <!--Money Event-->
+    <ScriptedEvent identifier="ba_manager_currency_standard" tags="ba_manager_currency">
+      <TagAction criteria="itemtag:ba_minigame_storage_currency" tag="ba_minigame_storage_currency" />
+      <Label name="reset" />
+      <WaitAction time="1" />
+      <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="ba_minigame_storage_currency" />
+      <GoTo name="reset" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_manager_currency_deployable" tags="ba_manager_currency_deployable">
+      <TagAction criteria="itemtag:ba_shop_weapons" tag="ba_shop_weapons" />
+      <Label name="reset" />
+      <WaitAction time="1" />
+      <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="ba_shop_weapons" />
+      <WaitAction time="1" />
+      <GoTo name="reset" />
+    </ScriptedEvent>
+    <!--Main Event-->
+    <ScriptedEvent identifier="ba_manager_defend_base_minigame" tags="ba_manager_defensd_base_minigame">
+      <!--spawning afk mobs that stays in place-->
+      <TagAction criteria="hullname:spawn_team1_afk1" tag="spawn_team1_afk1" submarinetype="Player" />
+      <TriggerEventAction identifier="ba_minigame_defend_operator" />
+      <TriggerEventAction identifier="ba_Minigame_Despawn_Items" />
+      <OnRoundEndAction>
+        <TagAction criteria="itemtag:minigameitem" tag="minigameitem" />
+        <StatusEffectAction targettag="minigameitem">
+          <StatusEffect target="This">
+            <Remove />
+          </StatusEffect>
+        </StatusEffectAction>
+      </OnRoundEndAction>
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_afk_gunner" spawnpointtag="spawn_team1_afk1" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_camp_captain" targettag="captain" spawnpointtag="spawn_captain" teamtag="1" />
+      <!--other mobs-->
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_fighter1" spawnpointtag="spawn_team1_move1" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter2" spawnpointtag="spawn_team1_move2" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter3" spawnpointtag="spawn_team1_move3" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_fighter4" spawnpointtag="spawn_miyako" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_fighter5" spawnpointtag="spawn_team1_move5" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter6" spawnpointtag="spawn_team1_move6" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_fighter7" spawnpointtag="spawn_team1_move7" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter8" spawnpointtag="spawn_team1_move8" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter9" spawnpointtag="spawn_team1_move9" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1_fighter10" spawnpointtag="spawn_team1_move10" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter11" spawnpointtag="spawn_team1_move11" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1_fighter12" spawnpointtag="spawn_team1_move12" teamtag="1" />
+      <TeleportAction Position="MainSub" TargetTag="captain" spawnpointtag="spawn_team1_move9" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter1" spawnpointtag="friendly_base_top" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter2" spawnpointtag="friendly_base" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter3" spawnpointtag="friendly_base_top" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter4" spawnpointtag="spawn_team1_move4" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter5" spawnpointtag="friendly_base" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter6" spawnpointtag="spawn_miyu" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter7" spawnpointtag="friendly_base" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter8" spawnpointtag="friendly_base_upper" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter9" spawnpointtag="friendly_base_top" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter10" spawnpointtag="friendly_base" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter11" spawnpointtag="spawn_team1_move4" />
+      <TeleportAction Position="MainSub" TargetTag="team1_fighter12" spawnpointtag="spawn_team1_move5" />
+      <WaitAction time="2" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="captain" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter1" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter2" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter3" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter4" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter5" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter6" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter7" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter8" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter9" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter10" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter11" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter12" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="50" targettag="captain" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter1" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter2" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter3" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter4" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter5" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter6" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter7" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter8" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter9" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter10" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter11" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_fighter12" />
+      <GoTo name="proceed" />
+      <Label name="reset" />
+      <ConversationAction invokertag="triggerer_player" speakertag="captain" text="ready to defend base? (TEST MISSION)" eventsprite="portrait_jtfmember2">
+        <Option text="let's do it (Start Mission 5 minutes)">
+          <GoTo name="proceed" />
+        </Option>
+        <Option text="no wait, let me prepare first!">
+          <GoTo name="reset" />
+        </Option>
+      </ConversationAction>
+      <!--start mission-->
+      <!--unleash all NPCs back to their OG position-->
+      <Label name="proceed" />
+      <TriggerEventAction identifier="ba_manager_currency_standard" />
+      <WaitAction time="3" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="captain" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter1" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter2" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter3" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter4" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter5" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter6" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter7" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter8" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter9" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter10" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter11" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="-10" targettag="team1_fighter12" />
+      <WaitAction time="60" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="captain" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter1" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter2" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter3" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter4" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter5" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter6" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter7" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter8" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter9" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter10" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter11" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_fighter12" />
+      <TriggerEventAction identifier="ba_manager_defend_enemy_spawner_standard" />
+      <!--starts spawning enemy-->
+    </ScriptedEvent>
+    <!--SPAWN EVENTS-->
+    <ScriptedEvent identifier="ba_manager_defend_enemy_spawner_standard" tags="ba_manager_defend_enemy_spawner_standard">
+      <TriggerEventAction identifier="ba_minigame_defend_rifleman" />
+      <TriggerEventAction identifier="ba_minigame_defend_grunt" />
+      <TriggerEventAction identifier="ba_minigame_defend_grunt" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="ba_minigame_defend_grunt" />
+      <TriggerEventAction identifier="ba_minigame_defend_scout" />
+      <TriggerEventAction identifier="ba_minigame_defend_scout" />
+      <TriggerEventAction identifier="ba_minigame_defend_sniper_front" />
+      <MessageBoxAction text="Enemy is flanking from the back!" iconstyle="GUINotificationButton" tag="notification" />
+      <TriggerEventAction identifier="ba_minigame_defend_assault_back" />
+      <TriggerEventAction identifier="ba_minigame_defend_grunt" />
+      <TriggerEventAction identifier="ba_minigame_defend_smg_back" />
+      <WaitAction time="10" />
+      <MessageBoxAction type="close" tag="notification" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="ba_minigame_defend_rifleman" />
+      <TriggerEventAction identifier="ba_minigame_defend_rifleman" />
+      <TriggerEventAction identifier="ba_minigame_defend_rifleman" />
+      <WaitAction time="20" />
+      <MessageBoxAction text="Enemy is flanking from the back!" iconstyle="GUINotificationButton" tag="notification" />
+      <TriggerEventAction identifier="ba_minigame_defend_assault_back" />
+      <TriggerEventAction identifier="ba_minigame_defend_assault_back" />
+      <TriggerEventAction identifier="ba_minigame_defend_sniper_front" />
+      <WaitAction time="10" />
+      <MessageBoxAction type="close" tag="notification" />
+      <WaitAction time="20" />
+      <TriggerEventAction identifier="ba_minigame_defend_rifleman" />
+      <TriggerEventAction identifier="ba_minigame_defend_assault" />
+      <TriggerEventAction identifier="ba_minigame_defend_assault" />
+      <WaitAction time="20" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</RandomEvents>

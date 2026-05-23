@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 异教徒长袍:增加沉船刷新点,降低购买所需声望,加3格药物口袋,提高最低出售数量 -->
+    <Item name="" identifier="cultistrobes" category="Equipment" tags="smallitem,clothing,huskcult" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.02" />
+      <PreferredContainer primary="crewcab" />
+      <Price baseprice="150" canbespecial="false" sold="false">
+        <Price storeidentifier="merchanthusk" minavailable="4" sold="true">
+          <Reputation faction="huskcult" min="35" />
+        </Price>
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="340,54,62,48" />
+      <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="254,359,117,65" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" variants="1" msg="ItemMsgPickUpSelect">
+        <sprite name="Cultist Torso" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,308" origin="0.5,0.26" />
+        <sprite name="Cultist Right Hand" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Hand" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Waist" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+        <sprite name="Cultist Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Leg" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Leg" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Cultist Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist1_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" interval="0.5" disabledeltatime="true">
+          <Affliction identifier="disguisedashusk" amount="1.0" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+    </Item>
+    <!-- 狂热者长袍:增加沉船刷新点,降低购买所需声望,加3格药物口袋,提高最低出售数量 -->
+    <Item name="" identifier="zealotrobes" category="Equipment" tags="smallitem,clothing,huskcult" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="wreckstoragecab" spawnprobability="0.01" />
+      <PreferredContainer primary="crewcab" />
+      <Price baseprice="150" canbespecial="false" sold="false">
+        <Price storeidentifier="merchanthusk" minavailable="4" sold="true">
+          <Reputation faction="huskcult" min="35" />
+        </Price>
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="409,2,63,45" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="383,359,117,65" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" variants="1" msg="ItemMsgPickUpSelect">
+        <sprite name="Cultist Torso" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,308" origin="0.5,0.26" />
+        <sprite name="Cultist Right Hand" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" sourcerect="296,160,64,48" />
+        <sprite name="Cultist Left Hand" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Waist" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+        <sprite name="Cultist Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Right Leg" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Leg" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Cultist Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="Cultist Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist2_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" interval="0.5" disabledeltatime="true">
+          <Affliction identifier="disguisedashusk" amount="1.0" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="OnWearing" setvalue="true">
+          <Affliction identifier="husktransformimmunitytemporary" amount="100" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="OnWearing">
+          <Conditional huskinfection="gt 0" />
+          <Conditional husksymbiosis="gt 0" />
+          <ReduceAffliction type="damage" amount="0.25" />
+          <ReduceAffliction type="bleeding" amount="0.1" />
+        </StatusEffect>
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+    </Item>
+    <!-- 邪教徒头饰：头饰独立 -->
+    <Item name="" identifier="cultistheadgear" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem,clothing,huskcult" description="" scale="0.2" impactsoundtag="impact_soft">
+      <Price baseprice="15" sold="false" canbespecial="false" />
+      <Deconstruct time="10" />
+      <Sprite texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist_gear_female.png" depth="0.6" sourcerect="0,0,160,228" origin="0.6125,0.33" scale="0.2" />
+      <Body width="20" radius="15" density="15" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist_gear_[GENDER].png" limb="Head" hidelimb="false" inheritlimbdepth="true" sourcerect="0,0,160,256" inherittexturescale="true" origin="0.6125,0.4" hidewearablesoftype="beard,hair" />
+        <sprite texture="%ModDir%/Content/Items/Jobgear/Cultist/cultist_gear_[GENDER].png" limb="Torso" hidelimb="false" depthlimb="Head" sourcerect="160,0,160,256" inherittexturescale="true" origin="0.5,0.5" />
+        <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound,bitewounds" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

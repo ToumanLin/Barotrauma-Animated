@@ -1,0 +1,928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+  <!-- 工具带 -->
+  <Item name="" identifier="toolbelt" category="Equipment" tags="mediumitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <Item identifier="organicfiber" amount="2" />
+    </Fabricate>
+    <Price baseprice="65">
+      <Price storeidentifier="merchantoutpost" minavailable="4" />
+      <Price storeidentifier="merchantcity" minavailable="6" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+      <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="274,102,29,35" scale="0.7" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="274,102,29,35" depth="0.6" />
+    <Body width="20" height="20" density="20" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="ToolBelt" texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="274,102,29,35" limb="Torso" scale="1.3" inherittexturescale="true" origin="1,0.255" />
+    </Wearable>
+    <Holdable slots="RightHand,LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" depth="0.5" QuickUseMovesItemsInside="false">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier,rigging,chiyuan" />
+    </ItemContainer>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <!-- 喇叭 -->
+  <Item name="Loudspeaker" identifier="loudspeaker" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="2">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/SB.ogg" type="OnUse" range="1500" />
+      <StatusEffect type="OnUse" target="This">
+        <Use />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Loudspeaker" identifier="loudspeaker1" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="2.5">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/很有精神.ogg" type="OnUse" range="1500" />
+      <StatusEffect type="OnUse" target="This">
+        <Use />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Loudspeaker" identifier="loudspeaker2" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="2">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/这么小声还想开军舰.ogg" type="OnUse" range="1500" />
+      <StatusEffect type="OnUse" target="This">
+        <Use />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Loudspeaker" identifier="loudspeaker3" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="2">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/目力先辈.ogg" type="OnUse" range="2500" volume="3.0" />
+      <StatusEffect type="OnUse" target="Character,This">
+        <Affliction identifier="oxygenlow" strength="20" />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Loudspeaker" identifier="loudspeaker4" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="2">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/enemy spotted.ogg" type="OnUse" range="1500" volume="5.0" />
+      <StatusEffect type="OnUse" target="This">
+        <Use />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Loudspeaker" identifier="loudspeaker5" category="misc" cargocontaineridentifier="metalcrate" tags="smallitem,misc" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <Price baseprice="100" sold="false">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.1" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="3"></Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/loudspeaker.png" sourcerect="0,0,67,55" origin="0.5,0.5" />
+    <Body width="20" height="32" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,14" aimable="false" handle1="-12,-18" holdangle="0" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="0,0" spread="0" combatPriority="0" drawhudwhenequipped="false" reload="1.5">
+      <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/bababooey.ogg" type="OnUse" range="1500" volume="5.0" />
+      <StatusEffect type="OnUse" target="This">
+        <Use />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <!-- 钢管 -->
+  <Item name="Ironpipe" identifier="ironpipe" category="misc" tags="smallitem,misc" variantof="crowbar">
+    <PreferredContainer primary="outposttrashcan" spawnprobability="0.25" />
+    <Price baseprice="35" sold="false" />
+    <Deconstruct>
+      <Item identifier="iron" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/loudspeaker/ironpipe_icon.png" sourcerect="0,0,45,45" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/loudspeaker/ironpipe.png" sourcerect="0,0,233,20" depth="0.55" origin="0.5,0.5" />
+    <Body width="114" height="20" density="30" />
+    <MeleeWeapon slots="RightHand+LeftHand,Any" range="150" reload="0.8" controlpose="true" aimpos="45,10" handle1="-25,0" handle2="-12.5,0.5" holdangle="56" combatpriority="20">
+      <Attack targetimpulse="15" structuredamage="5" itemdamage="5">
+        <Affliction identifier="blunttrauma" strength="10" />
+        <Affliction identifier="stun" strength="0.3" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="%ModDir%/Content/Items/Tools/loudspeaker/钢管落地.ogg" range="1000" volume="1.5" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+  </Item>
+  <!-- 储罐容器 -->
+  <Item name="Tank container" identifier="tankcontainer" category="Equipment" tags="mediumitem,mobilecontainer,tool" cargocontaineridentifier="" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <PreferredContainer primary="locker" />
+    <PreferredContainer secondary="outpostcrewcabinet" />
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" amount="2" />
+    </Fabricate>
+    <Price baseprice="60">
+      <Price storeidentifier="merchantoutpost" minavailable="1" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="4" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/tankcontainer.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/tankcontainer.png" sourcerect="0,0,64,64" origin="0.5,0.5" depth="0.6" />
+    <Body width="64" height="64" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand,Any" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect" DisableWhenRangedWeaponEquipped="true">
+      <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="4" maxstacksize="1" keepopenwhenequipped="false" movableframe="false" QuickUseMovesItemsInside="false">
+      <Containable items="weldingtoolfuel,oxygensource" />
+    </ItemContainer>
+    <aitarget sightrange="1000" soundrange="1000" fadeouttime="2" />
+  </Item>
+  <!-- 背包 -->
+  <Item name="" identifier="backpack" category="Equipment" tags="mediumitem,mobilecontainer,largemobilecontainer,tool" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+    <PreferredContainer primary="engcab" />
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab" />
+    <PreferredContainer primary="outpostcrewcabinet" />
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" amount="4" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+      <Item identifier="organicfiber" amount="6" />
+    </Fabricate>
+    <Price baseprice="200" minleveldifficulty="40">
+      <Price storeidentifier="merchantoutpost" minavailable="4" />
+      <Price storeidentifier="merchantcity" minavailable="6" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+      <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,100,126" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,100,126" depth="0.6" />
+    <Body width="60" height="100" density="15" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+      <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge,deepdiving" texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,100,126" limb="Torso" inherittexturescale="true" origin="0.76,0.538" />
+      <StatValue stattype="MovementSpeed" value="-0.08" />
+      <StatValue stattype="PropulsionSpeed" value="-0.08" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,50" handle2="10,50" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false">
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.9" setvalue="true" disabledeltatime="true" />
+      <StatValue stattype="MovementSpeed" value="-0.08" />
+      <StatValue stattype="PropulsionSpeed" value="-0.08" />
+    </Holdable>
+    <ItemContainer capacity="16" maxstacksize="32" depth="0.5">
+      <Containable items="smallitem,mediumitem,mountableweapon,harpoonammo" excludeditems="toolbox,backpack,toolbelt,the_jupiter,exoskeleton_light,exoskeleton_standard" />
+    </ItemContainer>
+  </Item>
+  <!-- 瞄准镜 -->
+  <Item identifier="scope" category="Equipment" Tags="smallitem" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.45" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Items/Tools/scopes.png" sourcerect="5,10,67,16" depth="0.55" />
+    <Body width="64" height="16" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+    <Price baseprice="250" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="quartz" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="silicon" amount="2" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="600" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item identifier="reddot" category="Equipment" Tags="smallitem,tsm_sight_reddot" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.45" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Items/Tools/scopes.png" sourcerect="27,47,26,17" depth="0.55" />
+    <Body width="64" height="16" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+    <Price baseprice="250" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="silicon" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item identifier="hybridscope" category="Equipment" Tags="smallitem,tsm_sight_tripled" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.45" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Items/Tools/scopes.png" sourcerect="92,6,42,21" depth="0.55" />
+    <Body width="64" height="16" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+    <Price baseprice="250" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="quartz" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+      <Item identifier="silicon" amount="2" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="380" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!-- 雷射瞄准器 -->
+  <Item name="" identifier="wf_laserpointer" category="Equipment" Tags="smallitem,flashlight" cargocontaineridentifier="metalcrate" Scale="0.4" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+    <Price baseprice="400" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem tag="lightcomponent" amount="2" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Content/Items/Tools/scopes.png" sourcerect="95,51,33,14" depth="0.55" origin="0.5,0.5" />
+    <Body width="40" height="15" density="15" />
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" targettype="Contained" Condition="-0.05">
+        <RequiredItem items="mobilebattery" type="Contained" />
+      </StatusEffect>
+      <!-- the child LightComponent is only active when the Holdable is active, i.e. when the item is being held -->
+      <LightComponent LightColor="255,0,0,255" directional="true" Flicker="0.02" range="800" powerconsumption="10" IsOn="true">
+        <LightTexture texture="%ModDir%/Content/Lights/wf_laserpointer.png" origin="0,0.5" size="1.0,0.1" alpha="1.0" />
+        <IsActive targetcontaineditem="true" condition="gt 1.0" />
+      </LightComponent>
+      <LightComponent LightColor="255,0,0,255" directional="true" range="800" powerconsumption="10" IsOn="true" flicker="0.8" flickerspeed="1.0" pulsefrequency="0.1" pulseamount="0.5">
+        <LightTexture texture="%ModDir%/Content/Lights/wf_laserpointer.png" origin="0,0.5" size="1.0,0.1" alpha="1.0" />
+        <IsActive targetcontaineditem="true" condition="lte 1.0" />
+      </LightComponent>
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+      </Containable>
+    </ItemContainer>
+  </Item>
+  <!-- 灭火器萨克斯 -->
+  <Item name="" description="" identifier="extinguisher_sax" category="Misc" Tags="mediumitem,fireextinguisher,instrument,extinguisher" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light" donttransferbetweensubs="true">
+    <Upgrade gameversion="0.9.600.0" Tags="mediumitem,fireextinguisher,instrument,extinguisher" />
+    <PreferredContainer primary="extinguisherholder" spawnprobability="1.0" />
+    <PreferredContainer primary="wreckextinguisherholder" spawnprobability="0.6" />
+    <PreferredContainer secondary="engcab,reactorcab" />
+    <Price baseprice="20" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="2">
+      <RequiredItem identifier="extinguisher" mincondition="0.0" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" depth="0.55" sourcerect="446,268,54,108" origin="0.5,0.5" />
+    <Body width="30" height="100" density="8" />
+    <RangedWeapon reload="1" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" aimpos="28,-5" handle1="-2,-20" handle2="-6,10" swingamount="10,20" swingspeed="1" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+      <sound file="%ModDir%/Content/Items/Tools/loudspeaker/extinguisher_sax1.ogg" type="OnUse" range="600" loop="true" selectionmode="random" />
+      <sound file="%ModDir%/Content/Items/Tools/loudspeaker/extinguisher_sax2.ogg" type="OnUse" range="600" loop="true" />
+      <sound file="%ModDir%/Content/Items/Tools/loudspeaker/extinguisher_sax3.ogg" type="OnUse" range="600" loop="true" />
+    </Holdable>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <!-- 火焰喷射器：添加动画  -->
+  <Item name="" identifier="flamer" category="Equipment" Tags="smallitem,weapon,gun,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light" hideconditionbar="true">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.2" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="armcab,weaponholder" />
+    <Price baseprice="105" sold="false">
+      <Price storeidentifier="merchantoutpost" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" sold="true" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantarmory" multiplier="1.25" minavailable="1" />
+    </Price>
+    <!--<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,64,64,64" />-->
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,64,64,64" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="154,22,158,77" depth="0.55" origin="0.5,0.5" />
+    <!-- the item takes 10 seconds to break down in a deconstructor and turns into steel and plastic -->
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="rubber" amount="2" />
+    </Fabricate>
+    <!-- physics body -->
+    <Body width="150" height="77" density="25" />
+    <!-- the character will hold the item 50 pixels in front of him, with his hands at the handle1 and handle2 positions -->
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" msg="ItemMsgPickUpSelect" />
+    <RepairTool firedamage="25.0" structurefixamount="0.0" usablein="Air" range="500" barrelpos="35,10" fireprobability="0.1" repairmultiple="true" RepairMultipleWalls="false" repairthroughwalls="false" repairthroughholes="true" combatpriority="50" spread="25" unskilledspread="25">
+      <!-- the item must contain a welding fuel tank for it to work -->
+      <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+      <RequiredSkill identifier="weapons" level="50" />
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="265" anglemax="275" velocitymin="0" velocitymax="50" />
+      <ParticleEmitter particle="flamethrower" particlespersecond="80" anglemin="0" anglemax="0" velocitymin="1000" velocitymax="1500" highqualitycollisiondetection="true" />
+      <ParticleEmitter particle="flamethrowersmoke" particlespersecond="80" anglemin="0" anglemax="0" velocitymin="500" velocitymax="1000" />
+      <sound file="Content/Items/Weapons/FlameThrowerLoop.ogg" type="OnUse" range="750.0" loop="true" />
+      <StatusEffect type="OnFailure" target="This">
+        <ParticleEmitter particle="bubbles" particlespersecond="20" anglemin="-10" anglemax="10" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="100" copyentityangle="true" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="10" anglemin="-10" anglemax="10" scalemin="1" scalemax="1.5" velocitymin="5" velocitymax="200" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" targettype="UseTarget" targets="item" Condition="-15.0">
+        <Conditional HasTag="neq weldable" />
+      </StatusEffect>
+      <!-- make the item unusable when there's less than 10% oxygen -->
+      <StatusEffect type="OnUse" target="Hull,This" UsableIn="None">
+        <Conditional OxygenPercentage="lt 10" />
+      </StatusEffect>
+      <!-- make the item usable again when there's more than 10% oxygen -->
+      <StatusEffect type="OnUse" target="Hull,This" UsableIn="Air">
+        <Conditional OxygenPercentage="gt 10" />
+      </StatusEffect>
+      <!-- when using, the contained welding fuel tank will detoriate (= lose fuel) -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="weldingfueltank" Condition="-25.0" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="incendiumfueltank" Condition="-10.0" />
+      <!-- do burn damage to characters -->
+      <StatusEffect type="OnUse" target="UseTarget">
+        <Conditional InWater="false" />
+        <Affliction identifier="burn" amount="1.25" />
+        <Affliction identifier="burning" amount="2" dividebylimbcount="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget">
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Conditional InWater="false" />
+        <Affliction identifier="burn" amount="2.5" />
+        <Affliction identifier="burning" amount="2" dividebylimbcount="true" />
+        <Affliction identifier="stun" strength="1" probability="0.1" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" firedamage="40.0" fireprobability="0.35" setvalue="true">
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+      </StatusEffect>
+      <!-- explode if oxygen tanks are inserted -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="3" applyfireeffects="false">
+          <Affliction identifier="burn" strength="25" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="6" applyfireeffects="false">
+          <Affliction identifier="burn" strength="50" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+      </StatusEffect>
+      <!-- consume oxygen from the hull -->
+      <StatusEffect type="OnUse" target="Hull" Oxygen="-10000" />
+      <!-- Self-damage on fail -->
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <Conditional InWater="false" />
+        <Affliction identifier="burn" strength="7.5" probability="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Conditional InWater="false" />
+        <Affliction identifier="burn" strength="5.0" probability="0.5" />
+      </StatusEffect>
+      <LightComponent LightColor="255,174,121,255" Flicker="0.5" Range="500">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>
+      <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+      <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+        <Conditional HasTag="WF_ceasefire" />
+      </StatusEffect>
+    </RepairTool>
+    <!-- one welding fuel or oxygen tank can be contained inside the welding tool -->
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="8,-20" containedspritedepth="0.56" containedstateindicatorstyle="tank">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+      <Containable items="weldingtoolfuel,oxygensource">
+        <!-- 装弹动画，移除弹匣时添加空舱标签 -->
+        <StatusEffect type="OnRemoved" target="This" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,mountableweapon,WF_empty" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，装填弹匣时添加停火标签 -->
+        <StatusEffect type="OnInserted" target="This" delay="0.1" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="45,3" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="4" delay="0.01" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="5" delay="0.3" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="6" aimangle="3" delay="0.45" hideitems="true" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="42,-12" aimpos="40,3" handle1="-62,-16" handle2="-62,0" holdangle="6" aimangle="3" delay="0.75" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，空舱时触发 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" delay="0.8" allowaccess="true" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+          <Conditional HasTag="WF_empty" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="40,1" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="3" delay="0.95" hideitems="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="45,-10" aimpos="42,1" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="5" delay="1.25" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="47,-23" aimpos="47,0" handle1="-62,-16" handle2="-11,-6" holdangle="7" aimangle="4" delay="1.5" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" maxchargetime="0" delay="1.55" condition="100" tags="smallitem,weapon,gun,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹音效，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.4">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" delay="0.95">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+      </Containable>
+    </ItemContainer>
+    <aitarget sightrange="5000" soundrange="500" fadeouttime="5" />
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <!-- 原型蒸汽炮：添加动画  -->
+  <Item name="" identifier="flamerunique" category="Equipment" Tags="smallitem,weapon,gun,mountableweapon" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true" hideconditionbar="true">
+    <PreferredContainer primary="secarmcab" secondary="armcab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" spawnprobability="0.02" />
+    <PreferredContainer secondary="wreckarmcab" spawnprobability="0.05" />
+    <Price baseprice="755" sold="false" canbespecial="false" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="384,256,62,64" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="263,193,150,87" depth="0.55" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Body width="150" height="77" density="25" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="50,0" handle1="-55,-20" handle2="-15,-10" msg="ItemMsgPickUpSelect" />
+    <RepairTool firedamage="20.0" structurefixamount="0.0" range="500" barrelpos="35,10" fireprobability="0.0" repairmultiple="true" repairthroughwalls="false" repairthroughholes="true" combatpriority="60" spread="25" unskilledspread="25">
+      <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+      <RequiredSkill identifier="weapons" level="40" />
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="265" anglemax="275" velocitymin="0" velocitymax="50" />
+      <ParticleEmitter particle="steamspray" particlespersecond="80" anglemin="0" anglemax="0" velocitymin="1500" velocitymax="2000" highqualitycollisiondetection="true" />
+      <ParticleEmitter particle="bubbles" particlespersecond="20" anglemin="-10" anglemax="10" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="100" copyentityangle="true" />
+      <sound file="Content/Items/Weapons/FlameThrowerLoop.ogg" type="OnUse" range="750.0" loop="true" />
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <ParticleEmitter particle="bubbles" particlespersecond="20" anglemin="-10" anglemax="10" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="100" copyentityangle="true" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="10" anglemin="-10" anglemax="10" scalemin="1" scalemax="1.5" velocitymin="5" velocitymax="200" copyentityangle="true" />
+      </StatusEffect>
+      <!-- when using, the contained welding fuel tank will detoriate (= lose fuel) -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="weldingfueltank" Condition="-10.0" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="incendiumfueltank" Condition="-2.0" />
+      <!-- do burn damage to characters -->
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Affliction identifier="burn" amount="1.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget">
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Affliction identifier="burn" amount="3.0" />
+        <Affliction identifier="stun" strength="1" probability="0.1" />
+      </StatusEffect>
+      <!-- explode if oxygen tanks are inserted -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" delay="1.0" stackable="false" Condition="-100.0" disabledeltatime="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="3" applyfireeffects="false">
+          <Affliction identifier="burn" strength="25" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" delay="1.0" stackable="false" Condition="-100.0" disabledeltatime="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="6" applyfireeffects="false">
+          <Affliction identifier="burn" strength="50" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+      </StatusEffect>
+      <!-- Self-damage on fail -->
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <Affliction identifier="burn" strength="7.5" probability="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand">
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Affliction identifier="burn" strength="5.0" probability="0.5" />
+      </StatusEffect>
+      <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+      <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+        <Conditional HasTag="WF_ceasefire" />
+      </StatusEffect>
+    </RepairTool>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="11,-15" containedspritedepth="0.56" containedstateindicatorstyle="tank">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+      <Containable items="weldingtoolfuel,oxygensource">
+        <!-- 装弹动画，移除弹匣时添加空舱标签 -->
+        <StatusEffect type="OnRemoved" target="This" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,mountableweapon,WF_empty" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，装填弹匣时添加停火标签 -->
+        <StatusEffect type="OnInserted" target="This" delay="0.1" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="45,3" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="4" delay="0.01" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="5" delay="0.3" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="6" aimangle="3" delay="0.45" hideitems="true" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="42,-12" aimpos="40,3" handle1="-62,-16" handle2="-62,0" holdangle="6" aimangle="3" delay="0.75" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，空舱时触发 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" delay="0.8" allowaccess="true" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+          <Conditional HasTag="WF_empty" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="40,1" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="3" delay="0.95" hideitems="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="45,-10" aimpos="42,1" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="5" delay="1.25" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="47,-23" aimpos="47,0" handle1="-62,-16" handle2="-11,-6" holdangle="7" aimangle="4" delay="1.5" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" maxchargetime="0" delay="1.55" condition="100" tags="smallitem,weapon,gun,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹音效，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.4">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" delay="0.95">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+      </Containable>
+    </ItemContainer>
+    <aitarget sightrange="5000" soundrange="500" fadeouttime="5" />
+    <SkillRequirementHint identifier="weapons" level="40" />
+  </Item>
+  <!-- 焊接工具：添加动画  -->
+  <Item name="" identifier="weldingtool" category="Equipment" Tags="smallitem,weldingequipment,tool,mountableweapon" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_light" hideconditionbar="true">
+    <PreferredContainer secondary="respawncontainer_kingofthehull" amount="2" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer primary="engcab" amount="1" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer secondary="supplycab" amount="1" spawnprobability="0.2" notcampaign="true" notpvp="true" />
+    <PreferredContainer primary="outpostsupplycab" amount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="wreckengcab,abandonedengcab,pirateengcab,outpostengcab,beaconengcab" amount="1" spawnprobability="0.1" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" minavailable="3" />
+      <Price storeidentifier="merchantcity" minavailable="2" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="0.9" minavailable="10" />
+      <Price storeidentifier="merchantengineering" minavailable="5" multiplier="0.9" />
+    </Price>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="0,3,152,88" depth="0.55" origin="0.5,0.5" />
+    <!-- the item takes 10 seconds to break down in a deconstructor and turns into steel and plastic -->
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="plastic" amount="2" />
+    </Fabricate>
+    <!-- physics body -->
+    <Body width="150" height="60" density="25" />
+    <!-- the character will hold the item 50 pixels in front of him, with his hands at the handle1 and handle2 positions -->
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="60,0" handle1="-62,-16" handle2="-10,-6" msg="ItemMsgPickUpSelect" />
+    <RepairTool firedamage="10.0" structurefixamount="2.0" range="150" barrelpos="35,12" particles="weld" repairmultiple="true" repairthroughwalls="false" combatpriority="3" levelwallfixamount="-0.425" targetforce="10">
+      <!-- the item must contain a welding fuel tank for it to work -->
+      <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+      <RequiredSkill identifier="mechanical" level="50" />
+      <ParticleEmitter particle="weld" particlespersecond="50" copyentityangle="true" />
+      <ParticleEmitterHitStructure particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
+      <ParticleEmitterHitStructure particle="GlowDot" particlespersecond="60" emitinterval="0.7" particleamount="10" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocitymin="10" velocitymax="50" />
+      <ParticleEmitterHitStructure particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="0" velocitymax="50" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="weldspark" particlespersecond="200" anglemin="-40" anglemax="40" velocitymin="200" velocitymax="800" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="MistSmoke" particlespersecond="20" anglemin="-10" anglemax="10" velocitymin="10" velocitymax="100" />
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="0" velocitymax="50" />
+      <sound file="Content/Items/Tools/WeldingLoop.ogg" type="OnUse" range="500.0" loop="true" />
+      <!-- when using, the contained welding fuel tank will detoriate (= lose fuel) -->
+      <StatusEffect type="OnUse" targettype="Contained" targets="weldingfueltank" Condition="-1.0" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="incendiumfueltank" Condition="-0.6" />
+      <!-- welding a door, it will get stuck after a while -->
+      <StatusEffect type="OnSuccess" targettype="UseTarget" targets="weldable" Stuck="5.0" />
+      <StatusEffect type="OnSuccess" targettype="UseTarget" targets="item" Condition="-3.0">
+        <Conditional HasTag="neq weldable" />
+      </StatusEffect>
+      <!-- do burn damage to characters -->
+      <StatusEffect type="OnSuccess" targettype="Limb">
+        <Affliction identifier="burn" amount="2.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygentank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="3" applyfireeffects="false">
+          <Affliction identifier="burn" strength="25" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygenitetank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="6" applyfireeffects="false">
+          <Affliction identifier="burn" strength="50" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+      </StatusEffect>
+      <!-- the tool can fix structures, i.e. walls and windows -->
+      <Fixable identifier="structure" />
+      <NonFixable identifier="thalamus,ice" />
+      <LightComponent LightColor="255,229,178,100" Range="150" Flicker="0.5">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>
+      <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+      <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+        <Conditional HasTag="WF_ceasefire" />
+      </StatusEffect>
+    </RepairTool>
+    <!-- one welding fuel or oxygen tank can be contained inside the welding tool -->
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="8,-35" containedspritedepth="0.56" containedstateindicatorstyle="tank">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+      <Containable items="weldingtoolfuel,oxygensource">
+        <!-- 装弹动画，移除弹匣时添加空舱标签 -->
+        <StatusEffect type="OnRemoved" target="This" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,mountableweapon,WF_empty" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，装填弹匣时添加停火标签 -->
+        <StatusEffect type="OnInserted" target="This" delay="0.1" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="45,3" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="4" delay="0.01" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="5" delay="0.3" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="40,3" handle1="-62,-16" handle2="8,-40" holdangle="6" aimangle="3" delay="0.45" hideitems="true" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="42,-12" aimpos="40,3" handle1="-62,-16" handle2="-62,0" holdangle="6" aimangle="3" delay="0.75" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，空舱时触发 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" delay="0.8" allowaccess="true" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+          <Conditional HasTag="WF_empty" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="40,1" handle1="-62,-16" handle2="8,-40" holdangle="8" aimangle="3" delay="0.95" hideitems="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="45,-10" aimpos="42,1" handle1="-62,-16" handle2="8,-20" holdangle="7" aimangle="5" delay="1.25" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="47,-23" aimpos="47,0" handle1="-62,-16" handle2="-11,-6" holdangle="7" aimangle="4" delay="1.5" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="50,0" handle1="-62,-16" handle2="-11,-6" holdangle="0" aimangle="0" maxchargetime="0" delay="1.55" condition="100" tags="smallitem,weldingequipment,tool,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹音效，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.4">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" delay="0.95">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+      </Containable>
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="500" fadeouttime="3" />
+    <Quality>
+      <QualityStat stattype="RepairToolStructureRepairMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Upgrade gameversion="0.14.0.0">
+      <RepairTool>
+        <RequiredItems items="weldingtoolfuel,oxygensource" type="Contained" msg="ItemMsgWeldingFuelRequired" />
+      </RepairTool>
+    </Upgrade>
+    <Upgrade gameversion="0.15.4.0">
+      <ItemContainer itempos="8,-35" />
+    </Upgrade>
+    <SkillRequirementHint identifier="mechanical" level="50" />
+  </Item>
+  <!-- 等离子切割器：添加动画  -->
+  <Item name="" identifier="plasmacutter" category="Equipment" Tags="smallitem,cuttingequipment,tool,mountableweapon" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_light" hideconditionbar="true">
+    <Preferredcontainer secondary="respawncontainer" amount="1" spawnprobability="1" notcampaign="true" />
+    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab,wreckdivingcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="divingcab" secondary="engcab" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" minavailable="3" />
+      <Price storeidentifier="merchantcity" minavailable="2" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="0.9" minavailable="10" />
+      <Price storeidentifier="merchantengineering" minavailable="5" multiplier="0.9" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="plastic" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="0,166,159,87" depth="0.55" origin="0.5,0.5" />
+    <Body radius="40" width="60" density="25" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="60,0" handle1="-60,-21" handle2="-21,-20" msg="ItemMsgPickUpSelect" />
+    <RepairTool firedamage="10.0" structurefixamount="-0.5" range="150" barrelpos="55,10" combatpriority="5" repairmultiple="true" repairthroughwalls="false" maxoverlappingwalldist="0.0" repairthroughholes="true" levelwallfixamount="-5.0" targetforce="10">
+      <RequiredItems items="oxygensource,weldingtoolfuel" type="Contained" msg="ItemMsgOxygenTankRequired" />
+      <RequiredSkill identifier="mechanical" level="50" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="oxygensource" Condition="-1.0" />
+      <StatusEffect type="OnSuccess" targettype="UseTarget" targets="weldable" Stuck="-20.0" />
+      <StatusEffect type="OnSuccess" targettype="UseTarget" Condition="-15.0" />
+      <StatusEffect type="OnSuccess" targettype="Limb" severlimbsprobability="0.005">
+        <Affliction identifier="burn" amount="4.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="weldingfueltank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" force="3" applyfireeffects="false">
+          <Affliction identifier="burn" strength="25" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="incendiumfueltank" delay="1.0" stackable="false" Condition="0" setvalue="true">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="2000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="2000" />
+        <Explosion range="150.0" ballastfloradamage="50" force="6" applyfireeffects="true" ignorefireeffectsfortags="incendiumfueltank">
+          <Affliction identifier="burn" strength="100" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+      </StatusEffect>
+      <ParticleEmitter particle="plasma" particlespersecond="50" copyentityangle="true" />
+      <ParticleEmitterHitStructure particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitStructure particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="20" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+      <ParticleEmitterHitItem identifiers="ore" particle="iceshards" particlespersecond="5" anglemin="-40" anglemax="40" velocitymin="10" velocitymax="300" scalemin="0.5" scalemax="1.0" />
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="0" velocitymax="50" />
+      <sound file="Content/Items/Tools/PlasmaCutterLoop.ogg" type="OnUse" range="750.0" loop="true" />
+      <Fixable identifier="structure" />
+      <LightComponent LightColor="204,178,255,100" range="150" Flicker="0.5">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>
+      <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+      <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+        <Conditional HasTag="WF_ceasefire" />
+      </StatusEffect>
+    </RepairTool>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="0,-39" containedspritedepth="0.56" containedstateindicatorstyle="tank">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+      <Containable items="weldingtoolfuel,oxygensource">
+        <!-- 装弹动画，移除弹匣时添加空舱标签 -->
+        <StatusEffect type="OnRemoved" target="This" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,mountableweapon,WF_empty" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，装填弹匣时添加停火标签 -->
+        <StatusEffect type="OnInserted" target="This" delay="0.1" tags="smallitem,weapon,gun,mountableweapon,WF_ceasefire,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="45,3" handle1="-60,-21" handle2="0,-39" holdangle="7" aimangle="4" delay="0.01" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="40,-12" aimpos="40,3" handle1="-60,-21" handle2="0,-60" holdangle="8" aimangle="5" delay="0.3" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="40,3" handle1="-60,-21" handle2="0,-40" holdangle="6" aimangle="3" delay="0.45" hideitems="true" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnRemoved" target="This" holdpos="42,-12" aimpos="40,3" handle1="-60,-21" handle2="-60,0" holdangle="6" aimangle="3" delay="0.75" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹动画，空舱时触发 -->
+        <StatusEffect type="OnRemoved" target="This" holdpos="0,0" aimpos="60,0" handle1="-60,-21" handle2="-21,-20" holdangle="0" aimangle="0" delay="0.8" allowaccess="true" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+          <Conditional HasTag="WF_empty" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="40,1" handle1="-60,-21" handle2="0,-60" holdangle="8" aimangle="3" delay="0.95" hideitems="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="45,-10" aimpos="42,1" handle1="-60,-21" handle2="0,-39" holdangle="7" aimangle="5" delay="1.25" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="47,-23" aimpos="47,0" handle1="-60,-21" handle2="-11,-6" holdangle="7" aimangle="4" delay="1.5" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="60,0" handle1="-60,-21" handle2="-21,-20" holdangle="0" aimangle="0" maxchargetime="0" delay="1.55" condition="100" tags="smallitem,cuttingequipment,tool,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+        <!-- 装弹音效，放入燃料时触发，添加停火标签 -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.4">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_1.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnInserted" target="This" delay="0.95">
+          <Sound file="%ModDir%/Content/Items/Weapons/ANI_coilrifle_reload_step_2.ogg" range="500" />
+        </StatusEffect>
+        <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+        <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+      </Containable>
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="500" fadeouttime="3" />
+    <Quality>
+      <QualityStat stattype="RepairToolStructureDamageMultiplier" value="0.1" />
+      <QualityStat stattype="RepairToolDeattachTimeMultiplier" value="0.1" />
+    </Quality>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Upgrade gameversion="0.14.0.0">
+      <RepairTool>
+        <RequiredItems identifier="oxygensource,weldingtoolfuel" type="Contained" msg="ItemMsgOxygenTankRequired" />
+      </RepairTool>
+    </Upgrade>
+    <SkillRequirementHint identifier="mechanical" level="50" />
+  </Item>
+</override>

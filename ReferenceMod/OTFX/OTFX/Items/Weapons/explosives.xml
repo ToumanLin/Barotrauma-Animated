@@ -1,0 +1,1232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_gassuffocationgrenade" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade,highpriority" health="10000" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.35" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer primary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.01" />
+    <Price baseprice="115" soldeverywhere="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+      <Item identifier="aluminium" amount="2" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="2">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredSkill identifier="medical" level="30" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="oxygentank" />
+      <RequiredItem identifier="carbon" amount="2" />
+      <RequiredItem identifier="chlorine" amount="3" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="512,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="960,384,50,96" depth="0.55" origin="0.45,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1024,384,50,96" depth="0.55" origin="0.45,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1088,384,50,96" depth="0.55" origin="0.45,0.5" maxcondition="99.8" />
+    <Body width="36" height="86" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 9990.0" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 9990.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="9990.0" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="9990.0" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="9900.0" isactive="true" setvalue="true">
+        <Conditional condition="gt 9900.0" />
+      </StatusEffect>
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 9980.0" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_gassuffocationgrenadesafetypin" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 9990.0" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 9990.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_gassuffocationgrenadestrikerlever" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 9980.0" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 9980.0" />
+      </StatusEffect>
+      <!-- Fuse time: 3s to drop down 9900.0 -->
+      <StatusEffect type="OnActive" target="This" interval="3.0" condition="-40.0" disabledeltatime="true" comparison="And">
+        <Conditional condition="lte 9980.0" />
+        <Conditional condition="gt 9900.0" />
+      </StatusEffect>
+      <!-- Explode and gas -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="Content/Items/Weapons/StunGrenade.ogg" range="2000" />
+        <ParticleEmitter particle="nasonovsparkles" colormultiplier="0.39,0.56,1.0,0.7" particleamount="5" scalemin="7.2" scalemax="8.0" anglemin="0" anglemax="360" velocitymin="0" velocitymax="32" distancemin="-16" distancemax="16" />
+        <ParticleEmitter particle="flarebubbles" particleamount="15" distancemin="0" distancemax="40" />
+        <ParticleEmitter particle="weldspark" particleamount="40" colormultiplier="0.39,0.51,1.0,1.0" distancemin="0" distancemax="60" anglemin="0" anglemax="180" velocitymin="800" velocitymax="3600" />
+        <Explosion range="500" ballastfloradamage="0" itemdamage="0" force="0.5" sparks="false" shockwave="false" flames="false" smoke="false" flash="true">
+          <Affliction identifier="stun" strength="0.5" />
+        </Explosion>
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge8s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge9s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge11s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge12s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge13s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge14s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge15s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge16s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge17s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <Conditional condition="lte 9900.0" />
+        <Conditional hasstatustag="! exploded" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="exploded" duration=".05" stackable="false">
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <Sound file="Content/Sounds/FireLarge.ogg" range="1000.0" volume="0.1" loop="true" frequency="4.0" />
+        <Sound file="Content/Items/Tools/Sprayer.ogg" range="1000.0" volume="0.2" loop="true" frequency="2.0" />
+        <ParticleEmitter particle="nasonovsparkles" colormultiplier="0.39,0.56,1.0,0.7" particlespersecond="5" scalemin="7.2" scalemax="8.0" anglemin="0" anglemax="360" velocitymin="0" velocitymax="32" distancemin="-16" distancemax="16" />
+        <ParticleEmitter particle="flarebubbles" particlespersecond="15" distancemin="0" distancemax="40" />
+        <ParticleEmitter particle="weldspark" particlespersecond="40" colormultiplier="0.39,0.51,1.0,1.0" distancemin="0" distancemax="60" anglemin="0" anglemax="180" velocitymin="200" velocitymax="800" />
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" interval="0.5" condition="-220.0" disabledeltatime="true" spawnitemrandomly="true">
+        <SpawnItem identifier="otfx_gassuffocationemitterlarge10s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemittermedium10s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <SpawnItem identifier="otfx_gassuffocationemittersmall10s" count="1" aimspread="360" rotationtype="Collider" rotation="0" impulse="30" spawnposition="This" />
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+    </Powered>
+  </Item>
+  <Item name="" identifier="otfx_gassuffocationemitterlarge10s" health="100.0" scale="1.0" tags="gas,highpriority" sonarsize="0" depth="0.1" isdangerous="true" noninteractable="true" hideinmenus="true" impactsoundtag="">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="50" density="15" lineardamping="0.5" gravityscale="0.1" />
+    <ItemComponent>
+      <StatusEffect type="Always" target="This" interval="1.0" condition="-10.0" disabledeltatime="true">
+        <ParticleEmitter particle="otfx_gassuffocationmist" emitinterval=".033" particleamount="1" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocity="0.05" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" targetlimbs="Torso" range="70" interval="0.5" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+        <GiveTalentInfo talentidentifiers="otfx_gassuffocation" />
+        <Affliction identifier="otfx_gassuffocationinhaling" strength="14.0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="" identifier="otfx_gassuffocationemitterlarge8s" health="80.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge9s" health="90.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge11s" health="110.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge12s" health="120.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge13s" health="130.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge14s" health="140.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge15s" health="150.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge16s" health="160.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemitterlarge17s" health="170.0" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium8s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge8s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium9s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge9s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium10s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium11s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge11s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium12s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge12s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium13s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge13s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium14s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge14s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium15s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge15s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium16s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge16s" />
+  <Item name="" identifier="otfx_gassuffocationemittermedium17s" scale="*0.85" variantof="otfx_gassuffocationemitterlarge17s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall8s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge8s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall9s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge9s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall10s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge10s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall11s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge11s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall12s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge12s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall13s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge13s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall14s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge14s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall15s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge15s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall16s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge16s" />
+  <Item name="" identifier="otfx_gassuffocationemittersmall17s" scale="*0.7" variantof="otfx_gassuffocationemitterlarge17s" />
+  <Item name="" identifier="otfx_smokegrenade" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert,handgrenade,highpriority" health="10000" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.35" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer primary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.01" />
+    <Price baseprice="65" soldeverywhere="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="2">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="potassium" amount="3" />
+      <RequiredItem identifier="carbon" amount="2" />
+      <RequiredItem identifier="iron" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="384,256,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="960,128,53,100" depth="0.55" origin="0.3,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1024,128,53,100" depth="0.55" origin="0.3,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1088,128,53,100" depth="0.55" origin="0.3,0.5" maxcondition="99.8" />
+    <Body width="32" height="90" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 9990.0" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 9990.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="9990.0" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="9990.0" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="9900.0" isactive="true" setvalue="true">
+        <Conditional condition="gt 9900.0" />
+      </StatusEffect>
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 9980.0" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="9980.0" setvalue="true" comparison="And">
+        <Conditional condition="9990.0" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_smokegrenadesafetypin" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 9990.0" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 9990.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_smokegrenadestrikerlever" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 9980.0" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 9980.0" />
+      </StatusEffect>
+      <!-- Fuse time: 4s to drop down 9900.0 -->
+      <StatusEffect type="OnActive" target="This" interval="4.0" condition="-40.0" disabledeltatime="true" comparison="And">
+        <Conditional condition="lte 9980.0" />
+        <Conditional condition="gt 9900.0" />
+      </StatusEffect>
+      <!-- Explode and smoke -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="Content/Items/Weapons/StunGrenade.ogg" range="2000" />
+        <Explosion range="500" ballastfloradamage="0" itemdamage="0" force="0.5" sparks="true" shockwave="false" flames="false" smoke="false" flash="true">
+          <Affliction identifier="stun" strength="0.5" />
+        </Explosion>
+        <Conditional condition="lte 9900.0" />
+        <Conditional hasstatustag="! exploded" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="exploded" duration=".05" stackable="false">
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" interval="4.0" condition="-900.0" disabledeltatime="true">
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="otfx_smokegrenade" particlespersecond="60" scalemin="0.9" scalemax="1.0" anglemin="0" anglemax="360" velocity="250.0" />
+        <Sound file="Content/Items/Tools/Sprayer.ogg" range="800.0" volume="0.5" loop="true" />
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" interval="0.5">
+        <Explosion range="800" ignorecover="false" showeffects="false">
+          <Affliction identifier="otfx_smokegrenadescreentransform" strength="120" multiplybymaxvitality="true" />
+        </Explosion>
+        <Conditional condition="lte 9900.0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Contained" interval="0.5">
+        <Use />
+        <Conditional targetcontainer="true" condition="lte 9900.0" />
+      </StatusEffect>
+    </Powered>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" removecontaineditemsondeconstruct="true" spawnwithid="otfx_smokegrenadeextinguisher">
+      <Containable identifier="otfx_smokegrenadeextinguisher" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="otfx_smokegrenadeextinguisher" scale="1.0" tags="highpriority" requireaimtouse="false" noninteractable="true" hideinmenus="true" impactsoundtag="">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="5" density="10.5" />
+    <ItemComponent>
+      <StatusEffect type="OnNotContained" target="This">
+        <RemoveItem />
+      </StatusEffect>
+    </ItemComponent>
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="0.000" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="45.00" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="90.00" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="135.0" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="180.0" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="225.0" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="270.0" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+    <RepairTool characterusable="false" usablein="Both" barrelpos="0,0" barrelrotation="315.0" range="400" extinguishamount="1000" spread="22.5" hititems="false" ignorecharacters="true" repairmultiple="false" repairthroughholes="false" />
+  </Item>
+  <Item name="" identifier="otfx_hellfiregrenade" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.45" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer primary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.01" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="250" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30" amount="2">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="steel" />
+      <RequiredItem identifier="ethanol" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="incendium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="320,256,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="640,128,43,74" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="704,128,43,74" depth="0.55" origin="0.5,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="768,128,43,74" depth="0.55" origin="0.5,0.5" maxcondition="99.8" />
+    <Body width="40" height="70" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 99.9" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 99.8" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_hellfiregrenadesafetypin" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 99.9" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_hellfiregrenadestrikerlever" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Fuse time: 4s -->
+      <StatusEffect type="OnActive" target="This" condition="-24.95">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Explode -->
+      <StatusEffect type="OnBroken" target="This" noninteractable="true" hiddeningame="true">
+        <ParticleEmitter particle="explosionfireadditive" particleamount="9" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" velocitymin="300" velocitymax="500" colormultiplier="1.0,0.65,0.8,0.5" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="4" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="1.25" scalemax="1.75" velocitymin="200" velocitymax="400" />
+        <ParticleEmitter particle="explosionfireadditive" particleamount="12" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="1.0" scalemax="1.5" velocitymin="600" velocitymax="800" colormultiplier="1.0,0.65,0.8,0.5" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="4" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="1.5" scalemax="2.0" velocitymin="500" velocitymax="700" />
+        <ParticleEmitter particle="explosionfireadditive" particleamount="15" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="1.5" scalemax="2.0" velocitymin="900" velocitymax="1100" colormultiplier="1.0,0.65,0.8,0.5" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="4" distancemin="0" distancemax="0" anglemin="0" anglemax="360" scalemin="1.75" scalemax="2.25" velocitymin="800" velocitymax="1000" />
+        <Conditional inwater="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/IncendiumGrenade.ogg" range="3000" frequency="0.85" volume="1.0" />
+        <Explosion range="300" ballastfloradamage="50" itemdamage="75" force="6" flames="false" smoke="false" playtinnitus="true">
+          <Affliction identifier="explosiondamage" strength="4" />
+          <Affliction identifier="burn" strength="7" />
+          <Affliction identifier="burn" strength="0.7" probability="0.30" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" delay="0.1">
+        <Explosion range="600" ballastfloradamage="50" itemdamage="75" force="9" flames="false" smoke="false" playtinnitus="false">
+          <Affliction identifier="explosiondamage" strength="12" />
+          <Affliction identifier="burn" strength="14" />
+          <Affliction identifier="burn" strength="1.4" probability="0.65" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" delay="0.2">
+        <Explosion range="900" ballastfloradamage="50" itemdamage="75" force="12" flames="false" smoke="false" playtinnitus="false">
+          <Affliction identifier="explosiondamage" strength="16" />
+          <Affliction identifier="burn" strength="21" />
+          <Affliction identifier="burn" strength="2.1" probability="1.00" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="1.5" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Powered>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="otfx_jcoffdef1fraggrenade" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.4" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.04" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="235">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="iron" />
+      <Item identifier="sodium" amount="2" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="25">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="iron" usecondition="true" mincondition="0.5" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem identifier="sodium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="320,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="640,512,46,89" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="704,512,46,89" depth="0.55" origin="0.5,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="768,512,46,89" depth="0.55" origin="0.5,0.5" maxcondition="99.8" />
+    <Body width="40" height="79" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 99.9" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 99.8" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_jcoffdef1fraggrenadesafetypin" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 99.9" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_jcoffdef1fraggrenadespoon" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" delay="0.3" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerimpact1.ogg" volume="0.65" range="800" />
+        <ParticleEmitter particle="weldspark" particleamount="15" anglemin="0" anglemax="360" velocitymin="1000" velocitymax="1500" maxdistance="100" scalemin="0.5" scalemax="1.0" colormultiplier="100,75,200,255" />
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="3.0,3.0" colormultiplier="255,200,200,200" />
+        <ParticleEmitter particle="steamspray" particleamount="1" velocitymin="0" velocitymax="0" scalemin="1.5" scalemax="2.5" anglemin="0" anglemax="360" colormultiplier="15,15,15,255" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Fuse time: 5s -->
+      <StatusEffect type="OnActive" target="This" condition="-19.96">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Explode -->
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="5000" frequency="2.0" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="5000" frequency="2.0" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="5000" frequency="2.0" />
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemax="500" particleamount="270" velocitymin="1500" velocitymax="2000" scalemin="0.7" scalemax="1.2" />
+        <Explosion range="600.0" ballastfloradamage="100" structuredamage="20" levelwalldamage="140" itemdamage="350" force="5" debris="false" decal="explosion" decalsize="0.5">
+          <Affliction identifier="explosiondamage" strength="150" />
+          <Affliction identifier="stun" strength="4.0" />
+        </Explosion>
+        <Explosion range="500.0" itemdamage="50" force="3" severlimbsprobability="0.5" sparks="false" shockwave="false" flames="false" underwaterbubble="false" smoke="false" playtinnitus="false" flash="false" camerashake="5">
+          <Affliction identifier="gunshotwound" probability="0.3" strength="10" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" probability="0.3" strength="10" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="0.5" />
+        </Explosion>
+        <Explosion range="900.0" itemdamage="50" force="3" severlimbsprobability="0.5" sparks="false" shockwave="false" flames="false" underwaterbubble="false" smoke="false" playtinnitus="false" flash="false" camerashake="4">
+          <Affliction identifier="gunshotwound" probability="0.3" strength="15" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" probability="0.3" strength="15" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="0.5" />
+        </Explosion>
+        <Explosion range="1300.0" itemdamage="50" force="3" severlimbsprobability="0.5" sparks="false" shockwave="false" flames="false" underwaterbubble="false" smoke="false" playtinnitus="false" flash="false" camerashake="3">
+          <Affliction identifier="gunshotwound" probability="0.3" strength="20" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" probability="0.3" strength="20" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="0.5" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Powered>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="otfx_impactgrenade" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.4" cargocontaineridentifier="explosivecrate" impacttolerance="3.0" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.02" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="60">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="iron" />
+      <Item identifier="sodium" amount="2" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="25" amount="2">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem identifier="sodium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="448,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="960,512,46,44" depth="0.55" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1024,512,46,44" depth="0.55" origin="0.5,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="1088,512,46,44" depth="0.55" origin="0.5,0.5" maxcondition="99.8" />
+    <Body width="38" height="32" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" aimpos="35,0" handle1="0,0" throwforce="4.5" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 99.9" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <Conditional condition="lt 93.14" />
+      </StatusEffect>
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 99.8" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_impactgrenadesafetypin" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 99.9" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_impactgrenadecap" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Fuse time: 6s -->
+      <StatusEffect type="OnActive" target="This" condition="-16.63">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Explode -->
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="4000" volume="0.8" frequency="1.5" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="4000" volume="0.8" frequency="1.5" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="4000" volume="0.8" frequency="1.5" />
+        <Explosion range="500" ballastfloradamage="50" structuredamage="75" levelwalldamage="75" itemdamage="250" force="10" debris="false" decal="explosion" decalsize="0.3">
+          <Affliction identifier="explosiondamage" strength="62.5" />
+          <Affliction identifier="burn" strength="7.5" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="10" probability="0.1" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="3.5" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Powered>
+    <Quality>
+      <QualityStat stattype="ExplosionRadius" value="0.05" />
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="otfx_flashbang" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.35" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.5" notcampaign="true" />
+    <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.1" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="60">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="3" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="6" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="6" />
+    </Price>
+    <Deconstruct time="5">
+      <Item identifier="iron" outcondition="0.5" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="2">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="magnesium" />
+      <RequiredItem identifier="potassium" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="flashpowder" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="384,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="640,384,45,104" depth="0.55" origin="0.45,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="704,384,45,104" depth="0.55" origin="0.45,0.5" maxcondition="99.9" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="768,384,45,104" depth="0.55" origin="0.45,0.5" maxcondition="99.8" />
+    <Body width="40" height="94" density="30" />
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="4.0" msg="ItemMsgPickUpSelect">
+      <!-- Based on the code here: https://github.com/FakeFishGames/Barotrauma/blob/0c433eb187b20f4bd24a1919b478529b387ee0bf/Barotrauma/BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs#L925-L935 -->
+      <!-- We used the following four StatusEffects to track the user who throw the grenade, pull the pin and release the spoon -->
+      <StatusEffect type="OnUse" target="This" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional condition="gte 99.9" hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="true" condition="0.0" setvalue="true">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true" comparison="And">
+        <Conditional isfullcondition="true" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" condition="99.9" isactive="true" setvalue="true">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="on_holding" duration=".033" stackable="false" />
+    </Throwable>
+    <Powered characterusable="false">
+      <!-- Used by the detonator to fuse immediately -->
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <!-- Prevent cheat command "fixitems" from breaking the grenade -->
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Powered" isactive="false" setvalue="true" comparison="And">
+        <Conditional condition="gt 99.8" conditionincreasedrecently="true" />
+      </StatusEffect>
+      <!-- Passively releasing the spoon  -->
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional hasstatustag="! on_holding" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" condition="99.8" setvalue="true" comparison="And">
+        <Conditional condition="99.9" />
+        <Conditional targetcontainer="true" entitytype="Character" isknockeddown="true" />
+      </StatusEffect>
+      <!-- Emit the particles (pin and spoon) -->
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull1.ogg" range="500" selectionmode="All" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_pinpull2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_flashbangsafetypin1" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <ParticleEmitter particle="otfx_flashbangsafetypin2" particleamount="1" copyentityangle="true" anglemin="70" anglemax="100" velocitymin="100" velocitymax="200" />
+        <Conditional condition="lte 99.9" />
+        <Conditional hasstatustag="! pinpulled" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="pinpulled" duration=".05" stackable="false">
+        <Conditional condition="lte 99.9" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever1.ogg" range="500" selectionmode="Random" />
+        <Sound file="%ModDir%\OTFX\Items\Weapons\grenade_strikerlever2.ogg" range="500" />
+        <ParticleEmitter particle="otfx_flashbangstrikerlever" particleamount="1" copyentityangle="true" anglemin="-60" anglemax="-30" velocitymin="100" velocitymax="200" />
+        <Conditional hasstatustag="! strikerleverreleased" />
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" tags="strikerleverreleased" duration=".05" stackable="false">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Fuse time: 2.3s -->
+      <StatusEffect type="OnActive" target="This" condition="-43.39">
+        <Conditional condition="lte 99.8" />
+      </StatusEffect>
+      <!-- Explode -->
+      <StatusEffect type="OnBroken" target="This" multiplyAfflictionsByMaxVitality="true">
+        <Sound file="Content/Items/Weapons/StunGrenade.ogg" range="2048" frequency="2.0" />
+        <ParticleEmitter particle="weldspark" particleamount="90" anglemin="0" anglemax="360" velocitymin="1000" velocitymax="1500" maxdistance="100" scalemin="0.5" scalemax="1.0" colormultiplier="100,75,200,255" />
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="3.0,3.0" colormultiplier="255,200,200,200" />
+        <Explosion range="750" force="0.3" showeffects="false" shockwave="true" camerashake="100" camerashakerange="900">
+          <Affliction identifier="stun" strength="3" />
+          <Affliction identifier="otfx_tinnitus" strength="900" />
+        </Explosion>
+        <Explosion range="1500" showeffects="false" camerashake="10" camerashakerange="1800" flash="true" flashrange="4096" flashduration="0.9" flashcolor="1.0,1.0,1.0,1.0">
+          <Affliction identifier="otfx_blinding" strength="13" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Powered>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item identifier="otfx_electrictimerdetonator" category="Equipment,Weapon" Tags="smallitem,detonator" scale="0.5" health="40" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_metal_light" isshootable="true">
+    <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.5" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="armcab" />
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="320,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="512,640,50,74" depth="0.55" origin="0.5,0.5" />
+    <Body width="46" height="70" density="20" />
+    <LightComponent canbeselected="false" allowingameediting="false" powerconsumption="0" castshadows="false" range="20" blinkfrequency="1" lightcolor="0,255,0,224" isactiveconditionalcomparison="And">
+      <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="576,640,50,74" origin="0.5,0.5" alpha="1.0" />
+      <IsActive targetitemcomponent="ItemContainer" allowaccess="false" />
+      <IsActive condition="gt 25.0" />
+      <StatusEffect type="OnActive" target="This" condition="-1.0" interval="1.0" disabledeltatime="true">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\electrictimerdetonator_beep.ogg" range="750" frequencymultiplier="1.25" volume="0.75" />
+      </StatusEffect>
+    </LightComponent>
+    <LightComponent canbeselected="false" allowingameediting="false" powerconsumption="0" castshadows="false" range="20" blinkfrequency="2" lightcolor="255,255,0,224" isactiveconditionalcomparison="And">
+      <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="576,640,50,74" origin="0.5,0.5" alpha="1.0" />
+      <IsActive targetitemcomponent="ItemContainer" allowaccess="false" />
+      <IsActive condition="gt 10.0" />
+      <IsActive condition="lte 25.0" />
+      <StatusEffect type="OnActive" target="This" condition="-0.5" interval="0.5" disabledeltatime="true">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\electrictimerdetonator_beep.ogg" range="750" frequencymultiplier="1.25" volume="0.75" />
+      </StatusEffect>
+    </LightComponent>
+    <LightComponent canbeselected="false" allowingameediting="false" powerconsumption="0" castshadows="false" range="20" blinkfrequency="4" lightcolor="255,0,0,224" isactiveconditionalcomparison="And">
+      <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="576,640,50,74" origin="0.5,0.5" alpha="1.0" />
+      <IsActive targetitemcomponent="ItemContainer" allowaccess="false" />
+      <IsActive condition="lte 10.0" />
+      <StatusEffect type="OnActive" target="This" condition="-0.25" interval="0.25" disabledeltatime="true">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\electrictimerdetonator_beep.ogg" range="750" frequencymultiplier="1.25" volume="0.75" />
+      </StatusEffect>
+    </LightComponent>
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" pickingtime="0.0" aimpos="35,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+    </Holdable>
+    <ItemContainer canbeselected="true" capacity="1" maxstacksize="1" itempos="24,-47" hideitems="false" containedstateindicatorstyle="explosive" containedspritedepth="0.56">
+      <GuiFrame relativesize="0.2,0.25" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="explosive">
+        <StatusEffect type="OnContaining" target="This" allowaccess="false" setvalue="true" comparison="And">
+          <Use />
+          <Conditional targetitemcomponent="ItemContainer" allowaccess="true" />
+          <Conditional targetitemcomponent="Holdable" attached="true" />
+        </StatusEffect>
+        <StatusEffect type="OnContaining" target="This" allowaccess="true" pickingtime="0.0" condition="40.0" setvalue="true" comparison="And">
+          <Conditional targetitemcomponent="ItemContainer" allowaccess="false" />
+          <Conditional targetitemcomponent="Holdable" attached="false" />
+        </StatusEffect>
+      </Containable>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Holdable" pickingtime="8.0" setvalue="true">
+        <Conditional condition="gt 25.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Holdable" pickingtime="5.0" setvalue="true" comparison="And">
+        <Conditional condition="gt 10.0" />
+        <Conditional condition="lte 25.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Holdable" pickingtime="2.0" setvalue="true">
+        <Conditional condition="lte 10.0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="Contained">
+        <Drop />
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropContainedItems />
+        <Remove />
+      </StatusEffect>
+    </ItemContainer>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.07,0.20" anchor="CenterRight" pivot="BottomRight" relativeoffset="0.01,0.0" style="ItemUI" draggable="true" />
+      <Button text="40S">
+        <StatusEffect type="OnUse" target="This" condition="40.0" setvalue="true" />
+      </Button>
+      <Button text="25S">
+        <StatusEffect type="OnUse" target="This" condition="25.0" setvalue="true" />
+      </Button>
+      <Button text="10S">
+        <StatusEffect type="OnUse" target="This" condition="10.0" setvalue="true" />
+      </Button>
+    </CustomInterface>
+  </Item>
+  <Item name="" identifier="otfx_dynamitestickfuse" noninteractable="true" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemComponent" delay="0.5" isactive="true" />
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="impactfirearm" particlespersecond="60" anglemin="0" anglemax="360" scalemin="0.45" scalemax="0.55" colormultiplier="1.0,1.0,1.0,0.75" lifetimemultiplier="0.2" />
+        <ParticleEmitter particle="weldspark" particlespersecond="60" anglemin="0" anglemax="360" velocitymin="30" velocitymax="100" scalemin="0.35" scalemax="0.5" lifetimemultiplier="0.2" />
+        <ParticleEmitter particle="swirlysmoke" particlespersecond="2" scalemin="0.5" scalemax="1" />
+        <ParticleEmitter particle="damagebubbles" particlespersecond="2" anglemin="0" anglemax="360" scalemin="0.5" scalemax="0.7" velocitymin="-10" velocitymax="10" />
+        <Sound file="Content/Items/Tools/FlareLoop.ogg" range="500.0" frequency="1.35" loop="true" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="" identifier="otfx_dynamitestick" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="3" spawnprobability="0.05" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.02" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="35" minavailable="4" minleveldifficulty="5">
+      <Price storeidentifier="merchantoutpost" multiplier="1.4" minavailable="2" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minleveldifficulty="0" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="3">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem identifier="magnesium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="384,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="640,640,12,83" depth="0.55" origin="0.5,0.5" />
+    <Body width="10" height="80" density="20" />
+    <ItemComponent characterusable="false">
+      <StatusEffect type="OnFire" target="This" condition="-50.0" />
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="4000" volume="1.0" frequency="0.9" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="4000" volume="1.0" frequency="0.9" />
+        <Sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="4000" volume="1.0" frequency="0.9" />
+        <Explosion range="300.0" ballastfloradamage="35" structuredamage="50" itemdamage="165" force="5" severlimbsprobability="0.2" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="40" dividebylimbcount="true" />
+          <Affliction identifier="burn" strength="5" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="15" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="2" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+    <LightComponent lightcolor="255,127,39,100" flicker="1.0" range="100" powerconsumption="0" ison="false">
+      <StatusEffect type="OnActive" target="Contained" condition="100.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" condition="-20.0" />
+    </LightComponent>
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnUse" target="This" tags="isactive" duration=".016">
+        <Conditional targetitemcomponent="LightComponent" ison="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" ison="true" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional hasstatustag="! isactive" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" ison="false" setvalue="true" comparison="And">
+        <Conditional hasstatustag="isactive" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="LightComponent" ison="true" indestructible="true" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" />
+    </Throwable>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" removecontaineditemsondeconstruct="true" spawnwithid="otfx_dynamitestickfuse">
+      <Containable identifier="otfx_dynamitestickfuse" excludebroken="true" excludefullcondition="false" itempos="0,22">
+        <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
+          <Conditional targetcontainer="true" targetitemcomponent="LightComponent" ison="false" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="otfx_dynamitesticktriple" category="Weapon" tags="smallitem,weapon,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.5" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.0125" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.015" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="105" minavailable="4" minleveldifficulty="10">
+      <Price storeidentifier="merchantoutpost" multiplier="1.4" minavailable="2" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minleveldifficulty="0" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem identifier="magnesium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="448,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="704,640,22,108" depth="0.55" origin="0.5,0.5" />
+    <Body width="20" height="98" density="20" />
+    <ItemComponent characterusable="false">
+      <StatusEffect type="OnFire" target="This" condition="-50.0" />
+      <StatusEffect type="OnUse" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="5000" volume="0.9" frequency="1.2" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="5000" volume="0.9" frequency="1.2" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="5000" volume="0.9" frequency="1.2" />
+        <Explosion range="500.0" ballastfloradamage="100" structuredamage="150" itemdamage="500" force="15" severlimbsprobability="0.5" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="100" dividebylimbcount="true" />
+          <Affliction identifier="burn" strength="15" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="6" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+    <LightComponent lightcolor="255,127,39,100" flicker="1.0" range="100" powerconsumption="0" ison="false">
+      <StatusEffect type="OnActive" target="Contained" condition="100.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" condition="-14.286" />
+    </LightComponent>
+    <Throwable slots="Any,RightHand,LeftHand" holdpos="0,0" handle1="0,0" throwforce="3.5" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnUse" target="This" tags="isactive" duration=".016">
+        <Conditional targetitemcomponent="LightComponent" ison="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" ison="true" indestructible="true" condition="0.0" setvalue="true" comparison="And">
+        <Conditional hasstatustag="! isactive" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" indestructible="false" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" ison="false" setvalue="true" comparison="And">
+        <Conditional hasstatustag="isactive" />
+        <Conditional hasstatustag="! unusable" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" tags="unusable" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="LightComponent" ison="true" indestructible="true" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" indestructible="false" />
+    </Throwable>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" removecontaineditemsondeconstruct="true" spawnwithid="otfx_dynamitestickfuse">
+      <Containable identifier="otfx_dynamitestickfuse" excludebroken="true" excludefullcondition="false" itempos="0,27">
+        <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
+          <Conditional targetcontainer="true" targetitemcomponent="LightComponent" ison="false" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="otfx_dynamitespear" category="Weapon" tags="mediumitem,weapon,explosive,demolitionsexpert,harpoonammo,handheldammo" maxstacksize="32" maxstacksizecharacterinventory="6" interactthroughwalls="true" cargocontaineridentifier="explosivecrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="harpoongun" />
+    <PreferredContainer primary="armcab" amount="6" spawnprobability="0.1" notcampaign="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="6" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" />
+    <Price baseprice="25">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.4" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="3" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="6" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="6" />
+    </Price>
+    <Deconstruct time="5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="3">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="spear" amount="3" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem identifier="magnesium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="512,384,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="768,640,168,12" depth="0.55" origin="0.5,0.5" />
+    <Body width="160" height="10" density="30" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <LightComponent lightcolor="255,127,39,100" flicker="1.0" range="100" powerconsumption="0" ison="false">
+      <StatusEffect type="OnActive" target="Contained" condition="100.0" setvalue="true" />
+      <StatusEffect type="OnActive" target="This" condition="-33.34" />
+    </LightComponent>
+    <Rope sourcepullforce="300" targetpullforce="150" projectilepullforce="5" maxlength="1500" snaponcollision="false" spritewidth="3" tile="true" origin="0.05,0.5" targetminmass="10" lerpforces="true" snapanimduration="0.5" reelsoundpitchslide="1.0,2.25">
+      <Sprite texture="Content/Map/Thalamus/thalamus.png" sourcerect="617,352,174,32" depth="0.57" origin="0.5,0.5" />
+      <SnapSound file="Content/Items/Weapons/HarpoonGun1.ogg" range="500" frequencymultiplier="3.0,4.0" />
+      <ReelSound file="Content/Items/Weapons/WEAPON_harpoonGunReelLoop.ogg" range="1000" />
+      <StatusEffect type="OnUse" target="This" snapped="true" delay="1.0" checkconditionalalways="true">
+        <Conditional targetitemcomponent="Projectile" isstucktotarget="false" />
+      </StatusEffect>
+    </Rope>
+    <Projectile characterusable="false" launchimpulse="5" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodeflective="true" sticktodoors="true">
+      <Attack structuredamage="15" itemdamage="15" targetforce="20" severlimbsprobability="0.1">
+        <Affliction identifier="lacerations" strength="35" />
+        <Affliction identifier="bleeding" strength="35" />
+        <Affliction identifier="stun" strength="0.5" />
+      </Attack>
+      <StatusEffect type="OnUse" target="This" pickingtime="1.3" ison="true" setvalue="true" />
+      <StatusEffect type="OnActive" target="UseTarget" targetidentifiers="character" comparison="And">
+        <Affliction identifier="drag" strength="1" />
+        <Conditional entitytype="Character" ismachine="false" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" condition="-50.0" />
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="4000" volume="1.0" frequency="0.9" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="4000" volume="1.0" frequency="0.9" />
+        <Sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="4000" volume="1.0" frequency="0.9" />
+        <Explosion range="300.0" ballastfloradamage="35" structuredamage="50" itemdamage="165" force="5" severlimbsprobability="0.2" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="40" dividebylimbcount="true" />
+          <Affliction identifier="burn" strength="5" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="15" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="2" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" removecontaineditemsondeconstruct="true" spawnwithid="otfx_dynamitestickfuse">
+      <Containable identifier="otfx_dynamitestickfuse" excludebroken="true" excludefullcondition="false" itempos="15,2">
+        <StatusEffect type="OnContaining" target="Contained" condition="0.0" setvalue="true">
+          <Conditional targetcontainer="true" targetitemcomponent="LightComponent" ison="false" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <Quality>
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item identifier="otfx_boundingantipersonnelmine" health="50" maxstacksize="32" maxstacksizecharacterinventory="8" category="Weapon" tags="smallitem" scale="0.3" impactsoundtag="impact_metal_light" damagedbymeleeweapons="true" damagedbyprojectiles="true" isshootable="true">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab" minamount="1" maxamount="2" spawnprobability="0.005" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="165">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.35" />
+      <Price storeidentifier="merchantcity" sold="false" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="2" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="iron" />
+      <Item identifier="sodium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="25">
+      <RequiredSkill identifier="weapons" level="60" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="iron" usecondition="true" mincondition="0.5" />
+      <RequiredItem identifier="uex" />
+      <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/OTFX/Items/Weapons/weapons.png" sourcerect="512,768,90,56" depth="0.55" origin="0.9,0.5" />
+    <Body radius="19" height="26" density="30" />
+    <Throwable characterusable="false" pickkey="Use" slots="Any,RightHand,LeftHand" throwforce="1.0" holdangle="90" aimpos="-15,-35" handle1="-15,0" msg="ItemMsgPickUpUse">
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Throwable" pickingtime="2.0" setvalue="true" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="Powered" isactive="true" delay="0.8" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="MotionSensor" motiondetected="false" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Throwable" pickingtime="0.0" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" isactive="false" />
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="MotionSensor" motiondetected="false" />
+    </Throwable>
+    <Powered>
+      <MotionSensor range="15" target="Human,Monster,Pet" minimumvelocity="1.0" detectownmotion="false">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="Throwable" pickingtime="0.0" setvalue="true">
+          <Conditional iscontained="true" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="Powered" isactive="false">
+          <Conditional iscontained="true" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="MotionSensor" motiondetected="false">
+          <Conditional iscontained="true" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" delay="0.5" stackable="false" comparison="And">
+          <Use />
+          <Conditional iscontained="false" />
+          <Conditional targetitemcomponent="MotionSensor" motiondetected="true" />
+        </StatusEffect>
+      </MotionSensor>
+    </Powered>
+    <Projectile launchimpulse="5.0">
+      <StatusEffect type="OnUse" target="This">
+        <Sound file="%ModDir%\OTFX\Items\Weapons\boundingantipersonnelmine_propellant.ogg" range="800" />
+        <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="300" velocitymax="450" maxdistance="50" scalemin="0.8" scalemax="1.3" />
+        <ParticleEmitter particle="flamethrower" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="0.95,0.6" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="1.2,1.2" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.5" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <Sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="5000" frequency="2.0" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="5000" frequency="2.0" />
+        <Sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="5000" frequency="2.0" />
+        <Explosion range="500.0" ballastfloradamage="100" structuredamage="20" levelwalldamage="140" itemdamage="350" force="3" debris="false" decal="explosion" decalsize="0.5">
+          <Affliction identifier="explosiondamage" strength="50" />
+          <Affliction identifier="stun" strength="3" />
+        </Explosion>
+        <SpawnItem identifier="otfx_boundingantipersonnelmineshrapnel" spawnposition="This" count="66" aimspread="360" rotationtype="Collider" rotation="0" />
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="" identifier="otfx_boundingantipersonnelmineshrapnel" health="500" category="Weapon" scale="0.5" hideinmenus="true">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body width="160" height="10" density="0.5" />
+    <Projectile characterusable="false" launchimpulse="35.0" impulsespread="0.2" maxtargetstohit="100" deactivationtime="0.5" sticktostructures="true" damagedoors="true">
+      <Attack structuredamage="0" targetforce="0.1" itemdamage="6" severlimbsprobability="0.1" penetration="0.2">
+        <Affliction identifier="gunshotwound" strength="16" />
+        <Affliction identifier="bleeding" strength="6" />
+        <Affliction identifier="stun" strength="0.15" />
+      </Attack>
+      <StatusEffect type="OnSpawn" target="This" delay="0.5" condition="0.0" setvalue="true" />
+      <StatusEffect type="OnUse" target="This" delay=".016">
+        <ParticleEmitter particle="shrapnel" copyentityangle="true" particleamount="5" velocitymin="2000" velocitymax="3000" scalemin="0.5" scalemax="0.75" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_obstacle" duration=".016">
+        <Conditional entitytype="Structure" hastag="door" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <Conditional hasstatustag="hit_obstacle" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnImpact" target="This" targetitemcomponent="Projectile" maxtargetstohit="0" setvalue="true" allowwhenbroken="true">
+        <Conditional condition="0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+</Items>

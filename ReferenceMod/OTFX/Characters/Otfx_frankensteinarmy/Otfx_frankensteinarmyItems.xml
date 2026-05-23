@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Frankenstein's Army Conversion Pack" identifier="otfx_frankensteinarmyconversionpack" category="Weapon,Machine" tags="largeitem" maxstacksize="1" maxstacksizecharacterinventory="1" scale="0.5" isshootable="true" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="1200" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.25" />
+      <Price storeidentifier="merchantcity" multiplier="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="70" requiresrecipe="false">
+      <RequiredItem identifier="fpgacircuit" amount="3" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+      <RequiredItem identifier="steel" amount="5" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" sourcerect="256,192,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" depth="0.55" sourcerect="3,128,192,98" origin="0.5,0.55" />
+    <Body width="184" height="92" density="25" />
+    <MeleeWeapon slots="LeftHand+RightHand" aimpos="50,0" handle1="-5,1" holdangle="30" reload="0.8" range="40" combatPriority="15" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="9" severlimbsprobability="0.05" itemdamage="5" structuredamage="0" structuresoundtype="impact_metal_heavy">
+        <Affliction identifier="blunttrauma" strength="5" />
+        <Affliction identifier="stun" strength="0.5" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Sound file="Content/Sounds/Damage/LimbBlunt1.ogg" selectionmode="All" range="600" frequencymultiplier="1.1" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt2.ogg" selectionmode="All" range="600" frequencymultiplier="1.1" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt3.ogg" selectionmode="All" range="600" frequencymultiplier="1.1" />
+          <Sound file="Content/Sounds/Damage/LimbBlunt4.ogg" selectionmode="All" range="600" frequencymultiplier="1.1" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnUse" target="UseTarget,This" isdead="false" disabledeltatime="true" comparison="And">
+        <Conditional entitytype="Character" speciesname="human" isdead="true" />
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="800" />
+        <SpawnItem identifier="otfx_frankensteinarmy" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <DropContainedItems />
+        <RemoveCharacter />
+        <RemoveItem />
+      </StatusEffect>
+    </MeleeWeapon>
+    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
+    <Wearable pickkey="Use" slots="Bag" canbeselected="false" canbepicked="true" msg="ItemMsgPickUpAndEquipUse">
+      <sprite name="" texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="3,128,192,98" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.95" />
+    </Wearable>
+  </Item>
+  <Item name="Frankenstein's Army" identifier="otfx_frankensteinarmy" category="Weapon,Machine" tags="largeitem" maxstacksize="1" maxstacksizecharacterinventory="1" scale="0.5" isshootable="true" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="2000" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.25" />
+      <Price storeidentifier="merchantcity" multiplier="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" sourcerect="256,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" depth="0.55" sourcerect="0,0,197,99" origin="0.5,0.55" />
+    <Body width="189" height="93" density="25" />
+    <Holdable slots="RightHand+LeftHand" aimable="true" aimpos="40,-20" holdpos="0,0" handle1="-5,-3" handle2="5,-3" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSpawn" target="This" statuseffecttags="disable" duration="1.0" />
+      <StatusEffect type="OnUse" target="This" hiddeningame="true">
+        <ParticleEmitter particle="swirlysmoke" scalemin="2.0" scalemax="4.0" particleamount="3" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" colormultiplier="10,235,195,255" />
+        <ParticleEmitter particle="faradayfx" particleamount="30" scalemin="0.9" scalemax="4.4" anglemin="0" anglemax="360" colormultiplier="1.0,1.0,1.0,0.5" />
+        <Sound file="%ModDir%/Characters/Otfx_frankensteinarmy/Activate.ogg" type="OnUse" range="1500" volume="0.5" />
+        <SpawnCharacter speciesname="Otfx_frankensteinarmy" inheritteam="true" />
+        <Remove />
+        <Conditional hasstatustag="! disable" />
+      </StatusEffect>
+    </Holdable>
+    <Wearable pickkey="Use" slots="Bag" canbeselected="false" canbepicked="true" msg="ItemMsgPickUpAndEquipUse">
+      <sprite name="" texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" canbehiddenbyotherwearables="false" rotation="90" depth="0.6" sourcerect="0,0,197,99" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.95" />
+    </Wearable>
+  </Item>
+  <Item name="Frankenstein's Army Repair Kit" identifier="otfx_frankensteinarmyrepairer" category="Misc" tags="smallitem,tool,mountableweapon" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" requireaimtouse="true">
+    <PreferredContainer primary="storagecab" secondary="armcab" />
+    <Price baseprice="210"></Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" amount="1" />
+      <Item identifier="fpgacircuit" amount="1" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredSkill identifier="electrical" level="20" />
+      <Item identifier="steel" amount="1" />
+      <Item identifier="fpgacircuit" amount="1" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" sourcerect="448,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Characters/Otfx_frankensteinarmy/FrankensteinArmyItems.png" sourcerect="384,0,60,19" depth="0.55" origin="0.5,0.5" />
+    <Body width="56" height="17" density="15" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-5,1" holdangle="30" reload="0.8" range="40" combatPriority="15" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="1" structuredamage="1" structuresoundtype="StructureSlash">
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="bleeding" strength="2" />
+        <Affliction identifier="stun" strength="0.1" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+          <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true" forceplaysounds="true">
+          <Conditional speciesname="Otfx_frankensteinarmy" />
+          <Sound file="Content/Items/Door/DockingPort1.ogg" range="500" volume="0.75" frequency="2.0" />
+          <ParticleEmitter particle="otfx_construct" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="0.5,0.5" />
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4,4" lifetimemultiplier="3" colormultiplier="128,255,128,200" />
+          <ReduceAffliction type="damage" amount="18" />
+          <ReduceAffliction type="burn" amount="12" />
+        </StatusEffect>
+      </Attack>
+      <StatusEffect type="OnSecondaryUse" target="Character" setvalue="true" interval="0.5">
+        <Affliction identifier="otfx_frankensteinarmyfollowed" amount="infinity" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget,This" isdead="false" disabledeltatime="true" comparison="And">
+        <Conditional entitytype="Character" speciesname="Otfx_frankensteinarmy" isdead="true" />
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="800" />
+        <RemoveItem />
+      </StatusEffect>
+    </MeleeWeapon>
+    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
+  </Item>
+</Items>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="otfx_huntersmark">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsCaptain.png" sheetindex="0,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_huntersmark">
+      <Replace tag="[itemname]" value="entityname.riflebullet,entityname.spear" color="gui.orange" />
+      <Replace tag="[affliction]" value="afflictionname.otfx_huntersmark" color="gui.orange" />
+      <Replace tag="[stattype]" value="stattypenames.physicalresistance" color="gui.orange" />
+      <Replace tag="[amount]" value="20" color="gui.green" />
+      <Replace tag="[duration]" value="15" color="gui.green" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData weapontype="handheldranged" tags="harpoonammo" ignorenonharmfulattacks="true" invert="true" />
+        <AbilityConditionAttackData weapontype="handheldranged" tags="rifleammo" ignorenonharmfulattacks="true" invert="true" />
+      </Conditions>
+      <FallbackAbilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="UseTarget" setvalue="true" delay=".016" multiplyafflictionsbymaxvitality="true">
+              <Affliction identifier="otfx_huntersmark" strength="15" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </FallbackAbilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_shootout">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsCaptain.png" sheetindex="2,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_shootout">
+      <Replace tag="[affliction]" value="afflictionname.gunshotwound" color="gui.orange" />
+      <Replace tag="[duration]" value="6" color="gui.green" />
+      <Replace tag="[damage]" value="20" color="gui.green" />
+      <Replace tag="[gunshotwoundname]" value="afflictionname.gunshotwound" color="gui.orange" />
+      <Replace tag="[resistanceforgunshotwound]" value="20" color="gui.green" />
+      <Replace tag="[stunname]" value="afflictionname.stun" color="gui.orange" />
+      <Replace tag="[resistanceforstun]" value="15" color="gui.green" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAttackedResult">
+      <Conditions>
+        <AbilityConditionAttackResult afflictions="gunshotwound" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects applytoself="true">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" tags="otfx_shootout" duration="6.0" stackable="false" />
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData tags="pistolammoitem" />
+        <AbilityConditionHasStatusTag tag="otfx_shootout" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="0.2" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionRunning invert="true" />
+        <AbilityConditionHoldingItem tags="pistolitem" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyResistance resistanceid="gunshotwound" multiplier="0.8" />
+        <CharacterAbilityModifyResistance resistanceid="stun" multiplier="0.85" />
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+</Talents>

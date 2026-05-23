@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Rabbit Paging Device (Saki)" identifier="ba_command_device_saki" description="" scale="0.6" tags="smallitem" hideinmenus="false" category="Misc">
+    <InventoryIcon texture="%ModDir%/Content/Items/recaller.png" sourcerect="0,0,62,56" origin="0.5,0.5" />
+    <sprite texture="%ModDir%/Content/Items/recaller.png" sourcerect="100,0,24,54" depth="0.60" origin="0.5,0.5" />
+    <Body width="24" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.3,0.3" anchor="CenterLeft" relativeoffset="0.006,-0.05" style="MainMenuGUIButton" />
+        <!--<Button text="Pages Saki">
+			    <StatusEffect type="OnUse" target="character" disabledeltatime="true" setalue="true" entitytargettag="triggerer_player">
+					<TriggerEvent identifier="ba_command_event_command_saki"/>
+				    <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+			    </StatusEffect>
+		    </Button>-->
+        <Button text="follow">
+          <StatusEffect type="OnUse" target="character" disabledeltatime="true" setalue="true">
+            <TriggerEvent identifier="ba_command_event_command_saki" />
+            <TriggerEvent identifier="ba_command_event_saki_follow" />
+            <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+          </StatusEffect>
+        </Button>
+        <Button text="stop">
+          <StatusEffect type="OnUse" target="character" disabledeltatime="true" setalue="true">
+            <TriggerEvent identifier="ba_command_event_command_saki" />
+            <TriggerEvent identifier="ba_command_event_saki_stop" />
+            <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+          </StatusEffect>
+        </Button>
+        <!--<Button text="recruits">
+			    <StatusEffect type="OnUse" target="character" disabledeltatime="true" setalue="true" >
+					<TriggerEvent identifier="ba_command_event_saki_recruit"/>
+					<sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+			    </StatusEffect>
+		    </Button>
+		    <Button text="dismiss">
+			    <StatusEffect type="OnUse" target="character" disabledeltatime="true" setalue="true" >
+					<TriggerEvent identifier="ba_command_event_saki_dismiss"/>
+					<sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+			    </StatusEffect>
+		    </Button>-->
+      </CustomInterface>
+    </Holdable>
+  </Item>
+  <Item name="Event Debug Trigger (Tower Defense Mini Game)" identifier="ba_td_debug" description="" scale="0.6" tags="smallitem" hideinmenus="false" category="Misc">
+    <InventoryIcon texture="%ModDir%/Content/Items/recaller.png" sourcerect="0,0,62,56" origin="0.5,0.5" />
+    <sprite texture="%ModDir%/Content/Items/recaller.png" sourcerect="100,0,24,54" depth="0.60" origin="0.5,0.5" />
+    <Body width="24" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.3,0.3" anchor="CenterLeft" relativeoffset="0.006,-0.05" style="MainMenuGUIButton" />
+        <Button text="trigger event">
+          <StatusEffect type="OnUse" target="This,character" EventUserTag="triggerer_player" disabledeltatime="true" setalue="true">
+            <TriggerEvent identifier="Abydos_Quest_BankRobbing_Tutorial" />
+            <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+    </Holdable>
+    <RangedWeapon reload="2" holdtrigger="false"></RangedWeapon>
+  </Item>
+  <!--<Item name="Follow Command" identifier="ba_kill" description="Follow player" scale="0.6" tags="smallitem,ba_command_follow" hideinmenus="true" category="Misc" isshootable="true">
+    <InventoryIcon texture="%ModDir%/Content/Items/recaller.png" sourcerect="0,0,62,56" origin="0.5,0.5" />
+    <sprite texture="%ModDir%/Content/Items/recaller.png" sourcerect="100,0,24,54" depth="0.60" origin="0.5,0.5" />
+    <Body width="24" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+    </Holdable>
+    <RangedWeapon reload="1" holdtrigger="false">
+          <StatusEffect type="OnUse" target="Character" EventTargetTag="triggerer_player" delay="0.1" stackable="false">
+			  <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+          </StatusEffect>
+    </RangedWeapon>
+  </Item>-->
+  <!--<Item name="Stop Command" identifier="ba_stop" description="Stop Follow player" scale="0.6" tags="smallitem,ba_command_stop" hideinmenus="true" category="Misc" isshootable="true">
+    <InventoryIcon texture="%ModDir%/Content/Items/recaller.png" sourcerect="0,0,62,56" origin="0.5,0.5" />
+    <sprite texture="%ModDir%/Content/Items/recaller.png" sourcerect="100,0,24,54" depth="0.60" origin="0.5,0.5" />
+    <Body width="24" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+      -->
+  <!--<StatusEffect type="OnBroken" target="This" condition="1" setvalue="true" />-->
+  <!--
+    </Holdable>
+    <RangedWeapon reload="1" holdtrigger="false">
+          <StatusEffect type="OnUse" target="Character" EventTargetTag="command_stop" delay="0.1" stackable="false">
+			  -->
+  <!--<TriggerEvent identifier="ba_npc_command_stop" />-->
+  <!--
+			  <sound file="%ModDir%/Content/Damage_Sound/hoshino1_damage_3.ogg" range="500" volume="1" />
+          </StatusEffect>
+    </RangedWeapon>
+  </Item>-->
+</Items>

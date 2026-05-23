@@ -1,0 +1,1449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="io100_toolboxiron" nameidentifier="iron" health="100.0" category="Equipment" subcategory="io100" tags="smallitem,tool,toolbox,storagecab,medcab,medfabcab,highpriority" cargocontaineridentifier="" showcontentsintooltip="true" scale="0.5" inventoryiconcolor="136,142,166,255" impactsoundtag="impact_metal_heavy">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,192,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="314,1,94,74" origin="0.5,0.5" depth="0.60000" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="5,92,46,38" origin="0.5,0.4" depth="0.59999" color="136,142,166,255" scale="0.75" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" canbecombined="true" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1.0" range="50" combatpriority="6" disablewhenrangedweaponequipped="true" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" range="500" selectionmode="random" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="1" maxstacksize="8" keepopenwhenequipped="true" showcontainedstateindicator="false">
+      <SlotIcon slotindex="0" texture="Content/Map/LabelLetters.png" sourcerect="768,128,128,128" origin="0.5,0.5" />
+      <Containable identifier="iron" />
+      <SlotIcon slotindex="1" texture="Content/Map/LabelLetters.png" sourcerect="0,128,128,128" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="8">
+        <Containable identifier="iron">
+          <StatusEffect type="OnContaining" target="This">
+            <SpawnItem identifier="iron" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+            <Conditional isfullcondition="true" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="This" targetitemcomponent="CustomInterface" condition="+1.0" drawhudwhenequipped="false" disabledeltatime="true">
+            <Conditional isfullcondition="false" />
+          </StatusEffect>
+          <StatusEffect type="OnContaining" target="Contained">
+            <Remove />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent characterusable="false">
+      <IsActive targetitemcomponent="ItemContainer" containeditemcount="lt 8" />
+      <StatusEffect type="OnActive" target="This" condition="-1.0" disabledeltatime="true">
+        <SpawnItem identifier="iron" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemComponent>
+    <CustomInterface canbeselected="false" allowuioverlap="true">
+      <GuiFrame relativesize="0.07,0.12" anchor="BottomLeft" relativeoffset="0.42,0.12" style="ItemUI" draggable="true" />
+      <Button text="label.unmark">
+        <StatusEffect type="OnUse" target="This" allowwhenbroken="true">
+          <DropContainedItems />
+          <SpawnItem identifier="io100_toolbox" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+          <Conditional condition="0.0" />
+        </StatusEffect>
+      </Button>
+      <StatusEffect type="OnBroken" target="This" targetitemcomponent="CustomInterface" drawhudwhenequipped="true" />
+    </CustomInterface>
+  </Item>
+  <Item name="" identifier="io100_toolbox" category="Equipment" subcategory="io100" tags="smallitem,tool,toolbox,highpriority" cargocontaineridentifier="" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="60">
+      <Price storeidentifier="merchantoutpost" minavailable="3" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="9" />
+      <Price storeidentifier="merchantresearch" minavailable="3" />
+      <Price storeidentifier="merchantmilitary" minavailable="3" />
+      <Price storeidentifier="merchantmine" multiplier="0.9" minavailable="9" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="silicon" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,256,64,64" origin="0.5,0.6" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="314,1,94,74" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1.0" range="50" combatpriority="6" disablewhenrangedweaponequipped="true" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" range="500" selectionmode="random" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" keepopenwhenequipped="true" movableframe="true" showcontainedstateindicator="false">
+      <Containable identifier="iron">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxiron" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="iron" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="carbon">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxcarbon" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="carbon" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="tin">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxtin" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="tin" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="lead">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxlead" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="lead" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="phosphorus">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxphosphorus" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="phosphorus" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="copper">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxcopper" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="copper" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="zinc">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxzinc" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="zinc" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="sodium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxsodium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="sodium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="silicon">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxsilicon" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="silicon" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="calcium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxcalcium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="calcium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="aluminium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxaluminium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="aluminium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="uranium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxuranium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="uranium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="potassium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxpotassium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="potassium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="titanium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxtitanium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="titanium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="magnesium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxmagnesium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="magnesium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="lithium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxlithium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="lithium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="chlorine">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxchlorine" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="chlorine" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="thorium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxthorium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="thorium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="steel">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxsteel" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="steel" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="titaniumaluminiumalloy">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxtitaniumaluminiumalloy" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="titaniumaluminiumalloy" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="plastic">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxplastic" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="plastic" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="ballisticfiber">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxballisticfiber" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="ballisticfiber" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="organicfiber">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxorganicfiber" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="organicfiber" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="rubber">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxrubber" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="rubber" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="flashpowder">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxflashpowder" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="flashpowder" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="scrap">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxscrap" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="scrap" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="incendium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxincendium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="incendium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="fulgurium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxfulgurium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="fulgurium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="physicorium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxphysicorium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="physicorium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="dementonite">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxdementonite" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="dementonite" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antibleeding1">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantibleeding1" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antibleeding1" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antibleeding2">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantibleeding2" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antibleeding2" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antidama1">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantidama1" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antidama1" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antidama2">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantidama2" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antidama2" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antibloodloss1">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantibloodloss1" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antibloodloss1" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antibloodloss2">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantibloodloss2" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antibloodloss2" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="deusizine">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxdeusizine" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="deusizine" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="stabilozine">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxstabilozine" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="stabilozine" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="adrenaline">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxadrenaline" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="adrenaline" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="opium">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxopium" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="opium" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="liquidoxygenite">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxliquidoxygenite" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="liquidoxygenite" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="antibiotics">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxantibiotics" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="antibiotics" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="elastin">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxelastin" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="elastin" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="tonicliquid">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxtonicliquid" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="tonicliquid" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="ethanol">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxethanol" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="ethanol" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="sulphuricacid">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxsulphuricacid" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="sulphuricacid" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="alienblood">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxalienblood" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="alienblood" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="oxygeniteshard">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxoxygeniteshard" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="oxygeniteshard" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="sulphuriteshard">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxsulphuriteshard" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="sulphuriteshard" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="paralyxis">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxparalyxis" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="paralyxis" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="nitroglycerin">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxnitroglycerin" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="nitroglycerin" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="fpgacircuit">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxfpgacircuit" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="fpgacircuit" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+      <Containable identifier="depletedfuel">
+        <StatusEffect type="OnContaining" target="This">
+          <SpawnItem identifier="io100_toolboxdepletedfuel" condition="0.0" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <SpawnItem identifier="depletedfuel" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+          <Remove />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+  </Item>
+  <Item identifier="io100_toolboxcarbon" nameidentifier="carbon" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="5,55,46,38" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="carbon" />
+      <SubContainer>
+        <Containable identifier="carbon">
+          <StatusEffect>
+            <SpawnItem identifier="carbon" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="carbon" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxtin" nameidentifier="tin" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="150,92,47,38" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="tin" />
+      <SubContainer>
+        <Containable identifier="tin">
+          <StatusEffect>
+            <SpawnItem identifier="tin" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="tin" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxlead" nameidentifier="lead" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="768,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="101,92,47,38" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="lead" />
+      <SubContainer>
+        <Containable identifier="lead">
+          <StatusEffect>
+            <SpawnItem identifier="lead" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="lead" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxphosphorus" nameidentifier="phosphorus" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="153,6,23,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="phosphorus" />
+      <SubContainer>
+        <Containable identifier="phosphorus">
+          <StatusEffect>
+            <SpawnItem identifier="phosphorus" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="phosphorus" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxcopper" nameidentifier="copper" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="53,92,48,38" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="copper" />
+      <SubContainer>
+        <Containable identifier="copper">
+          <StatusEffect>
+            <SpawnItem identifier="copper" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="copper" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxzinc" nameidentifier="zinc" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="102,55,46,37" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="zinc" />
+      <SubContainer>
+        <Containable identifier="zinc">
+          <StatusEffect>
+            <SpawnItem identifier="zinc" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="zinc" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxsodium" nameidentifier="sodium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="29,7,23,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="sodium" />
+      <SubContainer>
+        <Containable identifier="sodium">
+          <StatusEffect>
+            <SpawnItem identifier="sodium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="sodium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxsilicon" nameidentifier="silicon" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,128,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="196,54,46,38" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="silicon" />
+      <SubContainer>
+        <Containable identifier="silicon">
+          <StatusEffect>
+            <SpawnItem identifier="silicon" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="silicon" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxcalcium" nameidentifier="calcium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="129,6,23,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="calcium" />
+      <SubContainer>
+        <Containable identifier="calcium">
+          <StatusEffect>
+            <SpawnItem identifier="calcium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="calcium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxaluminium" nameidentifier="aluminium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="448,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="53,53,47,39" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="aluminium" />
+      <SubContainer>
+        <Containable identifier="aluminium">
+          <StatusEffect>
+            <SpawnItem identifier="aluminium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="aluminium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxuranium" nameidentifier="uranium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="898,192,61,63" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="4,130,49,41" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="uranium" />
+      <SubContainer>
+        <Containable identifier="uranium">
+          <StatusEffect>
+            <SpawnItem identifier="uranium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="uranium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxpotassium" nameidentifier="potassium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="128,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="77,6,23,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="potassium" />
+      <SubContainer>
+        <Containable identifier="potassium">
+          <StatusEffect>
+            <SpawnItem identifier="potassium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="potassium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxtitanium" nameidentifier="titanium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="150,55,46,37" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="titanium" />
+      <SubContainer>
+        <Containable identifier="titanium">
+          <StatusEffect>
+            <SpawnItem identifier="titanium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="titanium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxmagnesium" nameidentifier="magnesium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="192,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="102,6,23,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="magnesium" />
+      <SubContainer>
+        <Containable identifier="magnesium">
+          <StatusEffect>
+            <SpawnItem identifier="magnesium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="magnesium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxlithium" nameidentifier="lithium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="3,7,24,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="lithium" />
+      <SubContainer>
+        <Containable identifier="lithium">
+          <StatusEffect>
+            <SpawnItem identifier="lithium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="lithium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxchlorine" nameidentifier="chlorine" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,256,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="55,7,22,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="chlorine" />
+      <SubContainer>
+        <Containable identifier="chlorine">
+          <StatusEffect>
+            <SpawnItem identifier="chlorine" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="chlorine" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxthorium" nameidentifier="thorium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,192,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="54,131,46,39" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="thorium" />
+      <SubContainer>
+        <Containable identifier="thorium">
+          <StatusEffect>
+            <SpawnItem identifier="thorium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="thorium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxsteel" nameidentifier="steel" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,128,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="4,171,54,27" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="steel" />
+      <SubContainer>
+        <Containable identifier="steel">
+          <StatusEffect>
+            <SpawnItem identifier="steel" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="steel" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxtitaniumaluminiumalloy" nameidentifier="titaniumaluminiumalloy" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="192,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="62,203,55,27" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="titaniumaluminiumalloy" />
+      <SubContainer>
+        <Containable identifier="titaniumaluminiumalloy">
+          <StatusEffect>
+            <SpawnItem identifier="titaniumaluminiumalloy" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="titaniumaluminiumalloy" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxplastic" nameidentifier="plastic" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,128,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="202,100,43,30" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="plastic" />
+      <SubContainer>
+        <Containable identifier="plastic">
+          <StatusEffect>
+            <SpawnItem identifier="plastic" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="plastic" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxballisticfiber" nameidentifier="ballisticfiber" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="706,770,62,61" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="221,0,35,53" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="ballisticfiber" />
+      <SubContainer>
+        <Containable identifier="ballisticfiber">
+          <StatusEffect>
+            <SpawnItem identifier="ballisticfiber" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="ballisticfiber" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxorganicfiber" nameidentifier="organicfiber" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="178,8,42,45" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="organicfiber" />
+      <SubContainer>
+        <Containable identifier="organicfiber">
+          <StatusEffect>
+            <SpawnItem identifier="organicfiber" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="organicfiber" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxrubber" nameidentifier="rubber" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,770,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="133,221,35,32" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="rubber" />
+      <SubContainer>
+        <Containable identifier="rubber">
+          <StatusEffect>
+            <SpawnItem identifier="rubber" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="rubber" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxflashpowder" nameidentifier="flashpowder" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="64,256,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="127,134,23,42" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="flashpowder" />
+      <SubContainer>
+        <Containable identifier="flashpowder">
+          <StatusEffect>
+            <SpawnItem identifier="flashpowder" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="flashpowder" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxscrap" nameidentifier="scrap" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="448,384,64,64" />
+    <DecorativeSprite texture="Content/Items/Materials/Minerals.png" sourcerect="175,220,50,33" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="scrap" />
+      <SubContainer>
+        <Containable identifier="scrap">
+          <StatusEffect>
+            <SpawnItem identifier="scrap" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="scrap" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxincendium" nameidentifier="incendium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="260,835,53,61" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="105,439,52,61" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="incendium" />
+      <SubContainer>
+        <Containable identifier="incendium">
+          <StatusEffect>
+            <SpawnItem identifier="incendium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="incendium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxfulgurium" nameidentifier="fulgurium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="328,833,51,63" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="186,351,59,67" scale="0.7164179" />
+    <ItemContainer>
+      <Containable identifier="fulgurium" />
+      <SubContainer>
+        <Containable identifier="fulgurium">
+          <StatusEffect>
+            <SpawnItem identifier="fulgurium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="fulgurium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxphysicorium" nameidentifier="physicorium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="70,835,52,59" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="97,349,58,71" scale="0.6760563" />
+    <ItemContainer>
+      <Containable identifier="physicorium" />
+      <SubContainer>
+        <Containable identifier="physicorium">
+          <StatusEffect>
+            <SpawnItem identifier="physicorium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="physicorium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxdementonite" nameidentifier="dementonite" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,830,64,64" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="15,356,60,54" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="dementonite" />
+      <SubContainer>
+        <Containable identifier="dementonite">
+          <StatusEffect>
+            <SpawnItem identifier="dementonite" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="dementonite" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantibleeding1" nameidentifier="antibleeding1" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="128,448,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="310,33,26,42" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="antibleeding1" />
+      <SubContainer>
+        <Containable identifier="antibleeding1">
+          <StatusEffect>
+            <SpawnItem identifier="antibleeding1" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antibleeding1" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantibleeding2" nameidentifier="antibleeding2" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="959,771,63,59" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="340,33,26,42" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="antibleeding2" />
+      <SubContainer>
+        <Containable identifier="antibleeding2">
+          <StatusEffect>
+            <SpawnItem identifier="antibleeding2" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antibleeding2" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantidama1" nameidentifier="antidama1" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,448,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="0,0,37,69" scale="0.6956522" />
+    <ItemContainer>
+      <Containable identifier="antidama1" />
+      <SubContainer>
+        <Containable identifier="antidama1">
+          <StatusEffect>
+            <SpawnItem identifier="antidama1" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antidama1" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantidama2" nameidentifier="antidama2" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,448,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="37,0,38,69" scale="0.6956522" />
+    <ItemContainer>
+      <Containable identifier="antidama2" />
+      <SubContainer>
+        <Containable identifier="antidama2">
+          <StatusEffect>
+            <SpawnItem identifier="antidama2" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antidama2" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantibloodloss1" nameidentifier="antibloodloss1" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,640,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="0,261,83,46" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="antibloodloss1" />
+      <SubContainer>
+        <Containable identifier="antibloodloss1">
+          <StatusEffect>
+            <SpawnItem identifier="antibloodloss1" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antibloodloss1" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantibloodloss2" nameidentifier="antibloodloss2" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,640,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="1,217,82,44" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="antibloodloss2" />
+      <SubContainer>
+        <Containable identifier="antibloodloss2">
+          <StatusEffect>
+            <SpawnItem identifier="antibloodloss2" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antibloodloss2" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxdeusizine" nameidentifier="deusizine" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,704,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="226,306,38,72" scale="0.6666667" />
+    <ItemContainer>
+      <Containable identifier="deusizine" />
+      <SubContainer>
+        <Containable identifier="deusizine">
+          <StatusEffect>
+            <SpawnItem identifier="deusizine" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="deusizine" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxstabilozine" nameidentifier="stabilozine" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,640,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="112,139,37,70" scale="0.6857143" />
+    <ItemContainer>
+      <Containable identifier="stabilozine" />
+      <SubContainer>
+        <Containable identifier="stabilozine">
+          <StatusEffect>
+            <SpawnItem identifier="stabilozine" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="stabilozine" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxadrenaline" nameidentifier="adrenaline" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="379,452,27,58" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="adrenaline" />
+      <SubContainer>
+        <Containable identifier="adrenaline">
+          <StatusEffect>
+            <SpawnItem identifier="adrenaline" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="adrenaline" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxopium" nameidentifier="opium" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="406,452,29,58" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="opium" />
+      <SubContainer>
+        <Containable identifier="opium">
+          <StatusEffect>
+            <SpawnItem identifier="opium" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="opium" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxliquidoxygenite" nameidentifier="liquidoxygenite" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,640,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="187,138,38,71" scale="0.6760563" />
+    <ItemContainer>
+      <Containable identifier="liquidoxygenite" />
+      <SubContainer>
+        <Containable identifier="liquidoxygenite">
+          <StatusEffect>
+            <SpawnItem identifier="liquidoxygenite" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="liquidoxygenite" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxantibiotics" nameidentifier="antibiotics" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="576,704,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="263,142,36,68" scale="0.7058824" />
+    <ItemContainer>
+      <Containable identifier="antibiotics" />
+      <SubContainer>
+        <Containable identifier="antibiotics">
+          <StatusEffect>
+            <SpawnItem identifier="antibiotics" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="antibiotics" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxelastin" nameidentifier="elastin" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="772,771,52,59" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="465,452,47,60" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="elastin" />
+      <SubContainer>
+        <Containable identifier="elastin">
+          <StatusEffect>
+            <SpawnItem identifier="elastin" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="elastin" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxtonicliquid" nameidentifier="tonicliquid" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,704,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="383,5,33,87" scale="0.55172414" />
+    <ItemContainer>
+      <Containable identifier="tonicliquid" />
+      <SubContainer>
+        <Containable identifier="tonicliquid">
+          <StatusEffect>
+            <SpawnItem identifier="tonicliquid" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="tonicliquid" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxethanol" nameidentifier="ethanol" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="435,452,30,57" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="ethanol" />
+      <SubContainer>
+        <Containable identifier="ethanol">
+          <StatusEffect>
+            <SpawnItem identifier="ethanol" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="ethanol" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxsulphuricacid" nameidentifier="sulphuricacid" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Medical/Medicines.png" sourcerect="346,452,33,60" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="sulphuricacid" />
+      <SubContainer>
+        <Containable identifier="sulphuricacid">
+          <StatusEffect>
+            <SpawnItem identifier="sulphuricacid" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="sulphuricacid" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxalienblood" nameidentifier="alienblood" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="448,771,64,64" />
+    <DecorativeSprite texture="Content/Items/CreatureLoot/CreatureLoot.png" sourcerect="1,128,30,58" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="alienblood" />
+      <SubContainer>
+        <Containable identifier="alienblood">
+          <StatusEffect>
+            <SpawnItem identifier="alienblood" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="alienblood" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxoxygeniteshard" nameidentifier="oxygeniteshard" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="200,835,50,56" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="18,436,58,69" scale="0.6956522" />
+    <ItemContainer>
+      <Containable identifier="oxygeniteshard" />
+      <SubContainer>
+        <Containable identifier="oxygeniteshard">
+          <StatusEffect>
+            <SpawnItem identifier="oxygeniteshard" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="oxygeniteshard" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxsulphuriteshard" nameidentifier="sulphuriteshard" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/Alien/AlienMaterials.png" sourcerect="178,437,60,73" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="178,437,60,73" scale="0.65753424" />
+    <ItemContainer>
+      <Containable identifier="sulphuriteshard" />
+      <SubContainer>
+        <Containable identifier="sulphuriteshard">
+          <StatusEffect>
+            <SpawnItem identifier="sulphuriteshard" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="sulphuriteshard" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxparalyxis" nameidentifier="paralyxis" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,832,64,64" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="266,430,45,76" scale="0.6315789" />
+    <ItemContainer>
+      <Containable identifier="paralyxis" />
+      <SubContainer>
+        <Containable identifier="paralyxis">
+          <StatusEffect>
+            <SpawnItem identifier="paralyxis" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="paralyxis" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxnitroglycerin" nameidentifier="nitroglycerin" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,768,64,64" />
+    <DecorativeSprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="110,414,31,62" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="nitroglycerin" />
+      <SubContainer>
+        <Containable identifier="nitroglycerin">
+          <StatusEffect>
+            <SpawnItem identifier="nitroglycerin" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="nitroglycerin" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxfpgacircuit" nameidentifier="fpgacircuit" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" />
+    <DecorativeSprite texture="Content/Items/Electricity/signalcomp.png" sourcerect="225,33,36,36" scale="0.75" />
+    <ItemContainer>
+      <Containable identifier="fpgacircuit" />
+      <SubContainer>
+        <Containable identifier="fpgacircuit">
+          <StatusEffect>
+            <SpawnItem identifier="fpgacircuit" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="fpgacircuit" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item identifier="io100_toolboxdepletedfuel" nameidentifier="depletedfuel" variantof="io100_toolboxiron">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,64,64,64" />
+    <DecorativeSprite texture="Content/Items/Tools/tools.png" sourcerect="452,1,19,68" scale="0.7058824" />
+    <ItemContainer>
+      <Containable identifier="depletedfuel" />
+      <SubContainer>
+        <Containable identifier="depletedfuel">
+          <StatusEffect>
+            <SpawnItem identifier="depletedfuel" />
+          </StatusEffect>
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemComponent>
+      <StatusEffect>
+        <SpawnItem identifier="depletedfuel" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+</Items>

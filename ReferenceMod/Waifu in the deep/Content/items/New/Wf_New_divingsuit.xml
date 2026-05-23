@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--legacy XDS-->
+  <Item name="" identifier="Wf_New_XDS-01" category="Equipment" tags="diving,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="150000" sold="false" />
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+    <Deconstruct time="45">
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <!--Fabricate
+	<Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredSkill identifier="mechanical" level="80" />
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="Wf_debris" mincondition="0.6" usecondition="true" />
+      <Item identifier="Wf_Research_chip" mincondition="0.6" usecondition="true" />
+    </Fabricate>
+	-->
+    <Sprite name="PUCS Item" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Items.png" sourcerect="286,0,82,126" origin="0.5,0.5" />
+    <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Items.png" sourcerect="181,0,107,212" depth="0.55" origin="0.5,0.45519" />
+    <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+    <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
+    <Body radius="45" width="34" density="15" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
+      <TickBox text="Helmet Lights" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="OuterClothes+InnerClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="Wf_New_XD-01 Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="false" sourcerect="429,103,45,108" origin="0.59,0.56037">
+        <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01 Torso" texture="Wf_New_XDS-01.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,0,112,208" Origin="0.49769565,0.4423" />
+      <sprite name="XDS-01 Right Hand" texture="Wf_New_XDS-01.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Hand" texture="Wf_New_XDS-01.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Lower Arm" texture="Wf_New_XDS-01.png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,0,64,96" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Left Lower Arm" texture="Wf_New_XDS-01.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,96" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Upper Arm" texture="Wf_New_XDS-01.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="400,160,64,112" Origin="0.5,0.607142" />
+      <sprite name="XDS-01 Left Upper Arm" texture="Wf_New_XDS-01.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="464,160,64,112" Origin="0.5,0.607142" />
+      <sprite name="XDS-01 Waist" texture="Wf_New_XDS-01.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,208,112,64" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Thigh" texture="Wf_New_XDS-01.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Thigh" texture="Wf_New_XDS-01.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Leg" texture="Wf_New_XDS-01.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Leg" texture="Wf_New_XDS-01.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Shoe" texture="Wf_New_XDS-01.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,64" Origin="0.59375,0.4375" />
+      <sprite name="XDS-01 Right Shoe" texture="Wf_New_XDS-01.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,64" Origin="0.59375,0.4375" />
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" UseHullOxygen="true" ObstructVision="false" PressureProtection="10000.0" SpeedMultiplier="1" PropulsionSpeedMultiplier="1.5" setvalue="true" disabledeltatime="true">
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0">
+        <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+        <RequiredItem items="oxygentank" type="Contained" excludebroken="false" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygentank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+        <Conditional InWater="true" />
+        <RequiredItem items="oxygentank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <Conditional IsDead="false" />
+        <RequiredItem items="weldingfueltank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+        <Conditional IsDead="false" />
+        <RequiredItem items="incendiumfueltank" type="Contained" />
+        <Affliction identifier="burn" amount="0.05" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+        <Conditional InWater="true" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
+        <Conditional IsDead="false" />
+        <Conditional HullOxygenPercentage="lt 50" />
+        <Conditional InWater="false" />
+        <RequiredItem items="oxygenitetank" type="Contained" />
+      </StatusEffect>
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.0" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.3" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="hallucinating" damagemultiplier="0.1" />
+      <ItemComponent>
+        <IsActive HullOxygenPercentage="lt 50" />
+        <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
+          <RequiredItem items="oxygensource" type="Contained" />
+          <Conditional condition="lt 5.0" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
+          <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+          <Conditional condition="lte 0.0" />
+          <Sound file="Content/Items/WarningBeep.ogg" range="500" />
+        </StatusEffect>
+      </ItemComponent>
+    </Wearable>
+    <ItemComponent>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="Heels" amount="1" />
+      </StatusEffect>
+    </ItemComponent>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
+      <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="oxygensource,weldingtoolfuel" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="chem,medical" />
+      </SubContainer>
+    </ItemContainer>
+  </Item>
+  <!--leagcy XDS_Engine-->
+  <Item name="" identifier="Wf_New_XDS-01_Engine" category="Equipment" tags="diving,provocative,mediumitem" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
+    <PreferredContainer primary="divingcab" />
+    <Deconstruct time="10">
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <!--Fabricate
+	<Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="80" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <Item identifier="physicorium" amount="2" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="Wf_debris" mincondition="0.4" usecondition="true" />
+      <Item identifier="Wf_Research_chip" mincondition="0.4" usecondition="true" />
+    </Fabricate>
+	-->
+    <Price baseprice="100000" sold="false" />
+    <InventoryIcon texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" origin="0.5,0.5" />
+    <Sprite texture="Wf_New_XDS-01_Engine_Items.png" sourcerect="0,0,254,210" depth="0.6" />
+    <Body width="100" height="100" density="50" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="0,475" style="ItemUI" />
+      <TickBox text="Power On" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="XDS-01_Engine" texture="Wf_New_XDS-01_Engine.png" sourcerect="304,0,304,240" limb="Torso" inherittexturescale="true" origin="0.84947,0.7225" CanbehiddenbyOtherWearables="false">
+        <LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="0,0,304,240" origin="0.84947,0.7225" alpha="1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01_Helmet" texture="Wf_New_XDS-01_Engine.png" sourcerect="608,110,140,130" limb="Head" inheritlimbdepth="true" depth="0.5" scale="0.5" origin="0.555,0.67" CanbehiddenbyOtherWearables="false">
+        <LightComponent range="0.0" lightcolor="255,255,255,100" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/New/Wf_New_XDS-01_Lights.png" depth="0.025" sourcerect="304,120,140,120" origin="0.4,0.8" alpha="1.0" />
+        </LightComponent>
+      </sprite>
+      <StatusEffect type="OnWearing" target="this" condition="50" setvalue="true" disabledeltatime="true">
+        <Conditional targetitemcomponent="LightComponent" IsOn="eq true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this" condition="100" setvalue="true" disabledeltatime="true">
+        <Conditional targetitemcomponent="LightComponent" IsOn="eq false" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" SpeedMultiplier="3.0" setvalue="true" disabledeltatime="true" comparison="and">
+        <Conditional condition="50" />
+        <Conditional InWater="eq true" />
+        <ParticleEmitter particle="Wf_faradayfx" anglemax="360" distancemax="60" particlespersecond="20" />
+        <TriggerAnimation Type="SwimSlow" FileName="HumanSwimSlow_XDS_01" priority="2" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="SwimFast" FileName="HumanSwimFast_XDS_01" priority="11" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="120.0,270.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="120.0,270.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="120.0,270.0" afflictiontypes="burn" damagemultiplier="0.05" damagesound="" deflectprojectiles="true" />
+      <damagemodifier armorsector="120.0,270.0" afflictionidentifiers="huskinfection" damagemultiplier="0.1" probabilitymultiplier="0.05" damagesound="LimbArmor" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="82,-27" handle2="82,-27" holdangle="90.0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <ItemContainer capacity="6" depth="0.5">
+      <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier" />
+    </ItemContainer>
+  </Item>
+  <!--legacy XDS End-->
+  <!--XDS-01 Materials-->
+  <!--
+  <Item name="" identifier="Wf_debris" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0.01" />
+    <Deconstruct time="20">
+      <Item identifier="rubber" />
+      <Item identifier="alientrinket3" />
+      <Item identifier="alientrinket3" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_XDS-01.png" sourcerect="400,0,128,128" />
+    <Sprite texture="Wf_New_XDS-01.png" sourcerect="400,0,128,160" depth="0.55" origin="0.5,0.5" />
+    <Body width="100" height="120" density="50" />
+    <Holdable slots="RightHand+LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  -->
+  <Item name="" identifier="Wf_Research_Box" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0.01" />
+    <Price baseprice="1500" sold="false" />
+    <Deconstruct time="20">
+      <Item identifier="Wf_Research_Log" />
+      <Item identifier="Wf_Research_chip" />
+      <Item identifier="Wf_Research_chip_B" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_Materials.png" sourcerect="128,0,64,64" />
+    <Sprite texture="Wf_New_Materials.png" sourcerect="128,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="100" height="120" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="Wf_Research_chip" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <Price baseprice="2000" sold="false" />
+    <Deconstruct time="5">
+      <Item identifier="copper" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_Materials.png" sourcerect="64,0,64,64" />
+    <Sprite texture="Wf_New_Materials.png" sourcerect="64,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="36" height="36" density="50" />
+    <Holdable slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="" identifier="Wf_Research_chip_B" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <Price baseprice="2000" sold="false" />
+    <Deconstruct time="5">
+      <Item identifier="copper" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+    </Deconstruct>
+    <InventoryIcon texture="Wf_New_Materials.png" sourcerect="192,0,64,64" />
+    <Sprite texture="Wf_New_Materials.png" sourcerect="192,0,64,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="36" height="36" density="50" />
+    <Holdable slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="" identifier="Wf_Research_Log" category="Electrical" Tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.25" impactsoundtag="impact_metal_light" isshootable="true">
+    <Upgrade gameversion="0.9.9000.0" scale="0.25" />
+    <Price baseprice="500" sold="false" />
+    <PreferredContainer primary="reactorcab" secondary="engcab" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="323,193,60,61" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" sourcerect="149,371,69,93" depth="0.8" origin="0.5,0.5" />
+    <Body width="60" height="90" density="8" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+    <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.35,0.35" anchor="Center" style="ItemUI" />
+    </Terminal>
+  </Item>
+  <!--XDS-01 Materials End-->
+  <!--New XDS-01-->
+  <Item name="" identifier="New_XDS-01" category="Equipment" tags="XDS-01,provocative" scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" HideConditionBar="false" equipconfirmationtext="XDSequipconfirmation">
+    <Price baseprice="15000" sold="false" />
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredSkill identifier="mechanical" level="80" />
+      <Item identifier="organicfiber" amount="6" />
+      <Item identifier="physicorium" amount="6" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fulgurium" amount="3" />
+      <Item identifier="XDS_Remains" />
+    </Fabricate>
+    <Deconstruct time="45">
+      <Item identifier="organicfiber" amount="12" />
+      <Item identifier="physicorium" amount="4" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Sprite name="XDS-01 Item" texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="0,219,225,89" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="190,28,77,155" origin="0.5,0.5" />
+    <ContainedSprite name="XDS-01 Behind Window" allowedcontainertags="Pod" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+    <Body height="89" width="225" density="100" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
+      <TickBox text="XDS_Light.Active" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="OuterClothes+InnerClothes+Head" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="New_XD-01 Head" texture="New_XDS-01-W.png" limb="Head" inheritlimbdepth="true" depth="0.7" inheritscale="false" ignorelimbscale="true" scale="0.26" hidelimb="true" hideotherwearables="true" sourcerect="615,0,178,252" origin="0.651685,0.40381">
+        <LightComponent range="800.0" lightcolor="0.5,0.5,0.5,1.0" powerconsumption="10" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Interval="0.1" comparison="and" targetitemcomponent="LightComponent" IsOn="true">
+            <Conditional IsDead="eq false" />
+            <Conditional Voltage="eq 1.0" />
+          </StatusEffect>
+          <LightTexture texture="Content/Lights/lightcone.png" origin="0.005, 0.5" size="1.0,1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01 Torso" texture="New_XDS-01-W.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" SourceRect="148,0,124,208" Origin="0.54631,0.44231" />
+      <sprite name="XDS-01 Right Hand" texture="New_XDS-01-W.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Hand" texture="New_XDS-01-W.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Lower Arm" texture="New_XDS-01-W.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Lower Arm" texture="New_XDS-01-W.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Upper Arm" texture="New_XDS-01-W.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Upper Arm" texture="New_XDS-01-W.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Waist" texture="New_XDS-01-W.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="148,208,124,82" Origin="0.54631,0.3536585" />
+      <sprite name="XDS-01 Right Thigh" texture="New_XDS-01-W.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Thigh" texture="New_XDS-01-W.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,0,68,128" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Leg" texture="New_XDS-01-W.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Leg" texture="New_XDS-01-W.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,68,128" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Left Shoe" texture="New_XDS-01-W.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,82" Origin="0.453125,0.3414634" />
+      <sprite name="XDS-01 Right Shoe" texture="New_XDS-01-W.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,82" Origin="0.453125,0.3414634" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" UseHullOxygen="true" ObstructVision="false" SpeedMultiplier="1" PropulsionSpeedMultiplier="1.5" setvalue="true" disabledeltatime="true">
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+      </StatusEffect>
+      <!--Can't heal by medicine-->
+      <StatValue stattype="MedicalItemEffectivenessMultiplier" value="-0.95" />
+      <StatValue stattype="FlowResistance" value="0.95" />
+      <StatusEffect type="OnWearing" target="this,character" StatusEffectTags="NotFullyChraged" interval="0.01" duration="0.01" checkconditionalalways="true">
+        <Conditional condition="lt 100" />
+      </StatusEffect>
+      <!--Test
+	  <StatusEffect type="OnWearing" target="character" interval="1" checkconditionalalways="true">
+	    <Conditional HasStatusTag="eq NotFullyChraged"/>
+		<Spawnitem identifier="idcard" spawnposition="This"/>
+	  </StatusEffect>
+	  -->
+      <StatusEffect type="OnWearing" target="Character,this">
+        <Conditional condition="eq 100" />
+        <reduceaffliction identifier="Charging" amount="1.0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this" Voltage="1.0" setvalue="true">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <!--Can't interact once weared-->
+      <StatusEffect type="OnWearing" target="This" NonInteractable="true" setvalue="true" />
+      <!--Animations
+	  <StatusEffect type="OnWearing" target="Character" >
+		  <TriggerAnimation Type="Walk" FileName="HumanWalk-XDS" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun-XDS" priority="10" ExpectedSpecies="Human" />
+	  </StatusEffect>-->
+      <!--Apply cyborg affliction-->
+      <StatusEffect type="OnWearing" target="AllLimbs">
+        <Affliction identifier="cyborg" amount="1" interval="0.125" />
+        <Affliction identifier="infection_immunity" amount="1" interval="0.125" />
+      </StatusEffect>
+      <!--No power-->
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="-10.0" setvalue="true" disabledeltatime="true">
+        <Conditional Voltage="lte 0.5" />
+        <Affliction identifier="ShutDown" amount="30" />
+        <Affliction identifier="stun" amount="1" />
+        <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" condition="-0.05" comparison="and">
+        <Conditional condition="gt 0" />
+        <Conditional XDS_Core_Actived="lte 0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" condition="-0.3333" comparison="and">
+        <Conditional condition="gt 0" />
+        <Conditional XDS_Core_Actived="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="XDS-01" amount="1" />
+      </StatusEffect>
+      <!--
+	  <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true" targetslot="0" comparison="Or" >
+        <Conditional IsDead="eq false" />
+        <RequiredItem items="reactorfuel" targetslot="0" type="Contained" />
+	  </StatusEffect>
+	  
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.05" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="fuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.035" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="fulguriumfuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.02" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="thoriumfuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.01" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
+        <RequiredItem items="fulguriumfuelrodvolatile" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  -->
+    </Wearable>
+    <ItemComponent>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="XdsWalking" amount="1" />
+      </StatusEffect>
+    </ItemComponent>
+    <StatusHUD drawhudwhenequipped="true" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-100" handle1="-5,44.5" handle2="-5,44.5" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <IdCard slots="OuterClothes+InnerClothes+Head" msg="ItemMsgPickUpSelect" OwnerTags="XDS" />
+    <!--Fuel&Core
+	<ItemContainer capacity="0" maxstacksize="0" hideitems="false" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="false">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
+	  <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="reactorfuel" hide="true" />
+	  </SubContainer>
+	 </ItemContainer>
+	 -->
+  </Item>
+  <Item name="" identifier="New_XDS-01_B" category="Equipment" tags="XDS-01,provocative" scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy" HideConditionBar="false" equipconfirmationtext="XDSequipconfirmation">
+    <Price baseprice="15000" sold="false" />
+    <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="electrical" level="80" />
+      <RequiredSkill identifier="mechanical" level="80" />
+      <Item identifier="organicfiber" amount="6" />
+      <Item identifier="physicorium" amount="6" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fulgurium" amount="3" />
+      <Item identifier="XDS_Remains" />
+    </Fabricate>
+    <Deconstruct time="45">
+      <Item identifier="organicfiber" amount="12" />
+      <Item identifier="physicorium" amount="4" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Sprite name="XDS-01 Item" texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="0,219,225,89" depth="0.55" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="412,28,77,155" origin="0.5,0.5" />
+    <ContainedSprite name="XDS-01 Behind Window" allowedcontainertags="Pod" texture="%ModDir%/Content/Items/New/Wf_New_XDS-01.png" sourcerect="528,0,80,208" depth="0.55" origin="-0.12,-0.13" />
+    <Body height="89" width="225" density="100" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="20,150" style="ItemUI" />
+      <TickBox text="XDS_Light.Active" IsOn="true">
+        <StatusEffect type="OnUse" target="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Wearable slots="OuterClothes+InnerClothes+Head" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="New_XD-01 Head" texture="New_XDS-01-W.png" limb="Head" inheritlimbdepth="true" depth="0.7" inheritscale="false" ignorelimbscale="true" scale="0.26" hidelimb="true" hideotherwearables="true" sourcerect="872,0,178,252" origin="0.651685,0.40381">
+        <LightComponent range="800.0" lightcolor="0.5,0.5,0.5,1.0" powerconsumption="10" IsOn="false" castshadows="false" allowingameediting="false">
+          <StatusEffect type="OnWearing" target="This,Character" Interval="0.1" comparison="and" targetitemcomponent="LightComponent" IsOn="true">
+            <Conditional IsDead="eq false" />
+            <Conditional Voltage="eq 1.0" />
+          </StatusEffect>
+          <LightTexture texture="Content/Lights/lightcone.png" origin="0.005, 0.5" size="1.0,1.0" />
+        </LightComponent>
+      </sprite>
+      <sprite name="XDS-01 Torso" texture="New_XDS-01-W.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" SourceRect="148,0,124,208" Origin="0.54631,0.44231" />
+      <sprite name="XDS-01 Right Hand" texture="New_XDS-01-W.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Hand" texture="New_XDS-01-W.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Lower Arm" texture="New_XDS-01-W.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Lower Arm" texture="New_XDS-01-W.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Right Upper Arm" texture="New_XDS-01-W.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Upper Arm" texture="New_XDS-01-W.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Waist" texture="New_XDS-01-W.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="148,208,124,82" Origin="0.54631,0.3536585" />
+      <sprite name="XDS-01 Right Thigh" texture="New_XDS-01-W.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Thigh" texture="New_XDS-01-W.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,0,68,128" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Right Leg" texture="New_XDS-01-W.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="XDS-01 Left Leg" texture="New_XDS-01-W.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,68,128" Origin="0.5,0.5" />
+      <sprite name="XDS-01 Left Shoe" texture="New_XDS-01-W.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,82" Origin="0.453125,0.3414634" />
+      <sprite name="XDS-01 Right Shoe" texture="New_XDS-01-W.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,82" Origin="0.453125,0.3414634" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" UseHullOxygen="true" ObstructVision="false" SpeedMultiplier="1" PropulsionSpeedMultiplier="1.5" setvalue="true" disabledeltatime="true">
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop1.ogg" range="500" />
+        <Sound file="%ModDir%/Content/Items/Diving/DivingSuitLoop2.ogg" range="500" />
+      </StatusEffect>
+      <!--Can't heal by medicine-->
+      <StatValue stattype="MedicalItemEffectivenessMultiplier" value="-0.95" />
+      <StatValue stattype="FlowResistance" value="0.95" />
+      <!--
+	  <StatusEffect type="OnWearing" target="this,character" StatusEffectTags="NotFullyChraged" interval="0.01" duration="0.01" checkconditionalalways="true">
+	    <Conditional condition="lt 100"/>
+	  </StatusEffect>
+	  -->
+      <!--Test
+	  <StatusEffect type="OnWearing" target="character" interval="1" checkconditionalalways="true">
+	    <Conditional HasStatusTag="eq NotFullyChraged"/>
+		<Spawnitem identifier="idcard" spawnposition="This"/>
+	  </StatusEffect>
+	  -->
+      <StatusEffect type="OnWearing" target="Character,this">
+        <Conditional condition="eq 100" />
+        <reduceaffliction identifier="Charging" amount="1.0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this" Voltage="1.0" setvalue="true">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <!--Can't interact once weared-->
+      <StatusEffect type="OnWearing" target="This" NonInteractable="true" setvalue="true" />
+      <!--Animations
+	  <StatusEffect type="OnWearing" target="Character" >
+		  <TriggerAnimation Type="Walk" FileName="HumanWalk-XDS" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun-XDS" priority="10" ExpectedSpecies="Human" />
+	  </StatusEffect>-->
+      <!--Apply cyborg affliction-->
+      <StatusEffect type="OnWearing" target="AllLimbs">
+        <Affliction identifier="cyborg" amount="1" interval="0.125" />
+        <Affliction identifier="infection_immunity" amount="1" interval="0.125" />
+      </StatusEffect>
+      <!--No power-->
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="-10.0" setvalue="true" disabledeltatime="true">
+        <Conditional Voltage="lte 0.5" />
+        <Affliction identifier="ShutDown" amount="30" />
+        <Affliction identifier="stun" amount="1" />
+        <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" condition="-0.05" comparison="and">
+        <Conditional condition="gt 0" />
+        <Conditional XDS_Core_Actived="lte 0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" condition="-0.3333" comparison="and">
+        <Conditional condition="gt 0" />
+        <Conditional XDS_Core_Actived="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="XDS-01_B" amount="1" />
+      </StatusEffect>
+      <!--
+	  <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true" targetslot="0" comparison="Or" >
+        <Conditional IsDead="eq false" />
+        <RequiredItem items="reactorfuel" targetslot="0" type="Contained" />
+	  </StatusEffect>
+	  
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.05" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="fuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.035" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="fulguriumfuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.02" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="eq false" />
+        <RequiredItem items="thoriumfuelrod" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  <StatusEffect type="OnWearing" target="Contained,Character" Condition="-0.01" interval="1" disabledeltatime="true" targetslot="0" comparison="Or">
+        <Conditional targetcontainer="true" targetgrandparent="true" IsDead="false" />
+        <RequiredItem items="fulguriumfuelrodvolatile" targetslot="0" type="Contained" />
+      </StatusEffect>
+	  -->
+    </Wearable>
+    <ItemComponent>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="XdsWalking" amount="1" />
+      </StatusEffect>
+    </ItemComponent>
+    <StatusHUD drawhudwhenequipped="true" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-100" handle1="-5,44.5" handle2="-5,44.5" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <IdCard slots="OuterClothes+InnerClothes+Head" msg="ItemMsgPickUpSelect" OwnerTags="XDS" />
+    <!--Fuel&Core
+	<ItemContainer capacity="0" maxstacksize="0" hideitems="false" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="false">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="192,448,64,64" origin="0.5,0.5" />
+	  <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="reactorfuel" hide="true" />
+	  </SubContainer>
+	 </ItemContainer>
+	 -->
+  </Item>
+  <Item name="" identifier="New_XDS-01_Core" category="Equipment" tags="diving,provocative,mediumitem" cargocontaineridentifier="metalcrate" HideConditionBar="true" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" isshootable="true" requireaimtouse="false">
+    <PreferredContainer primary="divingcab" />
+    <Deconstruct time="10">
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="80" />
+      <RequiredSkill identifier="electrical" level="80" />
+      <Item identifier="physicorium" amount="6" />
+      <Item identifier="fulgurium" amount="2" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="Wf_Research_chip" />
+    </Fabricate>
+    <Price baseprice="10000" sold="false" />
+    <InventoryIcon texture="New_XDS-01-W.png" sourcerect="400,0,215,249" depth="0.6" origin="0.5,0.5" />
+    <Sprite texture="New_XDS-01-W.png" sourcerect="400,0,215,249" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="100" density="50" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="New_XD-01_Core" texture="New_XDS-01-W.png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="400,0,215,249" Origin="0.98372,0.63732">
+        <LightComponent range="0.0" lightcolor="126,229,236,255" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false" AlphaBlend="true">
+          <StatusEffect type="OnWearing" target="This,Character" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/New/New_XDS-01_Light.png" depth="0.025" sourcerect="0,0,396,331" origin="0.73947,0.6225" alpha="1.0" />
+        </LightComponent>
+        <LightComponent range="0.0" lightcolor="126,229,236,255" powerconsumption="5" IsOn="false" castshadows="false" allowingameediting="false" AlphaBlend="true">
+          <StatusEffect type="OnWearing" target="This,Character" setvalue="true">
+            <Conditional IsDead="false" />
+          </StatusEffect>
+          <sprite texture="%ModDir%/Content/Items/New/New_XDS-01_Light.png" depth="0.025" sourcerect="0,0,396,331" origin="0.73947,0.6225" alpha="1.0" />
+        </LightComponent>
+      </sprite>
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="1.2" setvalue="true" disabledeltatime="true" comparison="And">
+        <Conditional cyborg="gt 0" />
+        <Conditional IsOn="eq true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This,Character" SpeedMultiplier="2.25" setvalue="true" disabledeltatime="true" comparison="And">
+        <Conditional cyborg="gt 0" />
+        <Conditional IsOn="eq true" />
+        <Conditional InWater="eq true" />
+        <!--<TriggerAnimation Type="SwimSlow" FileName="HumanSwimSlow_XDS_01" priority="2" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="SwimFast" FileName="HumanSwimFast_XDS_01" priority="11" ExpectedSpecies="Human" />-->
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" checkconditionalalways="true" comparison="And" offset="0,35">
+        <Conditional cyborg="gt 0" />
+        <Conditional IsOn="eq true" />
+        <Conditional InWater="eq true" />
+        <ParticleEmitter particle="XDS_bubbles_Water" particlespersecond="25" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,Character" checkconditionalalways="true" comparison="And" interval="0.0167" offset="0,35">
+        <Conditional cyborg="gt 0" />
+        <Conditional IsOn="eq true" />
+        <Conditional InWater="eq true" />
+        <Spawnitem identifier="New_XDS-01_AntiGravityBall" spawnposition="this" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="this,AllLimbs" checkconditionalalways="true" comparison="And">
+        <Conditional cyborg="gt 0" />
+        <Conditional IsOn="eq true" />
+        <Conditional InWater="eq true" />
+        <Affliction identifier="XDS_Core_Actived" amount="1" interval="0.125" />
+      </StatusEffect>
+    </Wearable>
+    <MotionSensor rangex="30" rangey="40" canbeselected="false" IgnoreDead="true" minimumvelocity="2.0" target="Human" updateinterval="0.025" DetectOwnMotion="true" />
+    <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="82,-27" handle2="82,-27" holdangle="90.0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.08" anchor="BottomLeft" absoluteoffset="0,475" style="ItemUI" />
+      <TickBox text="XDS_Core.Active" IsOn="true">
+        <StatusEffect type="OnUse" target="This" Voltage="1.0" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" target="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+  </Item>
+  <Item name="" identifier="XDS_Remains" category="Material" maxstacksize="1" Tags="mediumitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" spawnprobability="0.01" />
+    <Deconstruct time="20">
+      <Item identifier="rubber" />
+      <Item identifier="alientrinket3" />
+      <Item identifier="alientrinket3" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="0,0,190,219" />
+    <Sprite texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="0,0,190,219" depth="0.55" origin="0.5,0.5" />
+    <Body width="120" height="219" density="100" />
+    <Holdable slots="RightHand+LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="Xds_RepairKit" category="Equipment" maxstacksize="16" maxstacksizecharacterinventory="8" cargocontaineridentifier="mediccrate" Tags="smallitem,tool,XDS-01_Repair" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <PreferredContainer primary="supplycab" notpvp="true" />
+    <Price baseprice="1000" minavailable="12">
+      <Price storeidentifier="merchantoutpost" sold="false" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" />
+      <Price storeidentifier="merchantmilitary" sold="false" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" sold="false" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="electrical" level="60" />
+      <RequiredSkill identifier="mechanical" level="60" />
+      <RequiredItem identifier="screwdriver" />
+      <RequiredItem identifier="wrench" />
+      <RequiredItem Tag="wire" />
+      <RequiredItem identifier="physicorium" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amout="2" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="physicorium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="190,183,77,36" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="190,183,77,36" origin="0.5,0.5" />
+    <Body width="35" height="65" density="10.2" waterdragcoefficient="1" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-3,5" holdangle="90" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget">
+        <Affliction identifier="Repair" amount="10" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget">
+        <Affliction identifier="Repair" amount="5" />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+        <Affliction identifier="stun" amount="0.1" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <SkillRequirementHint identifier="mechanical" level="50" />
+  </Item>
+  <Item name="" identifier="Xds_Excitant" category="Equipment" maxstacksize="16" maxstacksizecharacterinventory="8" cargocontaineridentifier="mediccrate" Tags="smallitem,tool,XDS-01_Excitant" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <PreferredContainer primary="supplycab" notpvp="true" />
+    <Price baseprice="1000" minavailable="12">
+      <Price storeidentifier="merchantoutpost" sold="false" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" />
+      <Price storeidentifier="merchantmilitary" sold="false" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantmedical" multiplier="0.9" sold="false" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="electrical" level="60" />
+      <RequiredSkill identifier="mechanical" level="60" />
+      <RequiredItem identifier="fulgurium" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amout="1" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="physicorium" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="223,219,89,89" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="312,219,100,89" origin="0.5,0.5" />
+    <Body width="40" height="20" density="10.2" waterdragcoefficient="1" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-3,5" holdangle="90" reload="1.0" msg="ItemMsgPickUpSelect" HitOnlyCharacters="true">
+      <RequiredSkill identifier="electrical" level="50" />
+      <StatusEffect type="OnSuccess" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100.0" setvalue="true" />
+      <StatusEffect statuseffecttags="medical" type="OnSuccess" target="UseTarget">
+        <Affliction identifier="Xds_Excitant" amount="5" />
+      </StatusEffect>
+      <StatusEffect statuseffecttags="medical" type="OnFailure" target="UseTarget">
+        <Affliction identifier="Xds_Excitant" amount="2.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSuccess" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <Conditional entitytype="eq Character" />
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" multiplyafflictionsbymaxvitality="true" AllowWhenBroken="true">
+        <Affliction identifier="stun" amount="0.1" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+    <SkillRequirementHint identifier="mechanical" level="50" />
+  </Item>
+  <!--Undone Aniti Gravity Ball-->
+  <Item name="" identifier="New_XDS-01_AntiGravityBall" category="Misc" tag="smallitem,Wf_item" Indestructible="False" scale="0.5" hideinmenus="true" IsPlayerTeamInteractable="false" damagedbyprojectiles="true" DamagedByMonsters="true" damagedbyexplosions="true" UseInHealthInterface="false">
+    <InventoryIcon texture="Wf_New_XDS-01_Engine.png" sourcerect="608,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Wf_New_XDS-01_Engine.png" sourcerect="608,0,64,64" depth="0.6" origin="0.5,0.5" />
+    <Body radius="250" density="0" bodytype="Static" gravityScale="0" />
+    <ItemComponent>
+      <StatusEffect type="OnSpawn" target="this" delay="0.0167">
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="this">
+        <ParticleEmitter particle="Wf_gravityspherefx2" particleamount="1" emitinterval="0.2" />
+      </StatusEffect>
+    </ItemComponent>
+    <TriggerComponent triggeredby="Item,Creature" DirectionalForce="-1000,-1000" RelativeDirectionalForce="true" radius="1000" distancebasedforce="true">
+      <Conditional IsDead="eq false" />
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="Wf_gravityspherefx" particleamount="1" emitinterval="1.25" />
+      </StatusEffect>
+    </TriggerComponent>
+    <TriggerComponent triggeredby="Item,Creature" DirectionalForce="-5000,-5000" RelativeDirectionalForce="true" radius="750" distancebasedforce="true">
+      <Conditional IsDead="eq false" />
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="Wf_gravityspherefx" particlespersecond="2" />
+      </StatusEffect>
+    </TriggerComponent>
+  </Item>
+  <!--New XDS-01 End-->
+  <!--HDS-01-->
+  <Item name="" identifier="Wf_HDS-01" category="Diving,Equipment," tags="smallitem,clothing" scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft" botpriority="0.0" cargocontaineridentifier="" HideConditionBar="true">
+    <Price baseprice="155000" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" multiplier="0.85" />
+      <Price storeidentifier="merchantresearch" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" minavailable="2" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <PreferredContainer primary="divingsuitcontainer" />
+    <Deconstruct time="30">
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="rubber" />
+      <Item identifier="rubber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+      <RequiredSkill identifier="Medical" level="90" />
+      <RequiredItem identifier="Wf_HDS_BioMaterial" />
+    </Fabricate>
+    <InventoryIcon texture="HDS-01.png" sourcerect="413,0,84,84" origin="0.5,0.5" />
+    <Sprite name="Husk Diving Suit Item" texture="HDS-01.png" sourcerect="413,84,84,30" depth="0.55" scale="1.5" origin="0.5,0.5" />
+    <Body height="45" width="120" density="10" />
+    <Wearable slots="OuterClothes+InnerClothes+Head" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="Husk Diving Suit Headdress Wearable" texture="HDS-01.png" limb="Head" inheritlimbdepth="true" inheritscale="false" ignorelimbscale="true" scale="0.23" hidelimb="false" alphaclipotherwearables="false" sourcerect="497,0,185,320" origin="0.664865,0.318125"></sprite>
+      <sprite name="Husk Diving Suit Torso" texture="HDS-01.png" limb="Torso" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" Origin="0.49769565,0.386555" SourceRect="160,0,112,238" />
+      <sprite name="Husk Diving Suit Skirt" texture="HDS-01.png" limb="Torso" depthlimb="RightFoot" hidelimb="true" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" Origin="0.49769565,0.386555" SourceRect="682,0,112,238" />
+      <sprite name="Husk Diving Suit Right Hand" texture="HDS-01.png" limb="RightHand" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Hand" texture="HDS-01.png" limb="LeftHand" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Right Upper Arm" texture="HDS-01.png" limb="RightArm" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Upper Arm" texture="HDS-01.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritlimbdepth="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Right Lower Arm" texture="HDS-01.png" limb="RightForearm" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Lower Arm" texture="HDS-01.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritlimbdepth="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Waist" texture="HDS-01.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritlimbdepth="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="160,238,112,72" Origin="0.5,0.5555" />
+      <sprite name="Husk Diving Suit Right Thigh" texture="HDS-01.png" limb="RightThigh" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Thigh" texture="HDS-01.png" limb="LeftThigh" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Right Leg" texture="HDS-01.png" limb="RightLeg" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Leg" texture="HDS-01.png" limb="LeftLeg" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Left Shoe" texture="HDS-01.png" limb="LeftFoot" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Husk Diving Suit Right Shoe" texture="HDS-01.png" limb="RightFoot" hidelimb="true" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="huskHDS" strength="10000.0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character">
+        <ReduceAffliction identifier="husksymbiosis" strength="1000.0" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="implacable" strength="15.0" />
+      </StatusEffect>
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding,explosiondamage" damagemultiplier="0.25" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.8" damagesound="" deflectprojectiles="true" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness" damagemultiplier="0.1" damagesound="LimbArmor" />
+      <StatValue stattype="PropulsionSpeed" value="0.0" />
+      <StatValue stattype="SwimmingSpeed" value="0.15" />
+      <StatValue stattype="WalkingSpeed" value="0.0" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="10,20" handle2="10,20" holdangle="25" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <ItemComponent>
+      <StatusEffect type="OnWearing" target="Character">
+        <Affliction identifier="Heels" amount="1" />
+      </StatusEffect>
+    </ItemComponent>
+    <aitarget maxsightrange="1500" />
+  </Item>
+  <!--HDS-01 End-->
+  <!--HDS-01 Materials-->
+  <Item name="" identifier="Wf_HDS_Box" category="Material" maxstacksize="1" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" />
+    <Price baseprice="50" sold="false" />
+    <Deconstruct time="10">
+      <Item identifier="carbon" amount="6" />
+    </Deconstruct>
+    <InventoryIcon texture="HDS-01.png" sourcerect="413,232,84,67" />
+    <Sprite texture="HDS-01.png" sourcerect="413,232,84,67" depth="0.55" origin="0.5,0.5" />
+    <Body width="76" height="60" density="50" />
+    <ItemComponent>
+      <StatusEffect target="This" Type="OnDeconstructed">
+        <TriggerEvent state="0" delay="0" eventidentifier="Hds_Bio_Deconstructed" campaignonly="true" />
+        <EventTargetTag identifier="Hds_Bio_Deconstructed,TriggerPlayer" />
+      </StatusEffect>
+    </ItemComponent>
+    <Holdable slots="Any" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="Wf_HDS_Coffer" category="Material" maxstacksize="1" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="storagecab" />
+    <Deconstruct time="45">
+      <Item identifier="Wf_HDS_BioMaterial" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="HDS-01.png" sourcerect="413,114,84,54" />
+    <Sprite texture="HDS-01.png" sourcerect="413,114,84,54" depth="0.55" origin="0.5,0.5" />
+    <Body width="75" height="45" density="100" />
+    <Holdable slots="Any" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="Wf_HDS_BioMaterial" category="Material" maxstacksize="1" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="storagecab" />
+    <Deconstruct time="20">
+      <Item identifier="carbon" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="HDS-01.png" sourcerect="427,168,70,64" />
+    <Sprite texture="HDS-01.png" sourcerect="427,168,70,64" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="54" density="50" />
+    <Holdable slots="Any" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+</Items>

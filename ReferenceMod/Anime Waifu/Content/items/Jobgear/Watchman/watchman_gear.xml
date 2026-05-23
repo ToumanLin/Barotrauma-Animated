@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="watchmanclothes" category="Equipment" subcategory="Clothes" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Jobgear/Watchman/watchman.png" sourcerect="171,18,87,166" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="123,144,121,60" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <sprite name="Watchman Right Lower Arm" texture="Watchman.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Left Lower Arm" texture="Watchman.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Torso" texture="Watchman.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Right Upper Arm" texture="Watchman.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Left Upper Arm" texture="Watchman.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Waist" texture="Watchman.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Right Thigh" texture="Watchman.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Left Thigh" texture="Watchman.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Right Leg" texture="Watchman.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Left Leg" texture="Watchman.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Left Shoe" texture="Watchman.png" limb="LeftFoot" sound="" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Watchman Right Shoe" texture="Watchman.png" limb="RightFoot" sound="" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound, bitewounds" damagemultiplier="0.9" />
+      </Wearable>
+      <ItemContainer hideitems="true" capacity="2" maxstacksize="63" slotsperrow="1" containedstateindicatorslot="0">
+        <Containable items="magazine,weapon,gunsmith,ammobox,railgunammo,grapple,depthchargeammo,explosive,harpoonammo,hmgammo,grenade,alienpowercell,handcannonammo,revolverammo,pistolammoitem,shotgunammo,smgammo,stungunammo,rifleammo,assaultrifleammo,reactorfuel,scrapcannonammo,weldingfuel" excludeditems="Uguns_heavy,hmg,autoshotgun,grenadelauncher,nucleargun,assaultrifle,arcemitter,scrapcannon,toolbox,toolbelt,toolbelt_0,clothing" />
+        <SlotIcon slotindex="0" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/InventoryUIAtlas.png" sourcerect="894,280,50,38" origin="0.5,0.5" />
+      </ItemContainer>
+    </Item>
+  </Items>
+</Override>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--女仆装-->
+  <Item name="Maid uniform" identifier="maidclothes1" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" amount="1" spawnprobability="0.1" notcampaign="true" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" minavailable="2" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantresearch" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" minavailable="2" />
+      <Price storeidentifier="merchantmine" minavailable="2" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Maid Icon" texture="%ModDir%/Content/Items/New/EXT_icon.png" sourcerect="0,128,128,128" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="6,363,124,67" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Maid's Uniform 1 Torso" texture="Maid1_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Hand" texture="Maid1_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Left Hand" texture="Maid1_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Left Lower Arm" texture="Maid1_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Lower Arm" texture="Maid1_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Left Upper Arm" texture="Maid1_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Upper Arm" texture="Maid1_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Waist" texture="Maid1_[GENDER].png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Thigh" texture="Maid1_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Left Thigh" texture="Maid1_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Leg" texture="Maid1_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Left Leg" texture="Maid1_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 1 Right Shoe" texture="Maid1_[GENDER].png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="Maid's Uniform 1 Left Shoe" texture="Maid1_[GENDER].png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      <SkillModifier skillidentifier="helm" skillvalue="5" />
+      <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+      <SkillModifier skillidentifier="medical" skillvalue="5" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,bitewounds" damagemultiplier="0.95" />
+    </Wearable>
+  </Item>
+  <!--巫女服-->
+  <Item name="Shrine uniform" identifier="maidclothes2" category="Equipment" tags="smallitem,clothing" fireproof="false" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+    <PreferredContainer primary="crewcab" amount="1" spawnprobability="0.1" notcampaign="true" />
+    <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Price baseprice="150">
+      <Price storeidentifier="merchantoutpost" minavailable="2" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="2" />
+      <Price storeidentifier="merchantresearch" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" minavailable="2" />
+      <Price storeidentifier="merchantmine" minavailable="2" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="organicfiber" />
+    </Deconstruct>
+    <InventoryIcon name="Shrine Icon" texture="%ModDir%/Content/Items/New/EXT_icon.png" sourcerect="256,384,128,128" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="6,363,124,67" depth="0.6" origin="0.5,0.5" />
+    <Body width="100" height="50" density="15" friction="0.8" restitution="0.01" />
+    <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+      <sprite name="Maid's Uniform 2 Torso" texture="Maid2_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="160,0,112,243" origin="0.49769565,0.404" />
+      <sprite name="Maid's Uniform 2 Right Hand" texture="Maid2_[GENDER].png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="384,0,1,1" />
+      <sprite name="Maid's Uniform 2 Left Hand" texture="Maid2_[GENDER].png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="448,0,1,1" />
+      <sprite name="Maid's Uniform 2 Left Lower Arm" texture="Maid2_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="372,96,64,88" origin="0.5,0.3636" />
+      <sprite name="Maid's Uniform 2 Right Lower Arm" texture="Maid2_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" sourcerect="308,96,64,88" origin="0.5,0.3636" />
+      <sprite name="Maid's Uniform 2 Left Upper Arm" texture="Maid2_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="372,0,64,96" />
+      <sprite name="Maid's Uniform 2 Right Upper Arm" texture="Maid2_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="false" sourcerect="308,0,64,96" />
+      <sprite name="Maid's Uniform 2 Waist" texture="Maid2_[GENDER].png" limb="Waist" hidelimb="false" inheritorigin="true" inherittexturescale="true" inheritsourcerect="false" sourcerect="400,207,112,61" />
+      <sprite name="Maid's Uniform 2 Right Thigh" texture="Maid2_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 2 Left Thigh" texture="Maid2_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 2 Right Leg" texture="Maid2_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 2 Left Leg" texture="Maid2_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="Maid's Uniform 2 Right Shoe" texture="Maid2_[GENDER].png" limb="RightFoot" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,217,64,57" Origin="0.48,0.4631" />
+      <sprite name="Maid's Uniform 2 Left Shoe" texture="Maid2_[GENDER].png" limb="LeftFoot" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,217,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      <SkillModifier skillidentifier="helm" skillvalue="5" />
+      <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+      <SkillModifier skillidentifier="medical" skillvalue="5" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,bitewounds" damagemultiplier="0.95" />
+    </Wearable>
+  </Item>
+  <!--妹抖头带-->
+  <Item name="Headdress" identifier="maidheaddress" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+    <PreferredContainer primary="crewcab" amount="1" spawnprobability="0.1" notcampaign="true" />
+    <Price baseprice="75">
+      <Price storeidentifier="merchantoutpost" minavailable="4" />
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="4" />
+      <Price storeidentifier="merchantresearch" minavailable="4" />
+      <Price storeidentifier="merchantmilitary" minavailable="4" />
+      <Price storeidentifier="merchantmine" minavailable="4" />
+    </Price>
+    <Deconstruct time="10" />
+    <Sprite name="Maid's Headdress" texture="maid_gear.png" depth="0.6" sourcerect="56,8,73,72" origin="0.5,0.5" />
+    <Body width="59" height="40" density="15" />
+    <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <sprite name="Maid's Headdress Wearable" texture="maid_gear.png" limb="Head" hidelimb="false" inheritlimbdepth="true" sourcerect="0,0,160,228" inherittexturescale="true" origin="0.6125,0.37" />
+      <SkillModifier skillidentifier="electrical" skillvalue="5" />
+      <SkillModifier skillidentifier="helm" skillvalue="5" />
+      <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+      <SkillModifier skillidentifier="medical" skillvalue="5" />
+      <SkillModifier skillidentifier="weapons" skillvalue="5" />
+    </Wearable>
+  </Item>
+</Items>

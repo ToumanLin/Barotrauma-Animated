@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="otfx_riotcontrol">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsSecurity.png" sheetindex="0,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_riotcontrol">
+      <Replace tag="[range]" value="6" color="gui.green" />
+      <Replace tag="[physicalresistancevalue]" value="10" color="gui.green" />
+      <Replace tag="[physicalresistancename]" value="stattypenames.physicalresistance" color="gui.orange" />
+    </Description>
+    <Description tag="talentdescription.unlockrecipe">
+      <Replace tag="[itemname]" value="entityname.riotshield" color="gui.orange" />
+    </Description>
+    <AbilityGroupInterval interval="0.9">
+      <Conditions>
+        <AbilityConditionAllyNearby truthywhen="OneCharacterMatches" distance="600" />
+        <AbilityConditionInHull />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffectsToNearestAlly maxdistance="600">
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="otfx_riotcontrol" amount="100.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffectsToNearestAlly>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AddedRecipe itemidentifier="riotshield" />
+  </Talent>
+  <Talent identifier="otfx_fohnsquad">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsSecurity.png" sheetindex="2,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_fohnsquad">
+      <Replace tag="[affliction]" value="afflictionname.burn" color="gui.orange" />
+      <Replace tag="[amount]" value="20" color="gui.green" />
+    </Description>
+    <Description tag="talentdescription.additionalresistanceself">
+      <Replace tag="[amount]" value="20" color="gui.green" />
+      <Replace tag="[affliction]" value="afflictionname.burn" color="gui.orange" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnAddDamageAffliction">
+      <Abilities>
+        <CharacterAbilityModifyAffliction afflictionidentifiers="burn" addedmultiplier="0.20" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.9">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" multiplyafflictionsbymaxvitality="true" setvalue="true">
+              <Affliction identifier="otfx_fohnsquad" amount="100.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+</Talents>

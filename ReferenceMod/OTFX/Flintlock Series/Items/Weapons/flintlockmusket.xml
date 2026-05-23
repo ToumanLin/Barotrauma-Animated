@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Flintlock Musket" identifier="fs_flintlockmusket" category="Weapon" subcategory="flintlockseries" tags="mediumitem,weapon,musket,gun,fs_gun,gunsmith,mountableweapon" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="secarmcab" amount="1" spawnprobability="0.25" notcampaign="true" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      <RequiredItem identifier="plastic" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/InventoryIconAtlas.png" sourcerect="0,192,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" sourcerect="0,384,366,59" depth="0.550" origin="0.5,0.25" />
+    <Body width="360" height="40" density="25" />
+    <Wearable slots="Bag" pickkey="Select" msg="ItemMsgEquipSelect">
+      <sprite texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" canbehiddenbyotherwearables="false" sourcerect="0,384,366,59" rotation="90" depth="0.6" limb="Torso" depthlimb="LeftArm" inherittexturescale="true" origin="0.5,0.95" />
+    </Wearable>
+    <Holdable slots="RightHand+LeftHand" pickkey="Use" controlpose="true" handle1="-100,-25" handle2="-50,-10" msg="ItemMsgPickUpUse">
+      <!-- Auto generated code:
+            Command Line: GenerateLightweightSpreadCode 4 9 10 15 16 21 1.0 0.5 0.5 0.4 0.3 1.2 1.5  -->
+      <StatusEffect type="OnActive" interval="1.0" target="This" targetitemcomponent="RangedWeapon" spread="10" unskilledspread="15" setvalue="true">
+        <Conditional hasstatustag="! disable_reset_spread" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" tags="disable_reset_spread" duration="1.0" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" tags="is_aiming_while_stopping" duration=".033" stackable="false">
+        <Conditional speed="lte 0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" tags="is_aiming_while_walking" duration=".033" stackable="false" comparison="And">
+        <Conditional speed="gt 0.5" />
+        <Conditional speed="lte 2.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" tags="is_aiming_while_running" duration=".033" stackable="false">
+        <Conditional speed="gt 2.0" />
+      </StatusEffect>
+      <!-- Stop Spread: 4 ~ 9 -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-25" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_stopping" />
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 4.2083335" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-25" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_stopping" />
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 9.208333" />
+      </StatusEffect>
+      <!-- Walk Spread: 10 ~ 15 -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-20" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_walking" />
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 10.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="+60.000004" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_walking" />
+        <Conditional targetitemcomponent="RangedWeapon" spread="lt 9.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-20" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_walking" />
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 15.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="+60.000004" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_walking" />
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lt 14.5" />
+      </StatusEffect>
+      <!-- Run Spread: 16 ~ 21 -->
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="-15.000001" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_running" />
+        <Conditional targetitemcomponent="RangedWeapon" spread="gt 16.625" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" spread="+75" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_running" />
+        <Conditional targetitemcomponent="RangedWeapon" spread="lt 15.375" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="-15.000001" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_running" />
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="gt 21.625" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" targetitemcomponent="RangedWeapon" unskilledspread="+75" comparison="And">
+        <Conditional targetitemcomponent="RangedWeapon" hasstatustag="is_aiming_while_running" />
+        <Conditional targetitemcomponent="RangedWeapon" unskilledspread="lt 20.375" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" tags="dblclick_trigger" duration=".016" comparison="And">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+        <Conditional hasstatustag="dblclick_timingdelaymax" />
+        <Conditional hasstatustag="! dblclick_disallowtrigger" />
+        <Conditional hasstatustag="! dblclick_longpressed" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" delay=".016" condition="100.0" setvalue="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlock_cock.ogg" range="500" />
+        <Conditional isfullcondition="false" hasstatustag="dblclick_trigger" />
+        <RequiredItems tag="fs_musket_ammo" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" delay=".016" condition="0.0" setvalue="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlock_halfcock.ogg" range="500" />
+        <Conditional isfullcondition="true" hasstatustag="dblclick_trigger" />
+        <RequiredItems tag="fs_musket_ammo" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" tags="dblclick_longpressed" duration="0.133" stackable="false">
+        <Conditional hasstatustag="! dblclick_notlongpress" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" tags="dblclick_timingdelaymin" duration=".033" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" targettype="Contained" targets="fs_mechanism" tags="dblclick_timingdelaymax" duration="0.133" stackable="false" />
+      <StatusEffect type="OnActive" targettype="This,Character" targets="fs_mechanism,character" tags="dblclick_disallowtrigger" duration="0.333" stackable="false">
+        <Conditional stun="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="Contained" targets="fs_mechanism" tags="dblclick_notlongpress" duration="0.233" stackable="false">
+        <Conditional hasstatustag="! dblclick_timingdelaymin" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" holdpos="70,-10" aimpos="95,15" holdangle="-30" setvalue="true">
+        <RequiredItems identifier="fs_mechanism" type="Contained" excludebroken="true" excludefullcondition="false" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="Holdable" holdpos="80,-30" aimpos="80,-30" holdangle="-15" setvalue="true">
+        <RequiredItems identifier="fs_mechanism" type="Contained" excludebroken="false" excludefullcondition="true" />
+      </StatusEffect>
+    </Holdable>
+    <ItemComponent characterusable="true">
+      <RequiredItems identifier="fs_flintlockmusketbayonet" type="Contained" targetslot="2" requireempty="true" />
+      <RequiredItems tag="fs_musket_ammo" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredItems identifier="fs_flintlockmusketmechanism" type="Contained" msg="fs.ItemMsgFullCockRequired" />
+    </ItemComponent>
+    <RangedWeapon suitableprojectiles="fs_musket_projectile" reload="1.0" barrelpos="184,-6" combatpriority="60" crosshairscale="0.35" drawhudwhenequipped="true">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="9" scalemin="0.5" scalemax="1.9" velocitymin="0" velocitymax="0" colormultiplier="1.00,1.00,1.00,0.34" />
+      <ParticleEmitter particle="ammotrailwater" anglemin="-2" anglemax="2" particleamount="5" distancemin="-20" distancemax="-25" velocitymin="200" velocitymax="300" scalemultiplier="1.0,2.5" colormultiplier="1.0,1.0,1.0,0.75" />
+      <!-- segment 1 -->
+      <ParticleEmitter particle="fs_smoke" particleamount="2" scalemin="1.545" scalemax="1.854" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="225" velocitymax="235" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_smokesplashwater" particleamount="2" scalemin="1.545" scalemax="1.854" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="225" velocitymax="235" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="2" scalemin="0.7416" scalemax="1.4832" anglemin="-10" anglemax="-5" distancemin="10" distancemax="140" velocitymin="210" velocitymax="220" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="4" scalemin="1.854" scalemax="2.5956" anglemin="-5" anglemax="5" distancemin="10" distancemax="140" velocitymin="230" velocitymax="240" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="2" scalemin="0.7416" scalemax="1.4832" anglemin="5" anglemax="10" distancemin="10" distancemax="140" velocitymin="210" velocitymax="220" colormultiplier="1.0,1.0,1.0,0.65" />
+      <!-- segment 2 -->
+      <ParticleEmitter particle="fs_smoke" particleamount="2" scalemin="2.5" scalemax="3.0" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="525" velocitymax="535" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_smokesplashwater" particleamount="2" scalemin="2.5" scalemax="3.0" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="525" velocitymax="535" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="2" scalemin="1.2" scalemax="2.4" anglemin="-10" anglemax="-5" distancemin="10" distancemax="140" velocitymin="510" velocitymax="520" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="4" scalemin="3.0" scalemax="4.2" anglemin="-5" anglemax="5" distancemin="10" distancemax="140" velocitymin="530" velocitymax="540" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="2" scalemin="1.2" scalemax="2.4" anglemin="5" anglemax="10" distancemin="10" distancemax="140" velocitymin="510" velocitymax="520" colormultiplier="1.0,1.0,1.0,0.65" />
+      <!-- segment 3 -->
+      <ParticleEmitter particle="fs_smoke" particleamount="1" scalemin="3.455" scalemax="4.146" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="825" velocitymax="835" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_smokesplashwater" particleamount="1" scalemin="3.455" scalemax="4.146" anglemin="-10" anglemax="10" distancemin="70" distancemax="90" velocitymin="825" velocitymax="835" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="1" scalemin="1.6584" scalemax="3.3168" anglemin="-10" anglemax="-5" distancemin="10" distancemax="140" velocitymin="810" velocitymax="820" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="2" scalemin="4.146" scalemax="5.8044" anglemin="-5" anglemax="5" distancemin="10" distancemax="140" velocitymin="830" velocitymax="840" colormultiplier="1.0,1.0,1.0,0.65" />
+      <ParticleEmitter particle="fs_mistsmoke" particleamount="1" scalemin="1.6584" scalemax="3.3168" anglemin="5" anglemax="10" distancemin="10" distancemax="140" velocitymin="810" velocitymax="820" colormultiplier="1.0,1.0,1.0,0.65" />
+      <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockmusket_shot.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="200.0" force="5.0" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="50.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Contained" targets="fs_mechanism">
+        <Use />
+      </StatusEffect>
+      <RequiredItems tag="fs_musket_ammo" type="Contained" />
+      <RequiredItems tag="fs_mechanism" type="Contained" />
+      <RequiredSkill identifier="weapons" level="40" />
+    </RangedWeapon>
+    <RangedWeapon suitableprojectiles="fs_flintlockmusketbayonetdamagecollider" reload="0.9" reloadnoskill="1.1" reloadskillrequirement="100" barrelpos="92,20" holdtrigger="false" combatpriority="0">
+      <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockmusket_bayonet.ogg" type="OnUse" range="500" frequency="1.3" volume="0.5" />
+      <StatusEffect type="OnUse" targettype="Contained" targets="fs_flintlockmusketbayonetthruster">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Propulsion" usablein="Both">
+        <SpawnItem identifier="fs_flintlockmusketbayonetdamagecollider" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <RequiredItems identifier="fs_flintlockmusketbayonet" type="Contained" />
+      <RequiredItems identifier="fs_mechanism" type="Contained" excludebroken="false" excludefullcondition="true" />
+      <RequiredSkill identifier="weapons" level="40" />
+    </RangedWeapon>
+    <Propulsion force="300" usablein="None" applytohands="true">
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Propulsion" usablein="None" />
+    </Propulsion>
+    <ItemContainer canbeselected="false" drawinventory="true" allowaccess="true" allowswappingcontaineditems="false" capacity="1" maxstacksize="1" hideitems="false" showcontainedstateindicator="false" containedspritedepths="0.549,0.551,0.551">
+      <Containable identifier="fs_flintlockmusketbayonet" itempos="116.5,0.5" hide="false" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="fs_flintlockmusketramrod" hide="false" itempos="42,-7" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable tag="fs_musket_unloadedammo" hide="true">
+          <StatusEffect type="OnContaining" targettype="Contained" delay=".016">
+            <DropItem />
+            <Conditional targetcontainer="true" targetgrandparent="true" hastag="fs_ramrod" />
+          </StatusEffect>
+        </Containable>
+        <Containable tag="fs_musket_ammo" hide="true">
+          <StatusEffect type="OnContaining" targettype="This" targetitemcomponent="RangedWeapon" tags="fs_gun_loaded" duration=".033" stackable="false" />
+        </Containable>
+      </SubContainer>
+    </ItemContainer>
+    <ItemContainer canbeselected="false" drawinventory="false" allowaccess="false" capacity="1" maxstacksize="1" hideitems="true" spawnwithid="fs_flintlockmusketmechanism,fs_flintlockmusketbayonetthruster,fs_flintlockmusketbayonetdamagecollider" removecontaineditemsondeconstruct="true">
+      <Containable identifier="fs_flintlockmusketmechanism" itempos="-48,0">
+        <StatusEffect type="OnContaining" targettype="Contained" targets="item" delay="1.0" stackable="false" condition="0.0" setvalue="true" checkconditionalalways="true">
+          <Conditional targetcontainer="true" targetitemcomponent="RangedWeapon" hasstatustag="! fs_gun_loaded" />
+        </StatusEffect>
+      </Containable>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="fs_flintlockmusketbayonetthruster" itempos="-90,5" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="fs_flintlockmusketbayonetdamagecollider" />
+      </SubContainer>
+    </ItemContainer>
+    <AiTarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+    <SkillRequirementHint identifier="weapons" level="40" />
+  </Item>
+  <Item name="Flintlock Musket Mechanism" identifier="fs_flintlockmusketmechanism" category="Weapon" subcategory="flintlockseries" tags="fs_mechanism" scale="0.5" noninteractable="true" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" sourcerect="256,455,64,50" depth="0.56" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnUse" target="This">
+        <ParticleEmitter particle="fs_flintlockflame" particleamount="1" scalemin="0.20" scalemax="0.30" drawontop="true" />
+        <ParticleEmitter particle="fs_explosionsmoke" particleamount="4" scalemin="0.84" scalemax="1.08" colormultiplier="1.0,1.0,1.0,0.34" />
+        <ParticleEmitter particle="fs_explosionsmoke" particleamount="1" scalemin="0.84" scalemax="1.08" colormultiplier="1.0,1.0,1.0,0.60" drawontop="true" />
+        <ParticleEmitter particle="fs_explosionsmokesplashwater" particleamount="9" scalemin="0.84" scalemax="1.08" colormultiplier="1.0,1.0,1.0,0.34" />
+        <ParticleEmitter particle="fs_explosionsmokesplashwater" particleamount="1" scalemin="0.84" scalemax="1.08" colormultiplier="1.0,1.0,1.0,0.72" drawontop="true" />
+        <ParticleEmitter particle="spark" anglemin="-10" anglemax="5" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Ramrod" identifier="fs_flintlockmusketramrod" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_ramrod" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="fs_flintlockmusket" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="secarmcab" amount="1" spawnprobability="0.5" notcampaign="true" />
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="20" />
+      <RequiredItem identifier="steel" />
+      <RequiredItem identifier="iron" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/InventoryIconAtlas.png" sourcerect="64,192,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" sourcerect="0,448,164,4" depth="0.56" origin="0.5,0.5" />
+    <Body width="164" height="4" density="30" />
+    <ItemComponent characterusable="false">
+      <StatusEffect type="OnUse" targettype="This" targetitemcomponent="Fabricator">
+        <SpawnItem identifiers="fs_flintlockmusketround" spawnposition="ContainedInventory" spawnifcantbecontained="true" />
+        <Conditional hasstatustag="spawning,spawn_round" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="This" targetitemcomponent="Fabricator">
+        <SpawnItem identifiers="fs_flintlockmusketroundmorepropellant" spawnposition="ContainedInventory" spawnifcantbecontained="true" />
+        <Conditional hasstatustag="spawning,spawn_roundmorepropellant" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="This" targetitemcomponent="Fabricator">
+        <SpawnItem identifiers="fs_flintlockmusketroundwaterproof" spawnposition="ContainedInventory" spawnifcantbecontained="true" />
+        <Conditional hasstatustag="spawning,spawn_roundwaterproof" />
+      </StatusEffect>
+    </ItemComponent>
+    <Holdable slots="LeftHand+RightHand" pickkey="Select" holdpos="0,-30" holdangle="90" aimable="false" handle1="60,0" handle2="-90,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" targettype="This,Character" targetitemcomponent="Fabricator" tags="interactable" duration=".033" stackable="false">
+        <Conditional caninteract="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" tags="reloaded" duration=".033" stackable="false">
+        <Conditional targetcontaineditem="true" hasstatustag="fs_gun_loaded" />
+        <RequiredItems tag="fs_gun" type="Contained" targetslot="0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" tags="reloadable" duration=".016" comparison="And">
+        <Conditional hasstatustag="interactable" />
+        <Conditional hasstatustag="! reloaded" />
+        <Conditional hasstatustag="! spawning" />
+        <RequiredItems tag="fs_gun" type="Contained" targetslot="0" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" voltage="0.0" setvalue="true" />
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" voltage="1.25" setvalue="true" comparison="And">
+        <Conditional speed="lte 0.5" />
+        <Conditional hasstatustag="reloadable" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" voltage="1.0" setvalue="true" comparison="And">
+        <Conditional speed="gt 0.5" />
+        <Conditional speed="lte 2.0" />
+        <Conditional hasstatustag="reloadable" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" targetitemcomponent="Fabricator" voltage="0.75" setvalue="true" comparison="And">
+        <Conditional speed="gt 2.0" />
+        <Conditional hasstatustag="reloadable" />
+      </StatusEffect>
+    </Holdable>
+    <Fabricator canbeselected="false" createbuttontext="fs.reloadammo" powerconsumption="infinity" minvoltage="0.5" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.4,0.45" relativeoffset="0.05,0.0" style="GUIFrame" anchor="CenterRight" />
+      <StatusEffect type="OnActive" target="This">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlock_reload.ogg" range="500" volume="0.5" frequency="1.3" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" interval="0.65">
+        <Explosion range="50" force="2" showeffects="false" ignorecover="true" />
+      </StatusEffect>
+    </Fabricator>
+    <ItemContainer canbeselected="true" drawinventory="true" allowaccess="true" capacity="1" maxstacksize="1" hideitems="false" containedspritedepth="0.55" keepopenwhenequipped="true" slotsperrow="4" uilabel="" allowuioverlap="true" drawhudwhenequipped="true">
+      <Containable identifier="fs_flintlockmusket" hide="false" itempos="-34,0" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable identifier="fs_flintlockpowderbottle" hide="true" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable tag="fs_musket_unloadedammo" hide="true" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="plastic" hide="true" />
+      </SubContainer>
+      <StatusEffect type="OnContained" targettype="This" targetitemcomponent="Holdable">
+        <DropContainedItems />
+        <Conditional targetcontainer="true" entitytype="! Character" />
+      </StatusEffect>
+    </ItemContainer>
+    <ItemContainer canbeselected="true" drawinventory="true" allowaccess="true" capacity="1" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" drawhudwhenequipped="true">
+      <Containable tag="fs_musket_ammospawner" />
+    </ItemContainer>
+    <AiTarget sightrange="1000" soundrange="500" fadeouttime="1" />
+  </Item>
+  <Item name="Flintlock Musket Bayonet" identifier="fs_flintlockmusketbayonet" category="Weapon" subcategory="flintlockseries" tags="smallitem" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="fs_flintlockmusket" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wrecksecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="secarmcab" amount="1" spawnprobability="0.5" notcampaign="true" />
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/InventoryIconAtlas.png" sourcerect="128,192,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/weapons.png" sourcerect="0,480,147,25" depth="0.56" origin="0.5,0.5" />
+    <Body width="147" height="25" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" pickkey="Select" aimpos="40,30" aimangle="-30" handle1="-30,-5" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon suitableprojectiles="fs_flintlockmusketbayonetdamagecolliderhandheld" reload="0.9" reloadnoskill="1.1" reloadskillrequirement="100" barrelpos="22,10" holdtrigger="false" combatpriority="0">
+      <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockmusket_bayonet.ogg" type="OnUse" range="500" frequency="1.3" volume="0.5" />
+      <StatusEffect type="OnUse" target="Contained" targetslot="1">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Propulsion" usablein="Both">
+        <SpawnItem identifier="fs_flintlockmusketbayonetdamagecolliderhandheld" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <RequiredSkill identifier="weapons" level="30" />
+    </RangedWeapon>
+    <Propulsion force="300" usablein="None" applytohands="true">
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="Propulsion" usablein="None" />
+    </Propulsion>
+    <ItemContainer capacity="1" maxstacksize="1" drawinventory="false" allowaccess="false" hideitems="true" showcontainedstateindicator="false" spawnwithid="fs_flintlockmusketbayonetthrusterhandheld,fs_flintlockmusketbayonetdamagecolliderhandheld" removecontaineditemsondeconstruct="true">
+      <Containable identifier="fs_flintlockmusketbayonetdamagecolliderhandheld" hide="true" />
+      <SubContainer capacity="1" maxstacksize="1" hide="true">
+        <Containable identifier="fs_flintlockmusketbayonetthrusterhandheld" itempos="-30,0" />
+      </SubContainer>
+    </ItemContainer>
+    <AiTarget sightrange="500" soundrange="250" fadeouttime="1" />
+    <SkillRequirementHint identifier="weapons" level="30" />
+  </Item>
+  <Item name="Flintlock Musket Bayonet Thruster" identifier="fs_flintlockmusketbayonetthruster" noninteractable="true" hideinmenus="true">
+    <InventoryIcon texture="Content/UI/UIAtlasGeneral.png" sourcerect="723,53,30,40" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="100.0" force="8" showeffects="false" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Bayonet Damage Collider" identifier="fs_flintlockmusketbayonetdamagecollider" noninteractable="true" hideinmenus="true">
+    <InventoryIcon texture="Content/UI/UIAtlasGeneral.png" sourcerect="723,53,30,40" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="10" density="10" />
+    <Projectile characterusable="true" launchimpulse="30" deactivationtime="0.067" removeonhit="true">
+      <Attack targetforce="18" structuredamage="5" itemdamage="18" severlimbsprobability="0.25" penetration="0.3">
+        <Affliction identifier="lacerations" strength="25" />
+        <Affliction identifier="bleeding" strength="11" />
+        <Affliction identifier="explosiondamage" strength="11" probability="0.1" />
+        <Affliction identifier="stun" strength="0.3" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="This">
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.067">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Musket Bayonet Thruster Handheld" identifier="fs_flintlockmusketbayonetthrusterhandheld" variantof="fs_flintlockmusketbayonetthruster">
+    <ItemComponent>
+      <StatusEffect>
+        <Explosion range="100.0" force="2" />
+      </StatusEffect>
+      <!-- Fix Patch: Remove if it is not in inventory of bayonet -->
+      <StatusEffect type="OnSpawn" target="This">
+        <Remove />
+        <Conditional containeridentifier="! fs_flintlockmusketbayonet" />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Bayonet Damage Collider Handheld" identifier="fs_flintlockmusketbayonetdamagecolliderhandheld" variantof="fs_flintlockmusketbayonetdamagecollider">
+    <Projectile deactivationtime="0.034">
+      <Attack targetforce="1" structuredamage="*0.65" itemdamage="*0.65" severlimbsprobability="*0.65">
+        <Affliction strength="*0.65" />
+        <Affliction strength="*0.65" />
+        <Affliction strength="*0.65" />
+        <Affliction strength="0.1" />
+      </Attack>
+      <StatusEffect _="_" />
+      <StatusEffect delay="0.034" />
+      <!-- Fix Patch: Remove if it is not in inventory of bayonet -->
+      <StatusEffect type="OnSpawn" target="This">
+        <Remove />
+        <Conditional containeridentifier="! fs_flintlockmusketbayonet" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+</Items>

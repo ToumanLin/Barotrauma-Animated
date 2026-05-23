@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--predetermined breasts type-->
+  <Item name="Type B Body Emitter" identifier="te_typeb" Tags="passive_items" scale="0.5" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Null.png" sheetindex="0,0" sheetelementsize="1,1" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" sheetindex="0,0" sheetelementsize="1,1" origin="0.5,0.5" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnContained" target="Character" disabledeltatime="true" duration="1">
+        <Affliction identifier="babodytypeB" strength="2" />
+        <Affliction identifier="ba_breasts" strength="2" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" disabledeltatime="true">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Type C Body Emitter" identifier="te_typec" Tags="passive_items" scale="0.5" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Null.png" sheetindex="0,0" sheetelementsize="1,1" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Null.png" sheetindex="0,0" sheetelementsize="1,1" origin="0.5,0.5" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnContained" target="Character" disabledeltatime="true" duration="1">
+        <Affliction identifier="babodytypeC" strength="2" />
+        <Affliction identifier="ba_breasts" strength="2" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" disabledeltatime="true">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Godmode Giver" identifier="te_godmode" description="Scripted item to give npcs godmode" scale="0.2" hideinmenus="true">
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnContained" target="this,character" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="ba_npcevent_godmode" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="red missile spawner" health="1" identifier="redmissile_spawner" description="Spawn red missile" scale="0.1" hideinmenus="true">
+    <Sprite texture="%ModDir%/Events/Spawner/fim92.png" depth="0.7" sourcerect="0,0,100,100" origin="0.5,0.5" />
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnContained" target="this" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_projectiles_redmissile" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Kill NPC" identifier="bakillnpc" description="Scripted item for killing NPCs" maxstacksize="1" maxstacksizecharacterinventory="1" scale="0.2" hideinmenus="true">
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+      <StatusEffect type="OnUse" target="Character,this" Condition="-100.0" disabledeltatime="true">
+        <GiveTalentInfo talentidentifiers="removedfromteam" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this" disabledeltatime="true">
+        <Sound file="%ModDir%/Events/Spawner/emblem_break.ogg" volume="4" type="OnUse" range="200" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="yuuka spawner" identifier="ba_spawner_yuuka" description="Summons yuuka, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_yuuka.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_yuuka" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="yuzu spawner" identifier="ba_spawner_yuzu" description="Summons yuzu, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_yuzu.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_yuzu" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="alice spawner" identifier="ba_spawner_alice" description="Summons alice, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_alice.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_alice" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="momoi spawner" identifier="ba_spawner_momoi" description="Summons momoi, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_momoi.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_momoi" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="karin spawner" identifier="ba_spawner_karin" description="Summons karin, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_karin.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_karin" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="nonomi spawner" identifier="ba_spawner_nonomi" description="Summons Nonomi, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_nonomi.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_nonomi" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="hoshino spawner" identifier="ba_spawner_hoshino" description="Summons hoshino, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_hoshino.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="64" height="64" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_hoshino" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <!--Gehenna-->
+  <!--Trinity-->
+  <Item name="Justice Task Force Emblem lv1" identifier="jtfemblem" description="On use: grants Talent, the ability to summon members of Justice Task Force once after every time a mission is completed." maxstacksize="1" maxstacksizecharacterinventory="1" scale="0.2" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Events/Spawner/jtfability1.png" sheetindex="0,0" sheetelementsize="128,128" origin="0.5,0.5" />
+    <Body width="30" height="30" density="10" />
+    <LightComponent allowingameediting="false" lightcolor="200,200,200,100" canbeselected="false" range="50.0" ison="true" />
+    <LightComponent allowingameediting="false" lightcolor="200,200,200,200" canbeselected="false" range="20.0" ison="true" />
+    <Holdable slots="Any, RightHand,LeftHand" aimpos="50,-10" handle1="-40,-40" handle2="-40,-40"></Holdable>
+    <RangedWeapon slots="Any,RightHand,LeftHand">
+      <StatusEffect type="OnUse" target="Character,this" Condition="-100.0" disabledeltatime="true">
+        <GiveTalentInfo talentidentifiers="bajtfreinforcement" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="this">
+        <Sound file="%ModDir%/Events/Spawner/emblem_break.ogg" volume="4" type="OnUse" range="200" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Ichika spawner" identifier="ba_spawner_ichika" description="Summons Ichika, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_ichika.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="30" height="30" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_ichika" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Mika spawner" identifier="ba_spawner_mika" description="Summons Mika, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_mika.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="30" height="30" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_mika" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Seia spawner" identifier="ba_spawner_seia" description="Summons Seia, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_seia.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="30" height="30" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_seia" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Ibuki spawner" identifier="ba_spawner_ibuki" description="Summons Ibuki, character will despawn at the end of round." scale="0.25" hideinmenus="true" category="Misc">
+    <Sprite texture="%ModDir%/Events/Spawner/stone_ibuki.png" depth="0.7" sourcerect="0,0,200,230" origin="0.5,0.5" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true"></Fabricate>
+    <Deconstruct time="10"></Deconstruct>
+    <Body width="30" height="30" density="10" />
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <!--<StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_ibuki" />
+        <Sound file="%ModDir%/Events/Spawner/Summon.ogg" volume="5" type="OnUse" range="200" />
+        <remove />
+      </StatusEffect>-->
+      <!--<StatusEffect type="OnSecondaryUse" target="This" Condition="-50" setvalue="true" disabledeltatime="true">
+		</StatusEffect>-->
+      <StatusEffect type="OnActive" target="This,Character" disabledeltatime="true">
+        <SpawnCharacter speciesname="Ibuki" totalmaxcount="1" inheritteam="true" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="JTF Reinforcement" identifier="ba_spawner_jtfreinforcement" description="Summons a JTF gunner at player's position, character will not leave position." scale="0.2" hideinmenus="false" tags="minigameitem" category="Misc" HideConditionBar="true">
+    <InventoryIcon texture="JTF_Badge.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Sprite texture="JTF_Badge.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/Null.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" maxcondition="5" />
+    <Body width="240" height="240" density="10" />
+    <Fabricate suitablefabricators="ba_minigame_shop_weapon" requiredtime="0" requiresrecipe="false">
+      <Item identifier="bakivotoscurrency" amount="40" />
+    </Fabricate>
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_jtfreinforcement" />
+        <!--<Sound file="%ModDir%/Sounds/jtf_spawn1.ogg" volume="0.2" selectionmode="random" range="500" />
+				<Sound file="%ModDir%/Sounds/jtf_spawn2.ogg" volume="0.2" range="500" />
+				<Sound file="%ModDir%/Sounds/jtf_spawn3.ogg" volume="0.2" range="500" />-->
+        <remove />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" setvalue="true" condition="100" />
+      <StatusEffect type="OnContained" target="This" setvalue="true" condition="3" />
+    </Holdable>
+  </Item>
+  <Item name="JTF Reinforcement" identifier="ba_spawner_jtfreinforcement_crew" description="Summons a JTF gunner at player's position, character will not leave position." scale="0.2" hideinmenus="false" tags="minigameitem" category="Misc" HideConditionBar="true">
+    <InventoryIcon texture="JTF_Badge.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <Sprite texture="JTF_Badge.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/Null.png" depth="0.7" sourcerect="0,0,240,240" origin="0.5,0.5" maxcondition="5" />
+    <Body width="240" height="240" density="10" />
+    <Fabricate suitablefabricators="ba_minigame_shop_weapon" requiredtime="0" requiresrecipe="false">
+      <Item identifier="bakivotoscurrency" amount="40" />
+    </Fabricate>
+    <Holdable slots="Any,RightHand,LeftHand" characterusable="false" aimpos="27,20" holdangle="50" aimangle="90" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" EventUserTag="triggerer_player" disabledeltatime="true">
+        <TriggerEvent identifier="spawnevent_jtfreinforcement_crew" />
+        <!--<Sound file="%ModDir%/Sounds/jtf_spawn1.ogg" volume="0.2" selectionmode="random" range="500" />
+				<Sound file="%ModDir%/Sounds/jtf_spawn2.ogg" volume="0.2" range="500" />
+				<Sound file="%ModDir%/Sounds/jtf_spawn3.ogg" volume="0.2" range="500" />-->
+        <remove />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" setvalue="true" condition="100" />
+      <StatusEffect type="OnContained" target="This" setvalue="true" condition="3" />
+    </Holdable>
+  </Item>
+</Items>

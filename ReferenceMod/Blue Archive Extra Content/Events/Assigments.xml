@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <!--spawn outpost npc that chat, this event should be spawned and controlled by an item placed in outposts-->
+    <!--the event scans for npcs, then assign them with mission control role-->
+    <ScriptedEvent identifier="base_event_srt_assigment1" tags="base_event_srt_event1" commonness="0">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_moe" tag="moe" />
+      <TagAction criteria="itemtag:moe_chair" tag="moe_chair" SubmarineType="Outpost" chooserandom="true" />
+      <TagAction criteria="itemtag:reward_shelf" tag="reward_shelf" SubmarineType="Outpost" chooserandom="true" />
+      <CheckDataAction identifier="assignment_greet_firsttime" condition="eq 0">
+        <Success>
+          <TriggerAction target1tag="moe" target2tag="player" applytotarget2="firsttime_player" waitforinteraction="true" />
+          <SetDataAction identifier="is_moe_idling" value="0" />
+          <ConversationAction text="AssignmentText.Assignment_greet1" targettag="firsttime_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_1" continueconversation="true" />
+          <ConversationAction text="AssignmentText.Assignment_greet2" targettag="firsttime_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true" />
+          <ConversationAction text="AssignmentText.Assignment_greet3" targettag="firsttime_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_13" continueconversation="true" />
+          <ConversationAction text="AssignmentText.Assignment_greet4" targettag="firsttime_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_1" />
+          <SetDataAction identifier="assignment_level" value="1" />
+          <SetDataAction identifier="commission_state" value="1" />
+          <SetDataAction identifier="assignment_greet_firsttime" value="1" />
+          <NPCOperateItemAction npctag="moe" targettag="moe_chair" ItemComponentName="Controller" Operate="true" />
+          <ClearTagAction tag="firsttime_player" />
+          <WaitAction time="8" />
+          <GoTo name="assignments_start" />
+        </Success>
+        <Failure>
+          <NPCOperateItemAction npctag="moe" targettag="moe_chair" ItemComponentName="Controller" Operate="true" />
+          <WaitAction time="7" />
+          <Label name="check_welcomeback" />
+          <CheckVisibilityAction EntityTag="moe" TargetTag="player" ApplyTagToTarget="firsttime_player" maxdistance="400">
+            <Success>
+              <SetDataAction identifier="is_moe_idling" value="0" />
+              <NPCOperateItemAction npctag="moe" targettag="moe_chair" ItemComponentName="Controller" Operate="false" />
+              <StatusEffectAction targettag="moe">
+                <StatusEffect target="this">
+                  <Sound file="%ModDir%/Events/Sounds/Assignment_Moe_Welcomeback1.ogg" range="1000" selectionmode="random" />
+                  <Sound file="%ModDir%/Events/Sounds/Assignment_Moe_Welcomeback2.ogg" range="1000" />
+                </StatusEffect>
+              </StatusEffectAction>
+              <SetDataAction identifier="is_moe_idling" value="0" />
+              <NPCFollowAction npctag="moe" targettag="firsttime_player" follow="true" />
+              <ConversationAction text="Welcome Back!" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_1" ContinueAutomatically="true" />
+              <NPCFollowAction npctag="moe" targettag="firsttime_player" follow="false" />
+              <NPCOperateItemAction npctag="moe" targettag="moe_chair" ItemComponentName="Controller" Operate="true" />
+              <GoTo name="assignments_start" />
+            </Success>
+            <Failure>
+              <WaitAction time="0.2" />
+              <GoTo name="check_welcomeback" />
+            </Failure>
+          </CheckVisibilityAction>
+        </Failure>
+      </CheckDataAction>
+      <!--LV1 outpost-->
+      <Label name="assignments_start" />
+      <SetDataAction identifier="is_moe_idling" value="1" />
+      <ClearTagAction tag="triggerer_player" />
+      <WaitAction time="2" />
+      <NPCOperateItemAction npctag="moe" targettag="moe_chair" ItemComponentName="Controller" Operate="true" />
+      <ConversationAction text="AssignmentText.Assignment_ask1" invokertag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" speakertag="moe" continueconversation="true" />
+      <SetDataAction identifier="is_moe_idling" value="0" />
+      <CheckDataAction identifier="mission_check_reward" condition="gt 0">
+        <Success>
+          <ConversationAction text="AssignmentText_Mission_check_reward" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_14" continueconversation="true" />
+          <GoTo name="Reward_Check_List_Take_Crate" />
+        </Success>
+        <Failure>
+          <ConversationAction text="" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true">
+            <!--check for cool down on request, you dont want players to stack requests-->
+            <Option text="Assignments">
+              <GoTo name="assignments_check_level" />
+            </Option>
+            <!--starts with lv0 commission, ask miyako to level it up-->
+            <Option text="Special Commissions">
+              <GoTo name="commission_check" />
+            </Option>
+            <Option text="Tell me about Outpost management.">
+              <GoTo name="explains_outpost" />
+            </Option>
+            <Option text="Nevermind...">
+              <ConversationAction text="Alright then." targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_17" />
+              <GoTo name="assignments_start" />
+            </Option>
+          </ConversationAction>
+          <!--Same dentical interactions, just changed starter text-->
+          <Label name="assignments_return" />
+          <ConversationAction text="Anything Else?" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2">
+            <Option text="Assignments">
+              <GoTo name="assignments_check_level" />
+            </Option>
+            <Option text="Special Commissions">
+              <GoTo name="commission_check" />
+            </Option>
+            <Option text="Tell me about Outpost management.">
+              <GoTo name="explains_outpost" />
+            </Option>
+            <Option text="Nevermind...">
+              <ConversationAction text="Alright then." targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_17" />
+              <GoTo name="assignments_start" />
+            </Option>
+          </ConversationAction>
+        </Failure>
+      </CheckDataAction>
+      <!--CHECK LIST-->
+      <!--explains outpost-->
+      <Label name="explains_outpost" />
+      <ConversationAction text="Assignment_Explains1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_1" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains2" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains3" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_13" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains4" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_5" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains5" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_17" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains6" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_19" continueconversation="true" />
+      <ConversationAction text="Assignment_Explains7" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_11" continueconversation="true" />
+      <GoTo name="assignments_return" />
+      <!--ASSIGNMENT-->
+      <!--check for quest type and level-->
+      <Label name="assignments_check_level" />
+      <CheckDataAction identifier="assignment_level" condition="eq 1">
+        <Success>
+          <GoTo name="Assignment_check_cooldown_lv1" />
+        </Success>
+      </CheckDataAction>
+      <Label name="Assignment_check_cooldown_lv1" />
+      <CheckDataAction identifier="missions_cooldown" condition="eq 1">
+        <Success>
+          <ConversationAction text="AssignmentText.Cooldown1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_14" continueconversation="true" />
+          <GoTo name="assignments_return" />
+        </Success>
+        <Failure>
+          <GoTo name="Assignment_list_level_1" />
+        </Failure>
+      </CheckDataAction>
+      <!--Mission list-->
+      <Label name="Assignment_list_level_1" />
+      <ConversationAction text="AssignmentText.Assignment_assignment_list" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_1">
+        <Option text="Cargo Delivery 1" endconversation="true">
+          <ConversationAction text="Assignment_Cargo1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_3" />
+          <MissionAction missiontag="cargo_lv1_assignment" />
+          <SetDataAction identifier="missions_cooldown" value="1" Operation="Add" />
+          <GoTo name="assignments_return" />
+        </Option>
+        <Option text="Monster Culling 1" endconversation="true">
+          <ConversationAction text="Assignment_Monsterculling1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_11" />
+          <SetDataAction identifier="missions_cooldown" value="1" Operation="Add" />
+          <MissionAction missiontag="monsterculling_lv1_assignment" />
+          <GoTo name="assignments_return" />
+        </Option>
+        <Option text="Escorts Mission 1" endconversation="true">
+          <ConversationAction text="Assignment_Escort1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_3" />
+          <MissionAction missiontag="escort_lv1_assignment" />
+          <SetDataAction identifier="missions_cooldown" value="1" Operation="Add" />
+          <GoTo name="assignments_return" />
+        </Option>
+        <Option text="Nevermind...">
+          <GoTo name="assignments_return" />
+        </Option>
+      </ConversationAction>
+      <!--COMMISSION-->
+      <!--check for commission type and level-->
+      <Label name="commission_check" />
+      <CheckDataAction identifier="commission_state" condition="eq 0">
+        <Success>
+          <ConversationAction text="Commission_Text_state_completed" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_11" />
+          <GoTo name="assignments_return" />
+        </Success>
+        <Failure>
+          <CheckDataAction identifier="commission_state" condition="eq 1">
+            <Success>
+              <GoTo name="State_1_total_assignments" />
+            </Success>
+            <Failure>
+              <CheckDataAction identifier="commission_state" condition="eq 2">
+                <Success>
+                  <GoTo name="State_2_total_assignments" />
+                </Success>
+                <Failure>
+                  <ConversationAction text="Commission_Text_no_in_development" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_18" />
+                  <GoTo name="assignments_return" />
+                </Failure>
+              </CheckDataAction>
+            </Failure>
+          </CheckDataAction>
+        </Failure>
+      </CheckDataAction>
+      <!--assignment total checks-->
+      <Label name="State_1_total_assignments" />
+      <CheckDataAction identifier="total_assignment_count" condition="gt 4">
+        <Success>
+          <ConversationAction text="Commission_Text_accept" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_8" continueconversation="true" />
+          <SetDataAction identifier="commission_state" value="1" Operation="Add" />
+          <GoTo name="assignments_return" />
+        </Success>
+        <Failure>
+          <ConversationAction text="Commission_Text_state_1_deny" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_5" continueconversation="true" />
+          <GoTo name="assignments_return" />
+        </Failure>
+      </CheckDataAction>
+      <Label name="State_2_total_assignments" />
+      <CheckDataAction identifier="total_assignment_count" condition="gt 100000">
+        <Success>
+          <ConversationAction text="Commission_Text_accept" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_8" continueconversation="true" />
+          <SetDataAction identifier="commission_state" value="1" Operation="Add" />
+          <GoTo name="assignments_return" />
+        </Success>
+        <Failure>
+          <ConversationAction text="Commission_Text_state_2_deny" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_6" continueconversation="true" />
+          <GoTo name="assignments_return" />
+        </Failure>
+      </CheckDataAction>
+      <!--check for rewards-->
+      <!--each needed to go from 1-->
+      <!--failing to check will move on until end of list-->
+      <!--the check check if reward count is at 0, if not then it add reward, deduct 1 value from the count then check again, when its at 0, move on to the next quest reward-->
+      <Label name="Reward_Check_List_Take_Crate" />
+      <StatusEffectAction targettag="reward_crate">
+        <StatusEffect target="this" noninteractable="true" setvalue="true" />
+      </StatusEffectAction>
+      <WaitAction time="0.1" />
+      <NPCOperateItemAction npctag="moe" targettag="reward_shelf" ItemComponentName="ItemContainer" Operate="true" />
+      <WaitAction time="1" />
+      <NPCOperateItemAction npctag="moe" targettag="reward_shelf" ItemComponentName="ItemContainer" Operate="false" />
+      <SpawnAction itemidentifier="metalcrate" targettag="reward_crate2" targetinventory="moe" Equip="true" />
+      <NPCFollowAction npctag="moe" targettag="triggerer_player" follow="true" />
+      <WaitAction time="1" />
+      <RemoveItemAction targettag="moe" itemidentifiers="metalcrate" />
+      <SpawnAction itemidentifier="metalcrate" spawnpointtag="moe" targettag="reward_crate" ignorebyai="true" />
+      <SetDataAction identifier="is_moe_idling" value="1" />
+      <WaitAction time="2" />
+      <StatusEffectAction targettag="reward_crate">
+        <StatusEffect target="This" noninteractable="false" setvalue="true" />
+      </StatusEffectAction>
+      <Label name="Assignment_Cargo1" />
+      <CheckDataAction identifier="Reward_Cargo1" condition="eq 0">
+        <Failure>
+          <ConversationAction text="Reward_Cargo1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true" />
+          <SetDataAction identifier="Reward_Cargo1" value="-1" Operation="Add" />
+          <SetDataAction identifier="total_assignment_count" value="1" Operation="Add" />
+          <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="reward_crate" ignorebyai="true" />
+          <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="reward_crate" ignorebyai="true" />
+          <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="reward_crate" ignorebyai="true" />
+          <GoTo name="Assignment_Cargo1" />
+        </Failure>
+        <Success>
+          <GoTo name="Assignment_Monsterculling1" />
+        </Success>
+      </CheckDataAction>
+      <Label name="Assignment_Monsterculling1" />
+      <CheckDataAction identifier="Reward_Monsterculling1" condition="eq 0">
+        <Failure>
+          <ConversationAction text="Reward_Monsterculling1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true" />
+          <SetDataAction identifier="Reward_Monsterculling1" value="-1" Operation="Add" />
+          <SetDataAction identifier="total_assignment_count" value="1" Operation="Add" />
+          <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="reward_crate" ignorebyai="true" />
+          <GoTo name="Assignment_Monsterculling1" />
+        </Failure>
+        <Success>
+          <GoTo name="Assignment_Escort1" />
+        </Success>
+      </CheckDataAction>
+      <Label name="Assignment_Escort1" />
+      <CheckDataAction identifier="Reward_Escort1" condition="eq 0">
+        <Failure>
+          <ConversationAction text="Reward_Escort1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_2" continueconversation="true" />
+          <SetDataAction identifier="Reward_Escort1" value="-1" Operation="Add" />
+          <SetDataAction identifier="total_assignment_count" value="1" Operation="Add" />
+          <SpawnAction itemidentifier="bakivotoscurrency" targetinventory="reward_crate" ignorebyai="true" />
+          <GoTo name="Assignment_Escort1" />
+        </Failure>
+        <Success>
+          <GoTo name="Assignment_Finished_Checking" />
+        </Success>
+      </CheckDataAction>
+      <Label name="Assignment_Finished_Checking" />
+      <ConversationAction text="Reward_Finished1" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_3" continueconversation="true" />
+      <ConversationAction text="Reward_Finished2" targettag="triggerer_player" endeventifinterrupted="false" eventsprite="Moe_Portrait_Expression_12" continueconversation="true" />
+      <SetDataAction identifier="mission_check_reward" value="0" />
+      <NPCFollowAction npctag="moe" targettag="triggerer_player" follow="false" />
+      <GoTo name="assignments_return" />
+    </ScriptedEvent>
+    <!--enable the crate to be depositable-->
+    <!--DEBUG TEST-->
+    <!--debug for mission check-->
+    <ScriptedEvent identifier="assignment_cooldown_reset" commonness="0">
+      <SetDataAction identifier="missions_cooldown" value="0" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="assignment_cooldown_deduction" commonness="0">
+      <SetDataAction identifier="missions_cooldown" value="-1" Operation="Add" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missioncheck_mission_check_reward" commonness="0">
+      <SetDataAction identifier="mission_check_reward" value="1" Operation="Add" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missioncheck_Reward_Escort1" commonness="0">
+      <SetDataAction identifier="Reward_Escort1" value="1" Operation="Add" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missioncheck_Reward_Monsterculling1" commonness="0">
+      <SetDataAction identifier="Reward_Monsterculling1" value="1" Operation="Add" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missioncheck_Reward_Cargo1" commonness="0">
+      <SetDataAction identifier="Reward_Cargo1" value="1" Operation="Add" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="toolbelt" category="Equipment" tags="smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="engcab" />
+      <PreferredContainer primary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <Item identifier="organicfiber" amount="2" />
+      </Fabricate>
+      <Price baseprice="65">
+        <Price storeidentifier="merchantoutpost" minavailable="4" />
+        <Price storeidentifier="merchantcity" minavailable="6" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+        <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,576,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="256,102,112,54" depth="0.6" />
+      <Body width="100" height="45" density="20" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="ToolBelt" texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="256,102,112,54" limb="Torso" inherittexturescale="true" origin="0.5,0.025" />
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="6" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier" />
+      </ItemContainer>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="flashlight" category="Equipment" Tags="smallitem,tool,provocative" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="divingcab" minamount="1" maxamount="2" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab,wrecksupplycab,beaconsupplycab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+      <Price baseprice="200" minavailable="2">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.25" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="aluminium" amount="2" />
+        <RequiredItem tag="lightcomponent" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="aluminium" />
+        <Item identifier="lightcomponent" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="293,185,49,18" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="293,185,49,18" depth="0.55" origin="0.5,0.5" />
+      <Body width="48" height="15" density="15" />
+      <Holdable slots="Any,RightHand,LeftHand,Head" holdpos="30,-50" aimpos="60,0" handle1="-20,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" targettype="Contained" Condition="-0.2">
+          <RequiredItem items="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <!-- the child LightComponent is only active when the Holdable is active, i.e. when the item is being held -->
+        <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" Flicker="0.02" range="800" powerconsumption="10" IsOn="true">
+          <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+          <IsActive targetcontaineditem="true" condition="gt 1.0" />
+        </LightComponent>
+        <LightComponent LightColor="0.5,0.5,0.5,1.0" directional="true" range="800" powerconsumption="10" IsOn="true" flicker="0.8" flickerspeed="1.0" pulsefrequency="0.1" pulseamount="0.5">
+          <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.5" size="1.0,1.0" />
+          <IsActive targetcontaineditem="true" condition="lte 1.0" />
+        </LightComponent>
+      </Holdable>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+        <Containable items="mobilebattery">
+          <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+        </Containable>
+      </ItemContainer>
+      <AiTarget sightrange="3000" />
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item identifier="scope" category="Equipment" Tags="smallitem" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="%Moddir%/Content/Items/Tools/tools.png" sourcerect="80,256,64,21" />
+      <Sprite texture="%Moddir%/Content/Items/Tools/tools.png" sourcerect="80,256,64,21" depth="0.55" />
+      <Body width="64" height="16" density="20" />
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+      <Price baseprice="250" minleveldifficulty="25">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="quartz" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="silicon" amount="2" />
+      </Deconstruct>
+      <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="500" msg="ItemMsgPickUpSelect" />
+    </Item>
+    <Item name="" identifier="backpack" category="Equipment" tags="mediumitem,mobilecontainer,largemobilecontainer,tool" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="engcab" />
+      <PreferredContainer primary="wreckstoragecab,abandonedstoragecab,piratestoragecab" />
+      <PreferredContainer primary="outpostcrewcabinet" />
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" amount="3" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <Item identifier="organicfiber" amount="5" />
+      </Fabricate>
+      <Price baseprice="200" minleveldifficulty="50">
+        <Price storeidentifier="merchantoutpost" minavailable="4" />
+        <Price storeidentifier="merchantcity" minavailable="6" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="8" />
+        <Price storeidentifier="merchantengineering" minavailable="4" multiplier="0.9" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,68,112" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,68,112" depth="0.6" />
+      <Body width="60" height="100" density="15" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+        <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge" texture="%ModDir%/Content/Items/Tools/tools.png" sourcerect="3,259,68,112" limb="Torso" depthlimb="Waist" inherittexturescale="true" origin="1.1,0.6" />
+        <StatValue stattype="MovementSpeed" value="-0.3" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,50" handle2="10,50" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false">
+        <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+        <StatValue stattype="PropulsionSpeed" value="-0.3" />
+      </Holdable>
+      <ItemContainer capacity="12" maxstacksize="32" depth="0.5">
+        <Containable items="smallitem" excludeditems="toolbelt,toolbox,bandolier" />
+      </ItemContainer>
+    </Item>
+  </Override>
+</Items>

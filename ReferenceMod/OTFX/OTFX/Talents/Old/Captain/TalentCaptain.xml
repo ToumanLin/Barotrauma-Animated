@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="tumble">
+    <Description tag="talentdescription.tumble">
+      <Replace tag="[seconds]" value="0.75" color="gui.green" />
+      <Replace tag="[duration]" value="2.5" color="gui.green" />
+      <Replace tag="[damage]" value="40" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,0" sheetelementsize="128,128" />
+    <AbilityGroupInterval effectdelay="0.75">
+      <Conditions>
+        <AbilityConditionRagdolled />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+              <Affliction identifier="tumbling" amount="2.5" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionHasAffliction afflictionidentifier="tumbling" />
+        <AbilityConditionAttackData tags="pistolammoitem" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyAttackData addeddamagemultiplier="0.4" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="trustedcaptain">
+    <Description tag="talentdescription.trustedcaptain">
+      <Replace tag="[selfxpgain]" value="275" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="1,1" sheetelementsize="128,128" />
+    <AbilityGroupEffect abilityeffecttype="OnAnyMissionCompleted">
+      <Abilities>
+        <CharacterAbilityPutItem itemidentifier="coalitioncommendation" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData itemidentifier="coalitioncommendation" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <GiveExperience amount="275" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="esteemedcaptain">
+    <Description tag="talentdescription.esteemedcaptain">
+      <Replace tag="[selfxpgain]" value="750" color="gui.green" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="2,1" sheetelementsize="128,128" />
+    <Description tag="talentdescription.extramission" />
+    <AbilityGroupEffect abilityeffecttype="OnAnyMissionCompleted">
+      <Abilities>
+        <CharacterAbilityPutItem itemidentifier="coalitionmedal" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnAttack">
+      <Conditions>
+        <AbilityConditionAttackData itemidentifier="coalitionmedal" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <GiveExperience amount="750" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveStat stattype="ExtraMissionCount" value="1" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+</Talents>

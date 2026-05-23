@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="doctorsuniform1" aliases="doctorsuniform" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" amount="1" spawnprobability="0.02" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" amount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" sourcerect="182,17,84,149" origin="0.5,0.5" />
+      <Sprite name="Medic1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="640,71,125,75" depth="0.6" origin="0.5,0.5" />
+      <Body width="150" height="50" density="15" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Medic1 Torso" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Hand" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Hand" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Lower Arm" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Lower Arm" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Upper Arm" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Upper Arm" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightArm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Waist" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Thigh" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Thigh" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Leg" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Leg" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Right Shoe" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic1 Left Shoe" texture="%ModDir%/Content/items/jobgear/medic/Medic1.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="doctorsuniform2" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Medic Uniform 2 Icon" texture="%ModDir%/Content/Items/Jobgear/Medic/Medic2.png" sourcerect="171,20,88,170" origin="0.5,0.5" />
+      <Sprite name="Medic Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="640,70,124,74" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Medic Uniform 2 1Torso" texture="Medic2.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Hand" texture="Medic2.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Hand" texture="Medic2.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Lower Arm" texture="Medic2.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Lower Arm" texture="Medic2.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Upper Arm" texture="Medic2.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Upper Arm" texture="Medic2.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Waist" texture="Medic2.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Thigh" texture="Medic2.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Thigh" texture="Medic2.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Leg" texture="Medic2.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Leg" texture="Medic2.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Right Shoe" texture="Medic2.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Medic Uniform 2 1Left Shoe" texture="Medic2.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="medicseparatistsuniform1" aliases="doctorsuniform" category="Equipment" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Medic Uniform 2 Icon" texture="%ModDir%/Content/Items/Jobgear/Medic/Medic_separatist_02.png" sourcerect="159,23,99,165" origin="0.5,0.5" />
+      <Sprite name="Medic Uniform 1" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="4,503,117,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <sprite name="separatist clothes medic 3 Torso" texture="Medic_separatist_02.png" limb="Torso" hidelimb="false" inheritsourcerect="false" sourcerect="153,20,107,169" inheritorigin="false" origin="0.585,0.521" inheritscale="true" inheritlimbdepth="true" />
+        <sprite name="separatist clothes medic 3 Right Hand" texture="Medic_separatist_02.png" limb="RightHand" depthlimb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Hand" texture="Medic_separatist_02.png" limb="LeftHand" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Lower Arm" texture="Medic_separatist_02.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="separatist clothes medic 3 Left Lower Arm" texture="Medic_separatist_02.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="separatist clothes medic 3 Right Upper Arm" texture="Medic_separatist_02.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="separatist clothes medic 3 Left Upper Arm" texture="Medic_separatist_02.png" limb="LeftForearm" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="separatist clothes medic 3 Waist" texture="Medic_separatist_02.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Thigh" texture="Medic_separatist_02.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Thigh" texture="Medic_separatist_02.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Leg" texture="Medic_separatist_02.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Leg" texture="Medic_separatist_02.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="separatist clothes medic 3 Left Shoe" texture="Medic_separatist_02.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Shoe" texture="Medic_separatist_02.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="medicseparatistsuniform2" category="Equipment" hideinmenus="true" subcategory="Clothes" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Medic Uniform 2 Icon" texture="%ModDir%/Content/Items/Jobgear/Medic/Medic_separatist_02.png" sourcerect="158,23,100,165" origin="0.5,0.5" />
+      <Sprite name="Medic Uniform 2" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="386,436,117,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <!--Hide Underwear v3-->
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="0.5" stackable="false">
+          <Affliction identifier="hideunderwear" amount="3.0" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" disabledeltatime="true" interval="1" duration="1.25" stackable="false">
+          <ReduceAffliction identifier="hideunderwear" amount="0.02" MultiplyByMaxVitality="true" />
+        </StatusEffect>
+        <!-- -->
+        <sprite name="separatist clothes medic 3 Torso" texture="Medic_separatist_02.png" limb="Torso" hidelimb="false" inheritsourcerect="false" sourcerect="153,20,107,169" inheritorigin="false" origin="0.585,0.521" inheritscale="true" inheritlimbdepth="true" />
+        <sprite name="separatist clothes medic 3 Right Hand" texture="Medic_separatist_02.png" limb="RightHand" depthlimb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Hand" texture="Medic_separatist_02.png" limb="LeftHand" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Lower Arm" texture="Medic_separatist_02.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" SourceRect="272,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="separatist clothes medic 3 Left Lower Arm" texture="Medic_separatist_02.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,0,64,92.5" Origin="0.5,0.518919" />
+        <sprite name="separatist clothes medic 3 Right Upper Arm" texture="Medic_separatist_02.png" limb="RightForearm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="separatist clothes medic 3 Left Upper Arm" texture="Medic_separatist_02.png" limb="LeftForearm" depthlimb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,92.5,64,67.5" origin="0.5,0.5259259" />
+        <sprite name="separatist clothes medic 3 Waist" texture="Medic_separatist_02.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Thigh" texture="Medic_separatist_02.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Thigh" texture="Medic_separatist_02.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Leg" texture="Medic_separatist_02.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Left Leg" texture="Medic_separatist_02.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="false" inheritsourcerect="false" SourceRect="80,128,74,128" origin="0.5405,0.5" />
+        <sprite name="separatist clothes medic 3 Left Shoe" texture="Medic_separatist_02.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="separatist clothes medic 3 Right Shoe" texture="Medic_separatist_02.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="surgeonclothes" category="Equipment" cargocontaineridentifier="metalcrate" tags="sterile,clothes_aw,clowngear,clownmask,smallitem,clothing,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.02" />
+      <Price baseprice="50" sold="false" canbespecial="false">
+        <Price locationtype="outpost" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="city" multiplier="0.9" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="research" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="military" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+        <Price locationtype="mine" multiplier="1" maxavailable="0" minleveldifficulty="99" sold="false" canbespecial="false" />
+      </Price>
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0">
+        <RequiredItem tag="clothes_aw" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="surgeondNT_1.png" sourcerect="193,5,96,199" origin="0.5,0.5" />
+      <Sprite name="medicalofficer" texture="Content/Items/Jobgear/MiscJobGear.png" sourcerect="245,149,119,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="100" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="surgeondNT Torso" texture="surgeondNT_1.png" limb="Torso" hidelimb="false" hideotherwearables="false" inheritsourcerect="false" sourcerect="186,0,119,254" inheritorigin="false" origin="0.48739496,0.40944883" inheritscale="true" inheritlimbdepth="true" depthlimb="None" />
+        <sprite name="surgeondNT Right Hand" texture="surgeondNT.png" limb="RightHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Hand" texture="surgeondNT.png" limb="LeftHand" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Lower Arm" texture="surgeondNT.png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Right Lower Arm" texture="surgeondNT.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Upper Arm" texture="surgeondNT.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Right Upper Arm" texture="surgeondNT.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Waist" texture="surgeondNT.png" limb="Waist" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Right Thigh" texture="surgeondNT.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Thigh" texture="surgeondNT.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Right Leg" texture="surgeondNT.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Leg" texture="surgeondNT.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Right Shoe" texture="surgeondNT.png" limb="RightFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="surgeondNT Left Shoe" texture="surgeondNT.png" limb="LeftFoot" sound="" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma" damagemultiplier="0.95" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="lacerations,burn,acidburn" damagemultiplier="0.9" />
+        <SkillModifier skillidentifier="electrical" skillvalue="5" />
+        <SkillModifier skillidentifier="helm" skillvalue="5" />
+        <SkillModifier skillidentifier="mechanical" skillvalue="5" />
+        <SkillModifier skillidentifier="medical" skillvalue="5" />
+        <SkillModifier skillidentifier="weapons" skillvalue="5" />
+      </Wearable>
+      <ItemContainer capacity="3">
+        <Containable items="chem,medical,simpletool" excludeditems="toolbox,toolbelt" />
+      </ItemContainer>
+    </Item>
+  </Items>
+</Override>

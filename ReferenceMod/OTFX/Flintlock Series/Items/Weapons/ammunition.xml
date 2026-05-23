@@ -1,0 +1,839 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Flintlock Powder Bottle" identifier="fs_flintlockpowderbottle" health="100" maxstacksize="8" maxstacksizecharacterinventory="1" category="Weapon" tags="smallitem" scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="magnesium" amount="2" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,320,29,93" depth="0.55" origin="0.5,0.5" />
+    <Body radius="14" height="60" density="30" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" pickkey="Select" canbecombined="true" throwforce="3.5" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnFire" target="This" tags="onfire" duration=".033" stackable="false" />
+      <StatusEffect type="OnFire" target="This" condition="-50" />
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="3000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="3000" />
+        <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="3000" />
+        <Explosion range="250.0" ballastfloradamage="20" force="3">
+          <Affliction identifier="burn" strength="50" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+        <Remove />
+        <Conditional hasstatustag="onfire" />
+      </StatusEffect>
+    </Throwable>
+  </Item>
+  <!-- Flintlock Musket Round -->
+  <Item name="Flintlock Musket Unloaded Round" identifier="fs_flintlockmusketunloadedround" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_musket_unloadedammo,handheldammo" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false" amount="8">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="iron" amount="2" />
+      <RequiredItem identifier="carbon" />
+      <RequiredItem identifier="silicon" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,448,12,12" depth="0.55" origin="0.5,0.5" />
+    <Body radius="6" density="30" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Flintlock Musket Round Spawner" identifier="fs_flintlockmusketroundspawner" category="Weapon" subcategory="flintlockseries" tags="fs_musket_ammospawner" scale="0.5" nameidentifier="fs_flintlockmusketround" descriptionidentifier="fs_flintlockmusketunloadedround" hideinmenus="true">
+    <Fabricate suitablefabricators="fs_flintlockmusketramrod" requiredtime="5" requiresrecipe="false">
+      <RequiredItem identifier="fs_flintlockpowderbottle" usecondition="true" mincondition="0.15" maxcondition="1.0" />
+      <RequiredItem identifier="fs_flintlockmusketunloadedround" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,448,12,12" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnContained" targettype="Parent" targetitemcomponent="Fabricator" tags="spawning,spawn_round" duration=".016" />
+      <StatusEffect type="OnContained" targettype="Parent">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnContained" targettype="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Round" identifier="fs_flintlockmusketround" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_musket_ammo,fs_musket_projectile" scale="0.5" allowswapping="true" descriptionidentifier="fs_flintlockmusketunloadedround">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,448,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,448,12,12" depth="0.55" origin="0.5,0.5" />
+    <Body radius="6" density="30" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true" spread="0">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="210,200,200,75" scalemultiplier="1,0.8" />
+      <Attack structuredamage="55" targetforce="50" itemdamage="55" severlimbsprobability="0.95" penetration="0.55">
+        <Affliction identifier="gunshotwound" strength="120" />
+        <Affliction identifier="bleeding" strength="72" />
+        <Affliction identifier="bloodloss" strength="5" />
+        <Affliction identifier="stun" strength="1.575" />
+      </Attack>
+      <StatusEffect type="OnUse" target="This" allowswapping="false" />
+      <StatusEffect type="OnImpact" target="UseTarget" duration="3.0" speedmultiplier="0.5" setvalue="true">
+        <Conditional entitytype="Character" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="10" scalemin="1.4" scalemax="2.8" velocitymin="0" scalemultiplier="0.65,0.65" colormultiplier="255,200,200,80" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="Structure" hastag="door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-30" velocitymax="-600" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hastag="! fs_gun" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true">
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" condition="0.0" setvalue="true" delay="0.5" stackable="false" checkconditionalalways="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockammo_beingwet.ogg" range="500" frequency="1.0" volume="1.0" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        <Conditional inwater="true" waterproof="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="fs_flintlockmusketunloadedround" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropItem />
+        <Remove />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Musket Round More Propellant Spawner" identifier="fs_flintlockmusketroundmorepropellantspawner" variantof="fs_flintlockmusketroundspawner" nameidentifier="fs_flintlockmusketroundmorepropellant">
+    <Fabricate requiredtime="+2">
+      <RequiredItem mincondition="+0.1" />
+      <RequiredItem _="_" />
+    </Fabricate>
+    <InventoryIcon sourcerect="128,448,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_roundmorepropellant" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Round More Propellant" identifier="fs_flintlockmusketroundmorepropellant" variantof="fs_flintlockmusketround">
+    <InventoryIcon sourcerect="128,448,64,64" />
+    <Projectile spread="+3">
+      <Attack structuredamage="*1.25" targetforce="*1.25" itemdamage="*1.25">
+        <Affliction strength="*1.25" />
+        <!-- identifier="gunshotwound" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="bleeding" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="bloodloss" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="stun" -->
+      </Attack>
+      <StatusEffect _="_" />
+      <StatusEffect _="_" />
+      <StatusEffect>
+        <ParticleEmitter scalemin="+0.15" scalemax="+0.3" />
+      </StatusEffect>
+      <StatusEffect>
+        <ParticleEmitter particleamount="+3" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Musket Round Waterproof Spawner" identifier="fs_flintlockmusketroundwaterproofspawner" variantof="fs_flintlockmusketroundspawner" nameidentifier="fs_flintlockmusketroundwaterproof">
+    <Fabricate requiredtime="+1.5">
+      <RequiredItem _="_" />
+      <RequiredItem _="_" />
+      <RequiredItem identifier="plastic" usecondition="true" mincondition="0.1" maxcondition="1.0" />
+    </Fabricate>
+    <InventoryIcon sourcerect="192,448,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_roundwaterproof" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Musket Round Waterproof" identifier="fs_flintlockmusketroundwaterproof" variantof="fs_flintlockmusketround" waterproof="true">
+    <InventoryIcon sourcerect="192,448,64,64" />
+    <Projectile spread="+1">
+      <Attack structuredamage="*0.90" targetforce="*0.90" itemdamage="*0.90">
+        <Affliction strength="*0.90" />
+        <!-- identifier="gunshotwound" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="bleeding" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="bloodloss" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="stun" -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <!-- Flintlock Pistol Round -->
+  <Item name="Flintlock Pistol Unloaded Round" identifier="fs_flintlockpistolunloadedround" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_pistol_unloadedammo,handheldammo" maxstacksize="32" maxstacksizecharacterinventory="8" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+    <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="false" amount="5">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="iron" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,512,10,10" depth="0.55" origin="0.5,0.5" />
+    <Body radius="5" density="30" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Flintlock Pistol Round Spawner" identifier="fs_flintlockpistolroundspawner" category="Weapon" subcategory="flintlockseries" tags="fs_pistol_ammospawner" scale="0.5" nameidentifier="fs_flintlockpistolround" descriptionidentifier="fs_flintlockpistolunloadedround" hideinmenus="true">
+    <Fabricate suitablefabricators="fs_flintlockpistolramrod" requiredtime="4" requiresrecipe="false">
+      <RequiredItem identifier="fs_flintlockpowderbottle" usecondition="true" mincondition="0.12" maxcondition="1.0" />
+      <RequiredItem identifier="fs_flintlockpistolunloadedround" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,512,10,10" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnContained" targettype="Parent" targetitemcomponent="Fabricator" tags="spawning,spawn_round" duration=".016" />
+      <StatusEffect type="OnContained" targettype="Parent">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnContained" targettype="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Pistol Round" identifier="fs_flintlockpistolround" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_pistol_ammo,fs_pistol_projectile" scale="0.5" allowswapping="true" descriptionidentifier="fs_flintlockpistolunloadedround">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,512,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,512,10,10" depth="0.55" origin="0.5,0.5" />
+    <Body radius="5" density="30" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true" spread="0">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="210,200,200,75" scalemultiplier="1,0.8" />
+      <Attack structuredamage="39" targetforce="33.75" itemdamage="39" severlimbsprobability="0.75" penetration="0.50">
+        <Affliction identifier="gunshotwound" strength="82" />
+        <Affliction identifier="bleeding" strength="48" />
+        <Affliction identifier="bloodloss" strength="4" />
+        <Affliction identifier="stun" strength="1.26" />
+      </Attack>
+      <StatusEffect type="OnUse" target="This" allowswapping="false" />
+      <StatusEffect type="OnImpact" target="UseTarget" duration="2.5" speedmultiplier="0.5" setvalue="true">
+        <Conditional entitytype="Character" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="10" scalemin="1.2" scalemax="2.4" velocitymin="0" scalemultiplier="0.65,0.65" colormultiplier="255,200,200,80" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="Structure" hastag="door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="4" velocitymin="-30" velocitymax="-600" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hastag="! fs_gun" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true">
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" condition="0.0" setvalue="true" delay="0.5" stackable="false" checkconditionalalways="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockammo_beingwet.ogg" range="500" frequency="1.0" volume="1.0" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        <Conditional inwater="true" waterproof="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="fs_flintlockpistolunloadedround" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropItem />
+        <Remove />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Pistol Round More Propellant Spawner" identifier="fs_flintlockpistolroundmorepropellantspawner" variantof="fs_flintlockpistolroundspawner" nameidentifier="fs_flintlockpistolroundmorepropellant">
+    <Fabricate requiredtime="+1.6">
+      <RequiredItem mincondition="+0.08" />
+      <RequiredItem _="_" />
+    </Fabricate>
+    <InventoryIcon sourcerect="128,512,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_roundmorepropellant" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Pistol Round More Propellant" identifier="fs_flintlockpistolroundmorepropellant" variantof="fs_flintlockpistolround">
+    <InventoryIcon sourcerect="128,512,64,64" />
+    <Projectile spread="+3">
+      <Attack structuredamage="*1.25" targetforce="*1.25" itemdamage="*1.25">
+        <Affliction strength="*1.25" />
+        <!-- identifier="gunshotwound" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="bleeding" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="bloodloss" -->
+        <Affliction strength="*1.25" />
+        <!-- identifier="stun" -->
+      </Attack>
+      <StatusEffect _="_" />
+      <StatusEffect _="_" />
+      <StatusEffect>
+        <ParticleEmitter scalemin="+0.15" scalemax="+0.3" />
+      </StatusEffect>
+      <StatusEffect>
+        <ParticleEmitter particleamount="+3" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Pistol Round Waterproof Spawner" identifier="fs_flintlockpistolroundwaterproofspawner" variantof="fs_flintlockpistolroundspawner" nameidentifier="fs_flintlockpistolroundwaterproof">
+    <Fabricate requiredtime="+1.2">
+      <RequiredItem _="_" />
+      <RequiredItem _="_" />
+      <RequiredItem identifier="plastic" usecondition="true" mincondition="0.1" maxcondition="1.0" />
+    </Fabricate>
+    <InventoryIcon sourcerect="192,512,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_roundwaterproof" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Pistol Round Waterproof" identifier="fs_flintlockpistolroundwaterproof" variantof="fs_flintlockpistolround" waterproof="true">
+    <InventoryIcon sourcerect="192,512,64,64" />
+    <Projectile spread="+1">
+      <Attack structuredamage="*0.90" targetforce="*0.90" itemdamage="*0.90">
+        <Affliction strength="*0.90" />
+        <!-- identifier="gunshotwound" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="bleeding" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="bloodloss" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="stun" -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <!-- Flintlock Blunderbuss Pellets -->
+  <Item name="Flintlock Blunderbuss Unloaded Pellets" identifier="fs_flintlockblunderbussunloadedpellets" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_blunderbuss_unloadedammo,handheldammo" maxstacksize="20" maxstacksizecharacterinventory="5" scale="0.2" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy">
+    <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" amount="3">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="lead" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,704,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="66,711,60,50" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="50" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets Spawner" identifier="fs_flintlockblunderbusspelletsspawner" category="Weapon" subcategory="flintlockseries" tags="fs_blunderbuss_ammospawner" scale="0.5" nameidentifier="fs_flintlockblunderbusspellets" descriptionidentifier="fs_flintlockblunderbussunloadedpellets" hideinmenus="true">
+    <Fabricate suitablefabricators="fs_flintlockblunderbussramrod" requiredtime="9" requiresrecipe="false">
+      <RequiredItem identifier="fs_flintlockpowderbottle" usecondition="true" mincondition="0.15" maxcondition="1.0" />
+      <RequiredItem identifier="fs_flintlockblunderbussunloadedpellets" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,704,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="66,711,60,50" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnContained" targettype="Parent" targetitemcomponent="Fabricator" tags="spawning,spawn_pellets" duration=".016" />
+      <StatusEffect type="OnContained" targettype="Parent">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnContained" targettype="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets" identifier="fs_flintlockblunderbusspellets" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_blunderbuss_ammo,pellets" scale="0.5" allowswapping="true" descriptionidentifier="fs_flintlockblunderbussunloadedpellets">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,704,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="66,711,60,50" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="50" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <ItemContainer capacity="12" hideitems="true" drawinventory="false" canbeselected="false" canbecombined="true" ShowConditionInContainedStateIndicator="false" containedstateindicatorstyle="bullet" removecontaineditemsondeconstruct="true">
+      <StatusEffect type="OnSpawn" target="This">
+        <SpawnItem identifier="fs_flintlockblunderbusspelletsingle" spawnposition="ThisInventory" count="12" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" interval="0.5" delay="0.5" condition="0.0" setvalue="true">
+        <Conditional hastag="removed" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hastag="! fs_gun" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect type="InWater" target="This" condition="0.0" setvalue="true" delay="0.5" stackable="false" checkconditionalalways="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockammo_beingwet.ogg" range="500" frequency="1.0" volume="1.0" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        <Conditional inwater="true" waterproof="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="fs_flintlockblunderbussunloadedpellets" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropItem />
+        <Remove />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+        <Conditional allowswapping="false" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellet Single" identifier="fs_flintlockblunderbusspelletsingle" health="4.0" category="Weapon" subcategory="flintlockseries" tags="fs_blunderbuss_projectile" scale="0.5" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,704,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,704,10,10" depth="0.55" origin="0.5,0.5" />
+    <Body radius="5" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" launchimpulse="20" impulsespread="0.15" spread="0" maxtargetstohit="6" sticktocharacters="false" sticktoitems="false" sticktostructures="false" damagedoors="true">
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot1.ogg" type="OnImpact" range="2000" frequency="1.3" volume="0.4" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot2.ogg" type="OnImpact" range="2000" frequency="1.3" volume="0.4" />
+      <Attack structuredamage="4" targetforce="2" itemdamage="2" severlimbsprobability="0.2" penetration="0.45">
+        <Affliction identifier="lacerations" strength="3" />
+        <Affliction identifier="blunttrauma" strength="3" />
+        <Affliction identifier="bleeding" strength="2.4" />
+        <Affliction identifier="stun" strength="0.2" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particlespersecond="30" velocitymin="0" velocitymax="50" scalemin="0.1" scalemax="0.3" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_obstacle" duration=".016">
+        <Conditional entitytype="Structure" hastag="door" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.2" scalemax="0.25" colormultiplier="1.0,1.0,1.0,0.5" />
+        <ParticleEmitter particle="shrapnel" particleamount="8" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.15" velocitymin="150" velocitymax="300" distancemin="0" distancemax="100" colormultiplier="112,104,96,255" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="spark" copyentityangle="true" particleamount="1" anglemin="-10" anglemax="10" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        <Conditional hasstatustag="hit_obstacle" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <Conditional hasstatustag="hit_obstacle" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="-1.0" disabledeltatime="true" />
+      <StatusEffect type="OnImpact" target="This" targetitemcomponent="Projectile" maxtargetstohit="0" setvalue="true" allowwhenbroken="true">
+        <Remove />
+        <Conditional condition="0.0" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets More Propellant Spawner" identifier="fs_flintlockblunderbusspelletsmorepropellantspawner" variantof="fs_flintlockblunderbusspelletsspawner" nameidentifier="fs_flintlockblunderbusspelletsmorepropellant">
+    <Fabricate requiredtime="+2">
+      <RequiredItem mincondition="+0.1" />
+      <RequiredItem _="_" />
+    </Fabricate>
+    <InventoryIcon sourcerect="128,704,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_pelletsmorepropellant" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets More Propellant" identifier="fs_flintlockblunderbusspelletsmorepropellant" variantof="fs_flintlockblunderbusspellets">
+    <InventoryIcon sourcerect="128,704,64,64" />
+    <ItemContainer>
+      <StatusEffect>
+        <SpawnItem identifier="fs_flintlockblunderbusspelletsinglemorepropellant" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellet Single More Propellant" identifier="fs_flintlockblunderbusspelletsinglemorepropellant" variantof="fs_flintlockblunderbusspelletsingle">
+    <InventoryIcon sourcerect="128,704,64,64" />
+    <Projectile launchimpulse="+2" spread="+3">
+      <Attack structuredamage="*1.25" targetforce="*1.25" itemdamage="*1.25">
+        <Affliction strength="*1.25" />
+        <!-- lacerations -->
+        <Affliction strength="*1.25" />
+        <!-- blunttrauma -->
+        <Affliction strength="*1.25" />
+        <!-- bleeding -->
+        <Affliction strength="*1.25" />
+        <!-- stun -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets Waterproof Spawner" identifier="fs_flintlockblunderbusspelletswaterproofspawner" variantof="fs_flintlockblunderbusspelletsspawner" nameidentifier="fs_flintlockblunderbusspelletswaterproof">
+    <Fabricate requiredtime="+2">
+      <RequiredItem _="_" />
+      <RequiredItem _="_" />
+      <RequiredItem identifier="plastic" usecondition="true" mincondition="0.1" maxcondition="1.0" />
+    </Fabricate>
+    <InventoryIcon sourcerect="192,704,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_pelletswaterproof" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellets Waterproof" identifier="fs_flintlockblunderbusspelletswaterproof" variantof="fs_flintlockblunderbusspellets" waterproof="true">
+    <InventoryIcon sourcerect="192,704,64,64" />
+    <ItemContainer>
+      <StatusEffect>
+        <SpawnItem identifier="fs_flintlockblunderbusspelletsinglewaterproof" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Blunderbuss Pellet Single Waterproof" identifier="fs_flintlockblunderbusspelletsinglewaterproof" variantof="fs_flintlockblunderbusspelletsingle">
+    <InventoryIcon sourcerect="192,704,64,64" />
+    <Projectile>
+      <Attack structuredamage="*0.90" targetforce="*0.90" itemdamage="*0.90">
+        <Affliction strength="*0.90" />
+        <!-- lacerations -->
+        <Affliction strength="*0.90" />
+        <!-- blunttrauma -->
+        <Affliction strength="*0.90" />
+        <!-- bleeding -->
+        <Affliction strength="*0.90" />
+        <!-- stun -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <!-- Flintlock Cannon Ball -->
+  <Item name="Flintlock Cannon Unloaded Ball" identifier="fs_flintlockcannonunloadedball" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_cannon_unloadedammo,handheldammo" maxstacksize="8" maxstacksizecharacterinventory="2" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impacttolerance="3.0" impactsoundtag="impact_metal_heavy">
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false" amount="3">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,576,32,32" depth="0.55" origin="0.5,0.5" />
+    <Body radius="16" density="50" friction="0.1" restitution="0.3" angulardamping="0.9" />
+    <ItemComponent>
+      <StatusEffect type="OnImpact" target="This">
+        <sound file="Content/Sounds/Damage/StructureBlunt1.ogg" range="500" frquencymultiplier="1.2" />
+        <Explosion range="50.0" showeffects="false" structuredamage="10" decal="" />
+      </StatusEffect>
+    </ItemComponent>
+    <Throwable slots="Any,RightHand+LeftHand" pickkey="Select" holdpos="40,-20" handle1="-1,-5" handle2="1,-3" aimpos="40,20" throwforce="2.0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" target="This" delay="0.1">
+        <Use />
+      </StatusEffect>
+    </Throwable>
+    <Projectile characterusable="false" launchimpulse="0.0" sticktocharacters="false">
+      <Attack structuredamage="5" targetforce="5.0" itemdamage="15" penetration="0.2">
+        <Affliction identifier="blunttrauma" strength="25" />
+        <Affliction identifier="stun" strength="0.5" />
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+          <Conditional entitytype="Character" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Limb" targetLimbs="Head">
+          <Affliction identifier="concussion" strength="5" />
+          <Affliction identifier="stun" strength="2" />
+        </StatusEffect>
+      </Attack>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Cannon Ball Spawner" identifier="fs_flintlockcannonballspawner" category="Weapon" subcategory="flintlockseries" tags="fs_cannon_ammospawner" scale="0.5" nameidentifier="fs_flintlockcannonball" descriptionidentifier="fs_flintlockcannonunloadedball" hideinmenus="true">
+    <Fabricate suitablefabricators="fs_flintlockcannonramrod" requiredtime="9" requiresrecipe="false">
+      <RequiredItem identifier="fs_flintlockpowderbottle" usecondition="true" mincondition="0.3" maxcondition="1.0" />
+      <RequiredItem identifier="fs_flintlockcannonunloadedball" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,576,32,32" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnContained" targettype="Parent" targetitemcomponent="Fabricator" tags="spawning,spawn_ball" duration=".016" />
+      <StatusEffect type="OnContained" targettype="Parent">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnContained" targettype="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Ball" identifier="fs_flintlockcannonball" health="4.0" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_cannon_ammo,fs_cannon_projectile" scale="0.5" allowswapping="true" descriptionidentifier="fs_flintlockcannonunloadedball">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,576,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,576,32,32" depth="0.55" origin="0.5,0.5" />
+    <Body radius="16" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <!-- v1.1.18.1: float speedMultiplier = Math.Min(0.4f + remainingHits * 0.1f, 1.0f); -->
+    <Projectile characterusable="false" launchimpulse="18" spread="0" maxtargetstohit="6" sticktocharacters="false" sticktoitems="false" sticktostructures="false" damagedoors="true">
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot1.ogg" type="OnImpact" range="3000" frequency="0.7" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot2.ogg" type="OnImpact" range="3000" frequency="0.7" />
+      <Attack structuredamage="70" targetforce="25" itemdamage="60" severlimbsprobability="0.75" penetration="0.8">
+        <Affliction identifier="lacerations" strength="40" />
+        <Affliction identifier="blunttrauma" strength="40" />
+        <Affliction identifier="bleeding" strength="15" />
+        <Affliction identifier="stun" strength="1.25" />
+      </Attack>
+      <StatusEffect type="OnUse" target="This" allowswapping="false" />
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="fs_mistsmoke" copyentityangle="true" particleamount="1" velocitymin="5" velocitymax="10" scalemin="0.9" scalemax="1.1" colormultiplier="1.0,1.0,1.0,0.35" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="break" duration=".016" comparison="And">
+        <Conditional entitytype="Structure" health="gt 300.0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="break" duration=".016">
+        <Conditional indestructible="true" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_structure" duration=".016">
+        <Conditional entitytype="Structure" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_obstacle" duration=".016">
+        <Conditional entitytype="Structure" hastag="door" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" tags="powerhit" duration=".016">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="powerhit" duration=".016">
+        <Conditional hasstatustag="powerhit" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        <ParticleEmitter particle="shrapnel" particleamount="40" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.30" velocitymin="150" velocitymax="300" distancemin="0" distancemax="100" colormultiplier="112,104,96,255" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Explosion range="250" structuredamage="70" levelwalldamage="50" force="5" showeffects="false" camerashake="3" camerashakerange="500">
+          <Affliction identifier="lacerations" strength="50" />
+          <Affliction identifier="blunttrauma" strength="50" />
+        </Explosion>
+        <Conditional hasstatustag="powerhit" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="spark" copyentityangle="true" particleamount="5" anglemin="-10" anglemax="10" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        <Conditional hasstatustag="hit_obstacle" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <Conditional hasstatustag="break" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="-1.0" disabledeltatime="true" />
+      <StatusEffect type="OnImpact" target="This" condition="-1.0" disabledeltatime="true">
+        <Conditional hasstatustag="hit_structure" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" targetitemcomponent="Projectile" maxtargetstohit="0" setvalue="true" allowwhenbroken="true">
+        <Remove />
+        <Conditional condition="0.0" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hastag="! fs_gun" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true">
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" condition="0.0" setvalue="true" delay="0.5" stackable="false" checkconditionalalways="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockammo_beingwet.ogg" range="500" frequency="1.0" volume="1.0" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        <Conditional inwater="true" waterproof="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="fs_flintlockcannonunloadedball" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropItem />
+        <Remove />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Cannon Ball More Propellant Spawner" identifier="fs_flintlockcannonballmorepropellantspawner" variantof="fs_flintlockcannonballspawner" nameidentifier="fs_flintlockcannonballmorepropellant">
+    <Fabricate requiredtime="+4">
+      <RequiredItem mincondition="+0.15" />
+      <RequiredItem _="_" />
+    </Fabricate>
+    <InventoryIcon sourcerect="128,576,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_ballmorepropellant" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Ball More Propellant" identifier="fs_flintlockcannonballmorepropellant" variantof="fs_flintlockcannonball" health="+1.0">
+    <InventoryIcon sourcerect="128,576,64,64" />
+    <Projectile launchimpulse="+2" spread="+3">
+      <StatusEffect _="_" />
+      <StatusEffect _="_" />
+      <StatusEffect>
+        <Conditional health="gt 450.0" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Cannon Ball Waterproof Spawner" identifier="fs_flintlockcannonballwaterproofspawner" variantof="fs_flintlockcannonballspawner" nameidentifier="fs_flintlockcannonballwaterproof">
+    <Fabricate requiredtime="+3">
+      <RequiredItem _="_" />
+      <RequiredItem _="_" />
+      <RequiredItem identifier="plastic" usecondition="true" mincondition="0.1" maxcondition="1.0" />
+    </Fabricate>
+    <InventoryIcon sourcerect="192,576,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_ballwaterproof" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Ball Waterproof" identifier="fs_flintlockcannonballwaterproof" variantof="fs_flintlockcannonball" waterproof="true">
+    <InventoryIcon sourcerect="192,576,64,64" />
+    <Projectile>
+      <Attack structuredamage="*0.90" targetforce="*0.90" itemdamage="*0.90">
+        <Affliction strength="*0.90" />
+        <!-- identifier="lacerations" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="blunttrauma" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="bleeding" -->
+        <Affliction strength="*0.90" />
+        <!-- identifier="stun" -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <!-- Flintlock Cannon Canister Shot -->
+  <Item name="Flintlock Cannon Unloaded Canister Shot" identifier="fs_flintlockcannonunloadedcanistershot" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_cannon_unloadedammo,handheldammo" maxstacksize="8" maxstacksizecharacterinventory="2" scale="0.5" interactthroughwalls="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_heavy">
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="false" amount="3">
+      <RequiredSkill identifier="weapons" level="45" />
+      <RequiredItem identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,640,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="65,651,62,42" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="40" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" pickkey="Select" holdpos="40,-20" handle1="-1,-5" handle2="1,-3" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Spawner" identifier="fs_flintlockcannoncanistershotspawner" category="Weapon" subcategory="flintlockseries" tags="fs_cannon_ammospawner" scale="0.5" nameidentifier="fs_flintlockcannoncanistershot" descriptionidentifier="fs_flintlockcannonunloadedcanistershot" hideinmenus="true">
+    <Fabricate suitablefabricators="fs_flintlockcannonramrod" requiredtime="9" requiresrecipe="false">
+      <RequiredItem identifier="fs_flintlockpowderbottle" usecondition="true" mincondition="0.3" maxcondition="1.0" />
+      <RequiredItem identifier="fs_flintlockcannonunloadedcanistershot" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,640,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="65,651,62,42" depth="0.55" origin="0.5,0.5" />
+    <ItemComponent>
+      <StatusEffect type="OnContained" targettype="Parent" targetitemcomponent="Fabricator" tags="spawning,spawn_canistershot" duration=".016" />
+      <StatusEffect type="OnContained" targettype="Parent">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnContained" targettype="This">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot" identifier="fs_flintlockcannoncanistershot" category="Weapon" subcategory="flintlockseries" tags="smallitem,fs_cannon_ammo,canistershot" scale="0.5" allowswapping="true" descriptionidentifier="fs_flintlockcannonunloadedcanistershot">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,640,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="65,651,62,42" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="40" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <ItemContainer capacity="12" canbeselected="false" drawinventory="false" allowaccess="false" hideitems="true" showconditionincontainedstateindicator="false" containedstateindicatorstyle="bullet" removecontaineditemsondeconstruct="true">
+      <StatusEffect type="OnSpawn" target="This">
+        <SpawnItem identifier="fs_flintlockcannoncanistershotpellet" spawnposition="ThisInventory" count="12" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" interval="0.5" delay="0.5" condition="0.0" setvalue="true">
+        <Conditional hastag="removed" />
+      </StatusEffect>
+      <StatusEffect type="OnContained" target="This" condition="0.0" setvalue="true">
+        <Conditional targetcontainer="true" hastag="! fs_gun" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" condition="0.0" setvalue="true" />
+      <StatusEffect type="InWater" target="This" condition="0.0" setvalue="true" delay="0.5" stackable="false" checkconditionalalways="true" comparison="And">
+        <Sound file="%ModDir%/Flintlock Series/Items/Weapons/flintlockammo_beingwet.ogg" range="500" frequency="1.0" volume="1.0" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        <Conditional inwater="true" waterproof="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <SpawnItem identifier="fs_flintlockcannonunloadedcanistershot" spawnposition="SameInventory" spawnifinventoryfull="true" spawnifnotininventory="true" />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <DropItem />
+        <Remove />
+        <Conditional allowswapping="true" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+        <Conditional allowswapping="false" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Pellet" identifier="fs_flintlockcannoncanistershotpellet" health="4.0" category="Weapon" subcategory="flintlockseries" tags="fs_cannon_projectile" scale="0.5" hideinmenus="true">
+    <InventoryIcon texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="64,640,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Flintlock Series/Items/Weapons/ammo.png" sourcerect="0,640,14,14" depth="0.55" origin="0.5,0.5" />
+    <Body radius="7" density="50" />
+    <Pickable slots="Any" pickkey="Select" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" launchimpulse="18" impulsespread="0.15" spread="4" maxtargetstohit="6" sticktocharacters="false" sticktoitems="false" sticktostructures="false" damagedoors="true">
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot1.ogg" type="OnImpact" range="2000" frequency="1.3" volume="0.4" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/FragGrenade40mmShot2.ogg" type="OnImpact" range="2000" frequency="1.3" volume="0.4" />
+      <Attack structuredamage="15" targetforce="3" itemdamage="3" severlimbsprobability="0.25" penetration="0.4">
+        <Affliction identifier="lacerations" strength="6" />
+        <Affliction identifier="blunttrauma" strength="6" />
+        <Affliction identifier="bleeding" strength="4.8" />
+        <Affliction identifier="stun" strength="0.4" />
+      </Attack>
+      <StatusEffect type="OnActive" target="This">
+        <ParticleEmitter particle="fs_mistsmoke" copyentityangle="true" particlespersecond="30" velocitymin="5" velocitymax="10" scalemin="0.05" scalemax="0.25" colormultiplier="1.0,1.0,1.0,0.35" />
+        <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particlespersecond="30" velocitymin="0" velocitymax="50" scalemin="0.2" scalemax="0.7" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_structure" duration=".016">
+        <Conditional entitytype="Structure" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="hit_obstacle" duration=".016">
+        <Conditional entitytype="Structure" hastag="door" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" tags="powerhit" duration=".016">
+        <Conditional isfullcondition="true" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This,UseTarget" tags="powerhit" duration=".016">
+        <Conditional hasstatustag="powerhit" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.4" scalemax="0.5" colormultiplier="1.0,1.0,1.0,0.5" />
+        <ParticleEmitter particle="shrapnel" particleamount="8" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.30" velocitymin="150" velocitymax="300" distancemin="0" distancemax="100" colormultiplier="112,104,96,255" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget" comparison="And">
+        <ParticleEmitter particle="impactfirearm" particleamount="3" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" colormultiplier="1.0,1.0,1.0,0.5" />
+        <ParticleEmitter particle="shrapnel" particleamount="20" anglemin="0" anglemax="360" scalemin="0.35" scalemax="0.45" velocitymin="150" velocitymax="300" distancemin="0" distancemax="100" colormultiplier="112,104,96,255" />
+        <Explosion range="150" structuredamage="10" levelwalldamage="10" force="5" showeffects="false" camerashake="5" camerashakerange="250">
+          <Affliction identifier="lacerations" strength="10" />
+          <Affliction identifier="blunttrauma" strength="10" />
+        </Explosion>
+        <Conditional hasstatustag="powerhit" />
+        <Conditional hasstatustag="hit_structure" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="spark" copyentityangle="true" particleamount="1" anglemin="-10" anglemax="10" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        <Conditional hasstatustag="hit_obstacle" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="0.0" setvalue="true">
+        <Conditional hasstatustag="hit_structure" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="This" condition="-1.0" disabledeltatime="true" />
+      <StatusEffect type="OnImpact" target="This" targetitemcomponent="Projectile" maxtargetstohit="0" setvalue="true" allowwhenbroken="true">
+        <Remove />
+        <Conditional condition="0.0" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot More Propellant Spawner" identifier="fs_flintlockcannoncanistershotmorepropellantspawner" variantof="fs_flintlockcannoncanistershotspawner" nameidentifier="fs_flintlockcannoncanistershotmorepropellant">
+    <Fabricate requiredtime="+4">
+      <RequiredItem mincondition="+0.15" />
+      <RequiredItem _="_" />
+    </Fabricate>
+    <InventoryIcon sourcerect="128,640,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_canistershotmorepropellant" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot More Propellant" identifier="fs_flintlockcannoncanistershotmorepropellant" variantof="fs_flintlockcannoncanistershot">
+    <InventoryIcon sourcerect="128,640,64,64" />
+    <ItemContainer>
+      <StatusEffect>
+        <SpawnItem identifier="fs_flintlockcannoncanistershotpelletmorepropellant" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Pellet More Propellant" identifier="fs_flintlockcannoncanistershotpelletmorepropellant" variantof="fs_flintlockcannoncanistershotpellet">
+    <InventoryIcon sourcerect="128,640,64,64" />
+    <Projectile launchimpulse="+2" spread="+3">
+      <Attack structuredamage="*1.25" targetforce="*1.25" itemdamage="*1.25">
+        <Affliction strength="*1.25" />
+        <!-- lacerations -->
+        <Affliction strength="*1.25" />
+        <!-- blunttrauma -->
+        <Affliction strength="*1.25" />
+        <!-- bleeding -->
+        <Affliction strength="*1.25" />
+        <!-- stun -->
+      </Attack>
+    </Projectile>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Waterproof Spawner" identifier="fs_flintlockcannoncanistershotwaterproofspawner" variantof="fs_flintlockcannoncanistershotspawner" nameidentifier="fs_flintlockcannoncanistershotwaterproof">
+    <Fabricate requiredtime="+3">
+      <RequiredItem _="_" />
+      <RequiredItem _="_" />
+      <RequiredItem identifier="plastic" usecondition="true" mincondition="0.1" maxcondition="1.0" />
+    </Fabricate>
+    <InventoryIcon sourcerect="192,640,64,64" />
+    <ItemComponent>
+      <StatusEffect tags="spawning,spawn_canistershotwaterproof" />
+    </ItemComponent>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Waterproof" identifier="fs_flintlockcannoncanistershotwaterproof" variantof="fs_flintlockcannoncanistershot" waterproof="true">
+    <InventoryIcon sourcerect="192,640,64,64" />
+    <ItemContainer>
+      <StatusEffect>
+        <SpawnItem identifier="fs_flintlockcannoncanistershotpelletwaterproof" />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+  <Item name="Flintlock Cannon Canister Shot Pellet Waterproof" identifier="fs_flintlockcannoncanistershotpelletwaterproof" variantof="fs_flintlockcannoncanistershotpellet">
+    <InventoryIcon sourcerect="192,640,64,64" />
+    <Projectile>
+      <Attack structuredamage="*0.90" targetforce="*0.90" itemdamage="*0.90">
+        <Affliction strength="*0.90" />
+        <!-- lacerations -->
+        <Affliction strength="*0.90" />
+        <!-- blunttrauma -->
+        <Affliction strength="*0.90" />
+        <!-- bleeding -->
+        <Affliction strength="*0.90" />
+        <!-- stun -->
+      </Attack>
+    </Projectile>
+  </Item>
+</Items>

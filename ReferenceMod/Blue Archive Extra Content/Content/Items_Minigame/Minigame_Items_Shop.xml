@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--Currency-->
+  <Item name="Schale Emblem" identifier="ba_ad_token" maxstacksize="99" maxstacksizecharacterinventory="99" category="Misc" subcategory="Mini Game" tags="smallitem,minigamecurrency" Scale="0.2" noninteractable="true" description="Currency used in Mini game">
+    <Body width="240" height="240" density="10" />
+    <InventoryIcon texture="%ModDir%/Content/Items_Minigame/Schale_Emblem.png" sourcerect="0,0,240,240" />
+    <Sprite texture="%ModDir%/Null.png" sourcerect="0,0,1,1" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Peroro's feather" identifier="perorofeather1" maxstacksize="99" maxstacksizecharacterinventory="99" category="Misc" subcategory="Mini Game" tags="smallitem,minigamecurrency" Scale="0.2" noninteractable="true" description="feels organic... Can be used for craftings">
+    <Deconstruct time="5">
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <Body width="100" height="100" density="10" />
+    <InventoryIcon texture="%ModDir%/Content/Items_Minigame/Peroro_Feather.png" sourcerect="0,0,240,240" />
+    <Sprite texture="%ModDir%/Null.png" sourcerect="0,0,1,1" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Golden Credit Card" identifier="bakivotoscurrency" maxstacksize="99" maxstacksizecharacterinventory="99" category="Misc" subcategory="Mini Game" Tags="smallitem,minigamecurrency" scale="0.15" noninteractable="true" description="Basic currency used to purchase Stock Weapons.">
+    <InventoryIcon texture="%ModDir%/Content/Items_Minigame/ba_currency.png" sourcerect="0,0,112,120" />
+    <Sprite texture="%ModDir%/Null.png" sourcerect="0,0,1,1" />
+    <Body width="112" height="120" density="10" />
+    <Deconstruct time="1" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Biker Token" identifier="ba_token" maxstacksize="99" maxstacksizecharacterinventory="99" category="Misc" subcategory="Mini Game" Tags="smallitem,minigamecurrency" scale="0.15" noninteractable="true" description="Basic currency used to purchase Stock Weapons.">
+    <InventoryIcon texture="ba_token.png" sourcerect="0,0,200,200" />
+    <Sprite texture="%ModDir%/Null.png" sourcerect="0,0,1,1" />
+    <Body width="112" height="120" density="10" />
+    <Deconstruct time="1" />
+    <Holdable slots="Any">
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Weapon Shop" identifier="ba_shop_weapons" tags="ba_shop_storage,ba_minigame_shop_weapon,ba_minigame_shop_weapon" category="Misc" linkable="true" allowedlinks="ba_shop_storage" description="" scale="0.5" DisableItemUsageWhenSelected="true" indestructible="true" type="Fabricator" isshootable="false">
+    <Sprite texture="Minigame_Shop.png" sourcerect="0,0,128,128" depth="0.100" origin="0.5,0.5" />
+    <Fabricator canbeselected="true" powerconsumption="0.0" allowquality="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.4,0.7" style="ConnectionPanel" anchor="CenterRight" />
+      <sound file="%ModDir%/Content/Items_Minigame/Minigame_Shop_sfx.ogg" type="OnUse" range="500.0" />
+    </Fabricator>
+    <StaticBody width="128" height="128" />
+    <ItemContainer capacity="5" canbeselected="true" maxstacksize="1" hideitems="true" slotsperrow="10" uilabel="Input" allowuioverlap="false">
+      <!--<Containable items="minigameitem" excludedidentifiers="minigamecurrency"></Containable>-->
+    </ItemContainer>
+    <!--<ItemContainer capacity="1" canbeselected="true" maxstacksize="99" hideitems="true" slotsperrow="1" uilabel="Input" allowuioverlap="true" >
+			<SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="64,448,64,64" />
+			<Containable items="ba_token"></Containable>
+		</ItemContainer>-->
+    <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="Output" allowuioverlap="false"></ItemContainer>
+  </Item>
+  <Item name="Storage" identifier="ba_shop_storage" tags="ba_shop_storage,ba_minigame_storage_item" category="Misc" linkable="true" allowedlinks="ba_shop_storage" description="" scale="0.25" DisableItemUsageWhenSelected="true" indestructible="true" isshootable="false">
+    <Sprite texture="Minigame_Storage.png" sourcerect="0,0,240,240" depth="0.100" origin="0.5,0.5" />
+    <ItemContainer capacity="32" maxstacksize="99" canbeselected="true" hideitems="true" slotsperrow="4" allowuioverlap="false">
+      <GuiFrame relativesize="0.3,0.8" style="ConnectionPanel" anchor="Right" relativeoffset="1.0,0.0" hidedragicons="true" LockGuiFramePosition="true" />
+      <Containable items="minigameitem" excludedidentifiers="minigamecurrency"></Containable>
+    </ItemContainer>
+  </Item>
+  <Item name="Currency" identifier="ba_shop_storage_currency" tags="ba_shop_storage,ba_minigame_storage_currency" category="Misc" linkable="true" allowedlinks="ba_shop_storage" description="" scale="0.25" DisableItemUsageWhenSelected="true" indestructible="true" isshootable="false">
+    <Sprite texture="Minigame_Storage.png" sourcerect="0,0,240,240" depth="0.100" origin="0.5,0.5" />
+    <ItemContainer capacity="32" maxstacksize="99" canbeselected="true" hideitems="true" slotsperrow="4" allowuioverlap="false">
+      <GuiFrame relativesize="0.3,0.8" style="ConnectionPanel" anchor="CenterRight" relativeoffset="1.0,-5.5" hidedragicons="true" LockGuiFramePosition="true" />
+      <Containable items="minigamecurrency"></Containable>
+    </ItemContainer>
+  </Item>
+</Items>

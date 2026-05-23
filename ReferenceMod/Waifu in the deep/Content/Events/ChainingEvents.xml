@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <!-- Outpost events with multiple stages. Takes part in multiple 'levels', f.e. first an Outpost level and then a LevelConnection, or on multiple Outposts -->
+  <EventPrefabs>
+    <ScriptedEvent identifier="Hds_Mission_Begin" commonness="100">
+      <CheckDataAction identifier="Hds_missions_completed" condition="gte 1">
+        <Success>
+          <!--Don't repeat-->
+        </Success>
+        <Failure>
+          <CheckDataAction identifier="Hds_missions_state" condition="gte 0.5">
+            <Success>
+              <!--Don't Start at beginning-->
+            </Success>
+            <Failure>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="Hds_Npc" npcidentifier="Mysteriousresearcher" targettag="Hds_researcher" spawnlocation="outpost" targetmoduletags="researchmodule" />
+              <Label name="ReStart" />
+              <TriggerAction target1tag="player" target2tag="Hds_researcher" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <NPCWaitAction npctag="Hds_researcher" wait="true" />
+              <CheckDataAction identifier="Hds_missions_state" condition="eq 0">
+                <Success>
+                  <CheckReputationAction targettype="faction" identifier="huskcult" condition="gte 50">
+                    <Success>
+                      <ConversationAction text="EventText.Hds_Mission_Begin.c1" targettag="triggerer_player" eventsprite="Researcher">
+                        <!--“啊，是你。我听说你最近一直在帮教会做事。”一个陌生的
+							研究员突然向你搭话。-->
+                        <Option text="eventtext.Hds_Mission_Begin.c1.o1">
+                          <!--“没错，有什么问题吗？”-->
+                          <ConversationAction text="EventText.Hds_Mission_Begin.c2" targettag="triggerer_player" eventsprite="Researcher">
+                            <!--“别紧张，我不是联盟的走狗或者那些恐怖分子。”研究员拉开自己的白大褂，露出了教会的标志。“我和你一样都是在为教会做事。”-->
+                            <Option text="eventtext.Hds_Mission_Begin.c2.o1">
+                              <!--你看了看他的标志：毫无疑问，这不是仿制品。-->
+                              <ConversationAction text="EventText.Hds_Mission_Begin.c3" targettag="triggerer_player" eventsprite="Researcher">
+                                <!--“是吧，现在我们可以接着说了吧？”-->
+                                <Option text="eventtext.Hds_Mission_Begin.c3.o1">
+                                  <!--“好吧，你需要我做些什么？”-->
+                                  <SetDataAction identifier="Hds_missions_state" value="0.5" />
+                                  <ConversationAction text="EventText.Hds_Mission_Begin.c4" targettag="triggerer_player" eventsprite="Researcher">
+                                    <!--“啊，开门见山，我喜欢！”研究员拿出一张照片。“我需要你去一间废弃的哨站上回收一个物品。”-->
+                                    <Option text="EventText.Hds_Mission_Begin.c4.o1">
+                                      <!--“这是什么东西？”-->
+                                      <ConversationAction text="EventText.Hds_Mission_Begin.c5" targettag="triggerer_player" eventsprite="Researcher">
+                                        <!--“这是我的阶段性研究成果，也是教会的重要资产。”-->
+                                        <Option text="EventText.Hds_Mission_Begin.c5.o1">
+                                          <!--“好的，我会留意的。”-->
+                                          <Label name="Agree" />
+                                          <ConversationAction text="EventText.Hds_Mission_Begin.c5.o1.c1" targettag="triggerer_player" eventsprite="Researcher">
+                                            <!--“啊，我很乐意我们能达成一致。”研究员一脸兴奋地看着你。“你放心，我不会亏待你的。”-->
+                                            <Option text="EventText.Hds_Mission_Begin.c5.o2.c5.o1" endconversation="true">
+                                              <!--离开-->
+                                              <SetDataAction identifier="Hds_missions_state" value="1" />
+                                              <MissionAction missionidentifier="GotoHdsOutpost" locationtype="Abandoned" unlockfurtheronmap="true" CreateLocationIfNotFound="true" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                        <Option text="EventText.Hds_Mission_Begin.c5.o2">
+                                          <!--“既然是教会的资产，为什么不马上联系教会其他成员去回收？”-->
+                                          <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c1" targettag="triggerer_player" eventsprite="Researcher">
+                                            <!--“咳咳，你的意思是，那些疯子？”研究员摇了摇头。“他们要是靠得住我都不会失去它！”-->
+                                            <Option text="EventText.Hds_Mission_Begin.c5.o2.c1.o1">
+                                              <!--“疯子，什么意思？”你打量着这个奇怪的教会研究员。“听起来你也不是那么的‘虔诚’啊？”-->
+                                              <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c2" targettag="triggerer_player" eventsprite="Researcher">
+                                                <!--“哈，我和他们可不一样，我可是科学家！”研究员自豪地说到。“我可不相信那些迷信的疯子。”-->
+                                                <Option text="EventText.Hds_Mission_Begin.c5.o2.c2.o1">
+                                                  <!--“‘迷信’？可是我听说确实有人成功的‘飞升’了啊？”-->
+                                                  <Label name="Continue" />
+                                                  <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c3" targettag="triggerer_player" eventsprite="Researcher">
+                                                    <!--研究员嫌弃地嗤笑着，然后叹了一口气。“是的是的，哪些仪式确实有人成功过，但是你没法控制它是否成功，你明白吗？你有没有想过那些没有成功的人怎么办？教会那些疯子，不懂原理.
+													不懂科学，只是把偶然地成功就把仪式奉为‘神迹’，然后呢，那些失败的人只能彻底的成为行尸走肉！而且他们还会诋毁那些失败的人不够虔诚，是被降下了惩罚！他们把自己的责任甩得一干二
+													净，我呸！”-->
+                                                    <Option text="EventText.Hds_Mission_Begin.c5.o2.c3.o1">
+                                                      <!--“所以你在'改进'飞升？”-->
+                                                      <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c4" targettag="triggerer_player" eventsprite="Researcher">
+                                                        <!--“没错，那么
+													你愿意帮我吗？”-->
+                                                        <Option text="EventText.Hds_Mission_Begin.c5.o2.c4.o1">
+                                                          <!--没问题，我会帮你的。-->
+                                                          <Goto name="Agree" />
+                                                        </Option>
+                                                        <Option text="EventText.Hds_Mission_Begin.c5.o2.c4.o2">
+                                                          <!--我和异教徒没有什么好说的-->
+                                                          <Label name="Refuse" />
+                                                          <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c5" targettag="triggerer_player" eventsprite="Researcher">
+                                                            <!--“好吧，如果你回心转意，就来找我。你的选择可能可以救下许多无辜的生命。”研究员无奈地走开了。-->
+                                                            <Option text="EventText.Hds_Mission_Begin.c5.o2.c5.o1">
+                                                              <!--离开-->
+                                                              <Goto name="ReStart" />
+                                                            </Option>
+                                                          </ConversationAction>
+                                                        </Option>
+                                                      </ConversationAction>
+                                                    </Option>
+                                                  </ConversationAction>
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                            <Option text="EventText.Hds_Mission_Begin.c5.o2.c1.o2">
+                                              <!--“够了，我看你就是个异教徒！”-->
+                                              <ConversationAction text="EventText.Hds_Mission_Begin.c5.o2.c6" targettag="triggerer_player" eventsprite="Researcher">
+                                                <!--“什么异教徒，我可是最虔诚的信徒！”研究员突然激动起来。“我这一生都在在致力于研究一种更稳定的画皮‘飞升’方式，而不是那些疯子所信奉的‘俄罗斯转盘’！”-->
+                                                <Option text="EventText.Hds_Mission_Begin.c5.o2.c6.o1">
+                                                  <!--你不相信‘共生飞升仪式’？-->
+                                                  <Goto name="Continue" />
+                                                </Option>
+                                                <Option text="EventText.Hds_Mission_Begin.c5.o2.c6.o2">
+                                                  <!--我和异教徒没有什么好说的-->
+                                                  <Goto name="Refuse" />
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="eventtext.Hds_Mission_Begin.c1.o2">
+                          <!--“这不关你的事。”-->
+                          <ConversationAction text="EventText.Hds_Mission_Begin.c1.o2.c1" targettag="triggerer_player" eventsprite="Researcher">
+                            <!--“啊啊...好吧。”研究员嘀咕着，识趣地走开了。-->
+                            <Option text="EventText.Hds_Mission_Begin.c5.o2.c5.o1">
+                              <!--离开-->
+                              <Goto name="ReStart" />
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Success>
+                    <Failure>
+                      <ConversationAction text="EventText.Hds_Mission_Begin.c7" targettag="triggerer_player" eventsprite="Researcher">
+                        <!--“不好意思，我和你没什么好说的。”一个奇怪的研究员看了看你，然后离开了。（需要画皮教派声望50）-->
+                        <Option text="EventText.Hds_Mission_Begin.c5.o2.c5.o1">
+                          <!--离开-->
+                          <Goto name="ReStart" />
+                        </Option>
+                      </ConversationAction>
+                    </Failure>
+                  </CheckReputationAction>
+                </Success>
+                <Failure>
+                  <CheckDataAction identifier="Hds_missions_state" condition="eq 0.5">
+                    <ConversationAction text="EventText.Hds_Mission_Begin.c8" targettag="triggerer_player" eventsprite="Researcher">
+                      <!--噢！你改变主意了吗？-->
+                      <Option text="eventtext.Hds_Mission_Begin.c8.o1">
+                        <!--“是的，我决定帮你。”-->
+                        <Goto name="Agree" />
+                      </Option>
+                      <Option text="eventtext.Hds_Mission_Begin.c8.o2">
+                        <!--“不，我还没想好”-->
+                        <Goto name="Refuse" />
+                      </Option>
+                    </ConversationAction>
+                  </CheckDataAction>
+                </Failure>
+              </CheckDataAction>
+            </Failure>
+          </CheckDataAction>
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Recover_Hds_BioMaterial" commonness="100">
+      <CheckDataAction identifier="Hds_missions_state" condition="gte 2" />
+      <Success></Success>
+      <Failure>
+        <TagAction criteria="players" tag="players" />
+        <SetDataAction identifier="ReachedHdsOutspost" value="true" />
+        <SpawnAction SpeciesName="Husk_chimera" amount="10" SpawnPointType="Human" />
+        <SpawnAction itemindentifier="Wf_HDS_Coffer" amount="1" TargetInventory="container" />
+        <CheckItemAction ItemIdentifiers="Wf_HDS_Coffer" TargetTag="players">
+          <Success>
+            <MessageBoxAction text="EventText.Recover_Hds_BioMaterial.c1" />
+            <SetDataAction identifier="Hds_missions_state" value="2" />
+            <MissionAction missionidentifier="BackToResearcher" />
+          </Success>
+          <Failure>
+            <MessageBoxAction text="EventText.Recover_Hds_BioMaterial.c2" />
+          </Failure>
+        </CheckItemAction>
+      </Failure>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="BackToResearcher" commonness="100">
+      <CheckDataAction identifier="Hds_missions_state" condition="gte 3" />
+      <Success></Success>
+      <Failure>
+        <TagAction criteria="player" tag="player" />
+        <SetDataAction identifier="BackToResearcher" value="true" />
+        <SpawnAction npcsetidentifier="Hds_Npc" npcidentifier="Mysteriousresearcher" targettag="Hds_researcher" spawnlocation="Outpost" targetmoduletags="researchmodule" />
+        <Label name="ReStart" />
+        <TriggerAction target1tag="player" target2tag="Hds_researcher" applytotarget1="triggerer_player" waitforinteraction="true" />
+        <NPCWaitAction npctag="Hds_researcher" wait="true" />
+        <ConversationAction text="EventText.BackToResearcher.c1" targettag="triggerer_player" eventsprite="Researcher">
+          <!--啊，你回来了！东西找到了吗？-->
+          <Option text="EventText.BackToResearcher.c1.o1">
+            <!--给你。-->
+            <CheckItemAction ItemIdentifiers="Wf_HDS_Coffer" TargetTag="players">
+              <Success>
+                <RemoveItemAction ItemIdentifiers="Wf_HDS_Coffer" />
+                <ConversationAction text="EventText.Recover_Hds_BioMaterial.c2">
+                  <!--哈！就是这个，非常感谢你对教会做出的贡献！这是你的报酬！-->
+                  <Option text="EventText.Recover_Hds_BioMaterial.c2.o1" endconversation="true">
+                    <!--我的荣幸。-->
+                    <MoneyAction amount="10000" TargetTag="triggerer_player" />
+                    <ReputationAction increase="10" identifier="huskcult" />
+                    <SetDataAction identifier="Hds_Missions_state" value="3" />
+                  </Option>
+                </ConversationAction>
+              </Success>
+              <Failure>
+                <ConversationAction text="EventText.Recover_Hds_BioMaterial.c3">
+                  <!--嗯？在哪呢？-->
+                  <Option text="EventText.Recover_Hds_BioMaterial.c3.o1">
+                    <!--离开-->
+                    <Goto name="ReStart" />
+                  </Option>
+                </ConversationAction>
+              </Failure>
+            </CheckItemAction>
+          </Option>
+          <Option text="EventText.BackToResearcher.c1.o2">
+            <!--离开-->
+            <Goto name="ReStart" />
+          </Option>
+        </ConversationAction>
+      </Failure>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Hds_Mission_Middle" commonness="100">
+      <CheckDataAction identifier="Hds_Missions_state" condition="gte 3">
+        <Success>
+          <CheckDataAction identifier="Hds_Missions_state" condition="gte 4">
+            <Success></Success>
+            <Failure></Failure>
+          </CheckDataAction>
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Hds_Bio_Deconstructed" commonness="100">
+      <ConversationAction text="EventText.Hds_Bio_Deconstructed.c1" targettag="TriggerPlayer" eventsprite="Researcher">
+        <!--你不小心把材料分解掉了，你再也无法得到它了！-->
+        <Option text="EventText.Hds_Bio_Deconstructed.o1">
+          <!--噢不！-->
+          <SetDataAction identifier="Hds_missions_state" value="4" />
+          <!--End-->
+        </Option>
+      </ConversationAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

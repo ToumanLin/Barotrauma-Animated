@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_huntrobotspawner" category="Weapon,Machine" tags="smallitem" maxstacksize="8" maxstacksizecharacterinventory="2" scale="0.5" isshootable="true" impactsoundtag="impact_metal_light">
+    <Price baseprice="700" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.25" />
+      <Price storeidentifier="merchantcity" multiplier="1" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="55" requiresrecipe="false">
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+      <RequiredItem identifier="iron" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/OTFX/Items/InventoryIconAtlas.png" sourcerect="256,128,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Characters/Otfx_huntrobot/Huntrobot.png" depth="0.55" sourcerect="64,192,103,55" origin="0.5,0.55" />
+    <Body width="103" height="55" density="25" />
+    <Holdable slots="Any,RightHand+LeftHand" aimable="true" aimpos="40,-20" holdpos="0,0" handle1="-5,-3" handle2="5,-3" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnUse" target="This" hiddeningame="true" delay="0.3" stackable="false" checkconditionalalways="true">
+        <SpawnCharacter speciesname="Otfx_huntrobot" inheritteam="true" />
+        <Remove />
+        <Conditional targetcontainer="true" entitytype="character" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+</Items>

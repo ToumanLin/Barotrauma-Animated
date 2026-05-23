@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="buccaneer">
+    <Description tag="talentdescription.buccaneer">
+      <Replace tag="[amount]" value="100" color="gui.green" />
+    </Description>
+    <!-- <Description tag="talentdescription.additionalresistanceself">
+      <Replace tag="[amount]" value="25" color="gui.green" />
+      <Replace tag="[affliction]" value="afflictionname.stun" color="gui.orange" />
+    </Description> -->
+    <Description tag="talentdescription.unlockrecipe">
+      <Replace tag="[itemname]" value="entityname.boardingaxe" color="gui.orange" />
+    </Description>
+    <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,2" sheetelementsize="128,128" />
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionIsAiming weapontype="melee" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character" multiplyafflictionsbymaxvitality="true">
+              <Affliction identifier="powerattack" amount="2.0" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionIsAiming weapontype="melee" hittingcountsasaiming="true" invert="true" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This" disabledeltatime="true">
+              <ReduceAffliction identifier="powerattack" strength="1.5" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="OnAttackResult">
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="This">
+              <ReduceAffliction identifier="powerattack" strength="1.5" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+    <!-- <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveResistance resistanceid="stun" multiplier="0.75" />
+      </Abilities>
+    </AbilityGroupEffect> -->
+    <AddedRecipe itemidentifier="boardingaxe" />
+  </Talent>
+</Talents>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RandomEvents>
+  <EventPrefabs>
+    <!--SPAWN EVENTS-->
+    <!--Spawning NPCs from a hull or spawn point will lock the NPC into that hull (if NPCs have stay in hull as behavior)
+		Idealy we spawn the NPC at enemy base, then teleport it back to their own base, this will make the NPC walk back to the spawn location, which is to the enemy base
+		Since we are not using "FollowAction" NPCs can freely engage in combat and do other things-->
+    <!--timer starts after 10 seconds
+	  every 1 second counts towards the check, when check reaches certain threshold, upgrade the spawner-->
+    <ScriptedEvent identifier="ba_manager_attackdefense_minigame" tags="ba_manager_attackdefense_minigame">
+      <TagAction criteria="hullname:base_friendly" tag="base_friendly" submarinetype="Player" />
+      <TagAction criteria="hullname:base_enemy" tag="base_enemy" submarinetype="Player" />
+      <!--Tier 0-->
+      <TriggerEventAction identifier="ba_mission_spawn_main_objective1" />
+      <TriggerEventAction identifier="ba_mission_spawn_main_objective2" />
+      <TriggerEventAction identifier="ba_mission_spawn_weapon_operator" />
+      <MessageBoxAction text="30 seconds before round start" iconstyle="GUINotificationButton" dialogtype="Mission" tag="countdown" />
+      <WaitAction time="1" />
+      <!--<WaitAction time="25" />-->
+      <WaitAction time="1" />
+      <MessageBoxAction text="3" iconstyle="GUINotificationButton" dialogtype="Mission" tag="countdown" />
+      <WaitAction time="1" />
+      <MessageBoxAction type="close" tag="countdown" />
+      <WaitAction time="0.5" />
+      <MessageBoxAction text="2" iconstyle="GUINotificationButton" dialogtype="Mission" tag="countdown" />
+      <WaitAction time="1" />
+      <MessageBoxAction type="close" tag="countdown" />
+      <WaitAction time="0.5" />
+      <MessageBoxAction text="1" iconstyle="GUINotificationButton" dialogtype="Mission" tag="countdown" />
+      <WaitAction time="1" />
+      <MessageBoxAction type="close" tag="countdown" />
+      <WaitAction time="0.5" />
+      <!--Tier 1-->
+      <TriggerEventAction identifier="ba_mission_spawning_tier_1" />
+      <MessageBoxAction text="Mission Starting" iconstyle="GUINotificationButton" tag="announcement_1" />
+      <WaitAction time="3" />
+      <MessageBoxAction type="close" tag="announcement_1" />
+      <!--Tier 2-->
+      <WaitAction time="600" />
+      <TriggerEventAction identifier="ba_mission_spawning_tier_2" />
+      <MessageBoxAction text="Stronger units now spawning" iconstyle="GUINotificationButton" tag="announcement_2" />
+      <WaitAction time="3" />
+      <MessageBoxAction type="close" tag="announcement_2" />
+      <!--Tier 3, force ending event by spawning very strong mob-->
+      <WaitAction time="600" />
+      <TriggerEventAction identifier="ba_mission_spawning_tier_3" />
+      <MessageBoxAction text="tier 3 units now spawning" iconstyle="GUINotificationButton" tag="announcement_3" />
+      <WaitAction time="3" />
+      <TriggerEventAction identifier="ba_mission_spawn_melee" />
+      <TriggerEventAction identifier="ba_mission_spawn_melee" />
+      <TriggerEventAction identifier="ba_mission_spawn_melee" />
+      <MessageBoxAction type="close" tag="announcement_3" />
+    </ScriptedEvent>
+    <!--Spawn Manager-->
+    <!--Tier 1-->
+    <ScriptedEvent identifier="ba_mission_spawning_tier_1">
+      <SetDataAction identifier="ba_unit_level" value="1" />
+      <Label name="reset" />
+      <CheckDataAction identifier="ba_unit_level" condition="eq 1">
+        <Success>
+          <TriggerEventAction identifier="ba_mission_spawn_rifleman" />
+          <TriggerEventAction identifier="ba_mission_spawn_rifleman" />
+          <WaitAction time="60" />
+          <GoTo name="reset" />
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--Tier 2-->
+    <ScriptedEvent identifier="ba_mission_spawning_tier_2">
+      <SetDataAction identifier="ba_unit_level" value="2" />
+      <Label name="reset" />
+      <CheckDataAction identifier="ba_unit_level" condition="eq 2">
+        <Success>
+          <TriggerEventAction identifier="ba_mission_spawn_rifleman" />
+          <TriggerEventAction identifier="ba_mission_spawn_rifleman" />
+          <TriggerEventAction identifier="ba_mission_spawn_gunner" />
+          <WaitAction time="60" />
+          <GoTo name="reset" />
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--Tier 3-->
+    <ScriptedEvent identifier="ba_mission_spawning_tier_3">
+      <SetDataAction identifier="ba_unit_level" value="3" />
+      <Label name="reset" />
+      <CheckDataAction identifier="ba_unit_level" condition="eq 3">
+        <Success>
+          <TriggerEventAction identifier="ba_mission_spawn_gunner" />
+          <TriggerEventAction identifier="ba_mission_spawn_gunner" />
+          <TriggerEventAction identifier="ba_mission_spawn_gunner" />
+          <WaitAction time="60" />
+          <GoTo name="reset" />
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--unit type spawner-->
+    <!--Shop Keeper-->
+    <!--Medic-->
+    <!--Jungle Creeps-->
+    <!--Main Objective-->
+    <ScriptedEvent identifier="ba_mission_spawn_main_objective1">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_camp_captain" targettag="team1_camp_captain" spawnpointtag="Spawn_Captain_team1" teamtag="1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_mission_spawn_main_objective2">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team2_camp_captain" targettag="team2_camp_captain" spawnpointtag="Spawn_Captain_team2" teamtag="2" />
+    </ScriptedEvent>
+    <!--Weapon Operators-->
+    <ScriptedEvent identifier="ba_mission_spawn_weapon_operator">
+      <TagAction criteria="itemtag:front_turret1" tag="front_turret1" />
+      <TagAction criteria="itemtag:front_turret2" tag="front_turret2" />
+      <TagAction criteria="itemtag:mid_turret1" tag="mid_turret1" />
+      <TagAction criteria="itemtag:mid_turret2" tag="mid_turret2" />
+      <TagAction criteria="itemtag:turret1_back" tag="turret1_back" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_operator" targettag="team1_operator1" spawnpointtag="front_turret1" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_operator" targettag="team1_operator2" spawnpointtag="front_turret2" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_operator" targettag="team1_operator3" spawnpointtag="mid_turret1" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_operator" targettag="team1_operator4" spawnpointtag="mid_turret2" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_operator" targettag="team1_operator5" spawnpointtag="turret1_back" teamtag="1" />
+      <NPCOperateItemAction npctag="team1_operator1" targettag="front_turret1" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="team1_operator2" targettag="front_turret2" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="team1_operator3" targettag="mid_turret1" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="team1_operator4" targettag="mid_turret2" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="team1_operator5" targettag="turret1_back" ItemComponentName="Controller" Operate="true" />
+    </ScriptedEvent>
+    <!--Melee-->
+    <ScriptedEvent identifier="ba_mission_spawn_melee">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_melee" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team2_melee" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <TeleportAction Position="outpost" TargetTag="team1" spawnpointtag="base_friendly" />
+      <TeleportAction Position="outpost" TargetTag="team2" spawnpointtag="base_enemy" />
+    </ScriptedEvent>
+    <!--Ranged-->
+    <ScriptedEvent identifier="ba_mission_spawn_rifleman">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_rifleman" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team2_rifleman" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <TeleportAction Position="outpost" TargetTag="team1" spawnpointtag="base_friendly" />
+      <TeleportAction Position="outpost" TargetTag="team2" spawnpointtag="base_enemy" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_mission_spawn_gunner">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team1_gunner" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_attackdefense" npcidentifier="team2_gunner" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <TeleportAction Position="outpost" TargetTag="team1" spawnpointtag="base_friendly" />
+      <TeleportAction Position="outpost" TargetTag="team2" spawnpointtag="base_enemy" />
+    </ScriptedEvent>
+    <!--Mega-->
+    <ScriptedEvent identifier="ba_mission_spawn_megacreep_team1">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_trinity" npcidentifier="ba_mika" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_trinity" npcidentifier="ba_jtf_ichika" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_millennium" npcidentifier="npc_ba_alice" targettag="team1" spawnpointtag="base_enemy" teamtag="1" />
+      <TeleportAction Position="outpost" TargetTag="team1" spawnpointtag="base_friendly" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_mission_spawn_megacreep_team2">
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_srt" npcidentifier="npc_saki_combat" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_srt" npcidentifier="npc_moe_combat" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <SpawnAction speciesname="Human" npcsetidentifier="ba_srt" npcidentifier="npc_miyu_combat" targettag="team2" spawnpointtag="base_friendly" teamtag="2" />
+      <TeleportAction Position="outpost" TargetTag="team2" spawnpointtag="base_enemy" />
+    </ScriptedEvent>
+    <!--DEBUG-->
+    <ScriptedEvent identifier="ba_unit_level_up" commonness="0">
+      <SetDataAction identifier="ba_unit_level" value="1" operation="Add" />
+    </ScriptedEvent>
+  </EventPrefabs>
+</RandomEvents>

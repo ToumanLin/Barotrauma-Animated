@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RandomEvents>
+  <EventPrefabs>
+    <!--Ally Prefab-->
+    <ScriptedEvent identifier="spawnevent_jtfreinforcement">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="team1_gunner" spawnpointtag="triggerer_player" teamtag="1" />
+      <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="team1_gunner" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="35" targettag="team1_gunner" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="spawnevent_jtfreinforcement_crew">
+      <TagAction criteria="player" tag="player" />
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="jtf_assault" targettag="team1_gunner" spawnpointtag="triggerer_player" />
+      <NPCChangeTeamAction npctag="team1_gunner" teamtag="1" addtocrew="true" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_operator">
+      <TagAction criteria="itemtag:front_turret1" tag="front_turret1" />
+      <SpawnAction speciesname="Human" npcsetidentifier="set_jtf" npcidentifier="team1_operator" targettag="team1_afk_operator" spawnpointtag="spawn_operator1" teamtag="1" />
+      <AfflictionAction affliction="ba_minigame_da_npc" strength="30" targettag="team1_afk_operator" />
+      <NPCOperateItemAction npctag="team1_afk_operator" targettag="front_turret1" ItemComponentName="Controller" Operate="true" />
+    </ScriptedEvent>
+    <!--Enemy Prefab-->
+    <!--front spawn-->
+    <ScriptedEvent identifier="ba_minigame_defend_grunt">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_grunt" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_rifleman">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_rifleman" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_scout">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_smg" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_assault">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_assault" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_mortar">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_mortar" targettag="mortar1" spawnpointtag="base_enemy" teamtag="2" />
+      <NPCFollowAction npctag="mortar1" targettag="friendly_base_top" follow="true" />
+      <Label name="reset" />
+      <CheckVisibilityAction EntityTag="mortar1" TargetTag="mortar_location1" MaxDistance="20" AllowSameEntity="false">
+        <Success>
+          <NPCFollowAction npctag="mortar1" targettag="friendly_base_top" follow="false" />
+          <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="mortar1" />
+          <!--<WaitAction time="2" />-->
+          <CombatAction combatmode="Offensive" npctag="mortar1" enemytag="mortar_target1" isinstigator="true" />
+        </Success>
+        <Failure>
+          <Goto name="reset" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+    <!--back spawn-->
+    <ScriptedEvent identifier="ba_minigame_defend_rifleman_back">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_rifleman" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy_back" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_assault_back">
+      <TagAction criteria="hullname:defend_objective" tag="defend_objective" submarinetype="Player" />
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_assault" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy_back" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_smg_back">
+      <TagAction criteria="hullname:defend_objective" tag="defend_objective" submarinetype="Player" />
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="Gehenna_smg" targettag="team2" spawnpointtag="friendly_base_top" teamtag="1" />
+      <TeleportAction TargetTag="team2" spawnpointtag="base_enemy_back" />
+      <NPCChangeTeamAction npctag="team2" teamtag="2" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_sniper_front">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_sniper" targettag="sniper1" spawnpointtag="base_enemy" teamtag="2" />
+      <NPCFollowAction npctag="sniper1" targettag="friendly_base_top" follow="true" />
+      <Label name="reset" />
+      <CheckVisibilityAction EntityTag="sniper1" TargetTag="sniper_spot1" MaxDistance="20" AllowSameEntity="false">
+        <Success>
+          <NPCFollowAction npctag="sniper1" targettag="friendly_base_top" follow="false" />
+          <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="sniper1" />
+        </Success>
+        <Failure>
+          <Goto name="reset" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ba_minigame_defend_sniper_back">
+      <SpawnAction speciesname="Human" npcsetidentifier="set_dcm" npcidentifier="gehenna_sniper" targettag="sniper2" spawnpointtag="base_enemy_back" teamtag="2" />
+      <NPCFollowAction npctag="sniper2" targettag="friendly_base_top" follow="true" />
+      <Label name="reset" />
+      <CheckVisibilityAction EntityTag="sniper2" TargetTag="sniper_spot2" MaxDistance="20" AllowSameEntity="false">
+        <Success>
+          <NPCFollowAction npctag="sniper2" targettag="friendly_base_top" follow="false" />
+          <AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="sniper2" />
+        </Success>
+        <Failure>
+          <Goto name="reset" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</RandomEvents>

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Afflictions>
+    <Affliction name="Concussion" identifier="concussion" type="damage" limbspecific="false" indicatorlimb="Head" activationthreshold="0" maxstrength="10" treatmentthreshold="5" healcostmultiplier="2.5">
+      <Description textidentifier="afflictiondescription.concussion.low.self" target="Self" minstrength="0" maxstrength="5" />
+      <Description textidentifier="afflictiondescription.concussion.high.self" target="Self" minstrength="5" maxstrength="10" />
+      <Description textidentifier="afflictiondescription.concussion.low" target="OtherCharacter" minstrength="0" maxstrength="5" />
+      <Description textidentifier="afflictiondescription.concussion" target="OtherCharacter" minstrength="5" maxstrength="10" />
+      <Effect minstrength="0" maxstrength="10" minvitalitydecrease="0" maxvitalitydecrease="0" minscreendistort="0.02" maxscreendistort="0.1" minscreenblur="0.1" maxscreenblur="2.0" screeneffectfluctuationfrequency="0.05" strengthchange="-0.02">
+        <StatusEffect target="Character">
+          <TriggerAnimation Type="Walk" filename="DrunkenWalk-Heels" priority="6" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" filename="DrunkenRun-Heels" priority="6" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Effect>
+      <PeriodicEffect mininterval="30" maxinterval="60">
+        <StatusEffect target="Character" comparison="and">
+          <Conditional ishuman="true" />
+          <Conditional hasspecifiertag="male" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokemale1.ogg" selectionmode="Random" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokemale2.ogg" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokemale3.ogg" />
+        </StatusEffect>
+        <StatusEffect target="Character" comparison="and">
+          <Conditional ishuman="true" />
+          <Conditional hasspecifiertag="female" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale2.ogg" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale3.ogg" />
+        </StatusEffect>
+        <StatusEffect target="Character" duration="2">
+          <TriggerAnimation Type="Walk" filename="Vomit" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect target="Character" targetlimbs="Head" delay="0.3" duration="1">
+          <ParticleEmitter particle="vomitsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+          <Conditional HideFace="eq False" />
+        </StatusEffect>
+        <StatusEffect target="Character" targetlimbs="Head" delay="0.5" offset="0,-20" randomoffset="32">
+          <Explosion range="0.0" structuredamage="0" itemdamage="0" force="0.0" severlimbsprobability="0.0" decal="vomitsplatter" decalsize="1.25" shockwave="false" underwaterbubble="false" />
+          <Conditional HideFace="eq False" />
+        </StatusEffect>
+      </PeriodicEffect>
+      <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Nausea" identifier="nausea" description="The skin is clammy and the patient is vomiting periodically." type="nausea" causeofdeathdescription="Choked on vomit." selfcauseofdeathdescription="You have choked on your own vomit." limbspecific="false" maxstrength="100" affectmachines="false" treatmentthreshold="1000" treatmentsuggestionthreshold="0" karmachangeonapplied="-0.1" damageoverlayalpha="0" healcostmultiplier="2.25">
+      <Description textidentifier="afflictiondescription.nausea" target="OtherCharacter" minstrength="0" maxstrength="100" />
+      <Description textidentifier="afflictiondescription.nausea.low" target="Self" minstrength="0" maxstrength="50" />
+      <Description textidentifier="afflictiondescription.nausea.high" target="Self" minstrength="50" maxstrength="100" />
+      <Effect minstrength="0" maxstrength="100" strengthchange="-1.0" minfacetint="230,255,230,0" maxfacetint="230,255,230,100" minbodytint="230,255,230,0" maxbodytint="230,255,230,50" minspeedmultiplier="1.0" maxspeedmultiplier="0.6"></Effect>
+      <PeriodicEffect mininterval="12" maxinterval="16" minstrength="50" maxstrength="100">
+        <StatusEffect target="Character" SpeedMultiplier="0.0" setvalue="true" duration="1.7" />
+        <StatusEffect target="Character" comparison="and">
+          <Conditional ishuman="true" />
+          <Conditional hasspecifiertag="male" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokeMale1.ogg" selectionmode="Random" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokeMale2.ogg" />
+          <Sound file="%Moddir%/Content/Sounds/HUMAN_chokeMale3.ogg" />
+        </StatusEffect>
+        <StatusEffect target="Character" comparison="and">
+          <Conditional ishuman="true" />
+          <Conditional hasspecifiertag="female" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale1.ogg" selectionmode="Random" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale2.ogg" />
+          <Sound file="Content/Sounds/HUMAN_chokeFemale3.ogg" />
+        </StatusEffect>
+        <StatusEffect target="Character" duration="2">
+          <TriggerAnimation Type="Walk" filename="Vomit" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect target="Character">
+          <Affliction identifier="organdamage" strength="0.5" />
+        </StatusEffect>
+        <StatusEffect target="Character" targetlimbs="Head" delay="0.3" duration="1">
+          <ParticleEmitter particle="vomitsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+          <Conditional HideFace="eq False" />
+        </StatusEffect>
+        <StatusEffect target="Character" targetlimbs="Head" delay="0.5" offset="0,-20" randomoffset="32">
+          <Explosion range="0.0" structuredamage="0" itemdamage="0" force="0.0" severlimbsprobability="0.0" decal="vomitsplatter" decalsize="1.25" shockwave="false" underwaterbubble="false" />
+          <Conditional HideFace="eq False" />
+        </StatusEffect>
+      </PeriodicEffect>
+      <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,896,128,128" origin="0,0" />
+    </Affliction>
+    <Affliction name="Cyborg" identifier="cyborg" type="buff" isbuff="true" limbspecific="false" showiconthreshold="0.5" maxstrength="1">
+      <Description textidentifier="afflictiondescription.Cyborg.self" target="Self" />
+      <Description textidentifier="afflictiondescription.Cyborg" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5" resistancefor="damage,bleeding,stun,burn" minresistance="0.9" maxresistance="0.9">
+        <AbilityFlag flagtype="ImmuneToPressure" />
+        <StatusEffect target="Character" usehulloxygen="false" setvalue="true">
+          <ReduceAffliction identifier="oxygenlow" strength="0.5" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="OnDamaged">
+          <RequiredAffliction identifier="emp" />
+          <Affliction identifier="stun" amount="100" />
+          <Affliction identifier="ShutDown" amount="30" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="Always" Interval="1">
+          <Conditional Repair="gt 0" />
+          <ReduceAffliction type="damage" amount="0.1" />
+          <ReduceAffliction type="burn" amount="0.1" />
+          <ReduceAffliction type="Bleeding" amount="0.1" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="%ModDir%/Content/Items/New/New_XDS-01-W.png" sourcerect="793,210,79,80" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Cyborg_Immunity" identifier="infection_immunity" type="buff" isbuff="true" limbspecific="false" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" resistancefor="huskinfection,husksymbiosis,infection,radiationsickness" minresistance="1.0" maxresistance="1.0">
+        <StatusEffect type="Always" target="character">
+          <ReduceAffliction type="geneticmaterialbuff" amount="100" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="%ModDir%/Content/Items/New/New_XDS-01-W.png" sourcerect="793,210,79,80" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Repairing" identifier="Repair" type="buff" isbuff="true" limbspecific="true" showiconthreshold="0.5" maxstrength="10">
+      <Description textidentifier="afflictiondescription.Repair.self" target="Self" />
+      <Description textidentifier="afflictiondescription.Repair" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="10" strengthchange="-1" />
+      <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="896,384,128,128" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Charging" identifier="Charging" type="buff" isbuff="true" limbspecific="false" showiconthreshold="0.5" maxstrength="1">
+      <Description textidentifier="afflictiondescription.Charging.self" target="Self" />
+      <Description textidentifier="afflictiondescription.Charging" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="1" strengthchange="-1">
+        <StatusEffect target="NearbyItems" type="Always" targetidentifiers="New_XDS-01,New_XDS-01_B" Condition="1" range="50" interval="1">
+          <Conditional HasTag="eq XDS-01" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="896,384,128,128" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Visual signal interruption" identifier="ShutDown" type="debuff" isbuff="false" limbspecific="false" showiconthreshold="0.5" maxstrength="30">
+      <Description textidentifier="afflictiondescription.ShutDown.self" target="Self" />
+      <Description textidentifier="afflictiondescription.ShutDown" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="9" strengthchange="-1" MinAfflictionOverlayAlphaMultiplier="0.0" MaxAfflictionOverlayAlphaMultiplier="0.5" />
+      <Effect minstrength="10" maxstrength="19" strengthchange="-1" MinAfflictionOverlayAlphaMultiplier="0.5" MaxAfflictionOverlayAlphaMultiplier="1.0" />
+      <Effect minstrength="20" maxstrength="30" strengthchange="-1" MinAfflictionOverlayAlphaMultiplier="1.0" MaxAfflictionOverlayAlphaMultiplier="1.0" />
+      <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,256,128,128" color="139,60,42,255" origin="0,0" />
+      <AfflictionOverlay texture="%Moddir%/Content/ShutDownOverlay.png" />
+    </Affliction>
+    <Affliction name="Excitant" identifier="Xds_Excitant" type="buff" isbuff="true" limbspecific="false" showiconthreshold="0.5" maxstrength="5">
+      <Description textidentifier="afflictiondescription.Xds_Excitant.self" target="Self" />
+      <Description textidentifier="afflictiondescription.Xds_Excitant" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="5" strengthchange="-1">
+        <StatusEffect target="NearbyItems" type="Always" Condition="0.05" range="50" interval="1">
+          <Conditional HasTag="XDS-01" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="Always" interval="1">
+          <Affliction identifier="Excitant_Overheat" strength="2" />
+          <ReduceAffliction identifier="ShutDown" amount="1" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="Content/UI/CommandUIBackground.png" sourcerect="768,768,128,128" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Overheated" identifier="Excitant_Overheat" type="buff" isbuff="true" limbspecific="true" showiconthreshold="0.5" maxstrength="1">
+      <Description textidentifier="afflictiondescription.Excitant_Overheat.self" target="Self" />
+      <Description textidentifier="afflictiondescription.Excitant_Overheat" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="1" strengthchange="-1">
+        <StatusEffect target="AllLimbs" type="OnActive" interval="1">
+          <Affliction identifier="burn" strength="20" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="0,0,128,128" color="10,193,114,255" origin="0,0" />
+    </Affliction>
+    <Affliction name="Charging" identifier="XDS-01" type="buff" isbuff="true" limbspecific="false" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5" />
+    </Affliction>
+    <Affliction name="Charging" identifier="XDS-01_B" type="buff" isbuff="true" limbspecific="false" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5" />
+    </Affliction>
+    <Affliction name="XDS_Core_Actived" identifier="XDS_Core_Actived" type="buff" isbuff="true" limbspecific="false" showiconthreshold="0.5" maxstrength="1">
+      <Description textidentifier="afflictiondescription.XDS_Core_Actived.self" target="Self" />
+      <Description textidentifier="afflictiondescription.XDS_Core_Actived" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5"></Effect>
+      <icon texture="%ModDir%/Content/Items/New/New_XDS-01_Items.png" sourcerect="409,228,80,80" color="50,216,216,255" origin="0,0" />
+    </Affliction>
+    <!--Heels-->
+    <Affliction name="Heels" identifier="Heels" type="buff" isbuff="true" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+        <StatusEffect target="Character">
+          <TriggerAnimation Type="Walk" FileName="HumanWalk-Heels" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun-Heels" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="SwimSlow" FileName="HumanSwimSlow-Heels" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="SwimFast" FileName="HumanSwimFast-Heels" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Effect>
+    </Affliction>
+    <Affliction name="XdsWalking" identifier="XdsWalking" type="buff" isbuff="true" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+        <StatusEffect target="Character">
+          <TriggerAnimation Type="Walk" FileName="HumanWalk-XDS" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun-XDS" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="SwimSlow" FileName="HumanSwimSlow_XDS_01" priority="10" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="SwimFast" FileName="HumanSwimFast_XDS_01" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Effect>
+    </Affliction>
+    <Affliction name="Prisoner" identifier="Prisoner" type="buff" isbuff="true" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" maxstrength="1">
+      <Effect minstrength="0" maxstrength="1" strengthchange="-0.5">
+        <StatusEffect target="Character">
+          <TriggerAnimation Type="Walk" FileName="HumanWalkPrisoner" priority="1" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRunPrisoner" priority="10" ExpectedSpecies="Human" />
+        </StatusEffect>
+      </Effect>
+    </Affliction>
+    <!--HDS-01-->
+    <AfflictionHusk identifier="huskHDS" type="alieninfection" targets="human" isbuff="true" huskedspeciesname="husk" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showiconthreshold="0" showinhealthscannerthreshold="0" karmachangeonapplied="-1" maxstrength="100" transferbuffs="true" causespeechimpediment="false" achievementonreceived="ascension" achievementonremoved="healhusk" dormantthreshold="0" activethreshold="65" transformthresholdondeath="1000" transitionthreshold="1000" healableinmedicalclinic="false" iconcolors="60,140,195,255;60,107,195,255;60,0,195,255">
+      <Description textidentifier="afflictiondescription.huskHDS.self" target="Self" />
+      <Description textidentifier="afflictiondescription.huskHDS" target="OtherCharacter" />
+      <Effect minstrength="0" maxstrength="100" maxvitalitydecrease="0" minbodytint="255,255,255,255" maxbodytint="255,255,255,255" minfacetint="255,255,255,255" maxfacetint="255,255,255,255" tag="huskinfected" blocktransformation="huskinfection" resistancefor="huskinfection" minresistance="1.0" maxresistance="1.0" StrengthChange="-25">
+        <StatusEffect target="Character" type="OnActive">
+          <ReduceAffliction identifier="huskinfection" amount="1000" />
+        </StatusEffect>
+        <StatusEffect target="Character" type="OnActive">
+          <ReduceAffliction type="damage" amount="0.75" />
+          <ReduceAffliction type="bleeding" amount="0.35" />
+        </StatusEffect>
+      </Effect>
+      <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="0,640,128,128" color="60,107,195,255" origin="0,0" />
+    </AfflictionHusk>
+    <!--MudRaptor Armor-->
+    <AfflictionHusk name="Mudraptor Tail" identifier="MudraptorTail" type="alieninfection" healableinmedicalclinic="false" limbspecific="false" targets="human" huskedspeciesname="husk" indicatorlimb="Head" hideiconafterdelay="true" showiconthreshold="0" showinhealthscannerthreshold="1000" needsair="true" causespeechimpediment="false" treatmentthreshold="1000" dormantthreshold="0" activethreshold="0" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="100" iconcolors="94,54,95;163,73,164;200,191,231">
+      <icon texture="Content/UI/TalentsIcons3.png" sheetindex="4,0" sheetelementsize="128,128" color="181,230,29,255" origin="0,0" />
+      <Effect minstrength="0" maxstrength="100">
+        <StatValue stattype="NaturalRangedAttackMultiplier" minvalue="0" maxvalue="0" />
+      </Effect>
+    </AfflictionHusk>
+  </Afflictions>
+</Override>

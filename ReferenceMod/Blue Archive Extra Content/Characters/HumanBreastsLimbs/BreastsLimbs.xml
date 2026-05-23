@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<huskappendage>
+  <!--BREAST-->
+  <!--check 3 body types, initially breasts are keep hidden for consistency and compatibility with other mods, when wearing outfits from my mod with custom affliction, breasts skinw ill show if drank elixir-->
+  <limb Name="Type_Body_Breast" ID="221" Type="Tail" SecondaryType="None" Notes="Should be hidden by default to avoid incompatibility" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="180" InheritLimbDepth="None" SteerForce="500" Radius="0" Height="40" Width="60" Density="10" IgnoreCollisions="False" AngularDamping="0" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" EatTorque="50" EatImpulse="2" ConstantTorque="5" ConstantAngle="20" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="True" SeveredFadeOutTime="10" ApplyTailAngle="False" ApplySineMovement="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" UseTextureOffsetForBlinking="False" BlinkTextureOffsetIn="0.5,0.5" BlinkTextureOffsetOut="0.5,0.5" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05" CanEnterSubmarine="True" InheritHiding="Torso">
+    <!--no breast-->
+    <!--default-->
+    <sprite SourceRect="1,1,1,1" Origin="0.15454546,0.56" Depth="0.055" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    <!--Type B: Medium breasts-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babodytypeB="gt 0" />
+      <conditional bashowbreast="gt 0" />
+      <sprite texture="%ModDir%/Characters/Human/Humannaked_[GENDER].png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--Type C: Big breasts-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babodytypeC="gt 0" />
+      <conditional bashowbreast="gt 0" />
+      <sprite texture="%ModDir%/Characters/Human/Humannaked_[GENDER].png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.055" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+  </limb>
+  <!--OUTFIT-->
+  <!--breasts for outfit-->
+  <!--since there are outfits that can have boobs skin, i made 2 similar limbs, one for the outfits and one for the breasts, this way outfits like bunny suits won't be empty-->
+  <limb Name="Type_Body_Outfit" ID="222" Type="Tail" SecondaryType="None" Notes="breasts show when wearing outfits" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="180" InheritLimbDepth="None" SteerForce="500" Radius="0" Height="40" Width="60" Density="10" IgnoreCollisions="True" AngularDamping="0" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" EatTorque="50" EatImpulse="2" ConstantTorque="5" ConstantAngle="20" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="True" SeveredFadeOutTime="10" ApplyTailAngle="False" ApplySineMovement="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" UseTextureOffsetForBlinking="False" BlinkTextureOffsetIn="0.5,0.5" BlinkTextureOffsetOut="0.5,0.5" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05" CanEnterSubmarine="True" InheritHiding="Torso">
+    <sprite SourceRect="1,1,1,1" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="True" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    <!--//////////////////////////////////////////////////////-->
+    <!--//////////////////////////////////////////////////////-->
+    <!--______________________CAPTAIN______________________-->
+    <!--captain1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--captain2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--captain3-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit3="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit3.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bapandemoniumoutfit3="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Captain/pandemonium_outfit3.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--______________________ASSISTANT______________________-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baassistant1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Assistant/assistant_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baassistant1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Assistant/assistant_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--______________________SECURITY______________________-->
+    <!--security1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--security2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--security3-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc3="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit3.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional badcmoutfitnpc3="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/dcm_outfit3.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--sep security 1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional jtfoutfitnpc1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/jtf_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional jtfoutfitnpc1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/jtf_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--sep security 2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional jtfoutfitnpc2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/jtf_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional jtfoutfitnpc2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Security/jtf_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--______________________ENGINEER______________________-->
+    <!--engineer1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baengineeroutfit1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Engineer/gehenna_engineer_outfit1.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baengineeroutfit1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Engineer/gehenna_engineer_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--engineer2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baengineeroutfit2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Engineer/gehenna_engineer_outfit2.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baengineeroutfit2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Engineer/gehenna_engineer_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--______________________MEDIC______________________-->
+    <!--medic1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bamedicalemergencyoutfit1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Medic/gehenna_medic_outfit1.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bamedicalemergencyoutfit1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Medic/gehenna_medic_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--medic2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bamedicalemergencyoutfit2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Medic/gehenna_medic_outfit2.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bamedicalemergencyoutfit2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Medic/gehenna_medic_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--______________________MECHANIC______________________-->
+    <!--mechanic-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bahotspringworkeroutfit1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Mechanic/gehenna_mechanic_outfit1.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bahotspringworkeroutfit1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Mechanic/gehenna_mechanic_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--mechanic 2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bahotspringworkeroutfit2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Mechanic/gehenna_mechanic_outfit2.png" SourceRect="400,48,110,50" Origin="0.20663908,0.50475395" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bahotspringworkeroutfit2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Mechanic/gehenna_mechanic_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////////////////////////-->
+    <!--______________________GENERAL ITEM______________________-->
+    <!--//////////////////////////////////////////////////////-->
+    <!--outpost admin-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschaleadmin="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschaleadmin.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschaleadmin="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschaleadmin.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--outpost medic-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschalemedic="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschalemedic.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschalemedic="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschalemedic.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--outpost security-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bavalkyriepoliceoutfit="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bavalkyriepoliceoutfit.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional bavalkyriepoliceoutfit="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bavalkyriepoliceoutfit.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--outpost quarter master-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschalecrewmanager="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschalecrewmanager.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschalecrewmanager="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschalecrewmanager.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--outpost crew chief-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschaleshopkeeper="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschaleshopkeeper.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional baschaleshopkeeper="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/baschaleshopkeeper.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--bunnysuit-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc3="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit3.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional babunnysuitnpc3="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Commoner/bunnysuit_outfit3.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--______________________STUDENT SPECIFIC ITEM______________________-->
+    <!--swimsuit-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_swimsuit1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/swimsuit_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_swimsuit1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/swimsuit_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--gehenna-->
+    <!--aru-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_aru1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/aru_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_aru1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/aru_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--kayoko-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_kayoko1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/kayoko_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_kayoko1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/kayoko_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--haruka-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_haruka1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/haruka_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_haruka1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/haruka_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--mutsuki-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_mutsuki1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/mutsuki_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_mutsuki1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Gehenna/mutsuki_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--millennium-->
+    <!--alice-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_alice1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/alice_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_alice1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/alice_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--yuzu-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_yuzu1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/yuzu_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_yuzu1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/yuzu_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_yuzujacket1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/yuzu_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_yuzujacket1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/yuzu_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--momoi-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_momoi1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/momoi_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_momoi1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Millennium/momoi_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--abydos-->
+    <!--nonomi-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_nonomi1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/nonomi_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_nonomi1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/nonomi_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--hoshino1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--hoshino2-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino2="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit2.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino2="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit2.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--hoshino3-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino3="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit3.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_hoshino3="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Abydos/hoshino_outfit3.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--trinity-->
+    <!--ichika-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_ichika1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/ichika_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_ichika1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/ichika_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--mika1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_mika1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/mika_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_mika1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/mika_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_seia1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/seia_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_seia1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Trinity/seia_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--//////////////////////////////////-->
+    <!--Others-->
+    <!--saki-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_saki1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/saki_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_saki1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/saki_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--miyako-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_miyako1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/miyako_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_miyako1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/miyako_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--miyu-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_miyu1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/miyu_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_miyu1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/miyu_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--moe-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_moe1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/moe_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_moe1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/moe_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <!--niyaniya1-->
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_niyaniya1="gt 0" />
+      <conditional babodytypeB="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/niyaniya_outfit1.png" SourceRect="400,48,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+    <conditionalsprite target="character" exclusive="True">
+      <conditional ba_outfit_niyaniya1="gt 0" />
+      <conditional babodytypeC="gt 0" />
+      <sprite texture="%ModDir%/Content/Outfits/Unique/Others/niyaniya_outfit1.png" SourceRect="400,0,110,50" Origin="0.15454546,0.56" Depth="0.054" Texture="" IgnoreTint="true" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    </conditionalsprite>
+  </limb>
+  <joint Name="Joint 0 - 221" Limb1="0" Limb2="221" Limb1Anchor="7.605338,32.684746" Limb2Anchor="-5.803436,12.320065" CanBeSevered="True" SeveranceProbabilityModifier="0" BreakSound="gore" LimitEnabled="True" UpperLimit="75" LowerLimit="4.999999" Stiffness="0" Scale="1" WeldJoint="False" ClockWiseRotation="False" />
+  <joint Name="Joint 0 - 222" Limb1="0" Limb2="222" Limb1Anchor="7.605338,32.684746" Limb2Anchor="-5.803436,12.320065" CanBeSevered="True" SeveranceProbabilityModifier="0" BreakSound="gore" LimitEnabled="True" UpperLimit="75" LowerLimit="4.999999" Stiffness="0" Scale="1" WeldJoint="False" ClockWiseRotation="False" />
+</huskappendage>

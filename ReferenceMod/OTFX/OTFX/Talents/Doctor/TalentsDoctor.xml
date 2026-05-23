@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Talent identifier="otfx_frontlineaid">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsDoctor.png" sheetindex="0,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_frontlineaid" />
+    <Description tag="talentdescription.additionalskill">
+      <Replace tag="[amount]" value="5" color="gui.green" />
+      <Replace tag="[stattype]" value="stattypenames.weaponsskillbonus" color="gui.orange" />
+    </Description>
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green" />
+      <Replace tag="[stattype]" value="stattypenames.walkingspeed" color="gui.orange" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveStat stattype="WeaponsSkillBonus" value="5" />
+        <CharacterAbilityGiveStat stattype="WalkingSpeed" value="0.1" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnApplyTreatment">
+      <Conditions>
+        <AbilityConditionItem identifiers="antibloodloss1" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect tags="medical" type="OnAbility" target="UseTarget" duration="10.0">
+              <ReduceAffliction identifier="bloodloss" amount="0.5" />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+  <Talent identifier="otfx_battlemedic">
+    <Icon texture="%ModDir%/OTFX/UI/TalentsIconsDoctor.png" sheetindex="1,0" sheetelementsize="128,128" />
+    <Description tag="talentdescription.otfx_battlemedic">
+      <Replace tag="[range]" value="8" color="gui.green" />
+      <Replace tag="[value]" value="6" color="gui.green" />
+      <Replace tag="[stack]" value="3" color="gui.green" />
+      <Replace tag="[stackedvalue]" value="19" color="gui.green" />
+      <Replace tag="[skilldependent]" value="stattypenames.weaponsskillbonus" color="gui.orange" />
+      <Replace tag="[skillpercentage]" value="20" color="gui.green" />
+      <Replace tag="[skillindependent]" value="skillname.medical" color="gui.orange" />
+    </Description>
+    <Description tag="talentdescription.additionalstattypeself">
+      <Replace tag="[amount]" value="10" color="gui.green" />
+      <Replace tag="[stattype]" value="stattypenames.walkingspeed" color="gui.orange" />
+    </Description>
+    <AbilityGroupEffect abilityeffecttype="OnReduceAffliction">
+      <Conditions>
+        <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy" count="1" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyValue multiplyvalue="1.06" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnReduceAffliction">
+      <Conditions>
+        <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy" count="2" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyValue multiplyvalue="1.06" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupEffect abilityeffecttype="OnReduceAffliction">
+      <Conditions>
+        <AbilityConditionNearbyCharacterCount distance="800" targettypes="Enemy" count="3" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyValue multiplyvalue="1.06" />
+      </Abilities>
+    </AbilityGroupEffect>
+    <AbilityGroupInterval interval="0.5">
+      <Abilities>
+        <CharacterAbilityModifyStatToSkill stattype="WeaponsSkillBonus" maxvalue="20" skillidentifier="medical" />
+      </Abilities>
+    </AbilityGroupInterval>
+    <AbilityGroupEffect abilityeffecttype="None">
+      <Abilities>
+        <CharacterAbilityGiveStat stattype="WalkingSpeed" value="0.1" />
+      </Abilities>
+    </AbilityGroupEffect>
+  </Talent>
+</Talents>

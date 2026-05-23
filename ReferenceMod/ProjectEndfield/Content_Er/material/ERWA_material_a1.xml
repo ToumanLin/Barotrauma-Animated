@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_material_a1.xml
+++	Version     :	0.2 (alpha)
+++	Time Create :	TK5202312200011
+++	Time Modify :	TK5202409031548
+++	Author      :	Erthex
+-->
+<Item identifier="ERWA_material_a1" tags="smallitem" category="Material" scale="0.25" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" maxstacksize="32" maxstacksizecharacterinventory="8" name="代糖" description="机械化制作的廉价天然糖替代产物，可用于多种强化场合，也常作为制造站合成项目的原料。">
+  <InventoryIcon texture="ERWA_material_a1_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" />
+  <Sprite texture="ERWA_material_a1_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" depth="0.55" />
+  <Body width="161" height="161" density="20" friction="0.2" restitution="0.0" />
+  <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="0" holdpos="0,0" msg="ItemMsgPickUpSelect" canbecombined="true" removeoncombined="true">
+    <StatusEffect type="OnBroken" target="This">
+      <Remove />
+    </StatusEffect>
+  </Holdable>
+  <PreferredContainer primary="storagecab" secondary="locker" />
+  <Price baseprice="10" canbespecial="false" displaynonempty="false">
+    <Price storeidentifier="merchantoutpost" multiplier="1.1" sold="false" />
+    <Price storeidentifier="merchantmine" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantresearch" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmilitary" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantcity" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantarmory" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmedical" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantengineering" multiplier="1.0" sold="false" />
+  </Price>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="6" displayname="合成">
+    <RequiredItem identifier="energydrink" amount="1" />
+  </Fabricate>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="6" displayname="合成">
+    <RequiredItem identifier="proteinbar" amount="1" />
+  </Fabricate>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="3" displayname="合成">
+    <RequiredItem identifier="elastinplant" amount="1" />
+  </Fabricate>
+  <Deconstruct time="5" />
+</Item>
+<!--
+++	File End
+-->

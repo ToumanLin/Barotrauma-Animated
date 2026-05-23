@@ -1,0 +1,2044 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+  <Items>
+    <!-- 冲锋枪弹匣:修改贴图,容量加到45发,回收配方匹配其他弹匣 -->
+    <Item name="" identifier="smgmagazine" maxstacksize="8" maxstacksizecharacterinventory="2" scale="0.45" category="Weapon" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,smgammo" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="smg,smgunique,machinepistol" amount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" amount="1" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="2" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <Price baseprice="100" displaynonempty="true" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="4" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="true" displayname="recycleitem">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem tag="smgammo" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="lead" mincondition="0.95" />
+        <Item identifier="steel" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="327,177,42,43" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" depth="0.54" sourcerect="291,177,19,42" origin="0.5,0.5" />
+      <Body width="28" height="26" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="smground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="smground" />
+        <StatusEffect type="OnUse" target="This" condition="-2.23" disabledeltatime="true">
+          <SpawnItem identifiers="smground" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <!-- 冲锋枪:修改贴图,替换音效,提高射速,品质等级加成射速,添加动画 -->
+    <Item name="" identifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
+      <PreferredContainer secondary="armcab,weaponholder" />
+      <Price baseprice="390" minleveldifficulty="30">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="3" displayname="recycleitem" requiresrecipe="false">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="smg_r301" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,128,204,64" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,128,204,64" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,258,204,74" depth="0.55" origin="0.5,0.38" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,338,204,74" depth="0.55" origin="0.5,0.38" maxcondition="70" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,419,204,64" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="200" height="60" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" maxchargetime="0" holdpos="50,-10" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-35" aimangle="0" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.16" weapondamagemodifier="1.3" penetration="0.15" holdtrigger="true" barrelpos="88,12" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This" offset="-5,8">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-10">
+          <Explosion range="150.0" force="0.8" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="4.0" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--"Use" contained magazine to spawn projectiles.-->
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="6" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="22" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-10">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.01秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="2" unskilledspread="10" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <!-- 使用常规子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgammo" excludeditems="smgmagazinedepletedfuel" hide="false" itempos="-6,-5" rotation="-28">
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-12" aimpos="55,3" handle1="-46,-6" handle2="0,0" holdangle="34" aimangle="11" delay="0.01" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0.17" offset="0,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-12" aimpos="45,3" handle1="-46,-6" handle2="-12,-10" holdangle="36" aimangle="14" delay="0.17" hideitems="true" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="42,3" handle1="-46,-6" handle2="0,-25" holdangle="38" aimangle="17" delay="0.35" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-12" aimpos="46,3" handle1="-46,-6" handle2="-8,-10" holdangle="34" aimangle="12" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="43,-12" aimpos="44,3" handle1="18,8" handle2="20,0" holdangle="28" aimangle="4" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="36,3" handle1="-2,8" handle2="20,0" holdangle="32" aimangle="10" condition="50" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-12" aimangle="0" condition="100" delay="1.6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="45,-12" aimpos="46,3" handle1="-46,-6" handle2="-8,-15" holdangle="34" aimangle="12" condition="100" hideitems="false" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="49,3" handle1="-46,-6" handle2="0,-30" holdangle="38" aimangle="17" condition="75" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <!-- 使用贫化子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgmagazinedepletedfuel" hide="false" itempos="-6,-5" rotation="-28">
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-12" aimpos="55,3" handle1="-46,-6" handle2="0,0" holdangle="34" aimangle="11" delay="0.01" hideitems="true" tags="mediumitem,weapon,gunsmith,mountableweapon,WF_ceasefire" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0" offset="0,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine_df" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-12" aimpos="45,3" handle1="-46,-6" handle2="-12,-5" holdangle="36" aimangle="14" delay="0.17" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="42,3" handle1="-46,-6" handle2="0,-25" holdangle="38" aimangle="17" delay="0.35" condition="70" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-12" aimpos="46,3" handle1="-46,-6" handle2="-8,-15" holdangle="34" aimangle="12" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="43,-12" aimpos="44,3" handle1="18,8" handle2="20,0" holdangle="28" aimangle="4" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="36,3" handle1="-2,8" handle2="20,0" holdangle="32" aimangle="10" condition="50" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-12" aimangle="0" condition="100" delay="1.6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="mediumitem,weapon,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="45,-12" aimpos="46,3" handle1="-46,-6" handle2="-8,-15" holdangle="34" aimangle="12" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-12" aimpos="49,3" handle1="-46,-6" handle2="0,-30" holdangle="38" aimangle="17" condition="70" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="50,-12" aimpos="50,-2" handle1="-46,-6" handle2="25,4" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <!-- 配件栏位 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="23,1" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="30,1" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-6,13" />
+          <Containable items="hybridscope" hide="false" itempos="-6,14">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+        <QualityStat stattype="FiringRateMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 冲锋枪换皮: R301,添加动画 -->
+    <Item name="" identifier="smg_r301" nameidentifier="smg" descriptionidentifier="smg" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
+      <PreferredContainer secondary="armcab,weaponholder" />
+      <Price baseprice="390" minleveldifficulty="30">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="3" displayname="recycleitem" requiresrecipe="false">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="smg" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <InventoryIcon name="R301" texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="4,363,228,50" />
+      <Sprite name="R301" texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="4,363,228,50" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite name="R301" texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,488,228,80" depth="0.55" origin="0.5,0.28" maxcondition="75" />
+      <BrokenSprite name="R301" texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,576,228,80" depth="0.55" origin="0.5,0.28" maxcondition="70" />
+      <BrokenSprite name="R301" texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,665,228,50" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="220" height="60" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="54,2" handle1="-52,-6" handle2="20,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.16" weapondamagemodifier="1.3" penetration="0.15" holdtrigger="true" barrelpos="92,12" spread="10" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This" offset="-8,6">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="3,-14">
+          <Explosion range="150.0" force="0.8" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="4.0" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--"Use" contained magazine to spawn projectiles.-->
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="6" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="22" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-10">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.01秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="2" unskilledspread="10" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <!-- 使用常规子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgammo" excludeditems="smgmagazinedepletedfuel" hide="false" itempos="-11,-5" rotation="-28">
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-15" aimpos="45,3" handle1="-62,-6" handle2="20,5" holdangle="28" aimangle="21" hideitems="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0" offset="-15,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-15" aimpos="42,3" handle1="-24,-42" handle2="20,5" holdangle="34" aimangle="27" delay="0.35" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="44,-15" aimpos="46,3" handle1="-32,-20" handle2="20,5" holdangle="42" aimangle="22" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="46,-15" aimpos="42,3" handle1="0,8" handle2="20,3" holdangle="34" aimangle="14" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="36,-17" aimpos="36,3" handle1="-18,8" handle2="20,3" holdangle="37" aimangle="20" condition="50" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-10" aimpos="58,2" handle1="-48,-7" handle2="20,5" holdangle="-15" aimangle="0" condition="100" delay="1.6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-10" aimpos="54,2" handle1="-48,-7" handle2="20,5" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_2.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="44,-15" aimpos="46,3" handle1="-48,-7" handle2="-32,-20" holdangle="42" aimangle="22" condition="100" hideitems="false" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="40,-15" aimpos="42,3" handle1="-48,-7" handle2="-24,-42" holdangle="34" aimangle="27" condition="75" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="50,-10" aimpos="54,2" handle1="-48,-7" handle2="20,5" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <!-- 使用贫化子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgmagazinedepletedfuel" hide="false" itempos="-11,-5" rotation="-28">
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-15" aimpos="45,3" handle1="-62,-6" handle2="20,5" holdangle="28" aimangle="21" hideitems="true" tags="mediumitem,weapon,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0" offset="-15,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine_df" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-15" aimpos="42,3" handle1="-24,-42" handle2="20,5" holdangle="34" aimangle="27" delay="0.35" condition="70" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="44,-15" aimpos="46,3" handle1="-32,-20" handle2="20,5" holdangle="42" aimangle="22" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="46,-15" aimpos="42,3" handle1="0,8" handle2="20,3" holdangle="34" aimangle="14" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="36,-17" aimpos="36,3" handle1="-18,8" handle2="20,3" holdangle="37" aimangle="20" condition="50" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-10" aimpos="58,2" handle1="-48,-7" handle2="20,5" holdangle="-15" aimangle="0" condition="100" delay="1.6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-10" aimpos="54,2" handle1="-48,-7" handle2="20,5" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_2.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="44,-15" aimpos="46,3" handle1="-48,-7" handle2="-32,-20" holdangle="42" aimangle="22" condition="100" hideitems="false" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="40,-15" aimpos="42,3" handle1="-48,-7" handle2="-24,-42" holdangle="34" aimangle="27" condition="70" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="50,-10" aimpos="58,2" handle1="-48,-7" handle2="20,5" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" hide="false" itempos="25,1" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="17,9" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-17,12" />
+          <Containable items="hybridscope" hide="false" itempos="-12,14">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+        <QualityStat stattype="FiringRateMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 左轮手枪:修改贴图,添加动画-->
+    <Item name="" identifier="revolver" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.25" />
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="150">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" minavailable="1" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="35" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="208,0,80,42" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="208,0,80,42" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="245,325,80,42" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="76" height="40" density="25" />
+      <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="70,10" handle1="-31,-16" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon barrelpos="32,7" spread="0" unskilledspread="2" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" reload="0.5" DualWieldReloadTimePenaltyMultiplier="1.75" DualWieldAccuracyPenalty="8">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,306,256,196" />
+        <Sound file="Content/Items/Weapons/Revolver1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/Revolver2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/Revolver3.ogg" type="OnUse" range="3000" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-10">
+          <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!-- 上弹动画：有停火标签时无法开火 -->
+        <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 弹药和技能需求 -->
+        <RequiredItems items="revolverammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="40" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="6" hideitems="true" containedstateindicatorstyle="bullet">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <Containable items="revolverammo">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-10" aimpos="35,4" handle1="-31,-16" holdangle="60" aimangle="42" condition="100" delay="0.01" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-14" aimpos="30,0" handle1="-31,-16" holdangle="64" aimangle="48" condition="50" delay="0.15" setvalue="true" disabledeltatime="true" offset="-7,0">
+            <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="160" anglemax="240" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="25,-6" aimpos="30,1" handle1="-31,-16" holdangle="20" aimangle="12" condition="50" delay="0.35" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-6" aimpos="42,-15" handle1="-31,-16" holdangle="-20" aimangle="-12" condition="50" delay="0.6" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-6" aimpos="42,-15" handle1="-31,-16" holdangle="-20" aimangle="-12" condition="100" delay="1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-6" aimpos="45,0" handle1="-31,-16" holdangle="-10" aimangle="-24" condition="100" delay="1.2" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-6" aimpos="45,0" handle1="-31,-16" holdangle="25" aimangle="12" condition="100" delay="1.3" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="70,10" handle1="-31,-16" holdangle="0" aimangle="0" condition="100" delay="1.4" maxchargetime="0" tags="smallitem,weapon,gun,pistolitem,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_revolver_reload.ogg" range="500" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="40" />
+    </Item>
+    <!-- 鱼叉枪:修改贴图,隐藏鱼叉,添加动画 -->
+    <Item name="" identifier="harpoongun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer secondary="wreckweaponholder" spawnprobability="0.05" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="170" minavailable="1">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="plastic" />
+        <Item identifier="tin" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+        <RequiredItem identifier="tin" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,64,200,54" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,64,200,54" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,66,203,54" depth="0.55" origin="0.5,0.5" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,128,203,54" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,191,203,54" depth="0.55" origin="0.5,0.5" maxcondition="25" />
+      <Body width="200" height="54" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="5,-27" aimpos="54,6" handle1="-28,-11" handle2="28,-8" holdangle="75" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.875" reloadnoskill="1.75" reloadskillrequirement="30" launchimpulse="20.0" barrelpos="52,12" spread="1" unskilledspread="10" maxchargetime="0" combatPriority="60" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <Sound file="Content/Items/Weapons/HarpoonGun1.ogg" type="OnUse" />
+        <Sound file="Content/Items/Weapons/HarpoonGun2.ogg" type="OnUse" />
+        <Sound file="Content/Items/Weapons/HarpoonGun3.ogg" type="OnUse" />
+        <StatusEffect type="OnUse" target="This">
+          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法发射（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 弹药及技能需求 -->
+        <RequiredItems items="harpoonammo" type="Contained" msg="ItemMsgSpearRequired" />
+        <RequiredSkill identifier="weapons" level="30" />
+      </RangedWeapon>
+      <ItemContainer itempos="27,10" iteminterval="0,-4" hideitems="false" capacity="1" maxstacksize="6" containedstateindicatorslot="0" containedstateindicatorstyle="spear" containedspritedepths="0.551,0.552,0.553,0.554,0.555,0.556">
+        <Containable items="harpoonammo" hide="true">
+          <!-- 装填动画，放入鱼叉时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="5,-27" aimpos="43,16" handle1="-30,-11" handle2="8,-4" holdangle="45" aimangle="45" condition="100" delay="0.01" tags="mediumitem,weapon,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="5,-27" aimpos="33,0" handle1="-30,-11" handle2="8,-4" holdangle="45" aimangle="45" condition="75" delay="0.32" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="5,-27" aimpos="33,0" handle1="12,-11" handle2="8,-4" holdangle="45" aimangle="40" condition="75" delay="0.39" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="3,-30" aimpos="23,-20" handle1="54,0" handle2="8,-4" holdangle="45" aimangle="35" condition="50" delay="0.46" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,-32" aimpos="20,-22" handle1="42,-6" handle2="8,-4" holdangle="40" aimangle="30" condition="25" delay="1.24" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="-2,-32" aimpos="20,-22" handle1="54,-10" handle2="8,-4" holdangle="36" aimangle="26" condition="25" delay="1.82" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,-32" aimpos="20,-22" handle1="52,0" handle2="28,-8" holdangle="42" aimangle="32" condition="100" delay="2.32" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="5,-27" aimpos="54,6" handle1="-28,-11" handle2="28,-8" holdangle="75" aimangle="0" maxchargetime="0" delay="2.54" tags="mediumitem,weapon,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装填音效，放入鱼叉时触发 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_harpoongun_open.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="1.98">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_harpoongun_close.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="0,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="21,4" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="33,4" setactive="true" />
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="0" soundrange="500" fadeouttime="2" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="30" />
+    </Item>
+    <!-- 电磁鱼叉枪:加快射速,添加简单动画 -->
+    <Item name="" identifier="harpooncoilrifle" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gunsmith,provocativetohumanai,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer secondary="wreckweaponholder" spawnprobability="0.005" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.01" />
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="270" minleveldifficulty="30">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="aluminium" />
+        <Item identifier="plastic" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="aluminium" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+        <RequiredItem identifier="copper" amount="2" />
+      </Fabricate>
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="262,383,179,49" depth="0.55" origin="0.5,0.5" />
+      <Body width="170" height="44" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="35,-10" aimpos="48,0" handle1="-20,-6" handle2="30,10" holdangle="-40" aimangle="0" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon launchimpulse="30.0" maxchargetime="0.25" reload="1.25" weapondamagemodifier="1.25" spread="0.2" unskilledspread="5" combatPriority="70" drawhudwhenequipped="true" barrelpos="85,16" crosshairscale="0.2" holdtrigger="true">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <Sound file="Content/Items/Weapons/WEAPON_harpoonCoilRifleShot1.ogg" type="OnUse" range="2000" />
+        <Sound file="Content/Items/Weapons/WEAPON_harpoonCoilRifleShot2.ogg" type="OnUse" range="2000" />
+        <Sound file="Content/Items/Weapons/WEAPON_harpoonCoilRifleShot3.ogg" type="OnUse" range="2000" />
+        <ChargeSound file="Content/Items/Weapons/WEAPON_harpoonCoilRifleChargeUp.ogg" range="500" />
+        <StatusEffect type="OnUse" target="This">
+          <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" flash="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- 12 usages with normal battery -->
+        <StatusEffect type="OnUse" target="Contained" targetslot="1" Condition="-8.3" disabledeltatime="true">
+          <RequiredItem items="mobilebattery" type="Contained" msg="ItemMsgBatteryCellRequired" />
+        </StatusEffect>
+        <RequiredItem items="mobilebattery" type="Contained" TargetSlot="1" msg="ItemMsgBatteryCellRequired" />
+        <RequiredItems items="harpoonammo" type="Contained" msg="ItemMsgSpearRequired" />
+        <RequiredSkill identifier="weapons" level="30" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="27,14" containedstateindicatorstyle="spear" containedstateindicatorslot="0" containedspritedepth="0.56">
+        <Containable items="harpoonammo" hide="false">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="38,-14" aimpos="49,-4" handle1="-20,-6" handle2="20,14" holdangle="-32" aimangle="5" condition="0" tags="mediumitem,weapon,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="38,-14" aimpos="49,-4" handle1="-20,-6" handle2="5,14" holdangle="-32" aimangle="5" delay="0.5" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="35,-10" aimpos="48,0" handle1="-20,-6" handle2="30,10" holdangle="-40" aimangle="0" delay="1.1" condition="100" tags="mediumitem,weapon,gunsmith,provocativetohumanai,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true" delay="0.1">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_harpoongun_close.ogg" range="500" volume="2" />
+          </StatusEffect>
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="0,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="3" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mobilebattery" hide="true">
+            <!-- 装电池动画，放入时触发，添加停火标签 -->
+            <StatusEffect type="OnInserted" target="This" holdpos="30,-14" aimpos="40,-4" handle1="-20,-6" handle2="0,-8" holdangle="35" aimangle="25" condition="0" tags="mediumitem,weapon,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+            <StatusEffect type="OnInserted" target="This" holdpos="30,-14" aimpos="40,-4" handle1="-20,-6" handle2="0,2" holdangle="35" aimangle="25" delay="0.5" setvalue="true" disabledeltatime="true" />
+            <StatusEffect type="OnInserted" target="This" holdpos="35,-10" aimpos="48,0" handle1="-20,-6" handle2="30,10" holdangle="-40" aimangle="0" delay="1.1" condition="100" tags="mediumitem,weapon,gunsmith,provocativetohumanai,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+            <!-- 音效 -->
+            <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true" delay="0.1">
+              <Sound file="%ModDir%/Content/Items/Weapons/ANI_battery_reload.ogg" range="500" volume="0.75" />
+            </StatusEffect>
+          </Containable>
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="30,4" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="30,5" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="2,13" />
+          <Containable items="hybridscope" hide="false" itempos="2,15">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+          <Containable items="scope" hide="false" itempos="4,13">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="600" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+    <!-- 亡眼:修改贴图,替换音效,加点伤害,加快射速,取消菜单隐藏,可以制造,添加动画 -->
+    <Item name="" identifier="smgunique" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideinmenus="false" allowasextracargo="true" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.05" />
+      <!-- 调整出售价格 -->
+      <Price baseprice="900" sold="false" canbespecial="false" />
+      <!-- 冲锋枪同款制造素材，需要蓝图 -->
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="208,126,211,70" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="208,122,211,76" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,724,211,76" depth="0.55" origin="0.5,0.5" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,803,211,76" depth="0.55" origin="0.5,0.5" maxcondition="70" />
+      <Body width="200" height="60" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="42,-10" aimpos="50,2" handle1="-10,-15" handle2="45,-2" holdangle="-35" maxchargetime="0" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.08" weapondamagemodifier="1.3" penetration="0.15" holdtrigger="true" barrelpos="88,20" spread="2" unskilledspread="6" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,306,256,196" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="%ModDir%/Content/Items/Weapons/SMGsingleShot3.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This" offset="2,7">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="2,-14">
+          <Explosion range="150.0" force="0.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="4.0" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法开火（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="4" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="4" unskilledspread="16" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-8" unskilledspread="-4">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.01秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="2" unskilledspread="6" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <!--"Use" contained magazine to spawn projectiles.-->
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <StatusEffect type="OnUse" target="This" reload="0.4" setvalue="true" delay="0.15" />
+        <StatusEffect type="OnUse" target="This" reload="0.08" setvalue="true" delay="0.4" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <!-- 使用常规子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgammo" excludeditems="smgmagazinedepletedfuel" hide="false" itempos="-21,0" rotation="-30">
+          <StatusEffect type="OnInserted" target="This" holdpos="38,-22" aimpos="55,3" handle1="-10,-15" handle2="-52,-10" holdangle="54" aimangle="-11" hideitems="true" tags="smallautoweapon,smallitem,weapon,gun,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0" offset="-20,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-22" aimpos="52,1" handle1="-10,-15" handle2="-54,-40" holdangle="58" aimangle="-17" delay="0.35" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-22" aimpos="56,1" handle1="-10,-15" handle2="-44,-25" holdangle="54" aimangle="-12" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,-24" aimpos="52,1" handle1="-10,-15" handle2="22,25" holdangle="33" aimangle="-4" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,-24" aimpos="46,1" handle1="-10,-15" handle2="22,-8" holdangle="39" aimangle="-10" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="50,2" handle1="-10,-15" handle2="45,-2" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="smallautoweapon,smallitem,weapon,gun,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_3.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-22" aimpos="56,1" handle1="-10,-15" handle2="-44,-25" holdangle="54" aimangle="-12" condition="100" hideitems="false" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="37,-22" aimpos="52,1" handle1="-10,-15" handle2="-54,-40" holdangle="58" aimangle="-17" condition="75" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="42,-10" aimpos="50,2" handle1="-10,-15" handle2="45,-2" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <!-- 使用贫化子弹的装弹动画，放入弹药时触发，添加停火标签 -->
+        <Containable items="smgmagazinedepletedfuel" hide="false" itempos="-21,0" rotation="-30">
+          <StatusEffect type="OnInserted" target="This" holdpos="38,-22" aimpos="55,3" handle1="-10,-15" handle2="-52,-10" holdangle="54" aimangle="-11" hideitems="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.7" delay="0" offset="-20,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_smg_magazine_df" particleamount="1" anglemin="-145" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-22" aimpos="52,1" handle1="-10,-15" handle2="-54,-40" holdangle="58" aimangle="-17" delay="0.35" condition="70" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-22" aimpos="56,1" handle1="-10,-15" handle2="-44,-25" holdangle="54" aimangle="-12" delay="0.75" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,-24" aimpos="52,1" handle1="-10,-15" handle2="22,25" holdangle="33" aimangle="-4" delay="1.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,-24" aimpos="46,1" handle1="-10,-15" handle2="22,-8" holdangle="39" aimangle="-10" delay="1.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="50,2" handle1="-10,-15" handle2="45,-2" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="1.64" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true" delay="0.08">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_smg_reload_3.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-22" aimpos="56,3" handle1="-10,-15" handle2="-44,-25" holdangle="54" aimangle="-12" condition="100" hideitems="false" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="37,-22" aimpos="52,3" handle1="-10,-15" handle2="-54,-40" holdangle="58" aimangle="-17" condition="70" delay="0.2" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="42,-10" aimpos="50,2" handle1="-10,-15" handle2="45,-2" holdangle="-35" aimangle="0" condition="100" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,mountableweapon" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="1" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="17,3" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="17,3" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-5,17" />
+          <Containable items="hybridscope" hide="false" itempos="-5,18">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 防暴霰弹枪:修改贴图,修改上膛音效延迟时间,添加动画 -->
+    <Item name="" identifier="shotgun" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" amount="1" spawnprobability="0.2" />
+      <PreferredContainer secondary="wreckweaponholder" amount="1" spawnprobability="0.03" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="500" minleveldifficulty="30">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,0,196,54" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="0,0,196,54" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="0,0,196,54" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="196" height="54" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="48,-10" aimpos="42,-8" handle1="-42,-9" handle2="20,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon barrelpos="86,18" spread="0.1" unskilledspread="3" combatPriority="80" reload="1" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,236" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="Content/Items/Weapons/ShotgunShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ShotgunShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/ShotgunShot3.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/ShotgunShot4.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This">
+          <Explosion range="150.0" force="2.5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.7" target="This" offset="-10,6">
+          <ParticleEmitter particle="WF_casingfirearm_shotgun" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Sound file="Content/Items/Weapons/ShotgunLoad1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/Weapons/ShotgunLoad2.ogg" type="OnUse" range="3000" />
+          <Sound file="Content/Items/Weapons/ShotgunLoad3.ogg" type="OnUse" range="3000" />
+        </StatusEffect>
+        <!-- 上弹动画：修改武器耐久为动画触发条件 -->
+        <StatusEffect type="OnUse" target="This" delay="0.7" condition="50" setvalue="true" disabledeltatime="true" />
+        <StatusEffect type="OnUse" target="This" delay="0.9" condition="100" setvalue="true" disabledeltatime="true" />
+        <!-- 上弹动画：有停火标签时无法开火 -->
+        <StatusEffect type="Always" target="This" condition="0" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 上弹动画：通过改变耐久切换贴图和握持位置 -->
+        <StatusEffect type="Always" target="this" holdpos="48,-10" aimpos="42,-8" handle1="-42,-9" handle2="20,5" holdangle="-35" aimangle="0" setvalue="true" disabledeltatime="true">
+          <Conditional condition="eq 100" />
+        </StatusEffect>
+        <StatusEffect type="Always" target="this" holdpos="40,-10" aimpos="32,-10" handle1="-42,-9" handle2="12,-2" holdangle="-27" aimangle="5" setvalue="true" disabledeltatime="true">
+          <Conditional condition="eq 50" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="10" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="28" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-20">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.03秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="0" unskilledspread="8" setvalue="true" delay="0.03" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <!-- 需要子弹、技能等级需求提示 -->
+        <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="6" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="shotgunammo" hide="false" itempos="0,3">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="9,2" holdangle="8" aimangle="10" delay="0.01" condition="0" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 循环动画开始 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="4,-2" holdangle="8" aimangle="10" delay="0.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="4,-9" holdangle="8" aimangle="10" delay="0.75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="9,0" holdangle="9" aimangle="12" delay="1.1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="4,-9" holdangle="8" aimangle="10" delay="1.45" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="9,0" holdangle="9" aimangle="12" delay="1.8" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="4,-9" holdangle="8" aimangle="10" delay="2.15" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="32,-7" handle1="-42,-9" handle2="9,0" holdangle="9" aimangle="12" delay="2.5" setvalue="true" disabledeltatime="true" />
+          <!-- 循环动画结束 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="48,-10" aimpos="42,-8" handle1="-42,-9" handle2="20,5" holdangle="5" aimangle="7" delay="2.7" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="48,-10" aimpos="42,-8" handle1="-42,-9" handle2="20,5" holdangle="-35" aimangle="0" condition="100" delay="3" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_shotgun_reload.ogg" range="500" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="26,3" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="30,12" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-6,14" />
+          <Containable items="hybridscope" hide="false" itempos="-6,15">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 爆鸣:修改贴图,取消菜单隐藏,可以制造,添加动画 -->
+    <Item name="" identifier="shotgununique" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,provocativetohumanai,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideinmenus="false" allowasextracargo="true" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" spawnprobability="0.05" />
+      <!-- 调整出售价格 -->
+      <Price baseprice="900" sold="false" canbespecial="false" />
+      <!-- 防暴霰弹枪同款制造素材，需要蓝图 -->
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="1,213,231,47" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="1,213,231,47" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="297,897,201,112" depth="0.55" origin="0.25,0.25" maxcondition="50" />
+      <Body width="180" height="30" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="52,-10" aimpos="55,5" handle1="-46,-6" handle2="26,7" holdangle="-50" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon barrelpos="85,10" spread="1" unskilledspread="4" combatPriority="80" reload="0.1" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,226" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="Content/Items/Weapons/ShotgunShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/ShotgunShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/ShotgunShot3.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/ShotgunShot4.ogg" type="OnUse" range="3000" />
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-2">
+          <Explosion range="150.0" force="3" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法开火（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- only 2 shots can be fired at the 0.1 interval, after that you need to wait 1 second -->
+        <StatusEffect type="OnUse" target="This" reload="2.0" setvalue="true" delay="0.05" />
+        <StatusEffect type="OnUse" target="This" reload="0.1" setvalue="true" delay="2.0" />
+        <StatusEffect type="OnUse" target="This" reload="1.0" setvalue="true" delay="0.2" />
+        <StatusEffect type="OnUse" target="This" reload="0.1" setvalue="true" delay="1.0" />
+        <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="2" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="shotgunammo" hide="true">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="44,-7" handle1="-42,-9" handle2="12,2" holdangle="8" aimangle="10" delay="0.01" condition="100" tags="mediumitem,weapon,gun,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,4" aimpos="26,-2" handle1="0,-28" handle2="80,20" holdangle="-55" aimangle="-45" delay="0.2" condition="50" setvalue="true" disabledeltatime="true" offset="-6,0">
+            <ParticleEmitter particle="WF_casingfirearm_shotgun" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="24,4" aimpos="26,-2" handle1="0,-28" handle2="18,4" holdangle="-60" aimangle="-50" delay="0.45" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,4" aimpos="26,-2" handle1="0,-28" handle2="80,14" holdangle="-60" aimangle="-50" delay="0.85" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="24,-16" aimpos="48,0" handle1="-46,-6" handle2="26,7" holdangle="-15" aimangle="8" delay="1.2" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="52,-10" aimpos="55,5" handle1="-46,-6" handle2="26,7" holdangle="-50" aimangle="0" delay="1.3" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="52,-10" aimpos="55,5" handle1="-46,-6" handle2="26,7" holdangle="-50" aimangle="0" delay="1.35" condition="100" maxchargetime="0" tags="mediumitem,weapon,gun,provocativetohumanai,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_boomstick_reload.ogg" range="500" volume="0.5" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" hide="true" itempos="20,1" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="20,-1" setactive="true" />
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 霰弹枪子弹：战役开始即可购买 -->
+    <Item name="" identifier="shotgunshell" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,shotgunammo,handheldammo" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="shotgun" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="autoshotgun" amount="8" spawnprobability="1" />
+      <PreferredContainer primary="shotgununique" amount="2" spawnprobability="1" />
+      <PreferredContainer primary="shotgun_sawedoff" amount="2" spawnprobability="1" />
+      <PreferredContainer primary="armcab" minamount="6" maxamount="12" spawnprobability="1" notcampaign="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="6" spawnprobability="0.5" />
+      <PreferredContainer secondary="wreckarmcab,wrecksecarmcab,abandonedarmcab,piratearmcab,abandonedsecarmcab,piratesecarmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <Price baseprice="30">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" minavailable="4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="4" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="12" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="12" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="189,299,23,11" depth="0.55" origin="0.5,0.5" />
+      <Body width="23" height="10" density="15" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <!--When fired, spawns 8 projectiles simultaneously.-->
+      <Projectile characterusable="false" hitscan="true" hitscancount="8" removeonhit="true" spread="15">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,100" scalemultiplier="1,0.5" />
+        <Attack structuredamage="1" targetforce="4" itemdamage="2" severlimbsprobability="0.5">
+          <Affliction identifier="gunshotwound" strength="8" />
+          <Affliction identifier="bleeding" strength="6" />
+          <Affliction identifier="stun" strength="0.1" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <!-- 步枪：修改贴图,伤害倍率1.1倍,添加动画 -->
+    <Item name="" identifier="rifle" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_readytofire" Scale="0.41" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.2" />
+      <PreferredContainer secondary="wreckweaponholder" amount="1" spawnprobability="0.03" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="500" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="3" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="7,14,269,51" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="7,14,269,51" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,893,269,51" depth="0.55" origin="0.5,0.5" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="4,953,269,51" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <Body width="260" height="50" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" msg="ItemMsgPickUpSelect" />
+      <ItemComponent characterusable="true">
+        <!-- define this here, because it won't work in RangedWeapon:
+        the grenade has been fired and is no longer in the container when OnUse executes -->
+        <StatusEffect type="OnUse" target="This">
+          <RequiredItem items="grenade" type="Contained" targetslot="0" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleGrenadeShot1.ogg" type="OnUse" range="1000" selectionmode="Random" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleGrenadeShot2.ogg" type="OnUse" range="1000" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleGrenadeShot3.ogg" type="OnUse" range="1000" />
+        </StatusEffect>
+      </ItemComponent>
+      <RangedWeapon launchimpulse="-10.0" barrelpos="136,6" unskilledspread="2" combatPriority="70" reload="1.25" reloadnoskill="5" reloadskillrequirement="40" drawhudwhenequipped="true" crosshairscale="0.15" weapondamagemodifier="1.1">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,306,256,196" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="Content/Items/Weapons/WEAPON_rifleShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/WEAPON_rifleShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/WEAPON_rifleShot3.ogg" type="OnUse" range="3000" />
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="10,-10">
+          <Explosion range="150.0" force="2.0" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="2.0" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- Cocking sound, delayed by varied seconds. -->
+        <StatusEffect type="OnUse" delay="0.4" target="Character" offset="10,5" forceplaysounds="true">
+          <Conditional skillrequirement="true" weapons="gte 50" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload50-_1.ogg" type="OnUse" range="500" selectionmode="Random" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload50-_2.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.4" target="Character" offset="10,5" comparison="and" forceplaysounds="true">
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional skillrequirement="true" weapons="gte 20" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload20-50_1.ogg" type="OnUse" range="500" selectionmode="Random" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload20-50_2.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="1" target="Character" offset="10,5" forceplaysounds="true">
+          <Conditional skillrequirement="true" weapons="lt 20" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload0-20_1.ogg" type="OnUse" range="500" selectionmode="Random" />
+          <Sound file="Content/Items/Weapons/WEAPON_rifleReload0-20_2.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 上弹动画：修改武器耐久为动画触发条件，由武器操作等级决定动画速度，上弹期间无法互动 -->
+        <!-- 上弹动画：高技能等级 -->
+        <StatusEffect type="OnUse" delay="0.15" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="60" aimangle="4" setvalue="true" allowaccess="false" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="gte 50" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.45" target="This,Character" comparison="and" condition="50" holdpos="22,-24" aimpos="56,6" handle1="-68,5" handle2="20,4" holdangle="65" aimangle="6" setvalue="true" offset="-10,5" checkconditionalalways="true">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Conditional skillrequirement="true" weapons="gte 50" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.75" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="62" aimangle="2" setvalue="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="gte 50" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.9" target="This,Character" comparison="and" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" allowaccess="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="gte 50" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <!-- 上弹动画：中等技能等级 -->
+        <StatusEffect type="OnUse" delay="0.15" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="60" aimangle="4" setvalue="true" allowaccess="false" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional skillrequirement="true" weapons="gte 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="0.5" target="This,Character" comparison="and" condition="50" holdpos="22,-24" aimpos="56,6" handle1="-68,5" handle2="20,4" holdangle="65" aimangle="6" setvalue="true" offset="-10,5" checkconditionalalways="true">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional skillrequirement="true" weapons="gte 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="1.75" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="62" aimangle="2" setvalue="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional skillrequirement="true" weapons="gte 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="1.9" target="This,Character" comparison="and" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" allowaccess="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional skillrequirement="true" weapons="gte 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <!-- 上弹动画：低技能等级 -->
+        <StatusEffect type="OnUse" delay="1.0" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="60" aimangle="4" setvalue="true" allowaccess="false" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="2.0" target="This,Character" comparison="and" condition="50" holdpos="22,-24" aimpos="56,6" handle1="-68,5" handle2="20,4" holdangle="65" aimangle="6" setvalue="true" offset="-10,5" checkconditionalalways="true">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Conditional skillrequirement="true" weapons="lt 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="3.72" target="This,Character" comparison="and" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="62" aimangle="2" setvalue="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" delay="3.92" target="This,Character" comparison="and" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" allowaccess="true" checkconditionalalways="true">
+          <Conditional skillrequirement="true" weapons="lt 20" />
+          <Conditional HasTag="WF_readytofire" />
+        </StatusEffect>
+        <!-- 技能和弹药需求 -->
+        <RequiredItems items="rifleammo,grenade" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="60" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorstyle="bullet" containedstateindicatorslot="1" containedspritedepth="0.56">
+        <Containable items="grenade" hide="false" itempos="69,5">
+          <!-- 装弹动画与音效，放入榴弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" condition="75" holdpos="-10,-32" aimpos="10,-6" handle1="136,4" handle2="20,4" holdangle="24" aimangle="2" setvalue="true" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" />
+          <StatusEffect type="OnInserted" delay="0.4" target="This" condition="75" holdpos="-10,-32" aimpos="20,-6" handle1="128,4" handle2="-5,4" holdangle="24" aimangle="2" setvalue="true" allowaccess="false" />
+          <StatusEffect type="OnInserted" delay="0.8" target="This" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" allowaccess="true" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_readytofire" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light_alt.ogg" range="500" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="3" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="6">
+          <Containable items="rifleammo" hide="true">
+            <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+            <StatusEffect type="OnInserted" delay="0.15" target="This" condition="75" holdpos="23,-24" aimpos="59,6" handle1="-60,-1" handle2="20,4" holdangle="64" aimangle="2" setvalue="true" allowaccess="false" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" />
+            <StatusEffect type="OnInserted" delay="0.35" target="This" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="60" aimangle="4" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="0.6" target="This" condition="50" holdpos="22,-24" aimpos="56,6" handle1="-68,5" handle2="20,4" holdangle="65" aimangle="6" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="1.3" target="This" condition="50" holdpos="22,-24" aimpos="57,6" handle1="-32,10" handle2="20,4" holdangle="65" aimangle="4" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="1.6" target="This" condition="50" holdpos="22,-24" aimpos="57,6" handle1="-32,4" handle2="20,4" holdangle="65" aimangle="3" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="2.25" target="This" condition="50" holdpos="22,-24" aimpos="56,6" handle1="-68,5" handle2="20,4" holdangle="65" aimangle="4" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="2.4" target="This" condition="75" holdpos="22,-24" aimpos="58,6" handle1="-58,5" handle2="20,4" holdangle="62" aimangle="2" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="2.5" target="This" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-58,-2" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" />
+            <StatusEffect type="OnInserted" delay="2.6" target="This" condition="100" holdpos="24,-24" aimpos="60,6" handle1="-65,-6" handle2="20,4" holdangle="68" aimangle="0" setvalue="true" allowaccess="true" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_readytofire" />
+            <!-- 装弹音效 -->
+            <StatusEffect type="OnInserted" target="This" CheckConditionalAlways="true">
+              <Sound file="%ModDir%/Content/Items/Weapons/ANI_rifle_reload.ogg" range="500" />
+            </StatusEffect>
+            <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+            <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          </Containable>
+        </SubContainer>
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="32,0" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="33,2" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="scope" hide="false" itempos="-11,12">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="600" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+          <Containable items="reddot" hide="false" itempos="-14,12" />
+          <Containable items="hybridscope" hide="false" itempos="-15,13">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="60" />
+    </Item>
+    <!-- 步枪子弹：增加命中头部时造成的额外伤害 -->
+    <Item name="" identifier="riflebullet" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,rifleammo,handheldammo,riflemanbonus" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="rifle" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="armcab" minamount="6" maxamount="12" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="6" spawnprobability="0.5" />
+      <PreferredContainer secondary="wreckarmcab,wrecksecarmcab,abandonedarmcab,piratearmcab,abandonedsecarmcab,piratesecarmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <Price baseprice="30" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="4" sold="true" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="12" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="12" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="128,832,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="233,163,23,9" depth="0.55" origin="0.5,0.5" />
+      <Body width="23" height="9" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile launchimpulse="35.0" characterusable="false" hitscan="true" removeonhit="true">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
+        <Attack structuredamage="15" targetforce="12" itemdamage="15" severlimbsprobability="0.5" penetration="0.6">
+          <Affliction identifier="gunshotwound" strength="55" />
+          <Affliction identifier="bleeding" strength="33" />
+          <Affliction identifier="stun" strength="0.6" />
+          <StatusEffect type="OnUse" target="Limb" targetLimbs="Head">
+            <Affliction identifier="gunshotwound" strength="22" />
+            <Affliction identifier="stun" strength="1.2" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="2,2" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <!-- 机关手枪：修改贴图，提高射速，可以使用手枪弹匣，添加动画 -->
+    <Item name="" identifier="machinepistol" category="Weapon" cargocontaineridentifier="metalcrate" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.25" />
+      <PreferredContainer secondary="armcab,weaponholder" />
+      <Price baseprice="200" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="2" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="35" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="200,291,101,64" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="200,291,101,64" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="235,161,101,64" depth="0.55" origin="0.5,0.5" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="235,230,101,81" depth="0.55" origin="0.5,0.406" maxcondition="50" />
+      <Body width="100" height="50" density="25" />
+      <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="70,5" handle1="-17,-5" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="0.142" weapondamagemodifier="0.8" holdtrigger="true" barrelpos="50,20" spread="10" unskilledspread="18" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" DualWieldAccuracyPenalty="10">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,286,256,226" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot3.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot4.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot5.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/Weapons/WEAPON_machinePistolShot6.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This" offset="-20,8">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-10">
+          <Explosion range="150.0" force="1" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!--"Use" contained magazine to spawn projectiles.-->
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="14" disabledeltatime="true">
+          <Conditional spread="lte 8" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="10" unskilledspread="26" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 8" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-8" unskilledspread="-14">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.01秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="2" unskilledspread="6" setvalue="true" delay="0.01" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="smgammo,pistolmagazine" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="50" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <Containable items="smgammo,pistolmagazine" hide="true" itempos="-12,-8" rotation="25">
+          <!-- 装弹动画，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-10" aimpos="42,-4" handle1="-8,-7" holdangle="40" aimangle="-12" condition="75" delay="0.01" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="28,-9" handle1="-17,-5" holdangle="15" aimangle="-14" condition="75" delay="0.3" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.28" delay="0.3" offset="-18,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_pistol_magazine" particleamount="1" anglemin="-110" anglemax="-70" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-12" aimpos="28,-9" handle1="-17,-5" holdangle="-10" aimangle="-17" condition="50" delay="0.7" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="22,0" aimpos="70,-5" handle1="-17,-5" holdangle="5" aimangle="-5" condition="100" delay="1.1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="70,-5" handle1="-17,-5" holdangle="0" aimangle="0" condition="100" maxchargetime="0" delay="1.28" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_machinepistol_reload.ogg" range="500" />
+          </StatusEffect>
+          <!-- 移除弹匣时的动画 -->
+          <StatusEffect type="OnRemoved" target="This" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai,WF_reloading" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="42,-10" aimpos="45,-4" handle1="-8,-7" holdangle="40" aimangle="12" condition="100" delay="0.02" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="28,-12" aimpos="30,-9" handle1="-17,-5" holdangle="15" aimangle="14" condition="50" delay="0.3" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" holdpos="0,0" aimpos="70,5" handle1="-17,-5" holdangle="0" aimangle="0" condition="75" maxchargetime="0" delay="0.6" allowaccess="true" tags="smallautoweapon,smallitem,weapon,gun,gunsmith,provocativetohumanai" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 移除弹匣音效 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.02" checkconditionalalways="true">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_removemagazine_light.ogg" range="500" />
+            <Conditional HasTag="WF_reloading" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="50" />
+    </Item>
+    <!-- 重机枪：修改贴图，品质等级加成射速，添加动画 -->
+    <Item name="" identifier="hmg" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="900" sold="true" minleveldifficulty="65">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" sold="true" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" sold="true" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="75" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="65" />
+        <RequiredItem identifier="physicorium" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+        <RequiredItem identifier="rubber" />
+      </Fabricate>
+      <Deconstruct time="35">
+        <Item identifier="physicorium" amount="2" />
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+        <Item identifier="rubber" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="3,418,260,72" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="3,418,260,72" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="409,3,260,82" depth="0.55" origin="0.5,0.45" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="409,97,260,72" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="409,181,260,74" depth="0.55" origin="0.5,0.5" maxcondition="25" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="3,418,260,72" depth="0.55" origin="0.5,0.5" maxcondition="0" />
+      <Body width="280" height="80" density="30" />
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="45,-20" aimpos="52,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="-20">
+        <Conditional recoilstabilized="lte 0" />
+        <StatusEffect type="Always" target="Character" SpeedMultiplier="0.75" setvalue="true" />
+      </Holdable>
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="HMG Worn" texture="%ModDir%/Content/Items/Weapons/Overrided.png" canbehiddenbyotherwearables="false" rotation="90" sourcerect="3,418,260,72" depth="0.45" limb="Torso" depthlimb="LeftArm" scale="0.5" origin="0.5,0.8" />
+      </Wearable>
+      <RangedWeapon reload="0.1" holdtrigger="true" barrelpos="124,7" spread="6" unskilledspread="50" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.22">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+        <StatusEffect target="This" type="OnUse" forceplaysounds="true" offset="-10,10">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot2.ogg" type="OnUse" range="3000" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot3.ogg" type="OnUse" range="3000" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot4.ogg" type="OnUse" range="3000" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot5.ogg" type="OnUse" range="3000" />
+          <Sound file="Content/Items/JobGear/Security/WEAPON_hmgShot6.ogg" type="OnUse" range="3000" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-10">
+          <Explosion range="180.0" force="2" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="15.0" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 上弹动画 -->
+        <StatusEffect type="OnUse" target="This" condition="50" disabledeltatime="true" setvalue="true" />
+        <StatusEffect type="OnUse" target="This" condition="100" delay="0.04" disabledeltatime="true" setvalue="true">
+          <RequiredItems items="hmgammo" type="Contained" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="4" unskilledspread="28" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="8" unskilledspread="56" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-4" unskilledspread="-28">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.04秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="2" unskilledspread="6" setvalue="true" delay="0.04" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <!-- Can only be used somewhat succesfully from 75+ skill, as then OnFailure turns it into a skill check per shot -->
+        <StatusEffect type="OnFailure" target="Character" disabledeltatime="true" comparison="and">
+          <Conditional skillrequirement="true" weapons="lt 90" />
+          <Conditional recoilstabilized="lte 0" />
+          <Affliction identifier="stun" strength="0.15" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Character" disabledeltatime="true" comparison="and">
+          <Conditional skillrequirement="true" weapons="lt 70" />
+          <Conditional recoilstabilized="lte 0" />
+          <Affliction identifier="stun" strength="0.3" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Character" disabledeltatime="true" comparison="and">
+          <Conditional skillrequirement="true" weapons="lt 50" />
+          <Conditional recoilstabilized="lte 0" />
+          <Affliction identifier="stun" strength="0.75" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <RequiredItems items="hmgammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="90" />
+      </RangedWeapon>
+      <Propulsion force="-30" usablein="both" ApplyToHands="false">
+        <RequiredItems items="hmgammo" type="Contained" />
+      </Propulsion>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <Containable items="hmgammo" hide="false" itempos="-3,-8" containedspritedepth="0.56">
+          <!-- 装弹动画，移除弹匣时添加空舱标签 -->
+          <StatusEffect type="OnRemoved" target="This" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_empty" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，移除弹匣时触发 -->
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-16" aimpos="50,3" handle1="-58,-17.5" handle2="53,-10" holdangle="34" aimangle="11" delay="0.01" condition="25" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-16" aimpos="42,3" handle1="-58,-17.5" handle2="-4,-18" holdangle="28" aimangle="15" delay="0.3" condition="25" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-16" aimpos="42,3" handle1="-58,-17.5" handle2="-4,-28" holdangle="28" aimangle="15" delay="0.7" condition="75" hideitems="true" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="41,-16" aimpos="42,3" handle1="-58,-17.5" handle2="-4,-28" holdangle="28" aimangle="15" delay="0.8" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" holdpos="44,-12" aimpos="42,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="10" aimangle="5" delay="1.1" condition="0" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnRemoved" target="This" delay="0.8" offset="0,-15">
+            <ParticleEmitter particle="WF_casingfirearm_hmg_magazine" particleamount="1" anglemin="-120" anglemax="-60" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          </StatusEffect>
+          <!-- 装弹动画，空舱时触发 -->
+          <StatusEffect type="OnRemoved" target="This" holdpos="45,-20" aimpos="52,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="-20" aimangle="0" delay="1.15" condition="100" allowaccess="true" setvalue="true" disabledeltatime="true" checkconditionalalways="true">
+            <Conditional HasTag="WF_empty" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="44,-12" aimpos="42,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="10" aimangle="5" delay="1.1" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-12" aimpos="40,-10" handle1="-4,-28" handle2="53,-10" holdangle="5" aimangle="3" delay="1.3" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="40,-10" handle1="-4,-28" handle2="53,-10" holdangle="5" aimangle="3" delay="1.7" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="40,-10" handle1="-4,-18" handle2="53,-10" holdangle="8" aimangle="6" delay="1.8" condition="0" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="40,-10" handle1="-4,-35" handle2="53,-10" holdangle="6" aimangle="4" delay="2.2" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="37,-14" aimpos="40,-10" handle1="-4,-30" handle2="53,-10" holdangle="8" aimangle="6" delay="2.3" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="27,-10" aimpos="40,-5" handle1="-8,0" handle2="53,-6" holdangle="16" aimangle="14" delay="2.55" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="27,-10" aimpos="40,-5" handle1="-35,0" handle2="53,-6" holdangle="18" aimangle="16" delay="2.7" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="27,-10" aimpos="40,-5" handle1="-8,0" handle2="53,-6" holdangle="16" aimangle="14" delay="2.9" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="48,-2" handle1="-58,-17.5" handle2="53,-10" holdangle="6" aimangle="5" delay="3.2" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-18" aimpos="52,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="-24" aimangle="0" delay="3.5" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-20" aimpos="52,-5" handle1="-58,-17.5" handle2="53,-10" holdangle="-20" aimangle="0" delay="3.8" condition="100" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，移除弹药时触发 -->
+          <StatusEffect type="OnRemoved" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_hmg_reload_step_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 装弹音效，放入弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_hmg_reload_step_2.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnRemoved" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="29,-2" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="29,-2" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-17,12" />
+          <Containable items="hybridscope" hide="false" itempos="-19,15">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+        <QualityStat stattype="FiringRateMultiplier" value="0.05" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="90" />
+    </Item>
+    <!-- 重机枪弹匣：修改贴图 -->
+    <Item name="" identifier="hmgmagazine" maxstacksize="4" maxstacksizecharacterinventory="1" scale="0.45" category="Weapon" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,hmgammo,handheldammo" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="hmg" minamount="1" maxamount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="330" sold="true" minleveldifficulty="65" displaynonempty="true">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="0" maxavailable="4" />
+        <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="0" maxavailable="4" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="magnesium" />
+        <RequiredItem identifier="titaniumaluminiumalloy" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" displayname="recycleitem" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="magnesium" />
+        <RequiredItem identifier="titaniumaluminiumalloy" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
+        <RequiredItem identifier="hmgmagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="steel" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="333,445,25,42" depth="0.55" origin="0.5,0.5" />
+      <Body width="29" height="37" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="hmground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="hmground" />
+        <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+          <SpawnItem identifiers="hmground" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    </Item>
+    <!-- 榴弹发射器：修改贴图，添加动画，游戏中后期解锁购买 -->
+    <Item name="" identifier="grenadelauncher" category="Weapon" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon" Scale="0.4" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.2" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" spawnprobability="0.1" />
+      <PreferredContainer secondary="armcab" />
+      <Price baseprice="1000" sold="false" minleveldifficulty="60">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="1" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="699,462,212,81" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="699,462,212,81" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="699,556,212,81" depth="0.55" origin="0.5,0.5" maxcondition="51" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="679,556,232,81" depth="0.55" origin="0.5,0.5" maxcondition="41" />
+      <Body width="170" height="40" density="25" />
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="42,-20" aimpos="34,-10" handle1="-50,-15" handle2="26,-20" holdangle="-25" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Grenade Launcher Worn" texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" canbehiddenbyotherwearables="false" sourcerect="699,462,212,81" rotation="90" depth="0.6" limb="Torso" depthlimb="LeftArm" scale="0.4" origin="0.5,0.8" />
+      </Wearable>
+      <RangedWeapon barrelpos="80,10" reload="0.8" spread="1" unskilledspread="10" combatPriority="75" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,516,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,516,256,256" />
+        <ParticleEmitter particle="muzzleflashchaingun" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+        <ParticleEmitter particle="explosionsmoke" particleamount="1" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+        <Sound file="Content/Items/Weapons/GrenadeLauncherShot1.ogg" type="OnUse" range="1000" />
+        <Sound file="Content/Items/Weapons/GrenadeLauncherShot2.ogg" type="OnUse" range="1000" />
+        <Sound file="Content/Items/Weapons/GrenadeLauncherShot3.ogg" type="OnUse" range="1000" />
+        <StatusEffect type="OnUse" target="This">
+          <Explosion range="150.0" force="2" shockwave="false" smoke="false" flames="false" flash="true" sparks="false" underwaterbubble="false" applyfireeffects="false" camerashake="6.0" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <RequiredItems items="grenade" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="60" />
+      </RangedWeapon>
+      <!--Holds six grenades at a time-->
+      <ItemContainer capacity="6" maxstacksize="1" hideitems="false" ShowTotalStackCapacityInContainedStateIndicator="true" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="3" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="4" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="5" texture="Content/UI/StatusMonitorUI.png" sourcerect="448,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="6" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <Containable items="grenade" hide="true">
+          <!-- 装弹动画与音效，放入子弹时触发，添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-15" aimpos="24,-10" handle1="-50,-15" handle2="0,28" holdangle="20" aimangle="12" condition="100" delay="0.01" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-15" aimpos="24,-10" handle1="0,-12" handle2="0,28" holdangle="-18" aimangle="-10" condition="100" delay="0.3" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-15" aimpos="24,-10" handle1="0,-30" handle2="0,28" holdangle="-18" aimangle="-10" condition="50" delay="0.75" setvalue="true" disabledeltatime="true" />
+          <!-- 循环动画开始 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="-24,-18" handle2="0,22" holdangle="-18" aimangle="-10" condition="50" delay="0.9" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="0,-18" handle2="0,28" holdangle="-20" aimangle="-12" condition="40" delay="1.1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="-24,-18" handle2="0,22" holdangle="-18" aimangle="-10" condition="50" delay="1.5" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="0,-18" handle2="0,28" holdangle="-20" aimangle="-12" condition="40" delay="1.7" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="-24,-18" handle2="0,22" holdangle="-18" aimangle="-10" condition="50" delay="2.1" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="0,-18" handle2="0,28" holdangle="-20" aimangle="-12" condition="40" delay="2.3" setvalue="true" disabledeltatime="true" />
+          <!-- 循环动画结束 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="0,-30" handle2="0,28" holdangle="-18" aimangle="-10" condition="50" delay="2.5" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="0,-12" handle2="0,28" holdangle="-18" aimangle="-10" condition="100" delay="2.9" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="-50,-15" handle2="0,28" holdangle="10" aimangle="5" condition="100" delay="3.2" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="32,-10" aimpos="24,-10" handle1="-50,-15" handle2="26,-20" holdangle="-10" aimangle="0" condition="100" delay="3.4" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="42,-20" aimpos="34,-10" handle1="-50,-15" handle2="26,-20" holdangle="-25" aimangle="0" condition="100" delay="3.5" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,provocativetohumanai,mountableweapon,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_grenadelauncher_reload.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="22,8" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="22,8" setactive="true" />
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="500" soundrange="500" fadeouttime="3" />
+      <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.1" />
+        <QualityStat stattype="ExplosionDamage" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <SkillRequirementHint identifier="weapons" level="60" />
+    </Item>
+    <!-- 潜水刀：修改贴图 -->
+    <Item name="" identifier="divingknife" category="Weapon" Tags="smallitem,weapon,gunsmith,mountableweapon,sharptool" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.25" />
+      <PreferredContainer secondary="abandonedstoragecab,piratestoragecab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="beaconsupplycab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <Price baseprice="29">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" minavailable="6" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="8" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="15" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="2" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="15" />
+        <Price storeidentifier="merchanthusk" minavailable="0" maxavailable="2" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="iron" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="iron" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="301,76,32,32" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="304,33,76,17" depth="0.55" origin="0.5,0.5" />
+      <Body width="80" height="20" density="25" />
+      <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="30" reload="0.75" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
+        <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="3" structuredamage="2" structuresoundtype="StructureSlash">
+          <Affliction identifier="lacerations" strength="10" />
+          <Affliction identifier="bleeding" strength="10" />
+          <Affliction identifier="stun" strength="0.2" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
+            <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+    </Item>
+    <!-- 木卫二之交：修改贴图 -->
+    <Item name="" identifier="divingknifeunique" category="Weapon" Tags="smallitem,weapon,mountableweapon,sharptool" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true" RequireAimToUse="True">
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" spawnprobability="0.05" />
+      <Price baseprice="770" sold="false" canbespecial="false" />
+      <Deconstruct time="10">
+        <Item identifier="iron" />
+        <Item identifier="morbusine" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="340,76,32,32" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_new.png" sourcerect="304,0,76,17" depth="0.55" origin="0.5,0.5" />
+      <Body width="80" height="20" density="25" />
+      <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-10,0" holdangle="30" reload="0.75" range="50" combatPriority="30" msg="ItemMsgPickUpSelect">
+        <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="3" structuredamage="2" structuresoundtype="StructureSlash">
+          <Affliction identifier="lacerations" strength="10" />
+          <Affliction identifier="bleeding" strength="10" />
+          <Affliction identifier="stun" strength="0.2" />
+          <Affliction identifier="morbusinepoisoning" strength="4" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
+            <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+    </Item>
+    <!-- 异星手枪：添加动画 -->
+    <Item name="" identifier="alienpistol" category="Weapon,Alien" tags="smallitem,weapon,alien,mountableweapon,pistolitem" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <Price baseprice="500" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="0.9" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" multiplier="1.3" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.2" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <PreferredContainer primary="ruinstorage,ruinstoragesmall" amount="1" spawnprobability="0.02" />
+      <PreferredContainer primary="ruinstoragelarge" amount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="ruintreasure" amount="1" spawnprobability="0.3" />
+      <PreferredContainer secondary="researchcontainer" amount="1" spawnprobability="0.01" />
+      <Deconstruct time="20">
+        <Item identifier="dementonite" />
+        <Item identifier="fulgurium" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="237,823,106,56" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="237,823,106,56" depth="0.55" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="237,752,106,65" depth="0.55" origin="0.5,0.45" maxcondition="50" />
+      <Body radius="15" width="15" density="25" />
+      <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="90,10" handle1="0,-10" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This" Condition="100" setvalue="true" delay="1" />
+      </Holdable>
+      <RangedWeapon reload="0.5" barrelpos="40,0" spread="0" unskilledspread="2" drawhudwhenequipped="true" crosshairscale="0.2" combatpriority="60">
+        <sound file="Content/Items/Alien/AlienTurret1.ogg" type="OnUse" range="1000.0" />
+        <sound file="Content/Items/Alien/AlienTurret2.ogg" type="OnUse" range="1000.0" />
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="muzzleflashnucleargun" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemultiplier="0.5,0.5" colormultiplier="255,200,200,200" scalemin="0.0" scalemax="0.6" />
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-8">
+          <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="3.0">
+            <Affliction identifier="psychosis" strength="2.5" />
+          </Explosion>
+        </StatusEffect>
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <RequiredItems identifier="alienpowercell" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="40" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false">
+        <Containable items="alienpowercell" itempos="12,3" rotation="50" hide="false">
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" tags="smallitem,weapon,alien,mountableweapon,pistolitem,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，移除弹匣时触发 -->
+          <!-- V1.7.1.0 注：通过快捷键向未装有弹匣的武器中装填复数弹匣时，由OnRemoved所触发的动画会再次播放 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="38,3" aimpos="40,12" handle1="0,-10" holdangle="20" aimangle="20" delay="0.01" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="27,-3" aimpos="28,0" handle1="0,-10" holdangle="-10" aimangle="-10" delay="0.3" condition="50" hideitems="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出电池 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.2" delay="0.3">
+            <ParticleEmitter particle="WF_casingfirearm_alienpowercell" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" checkconditionalalways="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="30,-3" aimpos="28,0" handle1="0,-10" holdangle="-10" aimangle="-10" delay="0.3" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="30,-3" aimpos="28,0" handle1="0,-10" holdangle="-5" aimangle="-5" delay="0.65" condition="50" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="30,-3" aimpos="36,2" handle1="0,-10" holdangle="2" aimangle="2" delay="0.95" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="80,8" handle1="0,-10" holdangle="0" aimangle="0" delay="1.1" condition="100" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="90,10" handle1="0,-10" holdangle="0" aimangle="0" delay="1.2" condition="100" maxchargetime="0" tags="smallitem,weapon,alien,mountableweapon,pistolitem" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.3">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_nucleargun_reload_step_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.65">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_nucleargun_reload_step_2.ogg" range="500" volume="1" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+      </ItemContainer>
+      <SkillRequirementHint identifier="weapons" level="40" />
+    </Item>
+    <!-- 远古兵器：添加动画 -->
+    <Item name="" identifier="ancientweapon" category="Alien,Weapon" Tags="alien,mediumitem,weapon,mountableweapon,cuttingequipment" scale="0.4" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <Price baseprice="1000" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="0.9" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" />
+        <Price storeidentifier="merchantresearch" multiplier="1.3" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.2" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <PreferredContainer primary="ruinstoragelarge" amount="1" spawnprobability="0.025" />
+      <PreferredContainer primary="ruintreasure" amount="1" spawnprobability="0.025" />
+      <Deconstruct time="20">
+        <Item identifier="dementonite" />
+        <Item identifier="dementonite" />
+        <Item identifier="fulgurium" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" depth="0.55" sourcerect="564,911,188,97" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" depth="0.55" sourcerect="564,911,188,97" origin="0.5,0.4" scale="0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" depth="0.55" sourcerect="786,911,188,112" origin="0.5,0.32" scale="0.5" maxcondition="50" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" depth="0.55" sourcerect="564,911,188,97" origin="0.5,0.4" scale="0.5" maxcondition="0" />
+      <Body radius="30" width="90" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" aimpos="100,0" handle1="0,11" handle2="2,11" msg="ItemMsgPickUpSelect" />
+      <RepairTool structurefixamount="-0.75" range="400" barrelpos="75,0" targetforce="50" repairmultiple="true" repairthroughwalls="true" maxoverlappingwalldist="0.0" repairthroughholes="true" levelwallfixamount="-20.0" combatpriority="90" firedamage="30">
+        <Fixable identifier="structure" />
+        <RequiredItems items="alienpowercell" type="Contained" />
+        <StatusEffect type="OnUse" targettype="UseTarget" targets="weldable" Stuck="-80.0" />
+        <StatusEffect type="OnUse" targettype="Contained" Condition="-5.0" />
+        <!--Damage doors-->
+        <StatusEffect type="OnUse" targettype="UseTarget" Condition="-24.0" />
+        <ParticleEmitter particle="largeplasma" particlespersecond="50" copyentityangle="true" />
+        <ParticleEmitterHitStructure particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+        <ParticleEmitterHitStructure particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="20" />
+        <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmaspark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+        <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="plasmasmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+        <ParticleEmitterHitItem identifiers="ore" particle="iceshards" particlespersecond="5" anglemin="-40" anglemax="40" velocitymin="10" velocitymax="300" scalemin="0.5" scalemax="1.0" />
+        <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+        <StatusEffect type="OnUse" target="Limb" severlimbsprobability="0.025">
+          <Conditional IsHuman="false" />
+          <Affliction identifier="stun" amount="5" probability="0.25" />
+          <Affliction identifier="burn" amount="50" penetration="0.5" />
+        </StatusEffect>
+        <!-- Nerfed effect on humans -->
+        <StatusEffect type="OnUse" target="Limb" severlimbsprobability="0.025">
+          <Conditional IsHuman="true" />
+          <Affliction identifier="burn" amount="40" penetration="0.5" />
+          <Affliction identifier="stun" amount="4" probability="0.15" />
+        </StatusEffect>
+        <sound file="Content/Items/Alien/alienweapon.ogg" type="OnUse" range="1000.0" loop="true" />
+        <LightComponent AllowInGameEditing="false" LightColor="0.8,0.7,1.0,1.0" Flicker="0.5" range="500">
+          <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+        </LightComponent>
+        <!-- 装弹动画：期间无法互动 -->
+        <StatusEffect type="Always" target="This" setvalue="true" disabledeltatime="true" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+      </RepairTool>
+      <Propulsion force="-40" usablein="both">
+        <RequiredItems items="alienpowercell" type="Contained" />
+      </Propulsion>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="9,0">
+        <Containable items="alienpowercell" itempos="10,-11" rotation="-60" hide="false">
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" tags="alien,mediumitem,weapon,mountableweapon,cuttingequipment,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，移除弹匣时触发 -->
+          <!-- V1.7.1.0 注：通过快捷键向未装有弹匣的武器中装填复数弹匣时，由OnRemoved所触发的动画会再次播放 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-10" aimpos="40,25" handle1="0,11" handle2="2,11" holdangle="30" aimangle="30" delay="0.01" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="40,-10" aimpos="40,10" handle1="0,11" handle2="2,11" holdangle="30" aimangle="30" delay="0.4" condition="50" hideitems="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出电池 -->
+          <StatusEffect type="OnContaining" target="This" interval="1.8" delay="0.4" offset="1,-6">
+            <ParticleEmitter particle="WF_casingfirearm_alienpowercell" particleamount="1" anglemin="-160" anglemax="-100" velocitymin="50" velocitymax="250" CopyEntityAngle="true" checkconditionalalways="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="40,20" aimpos="40,20" handle1="0,11" handle2="-40,-30" holdangle="-20" aimangle="-20" delay="0.45" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="30,20" aimpos="30,20" handle1="0,11" handle2="40,-24" holdangle="-20" aimangle="-20" delay="0.8" condition="50" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="30,10" aimpos="30,10" handle1="0,11" handle2="2,11" holdangle="-10" aimangle="-10" delay="1.1" condition="0" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="20,-25" aimpos="40,25" handle1="0,11" handle2="2,11" holdangle="30" aimangle="30" delay="1.4" condition="0" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,-35" aimpos="80,0" handle1="0,11" handle2="2,11" holdangle="15" aimangle="0" delay="1.7" condition="0" hideitems="false" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="0,0" aimpos="100,0" handle1="0,11" handle2="2,11" holdangle="0" aimangle="0" delay="1.8" condition="100" maxchargetime="0" tags="alien,mediumitem,weapon,mountableweapon,cuttingequipment" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.3">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_nucleargun_reload_step_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.8">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_nucleargun_reload_step_2.ogg" range="500" volume="1" />
+          </StatusEffect>
+          <!-- 为规避联机时装弹失败问题而单独设置的SE（JYFM） -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+      </ItemContainer>
+    </Item>
+  </Items>
+</override>

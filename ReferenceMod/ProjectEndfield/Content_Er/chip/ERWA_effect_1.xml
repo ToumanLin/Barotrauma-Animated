@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_effect_vanguard.xml
+++	Version     :	0.1 (alpha)
+++	Time Create :	TK5202312211229
+++	Time Modify :	TK5202312212105
+++	Author      :	Erthex
+-->
+<Afflictions>
+  <!--先锋芯片-->
+  <Affliction name="先锋芯片:I" description="I级先锋芯片产生的效果." identifier="ERWA_effect_vanguard_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ERWA_effect_vanguard_icon.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="MovementSpeed" value="0.2" />
+      <StatValue stattype="RepairSpeed" value="0.2" />
+      <StatValue stattype="RepairToolStructureRepairMultiplier" value="0.2" />
+      <StatValue stattype="SwimmingSpeed" value="0.2" />
+    </Effect>
+    <Description text="先锋芯片产生的效果: 移动速度 +20%." target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--近卫芯片-->
+  <Affliction name="近卫芯片:I" description="I级近卫芯片产生的效果." identifier="ERWA_effect_shadow_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/jw4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="MeleeAttackSpeed" value="0.15" />
+      <StatValue stattype="MeleeAttackMultiplier" value="0.4" />
+      <StatusEffect target="Character" type="OnDamaged" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" comparison="and">
+        <requiredaffliction type="damage,bleeding,burn" minstrength="0.5" />
+        <Conditional shadow="lte 0" />
+        <Affliction identifier="shadow" strength="10" probability="0.15" />
+      </StatusEffect>
+    </Effect>
+    <Description text="近卫芯片产生的效果: 近战伤害+40%，近战攻击速度 +15%；受到伤害后：15%概率遁形1秒 遁形过程中免疫近战攻击" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--狙击芯片-->
+  <Affliction name="狙击芯片:I" description="I级狙击芯片产生的效果." identifier="ERWA_effect_deatheye_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/jj4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="MeleeAttackSpeed" value="-0.15" />
+      <StatValue stattype="MeleeAttackMultiplier" value="-0.3" />
+      <StatValue stattype="AttackMultiplier" value="0.3" />
+      <StatValue stattype="RangedSpreadReduction" value="0.7" />
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="500" interval="0.3" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Conditional ishuman="true" />
+        <Affliction identifier="locked_human" strength="10" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="500" interval="0.3" setvalue="true" multiplyafflictionsbymaxvitality="true">
+        <Conditional ishuman="false" />
+        <Affliction identifier="locked_monster" strength="10" />
+      </StatusEffect>
+    </Effect>
+    <Description text="狙击芯片产生的效果: 近战攻击速度降低15%，除近战外所有伤害加成 +30%，并为 5米 内的敌人施加“鹰眼标记”，降低20%非人类生物的伤害抗性" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--重装芯片-->
+  <Affliction name="重装芯片:I" description="I级重装芯片产生的效果." identifier="ERWA_effect_titan_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/zz4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0" minresistance="0.20" maxresistance="0.20" resistancefor="damage,burn,bleeding">
+      <StatusEffect target="Character" type="OnActive" interval="1" disabledeltatime="true">
+        <reduceAffliction type="damage" amount="0.3" />
+        <ReduceAffliction identifier="bloodloss" amount="0.3" />
+        <reduceAffliction type="burn" amount="0.3" />
+      </StatusEffect>
+    </Effect>
+    <Description text="重装芯片产生的效果: 受到的物理伤害、烧伤、流血 降低20%，启用自然生命恢复" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--辅助芯片-->
+  <Affliction name="辅助芯片:I" description="I级辅助芯片产生的效果." identifier="ERWA_effect_watcher_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/fz4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0">
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="600" interval="0.3" duration="0.3" multiplyafflictionsbymaxvitality="true">
+        <Conditional ishuman="true" />
+        <Affliction identifier="watcher_1" strength="30" />
+      </StatusEffect>
+    </Effect>
+    <Description text="辅助芯片产生的效果: 为6米范围内的人类单位提供10点所有技能加成，20%维修速度加成，以及50%的BUFF获取效率" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--特种芯片-->
+  <Affliction name="特种芯片:I" description="I级特种芯片产生的效果." identifier="ERWA_effect_cannon_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/tz4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0">
+      <StatValue stattype="AttackMultiplier" value="0.15" />
+      <StatusEffect type="OnActive" target="Character" comparison="and" multiplyafflictionsbymaxvitality="true">
+        <Conditional recoilstabilized="gte 0.01" />
+        <Affliction identifier="cannon_1" strength="30" />
+      </StatusEffect>
+    </Effect>
+    <Description text="特种芯片产生的效果: 造成的所有伤害提升15%；当操作外骨骼时：移动速度增加15%，造成的所有伤害进一步提升20%(可叠加)" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+  <!--术士芯片-->
+  <Affliction name="术士芯片:I" description="I级术士芯片产生的效果." identifier="ERWA_effect_witcher_1" type="ERWA_effect" isbuff="true" hideiconafterdelay="true" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showbarinhealthmenu="false" showiconthreshold="0.0" showicontoothersthreshold="infinity" showinhealthscannerthreshold="infinity" iconcolors="0,255,127">
+    <Icon texture="%ModDir%/Content_Er/chip/ss4.png" sourcerect="0,0,119,119" origin="0,0" />
+    <Effect minstrength="0.0" maxstrength="100" strengthchange="0" minresistance="0.25" maxresistance="0.25" resistancefor="poison">
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="1500" interval="0.3" duration="0.3" multiplyafflictionsbymaxvitality="true">
+        <Conditional ishuman="true" />
+        <Affliction identifier="witcher_1" strength="30" />
+      </StatusEffect>
+    </Effect>
+    <Description text="术士芯片产生的效果: 为15米范围内，包括自己在内的所有人类单位提供制作品级加成，以及50%的技能获取速率；自身获得25%的毒剂抗性" target="Any" minstrength="0.0" maxstrength="100" />
+  </Affliction>
+</Afflictions>

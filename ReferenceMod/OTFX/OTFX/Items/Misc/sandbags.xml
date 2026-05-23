@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_sandbagbunker" category="Misc" subcategory="otfx" tags="mediumitem" description="" texturescale="0.5,0.5" scale="0.5" pickdistance="150" grabwhenselected="true" health="750" damagedbyexplosions="true" explosiondamagemultiplier="0.5" damagedbyprojectiles="true" damagedbyrepairtools="true" damagedbymeleeweapons="true" canflipx="false" impactsoundtag="otfx_sandbagbunkerimpact">
+    <Sprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="0,0,322,167" depth="0.49" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="0,192,322,167" depth="0.49" origin="0.5,0.5" maxcondition="75" fadein="true" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="384,0,322,167" depth="0.49" origin="0.5,0.5" maxcondition="50" fadein="true" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="384,192,322,167" depth="0.49" origin="0.5,0.5" maxcondition="25" fadein="true" />
+    <Body width="293" height="150" density="25" />
+    <ItemContainer canbeselected="true" selectkey="Select" capacity="1" maxstacksize="1" uilabel="entityname.otfx_sandbagsmaterial">
+      <GuiFrame relativesize="0.2,0.2" anchor="Center" relativeoffset="0.0,-0.27" style="ItemUI" />
+      <Containable items="otfx_sandbagsmaterial" />
+      <StatusEffect type="OnDamaged" target="This" forceplaysounds="true">
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemin="-60" distancemax="60" particleamount="3" velocitymin="200" velocitymax="300" scalemin="0.7" scalemax="1.2" colormultiplier="198,154,148" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor1.ogg" range="800" volume="0.65" selectionmode="Random" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor2.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor3.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor4.ogg" range="800" volume="0.65" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemin="-40" distancemax="40" particleamount="60" velocitymin="200" velocitymax="300" scalemin="0.7" scalemax="1.2" colormultiplier="198,154,148" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/ArmorBreak1.ogg" range="1000" volume="0.65" selectionmode="Random" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/ArmorBreak2.ogg" range="1000" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/ArmorBreak3.ogg" range="1000" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/ArmorBreak4.ogg" range="1000" volume="0.65" />
+        <DropContainedItems />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This">
+        <SpawnItem identifier="otfx_sandbagsmaterial" count="1" spawnposition="ThisInventory" spawnifinventoryfull="false" condition="0.0" />
+      </StatusEffect>
+    </ItemContainer>
+    <CustomInterface canbeselected="true" selectkey="Select">
+      <GuiFrame relativesize="0.1,0.12" anchor="Center" relativeoffset="-0.055,-0.1" style="ItemUI" />
+      <Button text="label.otfx_sandbagbunkerconstruct">
+        <StatusEffect type="OnUse" target="This" duration="0.5" stackable="false" tags="constructing" comparison="And">
+          <Conditional hasstatustag="! deconstructing" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <CustomInterface canbeselected="true" selectkey="Select">
+      <GuiFrame relativesize="0.1,0.12" anchor="Center" relativeoffset="0.055,-0.1" style="ItemUI" />
+      <Button text="label.otfx_sandbagbunkerdeconstruct">
+        <StatusEffect type="OnUse" target="This" duration="0.5" stackable="false" tags="deconstructing" comparison="And">
+          <Conditional hasstatustag="! constructing" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <ItemComponent>
+      <IsActive conditionpercentagerelativetodefaultmaxcondition="gt 50.0" />
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="80" interval="0.1" setvalue="true">
+        <Affliction identifier="otfx_sandbagbunkershooting" amount="100" />
+      </StatusEffect>
+    </ItemComponent>
+    <ItemComponent>
+      <IsActive isfullcondition="false" />
+      <IsActive targetitemcomponent="ItemContainer" containednonbrokenitemcount="gt 0" />
+      <IsActive hasstatustag="constructing" />
+      <StatusEffect type="OnActive" target="This" forceplaysounds="true">
+        <ParticleEmitter particle="otfx_construct" particleamount="1" />
+        <Sound file="Content/Items/Door/DockingPort1.ogg" range="500" volume="0.9" frequency="1.5" loop="false" />
+        <Conditional hasstatustag="! sfxconstructcooldown" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" delay="1.2" stackable="false" tags="sfxconstructcooldown" />
+      <StatusEffect type="OnActive" target="This" condition="+25.0" />
+      <StatusEffect type="OnActive" target="Contained" condition="-25.0" />
+    </ItemComponent>
+    <ItemComponent>
+      <IsActive hasstatustag="deconstructing" />
+      <StatusEffect type="OnActive" target="This" forceplaysounds="true">
+        <ParticleEmitter particle="otfx_construct" particleamount="1" colormultiplier="1.0,0.0,0.0,1.0" />
+        <Sound file="Content/Items/Door/DockingPort2.ogg" range="500" volume="0.9" frequency="1.5" loop="false" />
+        <Conditional hasstatustag="! sfxdeconstructcooldown" />
+      </StatusEffect>
+      <!-- Play effects when the sandbags cannot be recycled -->
+      <StatusEffect type="OnActive" target="This" forceplaysounds="true">
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemin="-60" distancemax="60" particleamount="30" velocitymin="200" velocitymax="300" scalemin="0.7" scalemax="1.2" colormultiplier="198,154,148" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor1.ogg" range="800" volume="0.65" selectionmode="Random" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor2.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor3.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor4.ogg" range="800" volume="0.65" />
+        <Conditional hasstatustag="! sfxdeconstructcooldown" />
+        <RequiredItems items="otfx_sandbagsmaterial" type="Contained" requireempty="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="And" forceplaysounds="true">
+        <ParticleEmitter particle="shrapnel" anglemin="0" anglemax="360" distancemin="-60" distancemax="60" particleamount="30" velocitymin="200" velocitymax="300" scalemin="0.7" scalemax="1.2" colormultiplier="198,154,148" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor1.ogg" range="800" volume="0.65" selectionmode="Random" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor2.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor3.ogg" range="800" volume="0.65" />
+        <Sound type="OnUse" file="Content/Sounds/Damage/HitArmor4.ogg" range="800" volume="0.65" />
+        <Conditional targetcontaineditem="true" isfullcondition="true" />
+        <Conditional hasstatustag="! sfxdeconstructcooldown" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" delay="1.2" stackable="false" tags="sfxdeconstructcooldown" />
+      <StatusEffect type="OnActive" target="Contained" condition="+50.0" />
+      <StatusEffect type="OnActive" target="This" condition="-50.0" />
+    </ItemComponent>
+  </Item>
+  <Item name="" identifier="otfx_sandbagsmaterial" category="Misc" subcategory="otfx" tags="smallitem" maxstacksize="1" scale="0.5" health="300" canflipx="false" impactsoundtag="impact_soft">
+    <Fabricate suitablefabricators="fabricator" requiredtime="12">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="quartz" amount="3" />
+      <RequiredItem identifier="organicfiber" amount="2" />
+    </Fabricate>
+    <Deconstruct time="5">
+      <Item identifier="organicfiber" />
+      <Item identifier="silicon" amount="3" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="0,384,281,77" depth="0.79" origin="0.5,0.5" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="320,384,281,77" depth="0.79" origin="0.5,0.5" maxcondition="66.66667" fadein="true" />
+    <BrokenSprite texture="%ModDir%/OTFX/Items/Misc/Sandbags.png" sourcerect="640,384,281,77" depth="0.79" origin="0.5,0.5" maxcondition="33.33333" fadein="true" />
+    <Body width="260" height="70" density="25" />
+    <Holdable canbecombined="true" removeoncombined="false" slots="RightHand,LeftHand" holdpos="0,-30" handle1="0,-30" aimable="false" msg="ItemMsgPickUpSelect">
+      <StatValue stattype="MovementSpeed" value="-0.1" />
+    </Holdable>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.12,0.12" anchor="BottomRight" relativeoffset="0.01,0.15" style="ItemUI" />
+      <Button text="label.setupsandbagbunker">
+        <StatusEffect type="OnUse" target="This">
+          <Sound file="Content/Items/Door/DockingPort1.ogg" range="500" frequency="2.0" />
+          <SpawnItem identifier="otfx_sandbagbunker" count="1" spawnposition="Target" rotationtype="Limb" condition="0.4" />
+          <Remove />
+          <Conditional isfullcondition="true" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+  </Item>
+</Items>

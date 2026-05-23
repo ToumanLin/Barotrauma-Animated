@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!--修改贴图-->
+    <Item name="" identifier="headset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="crewcab" secondary="divingcab" />
+      <Price baseprice="105">
+        <Price storeidentifier="merchantoutpost" minavailable="3" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="10" />
+        <Price storeidentifier="merchantresearch" minavailable="4" />
+        <Price storeidentifier="merchantmilitary" minavailable="6" />
+        <Price storeidentifier="merchantmine" minavailable="6" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="16,336,50,50" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" amount="2" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <Upgrade gameversion="0.18.0.0">
+        <WifiComponent>
+          <RequiredItems items="" />
+        </WifiComponent>
+      </Upgrade>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.8" hideotherwearables="false" sourcerect="16,336,50,50" origin="0.8,0.72" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="headset_alt" nameidentifier="headset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="divingcab" />
+      <Price baseprice="105">
+        <Price storeidentifier="merchantoutpost" minavailable="3" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="10" />
+        <Price storeidentifier="merchantresearch" minavailable="4" />
+        <Price storeidentifier="merchantmilitary" minavailable="6" />
+        <Price storeidentifier="merchantmine" minavailable="6" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/Jobgear/headgears.png" sourcerect="33,435,38,30" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="33,435,38,30" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" amount="2" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <WifiComponent range="35000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <StatusEffect type="OnActive" targettype="This">
+          <Conditional JamTimer="gt 0" targetitemcomponent="WifiComponent" />
+          <sound file="Content/Sounds/RadioStatic.ogg" range="500.0" frequencymultiplier="0.7" loop="true" volume="0.5" />
+        </StatusEffect>
+      </WifiComponent>
+      <Upgrade gameversion="0.18.0.0">
+        <WifiComponent>
+          <RequiredItems items="" />
+        </WifiComponent>
+      </Upgrade>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" depth="0.7" inheritscale="true" ignorelimbscale="true" scale="0.8" hideotherwearables="false" sourcerect="33,435,38,30" origin="0.55,0.3" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

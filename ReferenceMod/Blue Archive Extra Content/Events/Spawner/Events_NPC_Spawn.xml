@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventSprites></EventSprites>
+  <EventPrefabs>
+    <ScriptedEvent identifier="spawnevent_ibuki">
+      <TagAction criteria="player" tag="player" />
+      <!--<TagAction criteria="hullname:room1" tag="room1" submarinetype="Player" />
+		<TagAction criteria="hullname:room2" tag="room2" submarinetype="Player" />
+		<TagAction criteria="hullname:room3" tag="room3" submarinetype="Player" />
+		<TagAction criteria="hullname:roomtop" tag="roomtop" submarinetype="Player" />-->
+      <SpawnAction speciesname="Ibuki" npcsetidentifier="set_gehenna" npcidentifier="npc_ba_ibuki" targettag="ibuki" spawnpointtag="triggerer_player" />
+      <NPCChangeTeamAction npctag="Ibuki" teamid="Team1" addtocrew="true" />
+      <Label name="continuationconvo" />
+      <TriggerAction target1tag="ibuki" target2tag="player" applytotarget2="talk_player" radius="1000" waitforinteraction="true" disableiftargetincapacitated="true" SelectOnTrigger="false" />
+      <ConversationAction targettag="player" text="follow me" eventsprite="portrait_hoshino_expression9">
+        <Option text="follow me">
+          <ConversationAction targettag="talk_player" text="okay" />
+          <NPCFollowAction npctag="ibuki" targettag="talk_player" follow="True" />
+          <WaitAction time="0.05" />
+          <Goto name="continuationconvo" />
+        </Option>
+        <Option text="wait here">
+          <ConversationAction targettag="talk_player" text="okay" />
+          <NPCFollowAction npctag="ibuki" targettag="talk_player" follow="false" />
+          <NPCWaitAction npctag="ibuki" wait="true" />
+          <WaitAction time="0.05" />
+          <Goto name="continuationconvo" />
+        </Option>
+        <Option text="you are free to go">
+          <ConversationAction targettag="talk_player" text="okay" />
+          <NPCFollowAction npctag="ibuki" targettag="talk_player" follow="False" />
+          <NPCWaitAction npctag="ibuki" targettag="talk_player" wait="false" />
+          <WaitAction time="0.05" />
+          <Goto name="continuationconvo" />
+        </Option>
+      </ConversationAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

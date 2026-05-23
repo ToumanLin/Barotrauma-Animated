@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="" identifier="heavy123" description="" type="weight" limbspecific="false" duration="0.1" indicatorlimb="Torso" affectmachines="true" showiconthreshold="0" showinhealthscannerthreshold="10000">
+    <Effect>
+      <statvalue stattype="WalkingSpeed" value="-0.99" />
+      <statvalue stattype="SwimmingSpeed" value="-0.99" />
+    </Effect>
+    <icon texture="%ModDir%/textures/w.png" sourcerect="0,0,120,120" color="255,255,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="" identifier="heavy1234" description="" type="weight" limbspecific="false" indicatorlimb="Torso" duration="0.1" affectmachines="true" showiconthreshold="0" showinhealthscannerthreshold="10000">
+    <Effect>
+      <StatusEffect target="Character">
+        <TriggerAnimation Type="Walk" FileName="HumanWalkExosuit" priority="7" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRunExosuit" priority="7" ExpectedSpecies="Human" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/textures/w.png" sourcerect="0,0,120,120" color="255,255,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Malfunction" identifier="Malfunction" description="" type="weight" limbspecific="false" duration="0.1" indicatorlimb="Torso" affectmachines="true" showiconthreshold="0" showinhealthscannerthreshold="0">
+    <Effect>
+      <statvalue stattype="WalkingSpeed" value="-1.2" />
+      <statvalue stattype="SwimmingSpeed" value="-1.2" />
+    </Effect>
+    <icon texture="%ModDir%/textures/icons.png" sourcerect="307,28,130,130" color="255,255,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="" identifier="S.A.F.S" description="S.A.F.S Recipe Unlocked" type="talentbuff" isbuff="true" affectmachines="true" indicatorlimb="Head" limbspecific="false" maxstrength="3" showiconthreshold="3" showinhealthscannerthreshold="0">
+    <Effect minstrength="0" maxstrength="3" />
+    <icon texture="Content/UI/TalentsIcons1.png" sourcerect="902,774,118,116" color="255,255,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Inferno" identifier="inferno" description="I'm Burning!" type="burn" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="true" activationthreshold="1.0" hideiconafterdelay="true" showiconthreshold="1000" maxstrength="20">
+    <Effect minstrength="1" maxstrength="20" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="-1.5">
+      <StatusEffect target="Limb">
+        <ParticleEmitter particle="flamethrower" particlespersecond="6" scalemin="0.2" scalemax="0.3" distancemin="0" distancemax="30" />
+        <ParticleEmitter particle="smoke" particlespersecond="6" scalemin="2" scalemax="2.5" />
+        <Conditional InWater="false" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="and">
+        <Conditional InWater="false" />
+        <Conditional IsFemale="true" />
+        <Conditional IsHuman="true" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream_female.ogg" selectionmode="random" range="1000" />
+        <Sound file="%ModDir%/audio/scream2_female.ogg" range="1000" />
+        <Sound file="%ModDir%/audio/scream3_female.ogg" range="1000" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="and">
+        <Conditional InWater="false" />
+        <Conditional IsMale="true" />
+        <Conditional IsHuman="true" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream.ogg" selectionmode="random" range="1000" />
+        <Sound file="%ModDir%/audio/scream2.ogg" range="1000" />
+        <Sound file="%ModDir%/audio/scream3.ogg" range="1000" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="and">
+        <Conditional InWater="false" />
+        <Conditional IsHuman="false" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream_monster2.ogg" selectionmode="random" range="1000" />
+        <Sound file="%ModDir%/audio/scream_monster3.ogg" range="1000" />
+        <Sound file="%ModDir%/audio/scream_monster4.ogg" range="1000" />
+      </StatusEffect>
+      <StatusEffect target="Limb" disabledeltatime="true">
+        <ReduceAffliction identifier="inferno" amount="5" />
+        <Conditional InWater="true" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Explosion range="0" structuredamage="0" itemdamage="0" force="0" shockwave="false" severlimbsprobability="0" decal="fire3" decalsize="0.45" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="768,640,128,128" color="195,0,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Hhm" identifier="hhm" type="poison" limbspecific="true" activationthreshold="0" karmachangeonapplied="-50" maxstrength="100">
+    <Effect minstrength="1" maxstrength="30" strengthchange="30" minradialdistort="1.0" maxradialdistort="2.0" minfacetint="100,0,0,150" maxfacetint="100,0,0,150"></Effect>
+    <Effect minstrength="31" maxstrength="60" strengthchange="30" minradialdistort="2.0" maxradialdistort="3.0" minfacetint="150,0,0,150" maxfacetint="150,0,0,150">
+      <StatusEffect target="limb">
+        <ParticleEmitter particle="hhm" copyentityangle="true" particleamount="30" scalemin="0.1" scalemax="0.1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="61" maxstrength="90" strengthchange="30" minradialdistort="4.0" maxradialdistort="5.0" minfacetint="200,0,0,150" maxfacetint="200,0,0,150">
+      <StatusEffect target="limb">
+        <ParticleEmitter particle="hhm" copyentityangle="true" particleamount="30" scalemin="0.2" scalemax="0.2" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="91" maxstrength="100" strengthchange="0" minradialdistort="5.0" maxradialdistort="7.0" minfacetint="255,0,0,150" maxfacetint="255,0,0,150">
+      <StatusEffect target="Character" duration="0"></StatusEffect>
+      <StatusEffect target="limb" SpeedMultiplier="0.3">
+        <Affliction identifier="stun" strength="5" probability="1" />
+        <Explosion range="30.0" shockwave="false" smoke="false" flames="false" sparks="false" force="30.0" severlimbsprobability="0" decal="blood" decalsize="3">
+          <Affliction identifier="stun" strength="1" />
+        </Explosion>
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" particleamount="30" scalemin="3" scalemax="3" />
+        <ParticleEmitter particle="blood" scalemin="2" scalemax="2" />
+        <ParticleEmitter particle="blooddrop" scalemin="2" scalemax="2" />
+      </StatusEffect>
+      <StatusEffect target="limb" SpeedMultiplier="0.3" setvalue="true">
+        <Affliction identifier="hhm" strength="0" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="Smash" identifier="Smash" type="damage" limbspecific="true" indicatorlimb="Head" hideiconafterdelay="true" showiconthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1000">
+      <StatusEffect target="Limb" SpeedMultiplier="0.3" conditionalcomparison="And" CheckConditionalAlways="true">
+        <Affliction identifier="stun" strength="5" probability="1" />
+        <Explosion range="0.1" shockwave="false" smoke="false" flames="false" sparks="false" force="30.0" severlimbsprobability="100000" decal="blood" decalsize="3">
+          <Affliction identifier="stun" strength="1" />
+        </Explosion>
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" particleamount="30" scalemin="3" scalemax="3" />
+        <ParticleEmitter particle="blood" scalemin="2" scalemax="2" />
+        <ParticleEmitter particle="blooddrop" scalemin="2" scalemax="2" />
+      </StatusEffect>
+      <StatusEffect target="Limb" SpeedMultiplier="0.3" setvalue="true">
+        <Affliction identifier="hhm" strength="0" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,639,129,129" color="255,0,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Hhm2" identifier="hhm2" type="poison" limbspecific="true" activationthreshold="0" karmachangeonapplied="-50" maxstrength="100">
+    <Effect minstrength="1" maxstrength="30" strengthchange="30" minradialdistort="1.0" maxradialdistort="2.0" minfacetint="100,0,0,150" maxfacetint="100,0,0,150"></Effect>
+    <Effect minstrength="31" maxstrength="60" strengthchange="30" minradialdistort="2.0" maxradialdistort="3.0" minfacetint="150,0,0,150" maxfacetint="150,0,0,150">
+      <StatusEffect target="limb">
+        <ParticleEmitter particle="hhm" copyentityangle="true" particleamount="30" scalemin="0.1" scalemax="0.1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="61" maxstrength="90" strengthchange="30" minradialdistort="4.0" maxradialdistort="5.0" minfacetint="200,0,0,150" maxfacetint="200,0,0,150">
+      <StatusEffect target="limb">
+        <ParticleEmitter particle="hhm" copyentityangle="true" particleamount="30" scalemin="0.2" scalemax="0.2" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="91" maxstrength="100" strengthchange="0" minradialdistort="5.0" maxradialdistort="7.0" minfacetint="255,0,0,150" maxfacetint="255,0,0,150">
+      <StatusEffect target="Character" duration="0"></StatusEffect>
+      <StatusEffect target="limb" SpeedMultiplier="0.3">
+        <Affliction identifier="stun" strength="5" probability="1" />
+        <Explosion range="30.0" shockwave="false" smoke="false" flames="false" sparks="false" force="30.0" severlimbsprobability="0" decal="blood" decalsize="3">
+          <Affliction identifier="stun" strength="1" />
+          <Affliction identifier="explosiondamage" strength="700" probability="1" />
+        </Explosion>
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" particleamount="30" scalemin="3" scalemax="3" />
+        <ParticleEmitter particle="blood" scalemin="2" scalemax="2" />
+        <ParticleEmitter particle="blooddrop" scalemin="2" scalemax="2" />
+      </StatusEffect>
+      <StatusEffect target="limb" SpeedMultiplier="0.3" setvalue="true">
+        <Affliction identifier="hhm" strength="0" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="Smash2" identifier="Smash2" type="damage" limbspecific="true" indicatorlimb="Head" hideiconafterdelay="true" showiconthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1000">
+      <StatusEffect target="Limb" SpeedMultiplier="0.3" conditionalcomparison="And" CheckConditionalAlways="true">
+        <Affliction identifier="stun" strength="5" probability="1" />
+        <Explosion range="0.1" shockwave="false" smoke="false" flames="false" sparks="false" force="30.0" severlimbsprobability="100000" decal="blood" decalsize="3">
+          <Affliction identifier="stun" strength="1" />
+          <Affliction identifier="explosiondamage" strength="100" probability="1" />
+        </Explosion>
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" particleamount="30" scalemin="3" scalemax="3" />
+        <ParticleEmitter particle="blood" scalemin="2" scalemax="2" />
+        <ParticleEmitter particle="blooddrop" scalemin="2" scalemax="2" />
+      </StatusEffect>
+      <StatusEffect target="Limb" SpeedMultiplier="0.3" setvalue="true">
+        <Affliction identifier="hhm2" strength="0" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,639,129,129" color="255,0,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="hide" identifier="hide" type="concealed" limbspecific="false" duration="0.2" showiconthreshold="1000" maxstrength="1">
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="896,768,128,128" color="10,193,114,255" origin="0,0" />
+    <Effect minstrength="0" maxstrength="1" strengthchange="-0.6">
+      <StatusEffect target="Character" indetectable="true" />
+    </Effect>
+    <Effect minstrength="0" maxstrength="10" mingrainstrength="0.0" maxgrainstrength="1.0" strengthchange="-1.0" minbodytint="150,150,150,0" maxbodytint="150,150,150,255" minspeedmultiplier="1.0" maxspeedmultiplier="5.0"></Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="0,0,128,128" color="255,255,255,255" origin="0,0" />
+  </Affliction>
+  <Affliction identifier="Safs2" maxstrength="1" isbuff="true" limbspecific="false" duration="0.1" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="safs_fuel" type="" maxstrength="2" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="blasterammo" type="" maxstrength="2" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="blastershells" type="" maxstrength="2" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="gatlingammo" type="" maxstrength="2" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <AfflictionHusk name="Net" identifier="Net" type="alieninfection" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]Net" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1">
+    <Effect minstrength="0" maxstrength="2" strengthchange="-5"></Effect>
+  </AfflictionHusk>
+  <Affliction name="struggle" identifier="struggle" type="damage" limbspecific="true" indicatorlimb="Head" hideiconafterdelay="true" showiconthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1000">
+      <StatusEffect target="Limb">
+        <Explosion range="50" shockwave="false" smoke="false" showeffects="false" flames="false" sparks="false" force="-0.1" severlimbsprobability="0" decal="Blood" decalsize="0"></Explosion>
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <AfflictionHusk name="icicle" identifier="icicle" type="weight" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]icicle" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <AfflictionHusk name="cloak" identifier="cloak" type="weight" duration="0.1" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]cloak" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <AfflictionHusk name="cloak2" identifier="cloak2" type="weight" duration="0.1" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]cloak2" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <AfflictionHusk name="cloak3" identifier="cloak3" type="weight" duration="0.1" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]cloak3" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <AfflictionHusk name="cloak4" identifier="cloak4" type="weight" duration="0.1" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]cloak4" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <AfflictionHusk name="cloak5" identifier="cloak5" type="weight" duration="0.1" limbspecific="false" targets="human" hideiconafterdelay="true" showiconthreshold="1000" huskedspeciesname="[speciesname]cloak5" indicatorlimb="Torso" needsair="true" causespeechimpediment="false" dormantthreshold="0.01" activethreshold="0.01" treatmentthreshold="1000" transitionthreshold="1000" transformthresholdondeath="1000" sendmessages="false" maxstrength="1"></AfflictionHusk>
+  <Affliction name="freeze_slow" identifier="freeze_slow" description="" type="weight" limbspecific="false" indicatorlimb="Torso" affectmachines="true" showiconthreshold="0" showinhealthscannerthreshold="0">
+    <Effect>
+      <statvalue stattype="WalkingSpeed" value="-0.8" />
+    </Effect>
+  </Affliction>
+  <Affliction name="" identifier="freeze_slow2" description="" type="weight" limbspecific="false" indicatorlimb="Torso" affectmachines="true" showiconthreshold="0" showinhealthscannerthreshold="0">
+    <Effect>
+      <statvalue stattype="WalkingSpeed" value="-1" />
+    </Effect>
+  </Affliction>
+  <Affliction identifier="nope" description="" type="immunity" limbspecific="false" maxstrength="100" affectmachines="false" duration="0.5">
+    <Effect minstrength="0" maxstrength="100" resistancefor="damage,burn,stun,exocute,blind,blind_hard" minresistance="0" maxresistance="10" />
+  </Affliction>
+  <Affliction identifier="nope2" description="" type="immunity" limbspecific="false" maxstrength="100" affectmachines="false" duration="0.5">
+    <Effect minstrength="0" maxstrength="100" resistancefor="stun" minresistance="0" maxresistance="10" />
+  </Affliction>
+  <Affliction identifier="debt" isbuff="true" limbspecific="false" maxstrength="1000" duration="1" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="freeze_resistance" description="" type="immunity" limbspecific="false" maxstrength="100" affectmachines="false" duration="0.5" hideiconafterdelay="true" showiconthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" resistancefor="icicle,freeze_slow,freeze_slow2,freeze_explosion,freeze_explosion2,im_blue,ice_damage" minresistance="0" maxresistance="10" />
+  </Affliction>
+  <Affliction name="freeze_explosion" identifier="freeze_explosion" type="damage" limbspecific="true" indicatorlimb="Head" showicontoothersthreshold="101" maxstrength="2">
+    <Effect minstrength="0" maxstrength="2" strengthchange="0">
+      <StatusEffect target="Limb" SpeedMultiplier="0.3" conditionalcomparison="And" CheckConditionalAlways="true">
+        <Affliction identifier="stun" strength="5" probability="1" />
+        <Explosion range="0.1" shockwave="false" smoke="false" flames="false" sparks="false" force="30.0" severlimbsprobability="10000" decal="blood" decalsize="0">
+          <ReduceAffliction identifier="icicle" amount="1000" />
+          <ReduceAffliction identifier="freeze_slow2" amount="1000" />
+          <ReduceAffliction identifier="freeze_slow" amount="1000" />
+          <ReduceAffliction identifier="ice_crackle" amount="1000" />
+          <ReduceAffliction identifier="freeze_shake" amount="1000" />
+          <ReduceAffliction identifier="im_blue" amount="1000" />
+        </Explosion>
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" particleamount="30" scalemin="3" scalemax="3" />
+        <ParticleEmitter particle="iceshrapnel" particleamount="50" velocitymin="500" velocitymax="1500" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="freeze_explosion2" identifier="freeze_explosion2" type="damage" limbspecific="true" indicatorlimb="Head" showicontoothersthreshold="101" maxstrength="2">
+    <Effect minstrength="0" maxstrength="2" strengthchange="-2">
+      <StatusEffect target="Limb" conditionalcomparison="And" CheckConditionalAlways="true">
+        <ParticleEmitter particle="iceshrapnel" particleamount="4" velocitymin="500" velocitymax="1500" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.5" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="ice_crackle" identifier="ice_crackle" type="damage" limbspecific="true" indicatorlimb="Head" showicontoothersthreshold="101" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-10">
+      <StatusEffect target="Limb">
+        <Sound file="%ModDir%/audio/freeze.ogg" target="This" selectionmode="random" range="1000" />
+        <Sound file="%ModDir%/audio/freeze2.ogg" target="This" range="1000" />
+        <Sound file="%ModDir%/audio/freeze3.ogg" target="This" range="1000" />
+        <Sound file="%ModDir%/audio/freeze4.ogg" target="This" range="1000" />
+        <ParticleEmitter particle="snowflake2" particleamount="2" velocitymin="0" velocitymax="80" anglemin="0" anglemax="360" scalemin="0" scalemax="0.2" />
+      </StatusEffect>
+      <StatusEffect target="Character">
+        <Explosion range="0" structuredamage="0" itemdamage="0" force="0" shockwave="false" severlimbsprobability="0" decal="ice3" decalsize="0.45" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="im_blue" identifier="im_blue" type="damage" limbspecific="true" indicatorlimb="Head" showicontoothersthreshold="0" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" minfacetint="173,216,230,200" maxfacetint="173,216,230,200" minbodytint="173,216,230,200" maxbodytint="173,216,230,200" />
+    <icon texture="%ModDir%/Textures/freeze2.png" sourcerect="0,0,128,128" color="0,255,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="freeze_shake" identifier="freeze_shake" type="damage" limbspecific="true" indicatorlimb="Head" showicontoothersthreshold="101" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-1000">
+      <StatusEffect target="Limb">
+        <Explosion range="0.1" shockwave="false" smoke="false" flames="false" sparks="false" force="0.5" severlimbsprobability="0" decal="blood" decalsize="0"></Explosion>
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="ice_damage_Timer">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-10" />
+  </Affliction>
+  <Affliction name="ice_damage" identifier="ice_damage" type="damage" limbspecific="true" maxstrength="200" damageoverlayalpha="0.0">
+    <Effect minstrength="0" maxstrength="200" multiplybymaxvitality="true" minvitalitydecrease="0" maxvitalitydecrease="2">
+      <StatusEffect Interval="0.1" target="Character" disabledeltatime="true">
+        <Conditional ice_damage_Timer="lte 0" />
+        <ReduceAffliction identifier="icicle" amount="1000" />
+        <ReduceAffliction identifier="freeze_slow2" amount="1000" />
+        <ReduceAffliction identifier="freeze_slow" amount="1000" />
+        <ReduceAffliction identifier="ice_crackle" amount="1000" />
+        <ReduceAffliction identifier="freeze_shake" amount="1000" />
+        <ReduceAffliction identifier="im_blue" amount="1000" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="drill" identifier="drill" description="" type="burn" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="true" activationthreshold="1.0" hideiconafterdelay="true" showiconthreshold="1000" maxstrength="20">
+    <Effect minstrength="1" maxstrength="20" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="-1.5">
+      <StatusEffect target="Character" comparison="and">
+        <Conditional IsFemale="true" />
+        <Conditional IsHuman="true" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream4_female.ogg" selectionmode="random" range="3000" />
+        <Sound file="%ModDir%/audio/scream5_female.ogg" range="3000" />
+        <Sound file="%ModDir%/audio/scream6_female.ogg" range="3000" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="and">
+        <Conditional IsMale="true" />
+        <Conditional IsHuman="true" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream4.ogg" selectionmode="random" range="3000" />
+        <Sound file="%ModDir%/audio/scream2.ogg" range="3000" />
+        <Sound file="%ModDir%/audio/scream3.ogg" range="3000" />
+      </StatusEffect>
+      <StatusEffect target="Character" comparison="and">
+        <Conditional IsHuman="false" />
+        <Conditional health="gt 1" />
+        <Sound file="%ModDir%/audio/scream_monster5.ogg" selectionmode="random" range="3000" />
+        <Sound file="%ModDir%/audio/scream_monster3.ogg" range="3000" />
+        <Sound file="%ModDir%/audio/scream_monster4.ogg" range="3000" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="SAFS" type="resistance" description="Active" isbuff="true" maxstrength="1" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000"></Affliction>
+  <Affliction identifier="exojet" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exospray" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exospray2" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exoranged" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exodrill" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exoranged2" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exoranged3" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exoranged4" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="exowave" type="" description="" isbuff="true" maxstrength="1" duration="0.2"></Affliction>
+  <Affliction identifier="ExoGravity" limbspecific="false" indicatorlimb="Torso" showiconthreshold="1000" treatmentthreshold="1000" maxstrength="10" duration="10" hideiconafterdelay="true">
+    <Effect minstrength="0" maxstrength="10" strengthchange="-1" resistancefor="blunttrauma" minresistance="0.0" maxresistance="-1.0" />
+  </Affliction>
+  <Affliction identifier="nightvision" type="none" isbuff="true" limbspecific="false" indicatorlimb="Head" maxstrength="100" showiconthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-100" />
+    <AfflictionOverlay texture="%ModDir%/textures/vision.png" />
+  </Affliction>
+  <Affliction identifier="nightvision2" type="" maxstrength="2" duration="0.2"></Affliction>
+  <Affliction identifier="exocute" type="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="15">
+    <Effect minstrength="0" maxstrength="15" strengthchange="-1">
+      <StatusEffect target="Character" setvalue="true">
+        <ParticleEmitter drawontop="true" particle="spark" distancemin="0" distancemax="30" anglemin="0" anglemax="360" particlespersecond="20" velocitymin="100" velocitymax="200" scalemin="0.4" scalemax="0.7" />
+        <ParticleEmitter drawontop="true" particle="swirlysmoke" particlespersecond="10" scalemin="1" scalemax="2" anglemin="0" anglemax="360" velocitymin="0" velocitymax="10" />
+        <ParticleEmitter drawontop="true" particle="electricshock" distancemin="0" distancemax="40" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.04" scalemax="0.1" />
+        <ParticleEmitter drawontop="true" particle="DarkSmoke" distancemin="0" distancemax="40" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.04" scalemax="0.1" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="repulsed" type="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="15">
+    <Effect minstrength="0" maxstrength="15" strengthchange="-1">
+      <StatusEffect target="Character" setvalue="true">
+        <ParticleEmitter drawontop="true" particle="swirlysmoke" particlespersecond="10" scalemin="1" scalemax="2" anglemin="0" anglemax="360" velocitymin="0" velocitymax="10" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction identifier="presence" isbuff="true" limbspecific="false" maxstrength="1" duration="0.2" hideiconafterdelay="true" showiconthreshold="1000">
+    <Effect minstrength="0" maxstrength="1">
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="1" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="2" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="1" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="3" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="4" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="5" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="6" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="7" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="8" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="9" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="10" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="11" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="12" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="13" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="14" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="15" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="16" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="17" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="18" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="19" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnDamaged">
+        <requiredaffliction type="damage" minstrength="20" />
+        <ReduceAffliction type="damage" amount="1" />
+        <Affliction identifier="debt" amount="1" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+</Afflictions>

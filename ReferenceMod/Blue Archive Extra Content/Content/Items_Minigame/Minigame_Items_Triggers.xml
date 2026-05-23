@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Event Debug Trigger (Attack Defense Mini Game)" identifier="ba_ad_debug" description="" scale="0.6" tags="smallitem" hideinmenus="false" category="Misc">
+    <InventoryIcon texture="%ModDir%/Content/Items/recaller.png" sourcerect="0,0,62,56" origin="0.5,0.5" />
+    <sprite texture="%ModDir%/Content/Items/recaller.png" sourcerect="100,0,24,54" depth="0.60" origin="0.5,0.5" />
+    <Body width="24" height="50" density="20" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="34,0" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+        <GuiFrame relativesize="0.3,0.3" anchor="CenterLeft" relativeoffset="0.006,-0.05" style="MainMenuGUIButton" />
+        <Button text="Starts event">
+          <StatusEffect type="OnUse" target="this" disabledeltatime="true" setalue="true">
+            <sound file="%ModDir%/Sounds/Activates.ogg" range="500" volume="1" />
+            <TriggerEvent identifier="ba_mission_spawning_tier_1" />
+          </StatusEffect>
+        </Button>
+        <Button text="level up">
+          <StatusEffect type="OnUse" target="this" disabledeltatime="true" setalue="true">
+            <sound file="%ModDir%/Sounds/Activates.ogg" range="500" volume="1" />
+            <TriggerEvent identifier="unit_level_up" />
+          </StatusEffect>
+        </Button>
+      </CustomInterface>
+    </Holdable>
+  </Item>
+  <!--Command Event Trigger-->
+  <Item name="Event Trigger AD Mission Control" identifier="ba_et_ad_missioncontrol" description="Scripted item to control spawning of mission" scale="0.2" hideinmenus="false" category="Misc" Subcategory="Event Triggers">
+    <Sprite texture="Event_Trigger_Icon.png" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+      <StatusEffect type="OnNotContained" target="this">
+        <TriggerEvent identifier="ba_mission_control_manager" disabledeltatime="true" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Event Trigger AD Mission Spawner Tier1" identifier="ba_et_ad_spawner1" description="Scripted item to spawns objective npcs" scale="0.2" hideinmenus="false" category="Misc" Subcategory="Event Triggers">
+    <Sprite texture="Event_Trigger_Icon.png" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+      <StatusEffect type="OnNotContained" target="this">
+        <TriggerEvent identifier="ba_mission_spawning_tier_1" disabledeltatime="true" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Event Trigger AD Mission Spawner Tier2" identifier="ba_et_ad_spawner2" description="Scripted item to spawns objective npcs" scale="0.2" hideinmenus="false" category="Misc" Subcategory="Event Triggers">
+    <Sprite texture="Event_Trigger_Icon.png" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+      <StatusEffect type="OnNotContained" target="this">
+        <TriggerEvent identifier="ba_mission_spawning_tier_2" disabledeltatime="true" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <Item name="Event Trigger AD Mission Spawner Tier3" identifier="ba_et_ad_spawner3" description="Scripted item to spawns objective npcs" scale="0.2" hideinmenus="false" category="Misc" Subcategory="Event Triggers">
+    <Sprite texture="Event_Trigger_Icon.png" sourcerect="0,0,240,240" origin="0.5,0.5" />
+    <RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+      <StatusEffect type="OnNotContained" target="this">
+        <TriggerEvent identifier="ba_mission_spawning_tier_3" disabledeltatime="true" />
+        <RemoveItem />
+      </StatusEffect>
+    </RangedWeapon>
+  </Item>
+  <!--<Item name="Event Trigger AD Mob Level 1 Check" identifier="ba_et_ad_moblevel_1" description="Scripted item" scale="0.2" hideinmenus="false" category="Misc" Subcategory="Event Triggers">
+		<Sprite texture="Event_Trigger_Icon.png" sourcerect="0,0,240,240" origin="0.5,0.5" />
+		<RangedWeapon slots="Any,RightHand,LeftHand" reload="1">
+			<StatusEffect type="OnNotContained" target="this" reload="1">
+				<TriggerEvent identifier="ba_mission_control_mob_level_1_check" disabledeltatime="true"/>
+				<RemoveItem />
+			</StatusEffect>
+		</RangedWeapon>
+	</Item>-->
+</Items>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <!-- 迅猛龙甲 -->
+    <Item name="" identifier="mudraptorshell" category="Equipment" tags="smallitem,clothing" impactsoundtag="impact_metal_light" scale="0.5" allowasextracargo="true">
+      <Price baseprice="1" sold="false" canbespecial="false" />
+      <PreferredContainer primary="locker" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="3" displayname="recycleitem">
+        <RequiredItem identifier="mudraptorshell_r" />
+        <RequiredItem identifier="bluepaint" />
+      </Fabricate>
+      <Sprite name="mudraptorshell Item" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_Item.png" sourcerect="0,0,160,128" depth="0.55" origin="0.5,0.5" />
+      <Body radius="45" width="34" density="15" />
+      <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+        <!-- depthlimb=""可以用来遮挡本在上方的肢体 -->
+        <sprite name="mudraptorshell Helmet Wearable" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_Item.png" limb="Head" inheritlimbdepth="true" inheritscale="false" inheritorigin="false" inheritsourcerect="false" ignorelimbscale="false" scale="0.33" hidelimb="false" hideotherwearables="false" sourcerect="4,120,140,140" origin="0.47,0.79" />
+        <sprite name="mudraptorshell Torso" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Right Hand" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Left Hand" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Right Lower Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="287,0,33,81" origin="0.5,0.5" />
+        <sprite name="mudraptorshell Left Lower Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="350,0,34,80" origin="0.5,0.5" />
+        <sprite name="mudraptorshell Right Upper Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="275,86,60,80" origin="0.5,0.5" />
+        <sprite name="mudraptorshell Left Upper Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="339,86,60,80" origin="0.5,0.5" />
+        <sprite name="mudraptorshell Waist" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Right Thigh" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Left Thigh" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Right Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Left Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="mudraptorshell Left Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" hideotherwearables="true" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="mudraptorshell Right Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_[GENDER].png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" hideotherwearables="true" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="female" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1.6" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1.6" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+          <Conditional hasspecifiertag="male" />
+          <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1.6" ExpectedSpecies="Human" />
+          <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1.6" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
+        <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.6" />
+        <damagemodifier afflictionidentifiers="blunttrauma,gunshotwound,lacerations" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" />
+        <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+        <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+  </Override>
+  <!-- 红色迅猛龙甲 -->
+  <Item name="" identifier="mudraptorshell_r" nameidentifier="mudraptorshell" variantof="mudraptorshell" category="Equipment" tags="smallitem,clothing" impactsoundtag="impact_metal_light" scale="0.5" allowasextracargo="true">
+    <Price baseprice="1" sold="false" canbespecial="false" />
+    <PreferredContainer primary="locker" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="3" displayname="recycleitem" requiresrecipe="false">&gt;
+      <RequiredItem identifier="mudraptorshell" /><RequiredItem identifier="redpaint" /></Fabricate>
+    <Sprite name="mudraptorshell Item" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_Item.png" sourcerect="0,0,160,128" depth="0.55" origin="0.5,0.5" />
+    <Body radius="45" width="34" density="15" />
+    <Wearable slots="Any,OuterClothes" msg="ItemMsgPickUpSelect">
+      <!-- depthlimb=""可以用来遮挡本在上方的肢体 -->
+      <sprite name="mudraptorshell Helmet Wearable" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_Item.png" limb="Head" inheritlimbdepth="true" inheritscale="false" inheritorigin="false" inheritsourcerect="false" ignorelimbscale="false" scale="0.33" hidelimb="false" hideotherwearables="false" sourcerect="4,120,140,140" origin="0.47,0.79" />
+      <sprite name="mudraptorshell Torso" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Right Hand" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Left Hand" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Right Lower Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="287,0,33,81" origin="0.5,0.5" />
+      <sprite name="mudraptorshell Left Lower Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftArm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="350,0,34,80" origin="0.5,0.5" />
+      <sprite name="mudraptorshell Right Upper Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="275,86,60,80" origin="0.5,0.5" />
+      <sprite name="mudraptorshell Left Upper Arm" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftForearm" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="false" inheritsourcerect="false" sourcerect="339,86,60,80" origin="0.5,0.5" />
+      <sprite name="mudraptorshell Waist" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Right Thigh" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Left Thigh" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="false" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Right Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Left Leg" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+      <sprite name="mudraptorshell Left Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" hideotherwearables="true" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+      <sprite name="mudraptorshell Right Shoe" texture="%ModDir%/Content/Items/CreatureLoot/mudraptorshell_r_[GENDER].png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" inheritorigin="false" hideotherwearables="true" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="female" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_heel" priority="1.6" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1.6" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true">
+        <Conditional hasspecifiertag="male" />
+        <TriggerAnimation Type="Walk" FileName="HumanWalk_male" priority="1.6" ExpectedSpecies="Human" />
+        <TriggerAnimation Type="Run" FileName="HumanRun_alt" priority="1.6" ExpectedSpecies="Human" />
+      </StatusEffect>
+      <damagemodifier afflictiontypes="burn" armorsector="0.0,360.0" damagemultiplier="0.9" />
+      <damagemodifier afflictiontypes="stun" armorsector="0.0,360.0" damagemultiplier="0.6" />
+      <damagemodifier afflictionidentifiers="blunttrauma,gunshotwound,lacerations" armorsector="0.0,360.0" damagemultiplier="0.2" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.1" damagesound="LimbArmor" deflectprojectiles="true" />
+      <StatusEffect type="OnWearing" target="Character" SpeedMultiplier="0.7" setvalue="true" disabledeltatime="true" />
+    </Wearable>
+  </Item>
+</Items>

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <!--Abydos Questline-->
+  <!--escorts hoshino-->
+  <EventPrefabs>
+    <ScriptedEvent identifier="BAstudent_Abydos_Group_quest1" commonness="100">
+      <CheckDataAction identifier="mission_escort_hoshinonpc_completed" condition="gt 0">
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_hoshino_campaign" targettag="Hoshino" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+          <TriggerAction target1tag="Hoshino" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+          <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="true" />
+          <ConversationAction targettag="triggerer_player" speakertag="Hoshino" WaitForInteraction="true" text="eventtext.BA_hoshino_recruit.do0" eventsprite="portrait_hoshino_expression1">
+            <Option text="eventtext.skipdialogue">
+              <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do1" eventsprite="portrait_hoshino_expression2">
+                <Option text="eventtext.BA_hoshino_recruit.do1o1">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do2" eventsprite="portrait_hoshino_expression5">
+                    <Option text="eventtext.skipdialogue">
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do22" eventsprite="Hoshinoevent_photo">
+                        <Option text="eventtext.BA_hoshino_recruit.do2o1">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do3" eventsprite="portrait_hoshino_expression4">
+                            <Option text="eventtext.skipdialogue">
+                              <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do31" eventsprite="portrait_hoshino_expression12">
+                                <Option text="eventtext.BA_hoshino_recruit.do3o1">
+                                  <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do4" eventsprite="portrait_hoshino_expression11">
+                                    <Option text="eventtext.BA_hoshino_recruit.do4o1">
+                                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do5" eventsprite="portrait_hoshino_expression9">
+                                        <Option text="eventtext.BA_hoshino_recruit.do5o1">
+                                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do5o1d1" eventsprite="portrait_hoshino_expression4" />
+                                          <MissionAction missiontag="escort_hoshinonpc" />
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                    <Option text="eventtext.BA_hoshino_recruit.do4o2">
+                                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do4o23" eventsprite="portrait_hoshino_expression10" />
+                                      <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="false" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="eventtext.BA_hoshino_recruit.do2o2">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_recruit.do2o23" eventsprite="portrait_hoshino_expression8" />
+                          <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="false" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+            </Option>
+          </ConversationAction>
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--Hoshino crew quest-->
+    <ScriptedEvent identifier="BAstudent_Abydos_Group_quest2" commonness="100">
+      <CheckDataAction identifier="BA_hoshino_quest2_completed" condition="eq false">
+        <Success>
+          <CheckDataAction identifier="mission_escort_hoshinonpc_completed" condition="gt 0">
+            <Success>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_hoshino_campaign" targettag="Hoshino" spawnlocation="Outpost" targetmoduletags="airlock,cityairlock" />
+              <TriggerAction target1tag="Hoshino" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+              <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="true" />
+              <ConversationAction targettag="triggerer_player" speakertag="Hoshino" WaitForInteraction="true" text="eventtext.BA_hoshino_crew.d1" eventsprite="portrait_hoshino_expression12">
+                <Option text="eventtext.BA_hoshino_crew.d1o1">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o1d1" eventsprite="portrait_hoshino_expression11">
+                    <Option text="eventtext.BA_hoshino_crew.d1o1d1o1">
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o1d1o1d1" eventsprite="portrait_hoshino_expression4">
+                        <Option text="eventtext.BA_hoshino_crew.d1o1d1o1d1o1">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o1d1o1d1o1d1" eventsprite="portrait_hoshino_expression0" />
+                          <NPCChangeTeamAction npctag="Hoshino" teamid="Team1" addtocrew="true" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="eventtext.BA_hoshino_crew.d1o1d1o2">
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o1d1o2d1" eventsprite="portrait_hoshino_expression10">
+                        <Option text="eventtext.BA_hoshino_crew.d1o1d1o2d1o1">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_left" eventsprite="portrait_hoshino_expression0" />
+                          <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="false" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+                <Option text="eventtext.BA_hoshino_crew.d1o2">
+                  <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1" eventsprite="portrait_hoshino_expression10">
+                    <Option text="eventtext.BA_hoshino_crew.d1o2d1o1">
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1o1d1" eventsprite="portrait_hoshino_expression11">
+                        <Option text="eventtext.BA_hoshino_crew.d1o2d1o1d1o1">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1o1d1o1d1" eventsprite="portrait_hoshino_expression4">
+                            <Option text="eventtext.BA_hoshino_crew.d1o2d1o1d1o1d1o1">
+                              <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1o1d1o1d1o1d1" eventsprite="portrait_hoshino_expression0" />
+                              <NPCChangeTeamAction npctag="Hoshino" teamid="Team1" addtocrew="true" />
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="eventtext.BA_hoshino_crew.d1o2d1o1d1o2">
+                          <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1o1d1o2d1" eventsprite="portrait_hoshino_expression10">
+                            <Option text="eventtext.BA_hoshino_crew.d1o2d1o1d1o2d1o1">
+                              <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_left" eventsprite="portrait_hoshino_expression0" />
+                              <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="false" />
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="eventtext.BA_hoshino_crew.d1o2d1o2">
+                      <NPCFollowAction npctag="Hoshino" targettag="triggerer_player" follow="false" />
+                      <ConversationAction targettag="triggerer_player" text="eventtext.BA_hoshino_crew.d1o2d1o2d1" eventsprite="portrait_hoshino_expression16" />
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+              <SetDataAction identifier="BA_hoshino_quest2_completed" value="true" />
+            </Success>
+            <Failure></Failure>
+          </CheckDataAction>
+        </Success>
+        <Failure></Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--1.Hoshino meet up with the rest of Abydos, requesting help for bank robbing, which player agreed-->
+    <ScriptedEvent identifier="Abydos_Base_Spawner">
+      <TagAction criteria="itemtag:hoshino_chair" tag="hoshino_chair" />
+      <TagAction criteria="itemtag:shiroko_chair" tag="shiroko_chair" />
+      <TagAction criteria="itemtag:ayane_chair" tag="ayane_chair" />
+      <TagAction criteria="itemtag:nonomi_chair" tag="nonomi_chair" />
+      <TagAction criteria="itemtag:drill_bag1" tag="drill_bag1" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_hoshino" spawnpointtag="spawn_hoshino" targettag="hoshino" teamid="3" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_shiroko_neutral" spawnpointtag="spawn_shiroko" targettag="shiroko" teamid="3" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_ayane" spawnpointtag="spawn_ayane" targettag="ayane" teamid="3" />
+      <SpawnAction speciesname="human" npcsetidentifier="set_abydos" npcidentifier="npc_nonomi_neutral" spawnpointtag="spawn_nonomi" targettag="nonomi" teamid="3" />
+      <NPCOperateItemAction npctag="hoshino" targettag="hoshino_chair" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="shiroko" targettag="shiroko_chair" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="ayane" targettag="ayane_chair" ItemComponentName="Controller" Operate="true" />
+      <NPCOperateItemAction npctag="nonomi" targettag="nonomi_chair" ItemComponentName="Controller" Operate="true" />
+      <StatusEffectAction targettag="drill_bag1">
+        <StatusEffect target="This" noninteractable="true" />
+      </StatusEffectAction>
+      <TriggerEventAction identifier="Abydos_Quest_BankRobbing_Tutorial_1" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="Abydos_Quest_BankRobbing_Tutorial_1">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_shiroko_neutral" tag="shiroko" />
+      <TagAction criteria="humanprefabidentifier:npc_nonomi_neutral" tag="nonomi" />
+      <TagAction criteria="itemtag:shiroko_chair" tag="shiroko_chair" />
+      <TagAction criteria="itemtag:nonomi_chair" tag="nonomi_chair" />
+      <TagAction criteria="itemtag:drill_drop_location" tag="drill_drop_location" />
+      <TagAction criteria="itemtag:shiroko_tutorial" tag="shiroko_tutorial" />
+      <TagAction criteria="itemtag:spawn_shiroko" tag="spawn_shiroko" />
+      <TagAction criteria="itemtag:nonomi_tutorial" tag="nonomi_tutorial" />
+      <TagAction criteria="itemtag:spawn_nonomi" tag="spawn_nonomi" />
+      <TagAction criteria="itemtag:drill_bag1" tag="drill_bag1" />
+      <!--<CheckDataAction identifier="Abydos_Quest_BankRobbing_Tutorial_Completed" condition="eq 0">
+				<Success>-->
+      <!--Trigger event-->
+      <TriggerAction target1tag="shiroko" target2tag="player" waitforinteraction="true" />
+      <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial0" eventsprite="Shiroko_Expression_2" />
+      <NPCOperateItemAction npctag="shiroko" targettag="shiroko_chair" ItemComponentName="Controller" Operate="false" />
+      <NPCOperateItemAction npctag="nonomi" targettag="nonomi_chair" ItemComponentName="Controller" Operate="false" />
+      <NPCFollowAction npctag="nonomi" targettag="nonomi_tutorial" follow="true" />
+      <NPCFollowAction npctag="shiroko" targettag="shiroko_tutorial" follow="true" />
+      <EventObjectiveAction type="add" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Follow" />
+      <TriggerEventAction identifier="Abydos_Quest_BankRobbing_Tutorial_2" />
+    </ScriptedEvent>
+    <!--event has to split as doing CheckVisibilityAction causes NPCFollowAction to stop working properly-->
+    <ScriptedEvent identifier="Abydos_Quest_BankRobbing_Tutorial_2">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="humanprefabidentifier:npc_shiroko_neutral" tag="shiroko" />
+      <TagAction criteria="humanprefabidentifier:npc_nonomi_neutral" tag="nonomi" />
+      <TagAction criteria="itemtag:shiroko_chair" tag="shiroko_chair" />
+      <TagAction criteria="itemtag:nonomi_chair" tag="nonomi_chair" />
+      <TagAction criteria="itemtag:drill_drop_location" tag="drill_drop_location" />
+      <TagAction criteria="itemtag:shiroko_tutorial" tag="shiroko_tutorial" />
+      <TagAction criteria="itemtag:spawn_shiroko" tag="spawn_shiroko" />
+      <TagAction criteria="itemtag:nonomi_tutorial" tag="nonomi_tutorial" />
+      <TagAction criteria="itemtag:spawn_nonomi" tag="spawn_nonomi" />
+      <TagAction criteria="itemtag:ba_drill_bag" tag="drill_bag1" />
+      <Label name="reset_check" />
+      <WaitAction time="2" />
+      <CheckVisibilityAction EntityTag="shiroko_tutorial" TargetTag="shiroko" maxdistance="200">
+        <Success>
+          <!--<AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="shiroko" />
+					<AfflictionAction affliction="ba_minigame_da_stop" strength="1" targettag="nonomi" />-->
+          <TriggerAction target1tag="shiroko" target2tag="player" waitforinteraction="true" />
+          <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial1" eventsprite="Shiroko_Expression_2" />
+          <EventObjectiveAction type="completeandremove" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Follow" />
+          <!--pick up bag-->
+          <EventObjectiveAction type="add" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Pickup" />
+          <StatusEffectAction targettag="drill_bag1">
+            <StatusEffect target="This" noninteractable="false" />
+          </StatusEffectAction>
+          <HighlightAction targettag="drill_bag1" />
+          <TriggerAction target1tag="drill_bag1" target2tag="player" applytotarget2="triggerer_player" waitforinteraction="true" />
+          <RemoveItemAction targettag="drill_bag1" />
+          <SpawnAction itemidentifier="backpack_bank" targettag="drill_bag2" targetinventory="triggerer_player" Equip="true" />
+          <EventObjectiveAction type="completeandremove" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Pickup" />
+          <EventObjectiveAction type="add" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Deliver" />
+          <!--nonomi retreats-->
+          <!--installs drill-->
+          <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial2" eventsprite="Shiroko_Expression_1" />
+          <SpawnAction itemidentifier="ba_drill_location" targettag="drill_highlight" spawnpointtag="drill_drop_location" offset="0" />
+          <Label name="drill_in_position_check" />
+          <WaitAction time="2" />
+          <CheckVisibilityAction EntityTag="drill_bag2" TargetTag="drill_drop_location" maxdistance="100">
+            <Success>
+              <RemoveItemAction targettag="drill_bag2" />
+              <EventObjectiveAction type="completeandremove" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Deliver" />
+              <SpawnAction itemidentifier="backpack_bank" targettag="drill_bag3" spawnpointtag="drill_drop_location" offset="0" ignorebyai="true" />
+              <StatusEffectAction targettag="drill_bag3">
+                <StatusEffect target="This" noninteractable="true" />
+              </StatusEffectAction>
+              <SpawnAction itemidentifier="ba_bankrobbingdrill_godmode" targettag="drill_godmode" spawnpointtag="drill_spawn_location" offset="0" />
+              <RemoveItemAction targettag="drill_highlight" />
+              <GoTo name="drill_in_position_completed" />
+            </Success>
+            <Failure>
+              <GoTo name="drill_in_position_check" />
+            </Failure>
+          </CheckVisibilityAction>
+          <Label name="drill_in_position_completed" />
+          <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial3" eventsprite="Shiroko_Expression_1" />
+          <ConversationAction targettag="player" text="EventText.Abydos_Shiroko_Bankrob_Tutorial4" eventsprite="Shiroko_Expression_13" continueconversation="true" />
+          <WaitAction time="2" />
+          <StatusEffectAction targettag="drill_godmode">
+            <StatusEffect target="This" condition="0" setvalue="true" />
+          </StatusEffectAction>
+          <EventObjectiveAction type="add" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Fix_Drill" />
+          <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial5" eventsprite="Shiroko_Expression_13" continueconversation="true" />
+          <ConversationAction targettag="player" text="EventText.Abydos_Shiroko_Bankrob_Tutorial6" eventsprite="Shiroko_Expression_14" continueconversation="true" />
+          <!--Check for repaired drill-->
+          <Label name="drill_fix_pending" />
+          <WaitAction time="2" />
+          <CheckConditionalAction targettag="drill_godmode">
+            <Conditional condition="eq 5" />
+            <Success>
+              <EventObjectiveAction type="completeandremove" identifier="EventText.Abydos_Shiroko_Bankrob_Tutorial_Fix_Drill" />
+              <ConversationAction targettag="player" WaitForInteraction="false" text="EventText.Abydos_Shiroko_Bankrob_Tutorial7" eventsprite="Shiroko_Expression_2" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Shiroko_Bankrob_Tutorial8" eventsprite="Shiroko_Expression_14" continueconversation="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Nonomi_Bankrob_Tutorial9" eventsprite="Nonomi_Expression_14" continueconversation="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Shiroko_Bankrob_Tutorial10" eventsprite="Shiroko_Expression_14" continueconversation="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Nonomi_Bankrob_Tutorial11" eventsprite="Nonomi_Expression_4" continueconversation="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Shiroko_Bankrob_Tutorial12" eventsprite="Shiroko_Expression_12" continueconversation="true" />
+              <!--releases affiction allowing Shiroko and Nonomi next turn, to move again-->
+              <AfflictionAction affliction="ba_minigame_da_stop" strength="-100" targettag="shiroko" />
+              <NPCOperateItemAction npctag="shiroko" targettag="shiroko_chair" ItemComponentName="Controller" Operate="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Nonomi_Bankrob_Tutorial13" eventsprite="Nonomi_Expression_6" continueconversation="true" />
+              <ConversationAction targettag="player" text="EventText.Abydos_Nonomi_Bankrob_Tutorial14" eventsprite="Nonomi_Expression_7" endconversation="true" />
+              <AfflictionAction affliction="ba_minigame_da_stop" strength="-100" targettag="nonomi" />
+              <NPCFollowAction npctag="nonomi" targettag="nonomi_tutorial" follow="false" />
+              <NPCFollowAction npctag="shiroko" targettag="shiroko_tutorial" follow="false" />
+              <StatusEffectAction targettag="drill_godmode">
+                <StatusEffect target="This" tags="offline" duration="infinity" />
+              </StatusEffectAction>
+              <StatusEffectAction targettag="drill_drop_location">
+                <StatusEffect target="This" noninteractable="false">
+                  <!--<Sound file="%ModDir%/Content/Sounds/SFX/Drill_startup.ogg" range="1000" />-->
+                </StatusEffect>
+              </StatusEffectAction>
+              <NPCOperateItemAction npctag="nonomi" targettag="nonomi_chair" ItemComponentName="Controller" Operate="true" />
+            </Success>
+            <Failure>
+              <GoTo name="drill_fix_pending" />
+            </Failure>
+          </CheckConditionalAction>
+        </Success>
+        <Failure>
+          <GoTo name="reset_check" />
+        </Failure>
+      </CheckVisibilityAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+</Randomevents>

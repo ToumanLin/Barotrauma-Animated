@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_material_e1.xml
+++	Version     :	0.2 (alpha)
+++	Time Create :	TK5202312200119
+++	Time Modify :	TK5202409031520
+++	Author      :	Erthex
+-->
+<Item identifier="ERWA_material_e1" tags="smallitem" category="Material" scale="0.25" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" maxstacksize="32" maxstacksizecharacterinventory="8" name="晶体电路" description="重要的源石工业材料，可用于多种强化场合，是制作源石晶体单元的基础元件。">
+  <InventoryIcon texture="ERWA_material_e1_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" />
+  <Sprite texture="ERWA_material_e1_icon.png" sourcerect="0,0,183,183" origin="0.5,0.5" depth="0.55" />
+  <Body width="161" height="161" density="20" friction="0.2" restitution="0.0" />
+  <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="0" holdpos="0,0" msg="ItemMsgPickUpSelect" canbecombined="true" removeoncombined="true">
+    <StatusEffect type="OnBroken" target="This">
+      <Remove />
+    </StatusEffect>
+  </Holdable>
+  <PreferredContainer primary="storagecab" secondary="locker" />
+  <Price baseprice="66" canbespecial="false" displaynonempty="false">
+    <Price storeidentifier="merchantoutpost" multiplier="1.1" sold="false" />
+    <Price storeidentifier="merchantmine" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantresearch" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmilitary" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantcity" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantarmory" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantmedical" multiplier="1.0" sold="false" />
+    <Price storeidentifier="merchantengineering" multiplier="1.0" sold="false" />
+  </Price>
+  <Fabricate suitablefabricators="fabricator_endfield" requiredtime="5" amount="1" displayname="合成">
+    <RequiredItem identifier="copper" amount="1" />
+    <RequiredItem identifier="calcium" amount="1" />
+    <RequiredItem identifier="iron" amount="1" />
+  </Fabricate>
+  <Deconstruct time="5">
+    <Item identifier="copper" amount="1" />
+  </Deconstruct>
+</Item>
+<!--
+++	File End
+-->

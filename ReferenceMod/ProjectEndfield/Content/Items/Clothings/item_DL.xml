@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="portablepump_DL" tags="smallitem,donttakeitems" category="Machine" scale="0.5" damagedbyexplosions="true" explosiondamagemultiplier="0.2" allowasextracargo="true" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <PreferredContainer primary="engcab" />
+    <Price baseprice="520" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.2" />
+      <Price storeidentifier="merchantcity" multiplier="1.2" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" multiplier="1.2" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" sourcerect="94,22,140,108" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" depth="0.81" sourcerect="94,22,140,108" origin="0.5,0.5" />
+    <Body width="50" height="55" density="25" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="false">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredItem identifier="dementonite" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="copper" />
+      <Item identifier="plastic" />
+      <Item identifier="dementonite" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Pump canbeselected="true" maxflow="1200" PowerConsumption="0" MinVoltage="0" IsOn="false" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.25,0.2" minsize="420,220" anchor="Center" style="ItemUI" />
+      <sound file="Content/Items/Pump/Pump.ogg" type="OnActive" range="1000.0" volumeproperty="CurrFlow" volume="0.001" loop="true" />
+      <PumpInEmitter particle="bubbles" particlespersecond="5" position="28,-40" anglemin="90" anglemax="90" velocitymin="100" velocitymax="200" scalemin="0.5" scalemax="0.6" />
+      <PumpInEmitter particle="watersplash" particlespersecond="50" position="28,-40" anglemin="90" anglemax="90" velocitymin="200" velocitymax="400" scalemin="0.5" scalemax="0.6" />
+      <PumpOutEmitter particle="bubbles" particlespersecond="5" position="28,-40" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+      <StatusEffect type="OnActive" targettype="Contained" Condition="-10.0">
+        <Conditional targetcontainer="true" flowpercentage="! 0" />
+      </StatusEffect>
+      <!-- turn off automatically if not attached to a wall -->
+      <StatusEffect type="OnActive" targettype="This" IsOn="false">
+        <Conditional attached="false" targetitemcomponentname="Holdable" />
+      </StatusEffect>
+    </Pump>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredSkill identifier="electrical" level="55" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+        <Explosion range="100.0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+        <Affliction identifier="stun" strength="4" probability="0.5" />
+        <Affliction identifier="electricshock" strength="60" />
+        <Affliction identifier="burn" strength="5" />
+        <ParticleEmitter particle="ElectricShock" DistanceMin="10" DistanceMax="25" ParticleAmount="5" ScaleMin="0.1" ScaleMax="0.12" />
+      </StatusEffect>
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_active" displayname="connection.setstate" />
+      <input name="set_speed" displayname="connection.setpumpingspeed" />
+      <input name="set_targetlevel" displayname="connection.settargetwaterlevel" />
+    </ConnectionPanel>
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="20.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true" limitedattachable="false">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+  </Item>
+</Items>

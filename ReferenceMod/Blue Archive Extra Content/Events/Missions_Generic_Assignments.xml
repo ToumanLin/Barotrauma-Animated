@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <!--test-->
+  <!--<GotoMission
+  name="Base Upgrading"
+  identifier="assignment_total_count"
+     tags="assignment_total_count"
+  type="GoTo"
+  difficulty="5"
+  commonness="0"
+  reward="0"
+  showprogressbar="true"
+  showprogressinnumbers="true"
+  maxprogressstate="40"
+  progressbarlabel="Construction Progress"
+  BlockLocationTypeChanges="true">
+		<Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,256,256,256" color="243,146,55"/>
+		<LocationType identifier="trinity_base"/>
+		<CompleteCheckDataAction identifier="total_assignment_count" condition="eq 6"/>
+	</GotoMission>-->
+  <!--TIER 1 Missions-->
+  <CargoMission identifier="cargo_lv1_1" tags="cargo_lv1_assignment" type="Cargo" difficulty="1" commonness="100" achievementidentifier="cargomission">
+    <Items>
+      <Item identifier="explosivecrate" reward="200" maxcount="15">
+        <Item identifier="compoundn" amount="10" />
+        <Item identifier="detonator" amount="10">
+          <Item identifier="compoundn" />
+        </Item>
+      </Item>
+    </Items>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Cargo1" value="1" Operation="Add" />
+  </CargoMission>
+  <CargoMission identifier="cargo_lv1_2" tags="cargo_lv1_assignment" type="Cargo" difficulty="3" commonness="100" achievementidentifier="cargomission">
+    <Items>
+      <Item identifier="explosivecrate" reward="400" maxcount="10">
+        <Item identifier="volatilecompoundn" amount="10" />
+        <Item identifier="detonator" amount="10">
+          <Item identifier="volatilecompoundn" />
+        </Item>
+      </Item>
+    </Items>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Cargo1" value="1" Operation="Add" />
+  </CargoMission>
+  <CargoMission identifier="cargo_lv1_3" tags="cargo_lv1_assignment" type="Cargo" difficulty="1" commonness="100" achievementidentifier="cargomission">
+    <Items>
+      <Item identifier="securemetalcrate" reward="600" maxcount="4">
+        <Item identifier="smg" amount="1" />
+        <Item identifier="smgmagazine" amount="9" />
+        <Item identifier="fraggrenade" amount="2" />
+      </Item>
+    </Items>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Cargo1" value="1" Operation="Add" />
+  </CargoMission>
+  <CargoMission identifier="cargo_lv1_4" tags="cargo_lv1_assignment" type="Cargo" difficulty="1" commonness="100" reward="500" achievementidentifier="cargomission" requireddeliveryamount="0.98">
+    <Items>
+      <Item identifier="chemicalcrate" reward="140" maxcount="20">
+        <Item identifier="antidama2" amount="5" />
+        <Item identifier="sulphuricacid" amount="5" />
+        <Item identifier="morbusine" amount="5" />
+        <Item identifier="flashpowder" amount="3" />
+        <Item identifier="chloralhydrate" amount="2" />
+      </Item>
+    </Items>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,256,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Cargo1" value="1" Operation="Add" />
+  </CargoMission>
+  <CargoMission identifier="cargo_lv1_5" tags="cargo_lv1_assignment" type="Cargo" difficulty="1" commonness="0" reward="500" achievementidentifier="cargomission" requireddeliveryamount="0.98">
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Items>
+      <Item identifier="metalcrate" reward="200" maxcount="25">
+        <Item identifier="iron" amount="10" />
+        <Item identifier="lead" amount="10" />
+        <Item identifier="copper" amount="10" />
+        <Item identifier="titanium" amount="10" />
+      </Item>
+    </Items>
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,0,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Cargo1" value="1" Operation="Add" />
+  </CargoMission>
+  <MonsterMission identifier="monsterculling_lv1_1" sonarlabel="character.crawler" name="missionname.killcrawlerswarm1large" description="missiondescription.killcrawlerswarm1large" tags="monsterculling_lv1_assignment" type="Monster" difficulty="3" commonness="33" reward="3500" successmessage="missionsuccess.killcrawlerswarm1" maxsonarmarkerdistance="10000">
+    <monster character="crawler" min="14" max="15" />
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,768,256,256" color="214,50,48" />
+    <message header="missionheader0.killcrawlerswarm1" text="missionmessage0.killcrawlerswarm1" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Monsterculling1" value="1" Operation="Add" />
+  </MonsterMission>
+  <MonsterMission identifier="monsterculling_lv1_2" sonarlabel="character.crawler" name="missionname.killcrawlerswarm1large" description="missiondescription.killcrawlerswarm1large" tags="monsterculling_lv1_assignment" type="Monster" difficulty="3" commonness="33" reward="3500" maxsonarmarkerdistance="10000">
+    <monster character="crawler" min="10" max="12" />
+    <monster character="crawlerbroodmother" min="1" max="1" />
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,768,256,256" color="214,50,48" />
+    <message header="missionheader0.killcrawlerswarm2" text="missionmessage0.killcrawlerswarm2" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Monsterculling1" value="1" Operation="Add" />
+  </MonsterMission>
+  <MonsterMission identifier="monsterculling_lv1_3" textidentifier="killcrawlerswarm2" name="missionname.killcrawlerswarm1large" tags="monsterculling_lv1_assignment" type="Monster" difficulty="3" commonness="33" reward="3500" maxsonarmarkerdistance="10000">
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <monster character="crawlerhusk" min="10" max="12" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,768,256,256" color="214,50,48" />
+    <message header="missionheader0.killcrawlerswarm2" text="missionmessage0.killcrawlerswarm2" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Monsterculling1" value="1" Operation="Add" />
+  </MonsterMission>
+  <EscortMission identifier="escort_lv1_1" tags="escort_lv1_assignment" type="Escort" difficulty="1" commonness="100" reward="1000" achievementidentifier="escortmission" baseescortedcharacters="1" scalingescortedcharacters="0.35">
+    <Characters>
+      <Character from="ba_trinity" identifier="ba_mobchan" />
+      <Character from="ba_trinity" identifier="ba_mobchan" />
+      <Character from="ba_trinity" identifier="ba_mobchan" />
+    </Characters>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Reputation identifier="location" amount="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="768,512,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="missionheader0.escort1" text="missionmessage0.escort1" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Escort1" value="1" Operation="Add" />
+  </EscortMission>
+  <EscortMission identifier="escort_lv1_2" tags="escort_lv1_assignment" type="Escort" difficulty="1" commonness="100" reward="1000" achievementidentifier="escortmission" baseescortedcharacters="1" scalingescortedcharacters="0.35">
+    <Characters>
+      <Character from="escortnpcs1" identifier="commoner" />
+    </Characters>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Reputation identifier="location" amount="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="768,512,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="missionheader0.escort1" text="missionmessage0.escort1" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Escort1" value="1" Operation="Add" />
+  </EscortMission>
+  <EscortMission identifier="escort_lv1_3" tags="escort_lv1_assignment" type="Escort" difficulty="1" commonness="100" reward="1000" achievementidentifier="escortmission" baseescortedcharacters="1" scalingescortedcharacters="0.35">
+    <Characters>
+      <Character from="escortnpcs1" identifier="commonerseparatist" />
+    </Characters>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Reputation identifier="location" amount="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="768,512,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="missionheader0.escort1" text="missionmessage0.escort1" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Escort1" value="1" Operation="Add" />
+  </EscortMission>
+  <EscortMission identifier="escort_lv1_4" tags="escort_lv1_assignment" type="Escort" difficulty="1" commonness="100" reward="1500" achievementidentifier="escortmission">
+    <Characters>
+      <Character from="escortnpcs1" identifier="vip" escortidentifier="vip" color="238,130,238" />
+      <Character from="escortnpcs1" identifier="securitynpc" />
+      <Character from="escortnpcs1" identifier="securitynpc" />
+    </Characters>
+    <TriggerEvent eventidentifier="assignment_cooldown_deduction" />
+    <Reputation identifier="location" amount="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="256,512,256,256" color="243,146,55" />
+    <LocationType from="AnyOutpost" to="AnyOutpost" />
+    <message header="missionheader0.escort2" text="missionmessage0.escort2" />
+    <Metadata identifier="mission_check_reward" value="1" Operation="Add" />
+    <Metadata identifier="Reward_Escort1" value="1" Operation="Add" />
+  </EscortMission>
+</Missions>

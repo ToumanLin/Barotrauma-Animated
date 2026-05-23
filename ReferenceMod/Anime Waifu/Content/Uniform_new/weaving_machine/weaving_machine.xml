@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="weaving_machine_proxy" nameidentifier="weaving_machine" tags="smallitem,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" hideinmenus="true" category="Misc" description="" canflipx="false" scale="0.07">
+      <PreferredContainer primary="storagecab" minamount="1" maxamount="1" spawnprobability="1" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" minamount="0" maxamount="1" spawnprobability="0.2" />
+      <Sprite texture="%ModDir%/Content/Uniform_new/weaving_machine/weaving_machine.png" sourcerect="1,1,1000,549" depth="0.851" origin="0.5010576,0.5953486" />
+      <Price baseprice="8" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" maxavailable="1" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="iron" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="5">
+        <RequiredItem identifier="iron" amount="2" />
+      </Fabricate>
+      <Body width="825" height="350" density="80" />
+      <Holdable slots="RightHand,Any" holdpos="0,-80" handle1="-30,14" handle2="30,14" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="This" Condition="-100" setvalue="true" oneshot="true">
+          <SpawnItem identifier="weaving_machine" spawnposition="SameInventory" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This" delay="0.01">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="" identifier="weaving_machine" tags="weaving_machine,largemobilecontainer,mediumitem,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" category="Misc" description="" canflipx="false" isshootable="true" scale="0.07">
+      <PreferredContainer primary="storagecab" />
+      <UpgradePreviewSprite scale="2.5" texture="Content/UI/WeaponUI.png" sourcerect="256,960,64,64" origin="0.5,0.45" />
+      <Sprite texture="%ModDir%/Content/Uniform_new/weaving_machine/weaving_machine.png" sourcerect="1,1,1000,549" depth="0.851" origin="0.5010576,0.5953486" />
+      <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.65,0.75" style="TextFrame" anchor="Center" />
+        <sound file="%ModDir%/Content/Uniform_new/weaving_machine/weaving_machine.ogg" type="OnActive" range="1000.0" volumeproperty="RelativeVoltage" loop="true" />
+      </Fabricator>
+      <Deconstruct time="2">
+        <Item identifier="iron" />
+      </Deconstruct>
+      <Body width="825" height="350" density="80" />
+      <!--fake-->
+      <Controller direction="None" canbepicked="true" msg="ItemMsgPressSelect"></Controller>
+      <!--fake-->
+      <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="ItemMsgDetachWrench" PickingTime="2.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+      <ItemContainer capacity="2" canbeselected="true" hideitems="true" slotsperrow="2" uilabel="" allowuioverlap="true"></ItemContainer>
+      <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" />
+      <!--transparency maker-->
+      <CustomInterface canbeselected="true" drawhudwhenequipped="false">
+        <GuiFrame relativesize="0.3,0.1" anchor="BottomCenter" style="MainMenuNotificationButtonLarge" />
+        <Button text="textreb.Transparent">
+          <StatusEffect type="OnUse" target="Contained" SpriteColor="0,0,0,0" InventoryIconColor="255,255,255,255" setvalue="true" disabledeltatime="true" />
+        </Button>
+        <Button text="textreb.Restore">
+          <StatusEffect type="OnUse" target="Contained" SpriteColor="255,255,255,255" InventoryIconColor="255,255,255,255" setvalue="true" disabledeltatime="true" />
+        </Button>
+      </CustomInterface>
+    </Item>
+    <!-- <Item name="" identifier="weaving_machine" tags="weaving_machine,mediumitem,toolbox,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="" category="Misc" description="" canflipx="false" isshootable="true" scale="0.12">
+      <PreferredContainer primary="storagecab" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab,piratestoragecab" minamount="0" maxamount="1" spawnprobability="0.2" />
+      <Sprite texture="%ModDir%/Content/Uniform_new/weaving_machine/weaving_machine_compressed.png" sourcerect="1,1,400,225" depth="0.851" origin="0.5010576,0.5953486" />
+      <Upgrade gameversion="1.12.7.0" scale="0.12" width="375" height="220" density="40" sourcerect="1,1,400,225" depth="0.851" origin="0.5010576,0.5953486" />
+      <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.65,0.75" style="TextFrame" anchor="Center" />
+        <sound file="%ModDir%/Content/Uniform_new/weaving_machine/weaving_machine.ogg" type="OnActive" range="1000.0" volumeproperty="RelativeVoltage" loop="true" />
+      </Fabricator>
+      <Price baseprice="8" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantresearch" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1" minavailable="1" maxavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1" minavailable="1" maxavailable="1" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="5">
+        <RequiredItem identifier="iron" amount="2" />
+      </Fabricate>
+      <Deconstruct time="2">
+        <Item identifier="iron" />
+      </Deconstruct>
+      <Body width="825" height="500" density="80" />
+ 
+      <Controller direction="None" canbepicked="true" msg="ItemMsgPressSelect"></Controller>
+
+      <Holdable selectkey="Select" pickkey="Use" slots="RightHand+LeftHand" msg="ItemMsgDetachWrench" PickingTime="2.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+
+
+      <ItemContainer capacity="2" canbeselected="true" hideitems="true" slotsperrow="2" uilabel="" allowuioverlap="true"></ItemContainer>
+      <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" />
+
+      <CustomInterface canbeselected="true" drawhudwhenequipped="false">
+        <GuiFrame relativesize="0.3,0.1" anchor="BottomCenter" style="MainMenuNotificationButtonLarge" />
+        <Button text="textreb.Transparent">
+          <StatusEffect type="OnUse" target="Contained" SpriteColor="0,0,0,0" InventoryIconColor="255,255,255,255" setvalue="true" disabledeltatime="true" />
+        </Button>
+        <Button text="textreb.Restore">
+          <StatusEffect type="OnUse" target="Contained" SpriteColor="255,255,255,255" InventoryIconColor="255,255,255,255" setvalue="true" disabledeltatime="true" />
+        </Button>
+      </CustomInterface>
+    </Item>-->
+    <Item name="" identifier="sparkle_fumo" category="misc" tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.09" impactsoundtag="impact_metal_light" isshootable="true" maxstacksize="8">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" amount="1" spawnprobability="0.02" />
+      <PreferredContainer secondary="abandonedstoragecab,wreckstoragecab" amount="1" spawnprobability="0.02" />
+      <Sprite texture="%ModDir%/Content/Uniform_new/weaving_machine/sparkle.png" sourcerect="0,0,550,400" depth="0.8" origin="0.5,0.5" />
+      <Body width="56" height="60" density="40" />
+      <Controller direction="None" canbepicked="true" msg="ItemMsgPressSelect">
+        <sound file="%ModDir%/Content/Uniform_new/weaving_machine/sparkle.ogg" type="OnUse" range="300.0" volume="7.0" />
+      </Controller>
+      <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="10.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+    </Item>
+    <Item name="clothing_box" identifier="AWbox" category="Misc" subcategory="Clothes" tags="mediumitem,mobilecontainer,tool,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" cargocontaineridentifier="" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="outpostcrewcabinet,crewcab" />
+      <Deconstruct time="2">
+        <Item identifier="iron" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="5">
+        <RequiredItem identifier="iron" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/AWbox.png" sourcerect="128,0,142,114" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Tools/tools.png" sourcerect="314,1,94,74" origin="0.5,0.5" />
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-80" handle1="-2,38" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" allowswappingwhenpicked="false"></Holdable>
+      <Body width="90" height="60" density="20" />
+      <ItemContainer capacity="42" slotsperrow="6" keepopenwhenequipped="false" movableframe="true">
+        <Containable items="clothing" />
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="Fabric" hideinmenus="true" category="Misc" maxstacksize="63" maxstacksizecharacterinventory="63" tags="fabric,smallitem,disallowduplicatedeconstructoutput,disallowremovefabricationingredient" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer secondary="storagecab" />
+      <Price baseprice="30" sold="false" canbespecial="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" minavailable="4" sold="false" canbespecial="false" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="8" sold="false" canbespecial="false" />
+        <Price storeidentifier="merchantresearch" minavailable="7" sold="false" canbespecial="false" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="3" sold="false" canbespecial="false" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" minavailable="2" sold="false" canbespecial="false" />
+      </Price>
+      <Deconstruct time="2">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/fabric.png" sourcerect="1,1,54,54" origin="0.5,0.5" />
+      <Sprite texture="content/items/materials/minerals.png" sourcerect="178,8,42,45" depth="0.55" origin="0.5,0.5" />
+      <Body width="45" height="30" density="20" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="" identifier="1baemote_holding" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_holding.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand" aimable="false" characterusable="false" holdpos="45,25" holdangle="0">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_holding_left" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_holding.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,LeftHand" aimable="false" characterusable="false" holdpos="45,25" holdangle="0">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_chest" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_chest.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="15,-10" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_chest2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_chest.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sourcerect="0,0,20,20" origin="0.5,0.55" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="15,-10" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_stomach" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_stomach.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="-10,-25" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_stomach2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_stomach.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="-10,-25" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_hips" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_hips.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="-35,-5" holdangle="90">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_hips2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_hips.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="-35,-5" holdangle="90">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_booba" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_booba.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="-10,-15" holdangle="90">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_booba2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_booba.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="-10,-15" holdangle="90">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_head" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_head.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand,LeftHand" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_head2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_head.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any,RightHand+LeftHand" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_PoseR" category="misc" tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.09" impactsoundtag="impact_metal_light" isshootable="true" maxstacksize="4">
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_PoseR.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <sprite texture="%moddir%/Content/items/diving/Abyss_DivingSuit_0.png" sourcerect="197,778,152,240" depth="0.17" premultiplyalpha="false" origin="0.5,0.5" />
+      <Body width="126" height="120" density="10" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Controller UserPos="1,1" direction="Right" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true">
+        <limbposition limb="RightFoot" position="155,-615" />
+      </Controller>
+      <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="0.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+    </Item>
+    <Item name="" identifier="1baemote_PoseL" category="misc" tags="smallitem" cargocontaineridentifier="metalcrate" scale="0.09" impactsoundtag="impact_metal_light" isshootable="true" maxstacksize="4">
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_PoseL.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <sprite texture="%moddir%/Content/items/diving/Abyss_DivingSuit_0.png" sourcerect="197,778,152,240" depth="0.16" premultiplyalpha="false" origin="0.5,0.5" />
+      <Body width="126" height="120" density="10" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Controller UserPos="1,1" direction="Left" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true">
+        <limbposition limb="LeftFoot" position="155,-615" />
+      </Controller>
+      <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="0.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+    </Item>
+    <Item name="" identifier="1baemote_walking1" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_walking1.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <StatusEffect type="OnContained" target="Character" setvalue="true" disabledeltatime="true">
+          <TriggerAnimation Type="Walk" FileName="_vigorous_not_used" priority="0" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_walking2" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="0" spawnprobability="0.0" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_walking2.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <StatusEffect type="OnContained" target="Character" setvalue="true" disabledeltatime="true">
+          <TriggerAnimation Type="Walk" FileName="JollyWalk" priority="0" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_walking2_II" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="0" spawnprobability="0.0" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_walking2_II.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <StatusEffect type="OnContained" target="Character" setvalue="true" disabledeltatime="true">
+          <TriggerAnimation Type="Walk" FileName="_JollyWalk_old_not_used" priority="0" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_walking3" noninteractable="false" description="" scale="0.25" tags="smallitem" category="misc">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="0" spawnprobability="0.0" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_walking3.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="43" height="55" friction="1.0" restitution="0.01" angulardamping="0.8" density="11" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Holdable slots="Any" aimable="false" characterusable="false" holdpos="20,15" holdangle="40">
+        <StatusEffect type="OnContained" target="Character" setvalue="true" disabledeltatime="true">
+          <TriggerAnimation Type="Walk" FileName="DrunkenWalk" priority="0" ExpectedSpecies="Human" />
+        </StatusEffect>
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon></RangedWeapon>
+    </Item>
+    <Item name="" identifier="1baemote_chair" category="misc" tags="smallitem,chair" allowattachitems="true" texturescale="1.0,1.0" scale="0.5" isshootable="true" canflipy="true" maxstacksize="4">
+      <PreferredContainer primary="crewcab" />
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_chair.png" depth="0.7" sheetindex="3,7" sheetelementsize="72,72" origin="0.5,0.5" />
+      <sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" sourcerect="1233,31,144,240" depth="0.55" SpriteColor="0,0,0,0" scale="0.5" origin="0.5,0.5" />
+      <Body width="56" height="60" density="40" />
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <Controller UserPos="1,1" direction="Left" hidehud="false" canbeselected="true" issecondaryitem="true" drawuserbehind="true">
+        <limbposition limb="Head" position="110,15" />
+        <limbposition limb="Torso" position="90,-30" />
+        <limbposition limb="Waist" position="95,-85" />
+        <limbposition limb="RightFoot" position="10,-220" />
+        <limbposition limb="LeftFoot" position="10,-220" />
+        <limbposition limb="RightHand" position="50,-100" allowusinglimb="true" />
+        <limbposition limb="LeftHand" position="50,-100" allowusinglimb="true" />
+      </Controller>
+      <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="0.0" aimpos="35,-10" handle1="0,0" attachable="true" attachedbydefault="false" aimable="true">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+    </Item>
+    <Item name="" identifier="1baemote_giveup" category="Misc" scale="0.0" InvulnerableToDamage="true" Tags="none">
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_giveup.png" depth="0.7" sheetindex="3,7" sheetelementsize="60,60" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="16" height="30" density="10.05" />
+      <Holdable canBeCombined="true" slots="RightHand+LeftHand,Any" aimable="true" holdpos="10,55" aimpos="10,55" handle1="0,0" handle2="1000,0" msg="ItemMsgPickUpSelect">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+    </Item>
+    <Item name="" identifier="1baemote_click" hideconditionbar="true" category="Misc" scale="0.0" InvulnerableToDamage="true" Tags="none">
+      <Fabricate suitablefabricators="weaving_machine" requiredtime="0"></Fabricate>
+      <Deconstruct time="0.1"></Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Uniform_new/weaving_machine/1baemote_click.png" depth="0.7" sheetindex="3,7" sheetelementsize="60,60" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="16" height="30" density="10.05" />
+      <Holdable canBeCombined="false" slots="RightHand,LeftHand,Any" aimable="true" holdangle="25" aimpos="75,0" handle1="0,0" handle2="0,0" msg="ItemMsgPickUpSelect">
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+      <RangedWeapon reload="0.35" weapondamagemodifier="1" penetration="0.0" holdtrigger="false" barrelpos="100,0" spread="0" unskilledspread="0" combatPriority="-1" drawhudwhenequipped="false" crosshairscale="0.2">
+        <StatusEffect type="OnUse" target="This" disabledeltatime="true" holdangle="15" aimpos="50,0" />
+        <StatusEffect type="OnUse" target="This" disabledeltatime="true" holdangle="25" aimpos="75,0" delay="0.3" />
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This">
+          <Spawnitem identifiers="1baemote_pointthrust" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </RangedWeapon>
+      <ItemContainer capacity="2" maxstacksize="1" hideitems="true" SpawnWithID="1baemote_pointthrust" drawinventory="false" canbeselected="false" removecontaineditemsondeconstruct="true" ShowConditionInContainedStateIndicator="true" containedspritedepth="0.56">
+        <Containable items="1baemote_pointthrust," hide="true" itempos="-65,0" />
+      </ItemContainer>
+    </Item>
+    <Item identifier="1baemote_pointthrust" hideinmenus="true" category="Misc" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.01" spritecolor="0,0,0,0" inventoryiconcolor="0,0,0,0">
+      <Sprite texture="%ModDir%/content/items/diving/Abyss_DivingSuit_0.png" depth="0.7" sheetindex="3,7" sheetelementsize="20,20" origin="0.5,0.5" />
+      <Body width="45" height="30" density="30" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnUse" target="this" delay="0.3">
+          <Explosion range="10.0" force="3" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" flash="false" camerashake="1" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="0.8" range="500" selectionmode="random" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="0.85" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="0.9" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="0.95" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="1.0" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="1.05" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="1.1" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="1.15" range="500" />
+          <Sound file="%ModDir%/Content/Uniform_new/weaving_machine/fingerclap.ogg" frequencymultiplier="1.2" range="500" />
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring\/-->
+        <StatusEffect type="OnNotContained" targettype="This" delay="1.2" oneshot="true">
+          <Remove />
+        </StatusEffect>
+        <!-- despawner boring/\-->
+      </Holdable>
+    </Item>
+  </Override>
+</Items>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="otfx_alientrappsychosis" tags="smallitem" category="Machine" scale="0.5" allowasextracargo="true" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.750" sourcerect="1218,0,76,70" origin="0.5,0.5" />
+    <DecorativeSprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1031,62,98,51" depth="0.7499" origin="0.5,0.5" offset="0,2" rotationspeed="180">
+      <AnimationConditional targetitemcomponent="LightComponent" IsOn="true" voltage="gt 1.0" />
+    </DecorativeSprite>
+    <DecorativeSprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1080,117,50,98" depth="0.7498" origin="0.5,0.5" offset="0,2" rotationspeed="180">
+      <AnimationConditional targetitemcomponent="LightComponent" IsOn="true" voltage="gt 1.0" />
+    </DecorativeSprite>
+    <Body width="76" height="70" density="25" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" pickingtime="5.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true">
+      <RequiredItem items="wrench" type="Equipped" />
+      <StatusEffect type="OnPicked" target="This" IsOn="false" />
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" canbeselected="true" hideitems="true" hudpos="0.5,0.6" uilabel="entityname.batterycell">
+      <GuiFrame relativesize="0.08,0.16" anchor="Center" pivot="TopLeft" style="ItemUI" draggable="true" />
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" targettype="This" voltage="2.0" setvalue="true" interval="1.0">
+          <Conditional targetitemcomponent="LightComponent" IsOn="true" />
+        </StatusEffect>
+      </Containable>
+    </ItemContainer>
+    <LightComponent powerconsumption="infinity" minvoltage="1.0" range="150.0" lightcolor="255,56,144,111" IsOn="false" castshadows="false" allowingameediting="false" pulseamount="0.9" pulsefrequency="0.25">
+      <StatusEffect type="OnActive" target="This">
+        <sound file="Content/Items/Alien/AlienArtifactLoop1.ogg" loop="true" range="1000" frequency="0.3" volume="0.3" />
+        <ParticleEmitter particle="psychosisfx" scalemultiplier="0.7,0.7" anglemax="360" particlespersecond="3" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="300" interval="3.0">
+        <Explosion range="300" ignorecover="true" showeffects="false">
+          <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.1" setvalue="true" duration="3.0" stackable="false" />
+          <Affliction identifier="psychosis" strength="3.0" />
+        </Explosion>
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="600" interval="3.0">
+        <Explosion range="600" ignorecover="true" showeffects="false">
+          <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.4" setvalue="true" duration="3.0" stackable="false" />
+          <Affliction identifier="psychosis" strength="3.0" />
+        </Explosion>
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters,Contained" range="900" interval="3.0" condition="-1.0" disabledeltatime="true">
+        <sound file="Content/Items/Alien/AlienCoil1.ogg" loop="false" range="1500" selectionmode="Random" />
+        <sound file="Content/Items/Alien/AlienCoil2.ogg" loop="false" range="1500" />
+        <sound file="Content/Items/Alien/AlienCoil3.ogg" loop="false" range="1500" />
+        <ParticleEmitter particle="shockwave" particleamount="1" />
+        <ParticleEmitter particle="psychosisfx" anglemax="360" particleamount="3" scalemultiplier="0.7,0.7" lifetimemultiplier="0.7" />
+        <Explosion range="900" ignorecover="true" showeffects="false">
+          <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.7" setvalue="true" duration="3.0" stackable="false" />
+          <Affliction identifier="psychosis" strength="3.0" />
+          <Affliction identifier="otfx_incapacitated" strength="30" />
+        </Explosion>
+        <Conditional IsDead="false" />
+      </StatusEffect>
+    </LightComponent>
+    <CustomInterface canbeselected="true" allowuioverlap="true" drawhudwhenequipped="false">
+      <GuiFrame relativesize="0.10,0.16" anchor="Center" pivot="TopLeft" relativeoffset="0.08,0.0" style="ItemUI" draggable="true" />
+      <Button text="label.lockcontainer">
+        <StatusEffect type="OnUse" target="This" Tags="locked" drawinventory="false" />
+      </Button>
+      <Button text="label.unlockcontainer">
+        <StatusEffect type="OnUse" target="This" Tags="unlocking" />
+        <StatusEffect type="OnUse" target="This" delay="3.0" stackable="false" drawinventory="true" checkconditionalalways="true">
+          <Conditional hastag="eq unlocking" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <RequiredSkill identifier="electrical" level="55" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+        <Explosion range="100.0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+        <Affliction identifier="stun" strength="4" />
+        <Affliction identifier="burn" strength="5" />
+        <Affliction identifier="psychosis" strength="10" />
+      </StatusEffect>
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_state" displayname="connection.setstate" />
+    </ConnectionPanel>
+  </Item>
+</Items>

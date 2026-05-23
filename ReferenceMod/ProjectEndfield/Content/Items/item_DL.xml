@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- 咕咕河豚抽水泵 -->
+  <Item name="" identifier="portablepump_DL" tags="smallitem,donttakeitems" category="Machine" scale="0.5" damagedbyexplosions="true" explosiondamagemultiplier="0.2" allowasextracargo="true" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <PreferredContainer primary="engcab" />
+    <Price baseprice="520" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="1.2" />
+      <Price storeidentifier="merchantcity" multiplier="1.2" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" multiplier="1.2" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" sourcerect="94,22,140,108" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" depth="0.81" sourcerect="94,22,140,108" origin="0.5,0.5" />
+    <Body width="50" height="55" density="25" />
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="30" requiresrecipe="false">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredItem identifier="dementonite" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="copper" />
+      <Item identifier="plastic" />
+      <Item identifier="dementonite" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Pump canbeselected="true" maxflow="1200" PowerConsumption="0" MinVoltage="0" IsOn="false" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.25,0.2" minsize="420,220" anchor="Center" style="ItemUI" />
+      <sound file="Content/Items/Pump/Pump.ogg" type="OnActive" range="1000.0" volumeproperty="CurrFlow" volume="0.001" loop="true" />
+      <PumpInEmitter particle="bubbles" particlespersecond="5" position="28,-40" anglemin="90" anglemax="90" velocitymin="100" velocitymax="200" scalemin="0.5" scalemax="0.6" />
+      <PumpInEmitter particle="watersplash" particlespersecond="50" position="28,-40" anglemin="90" anglemax="90" velocitymin="200" velocitymax="400" scalemin="0.5" scalemax="0.6" />
+      <PumpOutEmitter particle="bubbles" particlespersecond="5" position="28,-40" anglemin="0" anglemax="360" velocitymin="0" velocitymax="0" scalemin="0.5" scalemax="0.6" />
+      <StatusEffect type="OnActive" targettype="Contained" Condition="-10.0">
+        <Conditional targetcontainer="true" flowpercentage="! 0" />
+      </StatusEffect>
+      <!-- turn off automatically if not attached to a wall -->
+      <StatusEffect type="OnActive" targettype="This" IsOn="false">
+        <Conditional attached="false" targetitemcomponentname="Holdable" />
+      </StatusEffect>
+    </Pump>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredSkill identifier="electrical" level="55" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+        <Explosion range="100.0" force="1.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+        <Affliction identifier="stun" strength="4" probability="0.5" />
+        <Affliction identifier="electricshock" strength="60" />
+        <Affliction identifier="burn" strength="5" />
+        <ParticleEmitter particle="ElectricShock" DistanceMin="10" DistanceMax="25" ParticleAmount="5" ScaleMin="0.1" ScaleMax="0.12" />
+      </StatusEffect>
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="toggle" displayname="connection.togglestate" />
+      <input name="set_active" displayname="connection.setstate" />
+      <input name="set_speed" displayname="connection.setpumpingspeed" />
+      <input name="set_targetlevel" displayname="connection.settargetwaterlevel" />
+    </ConnectionPanel>
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" msg="ItemMsgDetachWrench" PickingTime="20.0" aimpos="65,-10" handle1="0,0" attachable="true" aimable="true" limitedattachable="false">
+      <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+    </Holdable>
+  </Item>
+  <!-- 啾啾河豚载货车 -->
+  <Item name="" identifier="cargoscooter_DL" category="Equipment,Diving" Tags="mediumitem,provocative,scooter,mobilecontainer" allowasextracargo="true" cargocontaineridentifier="metalcrate" description="" Scale="0.5" impactsoundtag="impact_metal_heavy" isshootable="true">
+    <PreferredContainer primary="divingcab" />
+    <Price baseprice="400" sold="false">
+      <Price storeidentifier="merchantoutpost" multiplier="0.9" />
+      <Price storeidentifier="merchantcity" multiplier="0.85" />
+      <Price storeidentifier="merchantresearch" />
+      <Price storeidentifier="merchantmilitary" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Deconstruct time="20">
+      <Item identifier="aluminium" />
+      <Item identifier="copper" />
+      <Item identifier="tin" />
+      <Item identifier="plastic" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="30" requiresrecipe="true">
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="underwaterscooter" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" sourcerect="104,170,140,106" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/pumps.png" depth="0.55" sourcerect="104,170,140,106" origin="0.5,0.5" />
+    <Body width="140" height="100" density="10" />
+    <Holdable slots="RightHand+LeftHand" aimpos="90,0" handle1="-50,18" handle2="-50,18" msg="ItemMsgPickUpSelect" holdangle="-10">
+      <LightComponent LightColor="220,255,150,200" range="500" powerconsumption="10" IsOn="true">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="-0.01, 0.5" size="1.0,1.0" />
+      </LightComponent>
+      <!-- activates the light when holding aim -->
+      <StatusEffect type="OnSecondaryUse" target="This" voltage="1.0" setvalue="true"></StatusEffect>
+      <!-- Battery drain when using the light, adds up with propulsion -->
+    </Holdable>
+    <Propulsion force="200" usablein="water" particles="bubbles">
+      <sound file="%ModDir%/Content/Items/Diving/ScooterLoop.ogg" type="OnUse" range="500.0" loop="true" />
+    </Propulsion>
+    <AiTarget soundrange="3000" maxsightrange="3000" />
+    <ItemContainer capacity="120" maxstacksize="32" depth="0.5" waterproof="true" slotsperrow="6">
+      <Containable items="smallitem,mediumitem" excludeditems="cargoscooter_DL" />
+    </ItemContainer>
+  </Item>
+  <!-- 黑钢电棍 -->
+  <Item name="" identifier="truncheon_DL" category="Weapon" Tags="smallitem,weapon,stunner,gunsmith,mountableweapon" Scale="0.09" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.5" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="secarmcab" secondary="armcab" />
+    <Upgrade gameversion="0.9.2.0" scale="0.5" />
+    <Price baseprice="400" sold="false"></Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="10">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="plastic" amount="2" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/truncheon.png" sourcerect="0,0,1000,150" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/truncheon.png" sourcerect="0,0,1000,150" depth="0.55" origin="0.5,0.5" />
+    <Body width="170" height="30" density="20" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="35,10" handle1="-37,2" holdangle="30" aimangle="20" reload="0.95" range="100" combatPriority="35" msg="ItemMsgPickUpSelect" preferredcontaineditems="mobilebattery">
+      <Attack targetimpulse="5" itemdamage="1">
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional entitytype="eq Character" />
+          <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+          <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+        </StatusEffect>
+        <Affliction identifier="blunttrauma" strength="8" />
+        <Affliction identifier="stun" strength="0.4" />
+      </Attack>
+      <!-- changed to use electricshock: normal batteries cause 45 points of electricshock. Due to strength change of -5/s we can expect full stun in three consecutive hits -->
+      <!-- keep weight check in place for now (affect targets with mass < 40, humans, mudraptors, etc.) -->
+      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true">
+        <Conditional mass="lt 40" />
+        <Affliction identifier="stun" strength="0.3" />
+        <Affliction identifier="electricshock" strength="45" />
+        <sound file="Content/Items/Weapons/StunBaton1.ogg" selectionmode="random" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton2.ogg" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton3.ogg" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton4.ogg" range="500" />
+        <RequiredItem items="mobilebattery" ExcludedIdentifiers="fulguriumbatterycell" type="Contained" msg="ItemMsgBatteryCellRequired" />
+        <Explosion range="100.0" force="0.1" shockwave="false" flames="false" smoke="false" underwaterbubble="false" camerashake="6.0" />
+        <ParticleEmitter particle="ElectricShock" DistanceMin="5" DistanceMax="20" ParticleAmount="3" ScaleMin="0.07" ScaleMax="0.1" />
+      </StatusEffect>
+      <!-- changed to use electricshock: fulgurium batteries cause 60 points of electricshock -> full stun in two consecutive hits -->
+      <!-- keep weight check in place for now (affect targets with mass < 60, includes veteran mudraptors) -->
+      <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true">
+        <Conditional mass="lt 60" />
+        <Affliction identifier="stun" strength="0.3" />
+        <Affliction identifier="electricshock" strength="60" />
+        <sound file="Content/Items/Weapons/StunBaton1.ogg" selectionmode="random" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton2.ogg" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton3.ogg" range="500" />
+        <sound file="Content/Items/Weapons/StunBaton4.ogg" range="500" />
+        <RequiredItem items="fulguriumbatterycell" type="Contained" msg="ItemMsgBatteryCellRequired" />
+        <Explosion range="100.0" force="0.5" shockwave="false" flames="false" smoke="true" underwaterbubble="false" camerashake="6.0" />
+        <ParticleEmitter particle="ElectricShock" DistanceMin="10" DistanceMax="25" ParticleAmount="5" ScaleMin="0.1" ScaleMax="0.12" />
+      </StatusEffect>
+      <!-- 8 usages with normal battery, 16 with fulgurium -->
+      <StatusEffect type="OnUse" target="Contained,UseTarget" Condition="-12.5" disabledeltatime="true">
+        <RequiredItem items="mobilebattery" type="Contained" msg="ItemMsgBatteryCellRequired" />
+        <Conditional entitytype="eq Character" />
+      </StatusEffect>
+    </MeleeWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery" />
+    </ItemContainer>
+    <aitarget sightrange="500" soundrange="500" fadeouttime="1" />
+    <Quality>
+      <QualityStat stattype="StrikingPowerMultiplier" value="0.25" />
+    </Quality>
+  </Item>
+  <!-- qingyujiu青羽鹭头饰 -->
+  <Item name="" identifier="qingyujiu_DL" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+    <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="1" />
+    <Price baseprice="250" sold="false">
+      <Price locationtype="outpost" multiplier="1.3" sold="false" />
+      <Price locationtype="city" multiplier="1.2" minavailable="1" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.9" minavailable="3" />
+      <Price locationtype="mine" multiplier="1" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="ballisticfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="ballisticfiber" />
+    </Fabricate>
+    <Sprite name="qingyujiu" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/qingyujiu.png" sourcerect="66,84,106,74" depth="0.6" origin="0.5,0.5" />
+    <Body radius="30" density="50" />
+    <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <SkillModifier skillidentifier="weapons" skillvalue="10" />
+      <sprite name="qingyujiu Wearable" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/qingyujiu.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" hidelimb="false" scale="0.50" sourcerect="0,0,320,456" origin="0.55625,0.415" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="thermalgoggles" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,120" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+        <RequiredItem items="healthscanner" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="Wf_helmet_module" />
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <!-- youlinjishu游鳞机枢耳钉 -->
+  <Item name="" identifier="youlinjishu_DL" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+    <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="1" />
+    <Price baseprice="250" sold="false">
+      <Price locationtype="outpost" multiplier="1.3" sold="false" />
+      <Price locationtype="city" multiplier="1.2" minavailable="1" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.9" minavailable="3" />
+      <Price locationtype="mine" multiplier="1" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="ballisticfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="ballisticfiber" />
+    </Fabricate>
+    <Sprite name="youlinjishu" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/youlinjishu.png" sourcerect="130,190,64,64" depth="0.6" origin="0.5,0.5" />
+    <Body radius="30" density="50" />
+    <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <SkillModifier skillidentifier="weapons" skillvalue="10" />
+      <sprite name="youlinjishu  Wearable" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/youlinjishu.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" hidelimb="false" scale="0.50" sourcerect="0,0,320,456" origin="0.55625,0.415" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="thermalgoggles" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,120" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+        <RequiredItem items="healthscanner" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="Wf_helmet_module" />
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <!-- mingzhonggui鸣钟之龟帽子 -->
+  <Item name="" identifier="mingzhonggui_DL" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+    <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="1" />
+    <Price baseprice="250" sold="false">
+      <Price locationtype="outpost" multiplier="1.3" sold="false" />
+      <Price locationtype="city" multiplier="1.2" minavailable="1" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.9" minavailable="3" />
+      <Price locationtype="mine" multiplier="1" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="ballisticfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="ballisticfiber" />
+    </Fabricate>
+    <Sprite name="mingzhonggui" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/mingzhonggui.png" sourcerect="96,86,122,108" depth="0.6" origin="0.5,0.5" />
+    <Body radius="30" density="50" />
+    <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <SkillModifier skillidentifier="weapons" skillvalue="10" />
+      <sprite name="mingzhonggui  Wearable" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/mingzhonggui.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" hidelimb="false" scale="0.50" sourcerect="0,0,320,456" origin="0.55625,0.415" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="thermalgoggles" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,120" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+        <RequiredItem items="healthscanner" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="Wf_helmet_module" />
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <!-- huxiuxiu呼咻咻耳机 -->
+  <Item name="" identifier="huxiuxiu_DL" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_heavy" scale="0.4">
+    <PreferredContainer primary="armcab" minamount="0" maxamount="1" spawnprobability="1" />
+    <Price baseprice="250" sold="false">
+      <Price locationtype="outpost" multiplier="1.3" sold="false" />
+      <Price locationtype="city" multiplier="1.2" minavailable="1" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.9" minavailable="3" />
+      <Price locationtype="mine" multiplier="1" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="ballisticfiber" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="ballisticfiber" />
+    </Fabricate>
+    <Sprite name="huxiuxiu" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/huxiuxiu.png" sourcerect="124,150,74,64" depth="0.6" origin="0.5,0.5" />
+    <Body radius="30" density="50" />
+    <Wearable slots="Any,Head" armorvalue="20.0" msg="ItemMsgPickUpSelect">
+      <damagemodifier afflictionidentifiers="blunttrauma,lacerations,gunshotwound" armorsector="0.0,360.0" damagemultiplier="0.4" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="bitewounds" armorsector="0.0,360.0" damagemultiplier="0.5" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictiontypes="bleeding" armorsector="0.0,360.0" damagemultiplier="0.3" damagesound="LimbArmor" deflectprojectiles="true" />
+      <damagemodifier afflictionidentifiers="concussion" armorsector="0.0,360.0" damagemultiplier="0.0" damagesound="" deflectprojectiles="true" />
+      <SkillModifier skillidentifier="weapons" skillvalue="10" />
+      <sprite name="huxiuxiu  Wearable" texture="%ModDir%/Content/Items/Clothings/WutheringWaves_item/huxiuxiu.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" hidelimb="false" scale="0.50" sourcerect="0,0,320,456" origin="0.55625,0.415" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,120" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="thermalgoggles" type="Contained" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="0,176,0,120" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="true">
+        <RequiredItem items="healthscanner" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <ItemContainer hideitems="true" capacity="1" maxstacksize="1" containedstateindicatorstyle="" containedspritedepths="0.551,0.552">
+      <Containable items="Wf_helmet_module" />
+      <SlotIcon slotindex="0" texture="%ModDir%/Content/items/weapons/Waifu_UI.png" sourcerect="120,0,120,120" origin="0.5,0.5" />
+    </ItemContainer>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <!--  -->
+</Items>

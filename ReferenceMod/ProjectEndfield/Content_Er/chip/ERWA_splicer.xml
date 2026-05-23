@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Encode = "UTF-8" ++ Line_End = "CRLF" -->
+<!--
+++	File Start
+++	Name        :	ERWA_splicer.xml
+++	Version     :	0.1 (alpha)
+++	Time Create :	TK5202312212029
+++	Time Modify :	TK5202312212109
+++	Author      :	Erthex
+-->
+<Items>
+  <!--多功能拼接器(LV1)-->
+  <Item identifier="ERWA_splicer_1" scale="0.4" category="Equipment" tags="smallitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" name="多功能拼接器" description="由基因拼接器改进而来的多功能拼接器；除了基因拼接器的功能外，还附有两个用于安装机体强化芯片的槽位">
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="10" amount="1" displayname="合成">
+      <RequiredItem identifier="plastic" amount="1" />
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+      <RequiredItem identifier="genesplicer" amount="1" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" amount="1" />
+      <Item identifier="rubber" amount="1" />
+      <Item identifier="silicon" amount="1" />
+      <Item identifier="genesplicer" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/Genetic/Genetic.png" sourcerect="244,62,76,65" origin="0.5,0.5" />
+    <Sprite name="Headset" texture="Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="67,85,73,35" origin="0.5,0.5" />
+    <Body radius="15" width="45" density="25" />
+    <ItemContainer capacity="2" maxstacksize="1" autoinject="true" autoinjectthreshold="Infinity" allowswappingcontaineditems="true">
+      <Containable items="ERWA_chip" />
+      <SubContainer capacity="1" maxstacksize="1" autoinject="true" autoinjectthreshold="Infinity" allowswappingcontaineditems="false">
+        <Containable items="geneticmaterial" />
+      </SubContainer>
+    </ItemContainer>
+    <Wearable limbtype="Head" slots="Any,HealthInterface" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+      <sprite name="Gene Splicer Wearable" texture="Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="false" depthlimb="Waist" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="258,131,64,54" origin="0.6,0.0" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,0" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="ERWA_chip_deatheye_1,ERWA_chip_deatheye_2,ERWA_chip_deatheye_3" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+  <!--多功能拼接器(LV2)-->
+  <Item identifier="ERWA_splicer_2" scale="0.4" category="Equipment" tags="smallitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" name="高级多功能拼接器" description="由高级基因拼接器改进而来的多功能拼接器；除了基本的基因拼接器的功能外，还附有两个用于安装机体强化芯片的槽位">
+    <Fabricate suitablefabricators="fabricator_endfield" requiredtime="10" amount="1" displayname="合成">
+      <RequiredItem identifier="plastic" amount="1" />
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+      <RequiredItem identifier="advancedgenesplicer" amount="1" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" amount="2" />
+      <Item identifier="rubber" amount="1" />
+      <Item identifier="silicon" amount="1" />
+      <Item identifier="advancedgenesplicer" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Items/Genetic/Genetic.png" sourcerect="244,62,76,65" origin="0.5,0.5" />
+    <Sprite name="Headset" texture="Content/Items/Genetic/Genetic.png" depth="0.6" sourcerect="67,85,73,35" origin="0.5,0.5" />
+    <Body radius="15" width="45" density="25" />
+    <ItemContainer capacity="2" maxstacksize="1" autoinject="true" autoinjectthreshold="Infinity" allowswappingcontaineditems="true">
+      <Containable items="ERWA_chip" />
+      <SubContainer capacity="2" maxstacksize="1" autoinject="true" autoinjectthreshold="Infinity" allowswappingcontaineditems="false">
+        <Containable items="geneticmaterial" />
+      </SubContainer>
+    </ItemContainer>
+    <Wearable limbtype="Head" slots="Any,HealthInterface" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+      <sprite name="Gene Splicer Wearable" texture="Content/Items/Genetic/Genetic.png" limb="Head" hidelimb="false" inheritlimbdepth="false" depthlimb="Waist" inheritscale="true" ignorelimbscale="true" scale="0.5" hideotherwearables="false" sourcerect="258,131,64,54" origin="0.6,0.0" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="3000" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="StatusHUD" drawhudwhenequipped="true" overlaycolor="176,0,0,0" range="3000" thermalgoggles="true" showdeadcharacters="false" showtexts="false">
+        <RequiredItem items="ERWA_chip_deatheye_1,ERWA_chip_deatheye_2,ERWA_chip_deatheye_3" type="Contained" />
+      </StatusEffect>
+    </Wearable>
+    <StatusHUD drawhudwhenequipped="false" overlaycolor="0,0,0,0" range="0" thermalgoggles="false" showdeadcharacters="false" showtexts="false" />
+  </Item>
+</Items>
+<!--
+++	File End
+-->

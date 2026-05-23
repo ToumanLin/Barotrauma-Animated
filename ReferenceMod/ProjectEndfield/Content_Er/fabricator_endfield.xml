@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Item name="终末地加工台" identifier="fabricator_endfield" tags="donttakeitems,dontsellitems" allowedlinks="deconstructor,locker" category="Machine" description="" scale="0.15" impactsoundtag="impact_metal_heavy" isshootable="true">
+  <Sprite texture="%ModDir%/Content_Er/fabricator_endfield.png" sourcerect="0,0,609,719" depth="0.8" />
+  <Fabricator canbeselected="true" powerconsumption="0.0" msg="ItemMsgInteractSelect">
+    <GuiFrame relativesize="0.4,0.45" style="ItemUI" anchor="Center" />
+    <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" volumeproperty="RelativeVoltage" loop="true" />
+  </Fabricator>
+  <ItemContainer capacity="5" canbeselected="true" hideitems="true" slotsperrow="5" uilabel="" allowuioverlap="true" />
+  <ItemContainer capacity="1" canbeselected="true" hideitems="true" slotsperrow="1" uilabel="" allowuioverlap="true" />
+  <Price baseprice="1200" sold="false" />
+  <Fabricate suitablefabricators="fabricator" requiredtime="20.0">
+    <RequiredItem identifier="organicfiber" amount="8" />
+  </Fabricate>
+  <Deconstruct time="10.0">
+    <Item identifier="organicfiber" amount="4" />
+  </Deconstruct>
+  <Body width="609" height="719" density="25" />
+  <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand+LeftHand" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="85,-10" handle1="5,0" handle2="-5,0" attachable="true" aimable="true">
+    <RequiredItem items="wrench" type="Equipped" />
+  </Holdable>
+</Item>

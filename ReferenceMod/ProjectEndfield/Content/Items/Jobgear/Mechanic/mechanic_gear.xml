@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 服装 -->
+    <Item name="" identifier="bluejumpsuit1" aliases="bluejumpsuit" category="Equipment" tags="smallitem,clothing" fireproof="true" cargocontaineridentifier="metalcrate" description="" scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.125" />
+      <Price baseprice="150">
+        <Price locationtype="outpost" multiplier="1" minavailable="1" />
+        <Price locationtype="city" multiplier="0.9" minavailable="1" />
+        <Price locationtype="research" multiplier="1" minavailable="1" />
+        <Price locationtype="military" multiplier="1" minavailable="1" />
+        <Price locationtype="mine" multiplier="1" minavailable="1" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="organicfiber" />
+      </Deconstruct>
+      <InventoryIcon name="Mechanic Uniform 1 Icon" texture="%ModDir%/Content/Items/Jobgear/OutfitIcons.png" sourcerect="256,198,128,99" origin="0.5,0.5" />
+      <Sprite name="Mechanic Uniform 1" texture="%ModDir%/Content/Items/Jobgear/MiscJobGear.png" sourcerect="513,9,117,55" depth="0.6" origin="0.5,0.5" />
+      <Body width="180" height="50" density="30" friction="0.8" restitution="0.01" />
+      <Wearable slots="Any,InnerClothes" msg="ItemMsgPickUpSelect">
+        <sprite name="Mechanic's Uniform 1 Torso" texture="mechanic_1.png" limb="Torso" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Hand" texture="mechanic_1.png" limb="RightHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Hand" texture="mechanic_1.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Lower Arm" texture="mechanic_1.png" limb="RightArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Lower Arm" texture="mechanic_1.png" limb="LeftArm" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Upper Arm" texture="mechanic_1.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Upper Arm" texture="mechanic_1.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Waist" texture="mechanic_1.png" limb="Waist" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Thigh" texture="mechanic_1.png" limb="RightThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Thigh" texture="mechanic_1.png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Leg" texture="mechanic_1.png" limb="RightLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Leg" texture="mechanic_1.png" limb="LeftLeg" hidelimb="false" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Left Shoe" texture="mechanic_1.png" limb="LeftFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="Mechanic's Uniform 1 Right Shoe" texture="mechanic_1.png" limb="RightFoot" hidelimb="true" inherittexturescale="true" inheritorigin="true" inheritsourcerect="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,lacerations,bitewounds" damagemultiplier="0.9" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.5" />
+      </Wearable>
+    </Item>
+    <!-- 帽子 -->
+    <Item name="" identifier="baseballcap" category="Equipment" tags="smallitem,clothing" cargocontaineridentifier="metalcrate" description="" scale="0.4">
+      <PreferredContainer primary="crewcab" minamount="0" maxamount="1" spawnprobability="0.125" />
+      <PreferredContainer primary="outpostcrewcabinet" minamount="1" maxamount="1" spawnprobability="0.125" />
+      <Price baseprice="75">
+        <Price locationtype="outpost" multiplier="1" minavailable="2" />
+        <Price locationtype="city" multiplier="0.9" minavailable="3" />
+        <Price locationtype="research" multiplier="1" minavailable="2" />
+        <Price locationtype="military" multiplier="1" minavailable="2" />
+        <Price locationtype="mine" multiplier="1" minavailable="2" />
+      </Price>
+      <Deconstruct time="10" />
+      <Sprite name="Baseball Cap" texture="%ModDir%/Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="313.5,322,92.5,48" origin="0.5,0.5" />
+      <Body width="75" height="50" density="30" />
+      <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+        <sprite name="Baseball Cap Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.735" hidelimb="false" sourcerect="313.5,322,92.5,48" origin="0.5,1.192" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>

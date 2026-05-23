@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <!--this talent is purely to despawn some special npcs-->
+  <Talent identifier="BA_DespawnTalent">
+    <Description tag="talentdescription.BA_DespawnTalent" />
+    <Icon texture="%ModDir%/Textures/TalentsIcons3.png" sheetindex="0,7" sheetelementsize="128,128" />
+    <AbilityGroupInterval>
+      <Conditions>
+        <AbilityConditionAboveVitality invert="true" vitalitypercentage="0" />
+      </Conditions>
+      <Abilities>
+        <CharacterAbilityModifyFlag flagtype="IgnoredByEnemyAI" />
+        <CharacterAbilityApplyStatusEffects>
+          <StatusEffects>
+            <StatusEffect type="OnAbility" target="Character">
+              <Affliction identifier="gunshotwound" amount="1000.0" />
+            </StatusEffect>
+            <StatusEffect type="OnAbility" target="Character" delay="10">
+              <RemoveCharacter />
+            </StatusEffect>
+          </StatusEffects>
+        </CharacterAbilityApplyStatusEffects>
+      </Abilities>
+    </AbilityGroupInterval>
+  </Talent>
+  <Talent identifier="BA_OperatorTalent">
+    <Description tag="talentdescription.BA_OperatorTalent" />
+    <Icon texture="%ModDir%/Textures/TalentsIcons3.png" sheetindex="2,4" sheetelementsize="128,128" />
+  </Talent>
+  <Talent identifier="BA_MeleeGruntTalent">
+    <Description tag="talentdescription.BA_MeleeGruntTalent" />
+    <Icon texture="%ModDir%/Textures/TalentsIcons3.png" sheetindex="5,4" sheetelementsize="128,128" />
+  </Talent>
+  <Talent identifier="BA_StunResistTalent">
+    <Description tag="talentdescription.BA_StunResistTalent" />
+    <Icon texture="%ModDir%/Textures/TalentsIcons3.png" sheetindex="5,6" sheetelementsize="128,128" />
+  </Talent>
+  <Talent identifier="BA_StationaryTalent">
+    <Description tag="talentdescription.BA_StationaryTalent" />
+    <Icon texture="%ModDir%/Textures/TalentsIcons4.png" sheetindex="6,0" sheetelementsize="128,128" />
+  </Talent>
+</Talents>

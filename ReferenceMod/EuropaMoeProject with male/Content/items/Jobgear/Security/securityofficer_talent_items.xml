@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <!-- 自动霰弹枪：更改贴图，添加动画 -->
+    <Item name="" identifier="autoshotgun" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="710" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="0" maxavailable="1" sold="true">
+          <Reputation faction="coalition" min="70" />
+        </Price>
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="65" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="ballisticfiber" />
+        <RequiredItem identifier="physicorium" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      </Fabricate>
+      <Deconstruct time="30">
+        <Item identifier="ballisticfiber" />
+        <Item identifier="physicorium" amount="2" />
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="3,505,203,66" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="3,505,203,66" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="701,11,203,66" depth="0.55" origin="0.5,0.5" maxcondition="80" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="701,94,203,77" depth="0.55" origin="0.5,0.46" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="701,177,203,66" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="701,256,203,66" depth="0.55" origin="0.5,0.5" maxcondition="25" />
+      <Body width="150" height="40" density="25" />
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="47,-15" aimpos="47,-5" handle1="-39,-15" handle2="47,-2" holdangle="-27" msg="ItemMsgPickUpSelect" />
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Autoshogun Worn" texture="%ModDir%/Content/Items/Weapons/Overrided.png" canbehiddenbyotherwearables="false" rotation="90" depthlimb="LeftArm" depth="0.6" sourcerect="3,505,203,66" limb="Torso" ignorelimbscale="true" scale="0.5" origin="0.5,0.9" />
+      </Wearable>
+      <RangedWeapon barrelpos="78,16" spread="0.9" unskilledspread="5" combatPriority="80" reload="0.45" holdtrigger="true" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,246" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun.ogg" type="OnUse" range="3000" volume="2" selectionmode="Random" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_1.ogg" type="OnUse" range="3000" volume="2" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_2.ogg" type="OnUse" range="3000" volume="2" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_autoShotgun_3.ogg" type="OnUse" range="3000" volume="2" />
+        <StatusEffect type="OnUse" target="This" offset="-7,4">
+          <ParticleEmitter particle="WF_casingfirearm_shotgun" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="0,-5">
+          <Explosion range="150.0" force="2" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <!-- 装弹动画：生成/出厂时无弹匣贴图 -->
+        <StatusEffect type="OnSpawn" target="This" condition="0" setvalue="true" disabledeltatime="true" allowaccess="true" />
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" allowaccess="false" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 上弹动画 -->
+        <StatusEffect type="OnUse" target="This" condition="80" disabledeltatime="true" setvalue="true" />
+        <StatusEffect type="OnUse" target="This" condition="100" delay="0.2" disabledeltatime="true" setvalue="true">
+          <RequiredItems items="shotgunammo" type="Contained" />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="4" unskilledspread="6" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="22" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-10">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.03秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="0" unskilledspread="8" setvalue="true" delay="0.03" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="shotgunammo" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="60" />
+      </RangedWeapon>
+      <ItemContainer capacity="2" maxstacksize="12" hideitems="false" containedstateindicatorstyle="bullet" ShowTotalStackCapacityInContainedStateIndicator="true" containedstateindicatorslot="0" containedspritedepth="0.56">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <Containable items="shotgunammo" hide="true">
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画，装填弹匣时触发 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="28,-22" aimpos="25,-13" handle1="-39,-15" handle2="47,-2" holdangle="24" aimangle="21" delay="0.01" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="21,-22" aimpos="22,-10" handle1="-10,-15" handle2="47,-2" holdangle="28" aimangle="25" delay="0.2" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="21,-22" aimpos="22,-10" handle1="-10,-30" handle2="47,-2" holdangle="28" aimangle="25" delay="0.4" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="21,-22" aimpos="22,-10" handle1="-10,-30" handle2="47,-2" holdangle="28" aimangle="25" delay="0.45" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="25,-22" aimpos="24,-10" handle1="-55,-35" handle2="47,-2" holdangle="24" aimangle="22" delay="0.7" condition="50" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnInserted" target="This" interval="1.8" delay="0.7" offset="10,-10" checkconditionalalways="true" disabledeltatime="true">
+            <ParticleEmitter particle="WF_casingfirearm_autoshotgun_magazine" particleamount="1" anglemin="-100" anglemax="-80" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" holdpos="21,-22" aimpos="22,-10" handle1="-10,-30" handle2="47,-2" holdangle="28" aimangle="25" delay="0.9" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="21,-22" aimpos="22,-10" handle1="-10,-30" handle2="47,-2" holdangle="28" aimangle="25" delay="1.1" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="23,-22" aimpos="22,-10" handle1="-10,-15" handle2="47,-2" holdangle="28" aimangle="34" delay="1.3" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="6,-25" aimpos="27,1" handle1="-39,-5" handle2="47,-2" holdangle="72" aimangle="48" delay="1.5" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="-6,-21" aimpos="27,1" handle1="-39,-15" handle2="37,-2" holdangle="64" aimangle="52" delay="1.7" condition="25" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="8,-25" aimpos="27,1" handle1="-39,-15" handle2="47,-2" holdangle="72" aimangle="48" delay="1.9" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="10,-27" aimpos="28,-10" handle1="-39,-15" handle2="47,-2" holdangle="30" aimangle="15" delay="2.1" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="10,-32" aimpos="47,-15" handle1="-39,-15" handle2="47,-2" holdangle="0" aimangle="0" delay="2.25" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="47,-15" aimpos="47,-5" handle1="-39,-15" handle2="47,-2" holdangle="-27" aimangle="0" delay="2.4" condition="100" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，放入弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_autoshotgun_reload.ogg" range="500" volume="3" />
+          </StatusEffect>
+          <!-- 为规避联机时因为延迟而装弹失败所单独设置的SE -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="30,2" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="34,14" setactive="true" />
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="3000" soundrange="5000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="60" />
+    </Item>
+    <!--战术腰带：更改贴图-->
+    <Item name="" identifier="bandolier" category="Equipment" tags="mediumitem,clothing" scale="0.5" cargocontaineridentifier="metalcrate" allowasextracargo="true" description="" impactsoundtag="impact_soft">
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="250" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Deconstruct time="30">
+        <Item identifier="ballisticfiber" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="35" />
+        <RequiredItem identifier="ballisticfiber" amount="2" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
+      <Sprite texture="bandolier.png" sourcerect="13,16,103,180" depth="0.6" origin="0.5,0.5" />
+      <Body radius="30" height="30" density="25" />
+      <Wearable slots="Bag" msg="ItemMsgPickUpSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Security Vest" texture="bandolier.png" limb="Torso" hidelimb="false" sourcerect="13,16,103,180" inherittexturescale="true" scale="0.65" origin="0.5,0.68" />
+        <SkillModifier skillidentifier="weapons" skillvalue="15" />
+        <StatValue stattype="RangedAttackSpeed" value="0.25" />
+        <StatValue stattype="TurretAttackSpeed" value="0.25" />
+        <StatValue stattype="TurretChargeSpeed" value="0.25" />
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="0,0-30" handle2="0,-30" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" allowswappingwhenpicked="false" />
+      <ItemContainer capacity="8">
+        <Containable items="smallitem,mountableweapon,harpoonammo" excludeditems="the_jupiter" />
+      </ItemContainer>
+    </Item>
+    <!--登船斧：修改贴图-->
+    <Item name="" identifier="boardingaxe" category="Weapon" Tags="mediumitem,weapon,gunsmith,mountableweapon" scale="0.5" allowasextracargo="true" requireaimtouse="true" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <Price baseprice="350" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.25" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="165,366,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/JobGear/TalentGear.png" sourcerect="1,425,164,53" depth="0.55" origin="0.5,0.2" />
+      <Body width="161" height="20" density="25" />
+      <MeleeWeapon slots="Any,RightHand+LeftHand" aimpos="50,0" handle1="-22,2" handle2="-32,5" holdangle="30" reload="0.8" range="175" combatPriority="40" msg="ItemMsgPickUpSelect" AllowHitMultiple="true">
+        <Attack targetimpulse="5" severlimbsprobability="7.5" itemdamage="50" structuredamage="10">
+          <Affliction identifier="lacerations" strength="50" />
+          <Affliction identifier="bleeding" strength="10" />
+          <Affliction identifier="stun" strength="0.8" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
+            <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+            <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+      <aitarget sightrange="500" soundrange="250" fadeouttime="1" />
+    </Item>
+    <!--突击步枪：修改贴图，添加动画-->
+    <Item name="" identifier="assaultrifle" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light" hideconditionbar="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <Price baseprice="720" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="75" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="65" />
+        <RequiredItem identifier="physicorium" amount="2" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+        <RequiredItem identifier="rubber" />
+      </Fabricate>
+      <Deconstruct time="35">
+        <Item identifier="physicorium" amount="2" />
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+        <Item identifier="rubber" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="5,87,213,52" />
+      <Sprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="408,284,213,52" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="408,358,213,61" depth="0.55" origin="0.5,0.42" maxcondition="75" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/weapons_animation.png" sourcerect="408,431,213,52" depth="0.55" origin="0.5,0.5" maxcondition="50" />
+      <BrokenSprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="5,87,213,52" depth="0.55" origin="0.5,0.5" maxcondition="0" />
+      <Body width="220" height="55" density="25" />
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="56,-5" aimpos="52,5" handle1="-52,-12" handle2="28,0" holdangle="-40">
+        <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.9" setvalue="true" />
+      </Holdable>
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Assault Rifle Worn" texture="%ModDir%/Content/Items/Weapons/Overrided.png" canbehiddenbyotherwearables="false" rotation="90" depthlimb="LeftArm" ignorelimbscale="true" depth="0.6" sourcerect="5,87,213,52" limb="Torso" scale="0.45" origin="0.5,0.8" />
+      </Wearable>
+      <RangedWeapon reload="0.2" holdtrigger="true" barrelpos="100,20" spread="4" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+        <Crosshair texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="%ModDir%/Content/Items/Weapons/Crosshairs.png" sourcerect="256,296,256,206" />
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_2.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_3.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_4.ogg" type="OnUse" range="3000" />
+        <Sound file="Content/Items/JobGear/Security/WEAPONS_assaultRifle_5.ogg" type="OnUse" range="3000" />
+        <StatusEffect type="OnUse" target="This">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <!-- 调整枪口爆炸：优化后坐力表现 -->
+        <StatusEffect type="OnUse" target="This" offset="2,-20">
+          <Explosion range="150.0" force="1" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+        </StatusEffect>
+        <!-- 装弹动画：生成/出厂时无弹匣贴图 -->
+        <StatusEffect type="OnSpawn" target="This" condition="0" setvalue="true" disabledeltatime="true" allowaccess="true" />
+        <!-- 装弹动画：期间无法互动（超长蓄力时间） -->
+        <StatusEffect type="Always" target="This" maxchargetime="999" setvalue="true" disabledeltatime="true" allowaccess="false" CheckConditionalAlways="true">
+          <Conditional HasTag="WF_ceasefire" />
+        </StatusEffect>
+        <!-- 上弹动画 -->
+        <StatusEffect type="OnUse" target="This" condition="50" disabledeltatime="true" setvalue="true" />
+        <StatusEffect type="OnUse" target="This" condition="100" delay="0.1" disabledeltatime="true" setvalue="true">
+          <RequiredItems items="assaultriflemagazine" type="Contained" />
+        </StatusEffect>
+        <!--装备红点/混合瞄准镜时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise" strength="1" />
+          <RequiredItems items="reddot,hybridscope" type="Contained" />
+        </StatusEffect>
+        <!--装备雷射瞄准器时，减少扩散-->
+        <StatusEffect type="OnSecondaryUse" target="Character">
+          <Affliction identifier="precise_l" strength="1" />
+          <RequiredItems items="wf_laserpointer" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="Contained">
+          <Use />
+        </StatusEffect>
+        <!--持续射击加大扩散-->
+        <StatusEffect type="OnUse" target="This" spread="2" unskilledspread="10" disabledeltatime="true">
+          <Conditional spread="lte 4" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" spread="6" unskilledspread="28" setvalue="true" disabledeltatime="true">
+          <Conditional spread="gt 4" />
+        </StatusEffect>
+        <!--扩散自然恢复-->
+        <StatusEffect type="OnSecondaryUse" target="This" spread="-5" unskilledspread="-10">
+          <Conditional spread="gt 0" />
+        </StatusEffect>
+        <!--松开扳机0.02秒重置扩散-->
+        <StatusEffect type="Always" target="This" spread="0" unskilledspread="8" setvalue="true" delay="0.02" checkconditionalalways="true" disabledeltatime="true">
+          <Conditional ReloadTimer="0" />
+        </StatusEffect>
+        <RequiredItems items="assaultriflemagazine" type="Contained" msg="ItemMsgAmmoRequired" />
+        <RequiredSkill identifier="weapons" level="60" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="0" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="320,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="%ModDir%/Content/Items/Weapons/Waifu_UI.png" sourcerect="307,0,53,53" origin="0.5,0.5" />
+        <Containable items="assaultrifleammo" hide="true" itempos="-7,-8">
+          <!-- 装弹动画，装填弹匣时添加停火标签 -->
+          <StatusEffect type="OnInserted" target="This" delay="0.01" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,WF_ceasefire" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画 -->
+          <!-- V1.7.1.0 注：通过快捷键向未装有弹匣的武器中装填复数弹匣时，由OnRemoved所触发的动画会再次播放 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="48,-12" aimpos="47,3" handle1="-52,-12" handle2="28,0" holdangle="34" aimangle="11" delay="0.01" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="0,-5" holdangle="38" aimangle="15" delay="0.2" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="6,-9" holdangle="38" aimangle="15" delay="0.4" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="12,-20" holdangle="38" aimangle="15" delay="0.45" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="12,-20" holdangle="38" aimangle="15" delay="0.55" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-12" aimpos="46,3" handle1="-52,-12" handle2="-8,-7" holdangle="34" aimangle="12" delay="0.7" condition="0" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹动画：弹出弹匣 -->
+          <StatusEffect type="OnContaining" target="This" interval="2.2" delay="0.55" offset="4,-15" checkconditionalalways="true">
+            <ParticleEmitter particle="WF_casingfirearm_ar_magazine" particleamount="1" anglemin="-90" anglemax="-45" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+            <Conditional HasTag="WF_ceasefire" />
+          </StatusEffect>
+          <!-- 装弹动画，装填弹匣时触发 -->
+          <StatusEffect type="OnInserted" target="This" holdpos="45,-12" aimpos="46,3" handle1="-52,-12" handle2="-8,0" holdangle="34" aimangle="12" delay="0.75" condition="0" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="8,-15" holdangle="38" aimangle="15" delay="1.0" condition="75" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="41,-12" aimpos="44,3" handle1="-52,-12" handle2="6,-9" holdangle="38" aimangle="15" delay="1.15" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="43,-12" aimpos="44,3" handle1="-52,-12" handle2="20,0" holdangle="28" aimangle="4" delay="1.4" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="47,-14" aimpos="45,-4" handle1="0,0" handle2="28,0" holdangle="24" aimangle="-10" delay="1.55" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="44,-12" aimpos="39,-4" handle1="-16,0" handle2="28,0" holdangle="28" aimangle="-6" delay="1.8" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="44,-12" aimpos="45,-4" handle1="-52,-12" handle2="28,0" holdangle="12" aimangle="-8" delay="2.0" condition="50" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="50,-12" aimpos="52,5" handle1="-52,-12" handle2="28,0" holdangle="-20" aimangle="0" delay="2.1" condition="100" setvalue="true" disabledeltatime="true" />
+          <StatusEffect type="OnInserted" target="This" holdpos="56,-5" aimpos="52,5" handle1="-52,-12" handle2="28,0" holdangle="-40" aimangle="0" delay="2.2" condition="100" maxchargetime="0" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,mountableweapon" allowaccess="true" setvalue="true" disabledeltatime="true" />
+          <!-- 装弹音效，装载弹药时触发 -->
+          <StatusEffect type="OnInserted" target="This">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_AR_reload_step_1.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" delay="0.7">
+            <Sound file="%ModDir%/Content/Items/Weapons/ANI_AR_reload_step_2.ogg" range="500" volume="2" />
+          </StatusEffect>
+          <!-- 为规避联机时因为延迟而装弹失败所单独设置的SE -->
+          <StatusEffect type="OnInserted" target="This" delay="0.1" allowaccess="false" setvalue="true" disabledeltatime="true" />
+        </Containable>
+        <!-- 武器配件 -->
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" excludeditems="wf_laserpointer" itempos="31,0" setactive="true" />
+          <Containable items="wf_laserpointer" hide="false" itempos="36,0" setactive="true" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="reddot" hide="false" itempos="-11,13" />
+          <Containable items="hybridscope" hide="false" itempos="-11,14">
+            <StatusEffect type="OnContaining" target="This" cameraaimoffset="380" setvalue="true" interval="1" />
+            <StatusEffect type="OnRemoved" target="This" cameraaimoffset="0" setvalue="true" />
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="60" />
+    </Item>
+    <!--突击步枪弹夹：修改贴图-->
+    <Item name="" identifier="assaultriflemagazine" maxstacksize="8" maxstacksizecharacterinventory="2" scale="0.5" category="Weapon" allowasextracargo="true" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,assaultrifleammo" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="assaultrifle" minamount="1" maxamount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="350" sold="false" minleveldifficulty="60" displaynonempty="true">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="0" maxavailable="4" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="magnesium" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" displayname="recycleitem" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="magnesium" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+        <RequiredItem tag="advmunition_core" description="fabricationdescription.advmunition_core" />
+        <RequiredItem tag="advmunition_jacket" description="fabricationdescription.advmunition_jacket" />
+        <RequiredItem identifier="assaultriflemagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="lead" mincondition="0.95" />
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Items/Weapons/Overrided.png" sourcerect="336,80,30,36" depth="0.55" origin="0.5,0.5" />
+      <Body width="28" height="40" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="assaultrifleround" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="assaultrifleround" />
+        <StatusEffect type="OnUse" target="This" condition="-3.3" disabledeltatime="true">
+          <SpawnItem identifiers="assaultrifleround" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    </Item>
+    <!--带鳍潜水服：修改贴图-->
+    <Item name="" identifier="slipsuit" variantof="combatdivingsuit" category="Equipment" tags="diving,deepdiving,provocative" allowasextracargo="true" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+      <Price baseprice="630" sold="false" />
+      <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+      <PreferredContainer primary="wreckdivingsuitcontainer" spawnprobability="0.0" />
+      <Deconstruct time="30">
+        <Item identifier="ballisticfiber" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="rubber" amount="3" />
+        <Item identifier="rubber" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="45" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="20" />
+        <RequiredItem identifier="combatdivingsuit" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem />
+        <RequiredItem />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="256,704,128,128" origin="0.5,0.5" />
+      <Sprite name="Slipsuit Item" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="7,8,157,121" depth="0.55" origin="0.5,0.5" />
+      <ContainedSprite name="Slipsuit In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="171,0,77,192" depth="0.55" origin="0.5,0.5" />
+      <ContainedSprite name="Slipsuit Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.13" />
+      <ContainedSprite name="Slipsuit In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="%ModDir%/Content/Items/Jobgear/Security/Slipsuit_Items.png" sourcerect="0,193,230,63" depth="0.55" origin="0.6,0.5" />
+      <Body radius="45" width="34" density="15" />
+      <Wearable>
+        <sprite name="Slipsuit Helmet Wearable" texture="%ModDir%/Content/Items/Jobgear/headgears_[GENDER].png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hidelimb="false" alphaclipotherwearables="true" hideotherwearables="true" sourcerect="7,501,104,115" origin="0.5,0.745">
+          <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <sprite name="SlipSuit Torso" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="Torso" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Hand" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Hand" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Lower Arm" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Upper Arm" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Waist" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="Waist" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Thigh" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Thigh" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftThigh" hidelimb="false" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Right Leg" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Leg" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="SlipSuit Left Shoe" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="336,208,64,57" Origin="0.48,0.4631" />
+        <sprite name="SlipSuit Right Shoe" texture="%ModDir%/Content/Items/Jobgear/Security/slipsuit_[GENDER].png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="false" inheritsourcerect="false" SourceRect="272,208,64,57" Origin="0.48,0.4631" />
+        <StatValue stattype="SwimmingSpeed" value="0.45" />
+        <StatValue stattype="PropulsionSpeed" value="0.4" />
+        <StatValue stattype="WalkingSpeed" value="-0.2" />
+      </Wearable>
+    </Item>
+    <!--防暴盾牌：穿戴时提供伤害减免-->
+    <Item name="" identifier="riotshield" category="Equipment" tags="mediumitem" health="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" damagedbyprojectiles="true" scale="1" allowasextracargo="true">
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="360" sold="true" minleveldifficulty="50">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="0" maxavailable="2" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="plastic" amount="2" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" amount="3" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="640,320,64,64" />
+      <Sprite texture="Content/Items/Jobgear/Security/riotgear.png" sourcerect="31,54,27,147" origin="0.5,0.5" depth="0.55" />
+      <Body width="40" height="145" density="20" />
+      <Holdable slots="RightHand,LeftHand" aimpos="60,-30" holdpos="45,-30" handle1="-15,-10" handle2="-15,10" controlpose="true" blocksplayers="true" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.6" setvalue="true" />
+        <StatusEffect type="OnBroken" target="This">
+          <particleemitter particle="weldspark" drawontop="true" particleamount="50" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" distancemin="0" distancemax="30" scalemin="0.1" scalemax="0.35" />
+          <Sound file="Content/Sounds/Damage/HitArmor1.ogg" range="800" />
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnDamaged" target="This">
+          <particleemitter particle="weldspark" drawontop="true" particleamount="5" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" distancemin="0" distancemax="20" scalemin="0.1" scalemax="0.35" />
+          <Sound file="Content/Sounds/Damage/HitArmor1.ogg" range="800" />
+          <!-- an invisible explosion to make the user "flinch" -->
+          <Explosion range="100.0" force="1" showeffects="false" camerashake="1.0" />
+        </StatusEffect>
+      </Holdable>
+      <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Riot Shield Worn" texture="Content/Items/Jobgear/Security/riotgear.png" canbehiddenbyotherwearables="false" sourcerect="31,54,27,147" rotation="180" inheritlimbdepth="true" depth="0.6" limb="Torso" ignorelimbscale="true" scale="1" origin="-0.2,0.5" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="gunshotwound" damagemultiplier="0.1" />
+      </Wearable>
+    </Item>
+  </Items>
+</Override>
