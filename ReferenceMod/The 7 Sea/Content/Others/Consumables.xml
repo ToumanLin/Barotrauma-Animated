@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--常规-->
+  <Items>
+    <!--消耗品-->
+    <!--医疗包-->
+    <Item name="" identifier="t7s_medicalpack" category="Medical" maxstacksize="8" maxstacksizecharacterinventory="1" cargocontaineridentifier="mediccrate" description="" Tags="smallitem,medical" useinhealthinterface="true" scale="0.5" RequireAimToUse="True">
+      <PreferredContainer secondary="wreckmedcab,abandonedmedcab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="outpostmedcab" amount="1" spawnprobability="0.1" />
+      <PreferredContainer primary="medcab" secondary="medcontainer" />
+      <SuitableTreatment type="damage" suitability="75" />
+      <SuitableTreatment type="bleeding" suitability="75" />
+      <SuitableTreatment type="burn" suitability="55" />
+      <SuitableTreatment type="infection" suitability="65" />
+      <SuitableTreatment type="bloodloss" suitability="35" />
+      <Price baseprice="540" minavailable="1">
+        <Price storeidentifier="merchantmedical" multiplier="0.9" minavailable="6" />
+      </Price>
+      <Deconstruct time="20">
+        <Item identifier="antibiotics" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antidama1" />
+        <Item identifier="antibloodloss1" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="45" amount="1">
+        <RequiredSkill identifier="medical" level="50" />
+        <RequiredItem identifier="antibiotics" amount="2" />
+        <RequiredItem identifier="antibleeding1" amount="8" />
+        <RequiredItem identifier="antibloodloss1" amount="3" />
+        <RequiredItem identifier="antidama1" amount="2" />
+      </Fabricate>
+      <Fabricate suitablefabricators="vendingmachine" requiredtime="2" requiredmoney="500" fabricationlimitmin="0" fabricationlimitmax="4" quality="0" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,0,82,68" depth="0.6" origin="0.5,0.5" />
+      <Body width="80" height="60" density="12" />
+      <Holdable canbecombined="true" slots="Any,RightHand,LeftHand" handle1="0,-5" holdangle="90" msg="ItemMsgPickUpSelect">
+        <RequiredSkill identifier="medical" level="40" />
+        <!--play sound when used-->
+        <StatusEffect type="OnUse" target="UseTarget">
+          <Conditional HealthPercentage="lt 100" />
+          <Sound file="Content/Items/Medical/Bandage1.ogg" range="500" />
+          <Sound file="Content/Items/Medical/Bandage2.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This,Character" comparison="and" statuseffecttags="speaching" duration="10" delay="0" stackable="false">
+          <Conditional HasStatusTag="!eq speaching" />
+          <Conditional HealthPercentage="lte 50" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This,Character" delay="0" stackable="false" comparison="and">
+          <Conditional HasStatusTag="!eq speaching" />
+          <Conditional HealthPercentage="lte 50" />
+          <Forcesay message="medicalpack.used" sayinradio="true" />
+        </StatusEffect>
+        <!--heal when HP upper 90%-->
+        <StatusEffect type="OnSuccess" target="This,UseTarget" Condition="-0.4" duration="5" stackable="true" comparison="and">
+          <Conditional HealthPercentage="gt 85" />
+          <Conditional HealthPercentage="lt 100" />
+          <reduceAffliction type="damage" amount="1.0" />
+          <reduceAffliction type="burn" amount="0.5" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This,UseTarget" Condition="-0.5" duration="4" stackable="true" comparison="and">
+          <Conditional HealthPercentage="gt 85" />
+          <Conditional HealthPercentage="lt 100" />
+          <reduceAffliction type="damage" amount="1.0" />
+          <reduceAffliction type="burn" amount="0.5" />
+        </StatusEffect>
+        <!--heal when HP upper 50%-->
+        <StatusEffect type="OnSuccess" target="This,UseTarget" Condition="-2.0" duration="5" stackable="true" comparison="and">
+          <Conditional HealthPercentage="gt 50" />
+          <Conditional HealthPercentage="lte 85" />
+          <reduceAffliction type="damage" amount="5" />
+          <reduceAffliction type="burn" amount="2.5" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This,UseTarget" Condition="-2.0" duration="5" stackable="true" comparison="and">
+          <Conditional HealthPercentage="gt 50" />
+          <Conditional HealthPercentage="lte 85" />
+          <reduceAffliction type="damage" amount="4" />
+          <reduceAffliction type="burn" amount="2" />
+        </StatusEffect>
+        <!--heal when HP lower 50%-->
+        <StatusEffect type="OnSuccess" target="This,UseTarget" Condition="-4.0" duration="5" stackable="true" comparison="and">
+          <Conditional HealthPercentage="lte 50" />
+          <reduceAffliction type="damage" amount="10" />
+          <reduceAffliction type="burn" amount="5" />
+          <SteamTimeLineEvent title="Using Medical Pack" description="Some one used the Med-Pack at low health" icon="steam_bolt" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This,UseTarget" Condition="-4.0" duration="5" stackable="true" comparison="and">
+          <Conditional HealthPercentage="lte 50" />
+          <reduceAffliction type="damage" amount="8" />
+          <reduceAffliction type="burn" amount="4" />
+          <SteamTimeLineEvent title="Using Medical Pack" description="Some one used the Med-Pack at low health" icon="steam_bolt" />
+        </StatusEffect>
+        <!--heal when get bleeding-->
+        <StatusEffect type="OnSuccess" target="This, Limb" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true" comparison="or">
+          <Conditional bleeding="gt 0" />
+          <Conditional bleedingnonstop="gt 0" />
+          <reduceAffliction type="bleeding" amount="15" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This, Limb" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true" comparison="or">
+          <Conditional bleeding="gt 0" />
+          <Conditional bleedingnonstop="gt 0" />
+          <reduceAffliction type="bleeding" amount="10" />
+        </StatusEffect>
+        <!--heal when get would infection-->
+        <StatusEffect type="OnSuccess" target="This,Limb" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true">
+          <Conditional infection="gt 0" />
+          <reduceAffliction type="infection" amount="15" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This,Limb" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true">
+          <Conditional infection="gt 0" />
+          <reduceAffliction type="infection" amount="10" />
+        </StatusEffect>
+        <!--heal when get bloodloss-->
+        <StatusEffect type="OnSuccess" target="This,UseTarget" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true">
+          <Conditional bloodloss="gt 0" />
+          <reduceAffliction type="bloodloss" amount="15" />
+        </StatusEffect>
+        <StatusEffect type="OnFailure" target="This,UseTarget" Condition="-1.25" duration="4.0" stackable="true" CheckConditionalAlways="true">
+          <Conditional bloodloss="gt 0" />
+          <reduceAffliction type="bloodloss" amount="10" />
+        </StatusEffect>
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <Quality>
+        <QualityStat stattype="Condition" value="0.20" />
+      </Quality>
+      <SkillRequirementHint identifier="medical" level="40" />
+    </Item>
+    <!--升级组件：伤害-->
+    <Item name="" identifier="upgradepart_damage" category="Material,Machine" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,upgradepart" scale="0.5">
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="180" minavailable="1" maxavailable="1" sold="false">
+        <Price storeidentifier="merchantoutpost" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+      </Price>
+      <Fabricate suitablefabricators="gunmodder" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="35" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <Item identifier="titanium" amount="2" />
+        <Item identifier="steel" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="titanium" />
+        <Item identifier="iron" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Others/Consumables.png" sourcerect="352,1,64,56" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="428,0,64,56" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="50" density="11" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--升级组件：精度-->
+    <Item name="" identifier="upgradepart_sine" category="Material,Machine" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,upgradepart" scale="0.5">
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="100" minavailable="1" maxavailable="1" sold="false">
+        <Price storeidentifier="merchantoutpost" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+      </Price>
+      <Fabricate suitablefabricators="gunmodder" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="35" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <Item identifier="aluminium" amount="2" />
+        <Item identifier="steel" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="aluminium" />
+        <Item identifier="iron" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Others/Consumables.png" sourcerect="352,65,64,60" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="428,65,64,60" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="50" density="11" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--升级组件：机匣-->
+    <Item name="" identifier="upgradepart_speed" category="Material,Machine" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,upgradepart" scale="0.5">
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="128" minavailable="1" maxavailable="1" sold="false">
+        <Price storeidentifier="merchantoutpost" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+      </Price>
+      <Fabricate suitablefabricators="gunmodder" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="35" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <Item identifier="steel" amount="2" />
+        <Item identifier="aluminium" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="aluminium" />
+        <Item identifier="iron" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Others/Consumables.png" sourcerect="352,132,68,54" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="428,132,64,50" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="50" density="11" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--升级组件：皮卡汀尼导轨-->
+    <Item name="" identifier="upgradepart_custom" category="Material,Machine" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,upgradepart" scale="0.5">
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="90" minavailable="1" maxavailable="1" sold="false">
+        <Price storeidentifier="merchantoutpost" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantcity" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" sold="true">
+          <Reputation faction="separatists" min="30" />
+        </Price>
+      </Price>
+      <Fabricate suitablefabricators="gunmodder" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="35" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <Item identifier="plastic" amount="2" />
+        <Item identifier="iron" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="iron" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Others/Consumables.png" sourcerect="352,195,68,60" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="428,185,64,64" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="50" density="11" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--材料：燃素镜片-->
+    <Item name="" identifier="ransujingpian" category="Material" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem" scale="0.5">
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="720" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="45" />
+        <RequiredSkill identifier="electrical" level="45" />
+        <RequiredSkill identifier="weapons" level="25" />
+        <RequiredItem identifier="silicon" amount="2" />
+        <RequiredItem identifier="incendium" amount="2" />
+        <RequiredItem identifier="lithium" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="silicon" />
+        <Item identifier="incendium" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/icons.png" sourcerect="296,60,62,62" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="428,65,64,60" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="50" density="11" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--材料：自充能电池-->
+    <Item name="" identifier="reactbattery" category="Equipment,Electrical" maxstacksize="16" MaxStackSizeHoldableOrWearableInventory="8" maxstacksizecharacterinventory="3" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,loadable,mobilebattery,fulguriumbatterycell" scale="0.5" Health="75">
+      <PreferredContainer primary="storagecab" secondary="mineralcab" />
+      <Price baseprice="720" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="electrical" level="65" />
+        <RequiredItem identifier="fulgurium" amount="2" />
+        <RequiredItem identifier="lithium" amount="2" />
+        <RequiredItem identifier="zinc" amount="2" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="lithium" />
+        <Item identifier="fulgurium" />
+        <Item identifier="zinc" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/icons.png" sourcerect="403,234,54,50" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Weapons/icons.png" sourcerect="456,240,52,42" depth="0.6" origin="0.5,0.5" />
+      <Body width="50" height="38" density="11" />
+      <LightComponent AllowInGameEditing="false" lightcolor="112,146,190,30" canbeselected="false" range="100.0" IsOn="true" castshadows="false">
+        <StatusEffect type="OnActive" target="This" Condition="+0.75" interval="0.8" disabledeltatime="true" />
+      </LightComponent>
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This" Condition="1" isOn="true" delay="5" setvalue="true" />
+        <StatusEffect type="OnBroken" target="This" isOn="false" setvalue="true" />
+      </Holdable>
+      <Quality>
+        <QualityStat stattype="Condition" value="0.1" />
+      </Quality>
+    </Item>
+    <!--枪匠台-->
+    <Item name="Gunner Modificator" identifier="gunsmith_craftor" tags="gunmodder,donttakeitems,dontsellitems,largeitem" category="Machine" linkable="true" allowedlinks="deconstructor,locker" description="" scale="0.5" isshootable="true">
+      <Fabricate suitablefabricators="fabricator" requiredtime="30">
+        <RequiredSkill identifier="electrical" level="25" />
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="steel" amount="3" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="titaniumaluminiumalloy" amount="2" />
+        <Item identifier="steel" amount="2" />
+        <Item identifier="fpgacircuit" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/gunsmith_crafter.png" sourcerect="0,0,340,328" depth="0.70" />
+      <Body width="340" height="328" density="40" />
+      <LightComponent range="0" powerconsumption="5" lightcolor="0,0,0,0" IsOn="true" castshadows="false" allowingameediting="false" />
+      <Holdable slots="RightHand+LeftHand" handle1="-15,-20" handle2="15,-20" holdangle="20" msg="ItemMsgDetachWrench" PickingTime="9" pickkey="Use" selectkey="Select" aimpos="65,-10" attachable="true" aimable="true" limitedattachable="false">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+      <PowerContainer capacity="300.0" maxrechargespeed="200" rechargespeed="100" maxoutput="100" canbeselected="true" indicatorposition="235,174" indicatorsize="62,30" ishorizontal="true" selectkey="Action">
+        <GuiFrame relativesize="0.25,0.2" minsize="350,200" anchor="BottomCenter" style="ItemUI" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <StatusEffect type="OnFire" target="This" Condition="-0.5" />
+        <StatusEffect type="OnActive" target="This" Voltage="1.0" setvalue="true" interval="0.3" duration="0.3">
+          <Conditional attached="true" />
+        </StatusEffect>
+      </PowerContainer>
+      <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0" mindeteriorationdelay="120" maxdeteriorationdelay="240" mindeteriorationcondition="0" RepairThreshold="80" fixDurationHighSkill="5" fixDurationLowSkill="15" msg="ItemMsgRepairScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+        <RequiredSkill identifier="electrical" level="25" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+        <ParticleEmitter particle="MistSmoke" particlespersecond="60" anglemin="0" anglemax="360" distancemin="0" distancemax="25" velocitymin="0" velocitymax="20" mincondition="0.0" maxcondition="50.0" />
+        <ParticleEmitter particle="spark" particleamount="5" emitinterval="2" particlespersecond="5" anglemax="360" distancemax="30" velocitymin="100" velocitymax="500" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="2" scalemin="1" scalemax="2" mincondition="0.0" maxcondition="50.0" />
+        <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+          <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+          <Explosion range="100.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+          <Affliction identifier="stun" strength="4" probability="0.5" />
+          <Affliction identifier="electricshock" strength="60" />
+          <Affliction identifier="burn" strength="5" />
+          <ParticleEmitter particle="ElectricShock" DistanceMin="10" DistanceMax="25" ParticleAmount="5" ScaleMin="0.1" ScaleMax="0.12" />
+        </StatusEffect>
+      </Repairable>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="power_in" displayname="connection.powerin" />
+        <output name="condition_out" displayname="connection.conditionout" />
+      </ConnectionPanel>
+      <Fabricator canbeselected="true" powerconsumption="50" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.525,0.495" style="ItemUI" anchor="Center" />
+        <poweronsound file="Content/Items/PowerOnLight1.ogg" range="600" loop="false" />
+        <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" volumeproperty="RelativeVoltage" loop="true" />
+        <StatusEffect type="OnActive" target="This" charge="-1">
+          <Conditional attached="true" />
+        </StatusEffect>
+      </Fabricator>
+      <ItemContainer capacity="8" canbeselected="true" hideitems="false" slotsperrow="8" uilabel="" allowuioverlap="true" containedspritedepths="0.701,0.702,0.703,0.704,0.705,0.706,0.707,0.708">
+        <Containable items="mountableweapon" hide="false" itempos="80,-72.5" />
+        <Containable items="upgradepart" hide="false" itempos="100,-77.5" />
+        <Containable items="smallitem,mediumitem,mobilecontainer,container" hide="true" excludeditems="mountableweapon,upgradepart" />
+      </ItemContainer>
+      <ItemContainer capacity="1" canbeselected="true" hideitems="false" slotsperrow="1" uilabel="" allowuioverlap="true" containedspritedepths="0.709">
+        <Containable items="mountableweapon" hide="false" itempos="80,-72.5" />
+        <Containable items="upgradepart" hide="false" itempos="100,-77.5" />
+        <Containable items="smallitem,mediumitem" hide="true" excludeditems="mountableweapon,upgradepart" />
+      </ItemContainer>
+      <ItemContainer capacity="0" canbeselected="true" selectkey="Action" hideitems="false">
+        <GuiFrame relativesize="0.1,0.1" anchor="BottomCenter" relativeoffset="-0.05,0.10" style="ItemUI" />
+        <SlotIcon texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mobilebattery" hide="true">
+            <StatusEffect type="OnContaining" targettype="This" targetitemcomponent="PowerContainer" Charge="+2" interval="1" duration="1">
+              <Conditional Charge="lt 299" />
+            </StatusEffect>
+            <StatusEffect type="OnContaining" target="Contained" targetslot="0" targets="mobilebattery" Condition="-0.5" interval="1" duration="1">
+              <Conditional Charge="lt 299" targetcontainer="true" targetitemcomponent="PowerContainer" />
+            </StatusEffect>
+          </Containable>
+          <Containable items="loadable" excludefullcondition="true">
+            <StatusEffect type="OnContaining" target="Contained" targetslot="0" targets="loadable" Condition="+0.3" interval="1" duration="1">
+              <Conditional Charge="gte 299" targetcontainer="true" targetitemcomponent="PowerContainer" />
+            </StatusEffect>
+            <StatusEffect type="OnContaining" targettype="This" Charge="-0.5" interval="1" duration="1">
+              <Conditional Charge="gte 299" />
+            </StatusEffect>
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+  </Items>
+</Items>

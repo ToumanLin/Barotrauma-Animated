@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventSprites>
+    <!--以后再说吧-->
+  </EventSprites>
+  <EventPrefabs>
+    <!--猎兵任务-->
+    <ScriptedEvent identifier="missionevent_t7s_hunt1" commonness="100">
+      <CheckDataAction identifier="preparedtobehunter" condition="eq true">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_oldhunter" targettag="t7s_npc_mission" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+          <NPCWaitAction npctag="t7s_oldhunter" wait="true" />
+          <ConversationAction text="EventText.missionevent_t7smission_hunt" speakertag="t7s_oldhunter" endeventifinterrupted="false" dialogtype="Small" />
+          <MissionAction missiontag="t7s_hunting" />
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_t7s_hunt2" commonness="100">
+      <CheckDataAction identifier="preparedtobehunter" condition="eq true">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_oldhunter" targettag="t7s_npc_mission" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+          <NPCWaitAction npctag="t7s_oldhunter" wait="true" />
+          <ConversationAction text="EventText.missionevent_t7smission_hunt" speakertag="t7s_oldhunter" endeventifinterrupted="false" dialogtype="Small" />
+          <MissionAction missiontag="t7s_hunting" />
+          <Goto name="givehard" />
+          <Label name="givehard" />
+          <TagAction criteria="player" tag="player" />
+          <Label name="askhard" />
+          <ClearTagAction tag="triggerer_player" />
+          <TriggerAction target1tag="player" target2tag="t7s_npc_mission" applytotarget1="triggerer_player" waitforinteraction="true" />
+          <ConversationAction text="EventText.missionevent_t7smission_askhard" dialogtype="Small" speakertag="t7s_oldhunter" targettag="triggerer_player">
+            <Option text="EventText.missionevent_t7smission_askhard.yes">
+              <ConversationAction text="EventText.missionevent_t7smission_askhard.sure" targettag="triggerer_player" endconversation="true" />
+              <MissionAction missiontag="t7s_hard" />
+              <ClearTagAction tag="triggerer_player" />
+            </Option>
+            <Option text="EventText.missionevent_t7smission_askhard.no" endconversation="true">
+              <Goto name="askhard" />
+            </Option>
+          </ConversationAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_t7s_salvage1" commonness="100">
+      <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_oldcrew" targettag="t7s_npc_mission" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <NPCWaitAction npctag="t7s_oldcrew" wait="true" />
+      <ConversationAction text="EventText.missionevent_t7smission_salvage" speakertag="t7s_oldcrew" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="t7s_salvage_easy" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_t7s_salvage2" commonness="100">
+      <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_oldcrew" targettag="t7s_npc_mission" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+      <NPCWaitAction npctag="t7s_oldcrew" wait="true" />
+      <ConversationAction text="EventText.missionevent_t7smission_salvage" speakertag="t7s_oldcrew" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="t7s_salvage_medium" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="join_diving_hunt" commonness="100">
+      <CheckDataAction identifier="join_hunt_complet" condition="eq true">
+        <Failure>
+          <TagAction criteria="player" tag="player" />
+          <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_consdante" targettag="t7s_bigboss" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+          <Label name="begening" />
+          <ClearTagAction tag="triggerer_player" />
+          <TriggerAction target1tag="player" target2tag="t7s_bigboss" applytotarget1="triggerer_player" waitforinteraction="true" />
+          <ConversationAction text="EventText.missionevent_t7smission_firttime.1" speakertag="t7s_bigboss" dialogtype="Small" targettag="triggerer_player">
+            <Option text="EventText.missionevent_t7smission_firttime.1.1">
+              <ConversationAction text="EventText.missionevent_t7smission_firttime.1.n1" targettag="triggerer_player">
+                <Option text="EventText.missionevent_t7smission_firttime.n1.p1">
+                  <ConversationAction text="EventText.missionevent_t7smission_firttime.n2" targettag="triggerer_player">
+                    <Option text="EventText.missionevent_t7smission_firttime.n2.p1">
+                      <ConversationAction text="EventText.missionevent_t7smission_firttime.n3" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_firttime.n3.p1">
+                          <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p1.n1" targettag="triggerer_player">
+                            <Option text="EventText.generic.continue">
+                              <Label name="selfdescription" />
+                              <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p1.n2" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_firttime.n3.p1.n2.p1">
+                                  <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p1.n2.p1.n1" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_firttime.n3.p1.n2.p1.n1.p1">
+                                      <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p1.n2.p1.n1.p1.n1" targettag="triggerer_player">
+                                        <Option text="EventText.generic.continue">
+                                          <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p1.n2.p1.n1.p1.n2" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_firttime.finish">
+                                              <ConversationAction text="EventText.missionevent_t7smission_firttime.finish3" targettag="triggerer_player" endconversation="true" />
+                                              <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="false" />
+                                              <MissionAction missiontag="t7s_firsttime" />
+                                              <ClearTagAction tag="triggerer_player" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="EventText.missionevent_t7smission_firttime.n3.p2">
+                          <ConversationAction text="EventText.missionevent_t7smission_firttime.n3.p2.n1" targettag="triggerer_player">
+                            <Option text="EventText.generic.continue" />
+                          </ConversationAction>
+                          <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="true" />
+                          <Goto name="selfdescription" />
+                        </Option>
+                        <Option text="EventText.missionevent_t7smission_firttime.n3.p3">
+                          <ConversationAction text="EventText.missionevent_t7smission_firttime.finish2" targettag="triggerer_player" endconversation="true" />
+                          <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="false" />
+                          <Goto name="begening" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+              </ConversationAction>
+            </Option>
+            <Option text="EventText.missionevent_t7smission_firttime.1.2" endconversation="true">
+              <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="false" />
+              <Goto name="begening" />
+            </Option>
+          </ConversationAction>
+          <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="true" />
+        </Failure>
+        <Success>
+          <CheckDataAction identifier="preparedtobehunter" condition="eq true">
+            <Failure>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_consdante" targettag="t7s_bigboss" spawnlocation="Outpost" targetmoduletags="airlock" />
+              <TriggerAction target1tag="player" target2tag="t7s_bigboss" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <NPCWaitAction npctag="t7s_bigboss" wait="true" />
+              <ConversationAction text="EventText.missionevent_t7smission_firttime.missioncomplet" speakertag="t7s_bigboss" dialogtype="Small" targettag="triggerer_player">
+                <Option text="EventText.missionevent_t7smission_yeah" endconversation="true">
+                  <SetDataAction identifier="preparedtobehunter" value="true" />
+                  <SpawnAction itemidentifier="handpistol" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="bookofhunters" targetinventory="triggerer_player" />
+                  <SpawnAction itemidentifier="revolverround_box" targetinventory="triggerer_player" />
+                  <MissionAction missiontag="t7s_hunting_easy" />
+                  <NPCWaitAction npctag="t7s_bigboss" wait="false" />
+                </Option>
+              </ConversationAction>
+            </Failure>
+            <Success>
+              <!--do nothing-->
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--逻辑：设置主线任务状态-->
+    <ScriptedEvent identifier="t7s_firsttime_complet">
+      <CheckDataAction identifier="join_hunt_complet" condition="eq true">
+        <Success>
+          <!-- do nothing -->
+        </Success>
+        <Failure>
+          <SetDataAction identifier="join_hunt_complet" value="true" />
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_darkmist_mainstory_firsttime_complet">
+      <CheckDataAction identifier="mainstoryfordarkmist" condition="lt 2">
+        <Success>
+          <SetDataAction identifier="mainstoryfordarkmist" value="2" operation="set" />
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_mainstory_test_ruin_destroyer">
+      <CheckDataAction identifier="mainstorystage2" condition="lt 4">
+        <Success>
+          <SetDataAction identifier="mainstorystage2" value="4" operation="set" />
+          <ConversationAction text="EventText.missionevent_t7smission_maistory_testruindestroyer_rounds_complet" endeventifinterrupted="false" dialogtype="Small" />
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_darkmist_mainstory2_0_complet">
+      <CheckDataAction identifier="mainstorystage2" condition="lt 2">
+        <Success>
+          <SetDataAction identifier="mainstorystage2" value="2" operation="set" />
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_darkmist_mainstory2_1_complet">
+      <CheckDataAction identifier="mainstorystage2" condition="lt 5">
+        <Success>
+          <SetDataAction identifier="mainstorystage2" value="5" operation="set" />
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_darkmist_mainstory2_2_complet">
+      <CheckDataAction identifier="mainstorystage2" condition="lt 6">
+        <Success>
+          <SetDataAction identifier="mainstorystage2" value="6" operation="set" />
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--逻辑：高难警告-->
+    <ScriptedEvent identifier="warning_high_difficulty">
+      <ConversationAction text="EventText.missionevent_t7smission_hgih_difficulty_warning" endeventifinterrupted="false" dialogtype="Small" />
+    </ScriptedEvent>
+    <!--事件：是否查看扫描仪-->
+    <ScriptedEvent identifier="t7s_mainstory_checkscanner">
+      <CheckDataAction identifier="mainstorystage1" condition="lt 2">
+        <Success>
+          <SetDataAction identifier="mainstorystage1" value="2" operation="Set" />
+          <ConversationAction text="EventText.missionevent_t7s_mainstory_checkscanner" targettag="t7s_mainstoryer" dialogtype="Small">
+            <Option text="EventText.missionevent_t7s_checking">
+              <StatusEffectAction targettag="t7s_mainstoryer">
+                <StatusEffect target="Character" stackable="false" delay="0.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="3.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="6.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+              </StatusEffectAction>
+              <ConversationAction text="EventText.missionevent_t7s_mainstory_checkscanner2" targettag="t7s_mainstoryer" dialogtype="Small" />
+              <StatusEffectAction targettag="t7s_mainstoryer">
+                <StatusEffect target="Character" stackable="false" delay="0.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="3.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="6.2">
+                  <Sound file="Content/Items/Command/SonarPing.ogg" frequencymultiplier="0.4" />
+                </StatusEffect>
+              </StatusEffectAction>
+              <ConversationAction text="EventText.missionevent_t7s_mainstory_checkscanner3" targettag="t7s_mainstoryer" />
+              <StatusEffectAction targettag="t7s_mainstoryer">
+                <StatusEffect target="Character" stackable="false" delay="0.2">
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle1.ogg" frequencymultiplier="0.4" volume="0.3" selectionmode="Random" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle2.ogg" frequencymultiplier="0.4" volume="0.3" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="3.2">
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle1.ogg" frequencymultiplier="0.5" volume="0.6" selectionmode="Random" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle2.ogg" frequencymultiplier="0.5" volume="0.6" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="6.2">
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle1.ogg" frequencymultiplier="0.7" volume="0.7" selectionmode="Random" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle2.ogg" frequencymultiplier="0.7" volume="0.7" />
+                </StatusEffect>
+                <StatusEffect target="Character" stackable="false" delay="9.2">
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle1.ogg" frequencymultiplier="0.9" volume="0.9" selectionmode="Random" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_idle2.ogg" frequencymultiplier="0.9" volume="0.9" />
+                </StatusEffect>
+              </StatusEffectAction>
+              <ConversationAction text="EventText.missionevent_t7s_mainstory_checkscanner4" targettag="t7s_mainstoryer" endconversation="true" />
+              <ConversationAction text="EventText.missionevent_t7s_mainstory_checkscanner5" targettag="t7s_mainstoryer" endconversation="true" />
+              <StatusEffectAction targettag="t7s_mainstoryer">
+                <StatusEffect target="Character" stackable="false" delay="0.2">
+                  <Sound file="Content/Characters/Crawler/CRAWLER_attack1.ogg" selectionmode="Random" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_attack2.ogg" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_attack3.ogg" />
+                  <Sound file="Content/Characters/Crawler/CRAWLER_attack4.ogg" />
+                  <SpawnCharacter speciesname="Crawler" count="2" spread="500" />
+                </StatusEffect>
+              </StatusEffectAction>
+              <ClearTagAction tag="t7s_mainstoryer" />
+            </Option>
+            <Option text="EventText.missionevent_t7s_no">
+              <ClearTagAction tag="t7s_mainstoryer" />
+            </Option>
+          </ConversationAction>
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--主线前置：迷雾初见-->
+    <ScriptedEvent identifier="t7s_darkmist_firsttime">
+      <CheckDataAction identifier="preparedtobehunter" condition="eq true">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <CheckDataAction identifier="mainstoryfordarkmist" condition="lt 1">
+            <Failure>
+              <CheckDataAction identifier="mainstoryfordarkmist" condition="eq 2">
+                <Failure>
+                  <!--do nothing-->
+                </Failure>
+                <Success>
+                  <TagAction criteria="player" tag="player" />
+                  <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_sovchunk" targettag="t7s_npc_holyset" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+                  <Label name="begening2" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <TriggerAction target1tag="player" target2tag="t7s_npc_holyset" applytotarget1="triggerer_player" radius="250" waitforinteraction="true" />
+                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_1" targettag="triggerer_player" eventsprite="oldman">
+                    <Option text="EventText.missionevent_t7smission_darkmist_2_2">
+                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_3" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_darkmist_2_4">
+                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_5" targettag="triggerer_player">
+                            <Option text="EventText.missionevent_t7smission_darkmist_2_6">
+                              <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_7" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_darkmist_2_8">
+                                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_9" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_darkmist_2_10">
+                                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_11" targettag="triggerer_player">
+                                        <Option text="EventText.generic.continue">
+                                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_12" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_2_13">
+                                              <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_14" targettag="triggerer_player">
+                                                <Option text="EventText.missionevent_t7smission_darkmist_2_15">
+                                                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_16" targettag="triggerer_player">
+                                                    <Option text="EventText.missionevent_t7smission_darkmist_2_17">
+                                                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_18" targettag="triggerer_player">
+                                                        <Option text="EventText.missionevent_t7smission_darkmist_2_19">
+                                                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_2_20" targettag="triggerer_player" endconversation="true" />
+                                                          <SpawnAction itemidentifier="mistlight" targetinventory="triggerer_player" />
+                                                          <SetDataAction identifier="mainstoryfordarkmist" value="3" operation="set" />
+                                                          <ClearTagAction tag="triggerer_player" />
+                                                        </Option>
+                                                      </ConversationAction>
+                                                    </Option>
+                                                  </ConversationAction>
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_firttime.1.2" endconversation="true">
+                      <NPCFollowAction npctag="t7s_npc_darkmist" targettag="triggerer_player" follow="false" />
+                      <Goto name="begening2" />
+                    </Option>
+                  </ConversationAction>
+                  <NPCFollowAction npctag="t7s_npc_holyset" targettag="triggerer_player" follow="true" />
+                </Success>
+              </CheckDataAction>
+            </Failure>
+            <Success>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_noobhunter" targettag="t7s_npc_darkmist" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+              <Label name="begening" />
+              <ClearTagAction tag="triggerer_player" />
+              <TriggerAction target1tag="player" target2tag="t7s_npc_darkmist" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_1" targettag="triggerer_player" eventsprite="Instructor">
+                <Option text="EventText.missionevent_t7smission_darkmist_1_2">
+                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_3" targettag="triggerer_player">
+                    <Option text="EventText.missionevent_t7smission_darkmist_1_4">
+                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_5" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_darkmist_1_6">
+                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_7" targettag="triggerer_player">
+                            <Option text="EventText.generic.continue">
+                              <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_8" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_darkmist_1_9">
+                                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_10" targettag="triggerer_player">
+                                    <Option text="EventText.generic.continue">
+                                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_11" targettag="triggerer_player">
+                                        <Option text="EventText.generic.continue">
+                                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_12" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_1_13">
+                                              <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_14" targettag="triggerer_player">
+                                                <Option text="EventText.missionevent_t7smission_darkmist_1_15">
+                                                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_1_16" targettag="triggerer_player" endconversation="true" />
+                                                  <MissionAction missiontag="t7s_darkmist_firsttime" />
+                                                  <ClearTagAction tag="triggerer_player" />
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+                <Option text="EventText.missionevent_t7smission_firttime.1.2" endconversation="true">
+                  <NPCFollowAction npctag="t7s_npc_darkmist" targettag="triggerer_player" follow="false" />
+                  <Goto name="begening" />
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="t7s_npc_darkmist" targettag="triggerer_player" follow="true" />
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--主线：阴谋的序曲-->
+    <ScriptedEvent identifier="t7s_mainstory_bossfight1">
+      <CheckDataAction identifier="mainstoryfordarkmist" condition="gte 3">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <CheckDataAction identifier="mainstorystage1" condition="lt 1">
+            <Failure>
+              <CheckDataAction identifier="mainstorystage1" condition="eq 2">
+                <Failure>
+                  <CheckDataAction identifier="mainstorystage1" condition="eq 3">
+                    <Failure>
+                      <CheckDataAction identifier="mainstorystage1" condition="eq 4">
+                        <Failure>
+                          <!--do nothing-->
+                        </Failure>
+                        <Success>
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1_finish" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight1_finish2" endconversation="true">
+                              <SetDataAction identifier="mainstorystage1" value="5" operation="Set" />
+                              <SpawnAction itemidentifier="t7s_passcard1" targetinventory="triggerer_player" />
+                            </Option>
+                          </ConversationAction>
+                        </Success>
+                      </CheckDataAction>
+                    </Failure>
+                    <Success>
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround1" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround2">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround3" targettag="triggerer_player" endeventifinterrupted="false">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround4">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround5" targettag="triggerer_player" endeventifinterrupted="false">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight1_bossround6" endconversation="true">
+                                  <MissionAction missiontag="t7s_mainstory_bossfight1" />
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Success>
+                  </CheckDataAction>
+                </Failure>
+                <Success>
+                  <TagAction criteria="player" tag="player" />
+                  <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_consdante" targettag="t7s_bigboss" spawnlocation="Outpost" targetmoduletags="adminmodule" />
+                  <Label name="begening2" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <NPCWaitAction npctag="t7s_bigboss" wait="true" />
+                  <TriggerAction target1tag="player" target2tag="t7s_bigboss" applytotarget1="triggerer_player" waitforinteraction="true" />
+                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.1" speakertag="t7s_bigboss" dialogtype="Small" targettag="triggerer_player">
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.2">
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.3" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.4">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.5" targettag="triggerer_player" />
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.6" targettag="triggerer_player">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.7">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.8" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.9">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.10" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.11">
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.12" targettag="triggerer_player" />
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.13" targettag="triggerer_player">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.14">
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.15" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.16">
+                                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.17" targettag="triggerer_player">
+                                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight1.18">
+                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1.19" targettag="triggerer_player" endconversation="true" />
+                                                  <SetDataAction identifier="mainstorystage1" value="3" operation="Set" />
+                                                  <ClearTagAction tag="triggerer_player" />
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="EventText.missionevent_t7smission_comebacklater" endconversation="true">
+                          <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="false" />
+                          <Goto name="begening2" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_firttime.1.2" endconversation="true">
+                      <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="false" />
+                      <Goto name="begening2" />
+                    </Option>
+                  </ConversationAction>
+                  <NPCFollowAction npctag="t7s_bigboss" targettag="triggerer_player" follow="true" />
+                </Success>
+              </CheckDataAction>
+            </Failure>
+            <Success>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_researcher1" targettag="t7s_mainstory" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+              <Label name="begening" />
+              <ClearTagAction tag="triggerer_player" />
+              <TriggerAction target1tag="player" target2tag="t7s_mainstory" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight1" targettag="triggerer_player">
+                <Option text="EventText.missionevent_t7smission_whathappen">
+                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2" targettag="triggerer_player" eventsprite="doctor">
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight3_1">
+                      <Label name="asking" />
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight4_1" targettag="triggerer_player">
+                        <Option text="EventText.generic.continue">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight5_1" targettag="triggerer_player">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight6">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight7" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight8">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight9" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight10">
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight11" targettag="triggerer_player">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight12">
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight13" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight14" endconversation="true">
+                                              <MissionAction missiontag="t7s_mainstory1_1" />
+                                              <ClearTagAction tag="triggerer_player" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight3_2">
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight4_2" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight5_2">
+                          <Goto name="asking" />
+                        </Option>
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight5_3" endconversation="true">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight6_2" targettag="triggerer_player" endconversation="true" dialogtype="Small" />
+                          <NPCFollowAction npctag="t7s_mainstory" targettag="triggerer_player" follow="false" />
+                          <ClearTagAction tag="triggerer_player" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight_leave1" endconversation="true">
+                      <NPCFollowAction npctag="t7s_mainstory" targettag="triggerer_player" follow="false" />
+                      <Goto name="begening" />
+                    </Option>
+                  </ConversationAction>
+                </Option>
+                <Option text="EventText.missionevent_t7smission_notnow" endconversation="true">
+                  <NPCFollowAction npctag="t7s_mainstory" targettag="triggerer_player" follow="false" />
+                  <Goto name="begening" />
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="t7s_mainstory" targettag="triggerer_player" follow="true" />
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--主线：野兽与战争-->
+    <ScriptedEvent identifier="t7s_mainstory_bossfight2">
+      <CheckDataAction identifier="mainstoryfordarkmist" condition="gte 3">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <CheckDataAction identifier="mainstorystage2" condition="lt 1">
+            <Failure>
+              <CheckDataAction identifier="mainstorystage2" condition="eq 2">
+                <Failure>
+                  <CheckDataAction identifier="mainstorystage2" condition="eq 3">
+                    <Failure>
+                      <CheckDataAction identifier="mainstorystage2" condition="eq 4">
+                        <Failure>
+                          <CheckDataAction identifier="mainstorystage2" condition="eq 5">
+                            <Failure>
+                              <CheckDataAction identifier="mainstorystage2" condition="eq 6">
+                                <Failure>
+                                  <!--do nothing-->
+                                </Failure>
+                                <Success>
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_finish" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_finish2" endconversation="true">
+                                      <SetDataAction identifier="mainstorystage2" value="7" operation="Set" />
+                                      <SpawnAction itemidentifier="t7s_passcard2" targetinventory="triggerer_player" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Success>
+                              </CheckDataAction>
+                            </Failure>
+                            <Success>
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.1" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.2">
+                                  <StatusEffectAction targettag="triggerer_player">
+                                    <StatusEffect target="Character" stackable="false" forceplaysounds="true" delay="1">
+                                      <Sound file="%Moddir%/Content/Characters/Reaperleviathan/roarf1.ogg" frequencymultiplier="0.9" range="30000" selectionmode="random" dontmuffle="true" />
+                                      <Sound file="%Moddir%/Content/Characters/Reaperleviathan/roarf2.ogg" frequencymultiplier="0.9" range="30000" dontmuffle="true" />
+                                      <Sound file="%Moddir%/Content/Characters/Reaperleviathan/roarf3.ogg" frequencymultiplier="0.9" range="30000" dontmuffle="true" />
+                                    </StatusEffect>
+                                  </StatusEffectAction>
+                                  <WaitAction time="9" />
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.3" targettag="triggerer_player" endeventifinterrupted="false">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.4">
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.5" targettag="triggerer_player" endeventifinterrupted="false">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.6">
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.7" targettag="triggerer_player" endeventifinterrupted="false" />
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.8" targettag="triggerer_player" endeventifinterrupted="false">
+                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2.9" endconversation="true">
+                                              <MissionAction missiontag="t7s_mainstory_bossfight2_2" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Success>
+                          </CheckDataAction>
+                        </Failure>
+                        <Success>
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround1" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround2">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround3" targettag="triggerer_player" endeventifinterrupted="false">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround4">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround5" targettag="triggerer_player" endeventifinterrupted="false">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround6_1" endconversation="true">
+                                      <MissionAction missiontag="t7s_mainstory_bossfight2_1" />
+                                    </Option>
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround6_2">
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround6_2.2" targettag="triggerer_player" endeventifinterrupted="false" />
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround6_2.3" targettag="triggerer_player" endeventifinterrupted="false">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2_bossround6_1" endconversation="true">
+                                          <MissionAction missiontag="t7s_mainstory_bossfight2_1" />
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Success>
+                      </CheckDataAction>
+                    </Failure>
+                    <Success>
+                      <TagAction criteria="player" tag="player" />
+                      <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_engineer_ieven" targettag="t7s_engineer" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+                      <Label name="begening3" />
+                      <ClearTagAction tag="triggerer_player" />
+                      <NPCWaitAction npctag="t7s_engineer" wait="true" />
+                      <TriggerAction target1tag="player" target2tag="t7s_engineer" applytotarget1="triggerer_player" waitforinteraction="true" />
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.1" speakertag="t7s_engineer" dialogtype="Small" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.2">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.3" targettag="triggerer_player">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.4">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5" targettag="triggerer_player">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_1">
+                                  <CheckMoneyAction Amount="80">
+                                    <Success>
+                                      <MoneyAction amount="-80" />
+                                      <SetDataAction identifier="engineer_lover" value="true" />
+                                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_mainstory_bossfight2.3.6">
+                                        <Option text="EventText.generic.continue">
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.8" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.9">
+                                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.10" targettag="triggerer_player">
+                                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.11">
+                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.12" targettag="triggerer_player" />
+                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.13" targettag="triggerer_player" />
+                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.14" targettag="triggerer_player">
+                                                    <Option text="EventText.missionevent_t7smission_finish" endconversation="true">
+                                                      <MissionAction missiontag="mainstory_2_4" />
+                                                      <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                                                      <NPCWaitAction npctag="t7s_engineer" wait="false" />
+                                                      <AfflictionAction targettag="t7s_engineer" affliction="drunk" strength="999" />
+                                                      <AfflictionAction targettag="t7s_engineer" affliction="stun" strength="15" />
+                                                      <ClearTagAction tag="triggerer_player" />
+                                                    </Option>
+                                                  </ConversationAction>
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Success>
+                                    <Failure>
+                                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_3" endconversation="true">
+                                          <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                                          <Goto name="begening3" />
+                                        </Option>
+                                      </ConversationAction>
+                                    </Failure>
+                                  </CheckMoneyAction>
+                                </Option>
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.2" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.3">
+                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.4" targettag="triggerer_player">
+                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.5">
+                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.6" targettag="triggerer_player">
+                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.7">
+                                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.8" targettag="triggerer_player">
+                                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.9">
+                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.10" targettag="triggerer_player">
+                                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.11">
+                                                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.12" targettag="triggerer_player">
+                                                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.13">
+                                                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.14" targettag="triggerer_player">
+                                                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.15">
+                                                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.16" targettag="triggerer_player">
+                                                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.17">
+                                                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.18" targettag="triggerer_player">
+                                                                    <Option text="EventText.missionevent_t7smission_finish" endconversation="true">
+                                                                      <MissionAction missiontag="mainstory_2_4" />
+                                                                      <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                                                                      <NPCWaitAction npctag="t7s_engineer" wait="false" />
+                                                                      <ClearTagAction tag="triggerer_player" />
+                                                                    </Option>
+                                                                  </ConversationAction>
+                                                                </Option>
+                                                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_2.17.2" endconversation="true">
+                                                                  <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                                                                  <NPCWaitAction npctag="t7s_engineer" wait="false" />
+                                                                  <Goto name="begening3" />
+                                                                  <ClearTagAction tag="triggerer_player" />
+                                                                </Option>
+                                                              </ConversationAction>
+                                                            </Option>
+                                                          </ConversationAction>
+                                                        </Option>
+                                                      </ConversationAction>
+                                                    </Option>
+                                                  </ConversationAction>
+                                                </Option>
+                                              </ConversationAction>
+                                            </Option>
+                                          </ConversationAction>
+                                        </Option>
+                                      </ConversationAction>
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_3">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_4" targettag="triggerer_player">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.3.5_5" endconversation="true">
+                                      <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                                      <ClearTagAction tag="triggerer_player" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                        <Option text="EventText.missionevent_t7smission_notnow" endconversation="true">
+                          <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="false" />
+                          <Goto name="begening3" />
+                        </Option>
+                      </ConversationAction>
+                      <NPCFollowAction npctag="t7s_engineer" targettag="triggerer_player" follow="true" />
+                    </Success>
+                  </CheckDataAction>
+                </Failure>
+                <Success>
+                  <TagAction criteria="player" tag="player" />
+                  <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_poster" targettag="t7s_poster" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+                  <Label name="begening2" />
+                  <ClearTagAction tag="triggerer_player" />
+                  <NPCWaitAction npctag="t7s_poster" wait="true" />
+                  <TriggerAction target1tag="player" target2tag="t7s_poster" applytotarget1="triggerer_player" waitforinteraction="true" />
+                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.2.1" speakertag="t7s_poster" dialogtype="Small" targettag="triggerer_player">
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.2.2" endconversation="true">
+                      <SetDataAction identifier="mainstorystage2" value="3" operation="Set" />
+                      <SpawnAction itemidentifier="mailofconsdante" targetinventory="triggerer_player" />
+                      <NPCFollowAction npctag="t7s_poster" targettag="triggerer_player" follow="false" />
+                      <NPCWaitAction npctag="t7s_poster" wait="false" />
+                      <ClearTagAction tag="triggerer_player" />
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_mainstory_notnow" endconversation="true">
+                      <NPCFollowAction npctag="t7s_poster" targettag="triggerer_player" follow="false" />
+                      <Goto name="begening2" />
+                    </Option>
+                  </ConversationAction>
+                  <NPCFollowAction npctag="t7s_poster" targettag="triggerer_player" follow="true" />
+                </Success>
+              </CheckDataAction>
+            </Failure>
+            <Success>
+              <CheckDataAction identifier="mainstorystage1" condition="gte 4">
+                <Failure>
+                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1.2" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1.3">
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1.4" targettag="triggerer_player" endeventifinterrupted="false" />
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.6" targettag="triggerer_player" endeventifinterrupted="false">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.end" endconversation="true">
+                          <MissionAction missiontag="t7s_mainstory_2_1" />
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Failure>
+                <Success>
+                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.2">
+                      <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.3" targettag="triggerer_player" endeventifinterrupted="false">
+                        <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.4">
+                          <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5" targettag="triggerer_player" endeventifinterrupted="false">
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.2">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.3" targettag="triggerer_player" endeventifinterrupted="false">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.4">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.5" targettag="triggerer_player" endeventifinterrupted="false" />
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.6" targettag="triggerer_player" endeventifinterrupted="false">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.end" endconversation="true">
+                                      <MissionAction missiontag="t7s_mainstory_2_1" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                            <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.1">
+                              <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.5.6" targettag="triggerer_player" endeventifinterrupted="false">
+                                <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1.3">
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.1.4" targettag="triggerer_player" endeventifinterrupted="false" />
+                                  <ConversationAction text="EventText.missionevent_t7smission_mainstory_bossfight2.1.6" targettag="triggerer_player" endeventifinterrupted="false">
+                                    <Option text="EventText.missionevent_t7smission_mainstory_bossfight2.1.end" endconversation="true">
+                                      <MissionAction missiontag="t7s_mainstory_2_1" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Success>
+              </CheckDataAction>
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--功能：圣洁修会商店-->
+    <ScriptedEvent identifier="t7s_darkmist_holyset_shop" commonness="100">
+      <CheckDataAction identifier="mainstoryfordarkmist" condition="gte 3">
+        <Failure>
+          <!--do nothing-->
+        </Failure>
+        <Success>
+          <CheckDataAction identifier="darkmistshop_firsttime_finish" condition="eq true">
+            <Failure>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_holyset" targettag="t7s_npc_holyset_shop" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+              <Label name="begening" />
+              <ClearTagAction tag="triggerer_player" />
+              <NPCWaitAction npctag="t7s_npc_holyset_shop" wait="true" />
+              <TriggerAction target1tag="player" target2tag="t7s_npc_holyset_shop" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop1" eventsprite="cultist" targettag="triggerer_player">
+                <Option text="EventText.missionevent_t7smission_darkmist_shop2">
+                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop3" targettag="triggerer_player">
+                    <Option text="EventText.missionevent_t7smission_darkmist_shop4">
+                      <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop5" targettag="triggerer_player">
+                        <Option text="EventText.missionevent_t7smission_darkmist_shop6">
+                          <SetDataAction identifier="darkmistshop_firsttime_finish" value="true" />
+                          <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop7" targettag="triggerer_player">
+                            <Option text="EventText.missionevent_t7smission_darkmist_shop8" endconversation="true">
+                              <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop10" targettag="triggerer_player" endconversation="true">
+                                <Option text="EventText.missionevent_t7smission_darkmist_shop_buymistlight">
+                                  <CheckMoneyAction Amount="1000">
+                                    <Success>
+                                      <SpawnAction itemidentifier="mistlight" targetinventory="triggerer_player" />
+                                      <MoneyAction amount="-1000" />
+                                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                                        <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                                          <Goto name="begening_buy" />
+                                        </Option>
+                                      </ConversationAction>
+                                    </Success>
+                                    <Failure>
+                                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                                        <Option text="EventText.missionevent_t7smission_darkmist_shop_end" endconversation="true">
+                                          <Goto name="begening_buy" />
+                                        </Option>
+                                      </ConversationAction>
+                                    </Failure>
+                                  </CheckMoneyAction>
+                                </Option>
+                                <Option text="EventText.missionevent_t7smission_darkmist_shop_buyweapons">
+                                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop_buyweapons_ask" targettag="triggerer_player" endconversation="true">
+                                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buyhandaxe">
+                                      <CheckMoneyAction Amount="150">
+                                        <Success>
+                                          <SpawnAction itemidentifier="handaxe" targetinventory="triggerer_player" />
+                                          <MoneyAction amount="-150" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buylongsword">
+                                      <CheckMoneyAction Amount="250">
+                                        <Success>
+                                          <SpawnAction itemidentifier="iron_longsword" targetinventory="triggerer_player" />
+                                          <MoneyAction amount="-250" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buyshotgun">
+                                      <CheckMoneyAction Amount="500">
+                                        <Success>
+                                          <SpawnAction itemidentifier="dualbarrle_shotgun" targetinventory="triggerer_player" />
+                                          <SpawnAction itemidentifier="shotgunshell_simple" targetinventory="triggerer_player" />
+                                          <SpawnAction itemidentifier="shotgunshell_simple" targetinventory="triggerer_player" />
+                                          <MoneyAction amount="-500" />
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buyingguns">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Success>
+                                        <Failure>
+                                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                                              <Goto name="begening_buy" />
+                                            </Option>
+                                          </ConversationAction>
+                                        </Failure>
+                                      </CheckMoneyAction>
+                                    </Option>
+                                    <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                                      <Goto name="begening_buy" />
+                                    </Option>
+                                  </ConversationAction>
+                                </Option>
+                                <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                                  <Goto name="begening_buy" />
+                                </Option>
+                              </ConversationAction>
+                            </Option>
+                            <Option text="EventText.missionevent_t7smission_darkmist_shop9" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Option>
+                      </ConversationAction>
+                    </Option>
+                  </ConversationAction>
+                </Option>
+                <Option text="EventText.missionevent_t7smission_firttime.1.2" endconversation="true">
+                  <Goto name="begening" />
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="t7s_npc_holyset_shop" targettag="triggerer_player" follow="true" />
+            </Failure>
+            <Success>
+              <TagAction criteria="player" tag="player" />
+              <SpawnAction npcsetidentifier="t7s_npc" npcidentifier="t7s_holyset" targettag="t7s_npc_holyset_shop" spawnlocation="Outpost" targetmoduletags="crewmodule" />
+              <Label name="begening_buy" />
+              <ClearTagAction tag="triggerer_player" />
+              <NPCWaitAction npctag="t7s_npc_holyset_shop" wait="true" />
+              <TriggerAction target1tag="player" target2tag="t7s_npc_holyset_shop" applytotarget1="triggerer_player" waitforinteraction="true" />
+              <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop_common" eventsprite="cultist" targettag="triggerer_player">
+                <Option text="EventText.missionevent_t7smission_darkmist_shop_buymistlight">
+                  <CheckMoneyAction Amount="1000">
+                    <Success>
+                      <SpawnAction itemidentifier="mistlight" targetinventory="triggerer_player" />
+                      <MoneyAction amount="-1000" />
+                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                        <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                          <Goto name="begening_buy" />
+                        </Option>
+                      </ConversationAction>
+                    </Success>
+                    <Failure>
+                      <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                        <Option text="EventText.missionevent_t7smission_darkmist_shop_end" endconversation="true">
+                          <Goto name="begening_buy" />
+                        </Option>
+                      </ConversationAction>
+                    </Failure>
+                  </CheckMoneyAction>
+                </Option>
+                <Option text="EventText.missionevent_t7smission_darkmist_shop_buyweapons">
+                  <ConversationAction text="EventText.missionevent_t7smission_darkmist_shop_buyweapons_ask" targettag="triggerer_player" endconversation="true">
+                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buyhandaxe">
+                      <CheckMoneyAction Amount="150">
+                        <Success>
+                          <SpawnAction itemidentifier="handaxe" targetinventory="triggerer_player" />
+                          <MoneyAction amount="-150" />
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Success>
+                        <Failure>
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Failure>
+                      </CheckMoneyAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buylongsword">
+                      <CheckMoneyAction Amount="250">
+                        <Success>
+                          <SpawnAction itemidentifier="iron_longsword" targetinventory="triggerer_player" />
+                          <MoneyAction amount="-250" />
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buying">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Success>
+                        <Failure>
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Failure>
+                      </CheckMoneyAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_darkmist_shop_buyshotgun">
+                      <CheckMoneyAction Amount="500">
+                        <Success>
+                          <SpawnAction itemidentifier="dualbarrle_shotgun" targetinventory="triggerer_player" />
+                          <SpawnAction itemidentifier="shotgunshell_simple" targetinventory="triggerer_player" />
+                          <SpawnAction itemidentifier="shotgunshell_simple" targetinventory="triggerer_player" />
+                          <MoneyAction amount="-500" />
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_buyingguns">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Success>
+                        <Failure>
+                          <ConversationAction targettag="triggerer_player" text="EventText.missionevent_t7smission_darkmist_shop_nomony">
+                            <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                              <Goto name="begening_buy" />
+                            </Option>
+                          </ConversationAction>
+                        </Failure>
+                      </CheckMoneyAction>
+                    </Option>
+                    <Option text="EventText.missionevent_t7smission_darkmist_leave2" endconversation="true">
+                      <Goto name="begening_buy" />
+                      <ClearTagAction tag="triggerer_player" />
+                    </Option>
+                  </ConversationAction>
+                </Option>
+                <Option text="EventText.missionevent_t7smission_darkmist_leave" endconversation="true">
+                  <Goto name="begening_buy" />
+                </Option>
+              </ConversationAction>
+              <NPCFollowAction npctag="t7s_npc_holyset_shop" targettag="triggerer_player" follow="true" />
+            </Success>
+          </CheckDataAction>
+        </Success>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <!--功能类事件-->
+    <ScriptedEvent identifier="exospawn">
+      <SpawnAction itemidentifier="exo_t7smission" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="exot7s" offset="0" />
+      <SpawnAction itemidentifier="thoriumfuelrod" targetinventory="exot7s" TargetTag="exoitemt7s" />
+      <SpawnAction itemidentifier="oxygenitetank" targetinventory="exot7s" TargetTag="exoitemt7s" />
+      <OnRoundEndAction>
+        <RemoveItemAction targettag="exot7s" Amount="100" />
+        <RemoveItemAction targettag="exoitemt7s" Amount="100" />
+      </OnRoundEndAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="ruin_destroyer_spawn">
+      <SpawnAction itemidentifier="ruin_destroyer_mission" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="ruin_destroyer" offset="0" />
+      <OnRoundEndAction>
+        <RemoveItemAction targettag="ruin_destroyer" Amount="100" />
+      </OnRoundEndAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="extra_ammo_spawn">
+      <SpawnAction itemidentifier="t7s_extrat_coilgunammoboxexplosive" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="extract_ammo" offset="0" />
+      <SpawnAction itemidentifier="t7s_extract_grenadegunammobox_he" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="extract_ammo" offset="0" />
+      <SpawnAction itemidentifier="t7s_extract_chaingunammobox_exp" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="extract_ammo" offset="0" />
+      <SpawnAction itemidentifier="t7s_extract_rocketgunammobox_he" spawnlocation="Mainsub" SpawnPointType="Cargo" TargetTag="extract_ammo" offset="0" />
+      <OnRoundEndAction>
+        <RemoveItemAction targettag="extract_ammo" Amount="100" />
+      </OnRoundEndAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="destoryposttowreck">
+      <TagAction criteria="player" tag="player" />
+      <TagAction criteria="itemidentifier:flagofrevolution" tag="revolutionbanner" />
+      <Label name="revolutionbeginning" />
+      <TriggerAction target1tag="player" target2tag="revolutionbanner" applytotarget1="triggerer_player" waitforinteraction="true" />
+      <ConversationAction text="eventtext.revolutionbegin.ask" targettag="triggerer_player">
+        <Option text="eventtext.yes" endconversation="true">
+          <Goto name="revolutionbegin" />
+        </Option>
+        <Option text="eventtext.no" endconversation="true">
+          <Goto name="revolutionbeginning" />
+          <ClearTagAction tag="triggerer_player" />
+        </Option>
+      </ConversationAction>
+      <Label name="revolutionbegin" />
+      <StatusEffectAction targettag="revolutionbanner">
+        <StatusEffect target="this" noninteractable="true" setvalue="true" />
+      </StatusEffectAction>
+      <TagAction criteria="itemtag:reactor" tag="outpostcore" SubmarineType="Outpost" />
+      <EventObjectiveAction targettag="player" type="add" identifier="eventtext.revolutionisbegin" />
+      <HighlightAction targettag="outpostcore" targetcharacter="player" />
+      <StatusEffectAction targettag="revolutionbanner">
+        <StatusEffect target="this" isOn="true" setvalue="true" />
+      </StatusEffectAction>
+      <ConversationAction text="eventtext.revolutionbegin" dialogtype="Small" targettag="player" endconversation="true" />
+      <CombatAction combatmode="Offensive" npctag="securitynpc[faction]" enemytag="triggerer_player" isinstigator="false" witnessreaction="retreat" />
+      <ReputationAction targettype="Location" increase="-100" />
+      <StatusEffectAction targettag="outpostcore">
+        <StatusEffect target="this" condition="100" setvalue="true" />
+        <StatusEffect target="this" noninteractable="true" invulnerabletodamage="false" setvalue="true" duration="infinity" />
+      </StatusEffectAction>
+      <Label name="retrying" />
+      <CheckConditionalAction targettag="outpostcore" condition="lte 0">
+        <Success>
+          <EventObjectiveAction targettag="player" type="completeandremove" identifier="eventtext.revolutionisbegin" />
+          <ReputationAction targettype="Location" increase="-100" />
+          <MoneyAction amount="1000" />
+          <ClearTagAction tag="triggerer_player" />
+          <HighlightAction targettag="outpostcore" state="false" />
+          <UnlockPathAction />
+          <ModifyLocationAction type="Abandoned" />
+          <ConversationAction text="eventtext.revolutionfinish" dialogtype="Small" targettag="player" endconversation="true" />
+        </Success>
+        <Failure>
+          <WaitAction time="1" />
+          <GoTo name="retrying" />
+        </Failure>
+      </CheckConditionalAction>
+      <OnRoundEndAction>
+        <RemoveItemAction targettag="revolutionbanner" Amount="100" />
+      </OnRoundEndAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_passby1">
+      <CheckDataAction identifier="mainstorystage1" condition="gte 5">
+        <Success>
+          <Label name="waitingforcard" />
+          <ConversationAction text="EventText.missionevent_t7smission_passby" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+            <Option text="EventText.missionevent_t7smission_passby.showcard">
+              <CheckItemAction targettag="triggerer_player" itemidentifiers="t7s_passcard1">
+                <Success>
+                  <ConversationAction text="EventText.missionevent_t7smission_passby2" targettag="triggerer_player" endconversation="true" />
+                  <UnlockPathAction />
+                </Success>
+                <Failure>
+                  <ConversationAction text="EventText.missionevent_t7smission_passby.nocard" targettag="triggerer_player" endconversation="true" />
+                  <GoTo name="waitingforcard" />
+                </Failure>
+              </CheckItemAction>
+            </Option>
+            <Option text="EventText.missionevent_t7smission_passby.no" endconversation="true">
+              <GoTo name="waitingforcard" />
+            </Option>
+            <Option text="EventText.missionevent_t7smission_passby.reallyno" endconversation="true" />
+          </ConversationAction>
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+    <ScriptedEvent identifier="t7s_passby2">
+      <CheckDataAction identifier="mainstorystage2" condition="gte 7">
+        <Success>
+          <Label name="waitingforcard" />
+          <ConversationAction text="EventText.missionevent_t7smission_passby" speakertag="outpostmanager" invokertag="triggerer_player" endeventifinterrupted="false">
+            <Option text="EventText.missionevent_t7smission_passby.showcard">
+              <CheckItemAction targettag="triggerer_player" itemidentifiers="t7s_passcard2">
+                <Success>
+                  <ConversationAction text="EventText.missionevent_t7smission_passby2" targettag="triggerer_player" endconversation="true" />
+                  <UnlockPathAction />
+                </Success>
+                <Failure>
+                  <ConversationAction text="EventText.missionevent_t7smission_passby.nocard" targettag="triggerer_player" endconversation="true" />
+                  <GoTo name="waitingforcard" />
+                </Failure>
+              </CheckItemAction>
+            </Option>
+            <Option text="EventText.missionevent_t7smission_passby.no" endconversation="true">
+              <GoTo name="waitingforcard" />
+            </Option>
+            <Option text="EventText.missionevent_t7smission_passby.reallyno" endconversation="true" />
+          </ConversationAction>
+        </Success>
+        <Failure>
+          <!-- do nothing -->
+        </Failure>
+      </CheckDataAction>
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventSet identifier="outpostevents_the7seas" leveltype="outpost" locationtype="outpost,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,extraction,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="false" ignorecooldown="true" SelectAlways="true" additive="true">
+    <!--难度0-15-->
+    <EventSet identifier="outpostevents_the7seasmission1_15" minleveldifficulty="0" maxleveldifficulty="15" allowatstart="true" chooserandom="true" eventcount="1" exhaustible="true">
+      <ScriptedEvent identifier="missionevent_t7s_hunt1" commonness="10" />
+    </EventSet>
+    <EventSet identifier="outpostevents_the7seasmission1_15_special" minleveldifficulty="0" maxleveldifficulty="15" allowatstart="true" chooserandom="true" eventcount="1" exhaustible="true">
+      <ScriptedEvent identifier="missionevent_t7s_salvage1" commonness="10" probability="0.2" />
+    </EventSet>
+    <!--难度15-100-->
+    <EventSet identifier="outpostevents_the7seasmission15_100" minleveldifficulty="15" maxleveldifficulty="100" allowatstart="true" chooserandom="true" eventcount="1" exhaustible="true">
+      <ScriptedEvent identifier="missionevent_t7s_hunt2" commonness="10" />
+    </EventSet>
+    <EventSet identifier="outpostevents_the7seasmission15_100_special" minleveldifficulty="15" maxleveldifficulty="100" allowatstart="true" chooserandom="true" eventcount="1" exhaustible="true">
+      <ScriptedEvent identifier="missionevent_t7s_salvage2" commonness="10" probability="0.2" />
+    </EventSet>
+    <!--通用任务-->
+    <EventSet identifier="outpostevents.joint_diving_hunter" minleveldifficulty="0" maxleveldifficulty="100" allowatstart="true" chooserandom="true" eventcount="1">
+      <ScriptedEvent identifier="join_diving_hunt" commonness="10" />
+    </EventSet>
+    <!--主线任务：从难度7%开始-->
+    <EventSet identifier="outpostevents.t7s_mainstory" minleveldifficulty="7" maxleveldifficulty="100" allowatstart="true" chooserandom="false" eventcount="2">
+      <ScriptedEvent identifier="t7s_darkmist_firsttime" commonness="10" />
+      <ScriptedEvent identifier="t7s_darkmist_holyset_shop" commonness="10" />
+    </EventSet>
+  </EventSet>
+  <!--主线BOSS战不可在blocked哨站中接取-->
+  <EventSet identifier="bossfightevent_the7seas" leveltype="outpost" locationtype="outpost,city,research,military,mine,colony,settlement,construction,camp,base,survey,extraction,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="false" ignorecooldown="true" SelectAlways="true" additive="true">
+    <!--主线任务：寂静之海-->
+    <EventSet identifier="outpostevents.t7s_mainstory_bossfight1" minleveldifficulty="0" maxleveldifficulty="14" allowatstart="true" chooserandom="false" eventcount="1">
+      <ScriptedEvent identifier="t7s_mainstory_bossfight1" commonness="10" />
+    </EventSet>
+    <EventSet identifier="outpostevents.t7s_mainstory_bossfight2" minleveldifficulty="15" maxleveldifficulty="34" allowatstart="true" chooserandom="false" eventcount="1">
+      <ScriptedEvent identifier="t7s_mainstory_bossfight2" commonness="10" />
+    </EventSet>
+  </EventSet>
+  <!--通行证事件-->
+  <EventSet identifier="passby_t7s" leveltype="outpost" locationtype="outpost,city,research,military,mine,colony,settlement,construction,camp,base,blockade,survey,extraction,study,lab,clinic,hospital,surgery,hydroponics,biosphere,nourishment,factory,shipyard,fusion" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="false" ignorecooldown="true" SelectAlways="true" additive="true">
+    <!--通行证：1-2-->
+    <EventSet identifier="outpostevents.t7s_passby" minleveldifficulty="0" maxleveldifficulty="20" allowatstart="true" chooserandom="false" eventcount="1">
+      <ScriptedEvent identifier="t7s_passby1" commonness="10" />
+    </EventSet>
+    <!--通行证：2-3-->
+    <EventSet identifier="outpostevents.t7s_passby2" minleveldifficulty="28" maxleveldifficulty="38" allowatstart="true" chooserandom="false" eventcount="1">
+      <ScriptedEvent identifier="t7s_passby2" commonness="10" />
+    </EventSet>
+  </EventSet>
+  <!--EVENT SETS-->
+</Randomevents>

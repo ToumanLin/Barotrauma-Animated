@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ragdoll type="MistCore_small" Texture="%ModDir%/Content/Characters/MistCore/MistCore.png" Color="255,255,255,255" SpritesheetOrientation="0" LimbScale="1" JointScale="1" TextureScale="1" SourceRectScale="1" ColliderHeightFromFloor="21" ImpactTolerance="50" CanEnterSubmarine="True" CanWalk="True" Draggable="True" MainLimb="Torso">
+  <collider Name="Main Collider" Radius="50" Height="0" Width="0" BodyType="Dynamic" />
+  <limb Name="Core" ID="0" Type="Torso" SecondaryType="None" Notes="" Scale="1" Flip="False" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="NaN" InheritLimbDepth="None" SteerForce="0" Radius="50" Height="0" Width="0" Density="10" IgnoreCollisions="False" AngularDamping="7" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" EatTorque="50" EatImpulse="2" ConstantTorque="0" ConstantAngle="0" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="False" SeveredFadeOutTime="10" ApplyTailAngle="False" ApplySineMovement="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0.1" BlinkDurationIn="0.05" BlinkDurationOut="0.05" BlinkHoldTime="5" BlinkRotationIn="0" BlinkRotationOut="-3" BlinkForce="10" OnlyBlinkInWater="False" UseTextureOffsetForBlinking="False" BlinkTextureOffsetIn="0.5,0.5" BlinkTextureOffsetOut="0.5,0.5" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05" CanEnterSubmarine="True" InheritHiding="None">
+    <sprite SourceRect="0,0,150,150" Origin="0.5,0.5" Depth="0.6" Texture="" IgnoreTint="True" Color="255,255,255,255" DeadColor="255,255,255,0" DeadColorTime="0.1" />
+    <lightsource castshadows="false" Color="255,0,0,255" Range="100" Scale="1" Offset="0,0" Rotation="0" Directional="False" Flicker="0" FlickerSpeed="1" PulseFrequency="0" PulseAmount="0" BlinkFrequency="0">
+      <lighttexture Texture="Content/Lights/pointlight_rays.png" Origin="0.5,0.5" Size="1,1" />
+    </lightsource>
+    <StatusEffect target="this" type="OnActive" interval="1" duration="1">
+      <Conditional darkmist="gte 15" />
+      <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="60" anglemin="0" anglemax="360" scalemin="1.1" scalemax="1.5" velocitymin="60" velocitymax="150" copyentityangle="true" />
+    </StatusEffect>
+    <StatusEffect target="this" type="OnActive" interval="1" duration="1">
+      <Conditional darkmist="lt 15" />
+      <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="36" anglemin="0" anglemax="360" scalemin="0.6" scalemax="1.0" velocitymin="36" velocitymax="100" copyentityangle="true" />
+    </StatusEffect>
+  </limb>
+  <limb Name="Head" ID="1" Type="Head" SecondaryType="None" Notes="" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="NaN" InheritLimbDepth="None" SteerForce="0" Radius="0" Height="10" Width="5" Density="10" IgnoreCollisions="True" AngularDamping="7" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" EatTorque="50" EatImpulse="2" ConstantTorque="0" ConstantAngle="0" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="False" SeveredFadeOutTime="10" ApplyTailAngle="False" ApplySineMovement="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" UseTextureOffsetForBlinking="False" BlinkTextureOffsetIn="0.5,0.5" BlinkTextureOffsetOut="0.5,0.5" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05" CanEnterSubmarine="True" InheritHiding="None">
+    <sprite SourceRect="0,0,1,1" Origin="0.49506646,0.6" Depth="0" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    <damagemodifier DamageSound="MetalImpact" DamageParticle="" DamageMultiplier="0.75" ProbabilityMultiplier="1" ArmorSector="0,360" DeflectProjectiles="True" AfflictionIdentifiers="" AfflictionTypes="damage" />
+  </limb>
+  <joint Name="Joint 0 - 1" Limb1="0" Limb2="1" Limb1Anchor="0,0" Limb2Anchor="0,0" CanBeSevered="False" SeveranceProbabilityModifier="0" BreakSound="gore" LimitEnabled="False" UpperLimit="0" LowerLimit="360" Stiffness="0.25" Scale="1" WeldJoint="False" ClockWiseRotation="False" />
+</Ragdoll>

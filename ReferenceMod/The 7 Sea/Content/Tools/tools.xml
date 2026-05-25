@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Laser Pointer" identifier="laserpointer" category="Equipment" Tags="smallitem,tool,provocative,flashlight,laserpointer" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.05" />
+    <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+    <Price baseprice="200" sold="false">
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="3" />
+      <Price storeidentifier="merchantmilitary" sold="true" minavailable="1" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="silicon" />
+      <RequiredItem tag="lightcomponent" />
+    </Fabricate>
+    <Deconstruct time="15">
+      <Item identifier="lightcomponent" />
+      <Item identifier="silicon" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Tools/tools.png" sourcerect="54,0,56,50" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Tools/tools.png" sourcerect="0,0,49,18" depth="0.55" origin="0.5,0.5" />
+    <Body width="48" height="15" density="15" />
+    <Holdable slots="Any,RightHand,LeftHand,Head" holdpos="30,-50" aimpos="60,0" handle1="-20,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" targettype="Contained" Condition="-0.1">
+        <RequiredItem items="mobilebattery" type="Contained" />
+      </StatusEffect>
+      <!-- the child LightComponent is only active when the Holdable is active, i.e. when the item is being held -->
+      <LightComponent LightColor="255,0,0,225" directional="true" Flicker="0.04" range="1200" powerconsumption="10" IsOn="true">
+        <LightTexture texture="%ModDir%/Content/Lights/laserlight.png" origin="0.0, 0.498" size="1.0,0.142" />
+        <IsActive targetcontaineditem="true" condition="gt 1.0" />
+      </LightComponent>
+      <LightComponent LightColor="255,0,0,127" directional="true" range="800" powerconsumption="10" IsOn="true" flicker="0.8" flickerspeed="1.0" pulsefrequency="0.1" pulseamount="0.5">
+        <LightTexture texture="%ModDir%/Content/Lights/laserlight.png" origin="0.0, 0.498" size="1.0,0.142" />
+        <IsActive targetcontaineditem="true" condition="lte 1.0" />
+      </LightComponent>
+      <StatusEffect type="OnActive" target="Character,Contained" comparison="and" interval="0.1" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+        <Conditional SelectedItem="eq null" />
+        <Conditional condition="gt 1.0" />
+        <RequiredItem items="mobilebattery" type="Contained" />
+      </StatusEffect>
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+      </Containable>
+    </ItemContainer>
+    <AiTarget sightrange="1000" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="TC-Flash Light" identifier="tcflashlight" category="Equipment" Tags="smallitem,tool,provocative,flashlight,laserpointer" cargocontaineridentifier="metalcrate" Scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab" spawnprobability="0.01" />
+    <Price baseprice="400" sold="false">
+      <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmilitary" sold="true" minavailable="1" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="flashlight" />
+      <RequiredItem identifier="laserpointer" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <Fabricate suitablefabricators="gunmodder" requiredtime="5" displayname="fixbug">
+      <RequiredItem identifier="tcflashlight" />
+      <RequiredItem tag="electricalrepairtool" mincondition="0.00" />
+    </Fabricate>
+    <Deconstruct time="15">
+      <Item identifier="flashlight" />
+      <Item identifier="laserpointer" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Content/Tools/tools.png" sourcerect="426,0,52,52" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Tools/tools.png" sourcerect="362,2,56,26" depth="0.55" origin="0.5,0.5" />
+    <Body width="56" height="26" density="15" />
+    <Holdable slots="Any,RightHand,LeftHand,Head" holdpos="30,-50" aimpos="60,0" handle1="-20,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnActive" targettype="Contained" Condition="-0.25">
+        <RequiredItem items="mobilebattery" type="Contained" />
+      </StatusEffect>
+      <!-- the child LightComponent is only active when the Holdable is active, i.e. when the item is being held -->
+      <LightComponent LightColor="255,0,0,255" directional="true" Flicker="0.04" range="1200" powerconsumption="5" IsOn="true" AllowInGameEditing="true" drawhudwhenequipped="true">
+        <LightTexture texture="%ModDir%/Content/Lights/laserlight.png" origin="0.0, 0.5025" size="1.0,0.145" />
+        <IsActive targetcontaineditem="true" condition="gt 1.0" />
+      </LightComponent>
+      <LightComponent LightColor="255,0,0,255" directional="true" range="800" powerconsumption="5" IsOn="true" flicker="0.8" flickerspeed="1.0" pulsefrequency="0.1" pulseamount="0.5" AllowInGameEditing="true" drawhudwhenequipped="true">
+        <LightTexture texture="%ModDir%/Content/Lights/laserlight.png" origin="0.0, 0.5025" size="1.0,0.145" />
+        <IsActive targetcontaineditem="true" condition="lte 1.0" />
+      </LightComponent>
+      <LightComponent LightColor="0,127,127,145" directional="true" Flicker="0.02" range="1200" powerconsumption="5" IsOn="true" AllowInGameEditing="false">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.499" size="1.0,1.0" />
+        <IsActive targetcontaineditem="true" condition="gt 1.0" />
+      </LightComponent>
+      <LightComponent LightColor="0,127,127,145" directional="true" range="800" powerconsumption="5" IsOn="true" flicker="0.8" flickerspeed="1.0" pulsefrequency="0.1" pulseamount="0.5" AllowInGameEditing="false">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="0.0, 0.499" size="1.0,1.0" />
+        <IsActive targetcontaineditem="true" condition="lte 1.0" />
+      </LightComponent>
+      <StatusEffect type="OnActive" target="Character,Contained" comparison="and" interval="0.1" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
+        <Conditional SelectedItem="eq null" />
+        <Conditional condition="gt 1.0" />
+        <RequiredItem items="mobilebattery" type="Contained" />
+        <Affliction identifier="laserpointer" strength="3" />
+      </StatusEffect>
+    </Holdable>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+      <SlotIcon slotindex="0" texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+      <Containable items="mobilebattery">
+        <StatusEffect type="OnContaining" targettype="This" Voltage="1.0" setvalue="true" />
+      </Containable>
+    </ItemContainer>
+    <AiTarget sightrange="1000" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="Long Range Scope" identifier="sniperscope" category="Equipment" Tags="smallitem,sniperscope" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Tools/tools.png" sourcerect="154,4,100,22" origin="0.476,0.5" depth="0.55" />
+    <Body width="64" height="20" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.1" />
+    <Price baseprice="300" minleveldifficulty="35">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="1" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredItem identifier="scope" />
+      <RequiredItem identifier="silicon" amount="2" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="scope" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="725" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Holographic Sight" identifier="electricscope" category="Equipment" Tags="smallitem,scope" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Tools/tools.png" sourcerect="0,108,52,18" origin="0.5,0.5" depth="0.55" />
+    <Body width="64" height="20" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.1" />
+    <Price baseprice="300" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="1" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="aluminium" />
+      <RequiredItem identifier="silicon" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+      <Item identifier="silicon" />
+      <Item identifier="plastic" />
+      <Item identifier="copper" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="500" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Ranged Holographic Scope" identifier="electricsniperscope" category="Equipment" Tags="smallitem,sniperscope" cargocontaineridentifier="metalcrate" allowasextracargo="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <Sprite texture="%ModDir%/Content/Tools/tools.png" sourcerect="84,106,112,22" origin="0.476,0.5" depth="0.55" />
+    <Body width="64" height="20" density="20" />
+    <PreferredContainer primary="armcab" secondary="secarmcab" />
+    <PreferredContainer secondary="outpostsecarmcab" amount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" amount="1" spawnprobability="0.1" />
+    <Price baseprice="450" minleveldifficulty="35">
+      <Price storeidentifier="merchantoutpost" multiplier="1.5" sold="false" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="1" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="electricscope" />
+      <RequiredItem identifier="phosphorus" />
+      <RequiredItem identifier="silicon" amount="2" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="electricscope" />
+      <Item identifier="silicon" />
+      <Item identifier="phosphorus" />
+    </Deconstruct>
+    <Holdable slots="Any,LeftHand,RightHand" controlpose="true" usehandrotationforholdangle="true" aimpos="37,24" handle1="0,0" cameraaimoffset="725" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="Mist Light" identifier="mistlight" category="Equipment" maxstacksize="1" cargocontaineridentifier="metalcrate" allowasextracargo="true" Scale="0.5" tags="smallitem,light,holycult" impactsoundtag="impact_metal_light" isshootable="true">
+    <PreferredContainer primary="crewcab" />
+    <Price baseprice="100" canbespecial="false" sold="false" />
+    <Deconstruct time="5">
+      <Item identifier="iron" />
+    </Deconstruct>
+    <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="218,137,41,54" origin="0.5,0.5" />
+    <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="218,137,41,54" depth="0.55" origin="0.5,0.5" />
+    <Body width="40" height="50" density="12" />
+    <Holdable slots="Any,RightHand,LeftHand" holdpos="70,-70" handle1="-5,10" holdangle="0" aimpos="55,-22" controlpose="false" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnSecondaryUse" targettype="This">
+        <ParticleEmitter particle="flare" particlespersecond="5" scalemin="0.1" scalemax="0.1" />
+        <sound file="Content/Items/Tools/FlareLoop.ogg" range="800.0" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="NearbyCharacters" range="750" duration="0.1" stackable="false" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="chastfog" amount="9.5" />
+      </StatusEffect>
+      <StatusEffect type="OnSecondaryUse" target="This" statuseffecttags="powerup" duration="0.12" ResetDurationWhenReapplied="true" stackable="false" />
+      <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="true" />
+    </Holdable>
+    <LightComponent LightColor="64,156,255,80" Flicker="0.2" pulsefrequency="0.2" pulseamount="0.5" range="900" IsOn="false" AllowInGameEditing="false">
+      <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+      <StatusEffect type="OnActive" targettype="This" isOn="false" setvalue="true">
+        <Conditional PhysicsBodyActive="eq false" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" LightColor="64,156,255,127" range="700" targetitemcomponent="LightComponent" setvalue="true">
+        <Conditional HasStatusTag="!eq powerup" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This" LightColor="64,127,1255,172" range="900" targetitemcomponent="LightComponent" setvalue="true">
+        <Conditional HasStatusTag="eq powerup" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" targettype="This">
+        <Conditional PhysicsBodyActive="eq true" />
+        <ParticleEmitter particle="flare" particlespersecond="1" scalemin="0.1" scalemax="0.1" />
+        <sound file="Content/Items/Tools/FlareLoop.ogg" range="300.0" loop="true" volume="0.2" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="NearbyCharacters" range="550" duration="0.1" interval="0.1" multiplyafflictionsbymaxvitality="true">
+        <Affliction identifier="chastfog" amount="5.5" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" targettype="This" IsOn="false" />
+    </LightComponent>
+  </Item>
+</Items>

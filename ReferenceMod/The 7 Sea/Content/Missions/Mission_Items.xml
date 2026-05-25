@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--任务物品-->
+  <Items>
+    <!--爬行者蛋（任务）-->
+    <Item nameidentifier="crawleregg" identifier="crawleregg_t7s" hideinmenus="true" health="20" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="199,253,172,255" scale="0.4" impactsoundtag="impact_soft">
+      <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="8,280,118,145" origin="0.5,0.5" />
+      <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" density="12" />
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" canbeselected="true">
+        <GuiFrame relativesize="0.15,0.2" anchor="Center" style="ItemUI" />
+        <StatusEffect type="OnBroken" target="This">
+          <TriggerEvent identifier="t7s_firsttime_complet" />
+          <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+          <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" />
+          <Sound file="Content/Sounds/Damage/Gore5.ogg" range="500" />
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnDamaged" target="This">
+          <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+        </StatusEffect>
+        <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+        <!-- spawn a crawler and remove the item if scale is above 0.75 -->
+        <StatusEffect type="Always" target="This" Condition="0" setvalue="true">
+          <Conditional Scale="gte 0.75" />
+          <SpawnCharacter speciesname="Crawler_hatchling" />
+        </StatusEffect>
+        <Containable items="antibloodloss1">
+          <!-- increase scale -->
+          <StatusEffect type="OnContaining" target="This" Scale="0.005" />
+          <StatusEffect type="OnContaining" target="Contained" Condition="-1" />
+        </Containable>
+      </ItemContainer>
+      <LightComponent range="5" lightcolor="255,0,0,61" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false" pulsefrequency="1" pulseamount="0.30">
+        <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="300,291,98,113" origin="0.5,0.6" alpha="1.0" />
+        <StatusEffect type="OnActive" targettype="This" SoundRange="100000" setvalue="true" />
+      </LightComponent>
+      <LightComponent range="40" lightcolor="255,199,0,58" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false">
+        <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="410,301,88,95" origin="0.5,0.6" alpha="1.0" />
+      </LightComponent>
+      <CustomInterface canbeselected="false" drawhudwhenequipped="false" isactive="false" allowuioverlap="false">
+        <GuiFrame relativesize="0.10,0.08" anchor="CenterLeft" pivot="BottomLeft" relativeoffset="0.006,0.17" style="ItemUI" />
+        <TickBox text="label.turnoff">
+          <StatusEffect type="OnUse" targettype="This" IsOn="false" />
+          <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="true" />
+        </TickBox>
+      </CustomInterface>
+      <AiTarget soundrange="10000" sonarlabel="entityname.target" sight="0" staticsight="true" />
+    </Item>
+    <!--猎兵手册-->
+    <Item name="" identifier="bookofhunters" category="Misc" hideinmenus="true" Tags="smallitem,huntertip" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="20" canbespecial="false" sold="false" />
+      <PreferredContainer primary="crewcab" secondary="locker" />
+      <Deconstruct time="10" />
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="59,110,51,65" origin="0.5,0.5" />
+      <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="114,165,41,51" depth="0.8" origin="0.5,0.5" />
+      <Body width="40" height="50" density="8" />
+      <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+      <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" readonly="true" autoscrolltobottom="false" AutoHideScrollbar="true" linestartsymbol="" marginmultiplier="1.5" drawhudwhenequipped="true" welcomemessage="huntertips" textcolor="50,50,50,255">
+        <GuiFrame relativesize="0.3,0.5" anchor="Center" style="Parchment" hidedragicons="true" />
+      </Terminal>
+    </Item>
+    <!--康斯但丁的信-->
+    <Item name="" identifier="mailofconsdante" category="Misc" hideinmenus="true" Tags="smallitem,mail" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft">
+      <Price baseprice="20" canbespecial="false" sold="false" />
+      <PreferredContainer primary="crewcab" secondary="locker" />
+      <Deconstruct time="10" />
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="218,195,37,55" origin="0.5,0.5" />
+      <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="367,194,12,44" origin="0.5,0.5" depth="0.8" />
+      <Body width="35" height="40" density="8" />
+      <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" />
+      <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" AutoHideScrollbar="true" readonly="true" autoscrolltobottom="false" linestartsymbol="" marginmultiplier="1.5" drawhudwhenequipped="true" welcomemessage="mailofconsdante" textcolor="50,50,50,255">
+        <GuiFrame relativesize="0.3,0.5" anchor="Center" style="Paper" hidedragicons="true" />
+      </Terminal>
+    </Item>
+    <!--扫描仪-->
+    <Item nameidentifier="ruinscanner" identifier="ruinscanner_t7s_mainstory" description="" category="Hidden" Tags="smallitem,t7s_scanner_mainstory" Scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" isshootable="true" hideinmenus="true" hideconditionbar="true" hideconditionintooltip="true">
+      <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.8" sourcerect="966,353,52,62" origin="0.5,0.5" />
+      <Body width="48" height="62" density="20" />
+      <Holdable selectkey="Action" pickkey="Select" slots="Any,RightHand,LeftHand" msg="itemmsgpickupselect" aimpos="35,-10" handle1="0,0" attachable="true" aimable="true">
+        <StatusEffect type="Always" target="This,Character" Condition="50" EventTargetTag="t7s_mainstoryer" setvalue="true" delay="3" interval="5" stackable="false" comparison="and">
+          <Conditional Condition="gt 55" />
+          <Conditional isHuman="true" />
+          <TriggerEvent identifier="t7s_mainstory_checkscanner" />
+        </StatusEffect>
+      </Holdable>
+      <AITarget sightrange="50" soundrange="10000" staticsight="true" fadeouttime="5" />
+      <Sonar range="6000.0" powerconsumption="0" drawhudwhenequipped="true" detectsubmarinewalls="true" displaybordersize="-0.1" characterusable="false" hasmineralscanner="false" allowuioverlap="true">
+        <!--<StatusEffect type="OnUse" targettype="Contained" Condition="-1.0" disabledeltatime="true">
+        <RequiredItem items="batterycell" type="Contained" />
+      </StatusEffect>-->
+        <!--<StatusEffect type="OnUse" targettype="Contained" Condition="-0.5" disabledeltatime="true">
+        <RequiredItem items="fulguriumbatterycell" type="Contained" />
+      </StatusEffect>-->
+        <!--<StatusEffect type="OnUse" targettype="Contained" Condition="-1.0" disabledeltatime="true">
+        <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+      </StatusEffect>-->
+        <sound file="Content/Items/Command/SonarPing.ogg" type="OnUse" range="1000.0" />
+        <GuiFrame relativesize="0.4,0.4" anchor="CenterLeft" relativeoffset="0.006,-0.01" />
+        <PingCircle texture="Content/Items/Command/pingCircle.png" origin="0.5,0.5" />
+        <DirectionalPingCircle texture="Content/Items/Command/directionalPingCircle.png" origin="0.0,0.5" />
+        <ScreenOverlay texture="Content/Items/Command/sonarOverlay.png" origin="0.5,0.5" />
+        <ScreenBackground texture="Content/Items/Command/sonarBackground.png" origin="0.5,0.5" />
+        <DirectionalPingBackground texture="Content/Items/Command/directionalPingBackground.png" origin="0.5,0.5" />
+        <DirectionalPingButton index="0" texture="Content/Items/Command/directionalPingButton.png" sourcerect="0,0,91,266" origin="-4.5275,0.5" />
+        <DirectionalPingButton index="1" texture="Content/Items/Command/directionalPingButton.png" sourcerect="133,0,91,266" origin="-4.5275,0.5" />
+        <DirectionalPingButton index="2" texture="Content/Items/Command/directionalPingButton.png" sourcerect="266,0,91,266" origin="-4.5275,0.5" />
+        <Blip texture="Content/Items/Command/sonarBlip.png" origin="0.5,0.5" />
+        <LineSprite texture="Content/Items/Command/NavUI.png" sourcerect="181,141,109,4" origin="0,0.5" />
+        <icon identifier="outpost" texture="Content/UI/MainIconsAtlas.png" sourcerect="352,398,16,8" origin="0.5,0.5" />
+        <icon identifier="submarine" texture="Content/UI/MainIconsAtlas.png" sourcerect="353,407,14,6" origin="0.5,0.5" />
+        <icon identifier="shuttle" texture="Content/UI/MainIconsAtlas.png" sourcerect="336,407,8,6" origin="0.5,0.5" />
+        <icon identifier="artifact" texture="Content/UI/MainIconsAtlas.png" sourcerect="336,414,8,8" origin="0.5,0.5" />
+        <icon identifier="location" texture="Content/UI/MainIconsAtlas.png" sourcerect="349,435,11,11" origin="0.5,0.5" />
+        <icon identifier="mineral" texture="Content/UI/MainIconsAtlas.png" sourcerect="336,434,7,12" origin="0.5,0.5" />
+        <icon identifier="" texture="Content/UI/MainIconsAtlas.png" sourcerect="346,416,4,4" origin="0.5,0.5" />
+      </Sonar>
+    </Item>
+    <!--诸海往事其一-->
+    <Item name="" identifier="bookoft7s1" category="Misc" hideinmenus="true" Tags="smallitem,the7seas" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_soft" hideconditionbar="true" hideconditionintooltip="true">
+      <Price baseprice="20" canbespecial="false" sold="false" />
+      <PreferredContainer primary="crewcab" secondary="locker" />
+      <Deconstruct time="10" />
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="59,110,51,65" origin="0.5,0.5" />
+      <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="114,165,41,51" depth="0.8" origin="0.5,0.5" />
+      <Body width="40" height="50" density="8" />
+      <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="This" Condition="50" setvalue="true" delay="5" stackable="false">
+          <Conditional Condition="gt 55" />
+        </StatusEffect>
+      </Holdable>
+      <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" readonly="true" autoscrolltobottom="false" AutoHideScrollbar="true" linestartsymbol="" marginmultiplier="1.5" drawhudwhenequipped="true" welcomemessage="t7stips1" textcolor="50,50,50,255">
+        <GuiFrame relativesize="0.3,0.5" anchor="Center" style="Parchment" hidedragicons="true" />
+      </Terminal>
+    </Item>
+    <!--外骨骼（任务）-->
+    <Item nameidentifier="exosuit" identifier="exo_t7smission" descriptionidentifier="exosuit_t7smission" variantof="exosuit" hideinmenus="true">
+      <Price sold="false" canbespecial="false" />
+      <Fabricate />
+      <Deconstruct time="2">
+        <clear />
+      </Deconstruct>
+      <ItemContainer capacity="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0">
+        <SubContainer capacity="1" maxstacksize="1" />
+        <SubContainer capacity="1" maxstacksize="1" />
+        <SubContainer capacity="0" maxstacksize="0">
+          <Containable items="none" />
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+    <!--战斗旗帜-->
+    <Item name="Revolution Banner" identifier="flagofrevolution" description="If this banner rise on outpost, it's mean the rule class be end soon" category="Misc" maxstacksize="1" allowasextracargo="true" Tags="mediumitem" scale="0.75" RequireAimToUse="True" isshootable="true" impactsoundtag="impact_soft">
+      <Deconstruct time="20" />
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="92,2,140,172" depth="0.6" origin="0.5,0.5" />
+      <Body width="140" height="180" density="12" />
+      <Holdable slots="Any,RightHand+LeftHand" handle1="-15,-20" handle2="15,-20" holdangle="90" msg="ItemMsgDetach" PickingTime="9" pickkey="Use" selectkey="Select" aimpos="65,-10" attachable="true" aimable="true" limitedattachable="false">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq mission_active" />
+        <StatusEffect type="OnActive" targettype="This" Tags="mission_active" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <Conditional attached="true" />
+          <TriggerEvent identifier="destoryposttowreck" />
+        </StatusEffect>
+      </ItemComponent>
+      <LightComponent range="0" lightcolor="0,0,0,0" allowingameediting="false" IsOn="false" powerconsumption="0">
+        <StatusEffect type="OnActive" targettype="this" SoundRange="20000">
+          <Sound file="%ModDir%/Content/Music/Revolution_Begin_The_Rebel_Path.ogg" range="20000" dontmuffle="true" loop="true" volume="1.4" />
+        </StatusEffect>
+      </LightComponent>
+    </Item>
+    <!--通行证-->
+    <Item name="Pass Card (Europa Ridge)" identifier="t7s_passcard1" descriptionidentifier="t7s_passcard" category="Misc" maxstacksize="1" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,passcard" scale="0.5" hideinmenus="true">
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="430,396,64,48" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="46" density="10.5" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="Pass Card (Aphotic Plateau)" identifier="t7s_passcard2" descriptionidentifier="t7s_passcard" category="Misc" maxstacksize="1" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,passcard" scale="0.5" hideinmenus="true">
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="430,396,64,48" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="46" density="10.5" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="Pass Card (The Greate Sea)" identifier="t7s_passcard3" descriptionidentifier="t7s_passcard" category="Misc" maxstacksize="1" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,passcard" scale="0.5" hideinmenus="true">
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="430,396,64,48" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="46" density="10.5" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <Item name="Pass Card (Hydrothermal Wastes)" identifier="t7s_passcard4" descriptionidentifier="t7s_passcard" category="Misc" maxstacksize="1" cargocontaineridentifier="metalcrate" description="" Tags="smallitem,passcard" scale="0.5" hideinmenus="true">
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="430,396,64,48" depth="0.6" origin="0.5,0.5" />
+      <Body width="60" height="46" density="10.5" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" holdangle="10" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+    <!--货物（任务：简单）-->
+    <Item name="Cargo" identifier="cargobag_t7s_easy1" description="Salvage cargo, it's must be loose form some one." category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_easy" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="revolver" commonness="10" />
+        <Item identifier="handpistol" commonness="10" />
+        <Item identifier="revolverround_box" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="assaultriflemagazine_simple" amount="2" commonness="10" />
+        <Item identifier="handblade" commonness="10" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="crawler" count="3" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_easy2" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_easy" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="revolver" commonness="10" />
+        <Item identifier="handpistol" commonness="10" />
+        <Item identifier="revolverround_box" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="assaultriflemagazine_simple" amount="2" commonness="10" />
+        <Item identifier="handblade" commonness="10" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="Mudraptor_unarmored" count="2" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_easy3" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_easy" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="revolver" commonness="10" />
+        <Item identifier="handpistol" commonness="10" />
+        <Item identifier="revolverround_box" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="assaultriflemagazine_simple" amount="2" commonness="10" />
+        <Item identifier="handblade" commonness="10" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="Mudraptor" count="1" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--货物（任务：普通）-->
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_medium1" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_medium" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="shotgun" commonness="10" />
+        <Item identifier="shotgunshell_box" commonness="10" />
+        <Item identifier="ssg12" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="iron_longsword" commonness="10" />
+        <Item identifier="disposableshotgun" commonness="5" />
+        <Item identifier="disposable_smg" commonness="10" />
+        <Item identifier="assaultrifle" commonness="5" />
+        <Item identifier="assaultriflemagazine" commonness="5" />
+        <Item identifier="rifle" commonness="5" />
+        <Item identifier="riflebullet_box" commonness="5" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="Mudraptor_unarmored" count="4" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_medium2" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_medium" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="shotgun" commonness="10" />
+        <Item identifier="shotgunshell_box" commonness="10" />
+        <Item identifier="ssg12" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="iron_longsword" commonness="10" />
+        <Item identifier="disposableshotgun" commonness="5" />
+        <Item identifier="disposable_smg" commonness="10" />
+        <Item identifier="assaultrifle" commonness="5" />
+        <Item identifier="assaultriflemagazine" commonness="5" />
+        <Item identifier="rifle" commonness="5" />
+        <Item identifier="riflebullet_box" commonness="5" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="Mudraptor" count="3" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_medium3" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_medium" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="shotgun" commonness="10" />
+        <Item identifier="shotgunshell_box" commonness="10" />
+        <Item identifier="ssg12" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="iron_longsword" commonness="10" />
+        <Item identifier="disposableshotgun" commonness="5" />
+        <Item identifier="disposable_smg" commonness="10" />
+        <Item identifier="assaultrifle" commonness="5" />
+        <Item identifier="assaultriflemagazine" commonness="5" />
+        <Item identifier="rifle" commonness="5" />
+        <Item identifier="riflebullet_box" commonness="5" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+      <ItemComponent IsActiveConditionalComparison="or">
+        <IsActive HasTag="neq spawnedmonster" />
+        <StatusEffect type="OnActive" targettype="This" Tags="spawnedmonster" comparison="and" delay="0" stackable="false" setvalue="true">
+          <Conditional IsContained="false" />
+          <SpawnCharacter speciesname="Mantis" count="3" spread="100" />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--货物（任务：无害）-->
+    <Item nameidentifier="cargobag_t7s_easy1" identifier="cargobag_t7s_normal" category="Misc" maxstacksize="1" Tags="largeitem,t7scargo_normal" scale="0.5" impactsoundtag="impact_soft" hideinmenus="true">
+      <Deconstruct time="10" chooserandom="true">
+        <Item identifier="shotgun" commonness="10" />
+        <Item identifier="shotgunshell_box" commonness="10" />
+        <Item identifier="ssg12" commonness="10" />
+        <Item identifier="assaultrifle_simple" commonness="10" />
+        <Item identifier="iron_longsword" commonness="10" />
+        <Item identifier="disposableshotgun" commonness="5" />
+        <Item identifier="disposable_smg" commonness="10" />
+        <Item identifier="assaultrifle" commonness="5" />
+        <Item identifier="assaultriflemagazine" commonness="5" />
+        <Item identifier="rifle" commonness="5" />
+        <Item identifier="riflebullet_box" commonness="5" />
+        <Item identifier="revolver" commonness="10" />
+        <Item identifier="handpistol" commonness="10" />
+        <Item identifier="revolverround_box" commonness="10" />
+        <Item identifier="handblade" commonness="10" />
+        <Item identifier="t_smg" commonness="5" />
+        <Item identifier="carbine_45" commonness="5" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Others/Consumables.png" sourcerect="0,192,262,94" depth="0.6" origin="0.5,0.5" />
+      <Body width="240" height="80" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-40" handle1="-0,-20" holdangle="80" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+      </Holdable>
+    </Item>
+  </Items>
+  <!--逻辑物品-->
+  <Items>
+    <!--怪物生成器（一次性）-->
+    <Item name="Monster Spawner" identifier="mistspawner_crawler" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <SpawnCharacter speciesname="Crawler_mist" stun="2" />
+          <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="6" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="Monster Spawner" identifier="mistspawner_mudraptor" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <SpawnCharacter speciesname="Mudraptor_mist" stun="2" />
+          <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="6" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="Monster Spawner" identifier="mistspawner_Mudraptor_unarmored" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <SpawnCharacter speciesname="Mudraptor_unarmored_mist" stun="2" />
+          <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="6" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="Monster Spawner" identifier="mistspawner_Mudraptor_veteran" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <SpawnCharacter speciesname="Mudraptor_veteran_mist" stun="2" />
+          <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="6" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="Monster Spawner" identifier="mistspawner_Mantis" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <SpawnCharacter speciesname="Mantis_mist" stun="2" />
+          <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="6" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--怪物生成器（周期）-->
+    <Item name="Monster Spawner" identifier="mistspawner_return" category="Hidden" tags="" hideinmenus="true" Scale="0.5" noninteractable="true">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <EntitySpawnerComponent speciesname="Crawler_mist,Mudraptor_unarmored_mist,Mantis_mist" onlyspawnwhencrewinrange="true" crewareashape="Rectangle" crewareabounds="1500,1500" spawnareashape="Circle" spawnarearadius="5" spawntimerrange="10,30" spawnamountrange="1,1" maximumamount="8" maximumamountinarea="5" preloadcharacter="true" />
+      <ItemComponent>
+        <StatusEffect type="OnNotContained" target="This" delay="0" stackable="false">
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--怪物生成器（周期）T2-->
+    <Item name="Monster Spawner" identifier="mistspawner_return_t2" category="Hidden" tags="" hideinmenus="true" Scale="0.5" noninteractable="true">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <EntitySpawnerComponent speciesname="Crawler_mist,Mudraptor_unarmored_mist,Mantis_mist,Mudraptor_mist" onlyspawnwhencrewinrange="true" crewareashape="Rectangle" crewareabounds="3000,3000" spawnareashape="Circle" spawnarearadius="10" spawntimerrange="8,16" spawnamountrange="1,1" maximumamount="24" maximumamountinarea="8" preloadcharacter="true" />
+      <ItemComponent>
+        <StatusEffect type="OnNotContained" target="This" delay="0" stackable="false">
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--事件触发器-->
+    <Item name="Event Trigger" identifier="eventtrigger_darkmist_firsttime" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <Body width="2" height="2" density="10" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <TriggerEvent identifier="t7s_darkmist_mainstory_firsttime_complet" />
+          <RemoveItem />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <!--核弹奖励生成器-->
+    <Item nameidentifier="nuclearshell" identifier="chimera_nuclearshell" descriptionidentifier="chimera_nuclearshell" category="Hidden" tags="" hideinmenus="true" Scale="0.5">
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="0,128,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="1,131,217,33" depth="0.55" origin="0.5,0.5" />
+      <Body width="215" height="30" density="35" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="Always" target="This" delay="0" stackable="false">
+          <Conditional isHuman="true" targetcontainer="true" />
+          <SpawnItem identifier="nuclearshell" spawnposition="SameInventory" spawnifinventoryfull="true" />
+          <RemoveItem />
+        </StatusEffect>
+      </Pickable>
+    </Item>
+  </Items>
+  <!--地图元素-->
+  <Items>
+    <!--遗迹小BOSS（野生）-->
+    <Item name="Vault Guardian" identifier="alienturret_boss" category="Alien" subcategory="devices" linkable="true" tags="light,alien,turret" scale="0.5" damagedbyexplosions="true" damagedbymeleeweapons="true" damagedbyprojectiles="true" damagedbyrepairtools="true" health="250">
+      <Body radius="160" bodytype="Static" />
+      <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.84" sourcerect="21,1367,395,395" origin="0.5,0.5" />
+      <BrokenSprite name="gravitysphere_broken" texture="Content/Items/Alien/AlienRuins_Items.png" depth="0.83" sourcerect="0,0,1,1" origin="0.5,0.5" fadein="false" />
+      <LightComponent range="1500" lightcolor="255,100,255,127" IsOn="true" castshadows="true" allowingameediting="false" flicker="0.2" flickerspeed="5.0" pulsefrequency="0.2" pulseamount="0.4">
+        <sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" origin="0.5,0.5" />
+        <StatusEffect type="OnActive" target="This">
+          <sound file="Content/Items/Alien/ALIEN_gravitySphereLoop.ogg" range="1600.0" loop="true" dontmuffle="true" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="This" Voltage="1.0" setvalue="true" />
+        <StatusEffect type="OnDamaged" target="This">
+          <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact1.ogg" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact2.ogg" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact3.ogg" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact4.ogg" range="3000" selectionmode="Random" />
+          <Sound file="Content/Items/Alien/DAMAGE_guardianPodImpact5.ogg" range="3000" selectionmode="Random" />
+          <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="10" scalemin="0.3" scalemax="0.5" velocitymin="300" velocitymax="800" anglemin="0" anglemax="360" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Sound file="Content/Sounds/Damage/GlassBreak1.ogg" range="5000" selectionmode="Random" />
+          <Sound file="Content/Sounds/Damage/GlassBreak2.ogg" range="5000" selectionmode="Random" />
+          <Sound file="Content/Sounds/Damage/GlassBreak3.ogg" range="5000" selectionmode="Random" />
+          <Sound file="Content/Sounds/Damage/GlassBreak4.ogg" range="5000" selectionmode="Random" />
+          <ParticleEmitter particle="plasmaspark" drawontop="true" particleamount="50" scalemin="0.5" scalemax="1" velocitymin="600" velocitymax="1000" anglemin="0" anglemax="360" />
+          <ParticleEmitter particle="risingbubbles" particleamount="1" anglemin="90" anglemax="90" velocitymin="50" velocitymax="100" scalemin="1" scalemax="2" startdelaymin="0.1" startdelaymax="0.3" />
+          <Explosion range="100.0" structuredamage="0" itemdamage="0" force="5" severlimbsprobability="0" decal="explosion" showeffects="true" flames="false" applyfireeffects="false">
+            <Affliction identifier="explosiondamage" strength="50" />
+            <Affliction identifier="stun" strength="5" />
+          </Explosion>
+        </StatusEffect>
+      </LightComponent>
+      <TriggerComponent radius="100" triggeredby="Item" sensor="false" />
+      <Turret autooperate="true" friendlytag="ancientalien" AllowAutoOperateWithWiring="true" randommovement="true" aimdelay="true" targetcharacters="true" targetmonsters="true" targethumans="true" targetsubmarines="false" targetitems="false" canbeselected="false" firingoffset="1,-325" characterusable="false" linkable="true" barrelpos="198,198" rotationlimits="0,360" showchargeindicator="true" showprojectileindicator="true" recoildistance="0" reload="0.25" shotsperburst="5" delaybetweenbursts="2.5" springstiffnesslowskill="35" springstiffnesshighskill="35" springdampinglowskill="15" springdampinghighskill="15" rotationspeedlowskill="35" rotationspeedhighskill="35" RandomAimAmount="45" RandomAimMinTime="0.5" RandomAimMaxTime="1.5">
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot1.ogg" range="3000" type="OnUse" selectionmode="Random" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot2.ogg" range="3000" type="OnUse" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot3.ogg" range="3000" type="OnUse" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot4.ogg" range="3000" type="OnUse" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot5.ogg" range="3000" type="OnUse" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/lasergun_shot6.ogg" range="3000" type="OnUse" />
+        <RailSprite name="alienturret_rail" texture="Content/Items/Alien/AlienTurret.png" depth="0.71" sourcerect="0,0,2,2" origin="0.5,0.5" />
+        <BarrelSprite name="alienturret_barrel" texture="Content/Items/Alien/AlienTurret.png" depth="0.72" sourcerect="0,0,2,2" origin="0.5,0.5" />
+        <StatusEffect type="OnUse" target="This">
+          <Explosion range="1000.0" structuredamage="0" force="0.01" camerashake="5.0" flames="false" smoke="false" sparks="false" underwaterbubble="false" />
+        </StatusEffect>
+      </Turret>
+      <ItemContainer hideitems="true" drawinventory="true" capacity="1" maxstacksize="1" canbeselected="false" characterusable="true" SpawnWithId="vaultguardianammo">
+        <Containable items="vaultguardianammo" />
+        <!-- when the turret is fired, it triggers this statuseffect and spawns new ammo -->
+        <StatusEffect type="OnUse" target="Contained">
+          <SpawnItem identifier="vaultguardianammo" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+    </Item>
+    <!--遗迹小BOSS（弹药）-->
+    <Item name="Blaster Ball" health="5" scale="0.25" identifier="vaultguardianammo" category="Hidden" tags="alien,alienturretammo" spritecolor="255,0,255,255" damagedbyprojectiles="true" showhealthbar="false" hideinmenus="true">
+      <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" depth="0.311" origin="0.5,0.5" offset="0,0" />
+      <DecorativeSprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="21,1367,395,395" depth="0.310" origin="0.5,0.5" offset="0,0" rotationspeed="300" />
+      <DecorativeSprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" depth="0.309" origin="0.5,0.5" offset="0,0" rotationspeed="-350" />
+      <Body radius="200" density="10" gravityscale="0" />
+      <Projectile characterusable="false" launchimpulse="6.5" spread="2">
+        <Attack structuredamage="0" itemdamage="20" penetration="0.25" severlimbsprobability="0.33">
+          <Affliction identifier="explosiondamage" strength="25" />
+          <Affliction identifier="stun" strength="1" probability="0.25" />
+        </Attack>
+        <StatusEffect type="OnNotContained" target="This" condition="-2.5" />
+        <StatusEffect type="OnImpact" target="This" condition="-999" displayname="true" />
+        <StatusEffect type="OnBroken" target="This">
+          <Explosion range="150" ballastfloradamage="100" structuredamage="0" levelwalldamage="100" itemdamage="30" force="5" severlimbsprobability="0.33" debris="true" decal="explosion" decalsize="0.3">
+            <Affliction identifier="explosiondamage" strength="25" />
+            <Affliction identifier="stun" strength="0.5" />
+          </Explosion>
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+      <LightComponent range="400" lightcolor="255,50,255,255" IsOn="true" castshadows="false" allowingameediting="false" flicker="1.0" flickerspeed="5">
+        <LightTexture texture="Content/Lights/pointlight_rays.png" origin="0.5, 0.5" size="1.0,1.0" />
+        <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="1075,1367,395,395" depth="0.7" origin="0.5,0.5" />
+      </LightComponent>
+    </Item>
+  </Items>
+</Items>

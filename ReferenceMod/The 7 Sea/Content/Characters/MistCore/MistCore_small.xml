@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character visiblity="100" SpeciesName="MistCore_small" Tags="" SpeciesTranslationOverride="MistCore" DisplayName="" Group="TheMist" Humanoid="False" HasInfo="False" CanInteract="False" CanClimb="True" ForceSlowClimbing="False" Husk="False" HuskedSpecies="" NonHuskedSpecies="" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" UseHumanAI="False" IsMachine="False" CanSpeak="False" ShowHealthBar="True" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blackblood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="5" UsePathFinding="True" PathFinderPriority="1" HideInSonar="True" HideInThermalGoggles="True" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False" AITurretPriority="1" AISlowTurretPriority="0.5" DespawnContainer="" MusicType="monster" MusicCommonness="1" MusicRangeMultiplier="1" UnlockKillAchievementForWholeCrew="False">
+  <ragdolls folder="%ModDir%/Content/Characters/MistCore/Ragdolls/" />
+  <animations folder="default" />
+  <health Vitality="1000" DoesBleed="False" CrushDepth="Infinity" UseHealthWindow="False" BleedingReduction="0.2" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="10" StunImmunity="True" PoisonImmunity="True" PoisonVulnerability="2" EmpVulnerability="0" ApplyMovementPenalties="True" DieFromBeheading="False" AllowSeveringLegs="False" ApplyAfflictionColors="False" Immunities="">
+    <Limb name="Torso">
+      <VitalityMultiplier type="damage,burn" multiplier="1.0" />
+    </Limb>
+    <Limb name="Head">
+      <VitalityMultiplier type="damage,burn" multiplier="1.0" />
+    </Limb>
+    <Limb>
+      <!--Tail-->
+      <VitalityMultiplier type="damage,burn" multiplier="0.75" />
+    </Limb>
+  </health>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="False" Commonness="100">
+    <Item amount="1" Identifier="mistspawner_return" />
+  </Inventory>
+  <ai CombatStrength="9999" Sight="0" Hearing="0" MaxPerceptionDistance="-1" AggressionHurt="100" AggressionGreed="0" FleeHealthThreshold="75" AttackWhenProvoked="False" AvoidGunfire="True" DamageThreshold="0" AvoidTime="5" MinFleeTime="45" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="False" TargetOuterWalls="True" RandomAttack="False" CanOpenDoors="False" UsePathFindingToGetInside="False" KeepDoorsClosed="False" AvoidAbyss="True" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target" PlayDeadProbability="0">
+    <target Tag="light" State="Observe" Priority="100" ReactDistance="0" AttackDistance="1000" Timer="20" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreTargetInside="False" IgnoreTargetOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" PerceptionDistanceMultiplier="1" MaxPerceptionDistance="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="human" State="Observe" Priority="20" ReactDistance="0" AttackDistance="1000" Timer="20" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreTargetInside="False" IgnoreTargetOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" PerceptionDistanceMultiplier="1" MaxPerceptionDistance="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="weaker" State="Observe" Priority="20" ReactDistance="0" AttackDistance="1000" Timer="20" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreTargetInside="False" IgnoreTargetOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" PerceptionDistanceMultiplier="1" MaxPerceptionDistance="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="stronger" State="Observe" Priority="20" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreTargetInside="False" IgnoreTargetOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" PerceptionDistanceMultiplier="1" MaxPerceptionDistance="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="wall" State="Observe" Priority="1" ReactDistance="0" AttackDistance="1500" Timer="10" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreTargetInside="False" IgnoreTargetOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" PerceptionDistanceMultiplier="1" MaxPerceptionDistance="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" IgnoreTargetSize="False" CircleRotationSpeed="1" DynamicCircleRotationSpeed="False" CircleRandomRotationFactor="0" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect target="this" type="OnActive" disabledeltatime="true" interval="0.3">
+    <Conditional chastfog="lte 0" />
+    <Affliction identifier="darkmist" amount="99" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true">
+    <Conditional chastfog="gte 99" />
+    <Affliction identifier="internaldamage" amount="2.5" penetration="1" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true" disabledeltatime="true" interval="1" comparison="and" spawnitemrandomly="true">
+    <Conditional HealthPercentage="lte 80" />
+    <Conditional darkmist_spawnmonster1="lte 0" />
+    <Affliction identifier="darkmist_spawnmonster1" amount="100" penetration="1" />
+    <SpawnItem identifier="mistspawner_crawler" spawnposition="This" commonness="0.5" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mudraptor_unarmored" spawnposition="This" commonness="0.5" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true" disabledeltatime="true" interval="1" comparison="and" spawnitemrandomly="true">
+    <Conditional HealthPercentage="lte 65" />
+    <Conditional darkmist_spawnmonster2="lte 0" />
+    <Affliction identifier="darkmist_spawnmonster2" amount="100" penetration="1" />
+    <SpawnItem identifier="mistspawner_crawler" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mudraptor_unarmored" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mantis" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true" disabledeltatime="true" interval="1" comparison="and" spawnitemrandomly="true">
+    <Conditional HealthPercentage="lte 50" />
+    <Conditional darkmist_spawnmonster3="lte 0" />
+    <Affliction identifier="darkmist_spawnmonster3" amount="100" penetration="1" />
+    <SpawnItem identifier="mistspawner_crawler" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mudraptor_unarmored" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mantis" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true" disabledeltatime="true" interval="1" comparison="and" spawnitemrandomly="true">
+    <Conditional HealthPercentage="lte 35" />
+    <Conditional darkmist_spawnmonster4="lte 0" />
+    <Affliction identifier="darkmist_spawnmonster4" amount="100" penetration="1" />
+    <SpawnItem identifier="mistspawner_Mudraptor" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mudraptor_unarmored" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mantis" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnActive" multiplyafflictionsbymaxvitality="true" disabledeltatime="true" interval="1" comparison="and" spawnitemrandomly="true">
+    <Conditional HealthPercentage="lte 20" />
+    <Conditional darkmist_spawnmonster5="lte 0" />
+    <Affliction identifier="darkmist_spawnmonster5" amount="100" penetration="1" />
+    <SpawnItem identifier="mistspawner_Mudraptor" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mudraptor_unarmored" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+    <SpawnItem identifier="mistspawner_Mantis" spawnposition="This" commonness="0.33" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnDeath" delay="0.3" stackable="false">
+    <SpawnItem identifier="mistspawner_Mudraptor_veteran" spawnposition="This" spawnifinventoryfull="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnDeath" delay="0.6" stackable="false">
+    <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="22" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+    <removecharacter />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnDamaged" stackable="false">
+    <RequiredAffliction type="damage,burn" minstrength="1" />
+    <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="4" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+  </StatusEffect>
+  <StatusEffect target="this" type="OnDamaged" stackable="false">
+    <RequiredAffliction type="damage,burn" minstrength="10" />
+    <ParticleEmitter particle="darkmistfog" drawontop="false" particleamount="10" anglemin="0" anglemax="360" scalemin="0.6" scalemax="0.8" velocitymin="60" velocitymax="150" copyentityangle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" range="5000" targets="human">
+    <Affliction identifier="psychosis" strength="0.5" />
+    <Sound file="Content/Characters/Watcher/WATCHER_idleLoop.ogg" loop="true" range="5000" dontmuffle="true" frequencymultiplier="0.5" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" range="1500" targets="human">
+    <Affliction identifier="darkmist" amount="1" />
+    <Affliction identifier="hallucinating" amount="2.0" />
+  </StatusEffect>
+</Character>

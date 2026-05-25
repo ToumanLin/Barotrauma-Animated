@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <!--弹药平衡-->
+  <Items>
+    <Item name="" identifier="assaultriflemagazine" maxstacksize="8" maxstacksizecharacterinventory="3" scale="0.5" category="Weapon" allowasextracargo="true" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,assaultrifleammo,riflemanbonus" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="assaultrifle" minamount="1" maxamount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="300" sold="false" minleveldifficulty="60" displaynonempty="true">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="0" maxavailable="4">
+          <Reputation faction="coalition" min="50" />
+        </Price>
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" displayname="recycleitem" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="assaultriflemagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="lead" mincondition="0.95" />
+        <Item identifier="steel" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="476,3,36,48" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="476,3,36,48" depth="0.55" origin="0.5,0.5" />
+      <Body width="28" height="40" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="assaultrifleround" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="assaultrifleround" />
+        <StatusEffect type="OnUse" target="This" condition="-4" disabledeltatime="true">
+          <SpawnItem identifiers="assaultrifleround" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    </Item>
+    <Item name="assaultrifleround" identifier="assaultrifleround" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,riflemanbonus" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
+      <Body width="40" height="14" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" hitscan="true" removeonhit="true">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
+        <Attack structuredamage="6" targetforce="7.5" itemdamage="6" severlimbsprobability="0.2" penetration="0.3">
+          <Affliction identifier="gunshotwound" strength="25" />
+          <Affliction identifier="bleeding" strength="15" />
+          <Affliction identifier="stun" strength="0.08" />
+          <Affliction identifier="stun" strength="0.5" probability="0.2" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="2,2" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="40mmstungrenade" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="8" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,grenade" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <Price baseprice="80" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="4" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="4" />
+      </Price>
+      <Deconstruct time="3" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="8">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="iron" amount="3" />
+        <RequiredItem identifier="phosphorus" amount="2" />
+        <RequiredItem identifier="flashpowder" amount="2" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="768,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="214,266,42,18" depth="0.55" origin="0.5,0.5" />
+      <Body width="38" height="15" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="false">
+        <sound file="Content/Items/Weapons/StunGrenade40mmShot1.ogg" type="OnImpact" range="2000" selectionmode="Random" />
+        <sound file="Content/Items/Weapons/StunGrenade40mmShot2.ogg" type="OnImpact" range="2000" />
+        <!--Grenade launcher ammo explodes on impact-->
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <sound file="Content/Items/Weapons/TrueStunGrenade.ogg" range="3000" />
+          <Explosion range="250" force="0.1" smoke="false" playtinnitus="true">
+            <Affliction identifier="explosiondamage" strength="5" />
+            <Affliction identifier="stun" strength="10" />
+            <Affliction identifier="blind" strength="30" />
+            <Affliction identifier="sensoryoverload" strength="15" />
+          </Explosion>
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="40mmgrenade" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="8" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,grenade" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="grenadelauncher" amount="8" spawnprobability="1" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <Price baseprice="80" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="4" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="4" />
+      </Price>
+      <Deconstruct time="3" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="3">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="uex" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="3" displayname="replace_recipe">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="compoundn" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="215,286,41,17" depth="0.55" origin="0.5,0.5" />
+      <Body width="38" height="15" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="false">
+        <Attack structuredamage="40" penetration="1" severlimbsprobability="5">
+          <Affliction identifier="explosiondamage" strength="50" />
+        </Attack>
+        <sound file="Content/Items/Weapons/FragGrenade40mmShot1.ogg" type="OnImpact" range="3000" selectionmode="Random" />
+        <sound file="Content/Items/Weapons/FragGrenade40mmShot2.ogg" type="OnImpact" range="3000" />
+        <!--Grenade launcher ammo explodes on impact-->
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <sound file="Content/Items/Weapons/ExplosionDebris2.ogg" range="2000" />
+          <Explosion range="300.0" ballastfloradamage="80" structuredamage="20" levelwalldamage="120" itemdamage="400" force="5.0" severlimbsprobability="0.4" debris="true" decal="explosion" decalsize="0.3">
+            <Affliction identifier="burn" strength="100" />
+            <Affliction identifier="bleeding" strength="400" probability="0.05" />
+            <Affliction identifier="stun" strength="5" />
+          </Explosion>
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="40mmnuke" category="Weapon" maxstacksize="8" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,grenade,separatists" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="grenadelauncher" amount="1" spawnprobability="0" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" spawnprobability="0" />
+      <PreferredContainer primary="secarmcab" secondary="armcab" />
+      <Price baseprice="400" sold="false">
+        <Price storeidentifier="merchantoutpost" minavailable="0" maxavailable="1" sold="true">
+          <Reputation faction="separatists" min="70" />
+        </Price>
+        <Price storeidentifier="merchantcity" minavailable="1" maxavailable="2" sold="true">
+          <Reputation faction="separatists" min="70" />
+        </Price>
+        <Price storeidentifier="merchantmilitary" minavailable="2" maxavailable="5" sold="true">
+          <Reputation faction="separatists" min="70" />
+        </Price>
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" amount="3">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="phosphorus" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="uranium" />
+        <RequiredItem identifier="ic4block" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" amount="3" displayname="Cheap" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="55" />
+        <RequiredItem identifier="phosphorus" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="fuelrod" mincondition="0.8" usecondition="false" />
+        <RequiredItem identifier="uex" />
+      </Fabricate>
+      <Deconstruct time="5" />
+      <InventoryIcon texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="114,110,51,51" origin="0.5,0.5" />
+      <Sprite texture="Content/Map/Outposts/Art/FactionItems.png" sourcerect="2,144,39,17" depth="0.55" origin="0.5,0.5" />
+      <Body width="38" height="15" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="false">
+        <Attack structuredamage="40" penetration="1" severlimbsprobability="5">
+          <!-- Extra damage on larger creatures (smaller will die anyway) -->
+          <Affliction identifier="explosiondamage" strength="100" />
+          <Affliction identifier="burn" strength="100" />
+          <Affliction identifier="bleeding" strength="50" />
+          <Affliction identifier="stun" strength="5" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" volume="1" range="20000" />
+          <sound file="Content/Items/Weapons/ExplosionLarge2.ogg" volume="1" range="20000" />
+          <Explosion range="500.0" ballastfloradamage="300" structuredamage="300" itemdamage="1000" force="20" severlimbsprobability="0.75" debris="true" decal="explosion" decalsize="0.75" penetration="0.5" camerashake="200" camerashakerange="10000" flashrange="1000" flashduration="2.0" screencolor="255,255,255,255" screencolorrange="5000" screencolorduration="3.0">
+            <Affliction identifier="explosiondamage" strength="200" />
+            <Affliction identifier="burn" strength="200" />
+            <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+            <Affliction identifier="stun" strength="10" />
+            <Affliction identifier="radiationsickness" strength="30" />
+          </Explosion>
+          <Explosion range="1000" force="0.0" smoke="false" sparks="false" empstrength="1" applyfireeffects="false" ignorecover="true">
+            <Affliction identifier="emp" strength="20" multiplybymaxvitality="true" />
+          </Explosion>
+          <ParticleEmitter particle="underwaterexplosion" anglemin="0" anglemax="360" particleamount="3" velocitymin="0" velocitymax="0" scalemin="5" scalemax="6" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="This">
+          <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="5" velocitymin="0" velocitymax="50" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="This">
+          <sound file="Content/Items/Weapons/ExplosionDebris4.ogg" range="3000" />
+          <sound file="Content/Items/Weapons/ExplosionDebris5.ogg" range="3000" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="Contained" allowwhenbroken="true">
+          <Use />
+        </StatusEffect>
+        <!-- Remove the item after exploding -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="smgmagazine" maxstacksize="8" maxstacksizecharacterinventory="3" scale="0.5" category="Weapon" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,smgammo,handheldammo" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="smg,smgunique,machinepistol" amount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" amount="1" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="2" spawnprobability="0.5" />
+      <PreferredContainer secondary="wrecksecarmcab" minamount="1" maxamount="2" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" amount="8" spawnprobability="1" notcampaign="true" />
+      <Price baseprice="100" displaynonempty="true" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="2" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="4" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="4" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="true" displayname="recycleitem">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem identifier="smgmagazine" mincondition="0.0" maxcondition="0.3" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+        <Item identifier="lead" mincondition="0.95" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,960,64,64" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" depth="0.54" sourcerect="146,157,21,44" origin="0.5,0.5" />
+      <Body width="14" height="40" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="smground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="smground" />
+        <!--Spawn an SMG round on use. Condition -4 -> 25 shots per magazine.-->
+        <StatusEffect type="OnUse" target="This" condition="-3.34" disabledeltatime="true">
+          <SpawnItem identifiers="smground" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="hmgmagazine" maxstacksize="4" maxstacksizecharacterinventory="1" scale="0.5" category="Weapon" cargocontaineridentifier="metalcrate" linkable="true" tags="smallitem,hmgammo,handheldammo" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="hmg" minamount="1" maxamount="1" spawnprobability="1" />
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="330" sold="true" minleveldifficulty="65" displaynonempty="true">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" sold="true" multiplier="0.9" minavailable="0" maxavailable="4" />
+        <Price storeidentifier="merchantarmory" sold="true" multiplier="0.9" minavailable="0" maxavailable="4" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem identifier="titaniumaluminiumalloy" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35" displayname="recycleitem" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem identifier="hmgmagazine" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="titaniumaluminiumalloy" />
+      </Deconstruct>
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="208,88,29,37" depth="0.55" origin="0.5,0.5" />
+      <Body width="29" height="37" density="25" />
+      <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="hmground" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+        <Containable items="hmground" />
+        <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+          <SpawnItem identifiers="hmground" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+      <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    </Item>
+    <Item name="" identifier="smgmagazinedepletedfuel" variantof="smgmagazine" allowasextracargo="true" inventoryiconcolor="110,120,110,255" spritecolor="110,120,110">
+      <PreferredContainer primary="smg,smgunique" spawnprobability="0" />
+      <PreferredContainer primary="secarmcab" spawnprobability="0" />
+      <PreferredContainer primary="outpostsecarmcab" spawnprobability="0" />
+      <PreferredContainer primary="wrecksecarmcab" spawnprobability="0" />
+      <PreferredContainer secondary="secarmcab" spawnprobability="0" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" spawnprobability="0" />
+      <Price baseprice="160" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredSkill identifier="electrical" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="depletedfuel" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="18" requiresrecipe="true" displayname="recycleitem">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredSkill identifier="electrical" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="depletedfuel" />
+        <RequiredItem identifier="smgmagazinedepletedfuel" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+      </Fabricate>
+      <Deconstruct time="15">
+        <Item identifier="depletedfuel" mincondition="0.95" />
+        <Item identifier="steel" />
+      </Deconstruct>
+      <ItemContainer SpawnWithId="smgrounddepletedfuel">
+        <Containable items="smgrounddepletedfuel" />
+        <StatusEffect type="OnUse" target="This" condition="-4" disabledeltatime="true">
+          <SpawnItem identifiers="smgrounddepletedfuel" spawnposition="ThisInventory" />
+        </StatusEffect>
+      </ItemContainer>
+    </Item>
+    <Item name="" identifier="shotgunshell" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,shotgunammo,handheldammo" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="shotgun" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="autoshotgun" amount="8" spawnprobability="1" />
+      <PreferredContainer primary="shotgununique" amount="2" spawnprobability="1" />
+      <PreferredContainer primary="heavyautoshotgun" amount="32" spawnprobability="1" />
+      <PreferredContainer primary="armcab" minamount="6" maxamount="12" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="6" spawnprobability="0.5" />
+      <PreferredContainer secondary="wreckarmcab,wrecksecarmcab,abandonedarmcab,piratearmcab,abandonedsecarmcab,piratesecarmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" amount="32" spawnprobability="1" notcampaign="true" />
+      <Price baseprice="30" minleveldifficulty="30">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="4" sold="true" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="12" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="12" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
+        <RequiredSkill identifier="weapons" level="45" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
+      <Deconstruct time="2" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="189,299,23,11" depth="0.55" origin="0.5,0.5" />
+      <Body width="23" height="10" density="15" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <!--When fired, spawns 10 projectiles simultaneously.-->
+      <Projectile characterusable="false" hitscan="true" hitscancount="10" removeonhit="true" spread="15">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,100" scalemultiplier="1,0.5" />
+        <Attack structuredamage="1" targetforce="4" itemdamage="2" severlimbsprobability="0.5">
+          <Affliction identifier="gunshotwound" strength="8" />
+          <Affliction identifier="lacerations" strength="6" />
+          <Affliction identifier="bleeding" strength="6" />
+          <Affliction identifier="stun" strength="0.2" probability="0.5" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="shotgunslugexplosive" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,shotgunammo,handheldammo" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="armcab" secondary="secarmcab" />
+      <Price baseprice="75" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Deconstruct time="5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true" amount="12">
+        <RequiredSkill identifier="weapons" level="40" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="incendium" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="0,704,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="449,211,24,12" depth="0.55" origin="0.5,0.5" />
+      <Body width="23" height="10" density="25" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" hitscan="true" hitscancount="1" removeonhit="true" spread="1">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,115,95,150" scalemultiplier="1,0.9" />
+        <Attack structuredamage="20" targetforce="10" itemdamage="100" severlimbsprobability="1" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="20" />
+          <Affliction identifier="bleeding" strength="20" probability="0.5" />
+          <Affliction identifier="stun" strength="0.8" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemin="0.5" scalemax="0.8" scalemultiplier="7,7" colormultiplier="255,115,95,150" lifetimemultiplier="0.5" />
+          <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="300" velocitymax="350" scalemin="1.5" scalemax="1.9" drawontop="true" colormultiplier="255,200,225,180" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="This" disabledeltatime="true">
+          <Explosion range="100" ballastfloradamage="50" severlimbsprobability="0.5" structuredamage="8" levelwalldamage="40" itemdamage="200" force="3.0" flames="false" smoke="false" sparks="false" underwaterbubble="false" flashcolor="255,115,95,150">
+            <Affliction identifier="burn" strength="60" />
+          </Explosion>
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="riflebullet" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,rifleammo,handheldammo,riflemanbonus" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="rifle" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="armcab" minamount="6" maxamount="12" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="outpostsecarmcab" minamount="1" maxamount="6" spawnprobability="0.5" />
+      <PreferredContainer secondary="wreckarmcab,wrecksecarmcab,abandonedarmcab,piratearmcab,abandonedsecarmcab,piratesecarmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer secondary="secarmcab" />
+      <Price baseprice="30" minleveldifficulty="15">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="4" sold="true" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="12" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="12" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="6">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+        <RequiredItem tag="advmunition_tip" description="fabricationdescription.advmunition_tip" />
+      </Fabricate>
+      <Deconstruct time="5" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="128,832,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="233,163,23,9" depth="0.55" origin="0.5,0.5" />
+      <Body width="23" height="9" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile launchimpulse="35.0" characterusable="false" hitscan="true" removeonhit="true">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,200,200,175" scalemultiplier="1,0.8" />
+        <Attack structuredamage="15" targetforce="12" itemdamage="15" severlimbsprobability="0.5" penetration="0.6">
+          <Affliction identifier="gunshotwound" strength="55" />
+          <Affliction identifier="bleeding" strength="33" />
+          <Affliction identifier="stun" strength="0.6" />
+          <StatusEffect type="OnUse" target="Limb" targetLimbs="Head" disabledeltatime="true">
+            <Affliction identifier="gunshotwound" strength="10" />
+            <Affliction identifier="stun" strength="1.2" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="2,2" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="smground" category="Weapon" interactthroughwalls="true" tags="smallitem" hideinmenus="true" scale="0.5">
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,960,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="195,282,17,6" depth="0.55" origin="0.5,0.5" />
+      <Body width="40" height="14" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" hitscan="true" removeonhit="true">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,175" scalemultiplier="1,0.6" />
+        <Attack structuredamage="4" targetforce="6" itemdamage="4" severlimbsprobability="0.1">
+          <Affliction identifier="gunshotwound" strength="18" />
+          <Affliction identifier="bleeding" strength="11" />
+          <Affliction identifier="slow" strength="30" probability="0.5" penetration="0.85" />
+          <Affliction identifier="stun" strength="0.3" probability="0.2" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+        <!-- smg rounds should not exist outside magazines -->
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="1">
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="smgrounddepletedfuel" variantof="smground" inventoryiconcolor="110,120,110,255" spritecolor="110,120,110">
+      <Projectile>
+        <ParticleEmitter colormultiplier="200,255,80,175" />
+        <Attack structuredamage="5" targetforce="6" itemdamage="5" severlimbsprobability="0.1" penetration="0.25">
+          <Affliction identifier="bleeding" strength="12" />
+          <Affliction identifier="gunshotwound" strength="22" />
+          <Affliction identifier="slow" strength="36" probability="0.5" penetration="1.2" />
+          <Affliction identifier="stun" strength="0.3" probability="0.2" />
+          <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true">
+            <Conditional radiationsickness="lt 60" />
+            <Affliction identifier="radiationsickness" strength="10" />
+          </StatusEffect>
+        </Attack>
+      </Projectile>
+    </Item>
+    <Item name="" identifier="revolverround" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="12" interactthroughwalls="true" cargocontaineridentifier="metalcrate" Scale="0.5" tags="smallitem,revolverammo,handheldammo,pistolammoitem" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="revolver" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="armcab" amount="6" spawnprobability="1" notpvp="true" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" minamount="1" maxamount="6" spawnprobability="0.2" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="3" spawnprobability="0.25" />
+      <PreferredContainer secondary="secarmcab" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" amount="32" spawnprobability="1" notcampaign="true" />
+      <Price baseprice="12">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" minavailable="12" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="12" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="12" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="60" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="12" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="60" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="12">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+      </Fabricate>
+      <Deconstruct time="5" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,384,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="191,290,21,7" depth="0.55" origin="0.5,0.5" />
+      <Body width="29" height="10" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Projectile characterusable="false" hitscan="true" removeonhit="true">
+        <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,175" scalemultiplier="1,0.6" />
+        <Attack structuredamage="10" targetforce="10" itemdamage="10" severlimbsprobability="0.2" penetration="0.1">
+          <Affliction identifier="gunshotwound" strength="30" />
+          <Affliction identifier="bleeding" strength="16" />
+          <Affliction identifier="stun" strength="0.1" />
+          <Affliction identifier="stun" strength="0.2" probability="0.4" />
+          <StatusEffect type="OnUse" target="Limb" targetLimbs="Head" disabledeltatime="true">
+            <Affliction identifier="gunshotwound" strength="10" penetration="0" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="UseTarget">
+          <Conditional entitytype="eq Structure" />
+          <Conditional hastag="eq door" />
+          <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <Item name="" identifier="revolverrounddepletedfuel" variantof="revolverround" allowasextracargo="true" inventoryiconcolor="110,120,110,255" spritecolor="110,120,110">
+      <PreferredContainer primary="revolver" spawnprobability="0" />
+      <PreferredContainer primary="armcab" spawnprobability="0" />
+      <PreferredContainer secondary="wrecksecarmcab,abandonedsecarmcab,piratesecarmcab" spawnprobability="0" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" spawnprobability="0" />
+      <PreferredContainer secondary="secarmcab" spawnprobability="0" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" spawnprobability="0" />
+      <Price baseprice="20" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" requiresrecipe="true" amount="12">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredSkill identifier="electrical" level="30" />
+        <RequiredItem tag="munition_propulsion" description="fabricationdescription.munition_propulsion" />
+        <RequiredItem identifier="depletedfuel" amount="1" />
+        <RequiredItem tag="munition_jacket" description="fabricationdescription.munition_jacket" />
+      </Fabricate>
+      <Deconstruct time="5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" />
+      <Projectile>
+        <ParticleEmitter colormultiplier="200,255,80,175" />
+        <Attack structuredamage="10" targetforce="10" itemdamage="10" severlimbsprobability="0.2" penetration="0.25">
+          <Affliction identifier="bleeding" strength="16" />
+          <Affliction identifier="gunshotwound" strength="40" />
+          <Affliction identifier="stun" strength="0.1" />
+          <Affliction identifier="stun" strength="0.2" probability="0.4" />
+          <StatusEffect type="OnUse" target="UseTarget" disabledeltatime="true">
+            <Conditional radiationsickness="lt 60" />
+            <Affliction identifier="radiationsickness" strength="10" />
+          </StatusEffect>
+        </Attack>
+      </Projectile>
+    </Item>
+  </Items>
+  <!--鱼叉重做-->
+  <Items>
+    <!--普通鱼叉-->
+    <Item name="" identifier="spear" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="6" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="mediumitem,harpoonammo,handheldammo" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="harpoongun" amount="6" spawnprobability="1" />
+      <PreferredContainer primary="armcab" minamount="3" maxamount="6" spawnprobability="1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="3" spawnprobability="0.2" />
+      <PreferredContainer primary="secarmcab" />
+      <PreferredContainer secondary="respawncontainer_kingofthehull" amount="32" spawnprobability="1" notcampaign="true" />
+      <Price baseprice="7">
+        <Price storeidentifier="merchantoutpost" minavailable="12" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" minavailable="12" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" minavailable="6" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" minavailable="24" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" minavailable="6" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" minavailable="24" multiplier="0.9" />
+      </Price>
+      <Deconstruct time="5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="6">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,968,55,55" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="85,368,168,11" depth="0.55" origin="0.5,0.5" />
+      <Body width="160" height="10" density="30" />
+      <Rope sourcepullforce="300" targetpullforce="150" projectilepullforce="5" maxlength="1500" snaponcollision="false" spritewidth="3" tile="true" origin="0.05,0.5" targetminmass="10" lerpforces="true" snapanimduration="0.5" ReelSoundPitchSlide="1.0,2.25">
+        <Sprite texture="Content/Map/Thalamus/thalamus.png" sourcerect="617,352,174,32" depth="0.57" origin="0.5,0.5" />
+        <SnapSound file="Content/Items/Weapons/HarpoonGun1.ogg" range="500" frequencymultiplier="3.0,4.0" />
+        <ReelSound file="Content/Items/Weapons/WEAPON_harpoonGunReelLoop.ogg" range="1000" />
+        <!-- Snap after 1 seconds if not stuck to anything -->
+        <StatusEffect type="OnUse" target="This" Snapped="true" delay="1" checkconditionalalways="true">
+          <Conditional targetitemcomponent="Projectile" IsStuckToTarget="false" />
+        </StatusEffect>
+      </Rope>
+      <Projectile characterusable="false" launchimpulse="5" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodeflective="true" sticktodoors="false" sticktolighttargets="true">
+        <Attack structuredamage="15" itemdamage="15" targetforce="20" severlimbsprobability="0.1" penetration="0.3">
+          <Affliction identifier="lacerations" strength="35" />
+          <Affliction identifier="bleeding" strength="35" />
+          <Affliction identifier="stun" strength="0.5" />
+          <StatusEffect type="OnUse" target="Limb" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+            <Affliction identifier="lacerations" strength="1" penetration="-0.3" />
+            <Affliction identifier="bleeding" strength="2" penetration="0.1" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" comparison="And" disabledeltatime="true">
+          <Conditional Snapped="false" />
+          <Conditional mass="lt 30" />
+          <Affliction identifier="drag" strength="1" />
+        </StatusEffect>
+      </Projectile>
+      <MeleeWeapon slots="LeftHand+RightHand,Any" aimpos="40,-25" handle1="3,-2" handle2="-20,-2" holdangle="25" aimangle="-90" reload="1.0" range="65" combatPriority="34" msg="ItemMsgPickUpSelect" swingforce="10,2" controlpose="true">
+        <Attack structuredamage="8" itemdamage="10" targetforce="12" severlimbsprobability="0.1">
+          <Affliction identifier="lacerations" strength="24" />
+          <Affliction identifier="bleeding" strength="20" />
+          <Affliction identifier="stun" strength="0.2" />
+        </Attack>
+      </MeleeWeapon>
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+    </Item>
+    <!--刚素鱼叉-->
+    <Item name="" identifier="alienspear" category="Weapon,Alien" maxstacksize="32" maxstacksizecharacterinventory="6" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="mediumitem,harpoonammo,handheldammo" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="harpoongun" />
+      <PreferredContainer secondary="ruinstoragesmall,ruinstorage" minamount="1" maxamount="3" spawnprobability="0.1" />
+      <PreferredContainer secondary="ruinstoragelarge" amount="6" spawnprobability="0.2" />
+      <PreferredContainer primary="ruintreasure" amount="6" spawnprobability="0.25" />
+      <PreferredContainer primary="secarmcab,armcab" />
+      <Price baseprice="50" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.5" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" />
+      </Price>
+      <Deconstruct time="5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="6">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="physicorium" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="449,968,55,55" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="85,398,170,14" depth="0.55" origin="0.5,0.5" />
+      <Body width="160" height="10" density="30" />
+      <Rope sourcepullforce="300" targetpullforce="150" projectilepullforce="5" maxlength="1500" snaponcollision="false" spritewidth="3" tile="true" origin="0.05,0.5" targetminmass="10" lerpforces="true" snapanimduration="0.5" ReelSoundPitchSlide="1.0,2.25">
+        <Sprite texture="Content/Map/Thalamus/thalamus.png" sourcerect="617,352,174,32" depth="0.57" origin="0.5,0.5" />
+        <SnapSound file="Content/Items/Weapons/HarpoonGun1.ogg" range="500" frequencymultiplier="3.0,4.0" />
+        <ReelSound file="Content/Items/Weapons/WEAPON_harpoonGunReelLoop.ogg" range="1000" />
+        <!-- Snap after 1 seconds if not stuck to anything -->
+        <StatusEffect type="OnUse" target="This" Snapped="true" delay="1" checkconditionalalways="true">
+          <Conditional targetitemcomponent="Projectile" IsStuckToTarget="false" />
+        </StatusEffect>
+      </Rope>
+      <Projectile characterusable="false" launchimpulse="5.0" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodeflective="true" sticktodoors="false" sticktolighttargets="true">
+        <Attack structuredamage="20" itemdamage="20" targetforce="20" severlimbsprobability="0.2" penetration="0.3">
+          <Affliction identifier="lacerations" strength="60" />
+          <Affliction identifier="bleeding" strength="50" />
+          <Affliction identifier="stun" strength="0.5" />
+          <StatusEffect type="OnUse" target="Limb" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+            <Affliction identifier="lacerations" strength="2" penetration="-0.3" />
+            <Affliction identifier="bleeding" strength="3" penetration="0.1" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" comparison="And" disabledeltatime="true">
+          <Conditional Snapped="false" />
+          <Conditional mass="lt 30" />
+          <Affliction identifier="drag" strength="1" />
+        </StatusEffect>
+      </Projectile>
+      <MeleeWeapon slots="LeftHand+RightHand,Any" aimpos="40,-25" handle1="3,-2" handle2="-20,-2" holdangle="25" aimangle="-90" reload="1.0" range="65" combatPriority="34" msg="ItemMsgPickUpSelect" swingforce="10,2" controlpose="true">
+        <Attack structuredamage="8" itemdamage="10" targetforce="12" severlimbsprobability="0.1">
+          <Affliction identifier="lacerations" strength="30" />
+          <Affliction identifier="bleeding" strength="20" />
+          <Affliction identifier="stun" strength="0.2" />
+        </Attack>
+      </MeleeWeapon>
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <!--爆炸鱼叉-->
+    <Item name="" identifier="explosivespear" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="6" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="mediumitem,harpoonammo,handheldammo,demolitionsexpert" Scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="harpoongun" />
+      <PreferredContainer primary="armcab" amount="6" spawnprobability="0.1" notcampaign="true" notpvp="true" />
+      <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" minamount="1" maxamount="6" spawnprobability="0.1" />
+      <PreferredContainer primary="secarmcab" />
+      <Price baseprice="80">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.4" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="3" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="6" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="6" />
+      </Price>
+      <Deconstruct time="5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="3">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="spear" amount="3" />
+        <RequiredItem identifier="uex" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="385,968,55,55" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="85,381,168,15" depth="0.55" origin="0.5,0.5" />
+      <Body width="160" height="10" density="30" />
+      <Throwable characterusable="false" slots="Any,RightHand" throwforce="6.5" aimpos="35,-10" aimangle="180" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnSecondaryUse" target="This" delay="0.2">
+          <Use />
+        </StatusEffect>
+      </Throwable>
+      <Projectile characterusable="false" launchimpulse="10.0" severlimbsprobability="0.1">
+        <Attack structuredamage="20" targetforce="10" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="25" />
+        </Attack>
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <Explosion range="200.0" ballastfloradamage="50" structuredamage="10" levelwalldamage="50" itemdamage="250" force="5" severlimbsprobability="0.25">
+            <Affliction identifier="burn" strength="50" />
+            <Affliction identifier="stun" strength="1.5" />
+          </Explosion>
+          <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="3000" />
+          <sound file="Content/Items/Weapons/ExplosionSmall2.ogg" range="3000" />
+          <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="3000" />
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+      <Quality>
+        <QualityStat stattype="ExplosionRadius" value="0.1" />
+        <QualityStat stattype="ExplosionDamage" value="0.1" />
+      </Quality>
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    </Item>
+    <!--亚顿之矛-->
+    <Item name="" identifier="spearunique" category="Weapon" maxstacksize="32" maxstacksizecharacterinventory="6" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="mediumitem,handheldammo,harpoonammo" Scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" allowasextracargo="true">
+      <PreferredContainer primary="harpoongun,armcab" secondary="secarmcab" />
+      <PreferredContainer secondary="wrecksecarmcab,wreckarmcab,abandonedsecarmcab,piratesecarmcab,abandonedarmcab,piratearmcab" amount="6" spawnprobability="0.05" />
+      <Price baseprice="550" sold="false" canbespecial="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" amount="3">
+        <RequiredSkill identifier="weapons" level="30" />
+        <RequiredItem identifier="physicorium" />
+        <RequiredItem identifier="depletedfuel" />
+        <RequiredItem identifier="bp_spearunique" />
+      </Fabricate>
+      <Deconstruct time="5" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="448,256,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="262,363,172,14" depth="0.55" origin="0.5,0.5" />
+      <Body width="160" height="10" density="30" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+      <Rope sourcepullforce="300" targetpullforce="150" projectilepullforce="5" maxlength="1500" snaponcollision="false" spritewidth="3" tile="true" origin="0.05,0.5" targetminmass="10" lerpforces="true" snapanimduration="0.5" ReelSoundPitchSlide="1.0,2.25">
+        <Sprite texture="Content/Map/Thalamus/thalamus.png" sourcerect="617,352,174,32" depth="0.57" origin="0.5,0.5" />
+        <SnapSound file="Content/Items/Weapons/HarpoonGun1.ogg" range="500" frequencymultiplier="3.0,4.0" />
+        <ReelSound file="Content/Items/Weapons/WEAPON_harpoonGunReelLoop.ogg" range="1000" />
+        <!-- Snap after 1 seconds if not stuck to anything -->
+        <StatusEffect type="OnUse" target="This" Snapped="true" delay="1" checkconditionalalways="true">
+          <Conditional targetitemcomponent="Projectile" IsStuckToTarget="false" />
+        </StatusEffect>
+      </Rope>
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" sticktoitems="true" sticktostructures="true" sticktodeflective="true" sticktodoors="false" sticktolighttargets="true">
+        <Attack structuredamage="20" itemdamage="20" targetforce="20" severlimbsprobability="0.2" penetration="0.4">
+          <Affliction identifier="lacerations" strength="80" />
+          <Affliction identifier="bleeding" strength="60" />
+          <Affliction identifier="stun" strength="1" />
+          <StatusEffect type="OnUse" target="Limb" multiplyafflictionsbymaxvitality="true" disabledeltatime="true">
+            <Affliction identifier="lacerations" strength="2" />
+            <Affliction identifier="bleeding" strength="3" penetration="0.25" />
+          </StatusEffect>
+        </Attack>
+        <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" comparison="And" disabledeltatime="true">
+          <Conditional Snapped="false" />
+          <Conditional mass="lt 30" />
+          <Affliction identifier="drag" strength="1" />
+        </StatusEffect>
+      </Projectile>
+      <MeleeWeapon slots="LeftHand+RightHand,Any" aimpos="40,-25" handle1="3,-2" handle2="-20,-2" holdangle="25" aimangle="-90" reload="1.0" range="65" combatPriority="34" msg="ItemMsgPickUpSelect" swingforce="10,2" controlpose="true">
+        <Attack structuredamage="8" itemdamage="10" targetforce="12" severlimbsprobability="0.1">
+          <Affliction identifier="lacerations" strength="34" />
+          <Affliction identifier="bleeding" strength="20" />
+          <Affliction identifier="stun" strength="0.2" />
+        </Attack>
+      </MeleeWeapon>
+      <Quality>
+        <QualityStat stattype="StrikingPowerMultiplier" value="0.1" />
+      </Quality>
+    </Item>
+  </Items>
+  <!--舰炮重做-->
+  <Items>
+    <!--轨道炮霰弹-->
+    <Item name="" identifier="railguncanistershell" tags="railgunequipment,railgunammo,containershell" category="Weapon" linkable="true" scale="0.5" impactsoundtag="impact_metal_heavy" cargocontaineridentifier="">
+      <PreferredContainer primary="railgunammoloader,railgunammocontainer" mincondition="1" />
+      <PreferredContainer secondary="wreckrailgunammocontainer" minamount="1" maxamount="2" spawnprobability="0.2" />
+      <Price baseprice="95">
+        <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.2" />
+        <Price storeidentifier="merchantcity" multiplier="1.2" minavailable="1" sold="false" />
+        <Price storeidentifier="merchantresearch" sold="false" multiplier="1.2" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="5" />
+        <Price storeidentifier="merchantmine" sold="false" multiplier="1.2" />
+        <Price storeidentifier="merchantarmory" multiplier="0.9" minavailable="5" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="steel" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredSkill identifier="weapons" level="25" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem identifier="steel" amount="2" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" displayname="recycleitem" requiredtime="8">
+        <RequiredSkill identifier="weapons" level="20" />
+        <RequiredItem tag="munition_core" description="fabricationdescription.munition_core" />
+        <RequiredItem identifier="railguncanistershell" mincondition="0.0" maxcondition="1.0" usecondition="false" />
+      </Fabricate>
+      <!--<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="320,128,64,64" />-->
+      <Sprite texture="Content/Items/Containers/containers2.png" sourcerect="247,91,216,34" depth="0.55" origin="0.5,0.5" />
+      <BrokenSprite texture="Content/Items/Containers/containers2.png" sourcerect="247,127,216,34" depth="0.55" origin="0.5,0.5" maxcondition="0" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="0,447,64,64" origin="0.5,0.5" />
+      <Body width="215" height="30" density="35" />
+      <Holdable canbecombined="false" slots="LeftHand,RightHand" holdpos="0,-15" handle1="-30,-5" holdangle="170" aimable="false" msg="ItemMsgPickUpSelect">
+        <!-- slow down the character when holding the item -->
+        <StatValue stattype="MovementSpeed" value="-0.2" />
+        <!-- adjust hold position when swimming -->
+        <StatusEffect type="OnActive" target="This" holdpos="-10,-15" handle1="0,-5" holdangle="70" setvalue="true" interval="1.1">
+          <Conditional InWater="true" />
+        </StatusEffect>
+        <!-- revert hold position adjustment when walking -->
+        <StatusEffect type="OnActive" target="This" holdpos="0,-15" handle1="-30,-5" holdangle="170" setvalue="true" interval="1.1">
+          <Conditional InWater="false" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This" drawinventory="true" setvalue="true" />
+      </Holdable>
+      <ItemContainer hideitems="true" capacity="1" maxstacksize="11" drawinventory="false" canbeselected="false" canbecombined="true" ShowConditionInContainedStateIndicator="true" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet" spawnwithid="railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet,railguncanistershellpellet">
+        <StatusEffect type="OnUse" target="This" condition="0" setvalue="true">
+          <RequiredItem items="railguncanistershellpellet" type="Contained" />
+        </StatusEffect>
+        <Containable items="railguncanistershellpellet" maxstacksize="11" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="munition_core" maxstacksize="1" hide="true">
+            <StatusEffect type="OnInserted" target="This" condition="100" AllowWhenBroken="true" drawinventory="false" setvalue="true" delay="0">
+              <SpawnItem identifiers="railguncanistershellpellet" count="11" spawnposition="ThisInventory" />
+            </StatusEffect>
+            <StatusEffect type="OnInserted" target="Contained" targets="munition_core" AllowWhenBroken="true" delay="0">
+              <removeitem />
+            </StatusEffect>
+          </Containable>
+        </SubContainer>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/Weapons/icons.png" sourcerect="440,64,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/Items/InventoryIconAtlas.png" sourcerect="768,192,64,64" origin="0.5,0.5" />
+      </ItemContainer>
+    </Item>
+    <!--轨道炮霰弹破片-->
+    <Item name="" identifier="railguncanistershellpellet" maxstacksize="32" MaxStackSizeHoldableOrWearableInventory="32" category="Weapon" scale="0.5" sonarsize="2" hideinmenus="true">
+      <Sprite texture="Content/Items/Weapons/TurretsAndDepthCharges.png" sourcerect="140,486,21,21" depth="0.55" />
+      <Body width="160" height="10" density="20" />
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" />
+      <Projectile characterusable="false" launchimpulse="-15.0" impulsespread="0.3" spread="30" damagedoors="true">
+        <Attack structuredamage="10" itemdamage="15" severlimbsprobability="3.0" penetration="0.3">
+          <Affliction identifier="lacerations" strength="50" />
+          <Affliction identifier="bleeding" strength="20" />
+          <Affliction identifier="stun" strength="2" />
+        </Attack>
+        <StatusEffect type="OnActive" target="This" lifetime="2">
+          <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="1" velocitymin="0" velocitymax="50" scalemin="0.33" scalemax="1" />
+        </StatusEffect>
+        <!-- a 5 second lifetime after being fired -->
+        <StatusEffect type="OnNotContained" target="This" stackable="false" delay="5">
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="This">
+          <ParticleEmitter particle="shrapnel" copyentityangle="true" anglemin="0" anglemax="360" particleamount="10" velocitymin="100" velocitymax="2000" scalemin="0.25" scalemax="0.5" />
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Projectile>
+      <Upgrade gameversion="0.10.0.0" scale="*0.5" />
+    </Item>
+  </Items>
+</Override>

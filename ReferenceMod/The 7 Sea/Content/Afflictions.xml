@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="" identifier="storm_on" type="electricdamage" limbspecific="false" indicatorlimb="Torso" maxstrength="3" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="3" strengthchange="-0.5">
+      <StatusEffect target="Character" disabledeltatime="true" multiplyafflictionsbymaxvitality="true" stackable="false">
+        <Affliction identifier="stun" strength="1" />
+        <ReduceAffliction identifier="storm_on" amount="10" />
+        <SpawnItem identifier="lighting_storm" spawnposition="This" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="" identifier="laserpointer" description="" type="buffs" targets="human" limbspecific="false" indicatorlimb="Torso" healableinmedicalclinic="false" duration="0.15" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="3" healcostmultiplier="1.00" isbuff="true">
+    <Effect minstrength="0" maxstrength="3">
+      <StatValue stattype="SkillGainSpeed" value="0.1" />
+      <StatValue stattype="RangedSpreadReduction" value="0.8" />
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Dark Mist" identifier="darkmist" type="mist" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="0">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" minbodytint="0,0,0,127" maxbodytint="0,0,0,255" minspeedmultiplier="0.55" maxspeedmultiplier="0.35">
+      <StatusEffect target="Character" targets="monster" HealthMultiplier="5.0" setvalue="true" />
+      <StatusEffect target="Character" targets="human" HealthMultiplier="1.8" setvalue="true" />
+      <StatusEffect type="OnActive" target="Character" targetlimb="Head" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Torso" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="5" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Tail" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="LeftLeg" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="RightLeg" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Waist" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Jaw" interval="1" duration="1">
+        <ParticleEmitter particle="darkmistfog" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" velocitymin="0" velocitymax="40" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targets="human" interval="1" duration="1">
+        <Conditional darkmist="gte 15" />
+        <Affliction identifier="psychosis" amount="3" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Chase The Fog" identifier="chastfog" description="" type="buffs" limbspecific="false" indicatorlimb="Torso" healableinmedicalclinic="false" maxstrength="100" isbuff="true" showiconthreshold="1000" showinhealthscannerthreshold="0">
+    <Effect minstrength="0" maxstrength="50" minresistance="1.0" maxresistance="1.0" resistancefor="mist" strengthchange="-5">
+      <StatusEffect type="OnActive" target="Character">
+        <ReduceAffliction identifier="darkmist" amount="33" />
+      </StatusEffect>
+      <StatusEffect target="Character" setvalue="true">
+        <Conditional speciesgroup="TheMist" />
+        <Sound file="Content/Items/Diving/ITEMS_divingSuitOxygenLeakLoop.ogg" range="300" frequencymultiplier="1.75" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Head" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Torso" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="5" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Waist" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="LeftLeg" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="RightLeg" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Tail" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="50" maxstrength="100" minresistance="1.0" maxresistance="1.0" resistancefor="mist" strengthchange="-5">
+      <StatusEffect type="OnActive" target="Character">
+        <ReduceAffliction identifier="darkmist" amount="33" />
+      </StatusEffect>
+      <StatusEffect target="Character" HealthMultiplier="0.8" speedmultiplier="0.75" setvalue="true">
+        <Conditional speciesgroup="TheMist" />
+        <Sound file="Content/Items/Diving/ITEMS_divingSuitOxygenLeakLoop.ogg" range="300" frequencymultiplier="1.75" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Head" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Torso" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="5" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Waist" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="LeftLeg" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="RightLeg" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" targetlimb="Tail" interval="1" duration="1">
+        <ParticleEmitter particle="steamspray" drawontop="false" particlespersecond="3" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="0" velocitymax="40" copyentityangle="true" colormultiplier="255,255,200,200" />
+        <Conditional speciesgroup="TheMist" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="0,900,124,124" color="60,107,195,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="MonsterSpawn Cool Down" identifier="darkmist_spawnmonster1" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="MonsterSpawn Cool Down" identifier="darkmist_spawnmonster2" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="MonsterSpawn Cool Down" identifier="darkmist_spawnmonster3" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="MonsterSpawn Cool Down" identifier="darkmist_spawnmonster4" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="MonsterSpawn Cool Down" identifier="darkmist_spawnmonster5" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Kraken Using Fallback Attack" identifier="krakententacleattacking" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="100" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-5">
+      <StatusEffect type="OnDamaged" target="Character" disabledeltatime="true" stackable="false">
+        <ReduceAffliction identifier="krakententacleattacking" amount="5" />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="Character" disabledeltatime="true" stackable="false">
+        <RequiredAffliction type="damage,burn" minstrength="30" />
+        <ReduceAffliction identifier="krakententacleattacking" amount="55" />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This" onlyplayertriggered="true">
+        <Conditional isdead="False" />
+        <RequiredAffliction type="damage,burn" minstrength="30" />
+        <AITrigger state="Escape" duration="10" probability="1" mindamage="100" allowtobeoverridden="false" allowtooverride="true" />
+        <!-- Railgun hit on the head -->
+        <AITrigger state="Escape" duration="6" probability="1" mindamage="50" allowtobeoverridden="true" allowtooverride="true" />
+        <!-- Coilgun hit in the mouth -->
+        <AITrigger state="Escape" duration="4" probability="1" mindamage="30" allowtobeoverridden="true" allowtooverride="false" />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This" onlyplayertriggered="true">
+        <Conditional isdead="False" />
+        <RequiredAffliction type="damage,burn" minstrength="1" />
+        <AITrigger state="Escape" duration="4" probability="0.15" mindamage="1" allowtobeoverridden="true" allowtooverride="false" />
+      </StatusEffect>
+      <StatusEffect target="Character" type="OnActive">
+        <TriggerAnimation Type="SwimFast" path="%ModDir%/Content/Characters/Kthulakarn/KthulakarnFallbackSwimFast.xml" priority="8.0" ExpectedSpecies="Kthulakarn" />
+        <TriggerAnimation Type="SwimSlow" path="%ModDir%/Content/Characters/Kthulakarn/KthulakarnFallbackSwimSlow.xml" priority="8.0" ExpectedSpecies="Kthulakarn" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="" identifier="hmg_daul" type="Logical" limbspecific="false" indicatorlimb="Torso" maxstrength="31" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="31" strengthchange="-0.01">
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Conditional hmg_daul="lt 15" />
+        <ReduceAffliction identifier="hmg_daul" amount="30" />
+      </StatusEffect>
+      <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true">
+        <Conditional hmg_daul="gte 15" />
+        <ReduceAffliction identifier="hmg_daul" amount="60" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Propaganda" identifier="t7s_text_propaganda" type="Textword" limbspecific="false" indicatorlimb="Torso" maxstrength="1" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Fear" identifier="t7s_text_fear" type="Textword" limbspecific="false" indicatorlimb="Torso" maxstrength="1" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Friendly" identifier="t7s_text_friendly" type="Textword" limbspecific="false" indicatorlimb="Torso" maxstrength="1" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Concern" identifier="t7s_text_friendlyship" type="Textword" limbspecific="false" indicatorlimb="Torso" maxstrength="1" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Trust to Coalition" identifier="t7s_text_trusttocoalition" type="Textword" limbspecific="false" indicatorlimb="Torso" maxstrength="1" showiconthreshold="1000" showinhealthscannerthreshold="1000">
+    <Effect minstrength="0" maxstrength="1" strengthchange="-1" />
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="128,640,128,128" color="195,177,60,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="tnt" category="Weapon" description="" Scale="0.5" Tags="smallitem,explosive,demolitionsexpert" maxstacksize="32" maxstacksizecharacterinventory="8" cargocontaineridentifier="explosivecrate" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.9.3.0" scale="0.5" />
+    <PreferredContainer primary="secarmcab" minamount="1" maxamount="2" spawnprobability="0.5" notcampaign="true" notpvp="true" />
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" amount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="127" minavailable="1" minleveldifficulty="3">
+      <Price storeidentifier="merchantoutpost" multiplier="1.4" minavailable="2" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" />
+      <Price storeidentifier="merchantarmory" multiplier="0.9" minleveldifficulty="0" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredItem identifier="carbon" />
+      <RequiredItem identifier="flashpowder" />
+    </Fabricate>
+    <InventoryIcon texture="icons.png" sourcerect="320,280,64,64" origin="0.5,0.5" />
+    <Sprite texture="icons.png" depth="0.55" sourcerect="329,294,47,32" origin="0.5,0.5" />
+    <Body width="45" height="30" density="20" />
+    <Throwable characterusable="false" slots="Any,RightHand,LeftHand" canbecombined="true" removeoncombined="true" throwforce="3.5" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" range="5000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium2.ogg" range="5000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium3.ogg" range="5000" />
+        <Explosion range="600.0" ballastfloradamage="150" structuredamage="200" itemdamage="500" force="15" severlimbsprobability="1.0" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="200" dividebylimbcount="true" />
+          <Affliction identifier="burn" strength="15" probability="0.2" dividebylimbcount="false" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="Content/Items/Weapons/ExplosionDebris5.ogg" range="3500" />
+      </StatusEffect>
+    </Throwable>
+    <Quality>
+      <QualityStat stattype="ExplosionRadius" value="0.1" />
+      <QualityStat stattype="ExplosionDamage" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="ruin_destroyer" category="Weapon" description="" Scale="0.5" Tags="largeitem,supreme_explosive,mobilecontainer" maxstacksize="1" impactsoundtag="impact_soft">
+    <PreferredContainer secondary="armcab" />
+    <Price baseprice="3000" sold="false" minleveldifficulty="45">
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" maxavailable="1" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" minavailable="1" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="weapons" level="85" />
+      <RequiredSkill identifier="electrical" level="25" />
+      <RequiredItem identifier="c4block" amount="16" />
+      <RequiredItem identifier="fpgacircuit" amount="2" />
+      <RequiredItem identifier="oxygeniteshard" amount="2" />
+      <RequiredItem identifier="physicorium" amount="2" />
+    </Fabricate>
+    <Sprite texture="ruin_destroyer.png" depth="0.55" sourcerect="0,0,102,118" origin="0.5,0.5" />
+    <Body width="102" height="112" density="10" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="RightHand+LeftHand" holdangle="10" handle1="0,0" handle2="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Content/Weapons/Sounds/nukeexplosion.ogg" range="20000" frequencymultiplier="1.2" volume="1.5" />
+        <SteamTimeLineEvent title="Release The Hell Boomer" description="There's no other choice..." icon="steam_explosion" />
+        <Explosion range="3600.0" ballastfloradamage="50" structuredamage="100" itemdamage="1000" force="5" severlimbsprobability="0.4" debris="true" decal="explosion" decalsize="0.5">
+          <Affliction identifier="explosiondamage" strength="50" dividebylimbcount="true" />
+          <Affliction identifier="stun" strength="1" />
+        </Explosion>
+        <Explosion range="2400.0" structuredamage="600" itemdamage="999" ballastfloradamage="999" force="30.0" severlimbsprobability="1" debris="true" decal="explosion" decalsize="1.0" camerashake="1000" camerashakerange="60000" flashrange="10000" flashduration="6.0" screencolor="255,255,255,255" screencolorrange="6000" screencolorduration="6.0" penetration="0.6">
+          <Affliction identifier="explosiondamage" strength="1500" />
+          <Affliction identifier="burn" strength="500" />
+          <Affliction identifier="bleeding" strength="80" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="30" />
+        </Explosion>
+        <Explosion range="1200.0" ballastfloradamage="1000" structuredamage="1000" itemdamage="1000" force="60" severlimbsprobability="3" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="500" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+        <Explosion range="600" ballastfloradamage="9999" structuredamage="99999" itemdamage="9999" force="80" severlimbsprobability="5" debris="true" decal="explosion" decalsize="0.5" penetration="1">
+          <Affliction identifier="explosiondamage" strength="500" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="CustomInterface" drawhudwhenequipped="true" setvalue="true" interval="0.1" />
+      <StatusEffect type="OnSpawn" target="This" setvalue="true" tags="contdown_15" />
+    </Holdable>
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+      <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge" texture="Content/Items/Tools/tools.png" sourcerect="3,259,68,110" limb="Torso" depthlimb="Waist" inherittexturescale="false" scale="0.4" origin="1.0,0.5" />
+      <StatValue stattype="MovementSpeed" value="-0.1" />
+      <StatValue stattype="PropulsionSpeed" value="-0.1" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="CustomInterface" drawhudwhenequipped="false" setvalue="true" interval="0.1" />
+    </Wearable>
+    <PowerContainer capacity="60" Charge="15" canbeselected="false" vulnerabletoemp="false" />
+    <LightComponent LightColor="248,81,81,80" range="80" powerconsumption="0" IsOn="false" blinkfrequency="1.0" offset="13,0" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/weapons_new.png" depth="0.55" sourcerect="239,243,14,18" origin="-0.24,0.5" alpha="1.0" />
+      <StatusEffect type="OnActive" target="This" Charge="-1.0" interval="1" disabledeltatime="true">
+        <Conditional IsOn="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <Conditional Charge="gt 6" targetitemcomponentname="PowerContainer" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="and">
+        <Conditional Charge="lte 6" />
+        <Conditional Charge="gt 3" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" frequencymultiplier="1.4" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <Conditional Charge="lte 3" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" frequencymultiplier="1.8" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" blinkfrequency="2.0" comparison="and" setvalue="true">
+        <Conditional Charge="lte 6" targetitemcomponentname="PowerContainer" />
+        <Conditional Charge="gt 3" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" blinkfrequency="5.0" setvalue="true">
+        <Conditional Charge="lte 3" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" IsOn="false" checkconditionalalways="true" blinkfrequency="1.0" Condition="0" setvalue="true">
+        <Conditional Charge="lte 0.0" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+    </LightComponent>
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+      <!--按钮宽,高-->
+      <GuiFrame relativesize="0.14,0.20" anchor="BottomCenter" relativeoffset="0,0.06" style="ItemUI" />
+      <Button text="armred">
+        <StatusEffect type="OnUse" target="This" delay="0" IsOn="true" targetitemcomponent="LightComponent" setvalue="true">
+          <Conditional IsOn="false" />
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This,Character" delay="0" stackable="false">
+          <Conditional IsOn="false" />
+          <Forcesay message="release.hellboomer" sayinradio="true" />
+        </StatusEffect>
+      </Button>
+      <Button text="contdown.60">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="60" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This" tag="contdown_60" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This">
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+      </Button>
+      <Button text="contdown.30">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="30" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This" tag="contdown_30" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This">
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+      </Button>
+      <Button text="contdown.15">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="15" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This" tag="contdown_15" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This">
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+      </Button>
+      <Button text="disarmred">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="true" delay="0" />
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="60" setvalue="true" stackable="false">
+          <Conditional HasTag="eq contdown_60" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="30" setvalue="true" stackable="false">
+          <Conditional HasTag="eq contdown_30" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="15" setvalue="true" stackable="false">
+          <Conditional HasTag="eq contdown_15" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This,Character" delay="0" stackable="false">
+          <Conditional IsOn="true" />
+          <Forcesay message="disable.hellboomer" sayinradio="true" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+  </Item>
+  <Item name="" identifier="ruin_destroyer_mission" category="Weapon" description="" Scale="0.5" Tags="largeitem,supreme_explosive,mobilecontainer" hideinmenus="true" maxstacksize="1" impactsoundtag="impact_soft">
+    <Sprite texture="ruin_destroyer.png" depth="0.55" sourcerect="0,0,102,118" origin="0.5,0.5" />
+    <Body width="102" height="112" density="10" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="RightHand+LeftHand" holdangle="10" handle1="0,0" handle2="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Content/Weapons/Sounds/nukeexplosion.ogg" range="20000" frequencymultiplier="1.2" volume="1.5" />
+        <SteamTimeLineEvent title="Release The Hell Boomer" description="There's no other choice..." icon="steam_explosion" />
+        <Explosion range="3600.0" ballastfloradamage="50" structuredamage="100" itemdamage="1000" force="5" severlimbsprobability="0.4" debris="true" decal="explosion" decalsize="0.5">
+          <Affliction identifier="explosiondamage" strength="50" dividebylimbcount="true" />
+          <Affliction identifier="stun" strength="1" />
+        </Explosion>
+        <Explosion range="2400.0" structuredamage="600" itemdamage="999" ballastfloradamage="999" force="30.0" severlimbsprobability="1" debris="true" decal="explosion" decalsize="1.0" camerashake="1000" camerashakerange="60000" flashrange="10000" flashduration="6.0" screencolor="255,255,255,255" screencolorrange="6000" screencolorduration="6.0" penetration="0.6">
+          <Affliction identifier="explosiondamage" strength="1500" />
+          <Affliction identifier="burn" strength="500" />
+          <Affliction identifier="bleeding" strength="80" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="30" />
+        </Explosion>
+        <Explosion range="1200.0" ballastfloradamage="1000" structuredamage="1000" itemdamage="1000" force="60" severlimbsprobability="3" debris="true" decal="explosion" decalsize="0.5" penetration="0.5">
+          <Affliction identifier="explosiondamage" strength="500" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+        <Explosion range="600" ballastfloradamage="9999" structuredamage="99999" itemdamage="9999" force="80" severlimbsprobability="5" debris="true" decal="explosion" decalsize="0.5" penetration="1">
+          <Affliction identifier="explosiondamage" strength="500" dividebylimbcount="true" />
+          <Affliction identifier="bleeding" strength="40" probability="0.05" dividebylimbcount="false" />
+          <Affliction identifier="stun" strength="10" />
+        </Explosion>
+        <TriggerEvent identifier="t7s_mainstory_test_ruin_destroyer" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" targetitemcomponent="CustomInterface" drawhudwhenequipped="true" setvalue="true" interval="0.1" />
+    </Holdable>
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <StatusEffect type="OnWearing" target="Character" setvalue="true" disabledeltatime="true" />
+      <sprite name="Backpack" CanBeHiddenByOtherWearables="false" CanBeHiddenByItem="deepdivinglarge" texture="Content/Items/Tools/tools.png" sourcerect="3,259,68,110" limb="Torso" depthlimb="Waist" inherittexturescale="false" scale="0.4" origin="1.0,0.5" />
+      <StatValue stattype="MovementSpeed" value="-0.1" />
+      <StatValue stattype="PropulsionSpeed" value="-0.1" />
+      <StatusEffect type="OnWearing" target="This" targetitemcomponent="CustomInterface" drawhudwhenequipped="false" setvalue="true" interval="0.1" />
+    </Wearable>
+    <PowerContainer capacity="60" Charge="18" canbeselected="false" vulnerabletoemp="false" />
+    <LightComponent LightColor="248,81,81,80" range="80" powerconsumption="0" IsOn="false" blinkfrequency="1.0" offset="13,0" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/weapons_new.png" depth="0.55" sourcerect="239,243,14,18" origin="-0.24,0.5" alpha="1.0" />
+      <StatusEffect type="OnActive" target="This" Charge="-1.0" interval="1" disabledeltatime="true">
+        <Conditional IsOn="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <Conditional Charge="gt 6" targetitemcomponentname="PowerContainer" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" comparison="and">
+        <Conditional Charge="lte 6" />
+        <Conditional Charge="gt 3" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" frequencymultiplier="1.4" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This">
+        <Conditional Charge="lte 3" />
+        <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_tick.ogg" frequencymultiplier="1.8" range="4000" loop="true" dontmuffle="true" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" blinkfrequency="2.0" comparison="and" setvalue="true">
+        <Conditional Charge="lte 6" targetitemcomponentname="PowerContainer" />
+        <Conditional Charge="gt 3" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" blinkfrequency="5.0" setvalue="true">
+        <Conditional Charge="lte 3" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="This" IsOn="false" checkconditionalalways="true" blinkfrequency="1.0" Condition="0" setvalue="true">
+        <Conditional Charge="lte 0.0" targetitemcomponentname="PowerContainer" />
+      </StatusEffect>
+    </LightComponent>
+    <CustomInterface canbeselected="true" drawhudwhenequipped="true">
+      <!--按钮宽,高-->
+      <GuiFrame relativesize="0.14,0.20" anchor="BottomCenter" relativeoffset="0,0.06" style="ItemUI" />
+      <Button text="armred">
+        <StatusEffect type="OnUse" target="This" delay="0" IsOn="true" targetitemcomponent="LightComponent" setvalue="true">
+          <Conditional IsOn="false" />
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+      </Button>
+      <Button text="disarmred">
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="LightComponent" IsOn="false" setvalue="true" delay="0" />
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="PowerContainer" Charge="18" setvalue="true" stackable="false" />
+        <StatusEffect type="OnUse" target="This,Character" delay="0" stackable="false">
+          <Conditional IsOn="true" />
+          <sound file="%ModDir%/Content/Weapons/Sounds/ruin_destroyer_set.ogg" range="800" volume="0.8" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+  </Item>
+</Items>

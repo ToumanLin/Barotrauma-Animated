@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Items>
+    <!--特种冲锋枪-->
+    <Item name="" identifier="t_smg" category="Weapon" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="mediumitem,weapon,gun,gunsmith,mountableweapon,smg,shotgun" Scale="0.5" impactsoundtag="impact_metal_light" hideconditionbar="true" hideconditionintooltip="true">
+      <PreferredContainer primary="secarmcab" secondary="armcab,weaponholder" />
+      <PreferredContainer primary="secarmcab" amount="1" spawnprobability="0.2" notcampaign="true" />
+      <Price baseprice="1000" sold="false" canbespecial="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="60" requiresrecipe="true">
+        <RequiredSkill identifier="weapons" level="45" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+        <RequiredItem identifier="steel" amount="2" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <Fabricate suitablefabricators="gunmodder" requiredtime="30" displayname="fixbug">
+        <RequiredSkill identifier="weapons" level="45" />
+        <RequiredItem identifier="t_smg" />
+        <RequiredItem tag="electricalrepairtool" mincondition="0.00" />
+      </Fabricate>
+      <Deconstruct time="35">
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="steel" />
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Weapons/combatsmg.png" sourcerect="0,0,196,62" depth="0.55" origin="0.5,0.5" />
+      <Body width="190" height="50" density="25" />
+      <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="16,-30" aimpos="54,-10" handle1="-34,-10" handle2="21,-17" holdangle="60" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.9" setvalue="true" />
+        <StatusEffect type="OnActive" target="This" drawinventory="true" canbeselected="true" comparison="and" setvalue="true" stackable="false" MaxChargeTime="0.01">
+          <Conditional HasStatusTag="!eq aftershot" />
+          <Conditional HasStatusTag="!eq reloading" />
+        </StatusEffect>
+      </Holdable>
+      <RangedWeapon reload="0.14" barrelpos="78,-3" spread="1" unskilledspread="1" combatPriority="74" drawhudwhenequipped="true" crosshairscale="0.2" weapondamagemodifier="0.9" MaxChargeTime="0.01">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,1,1" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,1,1" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" ScaleMultiplier="1.2,1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/tsmg_shotgun1.ogg" type="OnUse" range="4000" selectionmode="Random" volume="2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/tsmg_shotgun2.ogg" type="OnUse" range="4000" volume="2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/tsmg_shotgun3.ogg" type="OnUse" range="4000" volume="2" />
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="itemContainer" drawinventory="false" canbeselected="false" setvalue="true">
+          <Explosion range="160.0" force="1.4" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="24.0" />
+          <ParticleEmitter particle="casingfirearm" particleamount="1" colormultiplier="0.5,0.5,0.5,1" ScaleMultiplier="1.5,1.5" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" statuseffecttags="aftershot" duration="0.72" stackable="false" ResetDurationWhenReapplied="true" />
+        <StatusEffect type="OnUse" target="This" MaxChargeTime="999" setvalue="true" stackable="false" />
+        <!--用于在多人模式下消除残留的霰弹枪弹药-->
+        <StatusEffect type="OnUse" target="Contained" targettags="shotgunammo" delay="0" stackable="false">
+          <removeitem />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This">
+          <SpawnItem identifiers="modetrigger" spawnposition="ThisInventory" />
+        </StatusEffect>
+        <RequiredItems items="shotgunammo" type="Contained" targetslot="0" />
+      </RangedWeapon>
+      <RangedWeapon reload="0.14" barrelpos="92,7" spread="3" unskilledspread="16" combatPriority="74" drawhudwhenequipped="true" crosshairscale="0.2" weapondamagemodifier="1.18" penetration="0.15" MaxChargeTime="0.01">
+        <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+        <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+        <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot1.ogg" type="OnUse" range="3000" selectionmode="Random" volume="1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot2.ogg" type="OnUse" range="3000" volume="1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot3.ogg" type="OnUse" range="3000" volume="1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot4.ogg" type="OnUse" range="3000" volume="1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot5.ogg" type="OnUse" range="3000" volume="1.2" />
+        <Sound file="%ModDir%/Content/Weapons/Sounds/smg_shot6.ogg" type="OnUse" range="3000" volume="1.2" />
+        <StatusEffect type="OnUse" target="This" targetitemcomponent="itemContainer" drawinventory="false" canbeselected="false" setvalue="true">
+          <ParticleEmitter particle="casingfirearm" particleamount="1" anglemin="90" anglemax="150" velocitymin="50" velocitymax="250" CopyEntityAngle="true" />
+          <Explosion range="150.0" force="1.0" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" statuseffecttags="aftershot" duration="0.4" stackable="false" ResetDurationWhenReapplied="true" />
+        <StatusEffect type="OnUse" target="Contained" targettags="smgammo" stackable="false">
+          <RequiredItems items="none" type="Contained" targetslot="0" matchonempty="true" ContainedNonBrokenItemCount="lte 0" excludeditems="logicaltrigger" />
+          <Use />
+        </StatusEffect>
+        <!--用于在多人模式下消除残留的霰弹枪弹药-->
+        <StatusEffect type="OnUse" target="Contained" targettags="shotgunammo" delay="0" stackable="false">
+          <removeitem />
+        </StatusEffect>
+        <RequiredItems items="logicaltrigger" type="Contained" />
+        <RequiredItems items="smgammo" type="Contained" msg="ItemMsgAmmoRequired" targetslot="1" />
+        <RequiredSkill identifier="weapons" level="45" />
+      </RangedWeapon>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="false" containedstateindicatorslot="1" containedstateindicatorstyle="bullet" containedspritedepth="0.56">
+        <Containable items="shotgunammo" hide="true">
+          <StatusEffect type="OnInserted" target="This" maxchargetime="999" setvalue="true" stackable="false">
+            <Sound file="%ModDir%/Content/Weapons/Sounds/reload_close_shotgun.ogg" type="OnUse" range="500" />
+            <Conditional HasStatusTag="!eq aftershot" />
+          </StatusEffect>
+          <StatusEffect type="OnInserted" target="This" statuseffecttags="reloading" duration="0.4" stackable="false" ResetDurationWhenReapplied="true" />
+          <StatusEffect type="OnInserted" target="This,Contained" targets="modetrigger" stackable="false" delay="0">
+            <removeitem />
+          </StatusEffect>
+          <StatusEffect type="OnRemoved" target="This" stackable="false" delay="0">
+            <Conditional HasStatusTag="!eq aftershot" />
+            <SpawnItem identifiers="modetrigger" spawnposition="ThisInventory" />
+          </StatusEffect>
+        </Containable>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="smgammo" itempos="-3,-7" rotation="-25" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="flashlight" hide="false" itempos="22,8" setactive="true" />
+        </SubContainer>
+        <SlotIcon slotindex="0" texture="%ModDir%/Content/Weapons/icons.png" sourcerect="374,0,52,52" origin="0.5,0.5" />
+        <SlotIcon slotindex="1" texture="Content/UI/StatusMonitorUI.png" sourcerect="256,448,64,64" origin="0.5,0.5" />
+        <SlotIcon slotindex="2" texture="Content/UI/CampaignUIAtlas2.png" sourcerect="896,536,128,64" origin="0.45,0.5" />
+      </ItemContainer>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" drawinventory="false" canbeselected="false" removecontaineditemsondeconstruct="true">
+        <Containable items="modetrigger" hide="true" />
+      </ItemContainer>
+      <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+      <Quality>
+        <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      </Quality>
+      <SkillRequirementHint identifier="weapons" level="45" />
+    </Item>
+    <Item name="Logical Trigger" identifier="modetrigger" category="Hidden" tags="logicaltrigger" hideinmenus="true" scale="0.1" noninteractable="true">
+      <InventoryIcon texture="%ModDir%/Content/Weapons/icons.png" sourcerect="436,300,76,26" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Alien/EndRuin_Items.png" depth="0.7" sourcerect="0,0,2,2" origin="0.5,0.5" />
+      <Body height="2" width="2" density="10" />
+      <Pickable slots="Any" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnNotContained" target="This" stackable="false">
+          <Remove />
+        </StatusEffect>
+      </Pickable>
+    </Item>
+  </Items>
+</Items>

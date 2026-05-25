@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <!--猎兵：讨伐任务-->
+  <Missions>
+    <!--初见任务-->
+    <NestMission identifier="t7smission_firsttime" tags="t7s_firsttime" type="Nest" spawntype="cave" reward="1500" itemspawnradius="800" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="1500" nestobjectamount="20" difficulty="2" commonness="100" name="The First Time of Nest">
+      <Items>
+        <Item identifier="crawleregg_t7s" />
+      </Items>
+      <Monster character="Crawler" min="2" max="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionheader0.getcrawlerdone" />
+    </NestMission>
+    <!--普通讨伐-->
+    <!--讨伐迅猛龙-->
+    <MonsterMission name="Take Down Raptor" identifier="t7smission_hunt_raptor" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="3" commonness="30" reward="6500" sonarlabel="target.raptor" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="mudraptor_veteran" min="4" max="8" />
+      <monster character="mudraptor" min="10" max="14" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_raptor" />
+    </MonsterMission>
+    <!--讨伐爬行者-->
+    <MonsterMission name="Take Down Crawler" identifier="t7smission_hunt_crawler" tags="t7s_hunting,t7s_hunting_easy,t7s_seafight" description="" type="Monster" difficulty="2" commonness="30" reward="2500" sonarlabel="target.crawler" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="crawler" min="10" max="14" />
+      <Reputation identifier="location" amount="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_crawler" />
+    </MonsterMission>
+    <!--讨伐虎尾鲨-->
+    <MonsterMission name="Take Down Tigerthresher" identifier="t7smission_hunt_tigershark" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="30" reward="7000" sonarlabel="target.tigershark" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Tigerthresher" min="8" max="12" />
+      <monster character="Bonethresher" min="4" max="6" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_tigershark" />
+    </MonsterMission>
+    <!--讨伐怪物群-->
+    <MonsterMission name="Take Down Monster Group" identifier="t7smission_hunt_monstergroup" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="30" reward="8000" sonarlabel="target.battleground" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Tigerthresher" min="4" max="6" />
+      <monster character="Bonethresher" min="2" max="3" />
+      <monster character="crawler" min="5" max="6" />
+      <monster character="mudraptor_veteran" min="2" max="3" />
+      <monster character="mudraptor" min="3" max="6" />
+      <monster character="watcher" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <OverrideMusic type="battleground" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_monstergroup" />
+    </MonsterMission>
+    <!--黄金之风-->
+    <MonsterMission name="The Golden Wind" identifier="t7smission_hunt_goldenwind" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="30" reward="8000" sonarlabel="target.goldenwind" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Hammerheadgold_m" min="8" max="10" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_goldenwind" />
+    </MonsterMission>
+    <!--四目相对-->
+    <MonsterMission name="Four Eye at Face" identifier="t7smission_hunt_4eye" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="1" commonness="30" reward="1000" sonarlabel="target.watcher" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Watcher" min="4" max="4" />
+      <Reputation identifier="location" amount="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_watcher" />
+    </MonsterMission>
+    <!--群摩乱舞-->
+    <MonsterMission name="Dance! Moloch!" identifier="t7smission_hunt_moloch" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="30" reward="9000" sonarlabel="target.moloch" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Moloch_m" min="3" max="5" />
+      <monster character="Molochbaby" min="5" max="10" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_moloch" />
+    </MonsterMission>
+    <!--锤钓战术-->
+    <MonsterMission name="Take Down The Giant Sharks" identifier="t7smission_hunt_fishingtime" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="25" reward="10000" sonarlabel="target.fish" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Tigerthresher" min="8" max="12" />
+      <monster character="Bonethresher" min="4" max="6" />
+      <monster character="Hammerhead_m" min="2" max="5" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_tigershark" />
+    </MonsterMission>
+    <!--生态平衡-->
+    <MonsterMission name="Bio Fair" identifier="t7smission_hunt_biofair" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="30" reward="5000" sonarlabel="target.mob" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Moloch_m" min="1" max="1" />
+      <monster character="Molochblack_m" min="1" max="1" />
+      <monster character="Hammerheadgold_m" min="2" max="2" />
+      <monster character="Hammerhead_m" min="2" max="2" />
+      <monster character="crawler" min="4" max="5" />
+      <monster character="Tigerthresher" min="2" max="3" />
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_biofair" />
+    </MonsterMission>
+    <!--断箭-->
+    <MonsterMission name="Broken Arrow" identifier="t7smission_hunt_brokenarrow" tags="t7s_hunting,t7s_seafight" description="" type="Monster" difficulty="4" commonness="5" reward="5000" sonarlabel="target.goldenwind" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Husk_chimera_nuke" min="1" max="1" />
+      <monster character="Husk_chimera" min="1" max="1" />
+      <monster character="Husk" min="3" max="4" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_brokenarrow" />
+    </MonsterMission>
+    <!--害虫防治-->
+    <MonsterMission name="BUG Harm" identifier="t7smission_hunt_bugharm1" tags="t7s_hunting,t7s_hunting_easy" description="" type="Monster" difficulty="1" commonness="25" reward="1000" sonarlabel="target.bugs" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Swarmfeeder" min="10" max="16" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_bugs" />
+    </MonsterMission>
+    <MonsterMission name="BUG Harm" identifier="t7smission_hunt_bugharm2" tags="t7s_hunting,t7s_hunting_easy,cavehazard" description="" type="Monster" difficulty="2" commonness="25" reward="1500" sonarlabel="target.bugs" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Spineling" min="4" max="5" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="1" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_bugs" />
+    </MonsterMission>
+    <MonsterMission name="BUG Harm" identifier="t7smission_hunt_bugharm3" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="3" commonness="25" reward="2500" sonarlabel="target.bugs" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Mantis" min="2" max="4" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="1" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_bugs" />
+    </MonsterMission>
+    <MonsterMission name="BUG Harm" identifier="t7smission_hunt_bugharm4" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="4" commonness="20" reward="5500" sonarlabel="target.bugs" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Mantis" min="7" max="9" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="1" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_bugs" />
+    </MonsterMission>
+    <!--洞穴讨伐-->
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard1" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="3" commonness="20" reward="2500" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Hammerhead_m" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="1" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard2" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="3" commonness="20" reward="2500" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Hammerheadgold_m" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="1" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard3" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="4" commonness="20" reward="5500" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Hammerheadgold_m" min="1" max="1" />
+      <monster character="Hammerhead_m" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="2" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard4" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="4" commonness="20" reward="4000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="crawlerbroodmother_m" min="1" max="1" />
+      <monster character="crawler" min="3" max="6" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="2" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard5" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="4" commonness="20" reward="8500" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="crawlerbroodmother_m" min="3" max="3" />
+      <monster character="crawler" min="7" max="12" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="2" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <MonsterMission name="Cave Hazard" identifier="t7smission_hunt_cavehazard6" tags="t7s_hunting,cavehazard" description="" type="Monster" difficulty="4" commonness="20" reward="10000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Hammerhead_m" min="4" max="4" />
+      <monster character="Hammerheadmatriarch" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="2" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+    <!--洞穴讨伐深渊巨兽-->
+    <!--洞穴捕钩兽-->
+    <MonsterMission name="Cave Hazard Abyss" identifier="t7smission_hunt_abyss_cave1" tags="t7s_hunting,cavehazard,t7s_hard" description="" type="Monster" difficulty="4" commonness="5" reward="11000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Latcher_Cave" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="4" />
+      <message header="missionfinish0.mc_cavehazard_abyss" text="missionmessage0.mc_cavehazard_abyss" />
+      <TriggerEvent state="0" eventidentifier="exospawn" campaignonly="true" />
+    </MonsterMission>
+    <!--洞穴女妖-->
+    <MonsterMission name="Cave Hazard Abyss" identifier="t7smission_hunt_abyss_cave2" tags="t7s_hunting,cavehazard,t7s_hard" description="" type="Monster" difficulty="4" commonness="5" reward="12000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Charybdis_Cave" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="4" />
+      <message header="missionfinish0.mc_cavehazard_abyss" text="missionmessage0.mc_cavehazard_abyss" />
+      <TriggerEvent state="0" eventidentifier="exospawn" campaignonly="true" />
+    </MonsterMission>
+    <!--洞穴蠕虫-->
+    <MonsterMission name="Cave Hazard Abyss" identifier="t7smission_hunt_abyss_cave3" tags="t7s_hunting,cavehazard,t7s_hard" description="" type="Monster" difficulty="4" commonness="5" reward="13000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Endworm_Cave" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <Reputation identifier="location" amount="4" />
+      <message header="missionfinish0.mc_cavehazard_abyss" text="missionmessage0.mc_cavehazard_abyss" />
+      <TriggerEvent state="0" eventidentifier="exospawn" campaignonly="true" />
+    </MonsterMission>
+    <!--深渊讨伐-->
+    <!--利维坦-->
+    <MonsterMission name="Take Down Leviathan" identifier="t7smission_hunt_reaperleviathan" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="15" reward="8000" sonarlabel="target.leviathan" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Abyss">
+      <monster character="Reaperleviathan_t7s" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_leviathan" />
+    </MonsterMission>
+    <!--克拉肯-->
+    <MonsterMission name="Take Down Kthulakarn" identifier="t7smission_hunt_kthulakarn" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="15" reward="7000" sonarlabel="target.kthulakarn" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Kthulakarn" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_kthulakarn" />
+    </MonsterMission>
+    <!--捕钩兽-->
+    <MonsterMission name="Take Down Latcher" identifier="t7smission_hunt_latcher" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="15" reward="7500" sonarlabel="target.latcher" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Abyss">
+      <monster character="Latcher" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_latcher" />
+    </MonsterMission>
+    <!--女妖-->
+    <MonsterMission name="Take Down Charybdis" identifier="t7smission_hunt_nvyao" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="15" reward="7800" sonarlabel="target.charybdis" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Abyss">
+      <monster character="Charybdis" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_nvyao" />
+    </MonsterMission>
+    <!--末日蠕虫-->
+    <MonsterMission name="Take Down End Worm" identifier="t7smission_hunt_endworm" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="15" reward="8000" sonarlabel="target.endworm" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Abyss">
+      <monster character="Endworm" min="1" max="1" />
+      <Reputation identifier="location" amount="3" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_endworm" />
+    </MonsterMission>
+    <!--末日蠕虫x3-->
+    <MonsterMission name="Take Down End Worm III" identifier="t7smission_hunt_endworm3" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hard" description="" type="Monster" difficulty="4" commonness="10" reward="27500" sonarlabel="target.endworm" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Endworm" min="3" max="3" />
+      <Reputation identifier="location" amount="10" />
+      <OverrideMusic type="battleground" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mc_endworm3" />
+    </MonsterMission>
+    <!--终焉之海大战-->
+    <MonsterMission name="The Greatest War of 7 Seas" identifier="t7smission_hunt_abysswar" tags="t7s_hunting,t7s_hunting_abyss,t7s_seafight,t7s_hell" description="" type="Monster" difficulty="4" commonness="5" reward="66666" sonarlabel="target.battleground" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Endworm" min="2" max="2" />
+      <monster character="Doomworm" min="1" max="1" />
+      <monster character="Charybdis" min="2" max="2" />
+      <monster character="Latcher" min="2" max="2" />
+      <Reputation identifier="location" amount="20" amountforopposingfaction="10" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missioncomplet0.mc_abysswar" text="missionmessage0.mc_abysswar" />
+      <OverrideMusic type="specialbossfight" />
+    </MonsterMission>
+  </Missions>
+  <!--打捞任务-->
+  <Missions>
+    <!--简单-->
+    <SalvageMission name="Salvage Cargo Form Cave" identifier="t7smission_salvage_cave1" tags="t7s_salvage,t7s_salvage_easy" type="SalvageCave" difficulty="3" commonness="20" reward="1500" spawntype="cave" sonarlabel="target.cargo" itemtag="t7scargo_easy" existingitemtag="t7scargo_easy" PickedUpMessage="missionmessage.salvage_pickup">
+      <Reputation identifier="location" amount="1" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <SalvageMission name="Salvage Cargo Form Wreck" identifier="t7smission_salvage_wreck1" tags="t7s_salvage,t7s_salvage_easy" type="Salvage" difficulty="2" commonness="20" reward="1500" spawntype="wreck" requirewreck="true" sonarlabel="target.cargo" itemtag="t7scargo_easy" existingitemtag="t7scargo_easy" PickedUpMessage="missionmessage.salvage_pickup">
+      <Reputation identifier="location" amount="1" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <SalvageMission name="Salvage Cargo Form Main Path" identifier="t7smission_salvage_normal1" tags="t7s_salvage,t7s_salvage_medium" type="Salvage" difficulty="2" commonness="12" reward="1500" requireddeliveryamount="0.5" PartiallyRetrievedMessage="missionmessage.salvage_pickup_part" AllRetrievedMessage="missionmessage.salvage_all_complet">
+      <Reputation identifier="location" amount="1" />
+      <target spawntype="mainpath" itemidentifier="cargobag_t7s_normal" sonarlabel="target.cargo" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" hidelabelafterretrieved="false" minamount="3" maxamount="4" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+    </SalvageMission>
+    <!--普通-->
+    <SalvageMission name="Salvage Cargo Form Cave" identifier="t7smission_salvage_cave2" tags="t7s_salvage,t7s_salvage_medium" type="SalvageCave" difficulty="3" commonness="20" reward="2500" spawntype="cave" sonarlabel="target.cargo" itemtag="t7scargo_medium" existingitemtag="t7scargo_medium" PickedUpMessage="missionmessage.salvage_pickup">
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <SalvageMission name="Salvage Cargo Form Wreck" identifier="t7smission_salvage_wreck2" tags="t7s_salvage,t7s_salvage_medium" type="Salvage" difficulty="2" commonness="20" reward="2500" spawntype="wreck" requirewreck="true" sonarlabel="target.cargo" itemtag="t7scargo_medium" existingitemtag="t7scargo_medium" PickedUpMessage="missionmessage.salvage_pickup">
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <SalvageMission name="Salvage Cargo Form Ruin" identifier="t7smission_salvage_ruin2" tags="t7s_salvage,t7s_salvage_medium" type="Salvage" difficulty="2" commonness="6" reward="2500" spawntype="wreck" requirewreck="true" sonarlabel="target.cargo" itemtag="t7scargo_medium" existingitemtag="t7scargo_medium" PickedUpMessage="missionmessage.salvage_pickup">
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <SalvageMission name="Salvage Cargo Form Main Path" identifier="t7smission_salvage_normal2" tags="t7s_salvage,t7s_salvage_medium" type="Salvage" difficulty="2" commonness="12" reward="2500" requireddeliveryamount="0.6" PartiallyRetrievedMessage="missionmessage.salvage_pickup_part" AllRetrievedMessage="missionmessage.salvage_all_complet">
+      <Reputation identifier="location" amount="2" />
+      <target spawntype="mainpath" itemidentifier="cargobag_t7s_normal" sonarlabel="target.cargo" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" hidelabelafterretrieved="false" minamount="4" maxamount="6" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,512,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+    </SalvageMission>
+    <!--主线：打捞设备-->
+    <SalvageMission name="Salvage Essential Equipment" identifier="t7smission_salvage_mainstory1" tags="t7s_mainstory1_1" type="SalvageCave" difficulty="1" commonness="1000" reward="5250" spawntype="cave" sonarlabel="target.cargo" itemtag="t7s_scanner_mainstory" existingitemtag="t7s_scanner_mainstory" PickedUpMessage="missionmessage.salvage_pickup">
+      <Icon texture="Content/UI/MissionIcons.png" sourcerect="512,768,256,256" color="49,93,233" />
+      <LocationType from="AnyOutpost" to="Any" />
+      <message header="missionheader0.salvage_complet" text="missionmessage0.salvage_complet" />
+    </SalvageMission>
+    <!--主线：遗迹破坏者测试-->
+    <SalvageMission name="A “Little” Test" identifier="mainstory_testing_ruin_destroyer" tags="mainstory_2_4" type="Salvage" description="" difficulty="3" commonness="100" reward="0" sonaricon="artifact" spawntype="ruin" requireddeliveryamount="0" containertag="artifactholder" requireruin="true" successmessage="mainstory.ruindestroyertest.complet" failuremessage="mainstory.ruindestroyertest.complet">
+      <chooserandom>
+        <target spawntype="ruin" itemidentifier="skyholderartifact" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false" />
+        <target spawntype="ruin" itemidentifier="thermalartifact" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false" />
+        <target spawntype="ruin" itemidentifier="faradayartifact" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false" />
+        <target spawntype="ruin" itemidentifier="psychosisartifact" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false" />
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+        <target spawntype="ruin" itemidentifier="sonarbeacon" sonarlabel="ruin.singnal" allowcontinuebeforeretrieved="true" requireretrieval="RetrievedToSub" minamount="1" maxamount="1" hidelabelafterretrieved="false" removeitem="false">
+          <target itemidentifier="batterycell" minamount="1" maxamount="1" RequireInsideOriginalContainer="false" removeitem="false" />
+        </target>
+      </chooserandom>
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,0,256,256" color="49,93,233" />
+      <TriggerEvent state="0" eventidentifier="ruin_destroyer_spawn" campaignonly="true" />
+      <message header="mainstory.ruindestroyertest.finish" text="mainstory.ruindestroyertest.finish.text" />
+    </SalvageMission>
+  </Missions>
+  <!--圣洁修会：黑雾-->
+  <Missions>
+    <!--初见：为菜鸟报仇-->
+    <MonsterMission name="Beginning of the Legendary Path" identifier="t7smission_darkmist_firsttime" tags="t7s_darkmist_firsttime" description="" type="Monster" spawntype="Wreck" requirewreck="true" difficulty="4" commonness="100" reward="4237" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Mudraptor_veteran_mist_mission1" min="1" max="1" />
+      <monster character="mudraptor_mist" min="2" max="2" />
+      <monster character="Mudraptor_unarmored_mist" min="3" max="3" />
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_firttime" />
+    </MonsterMission>
+    <!--阴霾废站：简单-->
+    <AbandonedOutpostMission identifier="t7smission_darkmist_easy1" textidentifier="t7smission_darkmist_easy" tags="abandonedoutpost" type="AbandonedOutpostMonsters" reward="4000" difficulty="4" commonness="50" allowretry="true" sonarlabel="target.darkmist" unhideentitysubcategories="abandonedmonster" minleveldifficulty="5">
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <LocationType identifier="Abandoned" />
+      <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="1,2" cooldownafterchange="5" />
+      <Characters>
+        <Character identifier="crawler_mist" min="4" max="6" requirekill="true" />
+        <Character identifier="Mudraptor_unarmored_mist" min="2" max="3" requirekill="true" />
+      </Characters>
+      <TriggerEvent state="0" delay="5" eventidentifier="warning_high_difficulty" campaignonly="true" />
+      <OverrideMusic type="hunting" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_common" />
+    </AbandonedOutpostMission>
+    <!--阴霾废站：中等-->
+    <AbandonedOutpostMission identifier="t7smission_darkmist_medium1" textidentifier="t7smission_darkmist_medium" tags="abandonedoutpost" type="AbandonedOutpostMonsters" reward="6500" difficulty="4" commonness="50" allowretry="true" sonarlabel="target.darkmist" unhideentitysubcategories="abandonedmonster" minleveldifficulty="15">
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <LocationType identifier="Abandoned" />
+      <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="1,2" cooldownafterchange="5" />
+      <Characters>
+        <Character identifier="crawler_mist" min="2" max="4" requirekill="true" />
+        <Character identifier="Mudraptor_veteran_mist" min="1" max="1" requirekill="true" multiplayeronly="true" />
+        <Character identifier="Mudraptor_mist" min="2" max="3" requirekill="true" multiplayeronly="true" />
+        <Character identifier="Mudraptor_mist" min="1" max="2" requirekill="true" />
+        <Character identifier="Mudraptor_unarmored_mist" min="4" max="6" requirekill="true" />
+        <Character identifier="Mudraptor_veteran_mist" min="1" max="1" requirekill="true" />
+      </Characters>
+      <TriggerEvent state="0" delay="5" eventidentifier="warning_high_difficulty" campaignonly="true" />
+      <OverrideMusic type="hunting" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_common" />
+    </AbandonedOutpostMission>
+    <!--阴霾废站：困难-->
+    <AbandonedOutpostMission identifier="t7smission_darkmist_hard1" textidentifier="t7smission_darkmist_hard" tags="abandonedoutpost" type="AbandonedOutpostMonsters" reward="9000" difficulty="4" commonness="50" allowretry="true" sonarlabel="target.darkmist" unhideentitysubcategories="abandonedmonster" minleveldifficulty="25">
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <LocationType identifier="Abandoned" />
+      <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="1,2" cooldownafterchange="5" />
+      <Characters>
+        <Character identifier="crawler_mist" min="2" max="3" requirekill="true" />
+        <Character identifier="Mudraptor_veteran_mist" min="1" max="1" requirekill="true" multiplayeronly="true" />
+        <Character identifier="Mudraptor_mist" min="2" max="3" requirekill="true" multiplayeronly="true" />
+        <Character identifier="Mudraptor_mist" min="3" max="4" requirekill="true" />
+        <Character identifier="Mantis_mist" min="4" max="6" requirekill="true" />
+        <Character identifier="MistCore_small" min="1" max="1" requirekill="true" />
+      </Characters>
+      <TriggerEvent state="0" delay="5" eventidentifier="warning_high_difficulty" campaignonly="true" />
+      <OverrideMusic type="hunting" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_common" />
+    </AbandonedOutpostMission>
+    <!--黑雾：沉船损失-->
+    <MonsterMission textidentifier="t7smission_darkmist_wreck" identifier="t7smission_darkmist_wreck1" tags="t7s_salvage,t7s_salvage_medium" description="" type="Monster" spawntype="Wreck" requirewreck="true" difficulty="4" commonness="100" reward="4000" sonarlabel="target.darkmist" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="crawler_mist" min="3" max="4" />
+      <monster character="mudraptor_mist" min="2" max="3" />
+      <monster character="Mudraptor_unarmored_mist" min="3" max="3" />
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_wreck" />
+    </MonsterMission>
+    <!--黑雾：洞穴鬼影-->
+    <MonsterMission name="Ghost Cave" identifier="t7smission_hunt_ghostcave1" tags="t7s_hunting,cavehazard,t7s_hard" description="" type="Monster" difficulty="4" commonness="5" reward="10000" sonarlabel="target.darkmist" maxsonarmarkerdistance="10000" successmessage="Mission Success" spawntype="Cave">
+      <monster character="Mudraptor_unarmored_mist" min="3" max="4" />
+      <monster character="mudraptor_mist" min="2" max="3" />
+      <monster character="Mantis_mist" min="2" max="3" />
+      <monster character="crawler_mist" min="3" max="4" />
+      <monster character="MistCore_small" min="1" max="1" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <Reputation identifier="location" amount="2" />
+      <message header="missionheader0.t7s_chasethefog" text="missionmessage0.mc_cavehazard" />
+    </MonsterMission>
+  </Missions>
+  <!--主线BOSS-->
+  <Missions>
+    <!--寂静之海（1图）：湖之主-->
+    <MonsterMission name="Take Down The Lake Master" identifier="t7smission_hunt_mainstory1" tags="t7s_mainstory_bossfight1" description="" type="Monster" difficulty="4" commonness="10" reward="8000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="LakeMaster" min="3" max="3" />
+      <monster character="crawler" min="6" max="6" requirekill="false" />
+      <Reputation identifier="location" amount="5" />
+      <OverrideMusic type="40k_mainthem" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,256,256,256" color="50,167,200" />
+      <message header="missionheader0.t7s_mainstoryComplete" text="missionmessage0.mainstory1" />
+      <Metadata identifier="mainstorystage1" value="4" operation="Set" />
+    </MonsterMission>
+    <!--生灭之海（2图）：克拉肯-->
+    <MonsterMission name="Take Down The Kthulakarn" identifier="t7smission_hunt_mainstory2_1" tags="t7s_mainstory_2_1" description="" type="Monster" difficulty="4" commonness="10" reward="9000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Kthulakarn_mission" min="1" max="1" />
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="0,0,256,256" color="214,50,48" />
+      <message header="missionheader0.t7s_missioncomplet" text="missionmessage0.mainstory2_1" />
+    </MonsterMission>
+    <!--生灭之海（2图）：雾之心-->
+    <MonsterMission name="Take Down The Mist Heart" identifier="t7s_mainstory_bossfight2_1" tags="t7s_mainstory_bossfight2_1" description="" type="Monster" difficulty="3" commonness="10" reward="6000" sonarlabel="target.darkmist" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="MistCore_medium_mission1" min="1" max="1" />
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,0,256,256" color="145,50,200" />
+      <message header="missionheader0.t7s_chasethefog" text="missionheader0.killthefog_common2" />
+    </MonsterMission>
+    <!--生灭之海（2图）：循声收割者-->
+    <MonsterMission name="Take Down The Reaper Leviathan" identifier="t7smission_hunt_mainstory2" tags="t7s_mainstory_bossfight2_2" description="" type="Monster" difficulty="4" commonness="10" reward="11000" sonarlabel="target" maxsonarmarkerdistance="10000" successmessage="Mission Success">
+      <monster character="Reaperleviathan_t7s_mission" min="1" max="1" />
+      <Reputation identifier="location" amount="5" />
+      <OverrideMusic type="ghost_river" />
+      <Icon texture="%ModDir%/Content/Missions/MissionIcons.png" sourcerect="256,256,256,256" color="100,225,80" />
+      <message header="missionheader0.t7s_mainstoryComplete" text="missionmessage0.mainstory2" />
+      <TriggerEvent state="0" eventidentifier="extra_ammo_spawn" campaignonly="true" />
+    </MonsterMission>
+  </Missions>
+</Missions>

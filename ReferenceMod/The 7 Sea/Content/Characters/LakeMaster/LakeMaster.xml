@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="LakeMaster" Tags="" SpeciesTranslationOverride="" DisplayName="" Group="Crawler" Humanoid="False" HasInfo="False" CanInteract="False" CanClimb="True" ForceSlowClimbing="False" Husk="False" HuskedSpecies="" NonHuskedSpecies="" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" UseHumanAI="False" IsMachine="False" CanSpeak="False" ShowHealthBar="True" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False" AITurretPriority="1" AISlowTurretPriority="1" DespawnContainer="" MusicType="monster" MusicCommonness="1" MusicRangeMultiplier="1" UnlockKillAchievementForWholeCrew="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="2" ScaleMax="3" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="2" ScaleMax="3" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="2" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="2" ScaleMax="3" VelocityMin="200" VelocityMax="1500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="50" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="2" ScaleMax="3" VelocityMin="50" VelocityMax="1000" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <health Vitality="1800" DoesBleed="True" CrushDepth="Infinity" UseHealthWindow="False" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="False" PoisonVulnerability="1" EmpVulnerability="0" ApplyMovementPenalties="True" DieFromBeheading="True" AllowSeveringLegs="False" ApplyAfflictionColors="False" Immunities="" />
+  <sound File="Content/Characters/Legacycharybdis/charybdisattack.ogg" State="Attack" Range="8000" Volume="1" Tags="" />
+  <sound File="Content/Characters/Legacytigerthresher/thresheridle1.ogg" State="Idle" Range="8000" Volume="1.5" Tags="" />
+  <sound File="Content/Characters/Legacytigerthresher/thresheridle2.ogg" State="Idle" Range="8000" Volume="1.5" Tags="" />
+  <Inventory slots="Any, Any, Any, Any" accessiblewhenalive="False" commonness="15">
+    <Item identifier="diversremains" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any" accessiblewhenalive="False" commonness="5">
+    <Item identifier="diversremains" />
+    <Item identifier="handblade" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+    <Item identifier="diversremains" />
+    <Item identifier="sniper_rifle" />
+  </Inventory>
+  <ai combatstrength="1800" sight="1.0" hearing="5" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" attackwhenprovoked="False" avoidgunfire="False" avoidtime="3" minfleetime="20" aggressiveboarding="True" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False" avoidabyss="False" stayinabyss="False" aggressioncumulation="25" startaggression="0" maxaggression="100" WallTargetingMethod="Target,Steering">
+    <target tag="human" state="Attack" priority="500" PerceptionDistanceMultiplier="5.0" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="True" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" attackpattern="Straight">
+      <Conditional TargetSelf="True" HealthPercentage="lt 50" />
+    </target>
+    <target tag="decoy" state="Attack" priority="100" ignoreifnotinsamesub="True" />
+    <target tag="provocative" state="Attack" priority="100" ignoreifnotinsamesub="True" />
+    <target tag="weapon" state="Attack" priority="100" ignoreifnotinsamesub="True" />
+    <target tag="weaker" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="True" ignoreincapacitated="True" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="dead" state="Eat" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="True" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="room" state="Attack" priority="80" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" attackpattern="Circle" circlerotationspeed="2" circlestrikedistancemultiplier="2" circlemaxrandomoffset="10" circlestartdistance="10000" ignoreifnotinsamesub="False" />
+    <target tag="sonar" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" attackpattern="Circle" circlerotationspeed="2" circlestrikedistancemultiplier="2" circlemaxrandomoffset="10" circlestartdistance="10000" ignoreifnotinsamesub="False" />
+    <target tag="terminalcell" state="Idle" priority="1" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="leucocyte" state="Idle" priority="1" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+</Character>

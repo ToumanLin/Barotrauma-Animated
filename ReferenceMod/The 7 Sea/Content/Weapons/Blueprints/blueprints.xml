@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--制图设备-->
+  <Items>
+    <!--图纸筒-->
+    <Item name="Painting Bucket" identifier="blueprint_bucket" description="Storage your blueprints" category="Equipment" allowasextracargo="true" showcontentsintooltip="true" tags="mediumitem,blueprintcontainer,mobilecontainer" Scale="0.4" impactsoundtag="impact_soft">
+      <PreferredContainer primary="storagecab" secondary="armcab,crewcab" />
+      <Price baseprice="64" sold="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredItem identifier="organicfiber" />
+        <RequiredItem identifier="plastic" amount="2" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="476,0,168,136" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="1,36,442,98" depth="0.54" origin="0.5,0.5" />
+      <Body width="122" height="66" density="10.5" />
+      <Holdable slots="RightHand,LeftHand" holdpos="8,-64" handle1="-14,37" msg="ItemMsgPickUpSelect" />
+      <ItemContainer capacity="24" slotsperrow="6" maxstacksize="1" canbeselected="false" hideitems="true" keepopenwhenequipped="false" movableframe="true">
+        <Containable items="blueprint" />
+      </ItemContainer>
+    </Item>
+    <!--制图台-->
+    <Item name="Blueprint Craftor" identifier="blueprint_researcher" tags="blueprint_crafter,donttakeitems,dontsellitems,largeitem" category="Machine" linkable="true" allowedlinks="locker" description="Here to researching weapons technology" scale="0.500" isshootable="true">
+      <Fabricate suitablefabricators="fabricator" requiredtime="30">
+        <RequiredSkill identifier="electrical" level="25" />
+        <RequiredSkill identifier="mechanical" level="25" />
+        <RequiredItem identifier="steel" amount="4" />
+        <RequiredItem identifier="titaniumaluminiumalloy" amount="1" />
+        <RequiredItem identifier="fpgacircuit" />
+      </Fabricate>
+      <Deconstruct time="10">
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="steel" amount="2" />
+        <Item identifier="fpgacircuit" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="0,185,390,360" origin="0.5,0.5" depth="0.70" />
+      <BrokenSprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="0,549,390,360" origin="0.5,0.5" depth="0.70" maxcondition="50" fadein="true" />
+      <LightComponent range="250" powerconsumption="5" lightcolor="255,200,127,111" IsOn="true" castshadows="false" allowingameediting="false">
+        <sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="390,185,390,360" depth="0.6" origin="0.5,0.5" alpha="1.0" />
+      </LightComponent>
+      <Body width="380" height="360" density="40" />
+      <Holdable slots="RightHand+LeftHand" handle1="-15,-20" handle2="15,-20" holdangle="20" msg="ItemMsgDetachWrench" PickingTime="9" pickkey="Use" selectkey="Select" aimpos="65,-10" attachable="true" aimable="true" limitedattachable="false">
+        <RequiredItem items="wrench,deattachtool" excludeditems="multitool" type="Equipped" />
+      </Holdable>
+      <PowerContainer capacity="300.0" maxrechargespeed="200" rechargespeed="100" maxoutput="100" canbeselected="true" indicatorposition="280,232" indicatorsize="56,26" ishorizontal="true" selectkey="Action">
+        <GuiFrame relativesize="0.25,0.2" minsize="350,200" anchor="BottomCenter" style="ItemUI" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <StatusEffect type="OnFire" target="This" Condition="-0.5" />
+        <StatusEffect type="OnActive" target="This" Voltage="1.0" setvalue="true" interval="0.3" duration="0.3">
+          <Conditional attached="true" />
+        </StatusEffect>
+      </PowerContainer>
+      <Repairable selectkey="Action" header="electricalrepairsheader" deteriorationspeed="0" mindeteriorationdelay="120" maxdeteriorationdelay="240" mindeteriorationcondition="0" RepairThreshold="80" fixDurationHighSkill="5" fixDurationLowSkill="15" msg="ItemMsgRepairScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="0.0,0.27" style="ItemUI" />
+        <RequiredSkill identifier="electrical" level="25" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+        <ParticleEmitter particle="MistSmoke" particlespersecond="60" anglemin="0" anglemax="360" distancemin="0" distancemax="25" velocitymin="0" velocitymax="20" mincondition="0.0" maxcondition="50.0" />
+        <ParticleEmitter particle="spark" particleamount="5" emitinterval="2" particlespersecond="5" anglemax="360" distancemax="30" velocitymin="100" velocitymax="500" scalemin="0.5" scalemax="1" mincondition="0.0" maxcondition="15.0" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="2" scalemin="1" scalemax="2" mincondition="0.0" maxcondition="50.0" />
+        <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+          <Sound file="Content/Sounds/Damage/Electrocution1.ogg" range="1000" />
+          <Explosion range="100.0" flames="false" shockwave="false" sparks="true" underwaterbubble="false" />
+          <Affliction identifier="stun" strength="4" probability="0.5" />
+          <Affliction identifier="electricshock" strength="60" />
+          <Affliction identifier="burn" strength="5" />
+          <ParticleEmitter particle="ElectricShock" DistanceMin="10" DistanceMax="25" ParticleAmount="5" ScaleMin="0.1" ScaleMax="0.12" />
+        </StatusEffect>
+      </Repairable>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="power_in" displayname="connection.powerin" />
+        <output name="condition_out" displayname="connection.conditionout" />
+      </ConnectionPanel>
+      <Deconstructor canbeselected="true" powerconsumption="50" deconstructitemssimultaneously="true" msg="ItemMsgInteractSelect" activatebuttontext="blueprintcrafter.invalidinput" infotext="blueprintcrafter.empty.infotext" infoareawidth="0.7">
+        <GuiFrame relativesize="0.275,0.30" style="ItemUI" anchor="Center" />
+        <sound file="Content/Items/Fabricators/Fabricator.ogg" type="OnActive" range="1000.0" loop="true" />
+        <poweronsound file="Content/Items/PowerOnLight3.ogg" range="600" loop="false" />
+        <StatusEffect type="InWater" targettype="This" condition="-0.4">
+          <Conditional attached="true" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="This" charge="-1">
+          <Conditional attached="true" />
+        </StatusEffect>
+      </Deconstructor>
+      <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="false" hudpos="0.5, 0.4" slotsperrow="3" uilabel="" allowuioverlap="true" containedspritedepths="0.701,0.702,0.703,0.704,0.705">
+        <Containable items="mountableweapon" hide="false" itempos="127,-80" />
+        <Containable items="ammobox" hide="false" itempos="115,-78" />
+        <Containable items="railgunammo" hide="false" itempos="112,-83" />
+        <Containable items="blueprint" hide="false" itempos="100,-90" />
+        <Containable items="smallitem,mediumitem" hide="true" excludeditems="mountableweapon,blueprint" />
+      </ItemContainer>
+      <ItemContainer capacity="2" maxstacksize="1" canbeselected="true" hideitems="false" hudpos="0.5, 0.8" slotsperrow="5" uilabel="" allowuioverlap="true">
+        <Containable items="researchmaterial,smallitem,mediumitem,blueprint" excludeditems="blueprint,mountableweapon" hide="true" />
+        <Containable items="blueprint" hide="false" itempos="100,-90" />
+        <Containable items="ammobox" hide="false" itempos="115,-78" />
+        <Containable items="railgunammo" hide="false" itempos="112,-83" />
+        <Containable items="mountableweapon" hide="false" itempos="127,-80" />
+      </ItemContainer>
+      <ItemContainer capacity="0" canbeselected="true" selectkey="Action" hideitems="true">
+        <GuiFrame relativesize="0.1,0.1" anchor="BottomCenter" relativeoffset="-0.05,0.10" style="ItemUI" />
+        <SlotIcon texture="Content/UI/StatusMonitorUI.png" sourcerect="128,448,64,64" origin="0.5,0.5" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="mobilebattery" hide="true">
+            <StatusEffect type="OnContaining" targettype="This" targetitemcomponent="PowerContainer" Charge="+2" interval="1" duration="1">
+              <Conditional Charge="lt 299" />
+            </StatusEffect>
+            <StatusEffect type="OnContaining" target="Contained" targetslot="0" targets="mobilebattery" Condition="-0.5" interval="1" duration="1">
+              <Conditional Charge="lt 299" targetcontainer="true" targetitemcomponent="PowerContainer" />
+            </StatusEffect>
+          </Containable>
+          <Containable items="loadable" excludefullcondition="true">
+            <StatusEffect type="OnContaining" target="Contained" targetslot="0" targets="loadable" Condition="+0.3" interval="1" duration="1">
+              <Conditional Charge="gte 299" targetcontainer="true" targetitemcomponent="PowerContainer" />
+            </StatusEffect>
+            <StatusEffect type="OnContaining" targettype="This" Charge="-0.5" interval="1" duration="1">
+              <Conditional Charge="gte 299" />
+            </StatusEffect>
+          </Containable>
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+    <!--制图油墨-->
+    <Item name="Ink" identifier="bp_test" description="Painting or Copy Blueprints" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" maxstacksize="32" maxstacksizecharacterinventory="8" tags="smallitem" Scale="0.5" impactsoundtag="impact_soft">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="8">
+        <Item tag="paint" />
+      </Fabricate>
+      <!--功能部分-->
+      <Deconstruct time="5" chooserandom="true" amount="1" requireddeconstructor="blueprint_crafter">
+        <!--武器↓-->
+        <Item identifier="bp_smg" commonness="1" requiredotheritem="smg" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_shotgun" commonness="1" requiredotheritem="shotgun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_autoshotgun" commonness="1" requiredotheritem="autoshotgun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="assaultrifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_hmg" commonness="1" requiredotheritem="hmg" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_rifle" commonness="1" requiredotheritem="rifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_handcannon" commonness="1" requiredotheritem="handcannon" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_revolver" commonness="1" requiredotheritem="revolver" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_nucleargun" commonness="1" requiredotheritem="nucleargun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_scrapcannon" commonness="1" requiredotheritem="scrapcannon" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_harpooncoilrifle" commonness="1" requiredotheritem="harpooncoilrifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_flamer" commonness="1" requiredotheritem="flamer" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_arcemitter" commonness="1" requiredotheritem="arcemitter" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_shotgununique" commonness="1" requiredotheritem="shotgununique" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_smgunique" commonness="1" requiredotheritem="smgunique" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_flamerunique" commonness="1" requiredotheritem="flamerunique" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_grenadelauncher" commonness="1" requiredotheritem="grenadelauncher" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_grenadelauncher" commonness="1" requiredotheritem="autogrenadelauncher" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_grenadelauncher" commonness="1" requiredotheritem="graned_pistol" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_boardingaxe" commonness="1" requiredotheritem="boardingaxe" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_ceremonialsword" commonness="1" requiredotheritem="ceremonialsword" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--诸海武器↓-->
+        <Item identifier="bp_sniper" commonness="1" requiredotheritem="sniper_rifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_dmr" commonness="1" requiredotheritem="dmr" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_carbine" commonness="1" requiredotheritem="quickshotcarbine" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_carbine" commonness="1" requiredotheritem="carbin_45" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_carbine_38" commonness="1" requiredotheritem="carbine_38" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="t_ar" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="assaultrifle_blast" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="tc_assaultrifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="m50" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_smg" commonness="1" requiredotheritem="t_smg" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_shotgun" commonness="1" requiredotheritem="dual_shotgun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_autoshotgun" commonness="1" requiredotheritem="heavy_assaultshotgun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_autoshotgun" commonness="1" requiredotheritem="ssg12" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_mini249" commonness="1" requiredotheritem="mini249" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_huntingrifle" commonness="1" requiredotheritem="hunting_rifle" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_bucketsmg" commonness="1" requiredotheritem="bucketshot_smg" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_r30" commonness="1" requiredotheritem="r30_moshin" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--弹药↓-->
+        <Item identifier="bp_smgmagazine" commonness="1" requiredotheritem="smgmagazine" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_depletedfuel" commonness="1" requiredotheritem="smgmagazinedepletedfuel" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_depletedfuel" commonness="1" requiredotheritem="revolverrounddepletedfuel" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_depletedfuel" commonness="1" requiredotheritem="coilgunammoboxdepletedfuel" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_depletedfuel" commonness="1" requiredotheritem="depletedfuel" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_shotgunshell" commonness="1" requiredotheritem="shotgunshell" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_revolverround" commonness="1" requiredotheritem="revolverround" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_handcannonround" commonness="1" requiredotheritem="handcannonround" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_riflebullet" commonness="1" requiredotheritem="riflebullet" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_assaultriflemagazine" commonness="1" requiredotheritem="assaultriflemagazine" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_hmgmagazine" commonness="1" requiredotheritem="hmgmagazine" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_spearunique" commonness="1" requiredotheritem="spearunique" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_shotgunslugexplosive" commonness="1" requiredotheritem="shotgunslugexplosive" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--其他↓-->
+        <Item identifier="bp_thermalgoggles" commonness="1" requiredotheritem="thermalgoggles" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_autoinjectorheadset" commonness="1" requiredotheritem="autoinjectorheadset" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_gene" commonness="1" requiredotheritem="advancedgenesplicer" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_advancedsyringegun" commonness="1" requiredotheritem="advancedsyringegun" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_cargoscooter" commonness="1" requiredotheritem="cargoscooter" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_cheapnuke" commonness="1" requiredotheritem="nuclearshellcheap" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--原型科技定轨↓-->
+        <Item identifier="randomtechpack" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.researching.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="tech_automatic" commonness="1" requiredotheritem="smg_simple" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="tech_automatic" commonness="1" requiredotheritem="assaultrifle_simple" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="tech_boltgun" commonness="1" requiredotheritem="rifle_simple" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="tech_pumpgun" commonness="1" requiredotheritem="shotgun_simple" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="tech_heavy" commonness="1" requiredotheritem="ironcannon" activatebuttontext="blueprintcrafter.research" infotext="blueprintcrafter.research.infotext" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--升级零件↓-->
+        <Item identifier="bp_upgrade_damage" commonness="1" requiredotheritem="titanium" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.damage" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_damage" commonness="1" requiredotheritem="upgradepart_damage" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.damage" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_sine" commonness="1" requiredotheritem="aluminium" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.sine" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_sine" commonness="1" requiredotheritem="upgrade_sine" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.sine" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_speed" commonness="1" requiredotheritem="steel" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.speed" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_speed" commonness="1" requiredotheritem="upgrade_speed" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.speed" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_custom" commonness="1" requiredotheritem="plastic" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.custom" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_upgrade_custom" commonness="1" requiredotheritem="upgrade_custom" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.custom" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <!--高级科技↓-->
+        <Item identifier="bp_ransujingpian" commonness="1" requiredotheritem="alienpistol" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.ransujingpian" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_reactbattery" commonness="1" requiredotheritem="alienpowercell" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.reactbattery" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+        <Item identifier="bp_ancientweapon" commonness="1" requiredotheritem="ancientweapon" activatebuttontext="blueprintcrafter.researching" infotext="blueprintcrafter.part.ancientweapon" infotextonotheritemmissing="blueprintcrafter.combine.missingitem" />
+      </Deconstruct>
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="756,716,24,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="24" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+    </Item>
+  </Items>
+  <!--原版武器图纸-->
+  <Items>
+    <!--蓝图:冲锋枪-->
+    <Item name="" identifier="bp_smg" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_smg" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--科技树↓-->
+        <!--强袭突击步枪↓-->
+        <Item identifier="bp_blastrifle" amount="1" commonness="1" requiredotheritem="bp_assaultrifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--迷你机关枪↓-->
+        <Item identifier="bp_mini249" amount="1" commonness="1" requiredotheritem="bp_hmg" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="smg,machinepistol" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:防爆霰弹枪-->
+    <Item name="" identifier="bp_shotgun" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_shotgun" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+        <!--科技树↓-->
+        <!--自动霰弹枪↓-->
+        <Item identifier="bp_autoshotgun" amount="1" commonness="1" requiredotheritem="bp_assaultrifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--强袭冲锋枪↓-->
+        <Item identifier="bp_taticlesmg" amount="1" commonness="1" requiredotheritem="bp_smg" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="shotgun,dual_shotgun" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:自动霰弹枪-->
+    <Item name="" identifier="bp_autoshotgun" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_autoshotgun" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="autoshotgun,heavy_assaultshotgun,ssg12" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:突击步枪-->
+    <Item name="" identifier="bp_assaultrifle" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_assaultrifle" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="assaultrifle,tc_assaultrifle,t_ar,m50" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:手炮-->
+    <Item name="" identifier="bp_handcannon" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_handcannon" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+        <!--科技↓-->
+        <!--狩猎步枪↓-->
+        <Item identifier="bp_huntingrifle" amount="1" commonness="1" requiredotheritem="bp_sniper" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <Item identifier="bp_huntingrifle" amount="1" commonness="1" requiredotheritem="bp_dmr" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <Item identifier="bp_huntingrifle" amount="1" commonness="1" requiredotheritem="bp_carbine" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="handcannon" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:左轮手枪-->
+    <Item name="" identifier="bp_revolver" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_revolver" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+        <!--科技↓-->
+        <!--杠杆步枪↓-->
+        <Item identifier="bp_carbine_38" amount="1" commonness="1" requiredotheritem="bp_rifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--滚筒冲锋枪↓-->
+        <Item identifier="bp_bucketsmg" amount="1" commonness="1" requiredotheritem="bp_smg" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--增压左轮↓-->
+        <Item identifier="bp_r30" amount="1" commonness="1" requiredotheritem="bp_sniper" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <Item identifier="bp_r30" amount="1" commonness="1" requiredotheritem="bp_dmr" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <Item identifier="bp_r30" amount="1" commonness="1" requiredotheritem="bp_carbine" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="revolver" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:重机枪-->
+    <Item name="" identifier="bp_hmg" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_hmg" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="hmg" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:榴弹发射器-->
+    <Item name="" identifier="bp_grenadelauncher" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_grenadelauncher" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="grenadelauncher,graned_pistol,autogrenadelauncher" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:步枪-->
+    <Item name="" identifier="bp_rifle" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_rifle" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+        <!--科技树↓-->
+        <!--突击步枪↓-->
+        <Item identifier="bp_assaultrifle" amount="1" commonness="1" requiredotheritem="bp_smg" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--卡宾枪↓-->
+        <Item identifier="bp_carbine" amount="1" commonness="1" requiredotheritem="bp_assaultrifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,5" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="rifle" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:动力鱼叉-->
+    <Item name="" identifier="bp_harpooncoilrifle" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_harpooncoilrifle" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="harpooncoilrifle" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:废铁炮-->
+    <Item name="" identifier="bp_scrapcannon" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_scrapcannon" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,5" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="scrapcannon" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:辐射枪-->
+    <Item name="" identifier="bp_nucleargun" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_nucleargun" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,5" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="nucleargun,nuke_carbine" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:线圈枪-->
+    <Item name="" identifier="bp_arcemitter" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_arcemitter" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,5" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="arcemitter" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:喷火器-->
+    <Item name="" identifier="bp_flamer" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_flamer" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="flamer" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:爆鸣-->
+    <Item name="" identifier="bp_shotgununique" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_shotgununique" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="shotgununique_remaster" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:亡眼-->
+    <Item name="" identifier="bp_smgunique" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_smgunique" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="smgunique_remaster" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:蒸汽炮-->
+    <Item name="" identifier="bp_flamerunique" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_flamerunique" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="flamerunique_remaster" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:登船斧-->
+    <Item name="" identifier="bp_boardingaxe" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_boardingaxe" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,6" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="boardingaxe" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:仪式用剑-->
+    <Item name="" identifier="bp_ceremonialsword" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_comment" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_ceremonialsword" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" amount="2" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,6" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="ceremonialsword" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+  </Items>
+  <!--进阶武器图纸-->
+  <Items>
+    <!--蓝图:杠杆式步枪-->
+    <Item name="" identifier="bp_carbine_38" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_carbine_38" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="carbine_38" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:卡宾枪系列-->
+    <Item name="" identifier="bp_carbine" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_carbine" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--科技线↓-->
+        <!--狙击武器↓-->
+        <Item identifier="bp_sniper" amount="1" commonness="1" requiredotheritem="bp_rifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="carbin_45,quickshotcarbine" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:强袭冲锋枪-->
+    <Item name="" identifier="bp_taticlesmg" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_taticlesmg" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="t_smg" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:强袭突击步枪-->
+    <Item name="" identifier="bp_blastrifle" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_blastrifle" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="assaultrifle_blast" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:迷你机关枪-->
+    <Item name="" identifier="bp_mini249" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_mini249" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="mini249" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:狙击武器-->
+    <Item name="" identifier="bp_sniper" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_sniper" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--科技↓-->
+        <!--精确射手步枪↓-->
+        <Item identifier="bp_dmr" amount="1" commonness="1" requiredotheritem="bp_assaultrifle" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="sniper_rifle" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:精确射手步枪-->
+    <Item name="" identifier="bp_dmr" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_dmr" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="dmr" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:狩猎步枪-->
+    <Item name="" identifier="bp_huntingrifle" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_huntingrifle" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,3" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="hunting_rifle" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:滚筒冲锋枪-->
+    <Item name="" identifier="bp_bucketsmg" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_bucketsmg" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="bucketshot_smg,revolverround_magazine" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--蓝图:增压左轮-->
+    <Item name="" identifier="bp_r30" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" descriptionidentifier="bp_t7s" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_r30" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,4" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="r30_moshin" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+  </Items>
+  <!--升级零件图纸-->
+  <Items>
+    <!--升级零件：优化膛线-->
+    <Item name="" identifier="bp_upgrade_damage" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_upgrade_damage" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,1" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="upgradepart_damage" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--升级零件：高精瞄具-->
+    <Item name="" identifier="bp_upgrade_sine" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_upgrade_sine" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="2,1" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="upgradepart_sine" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--升级零件：机匣润滑-->
+    <Item name="" identifier="bp_upgrade_speed" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_upgrade_speed" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,1" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="upgradepart_speed" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--升级零件：皮卡汀尼导轨-->
+    <Item name="" identifier="bp_upgrade_custom" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_upgrade_custom" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="1,1" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="upgradepart_custom" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+  </Items>
+  <!--高级科学技术-->
+  <Items>
+    <!--异星手枪：燃素镜片-->
+    <Item name="" identifier="bp_ransujingpian" descriptionidentifier="bp_supreme" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_ransujingpian" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+        <!--科技↓-->
+        <!--激光武器↓-->
+        <Item identifier="bp_lasergun" amount="1" commonness="1" requiredotheritem="bp_reactbattery" activatebuttontext="blueprintcrafter.techno" infotext="blueprintcrafter.techno.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="4,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="ransujingpian" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--异星电池：自充能电池-->
+    <Item name="" identifier="bp_reactbattery" descriptionidentifier="bp_supreme" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_reactbattery" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="3,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="reactbattery" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--远古兵器：未知-->
+    <Item nameidentifier="bp_unknow" identifier="bp_ancientweapon" descriptionidentifier="bp_unknow" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_ancientweapon" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,1" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="lasergun_pistol,lasergun_rifle,lasergun_blaster,reactbattery,ransujingpian" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+    <!--激光武器-->
+    <Item name="" identifier="bp_lasergun" descriptionidentifier="bp_t7s" category="Misc" cargocontaineridentifier="metalcrate" allowasextracargo="true" tags="smallitem,blueprint" Scale="0.5" impactsoundtag="impact_soft" isshootable="true">
+      <PreferredContainer primary="blueprintcontainer" secondary="armcab,storagecab" />
+      <Price baseprice="40" sold="false" canbespecial="false" />
+      <Deconstruct time="10" requireddeconstructor="deconstructor" />
+      <Deconstruct time="2" chooserandom="true" requireddeconstructor="blueprint_crafter">
+        <!--复印↓-->
+        <Item identifier="bp_lasergun" amount="2" commonness="1" requiredotheritem="bp_test" activatebuttontext="blueprintcrafter.copy" infotext="blueprintcrafter.copy.infotext" infotextonotheritemmissing="blueprintcrafter.combine.copy" />
+      </Deconstruct>
+      <InventoryIcon texture="%ModDir%/Content/Weapons/Blueprints/blueprints2.png" sourcerect="0,0,168,86" origin="0.5,0.5" sheetelementsize="168,86" sheetindex="0,9" />
+      <Sprite texture="%ModDir%/Content/Weapons/Blueprints/blueprint_gears.png" sourcerect="655,34,124,32" depth="0.55" origin="0.5,0.5" />
+      <Body width="122" height="32" density="10.5" />
+      <Holdable slots="Any,RightHand,LeftHand" handle1="0,0" aimpos="50,5" holdangle="90" aimangle="90" msg="ItemMsgPickUpSelect" />
+      <RangedWeapon reload="3.0">
+        <StatusEffect type="OnUse" target="Character" unlockrecipe="lasergun_pistol,lasergun_rifle,lasergun_blaster" forceplaysounds="true">
+          <Sound file="Content/Items/Button/button.ogg" type="OnUse" range="500" />
+        </StatusEffect>
+      </RangedWeapon>
+    </Item>
+  </Items>
+</Items>

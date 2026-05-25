@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--突击榴弹炮-->
+  <Item name="" description="" identifier="grenadegun" Tags="turret" category="Machine,Weapon" subcategory="subweapons" interactthroughwalls="true" Scale="0.5" interactdistance="10" spritecolor="1.0,1.0,1.0,1.0" focusonselected="true" offsetonselected="750" linkable="true" allowedlinks="grenadegunequipment">
+    <Sprite texture="Content/Items/Weapons/Turrets.png" depth="0.01" sourcerect="772,8,248,248" canflipy="false" />
+    <MinimapIcon name="UI" texture="%ModDir%/Content/Weapons/Turret/WeaponUI.png" sourcerect="190,92,128,128" />
+    <SwappableItem price="7000" replacementonuninstall="turrethardpoint" origin="128,215" swapidentifier="basicturret">
+      <SchematicSprite texture="%ModDir%/Content/Weapons/Turret/WeaponUI.png" sourcerect="0,0,138,306" />
+      <SwapConnectedItem tag="periscope" swapto="periscope" />
+      <SwapConnectedItem tag="turretammosource" swapto="grenadegunloader" />
+    </SwappableItem>
+    <UpgradePreviewSprite scale="2.5" texture="%ModDir%/Content/Weapons/Turret/WeaponUI.png" sourcerect="168,8,109,65" origin="0.5,0.5" />
+    <StaticBody width="80" radius="80" />
+    <Turret canbeselected="false" spread="4.0" launchimpulse="70.0" characterusable="false" linkable="true" barrelpos="126,82" rotationlimits="180,360" powerconsumption="4000.0" showchargeindicator="true" showprojectileindicator="true" recoildistance="60" reload="1.4" springstiffnesslowskill="2" springstiffnesshighskill="50" springdampinglowskill="0.5" springdampinghighskill="10" rotationspeedlowskill="1" rotationspeedhighskill="8" firingoffset="0,-190" MaxAngleOffset="5" AICurrentTargetPriorityMultiplier="1">
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot1.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot2.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot3.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot4.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot5.ogg" range="10000" type="OnUse" volume="2.0" />
+      <WeaponIndicator texture="%ModDir%/Content/Weapons/Turret/WeaponUI.png" sourcerect="308,15,78,46" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Content/Weapons/Turret/Turrets.png" depth="0.011" sourcerect="0,0,154,287" origin="0.5, 0.7" />
+      <BarrelSprite texture="%ModDir%/Content/Weapons/Turret/TurretsAndDepthCharges.png" depth="0.012" sourcerect="0,0,118,292" scale="0.6" origin="0.5, 1" />
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" />
+      <StartMoveSound file="Content/Items/Weapons/RailgunStart.ogg" />
+      <EndMoveSound file="Content/Items/Weapons/RailgunStop.ogg" />
+      <RequiredSkill identifier="weapons" level="50" />
+      <LightComponent LightColor="1.0,0.8,0.8,1.0" Flicker="0.0" range="2500" directional="true" IsOn="true" drawbehindsubs="true" ignorecontinuoustoggle="true" InheritParentIsActive="false">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="0.0,0.5" size="1.0,1.0" />
+      </LightComponent>
+      <ParticleEmitter particle="muzzleflashflakcannon" particleamount="1" velocitymin="50" velocitymax="100" distance="-20" />
+      <ParticleEmitter particle="swirlysmoke" particleamount="10" velocitymin="0" velocitymax="0" scalemin="10" scalemax="15" distancemin="-100" distancemax="50" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="1000.0" structuredamage="0" force="0.0" camerashake="50.0" flames="false" smoke="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+    </Turret>
+    <aitarget maxsightrange="3000" maxsoundrange="8000" fadeouttime="5" />
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="power_in" displayname="connection.powerin" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="toggle_light" displayname="connection.togglelight" />
+      <input name="set_light" displayname="connection.setlight" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <Item name="" identifier="grenadegunloader" tags="grenadegunequipment,grenadegunammosource,turretammosource,grenadegunammoloader" category="Machine,Weapon" subcategory="subweapons" linkable="true" allowedlinks="grenadegun" scale="0.5" damagedbyexplosions="true" explosiondamagemultiplier="0.2">
+    <SwappableItem canbebought="false" origin="75,356" spawnwithid="grenadegunammobox" />
+    <Sprite name="GrenadeGun Loader Front" texture="%ModDir%/Content/Weapons/Turret/Loaders.png" depth="0.76" sourcerect="0,0,166,352" origin="0.5,0.5" />
+    <BrokenSprite texture="Content/Items/Weapons/Loaders.png" sourcerect="163,563,153,351" origin="0.5,0.5" offset="0,3" depth="0.75" fadein="true" maxcondition="99" />
+    <UpgradePreviewSprite texture="Content/UI/WeaponUI.png" sourcerect="208,968,32,46" origin="0.5,0.5" />
+    <DecorativeSprite name="Grenade Gun Loader Frame Back" texture="Content/Items/Weapons/Loaders.png" depth="0.8" sourcerect="31,569,117,200" origin="0.5,0.5" offset="0,-68" />
+    <DecorativeSprite name="Ammobelt" texture="Content/Items/Containers/containers.png" depth="0.79" sourcerect="499,663,52,142" origin="0.5,0.5" offset="0,12">
+      <IsActiveConditional targetcontaineditem="true" condition="gt 0.0" />
+      <IsActiveConditional targetcontaineditem="true" hastag="! noammobelt" />
+    </DecorativeSprite>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" deteriorationspeed="10" mindeteriorationdelay="60" maxdeteriorationdelay="300" MinDeteriorationCondition="0" RepairThreshold="50" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <StatusEffect type="InWater" target="This" condition="-0.25" />
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="-0.1,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="55" />
+      <RequiredItem items="wrench" type="Equipped" />
+      <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+      <ParticleEmitter particle="smoke" particlespersecond="2" scalemin="1" scalemax="2.5" anglemax="360" velocitymin="-50" velocitymax="50" mincondition="15.0" maxcondition="50.0" />
+      <ParticleEmitter particle="heavysmoke" particlespersecond="2" scalemin="1.0" scalemax="2.5" anglemax="360" distancemax="60" mincondition="0.0" maxcondition="15.0" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="1000" />
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="stun" strength="4" />
+      </StatusEffect>
+    </Repairable>
+    <ItemContainer hideitems="false" drawinventory="true" capacity="1" maxstacksize="1" slotsperrow="6" itempos="82,-263" iteminterval="0,0" itemrotation="0" canbeselected="true" msg="ItemMsgInteractSelect" containedspritedepth="0.79">
+      <GuiFrame relativesize="0.18,0.23" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="grenadegunammo" />
+      <StatusEffect type="OnUse" target="Contained">
+        <RequiredItem items="grenadegunammo" type="Contained" />
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="condition_out" displayname="connection.conditionout" />
+      <output name="contained_conditions" displayname="connection.ammunitionout" />
+    </ConnectionPanel>
+    <LightComponent lightcolor="219,0,36,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="1.685,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 0" />
+    </LightComponent>
+    <LightComponent lightcolor="255,170,1,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="1.135,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 20" />
+    </LightComponent>
+    <LightComponent lightcolor="246,210,2,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="0.585,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 40" />
+    </LightComponent>
+    <LightComponent lightcolor="252,230,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="0.035,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 60" />
+    </LightComponent>
+    <LightComponent lightcolor="185,214,0,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="-0.515,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 80" />
+    </LightComponent>
+    <LightComponent lightcolor="79,184,0,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="-1.065,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gte 100" />
+    </LightComponent>
+  </Item>
+  <!--鱼雷炮塔-->
+  <Item name="" description="" identifier="rocketgun" Tags="turret" category="Machine,Weapon" subcategory="subweapons" interactthroughwalls="true" Scale="0.5" interactdistance="10" spritecolor="1.0,1.0,1.0,1.0" focusonselected="true" offsetonselected="750" linkable="true" allowedlinks="rocketgunequipment">
+    <Sprite texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.01" sourcerect="4,4,504,504" canflipy="false" />
+    <MinimapIcon name="UI" texture="%ModDir%/Content/Weapons/Turret/WeaponUI2.png" sourcerect="290,92,128,128" />
+    <SwappableItem price="7500" replacementonuninstall="largeturrethardpoint" origin="256,438" swapidentifier="largeturret">
+      <SchematicSprite texture="%ModDir%/Content/Weapons/Turret/WeaponUI2.png" sourcerect="0,0,236,306" />
+      <SwapConnectedItem tag="periscope" swapto="periscope" />
+      <SwapConnectedItem tag="turretammosource" swapto="rocketgunloader" />
+    </SwappableItem>
+    <UpgradePreviewSprite scale="2.5" texture="%ModDir%/Content/Weapons/Turret/WeaponUI2.png" sourcerect="268,8,109,65" origin="0.5,0.5" />
+    <StaticBody width="80" radius="80" />
+    <Turret launchimpulse="55" spinningbarreldistance="45.0" firingrotationspeedmodifier="0.6" usefiringoffsetformuzzleflash="true" maxchargetime="0.5" canbeselected="false" firingoffset="-10,-220" characterusable="false" linkable="true" barrelpos="250,180" rotationlimits="180,360" powerconsumption="1000.0" showchargeindicator="true" showprojectileindicator="true" recoildistance="5" reload="0.22" springstiffnesslowskill="2" springstiffnesshighskill="50" springdampinglowskill="0.5" springdampinghighskill="10" rotationspeedlowskill="1" rotationspeedhighskill="5" MaxAngleOffset="30" AICurrentTargetPriorityMultiplier="1.1">
+      <sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot1.ogg" range="10000" type="OnUse" volume="2" />
+      <Sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot2.ogg" type="OnUse" range="10000" volume="2" />
+      <Sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot3.ogg" type="OnUse" range="10000" volume="2" />
+      <Sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot4.ogg" type="OnUse" range="10000" volume="2" />
+      <Sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot5.ogg" type="OnUse" range="10000" volume="2" />
+      <Sound file="%ModDir%/Content/Weapons/Sounds/rocket_shot6.ogg" type="OnUse" range="10000" volume="2" />
+      <WeaponIndicator texture="%ModDir%/Content/Weapons/Turret/WeaponUI2.png" sourcerect="408,15,78,46" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.011" sourcerect="0,512,328,512" origin="0.51, 0.6" />
+      <BarrelSprite texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.013" sourcerect="512,0,250,672" origin="0.5, 0.85" />
+      <ChargeSprite chargetarget="-50, -20" name="chargesprite1" texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.012" sourcerect="870,680,122,250" origin="-0.05, 1.125" />
+      <ChargeSprite chargetarget="50, -20" name="chargesprite2" texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.012" sourcerect="748,680,122,250" origin="1.05, 1.125" />
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" />
+      <StartMoveSound file="Content/Items/Weapons/RailgunStart.ogg" />
+      <EndMoveSound file="Content/Items/Weapons/RailgunStop.ogg" />
+      <ChargeSound file="%ModDir%/Content/Weapons/Sounds/rocket_hatch_open.ogg" volume="1.8" range="10000" />
+      <RequiredSkill identifier="weapons" level="50" />
+      <LightComponent LightColor="1.0,0.8,0.8,1.0" Flicker="0.0" range="2500" directional="true" IsOn="true" drawbehindsubs="true" ignorecontinuoustoggle="true" InheritParentIsActive="false">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="0.0,0.5" size="1.0,1.0" />
+      </LightComponent>
+      <ParticleEmitter particle="muzzleflashcoilgun" particleamount="1" velocitymin="50" velocitymax="100" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" scalemin="2" scalemax="3" />
+      <ParticleEmitter particle="swirlysmoke" particleamount="10" velocitymin="0" velocitymax="0" scalemin="2" scalemax="3" distancemin="-100" distancemax="50" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="1500.0" structuredamage="0" force="0.0" camerashake="8" flames="false" smoke="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+    </Turret>
+    <aitarget maxsightrange="3000" maxsoundrange="8000" fadeouttime="5" />
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="power_in" displayname="connection.powerin" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="toggle_light" displayname="connection.togglelight" />
+      <input name="set_light" displayname="connection.setlight" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <Upgrade gameversion="0.19.5.0">
+      <Turret rotationspeedhighskill="5" />
+    </Upgrade>
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+  <Item name="" identifier="rocketgunloader" tags="rocketgunequipment,rocketgunammosource,turretammosource,rocketgunammoloader" category="Machine,Weapon" subcategory="subweapons" linkable="true" allowedlinks="grenadegun" scale="0.5" damagedbyexplosions="true" explosiondamagemultiplier="0.2">
+    <SwappableItem canbebought="false" origin="75,356" spawnwithid="rocketgunammobox" />
+    <Sprite name="GrenadeGun Loader Front" texture="%ModDir%/Content/Weapons/Turret/Loaders.png" depth="0.76" sourcerect="168,0,166,352" origin="0.5,0.5" />
+    <BrokenSprite texture="Content/Items/Weapons/Loaders.png" sourcerect="163,563,153,351" origin="0.5,0.5" offset="0,3" depth="0.75" fadein="true" maxcondition="99" />
+    <UpgradePreviewSprite texture="Content/UI/WeaponUI.png" sourcerect="208,968,32,46" origin="0.5,0.5" />
+    <DecorativeSprite name="Grenade Gun Loader Frame Back" texture="Content/Items/Weapons/Loaders.png" depth="0.8" sourcerect="31,569,117,200" origin="0.5,0.5" offset="0,-68" />
+    <DecorativeSprite name="Ammobelt" texture="Content/Items/Containers/containers.png" depth="0.79" sourcerect="499,663,52,142" origin="0.5,0.5" offset="0,12">
+      <IsActiveConditional targetcontaineditem="true" condition="gt 0.0" />
+      <IsActiveConditional targetcontaineditem="true" hastag="! noammobelt" />
+    </DecorativeSprite>
+    <Repairable selectkey="Action" header="mechanicalrepairsheader" deteriorationspeed="10" mindeteriorationdelay="60" maxdeteriorationdelay="300" MinDeteriorationCondition="0" RepairThreshold="50" fixDurationHighSkill="5" fixDurationLowSkill="25" msg="ItemMsgRepairWrench" hudpriority="10">
+      <StatusEffect type="InWater" target="This" condition="-0.25" />
+      <GuiFrame relativesize="0.2,0.16" minsize="400,180" maxsize="480,280" anchor="Center" relativeoffset="-0.1,0.27" style="ItemUI" />
+      <RequiredSkill identifier="mechanical" level="55" />
+      <RequiredItem items="wrench" type="Equipped" />
+      <ParticleEmitter particle="damagebubbles" particlespersecond="2" scalemin="0.5" scalemax="1.5" anglemax="360" velocitymin="-10" velocitymax="10" mincondition="0.0" maxcondition="50.0" />
+      <ParticleEmitter particle="smoke" particlespersecond="2" scalemin="1" scalemax="2.5" anglemax="360" velocitymin="-50" velocitymax="50" mincondition="15.0" maxcondition="50.0" />
+      <ParticleEmitter particle="heavysmoke" particlespersecond="2" scalemin="1.0" scalemax="2.5" anglemax="360" distancemax="60" mincondition="0.0" maxcondition="15.0" />
+      <StatusEffect type="OnFailure" target="Character" targetlimbs="LeftHand,RightHand" AllowWhenBroken="true">
+        <Sound file="Content/Items/MechanicalRepairFail.ogg" range="1000" />
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="stun" strength="4" />
+      </StatusEffect>
+    </Repairable>
+    <ItemContainer hideitems="false" drawinventory="true" capacity="1" maxstacksize="1" slotsperrow="6" itempos="82,-263" iteminterval="0,0" itemrotation="0" canbeselected="true" msg="ItemMsgInteractSelect" containedspritedepth="0.79">
+      <GuiFrame relativesize="0.18,0.23" anchor="Center" minsize="140,170" maxsize="280,280" style="ItemUI" />
+      <Containable items="rocketgunammo" />
+      <StatusEffect type="OnUse" target="Contained">
+        <RequiredItem items="rocketgunammo" type="Contained" />
+        <Use />
+      </StatusEffect>
+    </ItemContainer>
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <output name="condition_out" displayname="connection.conditionout" />
+      <output name="contained_conditions" displayname="connection.ammunitionout" />
+    </ConnectionPanel>
+    <LightComponent lightcolor="219,0,36,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="1.685,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 0" />
+    </LightComponent>
+    <LightComponent lightcolor="255,170,1,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="1.135,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 20" />
+    </LightComponent>
+    <LightComponent lightcolor="246,210,2,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="0.585,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 40" />
+    </LightComponent>
+    <LightComponent lightcolor="252,230,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="0.035,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 60" />
+    </LightComponent>
+    <LightComponent lightcolor="185,214,0,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="-0.515,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gt 80" />
+    </LightComponent>
+    <LightComponent lightcolor="79,184,0,150" castshadows="false" range="0.0" IsOn="true" powerconsumption="0" alphablend="true" allowingameediting="false">
+      <sprite texture="Content/Items/Weapons/Loaders.png" sourcerect="348,921,25,27" origin="-1.065,-4.79" alpha="1.0" />
+      <IsActiveConditional targetcontaineditem="true" conditionpercentage="gte 100" />
+    </LightComponent>
+  </Item>
+  <!--三连发突击炮塔-->
+  <Item name="" description="" identifier="heavygrenadegun" Tags="turret" category="Machine,Weapon" subcategory="subweapons" interactthroughwalls="true" Scale="0.5" interactdistance="10" spritecolor="1.0,1.0,1.0,1.0" focusonselected="true" offsetonselected="750" linkable="true" allowedlinks="grenadegunequipment">
+    <Sprite texture="%ModDir%/Content/Weapons/Turret/Rocket_turret.png" depth="0.01" sourcerect="4,4,504,504" canflipy="false" />
+    <MinimapIcon name="UI" texture="%ModDir%/Content/Weapons/Turret/WeaponUI3.png" sourcerect="290,92,128,128" />
+    <SwappableItem price="12000" replacementonuninstall="largeturrethardpoint" origin="256,438" swapidentifier="largeturret">
+      <SchematicSprite texture="%ModDir%/Content/Weapons/Turret/WeaponUI3.png" sourcerect="0,0,138,306" />
+      <SwapConnectedItem tag="periscope" swapto="periscope" />
+      <SwapConnectedItem tag="turretammosource" swapto="grenadegunloader" />
+    </SwappableItem>
+    <UpgradePreviewSprite scale="2.5" texture="%ModDir%/Content/Weapons/Turret/WeaponUI3.png" sourcerect="260,0,128,78" origin="0.5,0.5" />
+    <StaticBody width="80" radius="80" />
+    <Turret launchimpulse="65" spinningbarreldistance="45.0" firingrotationspeedmodifier="0.6" usefiringoffsetformuzzleflash="true" maxchargetime="1.4" spread="4" canbeselected="false" firingoffset="0,-650" characterusable="false" linkable="true" barrelpos="250,180" rotationlimits="180,360" powerconsumption="2000.0" showchargeindicator="true" showprojectileindicator="true" recoildistance="50" reload="0.125" shotsperburst="3" delaybetweenbursts="0.775" springstiffnesslowskill="2" springstiffnesshighskill="50" springdampinglowskill="0.5" springdampinghighskill="10" rotationspeedlowskill="1" rotationspeedhighskill="5" MaxAngleOffset="30" AICurrentTargetPriorityMultiplier="1.1" ChargeSoundWindupPitchSlide="0.3,1.0">
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot1.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot2.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot3.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot4.ogg" range="10000" type="OnUse" volume="2.0" />
+      <sound file="%ModDir%/Content/Weapons/Sounds/ag_shot5.ogg" range="10000" type="OnUse" volume="2.0" />
+      <WeaponIndicator texture="%ModDir%/Content/Weapons/Turret/WeaponUI3.png" sourcerect="408,15,78,46" origin="0.24, 0.472" />
+      <RailSprite texture="%ModDir%/Content/Weapons/Turret/HeavyGrenadeGun.png" depth="0.011" sourcerect="0,196,315,828" origin="0.5, 0.875" />
+      <SpinningBarrelSprite spriteamount="3" texture="%ModDir%/Content/Weapons/Turret/HeavyGrenadeGun.png" depth="0.013" sourcerect="638,492,64,460" origin="0.1, 1.4" />
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,0,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,0,256,256" />
+      <MoveSound file="Content/Items/Weapons/RailgunLoop.ogg" />
+      <StartMoveSound file="Content/Items/Weapons/RailgunStart.ogg" />
+      <EndMoveSound file="Content/Items/Weapons/RailgunStop.ogg" />
+      <ChargeSound file="Content/Items/Weapons/CHAINGUN_chargeUp_loop.ogg" volume="2" range="10000" />
+      <RequiredSkill identifier="weapons" level="50" />
+      <LightComponent LightColor="1.0,0.8,0.8,1.0" Flicker="0.0" range="2500" directional="true" IsOn="true" drawbehindsubs="true" ignorecontinuoustoggle="true" InheritParentIsActive="false">
+        <LightTexture texture="Content/Lights/lightcone.png" origin="0.0,0.5" size="1.0,1.0" />
+      </LightComponent>
+      <ParticleEmitter particle="muzzleflashflakcannon" particleamount="1" velocitymin="50" velocitymax="100" distance="-20" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" scalemin="2" scalemax="3" />
+      <ParticleEmitter particle="swirlysmoke" particleamount="10" velocitymin="0" velocitymax="0" scalemin="2" scalemax="3" distancemin="-100" distancemax="50" />
+      <StatusEffect type="OnUse" target="This">
+        <Explosion range="1500.0" structuredamage="0" force="0.0" camerashake="8" flames="false" smoke="false" sparks="false" underwaterbubble="false" />
+      </StatusEffect>
+    </Turret>
+    <aitarget maxsightrange="3000" maxsoundrange="8000" fadeouttime="5" />
+    <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+      <RequiredItem items="screwdriver" type="Equipped" />
+      <input name="power_in" displayname="connection.powerin" />
+      <input name="position_in" displayname="connection.turretaimingin" />
+      <input name="trigger_in" displayname="connection.turrettriggerin" />
+      <input name="toggle_light" displayname="connection.togglelight" />
+      <input name="set_light" displayname="connection.setlight" />
+      <input name="set_auto_operate" displayname="connection.setautooperate" />
+      <input name="toggle_auto_operate" displayname="connection.toggleautooperate" />
+    </ConnectionPanel>
+    <SkillRequirementHint identifier="weapons" level="50" />
+  </Item>
+</Items>
