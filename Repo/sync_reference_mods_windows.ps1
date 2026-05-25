@@ -43,7 +43,13 @@ $mods = @(
     Name   = "OTFX"
     Source = "C:\Program Files (x86)\Steam\steamapps\workshop\content\602960\2986787106"
     Target = Join-Path $ReferenceRoot "OTFX"
+  },
+  @{
+    Name   = "The 7 Sea"
+    Source = "C:\Program Files (x86)\Steam\steamapps\workshop\content\602960\3428608756"
+    Target = Join-Path $ReferenceRoot "The 7 Sea"
   }
+
 )
 
 Set-Location $RepoRoot
