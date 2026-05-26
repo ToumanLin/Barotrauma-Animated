@@ -11,13 +11,13 @@
   [Repo](./Repo)文件夹是存放一些工具脚本
 
 
-  -[自动生成物品列表](./Repo/item_list_generator.py)
+  -[自动生成物品列表](./Repo/item_list_generator.ps1)
    自动和原版游戏对比ID, 给出覆盖的物品表, 和新增的物品表
   
-  -[自动发布更新](./Repo/release.py)
+  -[自动发布更新](./Repo/release.ps1)
     自动删除dev内容, 推送到00_RELEASE文件夹
     
-  -[生成潜在需要更进游戏更新的物品列表](./Repo/GameUpdateChecker.py)
+  -[生成潜在需要更进游戏更新的物品列表](./Repo/GameUpdateChecker.ps1)
       拉取游戏的上一次更新, 给出潜在需要更新的物品列表
 
   -[自动计算Origin](./Repo/自动计算新Origin.xlsx)
@@ -49,4 +49,4 @@ label all vanilla uniforms as wf_withboots
   4. 别忘了本地化, description
 
 更新流程:
- 把00_RELEASE文件夹复制到LocalMods, 然后双击ZZ_release.bat 
+ 把00_RELEASE文件夹复制到LocalMods, 然后右键用 PowerShell 运行 ZZ_Release.ps1
